@@ -695,16 +695,132 @@ Fynd is the AI-native operating layer underneath.
       </div>
       <!-- ── end isometric IMPACT composition ── -->
 
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">380 M+</div><div class="impact-tile-cap">Customer identities unified across Reliance Retail &middot; UCP foundation across 100 % of formats (RR registered customers &middot; 387 M)</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">100+</div><div class="impact-tile-cap">Brands replatformed to Jio Commerce Platform &middot; 78 channels &middot; 68 live &middot; 700 K+ orders / day</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">15.08 Cr</div><div class="impact-tile-cap">Pieces delivered FY 26 via Impetus F&amp;L &middot; 11.06 L POs FY 26 &middot; 43 brands live</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">88 %+</div><div class="impact-tile-cap">Positive customer engagement &middot; AJIO ZIP agentic shopping &middot; 86 % chat-driven discovery on 2 M+ products</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">20 K+</div><div class="impact-tile-cap">Stores connected on JCP across the Reliance Retail estate</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">22</div><div class="impact-tile-cap">Platforms running today &middot; across Plan &middot; Buy &middot; Make &middot; Move &middot; Sell &middot; Data &middot; Store Health &middot; HR Tech</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">1 K+</div><div class="impact-tile-cap">Vendors transacting on Impetus across the Reliance F&amp;L supply base</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">2.3 K+</div><div class="impact-tile-cap">Reliance employees trained across platforms</div></div>
-<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">1.2 K+</div><div class="impact-tile-cap">Developer contributors across Jio Commerce Platform + Impetus</div></div>
+<style>
+  /* ── Impact metric slider ─────────────────────────── */
+  .impact-slider-wrap {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 2.5rem 0;
+    /* fade masks on edges */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
+  }
+  .impact-slider-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+    animation: impSlide 36s linear infinite;
+  }
+  .impact-slider-track:hover { animation-play-state: paused; }
+  @keyframes impSlide {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .impact-slide-card {
+    flex: 0 0 220px;
+    background: var(--bone, #f7f1de);
+    border: 1px solid var(--rule, #d4c9b0);
+    border-radius: 10px;
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+  }
+  .impact-slide-num {
+    font-family: 'Inter Tight', 'Inter', sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: var(--ink, #1a1a18);
+    line-height: 1;
+    letter-spacing: -.02em;
+  }
+  .impact-slide-cap {
+    font-family: 'Inter', sans-serif;
+    font-size: .72rem;
+    line-height: 1.45;
+    color: var(--ink-muted, #5a5a52);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .impact-slider-track { animation: none; }
+  }
+</style>
+<div class="impact-slider-wrap" aria-label="Impact metrics">
+  <div class="impact-slider-track">
+    <!-- Set 1 -->
+    <div class="impact-slide-card">
+          <div class="impact-slide-num">380 M+</div>
+          <div class="impact-slide-cap">Customer identities unified across Reliance Retail · UCP foundation across 100 % of formats</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">100+</div>
+          <div class="impact-slide-cap">Brands replatformed to Jio Commerce Platform · 78 channels · 68 live · 700 K+ orders / day</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">15.08 Cr</div>
+          <div class="impact-slide-cap">Pieces delivered FY 26 via Impetus F&amp;L · 11.06 L POs FY 26 · 43 brands live</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">88 %+</div>
+          <div class="impact-slide-cap">Positive customer engagement · AJIO ZIP agentic shopping · 86 % chat-driven discovery</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">20 K+</div>
+          <div class="impact-slide-cap">Stores connected on JCP across the Reliance Retail estate</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">22</div>
+          <div class="impact-slide-cap">Platforms running today · Plan · Buy · Make · Move · Sell · Data · Store Health · HR Tech</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">1 K+</div>
+          <div class="impact-slide-cap">Vendors transacting on Impetus across the Reliance F&amp;L supply base</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">2.3 K+</div>
+          <div class="impact-slide-cap">Reliance employees trained across platforms</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">1.2 K+</div>
+          <div class="impact-slide-cap">Developer contributors across Jio Commerce Platform + Impetus</div>
+        </div>
+    <!-- Set 2 (duplicate for seamless loop) -->
+    <div class="impact-slide-card">
+          <div class="impact-slide-num">380 M+</div>
+          <div class="impact-slide-cap">Customer identities unified across Reliance Retail · UCP foundation across 100 % of formats</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">100+</div>
+          <div class="impact-slide-cap">Brands replatformed to Jio Commerce Platform · 78 channels · 68 live · 700 K+ orders / day</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">15.08 Cr</div>
+          <div class="impact-slide-cap">Pieces delivered FY 26 via Impetus F&amp;L · 11.06 L POs FY 26 · 43 brands live</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">88 %+</div>
+          <div class="impact-slide-cap">Positive customer engagement · AJIO ZIP agentic shopping · 86 % chat-driven discovery</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">20 K+</div>
+          <div class="impact-slide-cap">Stores connected on JCP across the Reliance Retail estate</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">22</div>
+          <div class="impact-slide-cap">Platforms running today · Plan · Buy · Make · Move · Sell · Data · Store Health · HR Tech</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">1 K+</div>
+          <div class="impact-slide-cap">Vendors transacting on Impetus across the Reliance F&amp;L supply base</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">2.3 K+</div>
+          <div class="impact-slide-cap">Reliance employees trained across platforms</div>
+        </div>
+        <div class="impact-slide-card">
+          <div class="impact-slide-num">1.2 K+</div>
+          <div class="impact-slide-cap">Developer contributors across Jio Commerce Platform + Impetus</div>
+        </div>
+  </div>
 </div>
 </div>
 </section>
