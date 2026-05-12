@@ -8,7 +8,7 @@
 <meta name="description" content="Project Glass · 22 platforms · 1,056 people · Making Reliance Retail the world's first frontier autonomous retailer." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
 <link rel="stylesheet" href="/style.css">
 <link rel="stylesheet" href="/present.css">
@@ -219,17 +219,35 @@
 </head>
 <body>
 
+
+<!-- TOP METADATA STRIP -->
+<div class="topbar">
+  <div class="topbar-inner container">
+    <span><span class="pulse"></span><b>Project Glass</b> &middot; Confidential</span>
+    <span class="mid">
+      <span>22 platforms live</span>
+      <span>700 K+ orders / day</span>
+      <span>1,056 people building</span>
+    </span>
+    <span class="right">
+      <span>v0.8.4</span>
+    </span>
+  </div>
+</div>
+
 <!-- NAV -->
-<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
-<a href="/" class="flex items-center gap-3 shrink-0">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
-  <div class="hidden sm:flex items-center gap-2">
-    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
-    <span class="text-xs" style="color: var(--border);">x</span>
-    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL &middot; JPL</span>
+<nav class="topnav">
+<div class="topnav-inner">
+<a href="/" class="brand">
+  <div class="brand-mark">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" />
+  </div>
+  <div class="brand-meta">
+    <b>Fynd</b>
+    RRVL &middot; JPL
   </div>
 </a>
-<div class="hidden md:flex items-center gap-1">
+<div class="nav-links hidden md:flex items-center gap-1">
   <a href="/" class="nav-link active">Home</a>
   <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
     <div class="nav-mega-panel" style="min-width: 720px;">
@@ -284,7 +302,8 @@
 <div class="hidden lg:flex items-center shrink-0">
   <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
 </div>
-</div></nav>
+</div>
+</nav>
 
 <!-- Sticky in-page TOC -->
 <div class="story-toc" data-od-id="story-toc">
