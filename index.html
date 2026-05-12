@@ -14,6 +14,28 @@
 <link rel="stylesheet" href="/present.css">
 <script src="/present.js" defer></script>
 
+
+    <style>
+    /* ── Isometric hero graphic ──────────────────────────────────── */
+    .hero-iso-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      min-height: 360px;
+    }
+    .hero-iso-svg {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      overflow: visible;
+    }
+    @media (max-width: 768px) {
+      .hero-iso-wrap { min-height: 260px; }
+      .hero-iso-svg  { max-width: 340px; }
+    }
+    </style>
 </head>
 <body>
 
@@ -131,7 +153,7 @@
       <div class="mb-10">
         <div class="cap-num mb-3">Confidential &middot; For Apex leadership</div>
       </div>
-      <h1 class="display max-w-6xl mb-6 text-left" style="font-size: clamp(48px, 8vw, 96px); line-height: 0.95; color: var(--ink);">
+      <h1 class="display max-w-6xl mb-6 text-left" style="font-size: clamp(26px, 3.5vw, 48px); line-height: 1.05; color: var(--ink);">
         Making Reliance Retail<br/><span style="color: var(--accent);">World's First Frontier Autonomous Retailer</span>
       </h1>
       <div class="hero-subhead">22 platforms &middot; live &middot; in production &middot; scroll for the proof.</div>
@@ -139,42 +161,256 @@
         <a href="#impact" class="btn-primary">Explore 22 platforms <span aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
-    <div class="hero-panels" aria-hidden="true">
-      <div class="hero-panel hero-panel-1">
-        <div class="hero-panel-bar">
-          <div class="hero-panel-dot"></div><div class="hero-panel-dot"></div><div class="hero-panel-dot"></div>
-          <span class="hero-panel-title">JCP &middot; Live Metrics</span>
-        </div>
-        <div class="hero-panel-body">
-          <div class="hero-panel-row"><span class="hero-panel-label">Orders / day</span><span class="hero-panel-value hero-panel-accent">700 K+</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">Peak / minute</span><span class="hero-panel-value">50 K+</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">Channels live</span><span class="hero-panel-value hero-panel-green">68 / 78</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">Customers</span><span class="hero-panel-value">200 M+</span></div>
-        </div>
-      </div>
-      <div class="hero-panel hero-panel-2">
-        <div class="hero-panel-bar">
-          <div class="hero-panel-dot"></div><div class="hero-panel-dot"></div><div class="hero-panel-dot"></div>
-          <span class="hero-panel-title">Impetus &middot; F&amp;L AI</span>
-        </div>
-        <div class="hero-panel-body">
-          <div class="hero-panel-row"><span class="hero-panel-label">Pieces shipped FY 26</span><span class="hero-panel-value hero-panel-accent">15.08 Cr</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">POs automated</span><span class="hero-panel-value">460 K+</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">Articles packed / day</span><span class="hero-panel-value">720 K</span></div>
-        </div>
-      </div>
-      <div class="hero-panel hero-panel-3">
-        <div class="hero-panel-bar">
-          <div class="hero-panel-dot"></div><div class="hero-panel-dot"></div><div class="hero-panel-dot"></div>
-          <span class="hero-panel-title">Platform Status</span>
-        </div>
-        <div class="hero-panel-body">
-          <div class="hero-panel-row"><span class="hero-panel-label">Platforms live</span><span class="hero-panel-value hero-panel-green">22</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">AI agents deployed</span><span class="hero-panel-value hero-panel-accent">1 K+</span></div>
-          <div class="hero-panel-row"><span class="hero-panel-label">People building</span><span class="hero-panel-value">1,056</span></div>
-        </div>
-      </div>
+
+    <div class="hero-iso-wrap" aria-hidden="true">
+      <svg class="hero-iso-svg" viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Platform stack diagram">
+        <defs>
+          <!-- Isometric grid: x-axis goes right+down, y-axis goes left+down, z-axis goes up -->
+          <!-- Layer colours using brand tokens -->
+          <style>
+            .iso-layer { transform-origin: center; }
+
+            /* Layer 4 — bottom: SELL (coral accent) */
+            .iso-l4-top  { fill: #ed6f5c; }
+            .iso-l4-left { fill: #c45a4a; }
+            .iso-l4-right{ fill: #d4614f; }
+
+            /* Layer 3 — MOVE (bone/warm) */
+            .iso-l3-top  { fill: #f7f1de; }
+            .iso-l3-left { fill: #d4c9b0; }
+            .iso-l3-right{ fill: #e0d5bc; }
+
+            /* Layer 2 — BUY/MAKE (ink-muted) */
+            .iso-l2-top  { fill: #e8e0cc; }
+            .iso-l2-left { fill: #c0b89e; }
+            .iso-l2-right{ fill: #cec6ac; }
+
+            /* Layer 1 — top: PLAN (ink dark) */
+            .iso-l1-top  { fill: #2a2a26; }
+            .iso-l1-left { fill: #1a1a18; }
+            .iso-l1-right{ fill: #222220; }
+
+            /* Labels */
+            .iso-label {
+              font-family: 'JetBrains Mono', 'Courier New', monospace;
+              font-size: 9px;
+              letter-spacing: 0.12em;
+              text-transform: uppercase;
+              fill: #1a1a18;
+              font-weight: 500;
+            }
+            .iso-label-light { fill: #efe7d2; }
+            .iso-label-coral { fill: #ed6f5c; }
+
+            /* Metric chips */
+            .chip-bg   { fill: #efe7d2; stroke: #d4c9b0; stroke-width: 1; rx: 4; }
+            .chip-text { font-family: 'Inter Tight', 'Inter', sans-serif; font-size: 8.5px; font-weight: 700; fill: #1a1a18; }
+            .chip-val  { font-family: 'Inter Tight', 'Inter', sans-serif; font-size: 10px; font-weight: 800; fill: #ed6f5c; }
+
+            /* Connector lines */
+            .iso-connector { stroke: #d4c9b0; stroke-width: 0.8; stroke-dasharray: 3 3; fill: none; }
+
+            /* ── Animations ── */
+            /* Each layer floats independently */
+            @keyframes isoFloat1 {
+              0%,100% { transform: translateY(0px); }
+              50%      { transform: translateY(-6px); }
+            }
+            @keyframes isoFloat2 {
+              0%,100% { transform: translateY(0px); }
+              50%      { transform: translateY(-5px); }
+            }
+            @keyframes isoFloat3 {
+              0%,100% { transform: translateY(0px); }
+              50%      { transform: translateY(-7px); }
+            }
+            @keyframes isoFloat4 {
+              0%,100% { transform: translateY(0px); }
+              50%      { transform: translateY(-4px); }
+            }
+            /* Chip pulse */
+            @keyframes chipPulse {
+              0%,100% { opacity: 1; }
+              50%      { opacity: 0.6; }
+            }
+            /* Entrance: layers rise from below */
+            @keyframes isoRise {
+              from { opacity: 0; transform: translateY(24px); }
+              to   { opacity: 1; transform: translateY(0); }
+            }
+
+            .iso-g-l1 {
+              animation: isoRise 0.7s 0.1s ease both, isoFloat1 7s 0.8s ease-in-out infinite;
+            }
+            .iso-g-l2 {
+              animation: isoRise 0.7s 0.25s ease both, isoFloat2 8.5s 1.0s ease-in-out infinite;
+            }
+            .iso-g-l3 {
+              animation: isoRise 0.7s 0.4s ease both, isoFloat3 6s 1.2s ease-in-out infinite;
+            }
+            .iso-g-l4 {
+              animation: isoRise 0.7s 0.55s ease both, isoFloat4 9s 1.4s ease-in-out infinite;
+            }
+            .iso-chip-1 { animation: isoRise 0.6s 0.9s ease both, chipPulse 4s 1s ease-in-out infinite; }
+            .iso-chip-2 { animation: isoRise 0.6s 1.1s ease both, chipPulse 4s 1.8s ease-in-out infinite; }
+            .iso-chip-3 { animation: isoRise 0.6s 1.3s ease both, chipPulse 4s 2.6s ease-in-out infinite; }
+            .iso-chip-4 { animation: isoRise 0.6s 1.5s ease both, chipPulse 4s 3.4s ease-in-out infinite; }
+
+            @media (prefers-reduced-motion: reduce) {
+              .iso-g-l1, .iso-g-l2, .iso-g-l3, .iso-g-l4,
+              .iso-chip-1, .iso-chip-2, .iso-chip-3, .iso-chip-4 {
+                animation: none;
+                opacity: 1;
+                transform: none;
+              }
+            }
+          </style>
+
+          <!-- Drop shadow filter -->
+          <filter id="iso-shadow" x="-20%" y="-20%" width="140%" height="160%">
+            <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1a1a18" flood-opacity="0.10"/>
+          </filter>
+          <filter id="iso-shadow-sm" x="-10%" y="-10%" width="120%" height="130%">
+            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1a18" flood-opacity="0.08"/>
+          </filter>
+        </defs>
+
+        <!--
+          Isometric coordinate system:
+          Origin at centre of canvas (260, 210)
+          Isometric projection: 30° angle
+          x-right  = (cos30, sin30)  = (0.866, 0.5)
+          x-left   = (-cos30, sin30) = (-0.866, 0.5)
+          y-up     = (0, -1)
+
+          Slab dimensions: width=160, depth=160, height=20
+          iso_x_right = w * (0.866, 0.5)
+          iso_x_left  = d * (-0.866, 0.5)
+
+          For a slab at iso-height h:
+            top-face: rhombus
+            left-face: parallelogram going down
+            right-face: parallelogram going down
+
+          Layer base Y positions (stacked, each 28px apart in screen Y):
+            L4 (SELL)    base_y = 310
+            L3 (MOVE)    base_y = 282
+            L2 (BUY)     base_y = 254
+            L1 (PLAN)    base_y = 226
+        -->
+
+        <!-- ═══ LAYER 4 — SELL (coral, bottom) ═══ -->
+        <g class="iso-g-l4" filter="url(#iso-shadow)">
+          <!-- Top face: rhombus centred at (260, 310) -->
+          <!-- Points: top(260,270), right(399,340), bottom(260,380), left(121,310) — scaled down -->
+          <!-- Slab w=140, d=140, h=18 -->
+          <!-- top-centre = (260, 310-18) = (260,292) -->
+          <!-- top face corners:
+               front = (260, 310)
+               right = (260+140*0.866, 310+140*0.5-18) = (381, 362)  → adjusted
+               back  = (260, 310+140*0.5+140*0.5-18)
+               left  = (260-140*0.866, 310+140*0.5-18)
+          -->
+          <!-- Simplified: use pre-calculated isometric slab points -->
+          <!-- Top face (rhombus): -->
+          <polygon class="iso-l4-top"
+            points="260,292  381,327  260,362  139,327"/>
+          <!-- Left face: -->
+          <polygon class="iso-l4-left"
+            points="139,327  260,362  260,380  139,345"/>
+          <!-- Right face: -->
+          <polygon class="iso-l4-right"
+            points="260,362  381,327  381,345  260,380"/>
+          <!-- Label on top face -->
+          <text class="iso-label iso-label-light" x="260" y="330" text-anchor="middle">SELL</text>
+        </g>
+
+        <!-- ═══ LAYER 3 — MOVE (bone, second from bottom) ═══ -->
+        <g class="iso-g-l3" filter="url(#iso-shadow)">
+          <!-- Offset up by 52px from L4 base, slightly smaller: w=120, d=120, h=18 -->
+          <polygon class="iso-l3-top"
+            points="260,240  372,270  260,300  148,270"/>
+          <polygon class="iso-l3-left"
+            points="148,270  260,300  260,318  148,288"/>
+          <polygon class="iso-l3-right"
+            points="260,300  372,270  372,288  260,318"/>
+          <text class="iso-label" x="260" y="278" text-anchor="middle">MOVE</text>
+        </g>
+
+        <!-- ═══ LAYER 2 — BUY / MAKE (warm grey, second from top) ═══ -->
+        <g class="iso-g-l2" filter="url(#iso-shadow)">
+          <!-- w=100, d=100, h=18 -->
+          <polygon class="iso-l2-top"
+            points="260,192  355,216  260,240  165,216"/>
+          <polygon class="iso-l2-left"
+            points="165,216  260,240  260,258  165,234"/>
+          <polygon class="iso-l2-right"
+            points="260,240  355,216  355,234  260,258"/>
+          <text class="iso-label" x="260" y="224" text-anchor="middle">BUY · MAKE</text>
+        </g>
+
+        <!-- ═══ LAYER 1 — PLAN (ink dark, top) ═══ -->
+        <g class="iso-g-l1" filter="url(#iso-shadow)">
+          <!-- w=80, d=80, h=18 -->
+          <polygon class="iso-l1-top"
+            points="260,148  336,167  260,186  184,167"/>
+          <polygon class="iso-l1-left"
+            points="184,167  260,186  260,204  184,185"/>
+          <polygon class="iso-l1-right"
+            points="260,186  336,167  336,185  260,204"/>
+          <text class="iso-label iso-label-light" x="260" y="172" text-anchor="middle">PLAN</text>
+        </g>
+
+        <!-- ═══ METRIC CHIPS ═══ -->
+        <!-- Chip 1: top-right — 700 K+ orders/day -->
+        <g class="iso-chip-1" filter="url(#iso-shadow-sm)">
+          <line class="iso-connector" x1="381" y1="336" x2="420" y2="290"/>
+          <rect class="chip-bg" x="418" y="270" width="88" height="36" rx="4" ry="4"/>
+          <text class="chip-text" x="462" y="284" text-anchor="middle">Orders / day</text>
+          <text class="chip-val"  x="462" y="298" text-anchor="middle">700 K+</text>
+        </g>
+
+        <!-- Chip 2: top-left — 380 M+ customers -->
+        <g class="iso-chip-2" filter="url(#iso-shadow-sm)">
+          <line class="iso-connector" x1="139" y1="318" x2="90" y2="275"/>
+          <rect class="chip-bg" x="14" y="255" width="80" height="36" rx="4" ry="4"/>
+          <text class="chip-text" x="54" y="269" text-anchor="middle">Customers</text>
+          <text class="chip-val"  x="54" y="283" text-anchor="middle">380 M+</text>
+        </g>
+
+        <!-- Chip 3: right side — 22 platforms -->
+        <g class="iso-chip-3" filter="url(#iso-shadow-sm)">
+          <line class="iso-connector" x1="372" y1="279" x2="420" y2="220"/>
+          <rect class="chip-bg" x="418" y="200" width="80" height="36" rx="4" ry="4"/>
+          <text class="chip-text" x="458" y="214" text-anchor="middle">Platforms</text>
+          <text class="chip-val"  x="458" y="228" text-anchor="middle">22 live</text>
+        </g>
+
+        <!-- Chip 4: left side — 1 K+ AI agents -->
+        <g class="iso-chip-4" filter="url(#iso-shadow-sm)">
+          <line class="iso-connector" x1="165" y1="225" x2="110" y2="185"/>
+          <rect class="chip-bg" x="22" y="165" width="88" height="36" rx="4" ry="4"/>
+          <text class="chip-text" x="66" y="179" text-anchor="middle">AI Agents</text>
+          <text class="chip-val"  x="66" y="193" text-anchor="middle">1 K+</text>
+        </g>
+
+        <!-- ═══ LAYER CONNECTOR LINES (dashed vertical edges) ═══ -->
+        <!-- Left edge L4→L3 -->
+        <line class="iso-connector" x1="139" y1="327" x2="148" y2="270" opacity="0.5"/>
+        <!-- Left edge L3→L2 -->
+        <line class="iso-connector" x1="148" y1="270" x2="165" y2="216" opacity="0.5"/>
+        <!-- Left edge L2→L1 -->
+        <line class="iso-connector" x1="165" y1="216" x2="184" y2="167" opacity="0.5"/>
+        <!-- Right edge L4→L3 -->
+        <line class="iso-connector" x1="381" y1="327" x2="372" y2="270" opacity="0.5"/>
+        <!-- Right edge L3→L2 -->
+        <line class="iso-connector" x1="372" y1="270" x2="355" y2="216" opacity="0.5"/>
+        <!-- Right edge L2→L1 -->
+        <line class="iso-connector" x1="355" y1="216" x2="336" y2="167" opacity="0.5"/>
+
+      </svg>
     </div>
+
   </div>
 </div>
 </section>
