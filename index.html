@@ -36,6 +36,26 @@
       .hero-iso-svg  { max-width: 340px; }
     }
     </style>
+
+    <style>
+    /* ── Impact isometric composition ─────────────────────────────── */
+    .impact-iso-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 0 3rem 0;
+      padding: 0;
+    }
+    .impact-iso-svg {
+      width: 100%;
+      max-width: 760px;
+      height: auto;
+      overflow: visible;
+    }
+    @media (max-width: 640px) {
+      .impact-iso-svg { max-width: 100%; }
+    }
+    </style>
 </head>
 <body>
 
@@ -427,6 +447,228 @@ Reliance Retail &middot; $39 B FY 25 &middot; 19,979 stores &middot; 378 M+ cust
 Fynd is the AI-native operating layer underneath.
 </h2>
 </div>
+
+      <!-- ── Isometric IMPACT composition ── -->
+      <div class="impact-iso-wrap" aria-hidden="true">
+        <svg class="impact-iso-svg" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              /* ── Impact ISO animations ── */
+              @keyframes impactRise {
+                from { opacity:0; transform:translateY(20px); }
+                to   { opacity:1; transform:translateY(0); }
+              }
+              @keyframes impactFloat {
+                0%,100% { transform:translateY(0); }
+                50%     { transform:translateY(-5px); }
+              }
+              @keyframes impactFloat2 {
+                0%,100% { transform:translateY(0); }
+                50%     { transform:translateY(-7px); }
+              }
+              @keyframes impactFloat3 {
+                0%,100% { transform:translateY(0); }
+                50%     { transform:translateY(-4px); }
+              }
+              @keyframes impactChip {
+                0%,100% { opacity:1; }
+                50%     { opacity:0.55; }
+              }
+              @keyframes impactPulse {
+                0%,100% { r:5; opacity:0.9; }
+                50%     { r:8; opacity:0.4; }
+              }
+
+              .imp-hub   { animation: impactRise 0.6s 0.1s ease both, impactFloat2 6s 0.7s ease-in-out infinite; }
+              .imp-b1    { animation: impactRise 0.6s 0.2s ease both, impactFloat  7s 0.9s ease-in-out infinite; }
+              .imp-b2    { animation: impactRise 0.6s 0.3s ease both, impactFloat3 8s 1.1s ease-in-out infinite; }
+              .imp-b3    { animation: impactRise 0.6s 0.4s ease both, impactFloat  9s 1.3s ease-in-out infinite; }
+              .imp-b4    { animation: impactRise 0.6s 0.5s ease both, impactFloat2 7.5s 1.5s ease-in-out infinite; }
+              .imp-b5    { animation: impactRise 0.6s 0.6s ease both, impactFloat3 6.5s 1.7s ease-in-out infinite; }
+              .imp-c1    { animation: impactRise 0.5s 1.0s ease both, impactChip 4s 1.2s ease-in-out infinite; }
+              .imp-c2    { animation: impactRise 0.5s 1.2s ease both, impactChip 4s 2.0s ease-in-out infinite; }
+              .imp-c3    { animation: impactRise 0.5s 1.4s ease both, impactChip 4s 2.8s ease-in-out infinite; }
+              .imp-c4    { animation: impactRise 0.5s 1.6s ease both, impactChip 4s 3.6s ease-in-out infinite; }
+              .imp-c5    { animation: impactRise 0.5s 1.8s ease both, impactChip 4s 1.6s ease-in-out infinite; }
+
+              @media (prefers-reduced-motion: reduce) {
+                .imp-hub,.imp-b1,.imp-b2,.imp-b3,.imp-b4,.imp-b5,
+                .imp-c1,.imp-c2,.imp-c3,.imp-c4,.imp-c5 {
+                  animation: none; opacity:1; transform:none;
+                }
+              }
+
+              .imp-label {
+                font-family: 'JetBrains Mono','Courier New',monospace;
+                font-size: 8px; letter-spacing: 0.1em;
+                text-transform: uppercase; font-weight: 600;
+              }
+              .imp-chip-label {
+                font-family: 'Inter Tight','Inter',sans-serif;
+                font-size: 8px; font-weight: 500; fill: #5a5a52;
+              }
+              .imp-chip-val {
+                font-family: 'Inter Tight','Inter',sans-serif;
+                font-size: 11px; font-weight: 800; fill: #ed6f5c;
+              }
+              .imp-conn { stroke:#cec6b0; stroke-width:0.8; stroke-dasharray:3 3; fill:none; }
+            </style>
+
+            <filter id="imp-shadow">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1a1a18" flood-opacity="0.10"/>
+            </filter>
+            <filter id="imp-shadow-sm">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1a1a18" flood-opacity="0.08"/>
+            </filter>
+          </defs>
+
+          <!--
+            Isometric city layout — centre at (380, 170)
+            Hub (FYND) at centre, 5 platform blocks around it.
+
+            Isometric slab helper:
+              top-face rhombus: given centre (cx,cy), half-width hw, half-depth hd
+                top    = (cx, cy - hd*0.5)
+                right  = (cx + hw, cy + hw*0.5 - hd*0.5)
+                bottom = (cx, cy + hw*0.5)
+                left   = (cx - hw, cy + hw*0.5 - hd*0.5)
+              left-face: bottom-left of top → down by height h
+              right-face: bottom-right of top → down by height h
+
+            Simplified pre-calculated coordinates below.
+          -->
+
+          <!-- ── Connector lines (drawn first, behind blocks) ── -->
+          <!-- Hub → JCP (right) -->
+          <line class="imp-conn" x1="380" y1="170" x2="530" y2="145"/>
+          <!-- Hub → Impetus (top-right) -->
+          <line class="imp-conn" x1="380" y1="170" x2="490" y2="100"/>
+          <!-- Hub → UCP (left) -->
+          <line class="imp-conn" x1="380" y1="170" x2="230" y2="145"/>
+          <!-- Hub → Granary (top-left) -->
+          <line class="imp-conn" x1="380" y1="170" x2="270" y2="100"/>
+          <!-- Hub → AI-Native (bottom) -->
+          <line class="imp-conn" x1="380" y1="170" x2="380" y2="240"/>
+
+          <!-- ══ HUB — FYND (centre, tallest, ink dark) ══ -->
+          <g class="imp-hub" filter="url(#imp-shadow)">
+            <!-- top face: centre (380,140), hw=52, hd=52 -->
+            <polygon fill="#2a2a26"
+              points="380,114  432,140  380,166  328,140"/>
+            <!-- left face: h=36 -->
+            <polygon fill="#1a1a18"
+              points="328,140  380,166  380,202  328,176"/>
+            <!-- right face: h=36 -->
+            <polygon fill="#222220"
+              points="380,166  432,140  432,176  380,202"/>
+            <text class="imp-label" fill="#efe7d2" x="380" y="146" text-anchor="middle">FYND</text>
+          </g>
+
+          <!-- ══ BLOCK 1 — JCP (right, coral accent) ══ -->
+          <g class="imp-b1" filter="url(#imp-shadow)">
+            <!-- centre (530,145), hw=40, hd=40, h=24 -->
+            <polygon fill="#ed6f5c"
+              points="530,125  570,145  530,165  490,145"/>
+            <polygon fill="#c45a4a"
+              points="490,145  530,165  530,189  490,169"/>
+            <polygon fill="#d4614f"
+              points="530,165  570,145  570,169  530,189"/>
+            <text class="imp-label" fill="#efe7d2" x="530" y="150" text-anchor="middle">JCP</text>
+          </g>
+
+          <!-- ══ BLOCK 2 — Impetus (top-right, bone) ══ -->
+          <g class="imp-b2" filter="url(#imp-shadow)">
+            <!-- centre (490,90), hw=36, hd=36, h=20 -->
+            <polygon fill="#f7f1de"
+              points="490,72  526,90  490,108  454,90"/>
+            <polygon fill="#d4c9b0"
+              points="454,90  490,108  490,128  454,110"/>
+            <polygon fill="#e0d5bc"
+              points="490,108  526,90  526,110  490,128"/>
+            <text class="imp-label" fill="#1a1a18" x="490" y="96" text-anchor="middle">IMPETUS</text>
+          </g>
+
+          <!-- ══ BLOCK 3 — UCP (left, warm grey) ══ -->
+          <g class="imp-b3" filter="url(#imp-shadow)">
+            <!-- centre (230,145), hw=40, hd=40, h=24 -->
+            <polygon fill="#e8e0cc"
+              points="230,125  270,145  230,165  190,145"/>
+            <polygon fill="#c0b89e"
+              points="190,145  230,165  230,189  190,169"/>
+            <polygon fill="#cec6ac"
+              points="230,165  270,145  270,169  230,189"/>
+            <text class="imp-label" fill="#1a1a18" x="230" y="150" text-anchor="middle">UCP</text>
+          </g>
+
+          <!-- ══ BLOCK 4 — Granary (top-left, lighter bone) ══ -->
+          <g class="imp-b4" filter="url(#imp-shadow)">
+            <!-- centre (270,90), hw=36, hd=36, h=20 -->
+            <polygon fill="#f0ead6"
+              points="270,72  306,90  270,108  234,90"/>
+            <polygon fill="#cec6b0"
+              points="234,90  270,108  270,128  234,110"/>
+            <polygon fill="#dcd4be"
+              points="270,108  306,90  306,110  270,128"/>
+            <text class="imp-label" fill="#1a1a18" x="270" y="96" text-anchor="middle">GRANARY</text>
+          </g>
+
+          <!-- ══ BLOCK 5 — AI-Native (bottom, mid-dark) ══ -->
+          <g class="imp-b5" filter="url(#imp-shadow)">
+            <!-- centre (380,255), hw=38, hd=38, h=22 -->
+            <polygon fill="#3a3a34"
+              points="380,237  418,255  380,273  342,255"/>
+            <polygon fill="#2a2a26"
+              points="342,255  380,273  380,295  342,277"/>
+            <polygon fill="#323230"
+              points="380,273  418,255  418,277  380,295"/>
+            <text class="imp-label" fill="#efe7d2" x="380" y="261" text-anchor="middle">AI-NATIVE</text>
+          </g>
+
+          <!-- ══ METRIC CHIPS ══ -->
+          <!-- Chip 1: 380 M+ customers — far left -->
+          <g class="imp-c1" filter="url(#imp-shadow-sm)">
+            <line class="imp-conn" x1="190" y1="157" x2="100" y2="175"/>
+            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="18" y="158" width="84" height="34" rx="4"/>
+            <text class="imp-chip-label" x="60" y="171" text-anchor="middle">Customers</text>
+            <text class="imp-chip-val"   x="60" y="185" text-anchor="middle">380 M+</text>
+          </g>
+
+          <!-- Chip 2: 100+ brands — far right -->
+          <g class="imp-c2" filter="url(#imp-shadow-sm)">
+            <line class="imp-conn" x1="570" y1="157" x2="656" y2="175"/>
+            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="654" y="158" width="84" height="34" rx="4"/>
+            <text class="imp-chip-label" x="696" y="171" text-anchor="middle">Brands live</text>
+            <text class="imp-chip-val"   x="696" y="185" text-anchor="middle">100+</text>
+          </g>
+
+          <!-- Chip 3: 22 platforms — top centre -->
+          <g class="imp-c3" filter="url(#imp-shadow-sm)">
+            <line class="imp-conn" x1="380" y1="114" x2="380" y2="46"/>
+            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="338" y="12" width="84" height="34" rx="4"/>
+            <text class="imp-chip-label" x="380" y="25" text-anchor="middle">Platforms</text>
+            <text class="imp-chip-val"   x="380" y="39" text-anchor="middle">22 live</text>
+          </g>
+
+          <!-- Chip 4: 700 K+ orders — bottom right -->
+          <g class="imp-c4" filter="url(#imp-shadow-sm)">
+            <line class="imp-conn" x1="418" y1="266" x2="510" y2="295"/>
+            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="508" y="278" width="90" height="34" rx="4"/>
+            <text class="imp-chip-label" x="553" y="291" text-anchor="middle">Orders / day</text>
+            <text class="imp-chip-val"   x="553" y="305" text-anchor="middle">700 K+</text>
+          </g>
+
+          <!-- Chip 5: 20 K+ stores — bottom left -->
+          <g class="imp-c5" filter="url(#imp-shadow-sm)">
+            <line class="imp-conn" x1="342" y1="266" x2="250" y2="295"/>
+            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="162" y="278" width="88" height="34" rx="4"/>
+            <text class="imp-chip-label" x="206" y="291" text-anchor="middle">Stores on JCP</text>
+            <text class="imp-chip-val"   x="206" y="305" text-anchor="middle">20 K+</text>
+          </g>
+
+        </svg>
+      </div>
+      <!-- ── end isometric IMPACT composition ── -->
+
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
 <div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">380 M+</div><div class="impact-tile-cap">Customer identities unified across Reliance Retail &middot; UCP foundation across 100 % of formats (RR registered customers &middot; 387 M)</div></div>
 <div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">100+</div><div class="impact-tile-cap">Brands replatformed to Jio Commerce Platform &middot; 78 channels &middot; 68 live &middot; 700 K+ orders / day</div></div>
