@@ -35,6 +35,67 @@
       .hero-iso-wrap { min-height: 260px; }
       .hero-iso-svg  { max-width: 340px; }
     }
+
+    /* ── Hero ISO: keyframes ── */
+    @keyframes heroLayerRise {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes heroFloat1 {
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-7px); }
+    }
+    @keyframes heroFloat2 {
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-5px); }
+    }
+    @keyframes heroFloat3 {
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-8px); }
+    }
+    @keyframes heroFloat4 {
+      0%,100% { transform: translateY(0px); }
+      50%     { transform: translateY(-6px); }
+    }
+    @keyframes heroChipPulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%     { opacity: 0.75; transform: scale(0.97); }
+    }
+    @keyframes heroConnDash {
+      from { stroke-dashoffset: 0; }
+      to   { stroke-dashoffset: -24; }
+    }
+    @keyframes heroCoralGlow {
+      0%,100% { opacity: 1; }
+      50%     { opacity: 0.82; }
+    }
+
+    /* Entrance — staggered per layer */
+    .hero-l1 { animation: heroLayerRise .6s .1s ease both, heroFloat1 8s 1s ease-in-out infinite; }
+    .hero-l2 { animation: heroLayerRise .6s .25s ease both, heroFloat2 9s 1.5s ease-in-out infinite; }
+    .hero-l3 { animation: heroLayerRise .6s .4s ease both, heroFloat3 7s 2s ease-in-out infinite; }
+    .hero-l4 { animation: heroLayerRise .6s .55s ease both, heroFloat4 10s 2.5s ease-in-out infinite; }
+
+    /* Metric chips */
+    .hero-chip { animation: heroLayerRise .5s .8s ease both, heroChipPulse 5s 2s ease-in-out infinite; }
+    .hero-chip2 { animation: heroLayerRise .5s 1s ease both, heroChipPulse 6s 3s ease-in-out infinite; }
+    .hero-chip3 { animation: heroLayerRise .5s 1.2s ease both, heroChipPulse 4.5s 1.5s ease-in-out infinite; }
+    .hero-chip4 { animation: heroLayerRise .5s 1.4s ease both, heroChipPulse 7s 2.8s ease-in-out infinite; }
+
+    /* Connector lines */
+    .hero-conn { stroke-dasharray: 5 4; animation: heroConnDash 3s linear infinite; }
+
+    /* Coral layer glow */
+    .hero-coral-glow { animation: heroCoralGlow 3s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-l1,.hero-l2,.hero-l3,.hero-l4,
+      .hero-chip,.hero-chip2,.hero-chip3,.hero-chip4,
+      .hero-coral-glow {
+        animation: none; opacity: 1; transform: none;
+      }
+      .hero-conn { animation: none; }
+    }
     </style>
 
     <style>
@@ -189,109 +250,70 @@
           <!-- Layer colours using brand tokens -->
           <style>
             .iso-layer { transform-origin: center; }
-
-            /* Layer 4 — bottom: SELL (coral accent) */
-            .iso-l4-top  { fill: #ed6f5c; }
-            .iso-l4-left { fill: #c45a4a; }
-            .iso-l4-right{ fill: #d4614f; }
-
-            /* Layer 3 — MOVE (bone/warm) */
-            .iso-l3-top  { fill: #f7f1de; }
-            .iso-l3-left { fill: #d4c9b0; }
-            .iso-l3-right{ fill: #e0d5bc; }
-
-            /* Layer 2 — BUY/MAKE (ink-muted) */
-            .iso-l2-top  { fill: #e8e0cc; }
-            .iso-l2-left { fill: #c0b89e; }
-            .iso-l2-right{ fill: #cec6ac; }
-
-            /* Layer 1 — top: PLAN (ink dark) */
-            .iso-l1-top  { fill: #2a2a26; }
-            .iso-l1-left { fill: #1a1a18; }
-            .iso-l1-right{ fill: #222220; }
-
+            /* Layer fill colours */
+            .iso-l4-top  { fill: #ed6f5c; } .iso-l4-left { fill: #c45a4a; } .iso-l4-right{ fill: #d4614f; }
+            .iso-l3-top  { fill: #f7f1de; } .iso-l3-left { fill: #d4c9b0; } .iso-l3-right{ fill: #e0d5bc; }
+            .iso-l2-top  { fill: #e8e0cc; } .iso-l2-left { fill: #c0b89e; } .iso-l2-right{ fill: #cec6ac; }
+            .iso-l1-top  { fill: #2a2a26; } .iso-l1-left { fill: #1a1a18; } .iso-l1-right{ fill: #222220; }
             /* Labels */
             .iso-label {
-              font-family: 'JetBrains Mono', 'Courier New', monospace;
-              font-size: 9px;
-              letter-spacing: 0.12em;
-              text-transform: uppercase;
-              fill: #1a1a18;
-              font-weight: 500;
+              font-family: 'JetBrains Mono','Courier New',monospace;
+              font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+              fill: #1a1a18; font-weight: 500;
             }
             .iso-label-light { fill: #efe7d2; }
             .iso-label-coral { fill: #ed6f5c; }
+            /* Chips */
+            .chip-bg   { fill: #efe7d2; stroke: #d4c9b0; stroke-width: 1; }
+            .chip-text { font-family: 'Inter Tight','Inter',sans-serif; font-size: 8.5px; font-weight: 700; fill: #1a1a18; }
+            .chip-val  { font-family: 'Inter Tight','Inter',sans-serif; font-size: 10px; font-weight: 800; fill: #ed6f5c; }
+            /* Connectors */
+            .iso-connector { stroke: #d4c9b0; stroke-width: 0.8; fill: none; }
 
-            /* Metric chips */
-            .chip-bg   { fill: #efe7d2; stroke: #d4c9b0; stroke-width: 1; rx: 4; }
-            .chip-text { font-family: 'Inter Tight', 'Inter', sans-serif; font-size: 8.5px; font-weight: 700; fill: #1a1a18; }
-            .chip-val  { font-family: 'Inter Tight', 'Inter', sans-serif; font-size: 10px; font-weight: 800; fill: #ed6f5c; }
+            /* ══ HERO ISO ANIMATIONS ══ */
+            @keyframes hRise {
+              from { opacity:0; transform:translateY(18px); }
+              to   { opacity:1; transform:translateY(0); }
+            }
+            @keyframes hFloat1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+            @keyframes hFloat2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+            @keyframes hFloat3 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+            @keyframes hFloat4 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+            @keyframes hChip   { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.72;transform:scale(.96)} }
+            @keyframes hConn   { from{stroke-dashoffset:0} to{stroke-dashoffset:-22} }
+            @keyframes hCoral  { 0%,100%{opacity:1} 50%{opacity:.8} }
 
-            /* Connector lines */
-            .iso-connector { stroke: #d4c9b0; stroke-width: 0.8; stroke-dasharray: 3 3; fill: none; }
+            /* Layer entrance + float */
+            .iso-g-l4 { animation: hRise .65s .05s ease both, hFloat4 10s 2.5s ease-in-out infinite; }
+            .iso-g-l3 { animation: hRise .65s .2s  ease both, hFloat3  7s 2s   ease-in-out infinite; }
+            .iso-g-l2 { animation: hRise .65s .35s ease both, hFloat2  9s 1.5s ease-in-out infinite; }
+            .iso-g-l1 { animation: hRise .65s .5s  ease both, hFloat1  8s 1s   ease-in-out infinite; }
 
-            /* ── Animations ── */
-            /* Each layer floats independently */
-            @keyframes isoFloat1 {
-              0%,100% { transform: translateY(0px); }
-              50%      { transform: translateY(-6px); }
-            }
-            @keyframes isoFloat2 {
-              0%,100% { transform: translateY(0px); }
-              50%      { transform: translateY(-5px); }
-            }
-            @keyframes isoFloat3 {
-              0%,100% { transform: translateY(0px); }
-              50%      { transform: translateY(-7px); }
-            }
-            @keyframes isoFloat4 {
-              0%,100% { transform: translateY(0px); }
-              50%      { transform: translateY(-4px); }
-            }
-            /* Chip pulse */
-            @keyframes chipPulse {
-              0%,100% { opacity: 1; }
-              50%      { opacity: 0.6; }
-            }
-            /* Entrance: layers rise from below */
-            @keyframes isoRise {
-              from { opacity: 0; transform: translateY(24px); }
-              to   { opacity: 1; transform: translateY(0); }
-            }
+            /* Coral layer glow */
+            .iso-g-l4 polygon.iso-l4-top { animation: hCoral 3s ease-in-out infinite; }
 
-            .iso-g-l1 {
-              animation: isoRise 0.7s 0.1s ease both, isoFloat1 7s 0.8s ease-in-out infinite;
-            }
-            .iso-g-l2 {
-              animation: isoRise 0.7s 0.25s ease both, isoFloat2 8.5s 1.0s ease-in-out infinite;
-            }
-            .iso-g-l3 {
-              animation: isoRise 0.7s 0.4s ease both, isoFloat3 6s 1.2s ease-in-out infinite;
-            }
-            .iso-g-l4 {
-              animation: isoRise 0.7s 0.55s ease both, isoFloat4 9s 1.4s ease-in-out infinite;
-            }
-            .iso-chip-1 { animation: isoRise 0.6s 0.9s ease both, chipPulse 4s 1s ease-in-out infinite; }
-            .iso-chip-2 { animation: isoRise 0.6s 1.1s ease both, chipPulse 4s 1.8s ease-in-out infinite; }
-            .iso-chip-3 { animation: isoRise 0.6s 1.3s ease both, chipPulse 4s 2.6s ease-in-out infinite; }
-            .iso-chip-4 { animation: isoRise 0.6s 1.5s ease both, chipPulse 4s 3.4s ease-in-out infinite; }
+            /* Chip entrance + pulse */
+            .iso-chip-1 { animation: hRise .5s .8s  ease both, hChip 5s 2s   ease-in-out infinite; }
+            .iso-chip-2 { animation: hRise .5s 1s   ease both, hChip 6s 3s   ease-in-out infinite; }
+            .iso-chip-3 { animation: hRise .5s 1.2s ease both, hChip 4.5s 1.5s ease-in-out infinite; }
+            .iso-chip-4 { animation: hRise .5s 1.4s ease both, hChip 7s 2.8s ease-in-out infinite; }
+
+            /* Connector dash scroll */
+            .iso-connector { stroke-dasharray: 4 4; animation: hConn 2.8s linear infinite; }
 
             @media (prefers-reduced-motion: reduce) {
-              .iso-g-l1, .iso-g-l2, .iso-g-l3, .iso-g-l4,
-              .iso-chip-1, .iso-chip-2, .iso-chip-3, .iso-chip-4 {
-                animation: none;
-                opacity: 1;
-                transform: none;
+              .iso-g-l1,.iso-g-l2,.iso-g-l3,.iso-g-l4,
+              .iso-chip-1,.iso-chip-2,.iso-chip-3,.iso-chip-4 {
+                animation: none; opacity: 1; transform: none;
               }
+              .iso-connector { animation: none; stroke-dasharray: none; }
             }
           </style>
-
-          <!-- Drop shadow filter -->
-          <filter id="iso-shadow" x="-20%" y="-20%" width="140%" height="160%">
-            <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1a1a18" flood-opacity="0.10"/>
+          <filter id="iso-shadow">
+            <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#1a1a18" flood-opacity="0.13"/>
           </filter>
-          <filter id="iso-shadow-sm" x="-10%" y="-10%" width="120%" height="130%">
-            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1a18" flood-opacity="0.08"/>
+          <filter id="iso-shadow-sm">
+            <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1a18" flood-opacity="0.09"/>
           </filter>
         </defs>
 
@@ -453,72 +475,76 @@ Fynd is the AI-native operating layer underneath.
         <svg class="impact-iso-svg" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <style>
-              /* ── Impact ISO animations ── */
-              @keyframes impactRise {
-                from { opacity:0; transform:translateY(20px); }
-                to   { opacity:1; transform:translateY(0); }
-              }
-              @keyframes impactFloat {
-                0%,100% { transform:translateY(0); }
-                50%     { transform:translateY(-5px); }
-              }
-              @keyframes impactFloat2 {
-                0%,100% { transform:translateY(0); }
-                50%     { transform:translateY(-7px); }
-              }
-              @keyframes impactFloat3 {
-                0%,100% { transform:translateY(0); }
-                50%     { transform:translateY(-4px); }
-              }
-              @keyframes impactChip {
-                0%,100% { opacity:1; }
-                50%     { opacity:0.55; }
-              }
-              @keyframes impactPulse {
-                0%,100% { r:5; opacity:0.9; }
-                50%     { r:8; opacity:0.4; }
-              }
-
-              .imp-hub   { animation: impactRise 0.6s 0.1s ease both, impactFloat2 6s 0.7s ease-in-out infinite; }
-              .imp-b1    { animation: impactRise 0.6s 0.2s ease both, impactFloat  7s 0.9s ease-in-out infinite; }
-              .imp-b2    { animation: impactRise 0.6s 0.3s ease both, impactFloat3 8s 1.1s ease-in-out infinite; }
-              .imp-b3    { animation: impactRise 0.6s 0.4s ease both, impactFloat  9s 1.3s ease-in-out infinite; }
-              .imp-b4    { animation: impactRise 0.6s 0.5s ease both, impactFloat2 7.5s 1.5s ease-in-out infinite; }
-              .imp-b5    { animation: impactRise 0.6s 0.6s ease both, impactFloat3 6.5s 1.7s ease-in-out infinite; }
-              .imp-c1    { animation: impactRise 0.5s 1.0s ease both, impactChip 4s 1.2s ease-in-out infinite; }
-              .imp-c2    { animation: impactRise 0.5s 1.2s ease both, impactChip 4s 2.0s ease-in-out infinite; }
-              .imp-c3    { animation: impactRise 0.5s 1.4s ease both, impactChip 4s 2.8s ease-in-out infinite; }
-              .imp-c4    { animation: impactRise 0.5s 1.6s ease both, impactChip 4s 3.6s ease-in-out infinite; }
-              .imp-c5    { animation: impactRise 0.5s 1.8s ease both, impactChip 4s 1.6s ease-in-out infinite; }
-
-              @media (prefers-reduced-motion: reduce) {
-                .imp-hub,.imp-b1,.imp-b2,.imp-b3,.imp-b4,.imp-b5,
-                .imp-c1,.imp-c2,.imp-c3,.imp-c4,.imp-c5 {
-                  animation: none; opacity:1; transform:none;
-                }
-              }
-
+              /* ── Impact ISO fill colours ── */
               .imp-label {
                 font-family: 'JetBrains Mono','Courier New',monospace;
-                font-size: 8px; letter-spacing: 0.1em;
-                text-transform: uppercase; font-weight: 600;
+                font-size: 8px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
               }
               .imp-chip-label {
                 font-family: 'Inter Tight','Inter',sans-serif;
-                font-size: 8px; font-weight: 500; fill: #5a5a52;
+                font-size: 8px; font-weight: 600; fill: #5a5a52;
               }
               .imp-chip-val {
                 font-family: 'Inter Tight','Inter',sans-serif;
                 font-size: 11px; font-weight: 800; fill: #ed6f5c;
               }
-              .imp-conn { stroke:#cec6b0; stroke-width:0.8; stroke-dasharray:3 3; fill:none; }
-            </style>
+              .imp-conn { stroke: #c8c0aa; stroke-width: 0.9; fill: none; }
 
+              /* ══ IMPACT ISO ANIMATIONS ══ */
+              @keyframes impRise {
+                from { opacity:0; transform:translateY(16px); }
+                to   { opacity:1; transform:translateY(0); }
+              }
+              @keyframes impHubFloat  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+              @keyframes impB1Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+              @keyframes impB2Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+              @keyframes impB3Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+              @keyframes impB4Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+              @keyframes impB5Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+              @keyframes impChip      { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(.95)} }
+              @keyframes impConn      { from{stroke-dashoffset:0} to{stroke-dashoffset:-18} }
+              @keyframes impHubPulse  { 0%,100%{opacity:1} 50%{opacity:.82} }
+              @keyframes impHubSpin   {
+                from { transform: rotate(0deg); transform-origin: 380px 170px; }
+                to   { transform: rotate(360deg); transform-origin: 380px 170px; }
+              }
+
+              /* Hub (central FYND block) */
+              .imp-hub  { animation: impRise .6s .1s ease both, impHubFloat 8s 1s ease-in-out infinite; }
+              /* Hub ring slow spin */
+              .imp-hub-ring { animation: impHubSpin 25s linear infinite; }
+              /* Satellite blocks — staggered */
+              .imp-b1   { animation: impRise .6s .25s ease both, impB1Float  9s 1.5s ease-in-out infinite; }
+              .imp-b2   { animation: impRise .6s .4s  ease both, impB2Float  7s 2s   ease-in-out infinite; }
+              .imp-b3   { animation: impRise .6s .55s ease both, impB3Float 10s 2.5s ease-in-out infinite; }
+              .imp-b4   { animation: impRise .6s .7s  ease both, impB4Float  8.5s 1.8s ease-in-out infinite; }
+              .imp-b5   { animation: impRise .6s .85s ease both, impB5Float 11s 3s   ease-in-out infinite; }
+              /* Metric chips */
+              .imp-c1   { animation: impRise .5s 1.1s ease both, impChip 5s 2s   ease-in-out infinite; }
+              .imp-c2   { animation: impRise .5s 1.3s ease both, impChip 6s 3s   ease-in-out infinite; }
+              .imp-c3   { animation: impRise .5s 1.5s ease both, impChip 4.5s 1.5s ease-in-out infinite; }
+              .imp-c4   { animation: impRise .5s 1.7s ease both, impChip 7s 2.8s ease-in-out infinite; }
+              .imp-c5   { animation: impRise .5s 1.9s ease both, impChip 5.5s 1.2s ease-in-out infinite; }
+              /* Connector lines — animated dash scroll */
+              .imp-conn { stroke-dasharray: 4 4; animation: impConn 2.5s linear infinite; }
+              /* Hub coral accent pulse */
+              .imp-hub-coral { animation: impHubPulse 3s ease-in-out infinite; }
+
+              @media (prefers-reduced-motion: reduce) {
+                .imp-hub,.imp-hub-ring,
+                .imp-b1,.imp-b2,.imp-b3,.imp-b4,.imp-b5,
+                .imp-c1,.imp-c2,.imp-c3,.imp-c4,.imp-c5,
+                .imp-hub-coral {
+                  animation: none; opacity: 1; transform: none;
+                }
+                .imp-conn { animation: none; stroke-dasharray: none; }
+              }
+            </style>
             <filter id="imp-shadow">
-              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1a1a18" flood-opacity="0.10"/>
+              <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#1a1a18" flood-opacity="0.12"/>
             </filter>
             <filter id="imp-shadow-sm">
-              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1a1a18" flood-opacity="0.08"/>
+              <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1a18" flood-opacity="0.08"/>
             </filter>
           </defs>
 
