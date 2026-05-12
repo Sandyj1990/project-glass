@@ -1,0 +1,114 @@
+{
+  "page": "ratl/index.html",
+  "spec": "docs/ratl-spec.md",
+  "source_compilation": "docs/ratl-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_type": "initial",
+  "page_version": "v0.9.4",
+  "commit": "edfe536",
+  "score": 84,
+  "grade": "B",
+  "weighted_pass": true,
+  "dimensional_pass": false,
+  "dimensional_failures": ["honesty_register", "cross_page_consistency"],
+  "verdict": "Conditional pass — page structurally and tonally strong; ship-ready for Apex after C1 (home register surfaces 1,300-case AJIO×JCP evidence not on /ratl), H2 (catalog row contradicts /ratl deployment framing), and H3 (engine pills granularity inconsistent with hero) are addressed. M1, M2 are quick polish. L1, L2 are cosmetic.",
+  "dimensions": {
+    "source_traceability":   {"score": 88, "threshold": 75, "pass": true,  "note": "Every body stat traceable to ratl_jio_showcase.md lines 22-125. Two citation gaps: M1 §05 Jiomart-OS-evolution beat, M2 hero 'structurally impossible' editorial."},
+    "tone_of_voice":         {"score": 85, "threshold": 80, "pass": true,  "note": "Banned vocabulary clean. One 'today' usage at line 177 (H1). One editorial 'structurally impossible' at line 80 (M2). One slightly anthropomorphised hero phrasing (L1)."},
+    "honesty_register":      {"score": 78, "threshold": 80, "pass": false, "note": "Engine cards pilled 'Live · Platform' while hero says 'Live across Jio + RBL + Retail'. Source supports the stronger RR-deployed framing on all engines. Pill convention should match throughout (H3)."},
+    "structural_compliance": {"score": 95, "threshold": 85, "pass": true,  "note": "§01→§07 contiguous. Chrome (nav, crumb, footer) all present. Version pill v0.9.4 matches commit. Footer follows convention (no owner/version line)."},
+    "visual_completeness":   {"score": 95, "threshold": 85, "pass": true,  "note": "All 4 screenshots 200 locally and via CDN (gs://impetus-socialpilot/rrl-portfolio/assets/ratl/ → socialassets.impetusz0.de). Mobile reflow clean at 390px. Console clean apart from standard Tailwind CDN dev warning."},
+    "cross_page_consistency":{"score": 60, "threshold": 70, "pass": false, "note": "C1: home page card index.html:769 cites '1,300 test cases on AJIO×JCP · vibe-coded prototypes in JCP' for Boltic+Ratl, but /ratl does not surface this evidence anywhere. H2: catalog/index.html:253,364 frames Ratl as 'Live · internal QA + cross-product · Internal AI' contradicting /ratl's Jio + RBL + Retail production framing."}
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "/ratl page (missing evidence)",
+      "issue": "Home register (index.html:769) cites '1,300 test cases on AJIO×JCP · vibe-coded prototypes in JCP' as Boltic+Ratl evidence. Boltic v3 audit X1 flagged this as belonging on /ratl. /ratl does not mention 1,300 / AJIO×JCP / vibe-coded anywhere. Reviewer landing from home card finds no matching evidence.",
+      "fix": "Add a Live · RR · AJIO × JCP evidence block in §02 (as 8th engine card) or §06 (as a scorecard row) citing the 1,300-test-case estate. If the source for that number is outside ratl-notes-compilation/, the spec's source inventory needs to be updated.",
+      "files": ["ratl/index.html", "index.html:769"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§03",
+      "issue": "Banned word 'today' per tone-of-voice §2 stance. Line: 'Every layer is live today.'",
+      "fix": "Drop 'today' — 'Every layer is live.' or date-bind: 'Every layer is live as of 2026-05-01.'",
+      "files": ["ratl/index.html:177"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "/catalog rows",
+      "issue": "catalog/index.html:253 and :364 frame Ratl as 'Live · internal QA + cross-product' with 'Internal AI' DRI. /ratl claims 'Live across Jio + RBL + Retail' (production deployment). Source supports the production framing — catalog rows are stale.",
+      "fix": "Update both catalog rows to 'Live · Jio + RBL + Retail · QA + release intelligence' and align DRI label with /ratl owner.",
+      "files": ["catalog/index.html:253", "catalog/index.html:364"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§02",
+      "issue": "All seven engine cards pilled 'Live · Platform'. Hero (line 77) and §06 outcomes scorecard claim deployments across Jio + RBL + Retail. 'Live · Platform' is the boltic convention for 'platform exists; RR deployment separate' — for Ratl, source supports the stronger RR-deployed framing throughout.",
+      "fix": "Change all 7 engine pills from 'Live · Platform' to 'Live · Jio + RBL + Retail' (or 'Live · RR'). Mechanical sed.",
+      "files": ["ratl/index.html:136", "ratl/index.html:141", "ratl/index.html:146", "ratl/index.html:151", "ratl/index.html:156", "ratl/index.html:161", "ratl/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§05",
+      "issue": "Catalog Intelligence forward beat ('evolving into the core intelligence layer for Jiomart OS · Building') has no inline source citation. The single Building pill on the page deserves a tight source line per tone-of-voice §5.",
+      "fix": "Add 'Source · Ratl × Jio showcase, lines 164-172' below the forward-beat paragraph.",
+      "files": ["ratl/index.html:298"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§0 Hero",
+      "issue": "'made manual QA structurally impossible' is editorial. Source says 'Traditional QA models couldn't keep up' — milder.",
+      "fix": "Soften to 'made manual QA models impractical' or 'outpaced manual QA models'.",
+      "files": ["ratl/index.html:80"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§0 Hero",
+      "issue": "'feed every release a confidence score before it ships' is slightly anthropomorphised.",
+      "fix": "Optional polish — 'emit a confidence score for every release before it ships'.",
+      "files": ["ratl/index.html:79"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§05",
+      "issue": "Screenshot card on the left scales taller than the two stacked text cards combined on wide viewports — cosmetic white-space.",
+      "fix": "Optional — wrap right column in flex-col with flex-1 so cards expand to match image height.",
+      "files": ["ratl/index.html:275"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Section-label contiguity perfect §01 → §07; no gaps, no renumber tax.",
+    "Banned vocabulary clean — no transformative / world-class / cutting-edge / empowers / leverages / harnesses / unlocks / step-change / trust layer. Single 'today' is the only tone hit.",
+    "Every body stat sourceable to ratl_jio_showcase.md lines 22-125 (3-5×, 70-80%, 33+, 85+, 80,000+, 40-50%, ~90%, 35-45%, 60-70%, 1,000+, 10,000+, ~80%).",
+    "Footer follows current register convention — single copyright line, no Owner / version line.",
+    "Mobile reflow clean at 390px — all 8 sections stack legibly, no overflow.",
+    "CDN mirror in place — gs://impetus-socialpilot/rrl-portfolio/assets/ratl/ → socialassets.impetusz0.de · all 4 assets 200; page paths kept local per granary/impetus belt-and-suspenders convention.",
+    "Mega-menu mono-suffix update ('agentic quality') is more precise than the prior 'agentic auto' — sibling pages untouched."
+  ]
+}

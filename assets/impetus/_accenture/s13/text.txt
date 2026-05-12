@@ -1,0 +1,57 @@
+Impetus Command Center [1/2]
+
+---
+
+A unified command center to monitor, plan, and act across your entire retail ecosystem
+
+---
+
+Monitor, plan, and act across your entire retail ecosystem from a single pane — with real-time visibility into stores, inventory, workforce, and customer metrics.
+
+---
+
+Store Operations
+
+---
+
+Real-time health checks, footfall, conversion, and staffing insights per store
+
+---
+
+Inventory Intelligence
+
+---
+
+Stock-level visibility, auto-replenishment triggers, and demand forecasting
+
+---
+
+Workforce Management
+
+---
+
+Staff scheduling, attendance tracking, and performance dashboards
+
+---
+
+Campaign Control
+
+---
+
+Launch, monitor, and optimize AI campaigns with unified analytics
+
+---
+
+Customer 360°
+
+---
+
+Unified view of NPS, loyalty, purchase history, and engagement metrics
+
+---
+
+Alerts & Escalations
+
+---
+
+Configurable thresholds with automated escalation workflows

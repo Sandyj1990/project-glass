@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: plan_cycle_reduction
+    label: Plan cycle time reduction
+    value: 90%
+    definition: vs traditional MES baseline at NeoLync pilot
+    source: Forge pilot
+    confidence: live
+  - id: throughput_increase
+    label: Throughput increase
+    value: 5-10%
+    definition: Pilot baseline
+    source: Forge pilot
+    confidence: live
+  - id: stockout_reduction
+    label: Stockout reduction · target
+    value: 50%
+    definition: Pilot target
+    source: Forge pilot
+    confidence: estimate

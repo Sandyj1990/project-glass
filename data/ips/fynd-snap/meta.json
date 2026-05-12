@@ -1,0 +1,22 @@
+{
+  "slug": "fynd-snap",
+  "name": "Fynd Snap",
+  "tagline": "AI photoshoot pipeline \u00b7 25K+ shoots \u00b7 90% cost saving.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "beauty",
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#ai-photoshoot",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

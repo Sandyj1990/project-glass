@@ -1,0 +1,25 @@
+{
+  "slug": "rcpl",
+  "name": "RCPL \u00b7 FMCG B2B platform",
+  "tagline": "Cross-brand FMCG \u00b7 DMS \u00b7 1.3 Cr outlet ambition by 2028.",
+  "track": "rcpl",
+  "track_role": "track-headline",
+  "status": "Build",
+  "since": "2024-06-01",
+  "last_release": null,
+  "verticals": [
+    "grocery"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/rcpl",
+  "external_url": null,
+  "stake_inr_cr": 4500.0,
+  "tags": [
+    "b2b",
+    "fmcg",
+    "dms"
+  ]
+}

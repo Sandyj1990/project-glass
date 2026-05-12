@@ -1,0 +1,284 @@
+# Trend-to-Design Agent
+# Sources:
+#  · AI_Design_Agent_Note_v1.pdf · 8-step pipeline + 43-category coverage map
+#  · Agentisation §3.4 · Outcome / Workflow / Platform Capabilities
+#  · Accenture s12 (canonical 6 agents) + s17-s18 (Superdry SDX case)
+#  · Trend business · 718 designs in <2 days · ~60% selection rate
+#
+# Per docs/agents-spec.md v0.8
+
+slug: trend-to-design
+name: Trend-to-Design Agent
+sub_title: "Trend brief → manufacturable design package — image, BOM, costing, line sheets — without humans in the middle of the cycle."
+status: live
+status_label: Live
+track: buy
+autonomy_level: L4
+primary_workflow: "Product Development · Design"
+date: 2026-04-15
+source_folder: docs/agent-catalog-notes-compilation/
+source_citations:
+  - "AI_Design_Agent_Note_v1.pdf"
+  - "Agentisation of an Organization · §3.4 Trend-to-Design Agent"
+  - "Trend business · 718 designs across 10 brands"
+
+stats:
+  - { label: "Trend business run", value: "718 designs",  context: "10 brands · ~2 days · autonomous" }
+  - { label: "Pipeline depth",     value: "8 steps",      context: "Brief → Context → Artwork → Garment → Review → Costing → Variation → Deliver" }
+  - { label: "Category coverage",  value: "43 categories", context: "F&L operating model · mens / womens / kids / footwear / premium" }
+
+primary_platform:
+  name: "IntelliLoom"
+  route: "/impetus/intelliloom/"
+
+job:
+  pain: |
+    Manual design scaffolding takes weeks. Trend signals from WGSN,
+    Pinterest, retail crawlers arrive unstitched to brand DNA. Tech-pack
+    handoff to vendors loses fidelity — colour, print placement, BOM
+    drift between spec and stitch.
+  what_it_does: |
+    Ingests trend signals + brand context + season constraints. Generates
+    artwork variants, then full garment images (front + back, on-model,
+    2K). VLM reviewer scores 30+ quality checks per garment with auto-retry
+    on failure. Calculates BOM cost per piece. Produces silhouette and
+    colour variations from reference images. Delivers share-ready line
+    sheets to vendors and buyers.
+  human_role: |
+    Buyer reviews finished design packages — not briefs. Designer takes
+    selected concepts into pattern-making and final tech-pack approval.
+    Agent does the production-ready scaffolding; humans select what to
+    range.
+
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+workflow_svg: |
+  <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>Trend-to-Design · 8-step pipeline · brief to vendor-ready package</title>
+    <desc>Trend brief and brand DNA flow through Context, Artwork, Garment, Review, Costing, Variation, and Delivery — producing a share-ready design package autonomously.</desc>
+    <defs>
+      <marker id="td-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="td-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+        .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-loop { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+        .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+      </style>
+    </defs>
+
+    <!-- Inputs -->
+    <g>
+      <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE"/>
+      <text x="36" y="46" class="zh">Inputs</text>
+
+      <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+      <text x="50" y="86" class="h-ttl">Buyer brief</text>
+      <text x="50" y="102" class="h-sub">category · season · target</text>
+      <text x="50" y="116" class="h-sub">price band · range size</text>
+
+      <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="168" class="src-ttl">Trend signals</text>
+      <text x="50" y="186" class="src-sub">Category Intelligence reports</text>
+
+      <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="242" class="src-ttl">Brand DNA</text>
+      <text x="50" y="260" class="src-sub">palette · silhouette · construction</text>
+
+      <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="316" class="src-ttl">Manufacturability</text>
+      <text x="50" y="334" class="src-sub">approved bases · fabrics · lead-times</text>
+
+      <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="390" class="src-ttl">Reference images</text>
+      <text x="50" y="408" class="src-sub">moodboard · prior-season hits</text>
+
+      <text x="36" y="490" class="gl">Modes</text>
+      <text x="36" y="506" class="src-sub">Hybrid · Standard · Variation</text>
+    </g>
+
+    <!-- Workflow -->
+    <g>
+      <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB"/>
+      <text x="306" y="46" class="zh">Pipeline · 8 autonomous steps</text>
+
+      <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="86" class="stp-num">01</text>
+      <text x="354" y="86" class="stp-ttl">Brief ingestion</text>
+      <text x="324" y="106" class="stp-sub">brand DNA · season trends</text>
+      <text x="324" y="120" class="stp-sub">category specs · moodboard palette</text>
+
+      <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="86" class="stp-num">02</text>
+      <text x="644" y="86" class="stp-ttl">Context agent</text>
+      <text x="614" y="106" class="stp-sub">extracts palette · silhouette direction</text>
+      <text x="614" y="120" class="stp-sub">print techniques · fabric preferences</text>
+
+      <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="182" class="stp-num">03</text>
+      <text x="354" y="182" class="stp-ttl">Artwork generation</text>
+      <text x="324" y="202" class="stp-sub">0-3 artworks per garment · smart print</text>
+      <text x="324" y="216" class="stp-sub">detection · placement / AOP variants</text>
+
+      <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="182" class="stp-num">04</text>
+      <text x="644" y="182" class="stp-ttl">Garment image</text>
+      <text x="614" y="202" class="stp-sub">front + back · on-model · 2K</text>
+      <text x="614" y="216" class="stp-sub">zone-aware placement · age-correct</text>
+
+      <rect x="310" y="256" width="270" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+      <text x="324" y="278" class="stp-num" style="fill:#B45309;">05</text>
+      <text x="354" y="278" class="stp-ttl">Quality review · VLM</text>
+      <text x="324" y="298" class="stp-sub">30+ checks · colour · print fidelity</text>
+      <text x="324" y="312" class="stp-sub">silhouette · category · auto-retry on fail</text>
+
+      <rect x="600" y="256" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="278" class="stp-num">06</text>
+      <text x="644" y="278" class="stp-ttl">BOM costing</text>
+      <text x="614" y="298" class="stp-sub">cost per piece via Costing Engine API</text>
+      <text x="614" y="312" class="stp-sub">fabric · trims · SMV · overheads</text>
+
+      <rect x="310" y="356" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="378" class="stp-num">07</text>
+      <text x="354" y="378" class="stp-ttl">Variation engine</text>
+      <text x="324" y="398" class="stp-sub">silhouette × colour explosions</text>
+      <text x="324" y="412" class="stp-sub">from reference + moodboard palette</text>
+
+      <rect x="600" y="356" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="378" class="stp-num">08</text>
+      <text x="644" y="378" class="stp-ttl">Delivery</text>
+      <text x="614" y="398" class="stp-sub">cloud storage · presigned URLs</text>
+      <text x="614" y="412" class="stp-sub">per-style webhook callbacks</text>
+
+      <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="324" y="468" class="gl">Track record · Trend business</text>
+      <text x="324" y="492" class="stp-sub">718 designs · 10 brands · &lt;2 days · DNMX + Avaasa strongest</text>
+    </g>
+
+    <!-- Outputs -->
+    <g>
+      <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0"/>
+      <text x="936" y="46" class="zh">Outputs</text>
+
+      <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="86" class="out-ttl">Garment image set</text>
+      <text x="950" y="104" class="out-sub">front + back · on-model</text>
+      <text x="950" y="120" class="out-sub">2K · zone-aware artwork</text>
+
+      <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="180" class="out-ttl">BOM + cost per piece</text>
+      <text x="950" y="198" class="out-sub">vendor-ready</text>
+      <text x="950" y="214" class="out-sub">via Costing Engine</text>
+
+      <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="274" class="out-ttl">Range explosion</text>
+      <text x="950" y="292" class="out-sub">silhouette × colour variants</text>
+      <text x="950" y="308" class="out-sub">curated micro-collections</text>
+
+      <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="368" class="gl" style="fill:#15803D;">Format</text>
+      <text x="950" y="388" class="out-sub">share-ready line sheets · webhooks</text>
+
+      <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+      <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+      <text x="950" y="482" class="out-sub">human selects from finished</text>
+      <text x="950" y="498" class="out-sub">packages, not briefs</text>
+    </g>
+
+    <!-- Connectors · trunk for inputs -->
+    <path d="M244 95 H275" class="conn"/>
+    <path d="M244 175 H275" class="conn"/>
+    <path d="M244 249 H275" class="conn"/>
+    <path d="M244 323 H275" class="conn"/>
+    <path d="M244 397 H275" class="conn"/>
+    <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+    <path d="M275 98 H310" class="conn" marker-end="url(#td-arr)"/>
+
+    <!-- 8-step flow snake -->
+    <path d="M580 98 H600" class="conn" marker-end="url(#td-arr)"/>
+    <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#td-arr)"/>
+    <path d="M580 194 H600" class="conn" marker-end="url(#td-arr)"/>
+    <path d="M735 228 V242 H445 V256" class="conn" marker-end="url(#td-arr)"/>
+    <path d="M580 290 H600" class="conn" marker-end="url(#td-arr)"/>
+    <path d="M735 324 V340 H445 V356" class="conn" marker-end="url(#td-arr)"/>
+    <path d="M580 390 H600" class="conn" marker-end="url(#td-arr)"/>
+
+    <!-- VLM auto-retry loop · S5 → back to S3 (artwork regen on failure) ·
+         per spec §5.3 + audit follow-up · vertical segment moved from x=295
+         (cramped inside workflow zone right next to step card left edges)
+         to x=280 (in the no-zone gap between inputs zone end x=260 and
+         workflow zone start x=290) · gives 30px clear space from step cards
+         instead of 15px. Label shifted with it for the breathing room. -->
+    <path d="M310 290 H280 V194 H310" class="conn-loop" marker-end="url(#td-loop)"/>
+    <text x="272" y="245" class="lbl" transform="rotate(-90 272 245)">VLM fail · regen</text>
+
+    <!-- S8 → Outputs -->
+    <path d="M870 390 H905 V100 H920" class="conn" marker-end="url(#td-arr)"/>
+  </svg>
+workflow_diagram_caption: "Inputs (blue) → 8-step autonomous pipeline (grey) with VLM quality gate (yellow, auto-retry on fail) → vendor-ready package (green)."
+
+workflow_steps:
+  - { num: "01", title: "Brief ingestion",       detail: "Brand DNA, season direction, category specs, moodboard palette, target price band — pulled from buyer brief and the upstream Category Intelligence report." }
+  - { num: "02", title: "Context agent",         detail: "Extracts brand palette, silhouette direction, print techniques and fabric preferences from the brief and reference set." }
+  - { num: "03", title: "Artwork generation",    detail: "0-3 artwork images per garment with smart print detection. Solid garments skip artwork; printed garments get placement or AOP (all-over print) variants." }
+  - { num: "04", title: "Garment image",         detail: "Full garment image (front + back, on-model, 2K resolution). Zone-aware artwork placement, gender-correct model, age-appropriate styling." }
+  - { num: "05", title: "Quality review · VLM",  detail: "VLM reviewer scores 30+ quality checks per garment — colour accuracy, print fidelity, silhouette, category compliance. Auto-retry to step 03 on failure; ship only when checks pass." }
+  - { num: "06", title: "BOM costing",           detail: "Cost per piece calculated via Costing Engine API — fabric, trims, SMV (standard minute value), overheads." }
+  - { num: "07", title: "Variation engine",      detail: "Generates N silhouette and colour variations from reference images using the moodboard palette. Used for range building and style explosions." }
+  - { num: "08", title: "Delivery",              detail: "Images uploaded to cloud storage via presigned URLs. Per-style webhook callbacks fire to downstream systems (PLM, vendor portals) in real time." }
+
+data:
+  sources:
+    - { name: "Trend signals (WGSN, EDITED, Pinterest, retail crawlers)", classification: "Mixed", entities: "Trend velocity · colour confidence · silhouette signals" }
+    - { name: "Brand DNA brief",          classification: "Human-Created",   entities: "Palette · construction guardrails · target consumer" }
+    - { name: "Manufacturability library", classification: "Machine-Readable", entities: "Approved bases · fabrics · trims · lead-time lanes" }
+    - { name: "Reference images",         classification: "Mixed",           entities: "Moodboard · prior-season bestsellers" }
+    - { name: "Costing Engine API",       classification: "Machine-Created", entities: "Fabric cost · trims · SMV · landed cost" }
+  refresh_cadence: "Per-brief run · trend signals fresh-pulled. Manufacturability library refreshed seasonally."
+  kpis_moved:
+    - "Time-to-design (weeks → days)"
+    - "Selection rate (% agent designs taken to range)"
+    - "Tech-pack handoff fidelity"
+    - "Range coverage per category (43-category model)"
+
+patterns:
+  - { name: "Multi-Agent Orchestration", usage: "8-step pipeline coordinates Context, Artwork, Garment, Review, Costing, Variation as specialist agents" }
+  - { name: "Wide Research",             usage: "Variation engine generates many silhouette × colour candidates before curation narrows to micro-collections" }
+  - { name: "Tool Calling",              usage: "Image gen APIs (GPT Image 2, Vertex), VLM reviewer, Costing Engine, cloud storage, webhooks — all tool-mediated" }
+  - { name: "Evals",                     usage: "VLM reviewer's 30+ checks per garment is a per-output eval suite with auto-retry on fail" }
+  - { name: "Observability",             usage: "Per-style webhook trace · BOM-to-image-to-spec lineage · regen attempts logged" }
+
+evals:
+  status: "live · VLM reviewer + selection-rate as live metric"
+  approach: |
+    Two layers. Layer 1 — VLM reviewer scores every generated garment
+    against 30+ checks (colour, print, silhouette, category) and auto-
+    retries on failure. Layer 2 — buying team selection rate: % of agent
+    designs taken into the range is the real-world signal. Trend
+    business runs hit ~60% selection.
+  gates:
+    - "VLM 30+ checks pass before image ships"
+    - "Selection rate stays above 50% per brand cohort"
+    - "Cost-per-piece estimate within 10% of vendor RFQ on commercial sample"
+
+linked_platforms:
+  - { name: "Brands",             route: "/impetus/brands/",            role: "Live design library — agent-generated garment images shipped to RIL brand teams" }
+  - { name: "Costing Engine",     route: "/impetus/costing-engine/",    role: "Step 06 BOM and price calculation" }
+  - { name: "PLM",                route: "/impetus/plm/",               role: "Receives finalised tech packs for vendor handoff" }

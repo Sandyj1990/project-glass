@@ -1,0 +1,155 @@
+{
+  "page": "rcpl/index.html",
+  "spec": "docs/jcp-rcpl-spec.md",
+  "audit_date": "2026-05-03",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "source_traceability": 86,
+    "tone_of_voice": 84,
+    "honesty_register": 90,
+    "structural_compliance": 78,
+    "design_compliance": 82,
+    "visual_completeness": 92,
+    "cross_page_consistency": 70
+  },
+  "weights": {
+    "source_traceability": 0.22,
+    "tone_of_voice": 0.18,
+    "honesty_register": 0.18,
+    "structural_compliance": 0.14,
+    "design_compliance": 0.10,
+    "visual_completeness": 0.09,
+    "cross_page_consistency": 0.09
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "site",
+      "issue": "Stale duplicate page at /jcp/rcpl/index.html still served (40,144 bytes, HTTP 200) after promotion to /rcpl/. Two RCPL pages live in parallel — Apex landing on either path sees a different version.",
+      "fix": "Delete jcp/rcpl/index.html and the jcp/rcpl/ directory. Add a 301-style redirect or drop the route entirely.",
+      "files": ["jcp/rcpl/index.html"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "site",
+      "issue": "jcp/channels/index.html:176 subnav still uses href=\"/jcp/rcpl\"; lines 228 and 229 still use /jcp/rcpl for the RCPL deep-dive card. Sibling JCP pages (jcp/index.html, jcp/cataloging/index.html, jcp/7eleven/index.html, jcp/release-notes/index.html) all use /rcpl.",
+      "fix": "Replace /jcp/rcpl with /rcpl on lines 176, 228, 229 of jcp/channels/index.html.",
+      "files": ["jcp/channels/index.html:176", "jcp/channels/index.html:228", "jcp/channels/index.html:229"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "spec",
+      "issue": "Spec docs/jcp-rcpl-spec.md D1 still records the page route as /jcp/rcpl/ (sub-tab). Page has been promoted to top-level /rcpl/ and added to the Platforms mega-menu column. Spec D2 also requires a §08 Sources block; the page correctly drops it per the 2026-05-02 tone-of-voice rule. Spec is now out-of-date in 3 places (D1 route, D2 §08 Sources, D4 Owner/version footer).",
+      "fix": "Update spec D1 to record the promotion; revoke D2 (§Sources block); revoke D4 (Author/Owner/Version chrome). Add D7 noting the §07 Phase-2-decisions section was folded into §06 Roadmap.",
+      "files": ["docs/jcp-rcpl-spec.md:108", "docs/jcp-rcpl-spec.md:109", "docs/jcp-rcpl-spec.md:111"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§01, §04, hero",
+      "issue": "Engineering jargon 'production' appears 4 times in body / eyebrow copy: line 177 ('ship production deployments every cycle'), line 182 ('40+ items shipped to production.'), line 329 ('Mar-Apr 2026 · 3 production deployments'), and as Release-card pills 'Production' / 'Production · latest' (lines 332, 344, 358). Tone-of-voice §7 says 'production / prod deploys / production-grade → live / running / daily updates'. The pill convention site-wide is 'Live'.",
+      "fix": "Replace 'production' with 'live' or 'running' in narrative copy. Change pill labels 'Release N · Production' → 'Release N · Live'. Eyebrow line 329 → 'Released · Mar-Apr 2026 · 3 deployments live'.",
+      "files": ["rcpl/index.html:177", "rcpl/index.html:182", "rcpl/index.html:329", "rcpl/index.html:332", "rcpl/index.html:344", "rcpl/index.html:358"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§05",
+      "issue": "Vision/proposal numbers in §05 (3–8% sales uplift, AOV up 8–12%, 30–50% engagement, 5–18% lift, 30%+ adoption) come from RCPL_APEX_Board_Note_Detailed.docx (1-May-2026) per spec §2, but no inline source eyebrow on the §05 cards points at the Board Note. The page only carries one inline source citation (line 566) which names the Monthly Status Report only. A multi-source page (per spec D2 rationale) needs the second source surfaced inline.",
+      "fix": "Add an inline cap-num source eyebrow at the §05 section head: 'Source · RCPL APEX Board Note · 01-May-2026 · prepared by Ashish Chandorkar'.",
+      "files": ["rcpl/index.html:399"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "head",
+      "issue": "Inline <style> block (lines 14–71) introduces page-local variants — .pill / .pill.live / .pill.flight / .pill.plan / .pill.proposal / .pill.fix — that diverge from the site-wide .pill-live / .pill-build / .pill-phase2 token convention in style.css. Pill colours are hex-literal (#ECFDF5, #047857, #A7F3D0 etc.) instead of var(--*) tokens. .grid-table, .surface-card, .layer-num are also page-local — not documented in docs/design.md §2.",
+      "fix": "Migrate page-local .pill.* to site-wide .pill-live / .pill-build / .pill-phase2. Either lift surface-card / grid-table / layer-num to docs/design.md §2 + style.css, or revert to the closest documented variant (card / grid-table site-wide).",
+      "files": ["rcpl/index.html:21-71"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§01, §06",
+      "issue": "Hero subhead is 32 words (line 145). Tone-of-voice §5 caps hero subhead at 30 words. §06 narrative paragraphs in the 3 closer cards (lines 514, 520, 526) read longer than the 60-word 'why this matters' guide.",
+      "fix": "Trim hero subhead to ≤30 words, e.g.: 'Reliance Consumer Products. End-to-end digital platform — Pre-Sales, Van Sales, Primary DMS, CTS, Pricing & Promotions, SFA — built by Fynd across five PODs across Beverage and Non-Beverage.'",
+      "files": ["rcpl/index.html:145"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§01",
+      "issue": "Pill 'pill plan · Phase 2 · 4 domains queued' (line 199) plus the body line 'Forward-looking phases without dates' is borderline. The four ask cards in §06 (lines 537–554) each carry a named decision and unblock owner — that earns it — but the §01 Phase 2 strip itself doesn't bind any of the four to a date, and the Monthly Status Report p.11 doesn't either ('Timeline not yet confirmed', 'Scope not defined').",
+      "fix": "Either (a) add an inline 'decision-by' date to each Phase 2 line, or (b) drop the 'Phase 2' framing and rename the §01 Decisions card to 'Decisions queued · 4 unblocks' with the same content, since §06 carries the canonical version.",
+      "files": ["rcpl/index.html:199", "rcpl/index.html:200-206"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§03",
+      "issue": "All 9 lightbox-wrapped <a> tags carry target=\"_blank\" rel=\"noopener\" alongside class=\"js-lightbox\". The lightbox JS calls e.preventDefault(), so the new-tab never fires in practice — but if JS errors, every screenshot click will pop a new tab and break the in-page convention (skill §6 Visual / §8 Design).",
+      "fix": "Remove target=\"_blank\" rel=\"noopener\" from all 9 a.js-lightbox elements. The lightbox script already keeps modifier-clicks (cmd/ctrl/shift) opening in a new tab.",
+      "files": ["rcpl/index.html:254", "rcpl/index.html:263", "rcpl/index.html:273", "rcpl/index.html:276", "rcpl/index.html:281", "rcpl/index.html:284", "rcpl/index.html:289", "rcpl/index.html:294", "rcpl/index.html:304"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§06",
+      "issue": "Filler verb 'lights up' on line 526 ('Primary DMS for other segments lights up ~₹1,000 Cr/month of additional order routing'). Tone-of-voice §7: filler-verb register; banned-word check.",
+      "fix": "Replace with a plain operating verb: 'Primary DMS for other segments adds ~₹1,000 Cr/month of order routing.'",
+      "files": ["rcpl/index.html:526"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01",
+      "issue": "Line 175 section-label '01 · Status · 24-Apr-2026 cycle' uses DD-MMM-YYYY correctly. But the label 'FMCG B2B · Live · FY 2025-26' (line 143) uses 'FY 2025-26' — site convention elsewhere is 'FY26'. LOW format-drift.",
+      "fix": "Change 'FY 2025-26' → 'FY26' on line 143 to match the site-wide convention used in the next stat tile and the home card.",
+      "files": ["rcpl/index.html:143"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "footer",
+      "issue": "Footer (line 569–571) is the clean single-copyright version. Nav-version pill (line 137) is v0.8.4 — the only version chrome on the page (correct per audit-framework §1 Forbidden chrome). No issue; restated for confirmation.",
+      "fix": "No action — chrome is correct.",
+      "files": ["rcpl/index.html:137", "rcpl/index.html:569-571"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source traceability is strong: every Roadmap §06 number, every hero stat tile, and every release-note count maps cleanly to the Monthly Status Report 24-Apr-2026 (verified page-by-page against the 12-page PDF).",
+    "Em-dash sweep clean — zero em-dashes; only en-dashes in numeric ranges. Zero banned vocabulary (transformative, world-class, leverages, empowers, etc.). Zero §Sources block. Zero Author/Owner/Version chrome.",
+    "Honesty contract is tight: every Vision §05 card carries pill-proposal · 6-month plan; no Live claim leaks into the AI Sales Agent / NextGen SFA / NextGen DMS / eB2B framing.",
+    "Sticky in-page TOC with scrollspy works cleanly; section labels are a contiguous 01–06 run; lightbox markup + script renders correctly with display:none default and proper event handling.",
+    "Cross-page mega-menu rollout is otherwise complete — RCPL added to Platforms column on 30+ sibling pages, home page card and JCP main page both link correctly to /rcpl/."
+  ]
+}

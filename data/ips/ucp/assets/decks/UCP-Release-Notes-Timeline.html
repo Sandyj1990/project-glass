@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UCP — Release Notes Timeline</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface-hover: #222636;
+    --border: #2a2e3d;
+    --text: #e4e6ed;
+    --text-secondary: #9498a8;
+    --accent: #6c5ce7;
+    --accent-light: #a29bfe;
+    --accent-glow: rgba(108, 92, 231, 0.25);
+    --green: #00b894;
+    --orange: #fdcb6e;
+    --pink: #fd79a8;
+    --blue: #74b9ff;
+    --timeline-line: #2a2e3d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 80px 24px 60px;
+    background: linear-gradient(180deg, rgba(108,92,231,0.12) 0%, transparent 100%);
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--accent-glow);
+    border: 1px solid var(--accent);
+    color: var(--accent-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #fff 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero p {
+    color: var(--text-secondary);
+    font-size: 17px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Stats bar */
+  .stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 32px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent-light);
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+
+  /* Timeline container */
+  .timeline-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 24px 100px;
+    position: relative;
+  }
+  .timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 60px;
+    bottom: 100px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--timeline-line) 30%, var(--timeline-line) 70%, transparent 100%);
+    transform: translateX(-50%);
+  }
+
+  /* Year marker */
+  .year-marker {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin: 40px 0 50px;
+  }
+  .year-marker:first-child { margin-top: 0; }
+  .year-marker span {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 8px 24px;
+    border-radius: 24px;
+    box-shadow: 0 0 30px var(--accent-glow);
+  }
+
+  /* Release card */
+  .release {
+    position: relative;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: flex-start;
+  }
+  .release:nth-child(odd) { flex-direction: row; }
+  .release:nth-child(even) { flex-direction: row-reverse; }
+
+  .release-dot {
+    position: absolute;
+    left: 50%;
+    top: 28px;
+    width: 16px;
+    height: 16px;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    box-shadow: 0 0 12px var(--accent-glow);
+  }
+
+  .release-card {
+    width: calc(50% - 40px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+  .release-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 40px rgba(108,92,231,0.15);
+  }
+
+  .release-date {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .release-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+  .release-card p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+
+  /* Feature chips */
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+  }
+  .chip {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 8px;
+    letter-spacing: 0.3px;
+  }
+  .chip-purple { background: rgba(108,92,231,0.15); color: var(--accent-light); }
+  .chip-green { background: rgba(0,184,148,0.15); color: var(--green); }
+  .chip-orange { background: rgba(253,203,110,0.15); color: var(--orange); }
+  .chip-pink { background: rgba(253,121,168,0.15); color: var(--pink); }
+  .chip-blue { background: rgba(116,185,255,0.15); color: var(--blue); }
+
+  /* Media placeholders */
+  .media-section {
+    margin-top: 18px;
+    padding: 14px;
+    background: rgba(108,92,231,0.06);
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+  .media-section a {
+    color: var(--accent-light);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .media-section a:hover { text-decoration: underline; }
+
+  .yt-embed {
+    margin-top: 18px;
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+  .yt-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+  }
+
+  /* YouTube link card (fallback when iframes don't render) */
+  .yt-link {
+    display: block;
+    margin-top: 18px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    position: relative;
+    aspect-ratio: 16/9;
+    background: linear-gradient(135deg, #1a1024 0%, #2d1f3d 40%, #1a2332 100%);
+    transition: box-shadow 0.3s, transform 0.15s;
+  }
+  .yt-link:hover {
+    box-shadow: 0 8px 32px rgba(108,92,231,0.3);
+    transform: translateY(-2px);
+  }
+  .yt-link-inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 12px;
+  }
+  .yt-play {
+    width: 64px; height: 64px;
+    background: rgba(255,0,0,0.9);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .yt-link:hover .yt-play { background: #ff0000; transform: scale(1.08); }
+  .yt-play svg { width: 28px; height: 28px; fill: #fff; margin-left: 3px; }
+  .yt-label {
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.85);
+    text-align: center; padding: 0 20px;
+  }
+  .yt-sub { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+  /* Screenshot gallery */
+  .screenshot-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .screenshot-gallery img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .screenshot-gallery img:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  /* Stats inside cards */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .stat-mini {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+  }
+  .stat-mini .val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--accent-light);
+  }
+  .stat-mini .lbl {
+    font-size: 10px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* Bullet list inside card */
+  .card-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+  }
+  .card-list li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    line-height: 1.6;
+  }
+  .card-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* Footer note */
+  .footer-note {
+    text-align: center;
+    padding: 40px 24px 60px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    border-top: 1px solid var(--border);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .timeline-container::before { left: 20px; }
+    .release { flex-direction: column !important; padding-left: 48px; }
+    .release-dot { left: 20px; top: 0; }
+    .release-card { width: 100%; }
+    .stats-bar { gap: 24px; }
+    .stat-grid { grid-template-columns: 1fr; }
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Release Timeline</div>
+  <h1>Unified Customer Platform</h1>
+  <p>A consolidated view of every major UCP release — from platform foundations to real-time retail intelligence.</p>
+</div>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-number">12</div>
+    <div class="stat-label">Releases</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">15,000+</div>
+    <div class="stat-label">Stores Connected</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">75+</div>
+    <div class="stat-label">Retail Formats</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">1.5M</div>
+    <div class="stat-label">Daily Orders Ingested</div>
+  </div>
+</div>
+
+<!-- Timeline -->
+<div class="timeline-container">
+
+  <!-- ==================== 2025 ==================== -->
+  <div class="year-marker"><span>2025</span></div>
+
+  <!-- Release 1 — Feb 2025 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">3 February 2025</div>
+      <h2>Platform Foundation & Personalisation</h2>
+      <p>The inaugural UCP release introduced the foundational building blocks — a 360° Single Customer View spanning web engagement to offline store visits, a completely overhauled Audience Builder v2 leveraging 170 Retail Formats via RRA, and the AI/ML-powered "Complete Your Basket" widget on JioMart.</p>
+      <p>Role Based Access Control and a rehauled OTP Service (now used by MilkBasket to cut SMS abuse costs) rounded out a packed release.</p>
+      <div class="features">
+        <span class="chip chip-purple">Single Customer View</span>
+        <span class="chip chip-green">Audience Builder v2</span>
+        <span class="chip chip-orange">Complete Your Basket</span>
+        <span class="chip chip-pink">RBAC</span>
+        <span class="chip chip-blue">OTP Rehaul</span>
+      </div>
+      <a href="https://youtu.be/29ZmLPkQyMg" target="_blank" class="yt-link" style="background: linear-gradient(135deg, #0f1a2e 0%, #1a1040 50%, #2d1040 100%);">
+        <div class="yt-link-inner">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="yt-label">UCP Platform Overview</div>
+          <div class="yt-sub">Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Release 2 — Apr 2025 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">10 April 2025</div>
+      <h2>Reliance Retail Account v2</h2>
+      <p>After 11 months in development, Retail Account v2 went live — the one-stop solution for unified login and seamless account management across all Reliance Retail platforms.</p>
+      <ul class="card-list">
+        <li><strong>DPDP-compliant Consent Capture</strong> — full customer control over data preferences</li>
+        <li><strong>Centralised Account Management</strong> — connecting JioMart, Ajio, Tira, RD and more</li>
+        <li><strong>Retail Single Sign On</strong> — log in once, access all platforms with a single tap</li>
+        <li><strong>JioSwift Email Integration</strong> — cost-efficient in-house email verification</li>
+        <li><strong>JCP Beta Whitelisting</strong> — controlled access for beta user groups</li>
+      </ul>
+      <div class="features">
+        <span class="chip chip-purple">Retail Account</span>
+        <span class="chip chip-green">SSO</span>
+        <span class="chip chip-orange">DPDP Consent</span>
+        <span class="chip chip-blue">JioSwift</span>
+      </div>
+      <div class="screenshot-gallery">
+        <img src="assets/retail-account-ui.png" alt="Retail Account v2 UI">
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 3 — May 2025 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">2 May 2025</div>
+      <h2>More For Me — Personalised Recommendations</h2>
+      <p>UCP's "More For Me" recommendation engine went live on JioMart, delivering personalised product suggestions on the homepage powered by order history and localised preferences.</p>
+      <p>When customer history is insufficient, the system falls back on time-of-day trends and user activity in the same pincode. Backend: RRA → Kafka → MongoDB → real-time API.</p>
+      <div class="features">
+        <span class="chip chip-purple">More For Me</span>
+        <span class="chip chip-green">JioMart JCP Beta</span>
+      </div>
+      <div style="margin-top:18px; border-radius:10px; overflow:hidden;">
+        <video controls width="100%" style="border-radius:10px;" poster="">
+          <source src="assets/more-for-me.MP4" type="video/mp4">
+          <source src="UCP%20More%20For%20Me.MP4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="media-section" style="margin-top:12px">
+        🖼️ <em>See the video above for More For Me in action on JioMart</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 4 — Sep 2025 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">19 September 2025</div>
+      <h2>SizeSense — Live in AJIO</h2>
+      <p>"Customers need size recommendations for the best fit" — that one-liner became SizeSense. Built in-house, it reads brand, fit type, and size to suggest the right option on AJIO product pages, storing preferences so every return visit comes with the optimal fit.</p>
+      <ul class="card-list">
+        <li>Reduces size-related returns & exchanges</li>
+        <li>Speeds up checkout by removing sizing uncertainty</li>
+        <li>Covers Men & Women Topwear & Bottomwear, more categories planned</li>
+      </ul>
+      <div class="features">
+        <span class="chip chip-pink">SizeSense</span>
+        <span class="chip chip-blue">AJIO</span>
+        <span class="chip chip-green">Returns Reduction</span>
+      </div>
+      <a href="https://youtu.be/RbX9fvU2zNo" target="_blank" class="yt-link" style="background: linear-gradient(135deg, #1a0f2e 0%, #2e1a3d 50%, #0f1a2e 100%);">
+        <div class="yt-link-inner">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="yt-label">SizeSense — Live in AJIO</div>
+          <div class="yt-sub">Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Release 5 — Dec 2025 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">15 December 2025</div>
+      <h2>AI-Powered UCP Documentation</h2>
+      <p>Comprehensive documentation created entirely using AI — acting as a step-by-step guide for business users, covering all filters, attributes, and formats within UCP. Built with Antigravity/Cursor, Docusaurus, Scribe, and existing product materials.</p>
+      <div class="features">
+        <span class="chip chip-purple">Documentation</span>
+        <span class="chip chip-green">AI-Generated</span>
+        <span class="chip chip-orange">Docusaurus</span>
+      </div>
+      <div class="media-section">
+        🔗 <strong>Live at:</strong> <a href="https://docs.sit.ccpz0.de/" target="_blank">docs.sit.ccpz0.de</a>
+      </div>
+      <div class="screenshot-gallery">
+        <img src="assets/docs-1.png" alt="UCP Documentation - Home">
+        <img src="assets/docs-2.png" alt="UCP Documentation - Guide">
+        <img src="assets/docs-3.png" alt="UCP Documentation - Filters">
+        <img src="assets/docs-4.png" alt="UCP Documentation - Attributes">
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2026 ==================== -->
+  <div class="year-marker"><span>2026</span></div>
+
+  <!-- Release 6 — Jan 2026 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">30 January 2026</div>
+      <h2>Multi-Feature Rollout — RPOS, RCS, Analytics & More</h2>
+      <p>A packed release covering December and January work — RPOS integration bringing ~2 lakh daily transaction events from 16+ formats, NPS expansion across Trends, Gap, Yousta, Avantra & Performax, native RCS campaign support (Android + iOS), device fingerprinting for Retail Account security, and audience/campaign analytics enhancements.</p>
+      <p>UCP audiences can now be pushed directly into Meta & Google Ads for cross-channel activation.</p>
+      <div class="stat-grid">
+        <div class="stat-mini"><div class="val">2L+</div><div class="lbl">Daily RPOS Events</div></div>
+        <div class="stat-mini"><div class="val">46</div><div class="lbl">Campaigns Run</div></div>
+        <div class="stat-mini"><div class="val">16+</div><div class="lbl">Formats Integrated</div></div>
+        <div class="stat-mini"><div class="val">7</div><div class="lbl">Format Adoptions</div></div>
+      </div>
+      <div class="features">
+        <span class="chip chip-purple">RPOS</span>
+        <span class="chip chip-green">RCS Campaigns</span>
+        <span class="chip chip-orange">Meta & Google Ads</span>
+        <span class="chip chip-pink">NPS Expansion</span>
+        <span class="chip chip-blue">Analytics</span>
+      </div>
+      <div class="screenshot-gallery">
+        <img src="assets/jan26-console.png" alt="UCP Console">
+        <img src="assets/jan26-analytics-1.png" alt="Analytics Dashboard">
+        <img src="assets/jan26-analytics-2.png" alt="Campaign Analytics">
+        <img src="assets/jan26-analytics-3.png" alt="Meta & Google Enablement">
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 7 — Mar 2026 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">24 March 2026</div>
+      <h2>API-First Retail Account & Unified Address Book</h2>
+      <p>Retail Account's API-first integration approach went live — any platform can now integrate regardless of design system, enabling native login/signup UI without SDKs or redirections.</p>
+      <p>Enhanced platform-level consent gives customers granular control over connected accounts. The long-awaited Unified Address Book enables cross-platform address reuse for frictionless checkout.</p>
+      <div class="features">
+        <span class="chip chip-purple">API-First</span>
+        <span class="chip chip-green">Unified Address Book</span>
+        <span class="chip chip-orange">Platform Consent</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 8 — Apr 1, 2026 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">1 April 2026</div>
+      <h2>NPS Survey at Scale — 79 Formats, ~7,000 Stores</h2>
+      <p>NPS surveys via SMS rolled out across 79 Reliance Retail & RBL formats. Every in-store POS purchase triggers an SMS within 1–2 hours — customers rate 0–10 and share feedback. Unique links, one-time use.</p>
+      <div class="stat-grid">
+        <div class="stat-mini"><div class="val">7.2M</div><div class="lbl">Orders Processed</div></div>
+        <div class="stat-mini"><div class="val">500K</div><div class="lbl">Daily Surveys Sent</div></div>
+        <div class="stat-mini"><div class="val">~7K</div><div class="lbl">Daily Responses</div></div>
+        <div class="stat-mini"><div class="val">79</div><div class="lbl">Formats Live</div></div>
+      </div>
+      <div class="features">
+        <span class="chip chip-green">NPS</span>
+        <span class="chip chip-blue">SMS</span>
+        <span class="chip chip-purple">79 Formats</span>
+      </div>
+      <div class="screenshot-gallery">
+        <img src="assets/nps-form-1.png" alt="NPS Form Screen 1">
+        <img src="assets/nps-form-2.png" alt="NPS Form Screen 2">
+        <img src="assets/nps-form-3.png" alt="NPS Form Screen 3">
+        <img src="assets/nps-sms.png" alt="NPS SMS Preview">
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 9 — Apr 2, 2026 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">2 April 2026</div>
+      <h2>Fayda Meter for JioMart</h2>
+      <p>Shows customers their lifetime savings and neighbourhood-level savings on JioMart. Every completed order stacks discounts onto a running total; Databricks aggregates pincode-level savings in parallel. Creates a natural social nudge — "if your neighbours are saving, why aren't you?"</p>
+      <p>Featured in JioMart's IPL season ads reaching millions.</p>
+      <div class="features">
+        <span class="chip chip-orange">Fayda Meter</span>
+        <span class="chip chip-green">JioMart</span>
+        <span class="chip chip-pink">IPL Campaign</span>
+      </div>
+      <a href="https://youtu.be/z1r24TH2VBM" target="_blank" class="yt-link" style="background: linear-gradient(135deg, #0f2e1a 0%, #1a3d1a 50%, #2e2e0f 100%);">
+        <div class="yt-link-inner">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="yt-label">Fayda Meter — JioMart IPL Promo</div>
+          <div class="yt-sub">Watch on YouTube</div>
+        </div>
+      </a>
+      <div class="screenshot-gallery" style="margin-top:12px">
+        <img src="assets/fayda-meter-1.jpg" alt="Fayda Meter on JioMart">
+        <img src="assets/fayda-meter-2.jpg" alt="Fayda Meter Neighbourhood Savings">
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 10 — Apr 3, 2026 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">3 April 2026</div>
+      <h2>RPOS Real-Time Integration — 15,000+ Stores</h2>
+      <p>UCP now ingests real-time offline transaction events from RPOS across 75+ formats and 15,000+ stores. ~1.5 million daily orders stream into UCP within minutes of checkout, replacing day-old batch data.</p>
+      <p>Offline customers are no longer invisible. Segments refresh from live store activity, campaigns land while the shopping bag is still warm, and NPS surveys arrive while the experience is fresh.</p>
+      <div class="stat-grid">
+        <div class="stat-mini"><div class="val">1.5M</div><div class="lbl">Daily Orders</div></div>
+        <div class="stat-mini"><div class="val">15K+</div><div class="lbl">Stores</div></div>
+        <div class="stat-mini"><div class="val">75+</div><div class="lbl">Formats</div></div>
+        <div class="stat-mini"><div class="val">~min</div><div class="lbl">Latency</div></div>
+      </div>
+      <div class="features">
+        <span class="chip chip-purple">Real-Time RPOS</span>
+        <span class="chip chip-green">Near Real-Time Segments</span>
+        <span class="chip chip-blue">NPS Pipeline</span>
+      </div>
+      <div class="media-section">
+        📄 <em>Architecture details available in the RPOS integration documentation</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- Release 11 — Apr 21, 2026 -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">21 April 2026</div>
+      <h2>Campaign Coupon Codes</h2>
+      <p>UCP's Campaign Manager now supports embedded coupon codes — shared (one code for all) or personalised (unique per customer). Upload a CSV/ZIP of customer-to-coupon mappings, and UCP handles matching and injection at delivery time. No more duct-taping coupons across tools.</p>
+      <p><strong>Coming next:</strong> Integration with JCP Coupons and Central Promotion Engine for real-time coupon fetching — no more pre-uploading files.</p>
+      <div class="features">
+        <span class="chip chip-orange">Shared Coupons</span>
+        <span class="chip chip-pink">Personalised Coupons</span>
+        <span class="chip chip-purple">Campaign Manager</span>
+      </div>
+      <a href="https://youtu.be/btl6bzAbJKk" target="_blank" class="yt-link" style="background: linear-gradient(135deg, #2e1a0f 0%, #3d2a1a 50%, #1a0f2e 100%);">
+        <div class="yt-link-inner">
+          <div class="yt-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="yt-label">Campaign Coupon Codes — Demo</div>
+          <div class="yt-sub">Watch on YouTube</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Release 12 — Self-Serve & QoL -->
+  <div class="release">
+    <div class="release-dot"></div>
+    <div class="release-card">
+      <div class="release-date">April 2026 — Ongoing</div>
+      <h2>Self-Serve & Adoption Scale-Up</h2>
+      <p>A focused sprint of capabilities to empower business users to operate UCP independently across all 200+ Reliance Retail formats.</p>
+      <ul class="card-list">
+        <li><strong>Custom Audiences</strong> — "Bring Your Own Audience" from external tools, use natively in UCP for segmentation and campaigns</li>
+        <li><strong>Campaign Governance</strong> — Intelligent scheduling with cooldowns & volume caps across 200+ formats, preventing customer fatigue from overlapping campaigns</li>
+        <li><strong>Enhanced Analytics</strong> — Real-time delivery tracking, live engagement updates for campaign managers</li>
+        <li><strong>Conversions Tracking</strong> — End-to-end impact analysis: actual conversions, revenue, engagement depth & ROAS</li>
+        <li><strong>Documentation Portal</strong> — Step-by-step guides, RCS preview utilities, catalogue references — enabling fully self-serve campaign execution</li>
+      </ul>
+      <div class="features">
+        <span class="chip chip-purple">Custom Audiences</span>
+        <span class="chip chip-green">Governance</span>
+        <span class="chip chip-orange">Conversions</span>
+        <span class="chip chip-blue">Analytics</span>
+        <span class="chip chip-pink">Docs Portal</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /timeline-container -->
+
+<!-- ==================== CASE STUDY ==================== -->
+<div style="border-top: 2px solid var(--accent); margin-top: 0;"></div>
+<div class="hero" style="padding: 60px 24px 40px; background: linear-gradient(180deg, rgba(0,184,148,0.10) 0%, transparent 100%);">
+  <div class="hero-badge" style="border-color: var(--green); color: var(--green); background: rgba(0,184,148,0.15);">Case Study</div>
+  <h1 style="background: linear-gradient(135deg, #fff 0%, var(--green) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Reliance Digital — Digital Discount Days</h1>
+  <p>UCP-powered end-to-end campaign: from audience segmentation through RCS delivery to offline POS conversion tracking.</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-number">1.25M</div><div class="stat-label">Recipients</div></div>
+  <div class="stat"><div class="stat-number" style="color: var(--green);">₹20.39 Cr</div><div class="stat-label">Product Revenue</div></div>
+  <div class="stat"><div class="stat-number">5,660</div><div class="stat-label">Transacting Buyers</div></div>
+  <div class="stat"><div class="stat-number">30.68%</div><div class="stat-label">Open Rate</div></div>
+  <div class="stat"><div class="stat-number">10</div><div class="stat-label">Campaigns</div></div>
+</div>
+
+<div class="timeline-container" style="padding-top: 40px;">
+
+  <!-- Case Study: Overview -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 40px;">
+    <h2 style="font-size: 20px; margin-bottom: 16px;">Campaign Overview</h2>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75; margin-bottom: 16px;">10 RCS campaigns executed between 11–19 April 2026, targeting dormant customers and JioMart electronics buyers across regions (AP/TG and Rest of India) on both Android and iOS. This was UCP's first large-scale conversion-tracked campaign for Reliance Digital.</p>
+
+    <h3 style="font-size: 15px; margin: 20px 0 12px; color: var(--accent-light);">Engagement Clusters</h3>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75;">Two distinct patterns emerged: <strong>High-open campaigns</strong> (~32–44% open rate) on Android showed strong visibility, while <strong>low-open campaigns</strong> (~7–11%) on iOS had significantly higher click-through-on-read rates (CTOR 9–15%) — indicating stronger purchase intent when the message was actually read.</p>
+  </div>
+
+  <!-- Transactor Lift -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 40px;">
+    <h2 style="font-size: 20px; margin-bottom: 16px;">Transactor Segment Lift</h2>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75; margin-bottom: 16px;">5,693 campaign recipients transacted at Reliance Digital stores during the 9-day window. These customers showed dramatically higher engagement vs. the overall audience:</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px;">
+      <div style="background: rgba(108,92,231,0.08); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 6px;">Open Rate Lift</div>
+        <div style="font-size: 28px; font-weight: 800; color: var(--accent-light);">+25%</div>
+        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">30.68% → 38.23%</div>
+      </div>
+      <div style="background: rgba(0,184,148,0.08); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 6px;">Click Rate Lift</div>
+        <div style="font-size: 28px; font-weight: 800; color: var(--green);">+314%</div>
+        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">0.56% → 2.32%</div>
+      </div>
+      <div style="background: rgba(253,121,168,0.08); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 6px;">CTOR Lift</div>
+        <div style="font-size: 28px; font-weight: 800; color: var(--pink);">+234%</div>
+        <div style="font-size: 12px; color: var(--text-secondary); margin-top: 4px;">1.82% → 6.07%</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue & Product Mix -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 40px;">
+    <h2 style="font-size: 20px; margin-bottom: 16px;">Revenue & Product Mix</h2>
+    <div class="stat-grid" style="margin-bottom: 20px;">
+      <div class="stat-mini"><div class="val">₹20.39 Cr</div><div class="lbl">Product Revenue</div></div>
+      <div class="stat-mini"><div class="val">₹36,033</div><div class="lbl">Avg Revenue / Customer</div></div>
+      <div class="stat-mini"><div class="val">₹34,145</div><div class="lbl">Avg Ticket Value</div></div>
+      <div class="stat-mini"><div class="val">5,973</div><div class="lbl">Total Tickets</div></div>
+    </div>
+
+    <h3 style="font-size: 15px; margin: 20px 0 12px; color: var(--accent-light);">Category Breakdown</h3>
+    <div style="display: grid; gap: 8px;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 120px; font-size: 12px; color: var(--text-secondary); text-align: right;">Large Appliances</div>
+        <div style="flex: 1; background: rgba(255,255,255,0.05); border-radius: 6px; height: 24px; overflow: hidden;">
+          <div style="width: 39.8%; background: var(--accent); height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600;">₹8.11 Cr</div>
+        </div>
+        <div style="width: 40px; font-size: 11px; color: var(--text-secondary);">39.8%</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 120px; font-size: 12px; color: var(--text-secondary); text-align: right;">Telecom</div>
+        <div style="flex: 1; background: rgba(255,255,255,0.05); border-radius: 6px; height: 24px; overflow: hidden;">
+          <div style="width: 33.8%; background: var(--blue); height: 100%; border-radius: 6px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600;">₹6.90 Cr</div>
+        </div>
+        <div style="width: 40px; font-size: 11px; color: var(--text-secondary);">33.8%</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 120px; font-size: 12px; color: var(--text-secondary); text-align: right;">Entertainment</div>
+        <div style="flex: 1; background: rgba(255,255,255,0.05); border-radius: 6px; height: 24px; overflow: hidden;">
+          <div style="width: 9.3%; background: var(--green); height: 100%; border-radius: 6px; min-width: 60px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600;">₹1.91 Cr</div>
+        </div>
+        <div style="width: 40px; font-size: 11px; color: var(--text-secondary);">9.3%</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 120px; font-size: 12px; color: var(--text-secondary); text-align: right;">IT</div>
+        <div style="flex: 1; background: rgba(255,255,255,0.05); border-radius: 6px; height: 24px; overflow: hidden;">
+          <div style="width: 8.9%; background: var(--orange); height: 100%; border-radius: 6px; min-width: 60px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600;">₹1.81 Cr</div>
+        </div>
+        <div style="width: 40px; font-size: 11px; color: var(--text-secondary);">8.9%</div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 120px; font-size: 12px; color: var(--text-secondary); text-align: right;">Small Appliances</div>
+        <div style="flex: 1; background: rgba(255,255,255,0.05); border-radius: 6px; height: 24px; overflow: hidden;">
+          <div style="width: 6.7%; background: var(--pink); height: 100%; border-radius: 6px; min-width: 60px; display: flex; align-items: center; padding-left: 8px; font-size: 11px; font-weight: 600;">₹1.37 Cr</div>
+        </div>
+        <div style="width: 40px; font-size: 11px; color: var(--text-secondary);">6.7%</div>
+      </div>
+    </div>
+
+    <h3 style="font-size: 15px; margin: 24px 0 12px; color: var(--accent-light);">Top Brands</h3>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75;">Samsung (₹3.98 Cr) led the pack, followed by Apple (₹3.19 Cr) and LG (₹2.59 Cr). Top SKUs included Voltas & LG split ACs (seasonal demand) and Apple iPhone 17 Pro Max.</p>
+
+    <h3 style="font-size: 15px; margin: 24px 0 12px; color: var(--accent-light);">Geography</h3>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75;">South zone dominated at 44.5% of revenue (₹9.07 Cr), followed by West (20.3%), East (19.4%), and North (15.9%). Karnataka, Maharashtra, and Tamil Nadu were the top three contributing states.</p>
+  </div>
+
+  <!-- Key Takeaway -->
+  <div style="background: linear-gradient(135deg, rgba(108,92,231,0.12) 0%, rgba(0,184,148,0.08) 100%); border: 1px solid var(--accent); border-radius: 16px; padding: 32px; margin-bottom: 40px;">
+    <h2 style="font-size: 20px; margin-bottom: 12px;">Key Takeaway</h2>
+    <p style="color: var(--text); font-size: 15px; line-height: 1.75;">This was UCP's first large-scale conversion-tracked campaign for Reliance Digital — establishing a replicable playbook for electronics retail campaigns. From audience segmentation through RCS delivery to offline POS conversion tracking, the entire workflow was powered end-to-end by UCP.</p>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75; margin-top: 12px;">Saturday 19 April alone generated ₹4.08 Cr (20% of total revenue in one day), highlighting strong weekend purchase behaviour that future campaigns can optimise around.</p>
+  </div>
+
+</div>
+
+<!-- ==================== AI NATIVE UCP ==================== -->
+<div style="border-top: 2px solid var(--accent); margin-top: 0;"></div>
+<div class="hero" style="padding: 60px 24px 40px; background: linear-gradient(180deg, rgba(253,121,168,0.10) 0%, rgba(108,92,231,0.08) 60%, transparent 100%);">
+  <div class="hero-badge" style="border-color: var(--pink); color: var(--pink); background: rgba(253,121,168,0.15);">What's Next</div>
+  <h1 style="background: linear-gradient(135deg, #fff 0%, var(--pink) 50%, var(--accent-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">AI Native UCP</h1>
+  <p>The next-generation CDP — a complete end-to-end marketing platform in a single chat interface.</p>
+</div>
+
+<div class="timeline-container" style="padding-top: 40px;">
+
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 40px;">
+    <h2 style="font-size: 20px; margin-bottom: 16px;">The Vision</h2>
+    <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.75; margin-bottom: 16px;">UCP is evolving into a fully AI-native Customer Data Platform. The entire marketing workflow — from data exploration to campaign execution to retrospective analysis — happens natively with AI models powering every step, all within a simple conversational interface.</p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px;">
+      <div style="background: rgba(108,92,231,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">💬</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Speak to Your Data</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">Query and understand customer bases through natural language — no SQL or dashboards needed</div>
+      </div>
+      <div style="background: rgba(0,184,148,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">👥</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">AI-Built Cohorts</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">AI suggests and builds audience segments based on your goals and data understanding</div>
+      </div>
+      <div style="background: rgba(253,203,110,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">⚡</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Configure & Execute</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">Set up and launch multi-channel campaigns with AI-recommended targeting, timing, and channel mix</div>
+      </div>
+      <div style="background: rgba(253,121,168,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">🎨</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Generate Creatives</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">AI produces relevant campaign creatives tailored to the audience and channel</div>
+      </div>
+      <div style="background: rgba(116,185,255,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">📊</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Retrospective Analysis</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">Post-execution analysis of what worked and what didn't — delivered conversationally</div>
+      </div>
+      <div style="background: rgba(108,92,231,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">🔍</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Competitor Intelligence</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">Data scraping and competitive analysis surfaced alongside campaign insights</div>
+      </div>
+      <div style="background: rgba(0,184,148,0.06); border: 1px solid var(--border); border-radius: 12px; padding: 18px;">
+        <div style="font-size: 18px; margin-bottom: 6px;">🧭</div>
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 4px;">Next-Best-Action</div>
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.6;">AI recommends what to do next based on performance, behaviour, and market signals</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI Native Demo Video -->
+  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin-bottom: 40px;">
+    <h2 style="font-size: 20px; margin-bottom: 16px;">See It in Action</h2>
+    <a href="https://youtu.be/9KCFnV6kXEU" target="_blank" class="yt-link" style="background: linear-gradient(135deg, #1a0f2e 0%, #3d1a2a 40%, #2e0f1a 70%, #0f1a2e 100%); aspect-ratio: 16/9;">
+      <div class="yt-link-inner">
+        <div class="yt-play" style="width:72px; height:72px; border-radius:16px;"><svg viewBox="0 0 24 24" style="width:32px; height:32px;"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="yt-label" style="font-size:15px;">AI Native UCP — Full Demo</div>
+        <div class="yt-sub">Watch on YouTube</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<div class="footer-note">
+  <p>This is a living document. Additional releases and updates will be appended as they ship.</p>
+  <p style="margin-top:8px; font-size:11px; opacity:0.5;">Unified Customer Platform — Fynd × Reliance Retail</p>
+</div>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

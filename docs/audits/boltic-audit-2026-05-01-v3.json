@@ -1,0 +1,72 @@
+{
+  "page": "boltic/index.html",
+  "spec": "docs/boltic-spec.md",
+  "source_compilation": "docs/boltic-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_type": "correction",
+  "previous_audits": [
+    "docs/audits/boltic-audit-2026-05-01.json",
+    "docs/audits/boltic-audit-2026-05-01-delta.json"
+  ],
+  "previous_score": 91,
+  "score": 89,
+  "grade": "B+",
+  "weighted_pass": true,
+  "dimensional_pass": true,
+  "verdict": "PASS — ready to share with Apex. v0.9.5 reverts a category error introduced in v0.9.4: the AJIO × JCP test-automation claim belongs to Ratl, not Boltic. The home register's 'Boltic + Ratl · AI-first testing' line conflates the two; Ratl is the testing platform, Boltic is the workflow-automation OS that may orchestrate around it but does not itself run the 1,300 test cases. Honest position restored: Boltic = Live · Platform (Fynd internal); Boltic-for-RR = Building (no Live RR deployment of Boltic alone documented in source).",
+  "correction_summary": {
+    "what_was_wrong": "v0.9.4 added a §03 'Live for Reliance Retail · AJIO × JCP' section with two `Live · RR` cards attributing the AJIO×JCP test estate to Boltic. This was a category error — Ratl owns AI-first testing; Boltic owns workflow automation. Source material does not document a Boltic-only Live RR deployment.",
+    "category_error_origin": "v0.1 audit C1 finding interpreted the home page's 'Boltic + Ratl. AI-first testing...' as joint Boltic+Ratl evidence and surfaced it on /boltic. The correct surfacing is on /ratl, not /boltic.",
+    "what_was_reverted": [
+      "Removed §03 'Live for Reliance Retail · what runs on AJIO × JCP' and both Live · RR cards (AI-first testing 1,300 cases, vibe-coded prototypes inside JCP)",
+      "Renumbered §04→§03, §05→§04, §06→§05, §07→§06, §08→§07; section labels now contiguous §01-§07 (was §01-§08)",
+      "Hero stat tile 4 reverted: 'Live RR estate · AJIO × JCP · 1,300 test cases' → 'Deployment · Cloud or your-cloud · Boltic-managed or Reliance-cloud self-host'",
+      "Hero section-label reverted: '...Live on AJIO × JCP · Next RR beachhead in build' → '...Platform live on Fynd · Reliance Retail deployment scoped'",
+      "Hero subhead 1 rewritten to surface only Boltic-specific platform telemetry: '198 workflows · 1.79M monthly executions on the live console' (sourced from slide 27 screenshot)",
+      "§02 module strip intro: dropped 'and on the AJIO × JCP test estate' → 'running on Fynd's own instance'",
+      "§03 (was §04) Boltic-for-Retail intro: dropped 'Beyond the AJIO × JCP test estate' → 'Three pillars where Boltic is being scoped...'",
+      "§03 capability pillar pills: 'Building · For RR' → 'Building · For RIL' (restored to canonical naming used elsewhere on register)",
+      "§04 (was §05) Inside Boltic intro: dropped 'and the AJIO × JCP test estate' → 'as it runs Fynd's own operations'",
+      "§05 (was §06) In-flight intro: dropped 'Beyond AJIO × JCP, three deployment threads' → 'Three deployment threads being scoped for the first Reliance Retail beachheads'",
+      "§07 (was §08) Sources: dropped Source 03 home-register card; restored 2-card layout (deck + cover letter)"
+    ]
+  },
+  "dimensions": {
+    "source_traceability":   {"score": 90, "threshold": 75, "pass": true,  "delta_from_v3_to_v4": -2,  "note": "Slight drop because the §05 caption no longer carries the 198/1.79M claim with explicit deck-slide-27 attribution — both still cited in hero source line"},
+    "tone_of_voice":         {"score": 92, "threshold": 80, "pass": true,  "delta": 0},
+    "honesty_register":      {"score": 95, "threshold": 80, "pass": true,  "delta": 5,  "note": "Honesty register IMPROVED — removing the false `Live · RR` Boltic claim is the correct register move. Page no longer overclaims by attributing Ratl's deployment to Boltic."},
+    "structural_compliance": {"score": 92, "threshold": 85, "pass": true,  "delta": 0},
+    "visual_completeness":   {"score": 95, "threshold": 85, "pass": true,  "delta": 0},
+    "cross_page_consistency":{"score": 70, "threshold": 70, "pass": true,  "delta": -15, "note": "Catalog still cites Live · 463M+ runs for Boltic — that figure remains unverified against source. Acceptable but flagged."}
+  },
+  "remaining_findings": [
+    {
+      "id": "C2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog Boltic row",
+      "issue": "Catalog (catalog/index.html:244, 363) cites 'Live · 463M+ runs · 500+ integrations' for Boltic. The 463M+ figure is not in the source compilation folder and is not surfaced on /boltic. Either the catalog has an unsourced number, or /boltic should add it with citation.",
+      "fix": "Verify the 463M+ figure with the Boltic team. If real and citable, add to a hero stat tile with a Source line. If unverified, soften the catalog row.",
+      "files": ["catalog/index.html:244", "catalog/index.html:363"],
+      "auto_fixable": false
+    },
+    {
+      "id": "X1",
+      "severity": "INFO",
+      "dimension": "cross_page_consistency",
+      "section": "/ratl page (sibling)",
+      "issue": "The AJIO × JCP test-automation evidence (1,300 cases) and vibe-coded prototypes inside JCP belong on /ratl, not /boltic. Currently the home register surfaces the joint 'Boltic + Ratl' framing in one card; /ratl page should be checked to ensure it carries this Live · RR evidence.",
+      "fix": "Audit /ratl separately to confirm it surfaces the AJIO × JCP test-automation Live evidence with appropriate pills + sources. Out of scope for this Boltic audit.",
+      "files": ["ratl/index.html"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Honest register: page no longer claims Live RR Boltic deployments without source. Boltic = Live · Platform; Boltic-for-RR = Building.",
+    "Hero leads with a sourced Boltic-specific stat (198 workflows · 1.79M monthly executions, Sep-2025 sample from slide 27 screenshot) instead of a positioning claim.",
+    "Section labels contiguous §01 → §07; clean update from the v0.9.4 §01 → §08 numbering.",
+    "Tone-of-voice fixes from v0.9.4 all preserved: no `today`, `production operations`, `right now`, `from day one`, `earns its rent`, `ready for` constructions remain.",
+    "Inline source citations in hero, §02, §03 intros all retained; §05 Workflow Analytics caption still date-binds the screenshot to Sep-2025.",
+    "Reliance-only filter still applied: third-party customer logos, brand testimonials, brand-named workflow screenshots all remain skipped per spec D4."
+  ]
+}

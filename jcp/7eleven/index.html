@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>7-Eleven · JCP · Fynd × RRVL · JPL</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <a href="/jcp">JCP</a> <span class="sep">/</span> <span style="color: var(--ink);">7-Eleven</span></div>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/jcp" class="subnav-link">Overview</a><a href="/jcp/channels" class="subnav-link">Channels</a><a href="/jcp/cataloging" class="subnav-link">AI Cataloging</a><a href="/jcp/7eleven" class="subnav-link active">7-Eleven</a><a href="/jcp/release-notes" class="subnav-link">Release Notes</a><a href="/rcpl" class="subnav-link">RCPL</a></div>
+  <div class="section-label mb-3">JCP · 7-Eleven · Live</div>
+  <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">7-Eleven.</h1>
+  <p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">60+ stores on JCP. Three Fynd-built platforms · 7eleven.in micro-site · Restaurant Aggregator app (Zomato + Swiggy) · Operations &amp; Analytics dashboard.</p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+    <div class="card p-4"><div class="cap-num mb-1">Stores live</div><div class="display-2 text-3xl" style="color: var(--ink);">60+</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Aggregators</div><div class="display-2 text-3xl" style="color: var(--ink);">2</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Zomato · Swiggy</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Micro-site</div><div class="display-2 text-3xl accent">Live</div><div class="text-xs mt-1" style="color: var(--ink-muted);"><a href="https://7eleven.in/" target="_blank" rel="noopener">7eleven.in</a></div></div>
+    <div class="card p-4"><div class="cap-num mb-1">SAP posting</div><div class="display-2 text-3xl accent">Auto</div><div class="text-xs mt-1" style="color: var(--ink-muted);">order-level · cancellation logic</div></div>
+  </div>
+</div></section>
+
+<!-- §1 · 7eleven.in micro-site -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · 7eleven.in · brand micro-site</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Self-serve digital information hub.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Operated by the 7-Eleven team. Three publishing modules · zero engineering dependency for routine updates.</p>
+
+<div class="grid md:grid-cols-3 gap-4 mb-10">
+  <div class="card p-6">
+    <div class="cap-num mb-2">In-store offer publishing</div>
+    <p class="text-sm" style="color: var(--ink);">Self-serve CMS workflow · publish, update, retire promotional offers across the store network.</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2">Contest T&amp;Cs</div>
+    <p class="text-sm" style="color: var(--ink);">Structured publishing module for legal disclosures, eligibility criteria, T&amp;Cs for consumer contests and campaigns.</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2">Nutritional information repository</div>
+    <p class="text-sm" style="color: var(--ink);">Product-level layer · nutritional data, ingredients, regulatory disclosures · FSSAI labelling compliance.</p>
+  </div>
+</div>
+
+<div class="card overflow-hidden">
+  <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/website.png" target="_blank">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/website.png" alt="7eleven.in micro-site" style="width:100%;display:block;" loading="lazy" />
+  </a>
+  <div class="p-3 text-xs" style="color: var(--ink-muted);">7eleven.in · home · 1 of 1</div>
+</div>
+</div></section>
+
+<!-- §2 · Restaurant Aggregator App -->
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Restaurant Aggregator App · multi-platform order management</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One console for Zomato + Swiggy operations.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Removes per-store operational overhead of managing each aggregator separately. Order processing · access control · menu authoring · store serviceability · inventory sync · SAP posting — all consolidated into one platform.</p>
+
+<!-- 2.1 Order processing & invoicing -->
+<div class="card p-6 mb-5">
+  <div class="cap-num mb-3">2.1 · Order processing &amp; invoicing</div>
+  <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Channel + category-specific invoices.</h3>
+  <ul class="text-sm space-y-2 mb-6" style="color: var(--ink);">
+    <li>· Custom invoice templates · separate logic for FMCG vs Fresh articles · correct tax treatment per product type.</li>
+    <li>· New-order notification with re-triggering ringer every 2 min until acknowledged · zero missed orders at peak.</li>
+    <li>· OTP &amp; rider details (name, contact) surfaced at order level for handover.</li>
+    <li>· Masked customer contact for substitutes / item-unavailability calls · privacy-compliant.</li>
+  </ul>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/oms-1.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/oms-1.png" alt="OMS · order list" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/oms-2.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/oms-2.png" alt="OMS · order detail" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/oms-3.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/oms-3.png" alt="OMS · invoice / handover" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+  </div>
+</div>
+
+<!-- 2.2 Menu management -->
+<div class="card p-6 mb-5">
+  <div class="cap-num mb-3">2.2 · Menu management</div>
+  <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Independent menu per aggregator.</h3>
+  <ul class="text-sm space-y-2 mb-6" style="color: var(--ink);">
+    <li>· Separate menu authoring for Swiggy vs Zomato at category and sub-category level.</li>
+    <li>· Store-level pricing, assortment, availability customisation.</li>
+    <li>· Add-on item support · base + add-on priced and tracked separately for clean upsell economics.</li>
+  </ul>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/menu-management-1.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/menu-management-1.png" alt="Menu authoring · category-level" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/menu-management-2.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/menu-management-2.png" alt="Menu authoring · item / add-on" style="width:100%;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+  </div>
+</div>
+
+<!-- 2.3 Store serviceability -->
+<div class="card p-6 mb-5">
+  <div class="cap-num mb-3">2.3 · Store serviceability</div>
+  <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Slot-based weekly schedule.</h3>
+  <p class="text-sm mb-6" style="color: var(--ink);">Store operating timing at slot level on a weekly schedule · in-day breaks, temporary closures, public holidays, exception days · reflected on both aggregator apps.</p>
+  <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/store-management.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/store-management.png" alt="Store management · slot schedule" style="width:100%;max-width:900px;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+</div>
+
+<!-- 2.4 Sales posting & financial sync -->
+<div class="card p-6 mb-5">
+  <div class="cap-num mb-3">2.4 · Sales posting &amp; financial sync</div>
+  <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Automated SAP posting.</h3>
+  <p class="text-sm mb-6" style="color: var(--ink);">Order-level sales data from both aggregators auto-posted to SAP · custom logic for customer-initiated vs seller-initiated cancellations · revenue, refunds, reconciliation entries classified at source.</p>
+  <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/integrations.png" target="_blank"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/7eleven/integrations.png" alt="Aggregator integrations · Zomato + Swiggy" style="width:100%;max-width:900px;border-radius:8px;border:1px solid var(--border);" loading="lazy" /></a>
+</div>
+
+<!-- 2.5 Access & identity -->
+<div class="card p-6 mb-5">
+  <div class="cap-num mb-3">2.5 · Access &amp; identity</div>
+  <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Granular role permissioning.</h3>
+  <p class="text-sm" style="color: var(--ink);">Store-level and role-level access · store associate, store manager, area manager, central ops, finance · each sees only stores and modules relevant to their role.</p>
+</div>
+
+<!-- 2.6 Inventory management -->
+<div class="card p-6">
+  <div class="cap-num mb-3">2.6 · Inventory management</div>
+  <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Multi-channel inventory sync.</h3>
+  <ul class="text-sm space-y-2" style="color: var(--ink);">
+    <li>· Automated and manual inventory updates kept in sync across Zomato, Swiggy, in-store POS, and SAP.</li>
+    <li>· Category-level stock on/off · toggle entire categories offline (e.g. coffee machine down) to prevent unfulfillable orders.</li>
+  </ul>
+</div>
+</div></section>
+
+<!-- §3 · Operations & Analytics Dashboard -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Operations &amp; Analytics dashboard</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Decision-ready data layer.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Layered on top of the aggregator app · real-time and historical visibility into the online food delivery business · for central operations and category teams.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div class="card p-6"><div class="cap-num mb-2">Order-level data</div><p class="text-sm" style="color: var(--ink);">Every order across stores and aggregators · status · value · timing · exception flags.</p></div>
+  <div class="card p-6"><div class="cap-num mb-2">Item-level transaction data</div><p class="text-sm" style="color: var(--ink);">Granular item-wise sales and movement across the network · SKU-level performance.</p></div>
+  <div class="card p-6"><div class="cap-num mb-2">Order &amp; cancellation trends</div><p class="text-sm" style="color: var(--ink);">Time-series volume + cancellation segmented by store, channel, reason · surfaces operational bottlenecks.</p></div>
+  <div class="card p-6"><div class="cap-num mb-2">Inventory-level information</div><p class="text-sm" style="color: var(--ink);">Live + historical positions feeding demand sensing · supports forecasting and replenishment planning.</p></div>
+</div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

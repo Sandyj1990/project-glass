@@ -1,0 +1,156 @@
+{
+  "page": "granary/index.html",
+  "spec": "docs/granary-spec.md",
+  "audit_date": "2026-05-01",
+  "auditor_skills": ["website-tone-of-voice", "website-page-reviewer"],
+  "score": 81,
+  "grade": "B",
+  "weighted_pass": true,
+  "dimensional_pass": false,
+  "blocking_dimension": "source_traceability",
+  "verdict": "DO NOT SHARE WITH APEX until Source Traceability blocker (S1) is resolved. Weighted score passes 75-threshold, but Source Traceability dimension fails its 75-threshold and is non-negotiable per audit-framework §5.",
+  "dimensions": {
+    "source_traceability": {"score": 65, "threshold": 75, "pass": false},
+    "tone_of_voice":      {"score": 80, "threshold": 80, "pass": true},
+    "honesty_register":   {"score": 90, "threshold": 80, "pass": true},
+    "structural_compliance": {"score": 95, "threshold": 85, "pass": true},
+    "visual_completeness":{"score": 95, "threshold": 85, "pass": true},
+    "cross_page_consistency": {"score": 70, "threshold": 70, "pass": true}
+  },
+  "findings": [
+    {
+      "id": "S1",
+      "severity": "CRITICAL",
+      "dimension": "source_traceability",
+      "section": "Hero + §04",
+      "issue": "Headline outcomes (+3.8pp OSA, −19.5% inventory, −28% shelving events) are presented as 'Cortex Granary case study · 17-Apr-2026 · Aushin Ganguli' but the PDF in the dump folder titled 'Granary Cortex _ Assortment & Forecasting.pdf' is actually 'Cortex: Unified Planning System' (© 2025 Fynd) and pdftotext extraction returns no occurrences of 3.8 / 19.5 / 28 / shelving / on-shelf availability. These are inherited from v0.8.4 (which linked to a Drive URL) without a source-pipeline check. The numbers MAY exist in the PDF as chart images that pdftotext can't read, OR in a separate case-study document not in the dump folder.",
+      "fix": "Either: (a) confirm the actual case-study source file, replace the embedded PDF + Sources block reference with the correct file; (b) host the correct PDF on GCS and re-embed; (c) soften the claims to 'Phase 1 directional results' and remove the case-study attribution until sourced.",
+      "files": ["granary/index.html:88-92", "granary/index.html:248-251", "granary/index.html:258-261", "granary/index.html:417-422"],
+      "auto_fixable": false
+    },
+    {
+      "id": "S2",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§01, §02, §06",
+      "issue": "MAPE 41% (from 55%+ baseline) appears 4× on the page but is not in any file in the source compilation folder. Inherited from v0.8.4 with no current-source check. Possible source: research subpage at /granary/research/transforming-retail-forecasting (which has the same authors named) — but that is sibling content, not the 28-Apr update set the rest of the page is anchored to.",
+      "fix": "Either cite the research subpage explicitly in §11 Sources as the MAPE-41% citation, OR confirm the figure is in a status-report doc and add it to Sources. Consider adding 'Source · /granary/research/transforming-retail-forecasting' inline next to the first MAPE mention.",
+      "files": ["granary/index.html:122", "granary/index.html:160", "granary/index.html:325"],
+      "auto_fixable": false
+    },
+    {
+      "id": "S3",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "§11 Sources",
+      "issue": "Sources block lists `Granary Cortex _ Assortment & Forecasting.pdf` as the case-study citation. The file's actual content title is 'Cortex: Unified Planning System' — either the file is mislabelled by Fynd or the page is citing the wrong file. Consequence: an Apex reviewer who downloads the PDF gets a different deck than the page led them to expect.",
+      "fix": "Resolve filename vs content mismatch. If file is correct but mislabelled, update the §11 caption to 'Cortex: Unified Planning System (filed as Granary Cortex · Assortment & Forecasting)'. If wrong file, swap.",
+      "files": ["granary/index.html:417-422"],
+      "auto_fixable": false
+    },
+    {
+      "id": "T1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05",
+      "issue": "Banned filler verb 'unlocks' (tone-of-voice §7): 'real-time data refresh unlocks rollout to 3,000–4,000 stores.'",
+      "fix": "Replace with concrete verb: 'real-time data refresh lets the rollout to 3,000-4,000 stores begin.' Or restructure: 'with real-time data refresh in place, the rollout extends to 3,000-4,000 stores.'",
+      "files": ["granary/index.html:285"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero",
+      "issue": "Banned filler verb 'drives' (tone-of-voice §7): 'Agentic planning and assortment platform purpose-built for grocery retail · drives smart replenishment, perishable inventory management…' Hero is the most-read part of the page; this is high read-through.",
+      "fix": "Rewrite to a concrete verb: 'runs smart replenishment, perishable inventory management, and category optimisation across…' Or restructure: 'Replenishment, perishable inventory management, and category optimisation across RCPL · Smart Bazaar + Smart Point · FreshPik run on this platform.'",
+      "files": ["granary/index.html:82"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§06",
+      "issue": "'Today, ~15-20% is built.' opens with the banned word 'today' (tone-of-voice §3). Specific date is more authoritative.",
+      "fix": "Replace with: 'As of 30 - Apr - 2026, ~15-20% is built.' Same fix pattern applies to §03 line 176 ('Deployed in SIT today') and §07 line 343 ('5 of 37 routes wired today') — replace each 'today' with either the page date or 'in production'/'in SIT'.",
+      "files": ["granary/index.html:313", "granary/index.html:176", "granary/index.html:343"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T4",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01, §02, §06 (section labels and column headers)",
+      "issue": "'today' appears in section labels ('01 · Status today', '06 · The 13-module vision · built today vs full') and column headers ('Built today', 'Modules running today', 'What operators see today'). Strict tone-of-voice §3 bans 'today'; pragmatic precedent on /hirefirst uses similar phrasing for status framing. Borderline.",
+      "fix": "Optional. Either accept as a section-label exception (matches /hirefirst pattern), or replace with: '01 · Status (28-Apr-2026)' / '06 · 13-module vision · built vs full' / column header 'Built'. User decision.",
+      "files": ["granary/index.html:102", "granary/index.html:110", "granary/index.html:154", "granary/index.html:185", "granary/index.html:311", "granary/index.html:317"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T5",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "Hero",
+      "issue": "'How Fynd transforms Reliance grocery' uses 'transforms' — not on the explicit ban list but adjacent in spirit to 'transformative'. Inherited from v0.8.4 canonical lede.",
+      "fix": "Optional. Could be tightened: 'How Fynd built Reliance grocery's planning brain.' Keeps the framing without the verb. Defer if user wants the canonical lede preserved across pages (likely the case).",
+      "files": ["granary/index.html:84"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "catalog/index.html",
+      "issue": "Catalog row for 'Assortment Intelligence Engine' still says 'Live · 10 Mumbai stores Phase 1 · Food + HPC SBU/Segment combos' but the page now says 11 Mumbai stores · 10 segments. Direct number mismatch between catalog and the page Apex would click into.",
+      "fix": "Edit catalog row: 'Live · 11 Mumbai stores Phase 1 · 10 segments (Food + HPC) · Smart Bazaar + Smart Point validating'.",
+      "files": ["catalog/index.html:221"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "catalog/index.html",
+      "issue": "Catalog still lists 'Price & Promotion Intelligence · Live · cross-elasticity · margin protection · DRI Granary product'. Decision D4 dropped this from /granary because no source supports the Live claim. Catalog now overclaims relative to the page.",
+      "fix": "Either delete the catalog row, or downgrade pill to Build/Roadmap and add a source. Recommend: delete until Granary product team confirms a deployment with a citable source.",
+      "files": ["catalog/index.html:222"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "granary/research/transforming-retail-forecasting/index.html",
+      "issue": "Research subpage (linked from /granary subnav) still says 'The forecasts feed Cortex's daily prod deploys for the Maharashtra grocery rollout. 150+ users trained.' This is the old framing that the parent page has moved past. Apex who clicks Research from the subnav lands on stale lede.",
+      "fix": "Edit to current framing: 'The forecasts feed Cortex's daily prod deploys for the 11-store Phase 1 pilot in Mumbai. ODBC + SAP integration in finalisation; rollout extends to 3K-4K stores once the data pipeline closes.'",
+      "files": ["granary/research/transforming-retail-forecasting/index.html:130"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "Hero section-label",
+      "issue": "'Track 03 · Grocery AI Platform · Live + Building' uses an informal pill-fusion. The trichotomy Live/Building/Roadmap is clear; 'Live + Building' is grammatically fine but slightly less crisp than 'Live · Phase 1' or 'Live · scaling'.",
+      "fix": "Optional. Could simplify to 'Live · Phase 1' or keep as-is.",
+      "files": ["granary/index.html:77"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hirefirst-style honesty pills (Live / Building / Roadmap) consistently applied throughout — no overclaims at the section level.",
+    "§06 vision table is the page's strongest section — adopts the Status Report's 13-module list verbatim with built-% per module; closes with the '~15-20% of full vision built' line that earns Apex trust.",
+    "§03 Command Centre delivers visual evidence (6 real product screenshots) instead of describing — matches the user's specific request to counter any 'everything is in build' read.",
+    "§11 Sources block is comprehensive: lists every file actually cited with file paths; matches the §1 source-inventory in the spec.",
+    "PDF embed in §04 with inline reading + 'open in new tab' chip gives Apex two read paths to the case-study source.",
+    "Date format DD-MMM-YYYY consistent throughout — no slash dates, no month-name spell-outs.",
+    "Cross-page card refresh on home page already done — eliminating one source of drift before audit caught it."
+  ],
+  "audit_methodology_notes": [
+    "Source verification used pdftotext for the Cortex case-study PDF — image-based content (charts) would not be picked up. Recommendation: human read of pages 1-24 of the PDF to confirm whether the +3.8pp / -19.5% / -28% figures appear graphically.",
+    "Tone-of-voice phase ran exhaustive grep for the Section 7 banned-words list and Section 3 banned constructions. Did not run a pre-publish-checklist line-by-line because that's the author's pass; the audit catches violations the author missed.",
+    "Cross-page sweep limited to home page (index.html), catalog (catalog/index.html), and the research subpage (granary/research/transforming-retail-forecasting/index.html). Mega-menu blocks duplicated across ~25 page files were not audited individually."
+  ]
+}

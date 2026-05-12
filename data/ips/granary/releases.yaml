@@ -1,0 +1,9 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2025-11-13
+    title: Granary Cortex · live on Maharashtra rollout
+    summary: 150+ users trained
+  - date: 2025-12-01
+    title: Assortment Intelligence · 10 Mumbai stores phase 1
+    summary: −28% shelving events

@@ -1,0 +1,77 @@
+{
+  "s04": {
+    "title": "",
+    "n_images": 6,
+    "n_text_blocks": 31
+  },
+  "s11": {
+    "title": "Impetus: Digital Twin",
+    "n_images": 1,
+    "n_text_blocks": 10
+  },
+  "s12": {
+    "title": "Impetus: AI Agents",
+    "n_images": 6,
+    "n_text_blocks": 16
+  },
+  "s13": {
+    "title": "Impetus Command Center [1/2]",
+    "n_images": 0,
+    "n_text_blocks": 15
+  },
+  "s14": {
+    "title": "Impetus Command Center [2/2]",
+    "n_images": 2,
+    "n_text_blocks": 3
+  },
+  "s15": {
+    "title": "Impetus Platform: Agentic Control Tower",
+    "n_images": 1,
+    "n_text_blocks": 2
+  },
+  "s16": {
+    "title": "Impetus Platform: Store Intelligence",
+    "n_images": 1,
+    "n_text_blocks": 2
+  },
+  "s17": {
+    "title": "",
+    "n_images": 3,
+    "n_text_blocks": 7
+  },
+  "s18": {
+    "title": "",
+    "n_images": 4,
+    "n_text_blocks": 3
+  },
+  "s19": {
+    "title": "Impetus AI Native Cataloging & Photoshoots",
+    "n_images": 4,
+    "n_text_blocks": 9
+  },
+  "s20": {
+    "title": "End-to-End AI Marketing Platform",
+    "n_images": 0,
+    "n_text_blocks": 38
+  },
+  "s21": {
+    "title": "",
+    "n_images": 4,
+    "n_text_blocks": 5
+  },
+  "s22": {
+    "title": "Generative Media: Social Media Reach",
+    "n_images": 10,
+    "n_text_blocks": 1
+  },
+  "s23": {
+    "title": "Impetus Platform: Manufacturing Execution System",
+    "n_images": 2,
+    "n_text_blocks": 10
+  },
+  "s24": {
+    "title": "App Feature Map",
+    "n_images": 1,
+    "n_text_blocks": 3
+  }
+}

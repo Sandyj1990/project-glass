@@ -1,0 +1,187 @@
+{
+  "page": "pixelbin/glamar/index.html",
+  "spec": null,
+  "spec_note": "No spec file exists. Audit run against default standards in references/audit-framework.md and website-tone-of-voice.md.",
+  "audit_date": "2026-05-02",
+  "score": 82,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 78,
+    "tone_of_voice": 80,
+    "honesty_register": 72,
+    "visual_completeness": 95,
+    "cross_page_consistency": 75
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "CRITICAL",
+      "dimension": "honesty_register",
+      "section": "hero · §01",
+      "issue": "Hero stat tile + section H2 say '200+ AR / VR experiences' with sub-context 'live · Reliance brands', framing the 200+ count as Reliance-side adoption. The Accenture deck attributes 200+ AR/VR experiences to the GlamAR platform globally (slide 41), not to Reliance brands. No source supports a 200+ count of Reliance-brand experiences in production.",
+      "fix": "Rewrite tile sub-line to 'GlamAR platform · global' (or drop sub-line). Rewrite §01 H2 to 'GlamAR platform ships 200+ AR / VR experiences globally.' followed by the Reliance-positioning paragraph already present.",
+      "files": ["pixelbin/glamar/index.html:100", "pixelbin/glamar/index.html:110"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "CRITICAL",
+      "dimension": "source_traceability",
+      "section": "hero",
+      "issue": "Tiles say '40% returns · vs no-AR baseline', '+106% revenue/visit · vs no-AR baseline', '+90% engagement · product interaction'. Pitch deck slide 5 cites the numbers as third-party industry stats (Singlegrain, PRNewswire, Postindustria — generic AR benchmarks), not from a controlled no-AR baseline study on the GlamAR platform. The 'vs no-AR baseline' framing overclaims what the source supports.",
+      "fix": "Change context line on each tile to the original attribution, e.g. 'industry · Singlegrain' / 'industry · PRNewswire' / 'industry · Postindustria'. Keep the numbers but drop the implied causal framing.",
+      "files": ["pixelbin/glamar/index.html:101", "pixelbin/glamar/index.html:102", "pixelbin/glamar/index.html:103"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "hero",
+      "issue": "Engagement-lift tile shows '+90%'. Pitch deck slide 5 cites 94% (Postindustria). The page has rounded down without indicating approximation. Either use the verbatim 94% or prefix with '~' per tone-of-voice §4.",
+      "fix": "Change '+90%' to '+94%' (verbatim source) or to '~+90%' if approximation is intended.",
+      "files": ["pixelbin/glamar/index.html:103"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§04",
+      "issue": "Coverage section lists 9 categories including 'Apparel'. Slide 29 (per provided extract) lists 8 unique categories (Home Decor & Furniture, Eyewear, Jewelry, Luggage, Skincare, Hair Salon, Makeup, Accessories). Apparel is not in the source.",
+      "fix": "Drop the 'Apparel' pill (line 256) unless an additional source supports it.",
+      "files": ["pixelbin/glamar/index.html:256"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H5",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05",
+      "issue": "§05 Sources block violates tone-of-voice §3 default-no rule. The page already cites both source artefacts inline via cap-num eyebrows (lines 105, 113, 201, 214, 221, 228, 239). The Sources block adds no disambiguation and the reader does not need to navigate to the .pptx. Pattern matches the JCP cluster removals during feedback rounds 3-4.",
+      "fix": "Remove the entire §05 Sources section (lines 261-276). Keep the inline cap-num source lines that already cover provenance.",
+      "files": ["pixelbin/glamar/index.html:261-276"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H6",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "multiple",
+      "issue": "Date-format inconsistency. Hero (line 105) and §01 (line 113) and Sources block (line 272) use 'DD-MMM-YYYY' (16-Apr-2026). Case-card sources (lines 214, 221) use 'MMM-DD-YYYY' (Apr-16-2026). Tone-of-voice §4 mandates DD-MMM-YYYY.",
+      "fix": "Change 'Apr-16-2026' to '16-Apr-2026' on lines 214 and 221.",
+      "files": ["pixelbin/glamar/index.html:214", "pixelbin/glamar/index.html:221"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H7",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "hero",
+      "issue": "Hero subhead asserts 'Same platform also live on Sephora, Vision Express, LensCrafters, WestElm.' These are GlamAR (the platform) external customers, but the framing 'same platform' is OK only if the page makes clear Reliance is also live on the platform with a comparable surface. Section §01 then says 'Reliance brands use it for virtual try-on, AI skin analysis, ...' but no Reliance brand or experience is named anywhere on the page. The reader cannot verify any Reliance-side production deployment.",
+      "fix": "Either name 1-3 Reliance brands actually live on GlamAR (Tira VTO, Reliance Jewels AR, etc. — pull from a verifiable internal source) OR reframe §01 to 'GlamAR platform ships 200+ AR / VR experiences globally. Reliance is onboarding via PixelBin umbrella' (Roadmap / Building pill) instead of present-tense 'use'.",
+      "files": ["pixelbin/glamar/index.html:96", "pixelbin/glamar/index.html:111"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H8",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "external-brand spelling",
+      "issue": "Brand 'WestElm' spelled three different ways across the register: page uses 'WestElm' (lines 96, 112), home/index.html uses 'Westelm' (line 433, 663) and 'WestElm' (line 663 inside one card), pixelbin overview uses 'WestElm' (line 100), catalog uses 'Westelm' (line 151) and 'West Elm' (line 141). Brand canonical is 'West Elm' (two words).",
+      "fix": "Pick one canonical spelling (recommend 'West Elm') and align across all five files in a follow-up cross-site sweep. For this page only, change 'WestElm' to 'West Elm' on lines 96, 112.",
+      "files": ["pixelbin/glamar/index.html:96", "pixelbin/glamar/index.html:112"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H9",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§01",
+      "issue": "§01 second paragraph 'Reliance gets the same engine.' is an unattributed marketing closer — declarative-but-vague, says nothing the previous sentence did not, and reads as a Fynd-style upsell. Tone-of-voice §3 banned-constructions / §10 'state a date or drop the line'.",
+      "fix": "Drop the sentence (line 112 last clause). The list of external customers already does the work.",
+      "files": ["pixelbin/glamar/index.html:112"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H10",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§02",
+      "issue": "§02 section-label reads 'Modules · seven · all live on platform'. 'Live on platform' is correct as a feature-availability claim but readers will infer 'live for Reliance'. Each module card states what the module does without a per-module status against Reliance adoption.",
+      "fix": "Either change the label to 'Modules · seven · platform-shipped' (shifts inference away from Reliance) or add a 'Reliance use' status pill per module card (Live / Pilot / Roadmap / Not yet).",
+      "files": ["pixelbin/glamar/index.html:117"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H11",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03",
+      "issue": "Foxtale case-card body says 'AI Skin Analysis users convert at 1.6× the rate of non-engaged shoppers. Adds-to-cart up 40% in the engaged cohort.' The 40% adds-to-cart number is not in the provided slide-38 / slide-28 extract for Foxtale. Slide 28 says engaged ATC 28% vs 20% non-engaged (a 40% relative lift, but for the platform aggregate, not Foxtale specifically).",
+      "fix": "Either drop 'Adds-to-cart up 40% in the engaged cohort' from the Foxtale card (line 220) OR re-attribute it to the platform-aggregate Skin Analysis row already shown below.",
+      "files": ["pixelbin/glamar/index.html:220"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H12",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 module B",
+      "issue": "Module B body says 'Embeds on Shopify, WooCommerce, Magento'. These are generic SaaS targets, not relevant to a Reliance Apex reader. Without a Reliance commerce-stack equivalent, the line reads as deck-leftover.",
+      "fix": "Drop the Shopify/WooCommerce/Magento line (line 142) or replace with the Reliance / Fynd Platform target if applicable.",
+      "files": ["pixelbin/glamar/index.html:142"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H13",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 module E",
+      "issue": "Module E body says 'Setup-to-live in 30 minutes for a new brand.' Time-to-live claim with no source attribution. Likely from the deck but appears unsupported in the provided slide extracts (slides 6-26 not extracted in detail).",
+      "fix": "Either add an inline source ref (e.g., 'pitch deck slide N') or drop the line.",
+      "files": ["pixelbin/glamar/index.html:174"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H14",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "hero",
+      "issue": "Hero label reads 'GlamAR · Immersive commerce · Live'. Sibling /pixelbin overview pre-numerical labels follow the same pattern. Section run is 01-05 contiguous after the hero. No issue with contiguity, but the hero pill says 'Live' as if confirming Reliance live status (see H7) — same overclaim restated as a status pill in the section label.",
+      "fix": "Change to 'GlamAR · Immersive commerce platform' (drop 'Live' until at least one Reliance experience is named-and-cited).",
+      "files": ["pixelbin/glamar/index.html:94"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H15",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 sub-block",
+      "issue": "Skin Analysis sub-block says '15% engaged · 7% non-engaged · 3× lift'. 15/7 = 2.14×, not 3×. Per provided extract slide 28 says '3X higher' which is the source's own characterisation — likely 15 vs 5 or different base. Either the page numbers or the lift label is mislabeled.",
+      "fix": "Verify against slide 28 raw text and either (a) restore the 5% baseline if that is what slide 28 says, or (b) drop the '3× lift' label and let 15 vs 7 stand on its own (~2.1× lift).",
+      "files": ["pixelbin/glamar/index.html:237"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H16",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "nav",
+      "issue": "Top nav version pill shows 'v0.9.0' but no footer version line exists on the page (per tone-of-voice §9 checklist this is correct — footer should be the single copyright line). This is a non-issue; flagged to confirm intentional.",
+      "fix": "No action. Confirm v0.9.0 nav pill is intentional and matches the site-wide version cadence.",
+      "files": ["pixelbin/glamar/index.html:88"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Section-label run is clean and contiguous (hero label + 01-05).",
+    "Module cards (§02) follow signature pattern: eyebrow + lede + 3-4 bullet capabilities. No marketing puffery, no banned vocabulary in module bodies.",
+    "Zero banned vocabulary across the file (no transformative / world-class / unlocks / empowers / leverages / etc.) — clean tone-of-voice scan apart from the structural issues called out.",
+    "Inline source attribution on every §-block (cap-num lines at end of each section). The page is traceable section-by-section even if individual claims need refinement.",
+    "Visual completeness: zero broken images (only the Fynd logo SVG), console clean (only the standard Tailwind CDN dev warning), no horizontal overflow at 1280 or 375.",
+    "Reliance-owned framing reads correctly: GlamAR is positioned as the PixelBin sub-product Reliance brands 'use', not as something Fynd is selling."
+  ]
+}

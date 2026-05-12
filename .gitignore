@@ -1,0 +1,78 @@
+.vercel/
+.DS_Store
+*.bak
+node_modules/
+
+# Vercel env-pull artefacts — pulled by `vercel env pull .env.local` for
+# local `vercel dev`. Carry the GLASS_PW_HASH and GLASS_SIG_SECRET secrets;
+# never commit. See docs/glass-security-spec.md §A.6.2.
+.env
+.env.local
+.env*.local
+
+# Python tooling
+.venv/
+__pycache__/
+*.pyc
+
+# Source linesheets — large binaries, kept locally only
+linesheets/*.pptx
+linesheets/*.key
+
+# Source material in docs/ — large binaries, kept local + uploaded to CDN
+# (pptx, key, pdf). Spec docs (.md) and small data (.xlsx) stay tracked.
+docs/*.pptx
+docs/*.key
+docs/*.pdf
+docs/Granary project documents dump/
+docs/Impetus notes compilation/
+docs/UCP Notes compilation/
+docs/boltic-notes-compilation/
+docs/fynd-academy-compilation/
+docs/fynd-horizon-notes-compilation/
+docs/jcp-notes-compilation/
+docs/kaily-notes-compilation/
+docs/kio-notes-compilation/
+docs/swapeasy-notes-compilation/
+docs/tms-notes-compilation/
+docs/org-notes-compilation/
+docs/snap-compilation/
+docs/glamar-notes-compilation/
+docs/homepage-notes-compilation/
+
+# Throwaway scratch helpers used during JCP channels scrape (the JSON
+# data inputs in tools/scratch/ stay tracked).
+tools/scratch/audit.py
+tools/scratch/contact_sheet.html
+
+# Page-preview screenshots and one-off extract folders — local QA artefacts,
+# not source of truth. No tracked .jpeg files exist under tools/scratch/.
+tools/scratch/*.jpeg
+tools/scratch/granary-preview/
+tools/scratch/horizon_extract/
+tools/scratch/.fynd-pptx-tmp/
+
+# Slide images extracted from the Accenture deck — 145MB across 294 files,
+# served from CDN at https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/
+# Local copy is convenience-only; canonical store is GCS.
+tools/scratch/jcp_slide_images/
+assets/accenture-2026-04-16/
+
+# Regenerable extractor outputs — the canonical copies live under
+# docs/accenture-2026-04-16-compilation/.
+tools/scratch/accenture_all_slides.md
+tools/scratch/accenture_all_slides.json
+tools/scratch/jcp_slides_31_35.txt
+
+# Extracted images — large media, served from CDN. Keep only the JSON indexes.
+images/**
+!images/index.json
+!images/*/
+!images/*/index.json
+
+# Category-intel PDFs — large binaries copied into the site by tools/build_pages.py.
+# Sync to CDN separately; don't commit.
+impetus/category-intel/_pdfs/
+
+# Per-user Claude Code local settings
+.claude/settings.local.json

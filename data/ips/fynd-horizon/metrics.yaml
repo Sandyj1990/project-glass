@@ -1,0 +1,39 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: body_measurement_accuracy
+    label: 3D body measurement accuracy
+    value: >98%
+    definition: Intel RealSense pipeline
+    source: Horizon test results
+    confidence: tested
+  - id: cloud_render_latency_s
+    label: Gemini cloud render latency
+    value: <2 s
+    definition: Per body model
+    source: Horizon production
+    confidence: live
+  - id: skus_at_launch
+    label: Initial SKU coverage
+    value: 2K
+    definition: Pilot launch
+    source: Horizon catalog
+    confidence: live
+  - id: skus_target
+    label: Target SKU coverage
+    value: 50K+
+    definition: Full rollout
+    source: Horizon catalog
+    confidence: estimate
+  - id: reliance_mandate_inr_cr
+    label: Reliance mandate · aspirational
+    value: ₹1,000 Cr
+    definition: Trigger conditions on /asks
+    source: Apex review
+    confidence: estimate
+  - id: fynd_public_book_inr_cr
+    label: Fynd Public commercial book
+    value: ₹60 Cr
+    definition: External commercial book
+    source: Fynd Public
+    confidence: live

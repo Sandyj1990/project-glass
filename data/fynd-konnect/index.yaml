@@ -1,0 +1,306 @@
+slug: fynd-konnect
+title: Fynd Konnect
+status: live
+date: 2026-05-01
+source_folder: docs/fynd-konnect-notes-compilation/
+source_citation: "Fynd × RRL Platform Partnership Review · Document Version 1.0 · May 2026"
+
+hero:
+  brands_live: "~800"
+  shipments_per_month: "3-4 lakh"
+  rbl_capabilities_delivered: "13"
+  marketplaces: "50+"
+
+# §01 — Status today (Live / Building / Roadmap)
+status_today:
+  live:
+    - "Pillar 1 · Fynd Omni — ~800 brands on JioMart 3P · 3-4 lakh shipments/month"
+    - "Pillar 2 · SAP/TIBCO posting layer — 20+ RBL & RRVL brands · 13 capabilities delivered May '25 - May '26"
+    - "Pillar 3 · Fynd Engage for Sephora India — Beauty Pass omnichannel loyalty across store, web, app"
+    - "Pillar 4 · Marketplace gateway — 50+ channels · 9+ countries · India, Middle East, Southeast Asia"
+    - "Two dedicated Kafka clusters processing inventory events across 100+ stores per brand"
+  building:
+    - "Self-Ship for 1P JioMart sellers — UrbanLadder onboarding via custom self-ship workflow"
+    - "JioMart Quick / Hyperlocal — Petpooja POS connector live; UrbanPiper + Rista POS connectors next"
+    - "Split Payment posting readiness — multi-MOP SAP payload changes proactively assessed ahead of RBL brand adoption"
+  roadmap:
+    - "Continuously widening pipeline of WMS, OMS and POS connectors"
+    - "Marketplace expansion — new integrations added without bespoke development per brand"
+    - "Capability layer extensions for additional RRVL formats as they go digital"
+
+# §03 — The four pillars (summary cards)
+pillars:
+  - num: "01"
+    name: "JioMart 3P Seller Platform"
+    fynd_name: "Fynd Omni"
+    one_liner: "The seller-side rail that brings every third-party brand onto JioMart through a single integration contract."
+    reach: "~800 live brands · 3-4 lakh shipments/month"
+  - num: "02"
+    name: "RBL & RRVL Brand Operations"
+    fynd_name: "SAP / TIBCO Integration Layer"
+    one_liner: "The accounting and operational backbone that makes RBL's brand portfolio safe to scale on Fynd Commerce."
+    reach: "20+ brands · 13 capability deliveries in 12 months"
+  - num: "03"
+    name: "Sephora India Omnichannel Loyalty"
+    fynd_name: "Fynd Engage"
+    one_liner: "A true unified loyalty programme spanning physical stores, web and app — not three siloed loyalty stacks pretending to be one."
+    reach: "Pan-India Sephora · Beauty Pass · one identity, one balance"
+  - num: "04"
+    name: "Global Marketplace Reach"
+    fynd_name: "Fynd Konnect"
+    one_liner: "A pre-built gateway of 50+ marketplace and channel integrations — ready to take any Reliance brand into any major retail market."
+    reach: "50+ channels · 3 regions · 9+ countries"
+
+# §04 — Pillar 1 deep dive
+pillar_1:
+  scale_table:
+    - { metric: "Live omni-seller brands on JioMart via Fynd Omni", value: "~800" }
+    - { metric: "Monthly shipment volume", value: "3-4 lakh and growing" }
+    - { metric: "Aggregators integrated downstream", value: "7 major platforms" }
+    - { metric: "Core JioMart systems integrated", value: "Sandstorm (inventory), Infibeam (catalogue / orders), Morningstar / Hogwarts (storefront)" }
+  how_it_works:
+    - "Inventory: flows from the seller's source-of-truth (Fynd OMS, third-party OMS / WMS / ERP, or aggregator) through Konnect into Sandstorm in real time."
+    - "Catalogue and vertical mapping: handled through Infibeam."
+    - "Orders: created on Fynd Omni from Morningstar / JCP and routed to the seller's fulfilment system."
+    - "Shipment status: flows back to JioMart for LSP coordination and customer communications."
+    - "Onboarding: sellers onboard once on Fynd Commerce, complete location and SKU mapping, and become immediately transactable on JioMart — without bespoke per-brand or per-aggregator integration work."
+  outcome: "JioMart can onboard any third-party brand or aggregator-managed seller with zero bespoke engineering effort and a predictable go-live timeline."
+  aggregators:
+    - { name: "Unicommerce",       coverage: "India's largest e-commerce enablement SaaS" }
+    - { name: "Vinculum",           coverage: "Omnichannel OMS / WMS / PIM with built-in marketplace reconciliation" }
+    - { name: "Increff",            coverage: "Fashion and lifestyle inventory and multichannel fulfilment SaaS" }
+    - { name: "Browntape (Ginesys)", coverage: "Multi-channel order and inventory management for SMB sellers" }
+    - { name: "EasyEcom",           coverage: "Omnichannel inventory and reconciliation across numerous ERPs" }
+    - { name: "OMSGuru",            coverage: "OMS / IMS and reconciliation purpose-built for D2C sellers" }
+    - { name: "Petpooja POS",       coverage: "India's largest F&B POS — unlocks the F&B hyperlocal category for JioMart Quick" }
+  roadmap_outcome: "JioMart's 3P seller capability stays ahead of demand — every new vertical, business model and seller archetype is supported on day one."
+
+# Inline evidence card for Pillar 1
+emazing:
+  title: "Live evidence · Emazing on Fynd WMS"
+  subhead: "Emazing — a 3PL fulfilling FMCG orders on JioMart — re-architected operations on Fynd WMS for batch + expiry control at scale."
+  metrics:
+    - { value: "73%",  label: "reduction in order error complaints" }
+    - { value: "8.8%", label: "expired-product complaints now preventable" }
+    - { value: "20%",  label: "improvement in packing efficiency" }
+    - { value: "100%", label: "batch and expiry visibility across the warehouse" }
+  quote: "Fynd WMS gave us the control we needed over batch, expiry, and accuracy. For FMCG there's no room for error and now we have a system that ensures there isn't any."
+  attribution: "Mohd Suhel Ansari · Chief Operating Officer · Emazing Deals Limited"
+
+# §05 — Pillar 2 deep dive (the 13 RBL capabilities)
+pillar_2:
+  brand_portfolio:
+    - { segment: "RBL — Fashion & Lifestyle", brands: "TUMI, GAP, Superdry, Hamleys, Ritu Kumar" }
+    - { segment: "RBL — Furniture",            brands: "WestElm, Pottery Barn, PB Kids" }
+    - { segment: "RBL — Beauty",               brands: "Sephora India" }
+    - { segment: "RRVL — Reliance-owned formats", brands: "Reliance Trends, YOUSTA, Performax, TIRA, Freshpik, Swadesh, 7-Eleven India" }
+    - { segment: "Reliance Retail Formats",    brands: "Nexus malls" }
+  capabilities_index:
+    - { num: "01", title: "SAP WM Migration — MDN to Delivery-Based Model (DBM) order posting", theme: "Foundation Architecture" }
+    - { num: "02", title: "B2B E-Invoice (IRN) Compliance for GST audit",                       theme: "Compliance & Finance" }
+    - { num: "03", title: "Product Exchange — end-to-end SAP posting with convenience-fee model", theme: "Brand Enablement" }
+    - { num: "04", title: "Multi-MOP Coverage — every payment method RBL uses",                  theme: "Compliance & Finance" }
+    - { num: "05", title: "Delivery Partner Own-Account Posting — COD and returns",              theme: "Compliance & Finance" }
+    - { num: "06", title: "RRA Kafka Pipelines — new brands, server migration, SFTP → Kafka upgrade", theme: "Foundation Architecture" }
+    - { num: "07", title: "Skip Unchanged Inventory — performance optimisation",                  theme: "Performance & Ops" }
+    - { num: "08", title: "TIRA & Nexus Marketplace — new sales-channel enablement",              theme: "Brand Enablement" }
+    - { num: "09", title: "RBL Furniture — full parity with Non-Furniture",                       theme: "Foundation Architecture" }
+    - { num: "10", title: "Sephora Beauty Pass — loyalty redemption in SAP posting",              theme: "Loyalty & Programmes" }
+    - { num: "11", title: "JioOnePay / JioPay Multi-PG — new payment infrastructure support",     theme: "Payments Modernisation" }
+    - { num: "12", title: "Split Payment Readiness — sales-posting preparedness",                  theme: "Payments Modernisation" }
+    - { num: "13", title: "EAN vs. Article Code — flexible inventory identifier at brand level",  theme: "Brand Enablement" }
+
+  capability_details:
+    - num: "01"
+      title: "SAP WM Migration — MDN to Delivery-Based Model (DBM)"
+      theme: "Foundation Architecture"
+      blurb: "A ground-up redesign of the order-posting architecture for RBL brands."
+      scope:
+        - "Previously, stock movement was posted in SAP on the basis of sales via POSDTA — architecturally misaligned with how SAP actually accounts for stock."
+        - "Konnect migrated the trigger point to delivery confirmation — aligning posting with actual physical delivery and Post Goods Issue (PGI)."
+        - "Resolves persistent reconciliation mismatches that previously created ghost stock entries requiring manual correction."
+        - "Validated first on TUMI; then progressively rolled out across all RBL brands — Non-Furniture, Furniture and TIBCO extensions — thousands of orders daily."
+        - "Escalated by RIL leadership as a critical operational blocker; delivered to a hard deadline before broader brand rollout."
+      outcome: "The DBM became the prerequisite for safe brand onboarding. RBL can onboard any new brand on Fynd without introducing reconciliation risk into its SAP system."
+
+    - num: "06"
+      title: "RRA Kafka Pipelines — the inventory backbone, modernised"
+      theme: "Foundation Architecture"
+      blurb: "RRA (Reliance Retail Architecture) is the inventory backbone connecting RRL's SAP / WMS systems to Fynd. Significantly expanded across three workstreams in this period."
+      scope:
+        - "New brand pipelines enabled: YOUSTA, TIRA, Freshpik, Reliance Trends, GAP, Performax — each with Kafka topics configured on the appropriate cluster (Fynd cluster or SNG JCP cluster) and brand-specific MOP code mappings where required."
+        - "Critical infrastructure migration: Swadesh and 7-Eleven India migrated to new Kafka broker infrastructure (URLs, credentials, consumer groups) across UAT and Production — as the legacy RRA broker infrastructure was being retired. Any gap would have meant inventory stoppage for live, transacting brands."
+        - "SFTP → real-time Kafka upgrade: WestElm, Pottery Barn and PB Kids migrated from batch SFTP file drops to real-time Kafka inventory consumption. Parent-child article structure (specific to WestElm's catalogue) replicated on the new infrastructure."
+        - "Why the SFTP → Kafka upgrade matters: SFTP is fundamentally a batch operation — there is always a lag between actual stock movement in store and what customers see. For high-value furniture (sofas, dining sets), overselling due to stale inventory is a serious operational and customer-experience problem. Real-time sync collapses the inventory-accuracy window from hours to seconds."
+      outcome: "By end of period, the RRA Kafka infrastructure on Konnect was processing inventory events for 10+ RRVL brands across two dedicated clusters — hundreds of thousands of inventory update events per day across 100+ stores per brand."
+
+    - num: "09"
+      title: "RBL Furniture — full parity with Non-Furniture"
+      theme: "Foundation Architecture"
+      blurb: "WestElm, Pottery Barn and PB Kids brought to architectural parity with the rest of the RBL portfolio."
+      scope:
+        - "Migrated from a legacy TIBCO-only integration to the RDIP architecture — the same backbone as Non-Furniture."
+        - "DBM (Delivery-Based Model) applied to Furniture orders."
+        - "B2B and B2C transaction types correctly configured for all three brands."
+        - "Transfer Order (TO) Confirmation made reliable — fixed an auth error that was silently dropping confirmations, which had been creating permanent inventory mismatches between physical delivery and SAP."
+        - "Furniture orders are high-value (tens of thousands of rupees per order) and a missed posting creates a proportionally large financial discrepancy. WestElm's B2B corporate flow now goes through the correct posting path including IRN."
+      outcome: "Furniture is brought to full parity with Non-Furniture. Dual-maintenance overhead removed — one architecture across the entire RBL portfolio."
+
+    - num: "02"
+      title: "B2B E-Invoice (IRN) Compliance for GST audit"
+      theme: "Compliance & Finance"
+      blurb: "The B2B posting layer is now fully GST-compliant — every B2B sale, cancellation and reversal is IRN-aware."
+      scope:
+        - "For B2B orders, the system mandatorily checks for a valid IRN (Invoice Reference Number from the GST IRP portal) before triggering any sales posting to SAP or TIBCO."
+        - "Orders without a valid IRN are held until one is generated — no non-compliant entries reach SAP."
+        - "Cancellations and reversals are IRN-aware: no reverse posting happens without a valid credit-note IRN in place."
+        - "Enforced at bag_invoiced, cancelled and credit-note states — full lifecycle coverage."
+        - "Covers all RBL brands with B2B operations — WestElm corporate, institutional furniture, Sephora business customers."
+      outcome: "Fynd Konnect is now a GST-compliant B2B posting engine, not just a sales sync tool. RBL's B2B revenue cannot create audit liability through Fynd."
+
+    - num: "04"
+      title: "Multi-MOP Coverage — every payment method RBL uses"
+      theme: "Compliance & Finance"
+      blurb: "Systematic SAP and TIBCO posting support for every payment method and tender type RBL accepts across channels."
+      scope:
+        - "Payment methods covered include: Flipkart prepaid, Myntra PPMP, COD with delivery-partner own-account settlement, Qwikcilver gift cards, JioPay, JioOnePay, multi-PG (Razorpay + JioOnePay simultaneously), BharatPay QR and price-adjustment MOPs."
+        - "Each requires its own SAP tender code, GL mapping and transaction-type — validated against RBL's chart of accounts."
+        - "Solved RBL's own-account COD settlement model — where the delivery partner collects cash and remits to RBL directly, requiring a different tender mapping from standard COD."
+        - "Covers 10+ distinct payment methods and tender types across all RBL brands and channels."
+      outcome: "Every rupee of revenue lands in the correct GL account in SAP from day one — every new channel or PG can be activated without creating financial gaps that need manual rectification."
+
+    - num: "05"
+      title: "Delivery Partner Own-Account Posting — COD and returns"
+      theme: "Compliance & Finance"
+      blurb: "Delivered to a leadership ultimatum: fix DP own-account COD posting before the weekend or RBL store-level operations would be blocked."
+      scope:
+        - "RBL operates a model where delivery partners (Delhivery, Xpressbees, etc.) collect COD cash and settle directly with RBL — not via Fynd's payment gateway."
+        - "Konnect built specific tender-code mapping for this flow so that COD postings correctly reflect the delivery partner as the collecting entity."
+        - "Same logic extended to return orders — reverse postings reference the DP's tender code, not a generic prepaid reversal."
+        - "First validated on TUMI over a single weekend with RIL's team monitoring; rolled out across the RBL portfolio post sign-off."
+      outcome: "RBL's COD revenue stream — a meaningful share of total revenue, especially in Tier-2 / Tier-3 markets — is now reconcilable with delivery partners at scale."
+
+    - num: "03"
+      title: "Product Exchange — end-to-end SAP posting with convenience-fee model"
+      theme: "Brand Enablement"
+      blurb: "Native product exchange on RBL storefronts — with the convenience-fee model RBL specifically required."
+      scope:
+        - "Customer returns one product and picks up another; the price difference is handled as a convenience fee, not a store credit — aligning with RBL's accounting structure (no liability on books)."
+        - "Konnect built the full posting logic: detection of exchange type from payload, correct tender amount calculation including the convenience fee, tax-slab logic (5% GST when product price plus fee falls below ₹2,500), and accurate posting to both SAP and TIBCO."
+        - "Tested on GAP, TUMI, WestElm; being rolled out across the portfolio."
+      outcome: "RBL brands offer a seamless in-app exchange experience without any manual SAP intervention. Convenience fees appear correctly as revenue — not silently lost."
+
+    - num: "08"
+      title: "TIRA & Nexus Marketplace — new sales-channel enablement"
+      theme: "Brand Enablement"
+      blurb: "SAP and TIBCO posting codes configured for two new Reliance retail entities going digital on Fynd."
+      scope:
+        - "Nexus operates under a distinct company ID in Reliance's SAP — own MOP codes, GL accounts, transaction-type mappings."
+        - "TIRA required specific POSDTA SAP codes aligned with how Reliance classifies beauty-category revenue."
+        - "Each Reliance retail business is a separate profit centre in SAP — day-one accuracy was non-negotiable."
+        - "TIRA is a strategic priority, competing in the organised beauty retail space; Nexus represents premium real-estate retail."
+      outcome: "Both formats went live on Fynd with correct SAP postings from day one — no month-close surprises, no GL-mapping rework."
+
+    - num: "13"
+      title: "EAN vs. Article Code — flexible inventory identifier at brand level"
+      theme: "Brand Enablement"
+      blurb: "A self-serve, brand-level configuration for the inventory identifier convention."
+      scope:
+        - "Different RRVL brands use different identifiers as their primary SKU reference — some on EAN (GAP, Reliance Trends), others on internal article code (ALU)."
+        - "Konnect built a company-level configuration toggle in the RRA extension — each brand specifies its identifier without any code change."
+        - "Resolved a GAP launch issue where a setup miscommunication had the brand configured on EAN while products were catalogued on ALU — inventory simply was not flowing."
+        - "Net effect: zero-touch onboarding for any future brand regardless of identifier convention."
+      outcome: "Inventory flow is Day-1 infrastructure for any new brand — no engineering dependency, no multi-crore visibility gap from identifier mismatches."
+
+    - num: "10"
+      title: "Sephora Beauty Pass — loyalty redemption in SAP posting"
+      theme: "Loyalty & Programmes"
+      blurb: "Full posting-layer support for Sephora India's Beauty Pass loyalty programme — paired with the Fynd Engage loyalty platform (Pillar 3)."
+      scope:
+        - "Members can redeem points as payment at checkout — e.g. ₹700 cash plus ₹300 in points."
+        - "Konnect built and iterated the full loyalty posting logic: redemption on the forward order (placed event), discount handling in the delivery event, boutique-product-specific posting (Sephora's artisanal products follow different pricing and discount rules), and full-or-partial loyalty reversal on returns."
+        - "Phase 2 extended to mixed carts containing both regular and boutique products — two separate posting sequences with distinct sequence numbers to avoid SAP duplication."
+        - "Sephora India processes thousands of loyalty redemptions per month — manual reconciliation was unsustainable at this volume."
+      outcome: "Sephora's finance team can reconcile its loyalty liability automatically. Sephora can scale online sales without creating a finance-operations bottleneck."
+
+    - num: "11"
+      title: "JioOnePay / JioPay Multi-PG support"
+      theme: "Payments Modernisation"
+      blurb: "Posting layer brought live for Reliance's own payment gateways across RBL storefronts."
+      scope:
+        - "Built MOP mapping for JioOnePay and JioPay payments in SAP and TIBCO."
+        - "Resolved posting failures specifically when BharatPay QR was enabled alongside other gateways — a multi-MOP scenario the existing logic had not accounted for."
+        - "Multi-PG support: a single order can be paid partly through JioOnePay and partly through Razorpay, and each leg posts to the correct GL."
+        - "Delivered to an RBI compliance deadline flagged at programme level — had the migration to JioPay missed the date, RBL StoreOS operations would have been shut down."
+      outcome: "Reliance's own payment product can be scaled across RBL storefronts without any gap in the downstream financial accounting."
+
+    - num: "12"
+      title: "Split Payment Readiness"
+      theme: "Payments Modernisation"
+      blurb: "Proactive posting-layer assessment ahead of the platform's Split Payment launch."
+      scope:
+        - "Fynd Platform introduced Split Payment in April 2026 — enabling customers to pay using two methods simultaneously (e.g. half by card, half by UPI; or loyalty points plus card)."
+        - "Konnect proactively assessed the impact on RBL's sales posting — identifying multi-MOP SAP payload changes and tender-code logic needed before any RBL brand goes live with the feature."
+        - "Avoids a recurrence of the historic pattern where every new payment capability has caused posting failures discovered only after go-live."
+      outcome: "When RBL brands adopt Split Payment, the SAP posting layer is ready on day one — no financial gap created by the new feature's adoption."
+
+    - num: "07"
+      title: "Skip Unchanged Inventory — performance optimisation at RRL scale"
+      theme: "Performance & Ops"
+      blurb: "Suppress inventory events for unchanged quantities across all RRA supply extensions."
+      scope:
+        - "Previously, every inventory sync pushed all records through Kafka — regardless of whether quantity had actually changed. 500 unchanged articles meant 500 unnecessary events."
+        - "Konnect introduced a 'suppress unchanged inventory' check across all RRA supply extensions — events are filtered before they enter the Kafka pipeline."
+        - "At RRL's scale (thousands of stores, tens of thousands of articles per brand), this materially reduces Kafka consumer load and processing overhead on both Fynd and RRL's SAP / WMS."
+        - "Particularly impactful during peak sale events (End of Reason Sale, Big Fashion Festival), when actual order events were previously competing with unchanged-inventory noise for consumer capacity."
+      outcome: "Faster processing of real changes, lower infrastructure cost, and a more stable pipeline during exactly the high-traffic periods when reliability matters most."
+
+# §06 — Pillar 3 (Sephora India Engage)
+pillar_3:
+  intro_p1: "Sephora India runs its loyalty programme — Beauty Pass — on Fynd Engage. This is a true omnichannel loyalty platform: one identity, one point balance, one tier structure across every Sephora touch-point. The store, the website and the app all draw from the same source of truth."
+  intro_p2: "This is a meaningful distinction. Most retail loyalty programmes claim to be omnichannel; very few actually unify the data layer. The result, in those cases, is the same shopper holding three different point balances depending on where they last earned, with periodic reconciliation jobs trying to keep them in sync. Fynd Engage avoids that architecture entirely."
+  scope:
+    - "Unified member identity, point balances and tier status across all channels — a single source of truth."
+    - "Earn flows: points credited on store, web and app purchases through a single ledger."
+    - "Redeem flows: members can redeem points as payment at checkout on any channel — with the correct accounting treatment posted to SAP (see capability 10)."
+    - "Boutique product handling: Sephora's artisanal product range follows distinct pricing and discount rules; the loyalty engine handles these correctly."
+    - "Mixed-cart logic: orders containing both regular and boutique items are processed with separate posting sequences to maintain SAP integrity."
+    - "Returns and reversals: full and partial loyalty reversals on returns — keeping the loyalty ledger and SAP liability ledger always in sync."
+  outcome: "Sephora India's loyalty programme behaves as one programme — not three siloed stacks. Members get a consistent experience; finance gets clean reconciliation; the brand can scale online sales without creating an operations bottleneck."
+
+# §07 — Pillar 4 (Marketplace gateway)
+pillar_4:
+  intro_p1: "Beyond the systems already operating across the Reliance ecosystem, Fynd Konnect is a marketplace gateway with 50+ pre-built channel integrations across India, Middle East and Southeast Asia. Any RBL brand can be expanded onto a new channel — domestic or international — using infrastructure that already exists."
+  intro_p2: "The relevance to RBL is direct: most RBL brands have either an active or planned international expansion thesis. The cost and timeline of that expansion is significantly compressed when the marketplace integration layer is already in place."
+  india:
+    - { name: "Amazon India",  models: "FBA, Easy Ship, Self-Ship, Seller Flex" }
+    - { name: "Flipkart",      models: "F-Assured, Self-Ship, Smart Fulfilment" }
+    - { name: "Myntra",        models: "PPMP, Myntra Fulfilled, Self-Ship" }
+    - { name: "Nykaa",         models: "Marketplace and Beauty / Fashion verticals" }
+    - { name: "TataCliq",      models: "Marketplace and Luxury verticals" }
+    - { name: "Other India channels", models: "JioMart 1P / 3P, Ajio, Snapdeal, Meesho, Limeroad and 20+ more" }
+  middle_east:
+    - { name: "Amazon (UAE / KSA)", coverage: "Native integration covering both fulfilment models" }
+    - { name: "Noon",                coverage: "Marketplace integration across UAE, KSA and Egypt" }
+    - { name: "Namshi",              coverage: "Fashion-focused marketplace serving the GCC" }
+    - { name: "Styli",               coverage: "Fashion marketplace across MENA" }
+    - { name: "Trendyol",            coverage: "Cross-border fashion and lifestyle marketplace" }
+  sea:
+    - { name: "Lazada",     coverage: "Pan-SEA across Singapore, Malaysia, Thailand, Vietnam, Indonesia, Philippines" }
+    - { name: "Shopee",     coverage: "Pan-SEA — the largest e-commerce platform in the region" }
+    - { name: "TikTok Shop", coverage: "Social-commerce channel with rapid growth across SEA" }
+    - { name: "Blibli",     coverage: "Indonesia marketplace" }
+    - { name: "Tokopedia",  coverage: "Indonesia marketplace" }
+  playbook:
+    - "Step 1 · Catalogue mapping — the brand's catalogue (already on Fynd Commerce) is mapped to the target marketplace's category tree using Konnect's marketplace-specific mappers."
+    - "Step 2 · Pricing and inventory rules — market-specific pricing (with currency, tax and duty handling) and inventory allocation rules are configured."
+    - "Step 3 · Order routing — orders from the international marketplace flow back into Fynd OMS, routing to the appropriate fulfilment node (cross-border or in-market)."
+    - "Step 4 · Returns and post-purchase — returns and reverse logistics handled through the marketplace's flow, with SAP postings handled through the same Konnect posting layer (extended for the new entity if required)."
+  net_effect: "A new market is opened without a bespoke integration project. The same RBL brand operating in India can be live on Noon, Lazada or Shopee within weeks, not quarters."
+  outcome: "International expansion becomes a configuration exercise rather than an engineering project. Any RBL brand can be taken to any major retail market using infrastructure that already exists."
+
+# §08 — Sources
+sources:
+  - { title: "Fynd × RRL Platform Partnership Review", date: "May 2026 · v1.0", note: "Canonical 6-section document. Four pillars, 13 RBL capabilities, marketplace gateway across India / Middle East / SEA.", file: "/assets/fynd-konnect/Fynd-RRL-Platform-Partnership-Review.pdf" }
+  - { title: "Emazing × Fynd WMS case study", date: "2026-02-24", note: "How Emazing reduced customer complaints by 73% and achieved same-day handover at scale with Fynd WMS on JioMart.", file: "/assets/fynd-konnect/Emazing-WMS-case-study.pdf" }
+  - { title: "Platform architecture diagram", date: "May 2026", note: "Konnect-as-hub schematic showing marketplaces / storefronts / Fynd marketplaces on the left and 3P ERP / WMS / POS / Store OS on the right, with the eight Konnect subsystems at the centre.", file: "/assets/fynd-konnect/01-platform-architecture.jpg" }

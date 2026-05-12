@@ -1,0 +1,95 @@
+# Companion App · Store Shopping Companion
+# Sourced verbatim from Q1 2026 Release Compendium pp. 87–89
+# Per docs/impetus-restructure-spec.md
+
+slug: companion-app
+title: Store Companion
+sub_title: "(Store Shopping Companion)"
+aliases: [Companion App]
+tagline: When you walk into a store, the app detects your location and switches to "companion mode" — outfit combinations, virtual try-on, scan to check size availability, complete payment without assistance.
+category: Sell · In-store
+status: live
+status_label: Live
+
+audience:
+  - Customers (personalised in-store experience)
+  - Store Managers (seeing what customers want)
+
+what_it_does: |
+  **App Feature Map · Optimising the sales force for peak performance.** Per
+  Accenture s24, the Companion App is the in-store counterpart to AJIO web — the
+  surface where customer intent meets store inventory in real time.
+
+  When you walk into a store, the app detects your location and switches to
+  "companion mode," showing content and offers tailored to that store. Browse
+  complete outfit combinations, virtual try-on, scan items for details and
+  availability, complete payment without assistance and earn rewards through fun
+  challenges (scanning products, trying outfits, referrals). Store managers can
+  see customer wishlists and help with orders across the entire store network.
+
+scale_label: Rollout Status
+scale:
+  - "100 stores (pilot, March 2026)"
+  - "All stores targeted by end of March"
+  - "Live adoption dashboard (Geckoboard) tracking metrics"
+  - "Tested at Trends Kamanhalli, Bangalore (Feb 13)"
+scale_caption: |
+  AJIO × TRENDS Companion video demo available. Loyalty integration project for
+  Trends users underway.
+
+what_improved:
+  body: |
+    **No formal release note yet.** Active rollout underway. Tested at Trends
+    Kamanhalli, Bangalore (Feb 13). Priority features: find a product in-store,
+    check size availability across stores, assisted ordering for customers. Moving
+    from pilot to full rollout.
+  expected_metric_impact: |
+    every store interaction becomes a data point — wishlists, scan frequency,
+    completion rates — helping merchandising teams understand what customers
+    actually want vs. what's on the shelf. The Companion App is the in-store
+    counterpart to the AJIO web channel — extends omnichannel from "buy online,
+    pick in store" to "discover in store, complete on phone."
+
+updates_shipped: []
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/companion-app/screenshot-088.jpg"
+    caption: "**Scan for a Smarter In-Store Experience** · TRENDS QR launch screen — scan, pay, go · browse full collection · check size availability · home delivery for sizes not in store."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/companion-app/screenshot-089.jpg"
+    caption: "**In-Store Experience + Complete the Look** · Store detection switches the app to companion mode for the nearest TRENDS · cross-selling with store-exclusive discounts."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/companion-app/screenshot-090.jpg"
+    caption: "**Scan &amp; Go + Order Confirmed** · Scanned product (DNMX Red Kurti) with size availability + home-delivery fallback · Post-checkout flow with detagging-zone QR + walkout."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/companion-app/screenshot-091.jpg"
+    caption: "**Endless Aisle + Find-in-store barcode** · Six in-store features (Scan &amp; Go · Endless Aisle · Order History · Dual Cart · Store Switch · Store Aisle) · Show-staff barcode for items not on the floor."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 87–89"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+  - label: "Accenture · Updated Retail Platforms+Agents · slide s24 · App Feature Map / Companion App spec"
+    href: ""
+
+progress:
+  current_level: 2
+  current_summary: |
+    Companion App sits at **L2 · Augmented**: store detection switches the app to
+    in-store mode; customer browses, scans, completes payment; store manager sees
+    wishlists. L3 is real-time personalisation — every store interaction becomes
+    a data point that loops back to merchandising on what to stock.
+  workflows:
+    - name: "Omnichannel"
+      number: "4.5"
+      current: 2
+      target: 3
+      plan: "Today: intelligent fulfilment routing (in-store + home delivery for missing sizes). Target: single inventory pool, channel-agnostic — customer doesn't think about channels."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Omnichannel · L2 → L3"
+      body: "Pilot at 100 Trends stores → all stores by end of March. Loyalty integration project for Trends users underway."
+    - eyebrow: "Risk reduction milestone"
+      title: "Endless Aisle reduces lost sales"
+      body: "If a size is not in store, it's home-delivered with the in-store basket — sale isn't lost to inventory gap."
+    - eyebrow: "Identity shift indicator"
+      title: "Store interaction is data"
+      body: "Wishlists, scan frequency, completion rates feed merchandising — what customers actually want vs. what's on the shelf."

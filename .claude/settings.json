@@ -1,0 +1,61 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__take_snapshot",
+      "mcp__chrome-devtools__get_network_request",
+      "mcp__chrome-devtools__list_network_requests",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__select_page",
+      "mcp__chrome-devtools__resize_page",
+      "mcp__chrome-devtools__wait_for",
+      "mcp__chrome-devtools__list_console_messages",
+      "mcp__chrome-devtools__close_page",
+      "mcp__chrome-devtools-visible__list_network_requests",
+      "mcp__fashion__load_category_research",
+      "mcp__fashion__lookup_fabric",
+      "mcp__fashion__lookup_costing",
+      "mcp__fashion__read_research_detail",
+      "mcp__fashion__analyze_garment_image",
+      "mcp__fashion__score_on_brand",
+      "mcp__langchain__query_docs_filesystem_docs_by_lang_chain",
+      "Bash(git fetch *)",
+      "Bash(agent-browser *)",
+      "Bash(curl -s *)",
+      "Bash(curl -sI *)",
+      "Bash(curl -sf *)",
+      "Bash(curl -sSL *)",
+      "Bash(gsutil ls *)",
+      "Bash(pdftotext *)"
+    ]
+  },
+  "sandbox": {
+    "network": {
+      "allowedDomains": [
+        "*.fynd.com",
+        "github.com",
+        "api.github.com",
+        "*.githubusercontent.com",
+        "registry.npmjs.org",
+        "*.npmjs.org",
+        "vercel.com",
+        "*.vercel.app",
+        "fonts.googleapis.com",
+        "fonts.gstatic.com",
+        "cdn.tailwindcss.com",
+        "storage.googleapis.com"
+      ],
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowWrite": [
+        "~/.agent-browser"
+      ]
+    }
+  },
+  "enabledPlugins": {
+    "ui-ux-pro-max@ui-ux-pro-max-skill": true
+  }
+}

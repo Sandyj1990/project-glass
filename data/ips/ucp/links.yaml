@@ -1,0 +1,9 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+demos:
+  - url: "https://youtu.be/9KCFnV6kXEU"
+    label: AI Native UCP · full demo
+
+case_studies:
+  - url: "https://reliance-retail-fynd.vercel.app/jcp#ucp"
+    label: Reliance Digital · Digital Discount Days · ₹20.39 Cr · 1.25M recipients

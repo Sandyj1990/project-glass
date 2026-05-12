@@ -1,0 +1,554 @@
+[
+  {
+    "slide": 1,
+    "title": "(no text)",
+    "n_runs": 0,
+    "text_chars": 0,
+    "n_images": 1,
+    "text": ""
+  },
+  {
+    "slide": 2,
+    "title": "Reliance Retail is India\u2019s Largest, most Profitable Retailer",
+    "n_runs": 24,
+    "text_chars": 798,
+    "n_images": 0,
+    "text": "Reliance Retail is India\u2019s Largest, most Profitable Retailer \u00b7 With a strong track record of sustained and repid growth \u00b7 5th \u00b7 Largest Economy in the World \u00b7 ~20% \u00b7 Organised Retail Share \u00b7 ~6% \u00b7 E-commerce Penetration \u00b7 $1.1T \u00b7 $1.3T \u00b7 FY26E \u00b7 FY28E \u00b7 FY30E \u00b7 9% CAGR \u00b7 $1.5T \u00b7 Tech Driven Retailing \u00b7 AI, automation & real-time data powering pricing, inventory & omnichannel experience \u00b7 The Omni-channel Evolution \u00b7 Physical retail integrated with digital touchpoints for unified shopping experience \u00b7 Bharat: The Growth Engine \u00b7 Tier 2\u20134 cities driven by rising incomes, infrastructure & digital adoption \u00b7 Premiumization & Private Labels \u00b7 Context-driven demand driving quality-affordability balance \u00b7 Winning in 2026 requires precision - right market, right time with tech enabled experience"
+  },
+  {
+    "slide": 3,
+    "title": "Reliance Retail is India\u2019s Largest, most Profitable Retailer",
+    "n_runs": 38,
+    "text_chars": 523,
+    "n_images": 0,
+    "text": "Reliance Retail is India\u2019s Largest, most Profitable Retailer \u00b7 With a strong track record of sustained and repid growth \u00b7 $ \u00b7 39 \u00b7 B \u00b7 FY25 Gross Revenue \u00b7 $ \u00b7 3 \u00b7 B \u00b7 FY25 EBIDTA \u00b7 19,979 \u00b7 Retail Stores \u00b7 378 \u00b7 M+ \u00b7 Registered Customers \u00b7 By revenue globally \u00b7 #40 \u00b7 #1 \u00b7 Largest Player across Grocery, Electronics & Fashion \u00b7 2 \u00b7 4 \u00b7 15 \u00b7 FY15 \u00b7 19 \u00b7 31 \u00b7 39 \u00b7 FY17 \u00b7 FY19 \u00b7 FY21 \u00b7 FY23 \u00b7 FY25 \u00b7 34% CAGR \u00b7 ~20x Revenue Growth in 10 Years \u00b7 (in USD Bn \u00b7 ) \u00b7 ~30x EBIDTA Growth \u00b7 41% CAGR | $0.1B (FY15) -> \u00b7 $3.0B (FY25)"
+  },
+  {
+    "slide": 4,
+    "title": "All decisions and operations are governed by a six-cadence Retail Clock \u2013 ensuring the right information reaches the rig",
+    "n_runs": 37,
+    "text_chars": 1473,
+    "n_images": 6,
+    "text": "All decisions and operations are governed by a six-cadence Retail Clock \u2013 ensuring the right information reaches the right person at the right time \u00b7 Operating Rhythm \u00b7 Cycle Time \u00b7 What Gets Monitored \u00b7 Real-time \u00b7 Milliseconds \u00b7 RFID stock moves, POS transactions, CCTV alerts, IoT exceptions, clickstream events, add-to-cart actions, payment failures \u00b7 Minutes \u00b7 1\u201315 min \u00b7 Low-stock alerts, footfall spikes, conversion drops, delivery SLA breaches, cart abandonment spikes, app latency alerts \u00b7 Hourly \u00b7 Every hour \u00b7 Store performance vs plan, dark store fulfilment, online GMV vs plan by storefront, category conversion rates, search-to-purchase ratio \u00b7 Shift \u00b7 8 hours \u00b7 Store Manager scorecard, pick/pack productivity, staff utilization, fulfilment centre throughput, customer support queue depth \u00b7 Daily \u00b7 End of day \u00b7 Sales report, inventory health, aged stock movement, campaign performance, channel-wise acquisition vs repeat, refund and cancellation rates \u00b7 Monthly \u00b7 ~30 days \u00b7 AI model retraining & recalibration, feature store refresh, algorithm governance review, personalization model performance, customer cohort LTV analysis \u00b7 With AI \u00b7 Stays real-time \u00b7 + autonomous response \u00b7 \u2192 Real-time \u00b7 with auto-correction \u00b7 \u2192 Continuous \u00b7 streaming \u00b7 \u2192 Hourly \u00b7 with live dashboards \u00b7 \u2192 Shift-level \u00b7 or hourly \u00b7 \u2192 Weekly \u00b7 or continuous \u00b7 5 \u00b7 As AI matures, every cadence compresses \u2014 decisions that took days now take minutes, monthly reviews become continuous"
+  },
+  {
+    "slide": 5,
+    "title": "Apr",
+    "n_runs": 7,
+    "text_chars": 168,
+    "n_images": 3,
+    "text": "Apr \u00b7 16, 2026 \u00b7 Proprietary & Confidential | \u00a9 202 \u00b7 6 \u00b7 RRVL, Jio Platforms Limited & Fynd \u00b7 Retail Platforms & Agents \u00b7 Platforms and Agents powering Reliance Retail"
+  },
+  {
+    "slide": 6,
+    "title": "Buy/Source",
+    "n_runs": 59,
+    "text_chars": 1253,
+    "n_images": 11,
+    "text": "Buy/Source \u00b7 AI Native Retail Platform \u00b7 Platform for the complete retail value chain from back-office, supply chain to customer journeys \u00b7 Plan \u00b7 Design \u00b7 Make/Move \u00b7 Assortment \u00b7 Plan \u00b7 Store Led Assortment \u00b7 Store/Space Utilization \u00b7 Trends Research \u00b7 3D Design & Collaboration \u00b7 Product Life Cycle Management \u00b7 Manufacturing \u00b7 Management \u00b7 Vendor Scan & Pack \u00b7 Store To Shelf Automation \u00b7 Cohorting & Audience Building \u00b7 Online Store-Front \u00b7 Planning \u00b7 & Design Research \u00b7 Assortment Planning \u00b7 Vendor Management & Collaboration \u00b7 Master Data Management \u00b7 Cost Negotiation \u00b7 & Purchase Order \u00b7 Manufacturing, Pick, Pack, Ship \u00b7 Available \u00b7 at DC \u00b7 Available At stores & Online Storefronts \u00b7 Sell \u00b7 Route Optimisation \u00b7 Load & Network Planning \u00b7 Catalog & Pricing \u00b7 Search & Discovery \u00b7 Payments & Checkout \u00b7 Order Mgmt & Returns \u00b7 Customer Care \u00b7 Transport \u00b7 Planning \u00b7 Customer \u00b7 Service \u00b7 Retail Back-Office Functions \u00b7 Supply Chain \u00b7 In-Store & Online Customer Journeys \u00b7 New Products Design \u00b7 Margin Optimization \u00b7 Automated Stock Replenishment \u00b7 Reconciliation Automation \u00b7 Purchase Automation \u00b7 Vendor On-Boarding \u00b7 Costing  Engine \u00b7 Trend-to-Design \u00b7 Planning Agent \u00b7 Retail Vista \u00b7 Ask Impetus \u00b7 Retail Jarvis \u00b7 Agentic Marketing \u00b7 AI Agents"
+  },
+  {
+    "slide": 7,
+    "title": "AI Native Retail Platforms",
+    "n_runs": 23,
+    "text_chars": 524,
+    "n_images": 5,
+    "text": "AI Native Retail Platforms \u00b7 A \u00b7 . \u00b7 Impetus: Fashion \u00b7 PLAN \u00b7 BUY/MAKE \u00b7 AI-first platform embedding intelligent planning and execution across every layer of Fashion & Lifestyle retail \u00b7 B. \u00b7 Granary: Grocery \u00b7 PLAN \u00b7 Agentic planning and assortment platform driving smart replenishment and category optimization for grocery retail. \u00b7 MOVE \u00b7 SELL \u00b7 BUY \u00b7 MOVE \u00b7 SELL \u00b7 C. \u00b7 Commerce Platform \u00b7 SELL \u00b7 Unified commerce platform powering \u00b7 Reliance \u00b7 Retail brands with omnichannel selling and AI-driven operations. \u00b7 SUPPORT"
+  },
+  {
+    "slide": 8,
+    "title": "Customer Experience, Technology Transformation, Business Impact",
+    "n_runs": 4,
+    "text_chars": 137,
+    "n_images": 1,
+    "text": "Customer Experience, Technology Transformation, Business Impact \u00b7 Reimagining Fashion Retail for an AI-driven future \u00b7 Impetus \u00b7 Platform"
+  },
+  {
+    "slide": 9,
+    "title": "Please Scan QR",
+    "n_runs": 6,
+    "text_chars": 226,
+    "n_images": 2,
+    "text": "Please Scan QR \u00b7 or click \u00b7 here \u00b7 to view video \u00b7 AI embedded across complete F&L Retail value chain to improve human productivity, data driven decision making & service customers better \u00b7 Impetus: AI Native Fashion Retailing"
+  },
+  {
+    "slide": 10,
+    "title": "Impetus Scale: Powering High-Velocity Retail",
+    "n_runs": 9,
+    "text_chars": 186,
+    "n_images": 0,
+    "text": "Impetus Scale: Powering High-Velocity Retail \u00b7 Jan 01, 2025 - Dec 31, 2025 \u00b7 930 \u00b7 Active Manufacturers \u00b7 39.2 K \u00b7 Options Designed \u00b7 3.6 Days \u00b7 Avg. \u00b7 Delivery Time from Vendor To Store"
+  },
+  {
+    "slide": 11,
+    "title": "Impetus: Digital Twin",
+    "n_runs": 10,
+    "text_chars": 572,
+    "n_images": 1,
+    "text": "Impetus: Digital Twin \u00b7 From fabric to store, digitally mirrored \u00b7 Fabric \u00b7 Simulate drape, texture & colour in 3D to eliminate physical swatches and accelerate design alignment \u00b7 Garment \u00b7 Visualize fit, print placement, and construction in real-time  reducing sampling cycles and costs \u00b7 Track capacity, lead times, & daily production rate digitally enabling smarter sourcing decisions and faster negotiations \u00b7 Garment Supply Chain \u00b7 Store \u00b7 Plan planograms, inventory,and shelf layouts virtually improving space utilization and store-readiness before delivery of goods"
+  },
+  {
+    "slide": 12,
+    "title": "Impetus: AI Agents",
+    "n_runs": 19,
+    "text_chars": 1054,
+    "n_images": 6,
+    "text": "Impetus: AI Agents \u00b7 Trend-to-Design Agent \u00b7 Transforms trend + brand context into manufacturable design options and auto-generates complete tech packs (specs, BOM, trims, artwork) for vendor-ready handoff. \u00b7 Buy \u00b7 Plan \u00b7 Plan \u00b7 Operations \u00b7 Back-office \u00b7 Planning Agent \u2014 Impetus Cortex \u00b7 Builds a store-realistic Plan of Record and converts it into fixture/slot-level VM layouts, with exception-led replans to keep execution on track. \u00b7 Agentic Marketing \u00b7 Autonomously builds and optimizes campaigns\u2014audiences, creatives, timing, and measurement\u2014using customer signals. \u00b7 Retail Vista \u00b7 All-India spatial intelligence backbone enabling geo-led expansion, routing, personalization, and SLA optimisation across retail operations \u00b7 Retail Jarvis \u00b7 Customer listening and store health engine that detects experience gaps and drives closed-loop corrective execution via Pulse Point. \u00b7 Ask Impetus - AI Business Analyst \u00b7 Turns cross-system retail data into executive-ready answers\u2014explains \u201cwhy,\u201d quantifies impact, and recommends the next best fix. \u00b7 Sell"
+  },
+  {
+    "slide": 13,
+    "title": "Impetus",
+    "n_runs": 16,
+    "text_chars": 839,
+    "n_images": 0,
+    "text": "Impetus \u00b7 Command Center [1/2] \u00b7 A unified command center to monitor, plan, and act across your entire retail ecosystem \u00b7 Monitor, plan, and act across your entire retail ecosystem from a single pane \u2014 with real-time visibility into stores, inventory, workforce, and customer metrics. \u00b7 Store Operations \u00b7 Real-time health checks, footfall, conversion, and staffing insights per store \u00b7 Inventory Intelligence \u00b7 Stock-level visibility, auto-replenishment triggers, and demand forecasting \u00b7 Workforce Management \u00b7 Staff scheduling, attendance tracking, and performance dashboards \u00b7 Campaign Control \u00b7 Launch, monitor, and optimize AI campaigns with unified analytics \u00b7 Customer 360\u00b0 \u00b7 Unified view of NPS, loyalty, purchase history, and engagement metrics \u00b7 Alerts & Escalations \u00b7 Configurable thresholds with automated escalation workflows"
+  },
+  {
+    "slide": 14,
+    "title": "A unified command center to monitor, plan, and act across your entire retail ecosystem.",
+    "n_runs": 6,
+    "text_chars": 155,
+    "n_images": 2,
+    "text": "A unified command center to monitor, plan, and act across your entire retail ecosystem. \u00b7 Scan to watch the \u00b7 Demo \u00b7 Video \u00b7 Impetus \u00b7 Command Center [2/2]"
+  },
+  {
+    "slide": 15,
+    "title": "Impetus Platform: Agentic Control Tower",
+    "n_runs": 2,
+    "text_chars": 145,
+    "n_images": 1,
+    "text": "Impetus Platform: Agentic Control Tower \u00b7 An agent-driven control tower that detects, prioritizes, and resolves business exceptions in real time."
+  },
+  {
+    "slide": 16,
+    "title": "Impetus Platform: Store Intelligence",
+    "n_runs": 2,
+    "text_chars": 138,
+    "n_images": 1,
+    "text": "Impetus Platform: Store Intelligence \u00b7 AI-powered store intelligence that decodes demand, competition, and localized growth opportunities."
+  },
+  {
+    "slide": 17,
+    "title": "120",
+    "n_runs": 15,
+    "text_chars": 326,
+    "n_images": 3,
+    "text": "120 \u00b7 Designs generated in \u00b7 5 days \u00b7 with just \u00b7 2 designers \u00b7 90 % \u00b7 Reduction in Design Time \u00b7 Rapid Design Creation, Options Explosion and Digital Prototyping in minutes. Moodboard \u2192 Artwork \u2192 Production \u00b7 Impetus AI Native Design \u00b7 : Superdry SDX [ \u00b7 1/2 \u00b7 ] \u00b7 Moodboard generated using Gen AI \u00b7 2D Linesheet \u00b7 CASE STUDY"
+  },
+  {
+    "slide": 18,
+    "title": "https://www.ajio.com/superdry-sdx-keys-t-shirt/p/410539961_nmr?user=old",
+    "n_runs": 3,
+    "text_chars": 131,
+    "n_images": 4,
+    "text": "https://www.ajio.com/superdry-sdx-keys-t-shirt/p/410539961_nmr?user=old \u00b7 Impetus AI Native Design: Superdry SDX [1/2] \u00b7 CASE STUDY"
+  },
+  {
+    "slide": 19,
+    "title": "Impetus AI Native Cataloging & Photoshoots",
+    "n_runs": 16,
+    "text_chars": 432,
+    "n_images": 4,
+    "text": "Impetus AI Native Cataloging & Photoshoots \u00b7 AI-powered catalog creation for faster, scalable, and consistent commerce \u00b7 Mannequin Image \u00b7 AI Photoshoot Visual & Video \u00b7 Before \u00b7 15 Days \u274c \u00b7 After \u00b7 5 Hours \u2705 \u00b7 Outcomes \u00b7 Scalable & Fast \u00b7 Face Consistency \u00b7 AI generated models library with ethnicity, age, size, gender \u00b7 Better sales conversions with videos \u00b7 AI Photoshoot Studio Visual \u00b7 AI Enriched Catalog \u00b7 AI Generated Video"
+  },
+  {
+    "slide": 20,
+    "title": "One integrated system across planning, execution, measurement and governance \u2014 continuously learning, autonomously actin",
+    "n_runs": 44,
+    "text_chars": 1573,
+    "n_images": 0,
+    "text": "One integrated system across planning, execution, measurement and governance \u2014 continuously learning, autonomously acting, always accountable to a human. \u00b7 End-to-End AI Marketing Platform \u00b7 01 \u00b7 PLAN \u00b7 AOP \u00b7 Budget \u00b7 MMM \u00b7 Goals \u00b7 \u203a \u00b7 02 \u00b7 INTELLIGENCE \u00b7 CDP \u00b7 Signals \u00b7 Audiences \u00b7 LTV \u00b7 \u203a \u00b7 03 \u00b7 CREATE \u00b7 AI Creative \u00b7 Brand Governed \u00b7 \u203a \u00b7 04 \u00b7 EXECUTE \u00b7 Campaigns \u00b7 Channel Activation \u00b7 \u203a \u00b7 05 \u00b7 MEASURE \u00b7 Attribution \u00b7 Geo Lift \u00b7 MMM \u00b7 \u203a \u00b7 06 \u00b7 OPTIMISE \u00b7 Agents Act \u00b7 Self-Improving Loop \u00b7 \u21bb  Closed loop \u00b7 Every outcome feeds back into planning, models, and agent behaviour \u00b7 \u26a1 \u00b7 Agentic Intelligence \u00b7 8 specialised AI agents run continuously across planning, execution, measurement and governance. \u00b7 Agents propose complete campaigns \u2014 brief, audience, creative and channel plan \u00b7 Governance Agent validates all content before any human sees it \u00b7 No brand-facing output without a named human approver \u00b7 \u25c8 \u00b7 One Integrated Platform \u00b7 Every team \u2014 CMO, Brand Head, Manager, Analyst, Creative and Legal \u2014 one system, one source of truth. \u00b7 CMO sees portfolio health, agent activity and decisions in one view \u00b7 Every team works in the same system on the same data in real time \u00b7 Analysts work from live data \u2014 no manual report assembly \u00b7 \u221e \u00b7 Full Lifecycle Coverage \u00b7 From AOP through campaign execution, measurement and brand health \u2014 one closed marketing loop. \u00b7 Annual and quarterly planning with MMM-calibrated budget allocation \u00b7 Four-layer measurement: Attribution, Geo Lift, MMM, Cross-Media \u00b7 Every outcome feeds back into the next planning cycle automatically"
+  },
+  {
+    "slide": 21,
+    "title": "Generative Media: Full Spectrum",
+    "n_runs": 5,
+    "text_chars": 88,
+    "n_images": 4,
+    "text": "Generative Media: Full Spectrum \u00b7 Product Videos \u00b7 Video Ads \u00b7 Music Videos \u00b7 Short Film"
+  },
+  {
+    "slide": 22,
+    "title": "Generative Media",
+    "n_runs": 2,
+    "text_chars": 39,
+    "n_images": 10,
+    "text": "Generative Media \u00b7 : Social Media Reach"
+  },
+  {
+    "slide": 23,
+    "title": "Impetus Platform: Manufacturing Execution System",
+    "n_runs": 24,
+    "text_chars": 661,
+    "n_images": 2,
+    "text": "Impetus Platform: Manufacturing Execution System \u00b7 Revolutionising Apparel Manufacturing \u00b7 The Challenges \u00b7 Scattered Tools & Manual Reports \u00b7 WhatsApp / Email Coordination \u00b7 Data Duplication & Loss \u00b7 The Solution \u00b7 Unified AI-native vendor OS that connects every stage of the factory \u00b7 Key Benefits \u00b7 Unified Vendor OS \u00b7 Smarter Pre-Production \u00b7 Seamless Daily Reporting \u00b7 Proactive in Quality \u00b7 Faster to Packing \u00b7 End-to-End Traceability \u00b7 System Modules \u00b7 Pre-Production Order Summary \u00b7 Daily Production Reporting (DPR) \u00b7 Quality Audit Module \u00b7 Full QC Visibility \u00b7 IntelliPack Integration \u00b7 Capacity Declaration \u00b7 Integrations & Webhooks \u00b7 AI Orchestration"
+  },
+  {
+    "slide": 24,
+    "title": "App Feature Map",
+    "n_runs": 5,
+    "text_chars": 84,
+    "n_images": 2,
+    "text": "App Feature Map \u00b7 Optimizing Sales \u00b7 Force \u00b7 : Key Features for Peak Performance \u00b7 `"
+  },
+  {
+    "slide": 25,
+    "title": "What is Jarvis?",
+    "n_runs": 21,
+    "text_chars": 631,
+    "n_images": 5,
+    "text": "What is Jarvis? \u00b7 Jarvis fuses CCTV, wearable audio, and store data (POS, NPS, inventory) to track footfall, dwell time, staff gaps, and service quality turning signals into real-time actions via a continuous \u00b7 Sense \u2192 Analyze \u2192 Act \u2192 Verify loop. \u00b7 Multi-Sensor \u00b7 Fusion \u00b7 Automated \u00b7 Escalations \u00b7 Privacy-First \u00b7 & DPDP Compliant \u00b7 Benefits of Jarvis \u00b7 Turn every store signal into measurable revenue impact and faster decisions. \u00b7 Agentic Feedback Loop \u00b7 Impetus Jarvis \u00b7 [ \u00b7 1/2 \u00b7 ] \u00b7 Real-time store Intelligence to maintain peak performance and visual perfection \u00b7 Key Metrics \u00b7 Silent NPS \u00b7 Conversion Rate \u00b7 Resolution TAT"
+  },
+  {
+    "slide": 26,
+    "title": "Impetus",
+    "n_runs": 3,
+    "text_chars": 24,
+    "n_images": 1,
+    "text": "Impetus \u00b7 Jarvis \u00b7 [2/2]"
+  },
+  {
+    "slide": 27,
+    "title": "AutRi: Autonomous Shelf Compliance",
+    "n_runs": 43,
+    "text_chars": 814,
+    "n_images": 5,
+    "text": "AutRi: Autonomous Shelf Compliance \u00b7 Enabling Real-Time Store Intelligence with Robotics + AI \u00b7 What is AutRi? \u00b7 AutRi \u00b7 uses \u00b7 autonomous robots \u00b7 and \u00b7 AI \u00b7 to deliver \u00b7 real-time shelf intelligence \u00b7 detecting \u00b7 OOS \u00b7 , \u00b7 pricing \u00b7 , and \u00b7 planogram issues \u00b7 , boosting \u00b7 compliance \u00b7 , reducing \u00b7 manual audits \u00b7 , and preventing \u00b7 lost retail sales \u00b7 . \u00b7 Instant alerts for OOS & pricing errors. \u00b7 Fully automated shelf audits \u00b7 Globally Scalable, Locally Compliant \u00b7 Benefits of AutRi \u00b7 Built to eliminate retail\u2019s blind spot with continuous, accurate shelf visibility \u00b7 Lower cost than fixed CCTV setups. \u00b7 Key Metrics \u00b7 Compliance Accuracy \u00b7 95% \u00b7 + \u00b7 (vs. industry avg 60%) \u00b7 SKU Recognition Accuracy \u00b7 98% \u00b7 + \u00b7 real-time identification \u00b7 Store Coverage per Robot \u00b7 20\u201330K sq \u00b7 . \u00b7 ft. \u00b7 per scanning run"
+  },
+  {
+    "slide": 28,
+    "title": "Kio: Self Checkout Kiosk",
+    "n_runs": 31,
+    "text_chars": 908,
+    "n_images": 3,
+    "text": "Kio: Self Checkout Kiosk \u00b7 Unlock faster checkouts, effortless scalability, and enhanced customer experiences in 3 simple steps \u00b7 Scan items instantly using barcode or RFID technology for fast, accurate recognition \u00b7 1. Scan \u00b7 Apply offers & make payment via card, UPI, or wallet \u00b7 2. \u00b7 Pay \u00b7 Grab your purchase and go - no waiting, no hassle, just smooth shopping \u00b7 3. \u00b7 Go \u00b7 Peripherals \u00b7 Camera Module \u00b7 LED Indicator Module \u00b7 Barcode Scanner \u00b7 POS Terminal Mount \u00b7 Printer \u00b7 3X Faster \u00b7 C \u00b7 heckout \u00b7 Premium Self-Checkout \u00b7 Virtual Try-ons \u00b7 Smart Modular Design \u00b7 Specifications \u00b7 21.5\u2033 (diagonal), Capacitive touch display \u00b7 1920 \u00d7 1080 Full HD resolution \u00b7 Upto 20\u00b0 Adjustable Screen \u00b7 2 Expandable USB 3.0 Port \u00b7 100 - 240V AC, 50/60 Hz Input Power \u00b7 50W Power Draw \u00b7 Benefits of Kio \u00b7 Kio is built for modern retail across categories such as clothing, accessories, footwear, beauty and grocery etc."
+  },
+  {
+    "slide": 29,
+    "title": "Fynd",
+    "n_runs": 28,
+    "text_chars": 918,
+    "n_images": 6,
+    "text": "Fynd \u00b7 Horizon \u00b7 Virtual try-on experiences that deliver perfect fit with zero inventory risk \u00b7 Apparel Infinite Studio creates a vertically integrated Virtual Try-on ecosystem by combining body measurement, endless virtual inventory, and automated manufacturing. It combines factory and dark store excellence to enable demand-led production with perfect fit and zero inventory risk. \u00b7 BROWSE \u00b7 TRY \u00b7 BUY \u00b7 DELIVER \u00b7 Problem Statement \u00b7 Core Technology \u00b7 Scan or click \u00b7 here \u00b7 to watch the Demo \u00b7 v \u00b7 ideo \u00b7 3D Body Measurement \u00b7 >98% accuracy via Intel RealSense. \u00b7 Gemini Cloud Rendering \u00b7 Physics-accurate fabric rendering under 2s \u00b7 . \u00b7 Infinite Aisle Ecosystem \u00b7 Expand from 2k to 50k+ SKUs \u00b7 Limited Physical Inventory \u00b7 Store space restricts SKU availability. \u00b7 High Inventory Risk \u00b7 Unsold stock drives markdowns and costs. \u00b7 Suboptimal Customer Experience \u00b7 Fit issues and limited discovery increase returns."
+  },
+  {
+    "slide": 30,
+    "title": "Powering seamless shopping experiences across online and stores",
+    "n_runs": 3,
+    "text_chars": 98,
+    "n_images": 2,
+    "text": "Powering seamless shopping experiences across online and stores \u00b7 F \u00b7 aster, Smarter, and at Scale"
+  },
+  {
+    "slide": 31,
+    "title": "7",
+    "n_runs": 10,
+    "text_chars": 97,
+    "n_images": 1,
+    "text": "7 \u00b7 B2B Businesses \u00b7 105 \u00b7 B2C Businesses \u00b7 32 \u00b7 87 \u00b7 Stores \u00b7 Jio Commerc \u00b7 e Platf \u00b7 orm: Scale"
+  },
+  {
+    "slide": 32,
+    "title": "B2B Commerce Platforms",
+    "n_runs": 21,
+    "text_chars": 470,
+    "n_images": 23,
+    "text": "B2B Commerce Platforms \u00b7 In-store Commerce \u00b7 B2C Commerce Platforms \u00b7 Smart Greens \u00b7 Fruits & Vegetables \u00b7 Reliance Consumer Brands \u00b7 Jio Commerce Platform: Enterprise Commerce \u00b7 Powering seamless shopping experiences across online and stores\u2014faster, smarter, and at scale \u00b7 customers \u00b7 served \u00b7 300M+ \u00b7 350K \u00b7 + \u00b7 Peak per \u00b7 Hour Order \u00b7 Jio Commerce Platform (JCP) \u00b7 is \u00b7 enterprise-grade commerce platform \u00b7 , supporting \u00b7 large-scale operations for \u00b7 Reliance Retail"
+  },
+  {
+    "slide": 33,
+    "title": "Jio Commerc",
+    "n_runs": 11,
+    "text_chars": 174,
+    "n_images": 8,
+    "text": "Jio Commerc \u00b7 e Platf \u00b7 orm: B2C Snapshot \u00b7 Nov 2024 \u00b7 Dec, 2025 \u00b7 JioMart: Quick Commerce \u00b7 In-Store Companion x AJIO \u00b7 TIRA: Beauty Platform \u00b7 AJIO: \u00b7 Fashion \u00b7 Marketplace"
+  },
+  {
+    "slide": 34,
+    "title": "Jio Commerc",
+    "n_runs": 7,
+    "text_chars": 116,
+    "n_images": 7,
+    "text": "Jio Commerc \u00b7 e Platf \u00b7 orm: B2B Snapshot \u00b7 RCPL \u00b7 Metro Kirana Platform \u00b7 JioMart Digital B2B \u00b7 JioMart Digital ASP"
+  },
+  {
+    "slide": 35,
+    "title": "Jio Commerce Platform: Ecosystem",
+    "n_runs": 38,
+    "text_chars": 833,
+    "n_images": 11,
+    "text": "Jio Commerce Platform: Ecosystem \u00b7 Scale of Retail Transfor \u00b7 mation \u00b7 FY 2025-26 \u00b7 700 \u00b7 K \u00b7 + \u00b7 Orders Per Day \u00b7 30 \u00b7 K \u00b7 + \u00b7 Total Stores \u00b7 Served \u00b7 200 \u00b7 M+ \u00b7 Customers \u00b7 50 \u00b7 K \u00b7 + \u00b7 Orders Per Min \u00b7 Microservice Based Platform \u00b7 Modular, scalable, and interoperable services \u00b7 Accelerated Go-To-Market \u00b7 Pre-built features accelerate launches \u00b7 Eliminating Redundancy \u00b7 Streamlined workflows for faster cycles \u00b7 Cross-Tech Leverage \u00b7 15+ retail extensions enhance efficiency \u00b7 Optimized Resourcing \u00b7 Unified tech stack lowers manpower needs \u00b7 AI Documentation & Learning \u00b7 Strengthening the ecosystem with Danswer \u00b7 Modular & Flexible Architecture \u00b7 Adaptable across diverse business verticals \u00b7 Centralized Governance \u00b7 Centralized compliance ensures alignment \u00b7 Seamless Scalability \u00b7 Easily scalable infrastructure solutions"
+  },
+  {
+    "slide": 36,
+    "title": "Unified Customer Platform",
+    "n_runs": 19,
+    "text_chars": 715,
+    "n_images": 3,
+    "text": "Unified Customer Platform \u00b7 Scalable, privacy compliant platform that helps unify customer identity and profiles across all Reliance Retail Businesses to increase customer engagement and drive personalization \u00b7 Outcomes \u00b7 Boosted conversions via one-click login across all Reliance retail storefronts \u00b7 Eliminated 3rd-party data tools \u2014 full control, lower cost \u00b7 Reduced re-acquisition cost with single customer view across brands \u00b7 Cut campaign spends via in-house SMS, WhatsApp, Email (JioCX) \u00b7 Enabled personalization, NPS, and faster CX with open APIs \u00b7 4 \u00b7 00M \u00b7 + \u00b7 Customer Identities Unified \u00b7 200 \u00b7 + \u00b7 Customer Profile Attributes \u00b7 Adoption Highlights \u00b7 100 \u00b7 % \u00b7 Privacy Compliant. Deployed on Jio Cloud"
+  },
+  {
+    "slide": 37,
+    "title": "ZIP: AJIO",
+    "n_runs": 24,
+    "text_chars": 537,
+    "n_images": 1,
+    "text": "ZIP: AJIO \u00b7 C \u00b7 ommerce Agent \u00b7 An AI Agent That Shops With You, Not Just For You \u00b7 Challenge \u00b7 Solution \u00b7 Traditional ecommerce search \u00b7 Shoppers struggled with outdated, menu-driven navigation \u00b7 No support for vague intent leading to abandoned searches / drop offs \u00b7 Added \u00b7 ZIP Agent \u00b7 to \u00b7 AJIO.com \u00b7 to enable natural language \u00b7 search \u00b7 and recommendation via \u00b7 chat & voice \u00b7 Impact \u00b7 Chats directly helped product discovery \u00b7 88% \u00b7 Positive customer engagement \u00b7 86% \u00b7 Products covered by chatbot via real-time catalog sync \u00b7 2M+"
+  },
+  {
+    "slide": 38,
+    "title": "Immersive Commerce - GlamAR",
+    "n_runs": 41,
+    "text_chars": 783,
+    "n_images": 4,
+    "text": "Immersive Commerce - GlamAR \u00b7 Immersive shopping experiences that bring products to life \u00b7 GlamAR is an \u00b7 AI-first 3D, AR, and VR commerce platform \u00b7 that helps brands and retailers i \u00b7 ncrease conversion and reduce returns \u00b7 across \u00b7 online and in-store \u00b7 journeys \u00b7 Customer Success \u00b7 Saturdays: VTO users convert at \u00b7 32% \u00b7 vs 9% for non-VTO users \u00b7 Foxtale: AI Skin Analysis drives \u00b7 1.6\u00d7 \u00b7 higher conversion \u00b7 New Features \u00b7 AI Skin Analysis \u00b7 New \u00b7 3D & AR Virtual Try-On \u00b7 AI Style Studio for assisted selling \u00b7 3D \u00b7 & AR Ads \u00b7 New \u00b7 Virtual Store \u00b7 3D, AR, VR Solutions \u00b7 3D AR \u00b7 B \u00b7 anner \u00b7 A \u00b7 ds \u00b7 AI Facial Skin Analysis \u00b7 40% \u00b7 reduction in returns \u00b7 106% \u00b7 increase in revenue per visit \u00b7 90% \u00b7 increase in product engagement \u00b7 Scan or click \u00b7 here \u00b7 to watch the video"
+  },
+  {
+    "slide": 39,
+    "title": "www.fynd.com",
+    "n_runs": 3,
+    "text_chars": 47,
+    "n_images": 3,
+    "text": "www.fynd.com \u00b7 @fynd.platform \u00b7 /fynd-shopsense"
+  },
+  {
+    "slide": 40,
+    "title": "Intelligence embedded in every retail moment \u2014 before, during, and after the sale",
+    "n_runs": 3,
+    "text_chars": 127,
+    "n_images": 3,
+    "text": "Intelligence embedded in every retail moment \u2014 before, during, and after the sale \u00b7 Intelligence for Everyone \u00b7 AI for Commerce"
+  },
+  {
+    "slide": 41,
+    "title": "Pixelbin",
+    "n_runs": 12,
+    "text_chars": 170,
+    "n_images": 6,
+    "text": "Pixelbin \u00b7 5,000+ images \u00b7 Fynd Studios \u00b7 50+ AI Ads \u00b7 Fynd Snap \u00b7 25k photoshoots \u00b7 GlamAR \u00b7 200+ \u00b7 AR, VR \u00b7 AI \u00b7 Marketing \u00b7 New age marketing and entertainment with AI"
+  },
+  {
+    "slide": 42,
+    "title": "Link to the video -",
+    "n_runs": 2,
+    "text_chars": 41,
+    "n_images": 1,
+    "text": "Link to the video - \u00b7 Click here to watch"
+  },
+  {
+    "slide": 43,
+    "title": "Scan to watch the Demo Video",
+    "n_runs": 3,
+    "text_chars": 55,
+    "n_images": 3,
+    "text": "Scan to watch the Demo Video \u00b7 Impetus: Design \u00b7 Studio"
+  },
+  {
+    "slide": 44,
+    "title": "One Network. Unified Inventory Visibility. On-Time Fulfillment.",
+    "n_runs": 3,
+    "text_chars": 126,
+    "n_images": 2,
+    "text": "One Network. Unified Inventory Visibility. On-Time Fulfillment. \u00b7 Make and Move with Speed, Precision & Control \u00b7 Supply Chain"
+  },
+  {
+    "slide": 45,
+    "title": "Supply Chain OS \u2013 Unified from Order to Delivery",
+    "n_runs": 35,
+    "text_chars": 1285,
+    "n_images": 4,
+    "text": "Supply Chain OS \u2013 Unified from Order to Delivery \u00b7 Unify order management, warehousing, suppliers, and logistics with one composable platform. \u00b7 Order Management \u00b7 Problems \u00b7 Manual order orchestration, siloed inventory visibility & no SLA enforcement \u00b7 Fynd Advantage \u00b7 Centralized order hub across channels \u00b7 Automated routing & real\u2011time status updates \u00b7 SLA\u2011based dispatch assignment \u00b7 Fynd OMS \u00b7 Warehouse Management \u00b7 Problems \u00b7 Spreadsheet\u2011driven inventory, slow picking & putaway & No item\u2011level traceability \u00b7 Fynd Advantage \u00b7 Real\u2011time barcode inventory & system-wide search capability \u00b7 AI powered wave\u2011picking and putaway logic \u00b7 Batch, expiry, and audit\u2011ready workflows \u00b7 Fynd WMS \u00b7 Integrated Supplier Portal \u00b7 Problems \u00b7 Manual PO sending & tracking, delayed acknowledgments & no inventory visibility \u00b7 Fynd Advantage \u00b7 Real\u2011time PO sharing & auto\u2011acknowledgment \u00b7 Live supplier inventory & capacity view \u00b7 Auto\u2011GRN linkage & event\u2011based alerts \u00b7 Fynd Supplier Portal \u00b7 Transportation \u00b7 Problems \u00b7 Inefficient route planning, no real\u2011time shipment ETA & manual carrier assignments \u00b7 Fynd Advantage \u00b7 AI  based d \u00b7 ynamic route optimization & carrier matching \u00b7 Integrated label, tracking, and NDR sync \u00b7 Real\u2011time route tracking & ETA updates \u00b7 Fynd TMS & Fynd Logistics"
+  },
+  {
+    "slide": 46,
+    "title": "Key Capabilities Across Every Supply Chain Function",
+    "n_runs": 34,
+    "text_chars": 1174,
+    "n_images": 23,
+    "text": "Key Capabilities Across Every Supply Chain Function \u00b7 Out-of-the-box modules for OMS, WMS, Supplier, and Logistics\u2014built for fast, scalable operations \u00b7 Inventory Management & Warehousing \u00b7 Optimize what\u2019s in stock, where it sits, and how it moves \u00b7 Batch & expiry tracking \u00b7 Box-level packing \u00b7 Wave-picking workflows \u00b7 Barcode-based inventory \u00b7 Cycle count & adjustments \u00b7 Supplier Collaboration & Procurement \u00b7 Bring vendors into your flow with clarity and control \u00b7 Smart putaway suggestions \u00b7 PO sharing & acknowledgment \u00b7 Vendor inventory visibility \u00b7 Production status updates \u00b7 Order Fulfillment & Dispatch \u00b7 Route orders intelligently, match carriers, and automate movement \u00b7 Returns, Payments \u00b7 & Adjustments \u00b7 Close the loop with flexibility, compliance, and insights \u00b7 Vendor performance scoring \u00b7 Forecast-based PO planning \u00b7 Multi-channel order routing \u00b7 Backorder & split order management \u00b7 Carrier matching \u00b7 AI-driven route optimization \u00b7 Dispatch automation \u00b7 Live shipment tracking \u00b7 Prepaid/COD logic & rules \u00b7 Returns & cancellation workflows \u00b7 Performance dashboards \u00b7 Proof of delivery & OTP \u00b7 Automated order routing \u00b7 Automated E-way bill generation"
+  },
+  {
+    "slide": 47,
+    "title": "Ratl Agentic Testing",
+    "n_runs": 2,
+    "text_chars": 115,
+    "n_images": 1,
+    "text": "Ratl Agentic Testing \u00b7 Ratl.ai uses AI agents to autonomously test APIs, web, mobile, and performance \u2014 end to end."
+  },
+  {
+    "slide": 48,
+    "title": "Ratl Agentic Te",
+    "n_runs": 8,
+    "text_chars": 170,
+    "n_images": 2,
+    "text": "Ratl Agentic Te \u00b7 sting \u00b7 Please Scan QR \u00b7 or click \u00b7 here \u00b7 to \u00b7 view video \u00b7 Ratl.ai uses AI agents to autonomously test APIs, web, mobile, and performance \u2014 end to end"
+  },
+  {
+    "slide": 49,
+    "title": "Forge MES",
+    "n_runs": 42,
+    "text_chars": 953,
+    "n_images": 5,
+    "text": "Forge MES \u00b7 Revolutionising Electronics and Hardware Manufacturing \u00b7 With \u00b7 Fynd Manufacturing OS (MOS) \u00b7 , the company transitions from fragmented ERP, MES, WMS silos into a \u00b7 unified, AI-native platform \u00b7 that connects every stage of the factory\u2014 \u00b7 from planning to logistics \u00b7 . \u00b7 The Challenges \u00b7 Delayed Launches \u00b7 Lower Efficiency \u00b7 Increased Costs \u00b7 The Solution \u00b7 Unified AI-native Manufacturing OS (MOS) that connects every stage of the factory. \u00b7 Key Benefits \u00b7 Agile in Planning \u00b7 Smarter in Procurement \u00b7 Seamless in Assembly \u00b7 Proactive in Quality \u00b7 Efficient in Movement \u00b7 System Modules \u00b7 Procure-to-Pay (P2P) \u00b7 Warehousing \u00b7 MES + Production \u00b7 BOM & Version Control \u00b7 People & Labour \u00b7 Client Management \u00b7 Integrations & Webhooks \u00b7 AI Orchestration \u00b7 90% \u00b7 Reduction in Plan cycle time \u00b7 Plan \u00b7 Buy & Source \u00b7 Assemble \u00b7 Move \u00b7 5-10% \u00b7 Increase in Throughput \u00b7 50% \u00b7 Reduction in Inventory stockouts \u00b7 80% \u00b7 Reduction in Audit cycle time"
+  },
+  {
+    "slide": 50,
+    "title": "AI-powered, Reliance-backed",
+    "n_runs": 2,
+    "text_chars": 57,
+    "n_images": 0,
+    "text": "AI-powered, Reliance-backed \u00b7 Neural Agentic Marketplaces"
+  },
+  {
+    "slide": 51,
+    "title": "Neural Agentic",
+    "n_runs": 44,
+    "text_chars": 1518,
+    "n_images": 1,
+    "text": "Neural Agentic \u00b7 Marketplace \u00b7 (NAM) \u00b7 Apr 15, 2026 \u00b7 Build  #1 Agentic B2B2C Marketplace \u2014 AI-powered, Reliance-backed \u00b7 We aspire to structurally disrupt commerce using the power of AI and the Reliance ecosystem \u00b7 OPPORTUNITY \u00b7 $1.1T \u00b7 Consumption Economy \u00b7 70% \u00b7 Unorganized Segment \u00b7 30M+ \u00b7 Shops Addressable \u00b7 Priority Verticals:  Food  \u00b7  Groceries  \u00b7  Fashion, Lifestyle & Home  \u00b7  Electronics & Appliances \u00b7 VALUE PROPOSITION \u00b7 FOR CONSUMERS \u00b7 Agents executing effortless, intelligent commerce for every Indian consumer \u2014 saving time and money \u00b7 FOR SHOPS \u00b7 Agents empowering merchants to operate like sophisticated global retailers \u2014 growing profitably with less effort \u00b7 4 KEY PILLARS \u2014 B2B2C STRATEGY \u00b7 1 \u00b7 Own Consumer Demand \u00b7 Default consumer agent \u2014 understand intent, compare options, proactively recommend \u00b7 2 \u00b7 Structurally Improve Econ \u00b7 Lowest prices, transparent pricing & lowest commissions for merchants \u00b7 3 \u00b7 Build Trust & Fulfilment \u00b7 Transparent pricing, reliable support, AI-optimised routing & fraud protection \u00b7 4 \u00b7 Win Shop Supply (ShopOS) \u00b7 Drive revenue, reduce costs & simplify ops via agentic B2B + Reliance ecosystem \u00b7 RELIANCE EDGE \u00b7 1 \u00b7 Customer Distribution \u00b7 Jio assets across telecom, media & retail for at-scale consumer and merchant reach \u00b7 2 \u00b7 Distribution & Logistics \u00b7 JioMart & Reliance Retail network powering last-mile delivery and fulfilment \u00b7 3 \u00b7 B2B Solutions for Shops \u00b7 Backed by Reliance Retail & JFS for procurement scale and financial services access \u00b7 Shop \u00b7 OS"
+  },
+  {
+    "slide": 52,
+    "title": "Priority verticals:",
+    "n_runs": 41,
+    "text_chars": 746,
+    "n_images": 20,
+    "text": "Priority verticals: \u00b7 30% \u00b7 Organized shops \u00b7 (across verticals) \u00b7 28% \u00b7 Groceries \u00b7 # Shops: 12-13M \u00b7 12% \u00b7 Fashion, Lifestyle, Home \u00b7 # Shops: 5-6M \u00b7 4% \u00b7 Electronics, Appliances \u00b7 # Shops: 2-3M \u00b7 4% \u00b7 Food services \u00b7 # Shops: 1.5-2M \u00b7 9% \u00b7 Education \u00b7 # Shops: 1-2M \u00b7 10% \u00b7 Health and fitness \u00b7 # Shops: 2-3M \u00b7 <1% \u00b7 Media \u00b7 # Shops: <1M \u00b7 4% \u00b7 Travel and mobility \u00b7 # Shops: 3-4M \u00b7 Unorganized segment \u00b7 Unorganized segment is 70% of all shops \u00b7 Several cross-cutting assets that can be leveraged across sectors \u00b7 Jio ICT i.e., Fiber, Telecom, etc. \u00b7 Jio Financial Services \u00b7 Jio Cloud \u00b7 Groceries \u00b7 Fashion, Lifestyle & Home \u00b7 Electronics \u00b7 & \u00b7 Appliances \u00b7 Food \u00b7 Huge opportunity: $1.1T consumption economy, 70% unorganized with 30M+ shops"
+  },
+  {
+    "slide": 53,
+    "title": "We aspire to structurally disrupt commerce using the power of AI and reliance ecosystem",
+    "n_runs": 1,
+    "text_chars": 87,
+    "n_images": 0,
+    "text": "We aspire to structurally disrupt commerce using the power of AI and reliance ecosystem"
+  },
+  {
+    "slide": 54,
+    "title": "Agents executing effortless and intelligent commerce for",
+    "n_runs": 19,
+    "text_chars": 711,
+    "n_images": 5,
+    "text": "Agents executing effortless and intelligent commerce for \u00b7 every \u00b7 Indian consumer, \u00b7 saving consumers time and money \u00b7 Agents empowering merchants to operate like sophisticated global retailers, \u00b7 helping them grow profitably with less effort \u00b7 FOR CONSUMERS \u00b7 FOR SHOPS \u00b7 Reliance Edge \u00b7 Jio assets across telecom, media, and retail for at-scale consumer and merchant reach \u00b7 JioMart and Reliance Retail network powering last-mile delivery and fulfillment \u00b7 Backed by Reliance Retail and JFS for procurement scale and financial services access \u00b7 Distribution and Logistics \u00b7 B2B Solutions for Shops \u00b7 Customer Distribution \u00b7 1 \u00b7 2 \u00b7 3 \u00b7 Build India\u2019s #1 agentic B2B2C marketplace enabled by AI & Reliance edge"
+  },
+  {
+    "slide": 55,
+    "title": "Understand intent",
+    "n_runs": 47,
+    "text_chars": 1461,
+    "n_images": 0,
+    "text": "Understand intent \u00b7 and recommend best options \u00b7 Compare options across platforms \u00b7 with ease \u00b7 Proactively recommends \u00b7 products and services \u00b7 Drive revenue \u00b7 with\u00a0demand generation agents and Reliance distribution \u00b7 Simplify operations \u00b7 with simple agentic interfaces \u00b7 Reduce costs \u00b7 via agentic B2B solutions and RIL ecosystem advantage on procurement, inventory and demand planning, financing \u00b7 Lowest prices \u00b7 for customers driven by reducing CAC, delivery, etc \u00b7 Simple, transparent pricing \u00b7 for consumers & merchants \u00b7 Lowest commissions / cost of operations \u00b7 for merchants \u00b7 Customer trust \u00b7 : Transparent pricing, reliable support, high-quality supply \u00b7 Merchant trust: \u00b7 Protection from fraud, predictable payouts and operations \u00b7 Operational excellence: \u00b7 AI-optimized fulfilment (routing, batching) \u00b7 Best Value and Transparent Pricing \u00b7 Ensure price transparency and best value across all transactions \u00b7 Default Consumer agent \u00b7 Become the default trusted agent dedicated to save time and money \u00b7 Trusted platform with reliable fulfilment \u00b7 Coordinates\u00a0fulfilment, and stand\u00a0behind every transaction \u00b7 B2B solutions \u00b7 Access\u00a0to Reliance\u2019s diverse ecosystem \u00b7 Shop Agentic OS \u00b7 Gives\u00a0every\u00a0shop one\u00a0system\u00a0to\u00a0grow revenues and  manage\u00a0operations \u00b7 B2C \u00b7 Marketplace \u00b7 layer \u00b7 ShopOS solution \u00b7 Own Consumer Demand \u00b7 Structurally Improve Economics \u00b7 Win Shop Supply \u00b7 Build Trust & Fulfilment \u00b7 1 \u00b7 2 \u00b7 3 \u00b7 4 \u00b7 NAM B2B2C Strategy \u2013 4 Key Pillars"
+  },
+  {
+    "slide": 56,
+    "title": "NAM Cor",
+    "n_runs": 3,
+    "text_chars": 26,
+    "n_images": 1,
+    "text": "NAM Cor \u00b7 e \u00b7 Architecture"
+  },
+  {
+    "slide": 57,
+    "title": "ShopOS:\u00a0Shop first stack of Reliance B2B + Agentic Solutions",
+    "n_runs": 37,
+    "text_chars": 738,
+    "n_images": 10,
+    "text": "ShopOS:\u00a0Shop first stack of Reliance B2B + Agentic Solutions \u00b7 Reducing costs \u00b7 Restaurant General Manager Agent \u00b7 Procurement \u00b7 Agent \u00b7 Demand Forecasting Agent \u00b7 Marketing Agent \u00b7 Financing Agent \u00b7 Financial Reconciliation\u00a0Agent \u00b7 Price \u00b7 compar \u00b7 e \u00b7 A \u00b7 gent \u00b7 Menu & Pricing Agent \u00b7 Smart offer design Agent \u00b7 Onboarding Agent \u00b7 P&L Insights Agent \u00b7 B2B procurement via METRO \u00b7 Agentic \u00b7 Solutions \u00b7 Simplifying operations \u00b7 Driving growth \u00b7 B2B financing \u00b7 POS offering \u00b7 Distribution channels to shops : \u00b7 NAM Food App, Bharat IQ, JioMart \u00b7 ICT solutions \u00b7 Messaging Commerce Agent \u00b7 Reliance \u00b7 B2B \u00b7 Hyperlocal ads via JioAds \u00b7 Jio HotStar, JustDial, etc. \u00b7 Agentic Restaurant Manager (Illustrative) \u00b7 Cashflow forecast \u00b7 A \u00b7 gent"
+  },
+  {
+    "slide": 58,
+    "title": "Unified Central Platforms for Pricing & Promotions",
+    "n_runs": 2,
+    "text_chars": 73,
+    "n_images": 0,
+    "text": "Unified Central Platforms for Pricing & Promotions \u00b7 Pricing & Promotions"
+  },
+  {
+    "slide": 59,
+    "title": "Automate. Govern. Publish. At Scale.",
+    "n_runs": 39,
+    "text_chars": 1878,
+    "n_images": 1,
+    "text": "Automate. Govern. Publish. At Scale. \u00b7 Central Pricing and Promotions \u00b7 Reliance Retail\u2019s pricing operates at a scale that manual processes cannot sustain. CPP shifts pricing from a reactive, spreadsheet-driven exercise to a real-time, governed intelligence layer \u2014 enabling faster decisions, tighter margin control, and consistent execution across every channel. \u00b7 WHAT WE UNLOCK \u00b7 Reduce pricing latency \u00b7 Reduce wastage \u00b7 Increase auto-priced SKUs \u00b7 Improve consumer price perception \u00b7 Reduce operational overhead \u00b7 Improve KVI margin \u00b7 CPP is designed to evolve in lockstep with Reliance\u2019s operational maturity \u2014 starting with governance and data foundations before layering in AI-driven optimisation. Each phase delivers standalone value while building the capability stack for the next. \u00b7 HOW WE GET THERE \u2014 PHASED ROADMAP \u00b7 HOW PRICING FLOWS \u2014 END TO END \u00b7 PHASED CAPABILITY ROADMAP \u00b7 Phase \u00b7 Description \u00b7 Decision Mode \u00b7 User Involvement \u00b7 Outcome \u00b7 1. Data Assimilation & Competitive Pricing \u00b7 Unified internal & competitor data into a single validated pricing dataset with live dashboards \u00b7 Manual \u00b7 High \u00b7 Single source of truth for pricing data \u00b7 2. Rule-Based Guardrails & Markdown Heuristics (Immediate Priority) \u00b7 Price floors tied to GST cost, inventory-age markdown triggers, and liquidation guardrails enforced via configurable business rules \u00b7 Manual \u00b7 High \u00b7 Margin-protected pricing with guardrails against irrational discounting \u00b7 3. Rule-Based Cross-Elasticity \u00b7 Cross-SKU pricing rules that prevent cannibalization within categories \u00b7 Semi-Automated \u00b7 Moderate \u00b7 Cleaner category P&L and less internal price conflict \u00b7 4. Automated Elasticity (AI-Driven Optimisation) \u00b7 ML-driven elasticity models with human-in-loop validation and continuous retraining \u00b7 Automated (Human-in-loop) \u00b7 Light \u00b7 Self-improving pricing engine driving sustained margin uplift"
+  },
+  {
+    "slide": 60,
+    "title": "Unified Central Platforms for Pricing & Promotions",
+    "n_runs": 2,
+    "text_chars": 87,
+    "n_images": 0,
+    "text": "Unified Central Platforms for Pricing & Promotions \u00b7 Unified Business Operations Center"
+  },
+  {
+    "slide": 61,
+    "title": "IP CCTV Camera",
+    "n_runs": 34,
+    "text_chars": 1145,
+    "n_images": 16,
+    "text": "IP CCTV Camera \u00b7 IoT Sensors Data \u00b7 POS Data \u00b7 Supply Chain Data \u00b7 Online Fraud Detection \u00b7 Automated Integration of Real time telemetry on cloud (Stores + DCs + Offices) \u00b7 Unified Customer data \u00b7 Historical Sensor data \u00b7 Historical Sales, Pricing & Promotion data \u00b7 Real time Inventory \u00b7 Online Sales and App Analytics \u00b7 Real Time Input \u00b7 Live Data integration \u00b7 Business Data integration and AI/ML processing \u00b7 Processing of Live-Feed, Business data and Feedback to produce actionable insights \u00b7 Customer Associate App \u00b7 Companion App \u00b7 Unified BOC\ud83e\udc6a  Agentic AI Enabled Functional Teams \u00b7 Security  Monitoring \u00b7 AI enabled Business Insights and Reports \u00b7 Store Operations Monitoring \u00b7 Supply Chain & Transportation Control Tower \u00b7 Human-in-loop SOPs for emerging situation \u00b7 Auto Healing through E-SOPs and Agentic AI \u00b7 Senior leadership escalations for critical judgment calls \u00b7 Layer 1 \u00b7 Layer 2 \u00b7 Layer 3 \u00b7 Real time Agents provide feedback to Stores and Apps \u00b7 Data Feedback to AI ML models \u00b7 All ~20K stores, warehouses, dark stores, and offices are centrally managed through a unified BOC \u00b7 Unified Business Operations Center [ \u00b7 1/2 \u00b7 ]"
+  },
+  {
+    "slide": 62,
+    "title": "Unified Business Operations Center [2/2]",
+    "n_runs": 6,
+    "text_chars": 93,
+    "n_images": 2,
+    "text": "Unified Business Operations Center [2/2] \u00b7 Please Scan QR \u00b7 or click \u00b7 here \u00b7 to \u00b7 view video"
+  },
+  {
+    "slide": 63,
+    "title": "Appendix",
+    "n_runs": 1,
+    "text_chars": 8,
+    "n_images": 0,
+    "text": "Appendix"
+  },
+  {
+    "slide": 64,
+    "title": "Neural Agentic Marketplaces (NAM)",
+    "n_runs": 2,
+    "text_chars": 48,
+    "n_images": 1,
+    "text": "Neural Agentic Marketplaces (NAM) \u00b7 Apr 15, 2026"
+  },
+  {
+    "slide": 65,
+    "title": "We aspire to structurally disrupt commerce using the power of AI and reliance ecosystem",
+    "n_runs": 1,
+    "text_chars": 87,
+    "n_images": 0,
+    "text": "We aspire to structurally disrupt commerce using the power of AI and reliance ecosystem"
+  },
+  {
+    "slide": 66,
+    "title": "Priority verticals:",
+    "n_runs": 41,
+    "text_chars": 746,
+    "n_images": 20,
+    "text": "Priority verticals: \u00b7 30% \u00b7 Organized shops \u00b7 (across verticals) \u00b7 28% \u00b7 Groceries \u00b7 # Shops: 12-13M \u00b7 12% \u00b7 Fashion, Lifestyle, Home \u00b7 # Shops: 5-6M \u00b7 4% \u00b7 Electronics, Appliances \u00b7 # Shops: 2-3M \u00b7 4% \u00b7 Food services \u00b7 # Shops: 1.5-2M \u00b7 9% \u00b7 Education \u00b7 # Shops: 1-2M \u00b7 10% \u00b7 Health and fitness \u00b7 # Shops: 2-3M \u00b7 <1% \u00b7 Media \u00b7 # Shops: <1M \u00b7 4% \u00b7 Travel and mobility \u00b7 # Shops: 3-4M \u00b7 Unorganized segment \u00b7 Unorganized segment is 70% of all shops \u00b7 Several cross-cutting assets that can be leveraged across sectors \u00b7 Jio ICT i.e., Fiber, Telecom, etc. \u00b7 Jio Financial Services \u00b7 Jio Cloud \u00b7 Groceries \u00b7 Fashion, Lifestyle & Home \u00b7 Electronics \u00b7 & \u00b7 Appliances \u00b7 Food \u00b7 Huge opportunity: $1.1T consumption economy, 70% unorganized with 30M+ shops"
+  },
+  {
+    "slide": 67,
+    "title": "Agents executing effortless and intelligent commerce for",
+    "n_runs": 19,
+    "text_chars": 711,
+    "n_images": 5,
+    "text": "Agents executing effortless and intelligent commerce for \u00b7 every \u00b7 Indian consumer, \u00b7 saving consumers time and money \u00b7 Agents empowering merchants to operate like sophisticated global retailers, \u00b7 helping them grow profitably with less effort \u00b7 FOR CONSUMERS \u00b7 FOR SHOPS \u00b7 Reliance Edge \u00b7 Jio assets across telecom, media, and retail for at-scale consumer and merchant reach \u00b7 JioMart and Reliance Retail network powering last-mile delivery and fulfillment \u00b7 Backed by Reliance Retail and JFS for procurement scale and financial services access \u00b7 Distribution and Logistics \u00b7 B2B Solutions for Shops \u00b7 Customer Distribution \u00b7 1 \u00b7 2 \u00b7 3 \u00b7 Build India\u2019s #1 agentic B2B2C marketplace enabled by AI & Reliance edge"
+  },
+  {
+    "slide": 68,
+    "title": "Understand intent",
+    "n_runs": 47,
+    "text_chars": 1461,
+    "n_images": 0,
+    "text": "Understand intent \u00b7 and recommend best options \u00b7 Compare options across platforms \u00b7 with ease \u00b7 Proactively recommends \u00b7 products and services \u00b7 Drive revenue \u00b7 with\u00a0demand generation agents and Reliance distribution \u00b7 Simplify operations \u00b7 with simple agentic interfaces \u00b7 Reduce costs \u00b7 via agentic B2B solutions and RIL ecosystem advantage on procurement, inventory and demand planning, financing \u00b7 Lowest prices \u00b7 for customers driven by reducing CAC, delivery, etc \u00b7 Simple, transparent pricing \u00b7 for consumers & merchants \u00b7 Lowest commissions / cost of operations \u00b7 for merchants \u00b7 Customer trust \u00b7 : Transparent pricing, reliable support, high-quality supply \u00b7 Merchant trust: \u00b7 Protection from fraud, predictable payouts and operations \u00b7 Operational excellence: \u00b7 AI-optimized fulfilment (routing, batching) \u00b7 Best Value and Transparent Pricing \u00b7 Ensure price transparency and best value across all transactions \u00b7 Default Consumer agent \u00b7 Become the default trusted agent dedicated to save time and money \u00b7 Trusted platform with reliable fulfilment \u00b7 Coordinates\u00a0fulfilment, and stand\u00a0behind every transaction \u00b7 B2B solutions \u00b7 Access\u00a0to Reliance\u2019s diverse ecosystem \u00b7 Shop Agentic OS \u00b7 Gives\u00a0every\u00a0shop one\u00a0system\u00a0to\u00a0grow revenues and  manage\u00a0operations \u00b7 B2C \u00b7 Marketplace \u00b7 layer \u00b7 ShopOS solution \u00b7 Own Consumer Demand \u00b7 Structurally Improve Economics \u00b7 Win Shop Supply \u00b7 Build Trust & Fulfilment \u00b7 1 \u00b7 2 \u00b7 3 \u00b7 4 \u00b7 NAM B2B2C Strategy \u2013 4 Key Pillars"
+  },
+  {
+    "slide": 69,
+    "title": "ShopOS:\u00a0Shop first stack of Reliance B2B + Agentic Solutions",
+    "n_runs": 37,
+    "text_chars": 738,
+    "n_images": 10,
+    "text": "ShopOS:\u00a0Shop first stack of Reliance B2B + Agentic Solutions \u00b7 Reducing costs \u00b7 Restaurant General Manager Agent \u00b7 Procurement \u00b7 Agent \u00b7 Demand Forecasting Agent \u00b7 Marketing Agent \u00b7 Financing Agent \u00b7 Financial Reconciliation\u00a0Agent \u00b7 Price \u00b7 compar \u00b7 e \u00b7 A \u00b7 gent \u00b7 Menu & Pricing Agent \u00b7 Smart offer design Agent \u00b7 Onboarding Agent \u00b7 P&L Insights Agent \u00b7 B2B procurement via METRO \u00b7 Agentic \u00b7 Solutions \u00b7 Simplifying operations \u00b7 Driving growth \u00b7 B2B financing \u00b7 POS offering \u00b7 Distribution channels to shops : \u00b7 NAM Food App, Bharat IQ, JioMart \u00b7 ICT solutions \u00b7 Messaging Commerce Agent \u00b7 Reliance \u00b7 B2B \u00b7 Hyperlocal ads via JioAds \u00b7 Jio HotStar, JustDial, etc. \u00b7 Agentic Restaurant Manager (Illustrative) \u00b7 Cashflow forecast \u00b7 A \u00b7 gent"
+  }
+]

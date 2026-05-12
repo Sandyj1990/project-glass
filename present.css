@@ -1,0 +1,107 @@
+/* Presentation Mode · per-page deck where each <section> becomes a slide.
+   Triggered by `P` hotkey or the floating button. ESC / P exits.
+   Loaded by pages that opt in via <link rel="stylesheet" href="/present.css">. */
+
+#present-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--ink);
+  color: white;
+  border: 0;
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.82;
+  transition: opacity 0.15s, transform 0.15s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+#present-toggle:hover { opacity: 1; transform: translateY(-1px); }
+#present-toggle svg { display: block; }
+
+body.present-mode { overflow: hidden; }
+body.present-mode .topnav,
+body.present-mode footer,
+body.present-mode .crumb,
+body.present-mode #present-toggle,
+body.present-mode #confidential-overlay { display: none !important; }
+
+body.present-mode > section { display: none !important; }
+body.present-mode > section.present-slide-active {
+  display: block !important;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  bottom: 56px;
+  overflow-y: auto;
+  z-index: 40;
+  padding: 56px 0;
+  border: 0 !important;
+  animation: present-fade 0.22s ease-out;
+}
+
+@keyframes present-fade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#present-chrome {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 56px;
+  background: var(--ink);
+  color: white;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+#present-counter { color: rgba(255, 255, 255, 0.85); }
+#present-counter #present-idx { color: var(--accent); font-weight: 600; }
+#present-title { color: rgba(255, 255, 255, 0.55); flex: 1; text-align: center; padding: 0 24px; }
+#present-nav { display: inline-flex; gap: 8px; align-items: center; color: rgba(255, 255, 255, 0.55); }
+#present-nav button {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  width: 28px; height: 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+#present-nav button:hover { background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.4); }
+#present-nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+#present-nav .hint { margin-left: 12px; }
+
+#present-progress {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+#present-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.25s ease-out;
+}
+
+@media (max-width: 640px) {
+  #present-title { display: none; }
+  #present-nav .hint { display: none; }
+}

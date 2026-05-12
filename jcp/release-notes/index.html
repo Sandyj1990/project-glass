@@ -1,0 +1,996 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JCP · Release Notes · FY 2025-26</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* Accordion styling — native <details>/<summary> · CSS-only */
+  details.rn-area {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  details.rn-area > summary {
+    padding: 22px 26px;
+    cursor: pointer;
+    list-style: none;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+    transition: background 0.12s ease;
+  }
+  details.rn-area > summary:hover { background: var(--bg-soft); }
+  details.rn-area > summary::-webkit-details-marker { display: none; }
+  details.rn-area > summary::after {
+    content: "+";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px; line-height: 1;
+    color: var(--ink-muted);
+    width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    transition: transform 0.18s ease, background 0.12s ease, color 0.12s ease;
+    flex-shrink: 0;
+  }
+  details.rn-area[open] > summary::after {
+    content: "−";
+    background: var(--ink);
+    color: white;
+    border-color: var(--ink);
+    transform: rotate(180deg);
+  }
+  details.rn-area .rn-summary-meta {
+    display: flex; align-items: baseline; gap: 14px;
+    flex-wrap: wrap;
+  }
+  details.rn-area .rn-summary-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase; letter-spacing: 0.04em;
+  }
+  details.rn-area .rn-summary-title {
+    font-weight: 600; font-size: 18px;
+    color: var(--ink);
+  }
+  details.rn-area .rn-summary-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-left: auto;
+    text-align: right;
+  }
+  details.rn-area .rn-body {
+    padding: 0 26px 26px;
+    border-top: 1px solid var(--border-soft);
+    margin-top: 4px;
+  }
+  details.rn-area .rn-shot {
+    margin: 18px 0 4px;
+  }
+  details.rn-area .rn-shot img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    object-position: center top;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg-soft);
+    display: block;
+  }
+  details.rn-area .rn-shot .rn-shot-cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 6px;
+  }
+  details.rn-area .rn-lede {
+    color: var(--ink-muted);
+    font-size: 14px;
+    margin: 16px 0 18px;
+  }
+  details.rn-area .rn-subgroup {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    margin: 18px 0 8px;
+  }
+  details.rn-area .rn-subgroup:first-child { margin-top: 0; }
+  details.rn-area ul.rn-list {
+    list-style: none; padding: 0; margin: 0;
+  }
+  details.rn-area ul.rn-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--ink);
+    font-size: 14px; line-height: 1.55;
+  }
+  details.rn-area ul.rn-list li:last-child { border-bottom: 0; }
+  details.rn-area ul.rn-list li::before {
+    content: "·";
+    color: var(--accent);
+    font-weight: 700;
+    margin-right: 10px;
+  }
+  details.rn-area ul.rn-list li strong { color: var(--ink); font-weight: 600; }
+
+  /* Jump-card grid */
+  .rn-jump-card {
+    transition: transform 0.12s ease, border-color 0.12s ease;
+  }
+  .rn-jump-card:hover { transform: translateY(-2px); border-color: var(--ink); }
+  .rn-jump-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: 12px;
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- ========================================================================= HERO ========================================================================= -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+  <div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><a href="/jcp">JCP</a><span class="sep">/</span><span style="color: var(--ink);">Release Notes</span></div>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/jcp" class="subnav-link">Overview</a><a href="/jcp/channels" class="subnav-link">Channels</a><a href="/jcp/cataloging" class="subnav-link">AI Cataloging</a><a href="/jcp/7eleven" class="subnav-link">7-Eleven</a><a href="/jcp/release-notes" class="subnav-link active">Release Notes</a><a href="/rcpl" class="subnav-link">RCPL</a></div>
+  <div class="section-label mb-3">JCP · Release Notes · FY 2025-26</div>
+  <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Release Notes.</h1>
+  <p class="text-lg max-w-3xl mb-10" style="color: var(--ink-muted);">What shipped on JCP across FY 2025-26 — roughly 150 capability releases across 10 sub-systems.</p>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+    <div class="card p-4"><div class="cap-num mb-1">Items shipped</div><div class="display-2 text-3xl accent">~150</div><div class="text-xs mt-1" style="color: var(--ink-muted);">FY 2025-26</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Capability areas</div><div class="display-2 text-3xl" style="color: var(--ink);">10</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Search · Catalog · Pricing · Inventory · Coupons · Cart · OMS · Logistics · Payments · Platform</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Channels touched</div><div class="display-2 text-3xl" style="color: var(--ink);">78</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Every JCP-served brand</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Source</div><div class="display-2 text-2xl" style="color: var(--ink);">Internal</div><div class="text-xs mt-1" style="color: var(--ink-muted);">JCP product release notes</div></div>
+  </div>
+</div></section>
+
+<!-- ========================================================================= §01 · WHAT'S IN THIS PAGE · 10 jump-link cards ========================================================================= -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">01 · What's in this page</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Ten capability areas. Click to jump.</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+    <a href="#area-01" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">01</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Search &amp; Discovery</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Vertex AI Search across Tira, Netmeds, JMD, Swadesh. ViSenze image search. Osmos catalog sync.</p>
+      <div class="rn-jump-count">~40 items</div>
+    </a>
+    <a href="#area-02" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">02</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Catalog</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Variants, attributes, hierarchy templates, webhooks v2, wishlist server, bulk extension, FDK store.</p>
+      <div class="rn-jump-count">~30 items</div>
+    </a>
+    <a href="#area-03" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">03</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Pricing</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Discount v2 full rewrite live on Tira prod. Maker-checker. Document encryption. Tax precision.</p>
+      <div class="rn-jump-count">~15 items</div>
+    </a>
+    <a href="#area-04" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">04</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Inventory</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Bulk quantity ops, age analytics, price-zone visibility, sellable-quantity buybox logic.</p>
+      <div class="rn-jump-count">~5 items</div>
+    </a>
+    <a href="#area-05" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">05</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Coupons &amp; Promotions</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Unified Offers system. Nth-order, geo, multi-slot, level cohorts. Serial coupons up to 5M+ codes.</p>
+      <div class="rn-jump-count">~25 items</div>
+    </a>
+    <a href="#area-06" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">06</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Cart &amp; Checkout</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Cart function with Fraud Engine + Subscription Engine. GWP. Stackability. Fraud control.</p>
+      <div class="rn-jump-count">~6 items</div>
+    </a>
+    <a href="#area-07" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">07</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">OMS &amp; Order Lifecycle</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Cancellation fees, replacement/exchange, real-time order ringer, multi-promise. Seller Central + Shipsy + Ajio Herald integrations.</p>
+      <div class="rn-jump-count">~25 items</div>
+    </a>
+    <a href="#area-08" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">08</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Logistics &amp; Serviceability</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">10 carrier integrations. Polygon serviceability. Dynamic promise. Quick commerce. Kafka layer for scale.</p>
+      <div class="rn-jump-count">~35 items</div>
+    </a>
+    <a href="#area-09" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">09</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Payments</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">CVV-less, BNPL, COD payouts via JioOne Pay, EDC mapping, multi-MOP, Ajio Wallets, UPI QR, payment routing.</p>
+      <div class="rn-jump-count">~30 items</div>
+    </a>
+    <a href="#area-10" class="card rn-jump-card p-5 block">
+      <div class="cap-num mb-2">10</div>
+      <h3 class="font-semibold text-lg mb-1" style="color: var(--ink);">Platform · Identity · Theme · Comms</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Auth, Truecaller, UCP integration. CMS Maker-Checker, Global Sections, Personalization. Vue → React migration. JioCX SMS/email.</p>
+      <div class="rn-jump-count">~35 items</div>
+    </a>
+  </div>
+</div></section>
+
+<!-- ========================================================================= §02 · WHAT SHIPPED · 10 ACCORDIONS ========================================================================= -->
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">02 · What shipped on JCP this year</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">FY 2025-26 capability releases.</h2>
+  <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">All ~150 line items, verbatim from internal JCP product release notes. Click any area to expand.</p>
+
+  <!-- ========== 01 · Search & Discovery ========== -->
+  <details class="rn-area" id="area-01">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">01</span>
+        <span class="rn-summary-title">Search &amp; Discovery</span>
+      </div>
+      <span class="rn-summary-count">~40 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/01-search-v3.jpg" alt="JCP admin · Vertex AI Models grid · Search & Recommendations" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Search &amp; Recommendations · Vertex Phoenix integration</div>
+      </figure>
+      <p class="rn-lede">Vertex AI Search now serves 100% of search traffic across Tira, Netmeds, JMD, and Swadesh — completed via zero-downtime cutover from Algolia. Phoenix integration, ViSenze image search, Osmos catalog sync, and a full A/B testing framework added.</p>
+
+      <div class="rn-subgroup">Vertex extensions · search &amp; recommendations</div>
+      <ul class="rn-list">
+        <li>Collection powering using Vertex — product collections served using Vertex search with handpicked, query-based, and manual sorting support</li>
+        <li>Recommendation via Vertex — product recommendations powered by Vertex via extension with filter support</li>
+        <li>Custom Sorts via extension on Vertex — custom sorting of search results using business logic with apply-to control for search vs browse</li>
+        <li>Custom filters via extension on Vertex — advanced filtering beyond default Vertex capabilities, including custom buckets, range sliders, and numeric filters</li>
+        <li>Conversational filters via extension Vertex — natural language-based filtering of search results</li>
+        <li>Serving config override feature — runtime override of search serving configurations</li>
+        <li>A/B support and browse for search via Vertex — A/B testing and browse-based search experiences</li>
+        <li>Local Inventory feature for powering multizone — location-based inventory for multi-zone setups with delivery zone filtering, fulfillment tagging, and price sync</li>
+        <li>Search pinning via extension — pinning of specific products in search results with priority-based positioning</li>
+        <li>Multi-promise support via extension — multiple delivery promise options in search results with store verification</li>
+        <li>Audit logs support for Extension — tracking and logging of extension-level actions with before/after comparison</li>
+        <li>Dynamic branching to support multiple environments from a single project — multi-environment support from a single project setup</li>
+        <li>Search Redirection Rules — keyword-based URL redirection on search with admin UI for managing redirect rules</li>
+        <li>Filter Visibility Control — storefront-level toggle to show/hide specific filters on product listing pages</li>
+        <li>Brand Page with Category support — brand-level landing pages with category filtering and metadata caching</li>
+        <li>Attribute Mapping — UI and API to map custom product attributes for search indexing and filter display</li>
+      </ul>
+
+      <div class="rn-subgroup">Algolia → Vertex migration · 100% rollout · zero downtime</div>
+      <ul class="rn-list">
+        <li>Algolia to Vertex Migration — 100% Rollout with Zero Downtime — complete migration from Algolia to Google Vertex AI Search across all environments (Tira, Netmeds, JMD, Swadesh) with zero downtime, progressive rollout</li>
+        <li>Stabilisation and full Algolia depreciation from search, autocomplete, middleware, and ingestion paths</li>
+        <li>SRE Optimisation — improvements to reduce system load and improve reliability</li>
+        <li>Catalog Ingestion Optimisations — faster and more efficient catalog data ingestion</li>
+        <li>Algolia depreciation in ingestion funnel — removal of Algolia from the ingestion pipeline</li>
+        <li>Unified Multi-Environment Merger — consolidation of Tira, Netmeds, JMD, and Swadesh into a single unified codebase reducing maintenance overhead</li>
+        <li>Memory &amp; Infrastructure Optimisation — dynamic Node.js heap allocation, auth token caching with auto-refresh, and oom issue resolve</li>
+        <li>User event ingestion Optimisation for ClickHouse to Vertex — improved flow of user event data from ClickHouse to Vertex</li>
+      </ul>
+
+      <div class="rn-subgroup">Vertex AI Search for JCP (Phoenix) · full search service on Google</div>
+      <ul class="rn-list">
+        <li>Vertex AI replacing Solr/Martell as the product search backbone</li>
+        <li>Vertex as Central Data Store — removed MongoDB from retrieval hot paths; Vertex is now the primary data source for PLP/CLP</li>
+        <li>Product Search API — keyword and browse product search powered by Vertex backend with filters, sorts, pagination (/products)</li>
+        <li>Autocomplete — query suggestions via Vertex Completion API with synthetic/real user event ingestion for relevance (24hr warm-up)</li>
+        <li>Collection Browse — browse products by collection slug; supports handpick and rules-based collections via Vertex filter expressions</li>
+        <li>Image Search (ViSenze) — visual product search; upload image or refine by bounding box, returns visually similar products</li>
+        <li>Recommendations — multi-strategy placements (batch similar, curated, personalized, filters, trends) across 7 endpoints (RRA + Vertex)</li>
+        <li>Merchandising Controls (Pin/Boost/Bury/Hide) — curate search results per query; pin to top, boost/bury by attributes, hide from results</li>
+        <li>Vertex Catalog Sync — real-time product sync to Vertex AI Search via Kafka consumers</li>
+        <li>Vertex Price Sync — real-time price updates synced to Vertex; handles factory_type, delivery zone, sellable status</li>
+        <li>Full Sync Pipeline — Silverbolt export → GCS → Vertex bulk import; 1,974 products ingested in 61 seconds</li>
+        <li>ViSenze Catalog Sync — real-time + full sync to ViSenze index for image search</li>
+        <li>Osmos Catalog Sync — product data sync to Osmos/Solr index for retail media ads</li>
+        <li>User Event Ingestion — search, listing, and click events ingested into Vertex for relevance tuning and autocomplete</li>
+        <li>Osmos Ads &amp; Banners — contextual PLA ads and promotional banners with audience targeting, circuit breaker, and token bucket</li>
+        <li>Tags Engine — urgency badges and category tags surfaced in search results</li>
+        <li>Best Price in Search — best price derivation across delivery zones surfaced on PLP</li>
+        <li>Price Engine — margin-aware pricing with S2S integration for search results</li>
+        <li>Store-in-Store (SIS) — store inventory sync into Vertex for multi-store availability</li>
+        <li>Search Settings — per-app config: filters, sorts, feature toggles, AB testing, custom attributes, category-level filters</li>
+        <li>Transform Recipes — event payload transformation engine with CRUD, dry-run, and preview</li>
+        <li>PZDZ Mapping — Pincode to Delivery Zone resolution for serviceability-aware search</li>
+        <li>Filter Config — lightweight catalog filter and sort configuration without Vertex call</li>
+        <li>SKU-Level Serviceability — size-level serviceability handled at Vertex end; no pre-computed data in Solr</li>
+        <li>Sitemap Integration — sitemap generation from Vertex product data</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 02 · Catalog ========== -->
+  <details class="rn-area" id="area-02">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">02</span>
+        <span class="rn-summary-title">Catalog</span>
+      </div>
+      <span class="rn-summary-count">~30 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/02-catalog-v3.jpg" alt="JCP admin · Add Template · Category Hierarchy Paths" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Catalog · template hierarchy with multi-path category bindings</div>
+      </figure>
+      <p class="rn-lede">Catalog model rewrites — secondary categories, variant logic, hierarchy-based templates, App-Product webhooks v2, wishlist server extraction, GraphQL deprecations. Bulk Extension consolidated into one extension. Catalog Import/Export centralised on GCS with real-time webhook updates.</p>
+
+      <div class="rn-subgroup">Catalog model</div>
+      <ul class="rn-list">
+        <li>Secondary Categories for Products — allow products to be mapped to multiple categories beyond the primary one</li>
+        <li>Variants Logic Revamp — new variant logic for storefront with multi-variant support, sequencing, and Solr partial upsert</li>
+        <li>Boolean &amp; Multi-Value Attributes — support for boolean, multi-decimal, multi-int attribute types across admin, bulk, and storefront</li>
+        <li>Attribute Name Non-Unique (Slug-based) — attributes can share names with different slugs; slug exposed in admin, templates, and product pages</li>
+        <li>Brand Slug in Bulk Upload — brand made optional in product template; slug-based disambiguation for 1P/3P in bulk upload</li>
+        <li>Template Hierarchy (Hierarchy-based) — hierarchy-based product templates tied to L3 categories with migration scripts and FE support</li>
+        <li>App-Product &amp; App-Product-Price Webhooks v2 — new webhook versions with enriched size + price details on product catalog changes</li>
+        <li>SKU-Level App-Product Events — SKU-level granularity for app-product webhook events</li>
+        <li>Deprecation of Product Types (Set/Digital/Composite) — only Standard type going forward; Digital retained for subscriptions/vouchers</li>
+        <li>Product Attribute Requirements Relaxed — Primary Colour, Essential, Trader/Marketer fields no longer mandatory for listing</li>
+        <li>GraphQL Catalog Field Deprecation (98 fields) — major deprecation of obsolete product, collection, brand, store fields across GraphQL schema</li>
+        <li>Wishlist Server Extraction — wishlist endpoints extracted into dedicated server with own MongoDB, removed orbis DB dependency</li>
+        <li>Allowed Values Deduplication — attribute allowed_values auto-deduplicated during ingestion to prevent code breaks</li>
+        <li>Coupon-based Collections — coupons can now target web categories (collections) as buy rules</li>
+        <li>Support for SKU-based collections — collections can be created at an SKU level</li>
+        <li>Partial Product Update API — API to update specific product fields (tags, attributes) without full payload</li>
+        <li>Deal Price Feature — Price API changes to support deal/promotional pricing on storefront</li>
+        <li>Category Slug with Level Prefix — append category level in slug for cleaner URL hierarchy</li>
+        <li>Select All in Handpicked Collections — bulk-select products from comma-separated search in handpicked collections</li>
+        <li>Support to export brand and collections on platform</li>
+        <li>Support to add Product Level Threshold at SKU and Item Code level in bulk file</li>
+        <li>Platform Product Count Optimization — move count from metrics API to dedicated product counts API</li>
+        <li>Quick View PDP API — fast API with necessary product data to quickly view the product PDP</li>
+        <li>Case-Insensitive Brand Validation — brand name matching ignores case during product creation</li>
+        <li>Category-Based Wishlist Filter — filter wishlist items by product category</li>
+        <li>Bulk Add to Wishlist from Cart — add multiple cart items to wishlist in one action</li>
+        <li>Wishlist Count Limit — configurable max limit on wishlist items per user</li>
+        <li>Size Chart — product and category level Size Charts with Universal And Country level Size Comparison</li>
+        <li>Size Recommendations — three-level fallback (exact brand-category → similar categories → cluster-based cross-category mapping) powered by operator-configured pivotal attributes</li>
+        <li>Tag Engine — populate tags like Bestseller, New Arrival, Trending and see tag badges on product cards</li>
+      </ul>
+
+      <div class="rn-subgroup">Catalog Import / Export</div>
+      <ul class="rn-list">
+        <li>Configurable templates for flexible data handling</li>
+        <li>Application-level support for seamless integration</li>
+        <li>Built-in data validation with error reporting</li>
+        <li>Pricing managed based on default location</li>
+        <li>Centralized catalog storage on GCS with real-time webhook updates</li>
+        <li>Delivery supported via HTTP and Meta batch methods</li>
+        <li>UI-based template feed for easy management</li>
+      </ul>
+
+      <div class="rn-subgroup">Bulk Extension · 6 extensions consolidated into 1</div>
+      <ul class="rn-list">
+        <li>Merger into a single collection — consolidation of 6 extensions into a single extension</li>
+        <li>Optimisation to handle multiple operations simultaneously — handling of multiple bulk operations at once</li>
+        <li>Advanced Collection — collection creation via bulk file support</li>
+        <li>Advanced Collection — bulk create, update, and delete of collections with multiple items via a single file</li>
+        <li>SEO plus — Brand SEO upload support; bulk upload of brand SEO data</li>
+        <li>SEO plus — React theme binding support; binding of SEO configurations with React themes</li>
+        <li>MLM — Quick config for stores via bulk upload; update store configs in bulk for quick toggle</li>
+        <li>MLM — Store holiday calendar; store-level holiday calendar update in bulk</li>
+      </ul>
+
+      <div class="rn-subgroup">FDK Store</div>
+      <ul class="rn-list">
+        <li>FDK Store Expansion — extended the storefront's standard method library to expose OTP flows, accurate product size data, and platform-managed search recommendations, keeping all storefronts aligned to the platform standard</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 03 · Pricing ========== -->
+  <details class="rn-area" id="area-03">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">03</span>
+        <span class="rn-summary-title">Pricing</span>
+      </div>
+      <span class="rn-summary-count">~15 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/03-pricing-v3.jpg" alt="JCP admin · Discount v2 · live on Tira prod" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Discount v2 · live on Tira prod · approval workflow + state pills</div>
+      </figure>
+      <p class="rn-lede">Discount v2 fully rewritten with 100% schematic coverage; v1 APIs and consumers removed. Live on Tira prod. Maker-Checker approval added. Document encryption rolled out at store and company levels. Tax precision unified.</p>
+      <ul class="rn-list">
+        <li>Discount v2 — Full Rewrite — 100% schematic coverage, removed v1 APIs/consumers, new indexes, live on Tira prod</li>
+        <li>Maker-Checker Flow in Discount v2 — approval mechanisms for the discounts created by Siteops team</li>
+        <li>Support for Overlapping Discounts — discounts can be created overlapped to each other prioritized by priority of that discount</li>
+        <li>Vendor based Discounts — discounts can store data like platform and vendor discounts for compute in the downstream systems</li>
+        <li>Enhanced Rule Based Discounts — discounts can be created based on rules</li>
+        <li>Discount Disable Feature — selective discount disable with events emitted only for disabled SKUs/items to price sync</li>
+        <li>User based Discounts — discounts can be created based on single user group</li>
+        <li>TriggerHappy Scheduling Fixes — fixed discount activation/deactivation scheduling failures in triggerhappy cron jobs</li>
+        <li>Discount-Level Threshold — product-level threshold configuration for discount applicability</li>
+        <li>Store-Level Document Encryption — encrypt PII in store documents at rest</li>
+        <li>Company-Level Document Encryption — encrypt PII in company documents at rest</li>
+        <li>Store Information Encryption — encrypt sensitive store metadata field</li>
+        <li>Price &amp; Inventory Split — price and inventory update pipelines decoupled into separate webhooks and independent processing</li>
+        <li>Early Access Pricing — cohort-based early access to sale prices; checkout at future price before public availability</li>
+        <li>App-Product-Price Webhook v2 — new webhook version for application product-price with enriched payload</li>
+        <li>Tax Precision Unification — all markets unified to precision=2; removed country-code-based branching logic</li>
+        <li>Price Override at Store Level — Store OS store-level price override capability</li>
+        <li>Seller Identifier Search in Price API — search price factory API by seller identifier</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 04 · Inventory ========== -->
+  <details class="rn-area" id="area-04">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">04</span>
+        <span class="rn-summary-title">Inventory</span>
+      </div>
+      <span class="rn-summary-count">~5 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <p class="rn-lede">Bulk inventory operations with validation. Quantity-weighted age tracking. Price-zone visibility. Sellable-quantity buybox logic.</p>
+      <ul class="rn-list">
+        <li>Bulk Quantity Update (Add/Remove/Set) — bulk inventory operations with ADD, REMOVE, SET commands and validation for negative/invalid inputs</li>
+        <li>Inventory Aging &amp; SKU Age Analytics — quantity-weighted age tracking with age buckets (FRESH/RECENT/MODERATE/AGING/OLD) and in-stock %</li>
+        <li>Price Zone-Based Product Visibility — products only appear on PLP if inventory stores are in configured zones; removed from Solr otherwise</li>
+        <li>Sellable Quantity + Buybox Logic — improved sellable quantity calculation; non-zero sellable + buybox winner drives storefront visibility</li>
+        <li>Sellable Inventory Override via FDK — allow extensions to override sellable inventory counts</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 05 · Coupons & Promotions ========== -->
+  <details class="rn-area" id="area-05">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">05</span>
+        <span class="rn-summary-title">Coupons &amp; Promotions</span>
+      </div>
+      <span class="rn-summary-count">~25 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/05-coupons-v3.jpg" alt="JCP admin · Offers · Select Promotion Type" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Offers · 11 promotion types under unified rule engine</div>
+      </figure>
+      <p class="rn-lede">Coupon and promotion rule engines merged into a unified Offers system. Nth-order, multi-slot, geo-based, level-cohort offers. Serial coupons up to 5M+ codes in one go.</p>
+
+      <div class="rn-subgroup">Rule engine</div>
+      <ul class="rn-list">
+        <li>Nth order condition in offer rule engine</li>
+        <li>Coupon limits based on daily, weekly, monthly frequency (user &amp; coupon level)</li>
+        <li>Grouping of promotions and coupons for group-level usage limits</li>
+        <li>Incompatibility check of coupons and promotions to control over-discounting</li>
+        <li>Support to bypass product-level threshold on coupon</li>
+        <li>Apply promotion on MRP and ESP of items</li>
+        <li>Level based user cohort support in offers</li>
+        <li>Support to include and exclude domain and email offer application</li>
+        <li>Multi-slot support for offer and RBPLT scheduling upto 15 slots</li>
+        <li>Geographical area based offer applicability</li>
+        <li>Merger of rule engine of coupon and promotion into unified Offers system</li>
+        <li>Expansion of offer rule engine with 6 new dynamic conditions related to item price and availability</li>
+        <li>Pre-selected condition templates in offer rule engine</li>
+        <li>Bulk support for upload of conditions (catalog, attributes, category and others) in offer rule engine</li>
+      </ul>
+
+      <div class="rn-subgroup">Advanced Offer Types</div>
+      <ul class="rn-list">
+        <li>Cashback type promotion and coupon</li>
+        <li>Free shipping offers</li>
+        <li>UPI intent apps &amp; VPA handle support in bank offers</li>
+        <li>Card offer optimization — max usage limit on cards across user account for same card</li>
+        <li>Support to fulfil free gift from cross warehouse and stores if unavailable in parent warehouse / store</li>
+      </ul>
+
+      <div class="rn-subgroup">Pricing &amp; Benefit Logic</div>
+      <ul class="rn-list">
+        <li>Rule-based product-level threshold — allows capping of price of the product while user applies coupon</li>
+        <li>Best Price calculation &amp; price reveal</li>
+        <li>Apportioning config of charges for price adjustment</li>
+      </ul>
+
+      <div class="rn-subgroup">Discovery &amp; Visibility</div>
+      <ul class="rn-list">
+        <li>Coupon visibility across PLP, PDP, Cart</li>
+        <li>Tag and media support in offers</li>
+        <li>Creating collections of products eligible for promotions</li>
+      </ul>
+
+      <div class="rn-subgroup">Serial coupons</div>
+      <ul class="rn-list">
+        <li>Maker-checker approval flow</li>
+        <li>Generation of 5M+ (up to 50L) coupons in one go</li>
+        <li>Upload custom coupon codes</li>
+        <li>Variable code length support</li>
+        <li>Export generated coupon codes</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 06 · Cart & Checkout ========== -->
+  <details class="rn-area" id="area-06">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">06</span>
+        <span class="rn-summary-title">Cart &amp; Checkout</span>
+      </div>
+      <span class="rn-summary-count">~6 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <p class="rn-lede">Cart function pipeline for external-system payload modifications, integrated with Fraud Engine and Subscription Engine. Cart-level GWP. Stackability. Fraud control on free-gift abuse.</p>
+      <ul class="rn-list">
+        <li>Cart function for payload modifications from external systems in a single optimized call</li>
+        <li>Cart function — integrates with Fraud Engine for fraud fee addition</li>
+        <li>Cart function — integrates with Subscription Engine for discounts to subscribed users</li>
+        <li>Cart-level GWP (Gift With Purchase) support</li>
+        <li>Stackability of multiple eligible free gift items</li>
+        <li>Fraud control for free gift abuse during cancellation and returns</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 07 · OMS & Order Lifecycle ========== -->
+  <details class="rn-area" id="area-07">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">07</span>
+        <span class="rn-summary-title">OMS &amp; Order Lifecycle</span>
+      </div>
+      <span class="rn-summary-count">~25 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/07-oms-v3.jpg" alt="JCP admin · Herald-Ajio · Order Orchestrator audit logs" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Herald · Ajio order orchestrator audit logs</div>
+      </figure>
+      <p class="rn-lede">Configurable doorstep QC, cancellation fees, replacement / exchange. Real-time order ringer, quick commerce orchestration, multi-promise. Seller Central VMS, Shipsy WMS, Shipsy TMS, and Ajio Herald — all first-ever JCP integrations. Tech-debt cleanup across Computron, fraud, and bag-consumer paths.</p>
+
+      <div class="rn-subgroup">OMS · core capabilities</div>
+      <ul class="rn-list">
+        <li>Built a configurable doorstep QC framework for return pickups, supporting both static (yes/no) and dynamic (e.g., IMEI cross-verification) question flows that delivery partners execute at the customer's doorstep, with end-to-end integration across logistics partners and a rule engine for business teams to manage QC criteria</li>
+        <li>Designed and built a configurable cancellation fee framework to deter frivolous and post-fulfillment order cancellations, reducing RTO rates, logistics waste, and inventory blocking while balancing customer flexibility with seller and operational sustainability</li>
+        <li>Built end-to-end replacement and exchange capability within the Order Management System (OMS) at the platform level, enabling seamless item swaps and exchanges across the fulfillment lifecycle supporting size and style exchange both</li>
+        <li>Implemented a real-time order ringer notification system at the platform level, enabling instant audible and visual alerts for incoming orders across store and fulfillment channels</li>
+        <li>Enabled quick commerce order orchestration for grocery use cases, supporting rapid fulfillment workflows tailored for hyperlocal delivery with time-sensitive inventory and dispatch handling</li>
+        <li>Built a configurable mechanism to lock or block partially paid orders based on their fulfillment status, with granular control at the sales channel level to prevent progression of partial paid orders</li>
+        <li>Enabled category-level refund configuration in the OMS, allowing businesses to define at which order status refunds are triggered for each flow — returns, cancellations, RTO, etc. — with granular control per product category</li>
+        <li>Extended the communication framework with new event triggers — refund-without-return and BAS rescheduled — enabling automated email and SMS notifications to customers for previously uncovered order lifecycle events</li>
+        <li>Enhanced the platform's bulk operations engine with additional capabilities, enabling merchants to perform high-volume order actions at scale with improved throughput and reliability</li>
+        <li>Built the Rectron reconciliation service to automatically detect order and shipment mismatches between systems/services, delivering real-time discrepancy reports via Slack for rapid visibility and resolution</li>
+        <li>Enabled shipment split and merge capabilities across all order flows, allowing flexible regrouping of items into separate or consolidated shipments based on fulfillment needs even after the order and shipments are created</li>
+        <li>Multi-Promise for Tira — enhanced OMS capability to handle different fulfillment types like Rush, Hyperlocal and fulfillment defined as per channel</li>
+        <li>Delivered customized document generation workflows for Urban Ladder across multiple order flows — including e-way bill issuance, return delivery challans, and invoice regeneration — to meet compliance and operational requirements at various fulfillment stages</li>
+        <li>Implemented fraud prevention logic for gift-with-purchase promotions, ensuring proper handling of free gift recovery and adjustments during return and cancellation scenarios to prevent misuse</li>
+        <li>Introduced new invoice format templates for the Storesell Netmeds channel for store-originated transactions</li>
+        <li>Redesigned the Jiomart shipment ID generation logic from numeric-only to an alphanumeric format, resolving downstream conflicts in report publishing and Excel-based system integrations</li>
+      </ul>
+
+      <div class="rn-subgroup">Integrations</div>
+      <ul class="rn-list">
+        <li>Seller Central (VMS) Integration — first-ever integration of the Seller Central portal with the Jio Commerce platform, solutioning all vendor management flows end-to-end — establishing a reusable integration blueprint that accelerated future business onboardings like Ajio and Jiomart</li>
+        <li>Shipsy WMS Integration — integrated Shipsy StockOne Warehouse Management System with the platform, enabling seamless inventory and fulfillment orchestration across warehouse operations for streamlined order processing</li>
+        <li>Shipsy TMS Integration — first-ever integration of Shipsy's Transportation Management System with the platform, designing and implementing complex logistics flows including repair scenarios, installations, and other non-standard fulfillment journeys</li>
+        <li>Enabled financial posting migration for Urban Ladder transactions to the RIL POSDM system, ensuring accurate ledger movement and financial reconciliation across platforms</li>
+        <li>Ajio order orchestrator (Herald) Integration with JCP OMS</li>
+        <li>Ajio Legacy Systems Integration — Herald Order Orchestrator</li>
+        <li>Ajio Legacy Systems Integration — Ajio Return Promise Engine</li>
+        <li>Ajio Legacy Systems Integration — Ajio Fraud Engine</li>
+        <li>Enhancements like getting dp not assigned as terminal state if no dp is found, repricing flow changes</li>
+      </ul>
+
+      <div class="rn-subgroup">Tech debt &amp; optimisations</div>
+      <ul class="rn-list">
+        <li>Unicron deprecation from Computron</li>
+        <li>Bag Consumer optimisations</li>
+        <li>PII Encryption and Masking</li>
+        <li>Replace new relic with grafana</li>
+        <li>Ninja Activity Optimizations</li>
+        <li>Fortify and blackduck fixes</li>
+        <li>Implementation of async logging</li>
+        <li>Bag Status removal</li>
+        <li>Data partitioning</li>
+        <li>Data Archival</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 08 · Logistics & Serviceability ========== -->
+  <details class="rn-area" id="area-08">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">08</span>
+        <span class="rn-summary-title">Logistics &amp; Serviceability</span>
+      </div>
+      <span class="rn-summary-count">~35 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/08-logistics-v3.jpg" alt="JCP admin · Delivery Partners roster" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Logistics · delivery partner roster</div>
+      </figure>
+      <p class="rn-lede">10 new carrier integrations including hyperlocal (Grab, Shadowfax, Shipsy). Multi-mode fulfillment, polygon serviceability via JioNet TMS, dynamic delivery promise per mode, quick commerce for Jiomart. Kafka layer added for scale.</p>
+
+      <div class="rn-subgroup">Carrier integrations · 10 new</div>
+      <ul class="rn-list">
+        <li>Grab Hyperlocal</li>
+        <li>Shadowfax Hyperlocal</li>
+        <li>Shipsy Hyperlocal</li>
+        <li>Shipsy TMS (UL Custom Flow)</li>
+        <li>Fynd TMS Extension</li>
+        <li>DTDC</li>
+        <li>Shipyaari</li>
+        <li>Blitz</li>
+        <li>Sequel</li>
+        <li>Clickpost</li>
+      </ul>
+
+      <div class="rn-subgroup">Logistics platform</div>
+      <ul class="rn-list">
+        <li>DP capabilities in schema to assign based on product attributes — delivery partner assignment based on product attributes</li>
+        <li>Payment QR code generation for COD order — QR code generation for payments for COD orders</li>
+        <li>Security related fixes for jiomart — fixes for identified security issues</li>
+        <li>Moved common code to shared utility based on feature flag — reuse of common logic via feature flags</li>
+        <li>Added a kafka layer for scale — scalable processing using Kafka</li>
+        <li>Shipment status update poll cron optimisation — faster and efficient shipment status updates</li>
+      </ul>
+
+      <div class="rn-subgroup">Serviceability · Fulfilment &amp; modes</div>
+      <ul class="rn-list">
+        <li>Multi-mode fulfillment (Express, Quick Commerce, Same-Day, etc.)</li>
+        <li>Multi-promise support for different serviceability modes</li>
+        <li>Custom charge support for fulfilment mode configuration</li>
+        <li>Polygon based serviceability via JioNet (TMS)</li>
+        <li>Custom store selection logic for each vertical — grocery, electronics, and fashion</li>
+        <li>Configurable number of items in return shipment for each Delivery Partner</li>
+        <li>Filterable fulfilment modes on listing page</li>
+        <li>Shipment split support for digital products</li>
+      </ul>
+
+      <div class="rn-subgroup">Serviceability · Routing &amp; decisioning</div>
+      <ul class="rn-list">
+        <li>Order routing based on node capacity</li>
+        <li>Weighted selection of best node and delivery partner</li>
+        <li>DP selection based on serviceability mode</li>
+        <li>DP selection based on type of items in shipment — high value, liquid etc.</li>
+        <li>Global DP priority for tie-breakers</li>
+        <li>Store capacity management on day and hour basis across modes of fulfilment</li>
+      </ul>
+
+      <div class="rn-subgroup">Serviceability · Dynamic promise &amp; configuration</div>
+      <ul class="rn-list">
+        <li>Dynamic promise calculation per serviceability mode</li>
+        <li>Bulk support — DP rules</li>
+        <li>Bulk support — Store routing rules</li>
+        <li>Maker-checker approval for delivery, price, and theme zone creation</li>
+      </ul>
+
+      <div class="rn-subgroup">Serviceability · Coverage &amp; expansion</div>
+      <ul class="rn-list">
+        <li>International serviceability &amp; DP support — Swadesh via Clickpost</li>
+        <li>Store level serviceability over pincode on DP level</li>
+      </ul>
+
+      <div class="rn-subgroup">Serviceability · Quick commerce</div>
+      <ul class="rn-list">
+        <li>Quick commerce support for Jiomart</li>
+        <li>Polygon-based / network file serviceability</li>
+        <li>Regional pricing for grocery quick commerce based on store clusters</li>
+      </ul>
+
+      <div class="rn-subgroup">Serviceability · Misc</div>
+      <ul class="rn-list">
+        <li>Overlap check for delivery zones</li>
+        <li>User-controlled override for overlapping zones</li>
+        <li>Development of an independent address service</li>
+        <li>Theme zone development for geo-based banner visibility</li>
+        <li>Weighted priority for capacity management</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 09 · Payments ========== -->
+  <details class="rn-area" id="area-09">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">09</span>
+        <span class="rn-summary-title">Payments</span>
+      </div>
+      <span class="rn-summary-count">~30 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/09-payments-v3.jpg" alt="Tira storefront · UPI QR checkout flow" loading="lazy" />
+        <div class="rn-shot-cap">Storefront · Tira · UPI QR checkout — sunset of UPI Collect (NPCI guideline)</div>
+      </figure>
+      <p class="rn-lede">CVV-less and BNPL on Juspay + JioOne Pay. COD payouts via JioOne Pay. Many-to-many EDC mapping for Store OS. Centralised MOP visibility. Rules-based payment routing across 1P / 3P, success-rate, and traffic distribution. Ajio Wallets full integration. UPI QR for website. Qwikcilver bound to StoreOS.</p>
+
+      <div class="rn-subgroup">Payments · core</div>
+      <ul class="rn-list">
+        <li>CVV-less transactions via Juspay and JioOne Pay</li>
+        <li>BNPL (Buy Now Pay Later) capability via Juspay and Jio One Pay</li>
+        <li>Display outages for payment options in real time enabling user to make informed decisions for selecting payment options</li>
+        <li>Implemented rounding reconciliation to handle indivisible amounts that arise when apportioning across multiple items and payment methods during order creation</li>
+        <li>Building capability for users to use bank offers like instant discount, no cost emi, etc for split payment orders</li>
+        <li>Capturing transaction id and receipts for offline transactions like cheque at store, cash at store, etc</li>
+        <li>Enabled placement of advance orders with zero upfront payment, allowing orders to be created without requiring an initial amount at the time of booking</li>
+        <li>Added payments integration for the web-based Store OS, enabling seamless transaction processing across Android and iOS devices used in-store</li>
+        <li>Enabled flexible many-to-many mapping between Store OS tablets and EDC (Electronic Data Capture) devices, allowing any in-store tablet to route payments through any available EDC terminal</li>
+        <li>COD payouts via Jio One Pay at both core and extension integration</li>
+        <li>Payments and refund handling for replacement/exchange flows</li>
+        <li>Developed an API/FDK endpoint to programmatically enable, disable, or modify Cash on Delivery (COD) settings per user, giving merchants granular control over COD availability and rules</li>
+        <li>Built a centralized configuration layer where business team can control which payment options (MOPs) are visible at checkout for any given combination of items in the cart</li>
+        <li>Integration for closed loop MOP like Jiomart wallet, RONE, etc for refunds in Jiomart</li>
+        <li>Built fetch wallet balance API to provide balance details of all closed loop MOPs associated with the user by collating it from multiple systems and integrations</li>
+        <li>Implemented routing logic for Jiomart's seamless checkout, enabling dynamic selection of payment gateways and configurations on One Pay based on article type, business unit, and other order attributes</li>
+        <li>Enabling UPI QR code for website due to sunset of UPI collect flow by NPCI guidelines for Swadesh and Tira</li>
+        <li>Created a new V2 api for payment options with an optimised payload structure and enhanced handling supporting multiple customisations</li>
+        <li>Rules-based Payment Routing System that determines which payment gateway processes each transaction. Routing logic operates across two levels and accounts for cart composition (1P vs 3P merchandise or category, etc), payment method type, success-rate performance, and traffic distribution targets</li>
+        <li>Multi-MOP payment processing — each payment method routes through its respective aggregator, with refunds directed back to the corresponding aggregator-MOP combination to ensure accurate settlement</li>
+        <li>Data security enhancements like PII encryption, masking beneficiary details response, etc</li>
+        <li>Adhoc enhancements like updating description for JioOne Pay page, payload enhancements for channels to JioOne Pay, new payment methods mappings, cancellation capability of transactions for EDC devices, etc</li>
+      </ul>
+
+      <div class="rn-subgroup">Ajio Wallets Integration</div>
+      <ul class="rn-list">
+        <li>Payments Flow — integrated Ajio Wallet as a payment method with OTP-based validation, real-time display of redeemable wallet balance against the cart value, and seamless checkout deduction</li>
+        <li>Gift Card Flow — enabled redemption of QwikCilver gift cards into the Ajio Wallet, allowing users to top up their wallet balance by applying gift card codes</li>
+        <li>Wallet Ledger on Profile — built a wallet transaction ledger on the user profile, displaying a detailed history of all credits and debits for complete wallet balance transparency</li>
+      </ul>
+
+      <div class="rn-subgroup">Qwikcilver</div>
+      <ul class="rn-list">
+        <li>API to retrieve all QC database entries for a given order ID</li>
+        <li>Binding support for storeOS — integration with StoreOS</li>
+        <li>Unified branching strategy — consistent branching strategy across environments</li>
+        <li>Error messages optimisation — clearer and more consistent error messaging</li>
+      </ul>
+
+      <div class="rn-subgroup">Tech debt &amp; optimisations</div>
+      <ul class="rn-list">
+        <li>Refund cron job and refund failures handling</li>
+        <li>Regular python and pyfit version and package updates</li>
+        <li>Arong cron optimization</li>
+        <li>Vulnerability, infosec and specmatic fixes</li>
+        <li>Refactoring penny drop validation flow</li>
+        <li>Create order flow optimizations</li>
+      </ul>
+    </div>
+  </details>
+
+  <!-- ========== 10 · Platform · Identity · Theme · Comms ========== -->
+  <details class="rn-area" id="area-10">
+    <summary>
+      <div class="rn-summary-meta">
+        <span class="rn-summary-cap">10</span>
+        <span class="rn-summary-title">Platform · Identity · Theme · Comms</span>
+      </div>
+      <span class="rn-summary-count">~35 items · click to expand</span>
+    </summary>
+    <div class="rn-body">
+      <figure class="rn-shot">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/jcp/release-notes/10-platform-v3.jpg" alt="JCP admin · Authentication settings · Truecaller, OTP, domain-specific email verification" loading="lazy" />
+        <div class="rn-shot-cap">Admin · Authentication · Truecaller + OTP + domain-specific email verification</div>
+      </figure>
+      <p class="rn-lede">Authentication rebuild — JWT, PII encryption, Truecaller, UCP integration. CMS Maker-Checker, Global Sections, cohort-based personalization, A/B on storefront. Vue.js → React.js platform UI migration. JioCX onboarded as default SMS/email provider. Haptik dual React/Vue support.</p>
+
+      <div class="rn-subgroup">Platform Authentication &amp; Authorisation</div>
+      <ul class="rn-list">
+        <li>Mobile Number Update — 48-hour hold state machine with OTP verification</li>
+        <li>Fraud Engine integration — mapped and implemented the connection between Deadlock's auth flows and the fraud detection engine to maintain parity with UAAS-era fraud signaling on login and registration events</li>
+        <li>Domain-Specific Employee Email Verification — implemented logic to detect corporate email domains and enforce reverification</li>
+        <li>Referral Code Generation &amp; Verification — rebuilt the referral program flow in Deadlock including code issuance, validation, and the invalid_code_behaviour configuration</li>
+        <li>User Cohorting — L1/L2 group hierarchy with conditional rules, pre-compute, and handling scale through bulk processing via BullQ</li>
+        <li>PII Encryption — DB-level encryption for all user attributes within the authentication service, ensuring sensitive customer data is protected at rest</li>
+        <li>JWT Token Infrastructure — introduced persistent refresh token storage with TTL-based expiry and a Redis cache layer, ensuring secure session management and reducing repeated authentication calls at scale</li>
+        <li>Social Login Expansion — Truecaller login integrated as a native authentication method, reducing friction for mobile-first users during sign-in and registration</li>
+        <li>RRA Audience Manager Integration — user cohort data ingested via Kafka enabling real-time cohort-based personalization across the platform</li>
+        <li>UCP Integration — customer profile data from the Unified Customer Profile store synced with the authentication layer, ensuring consistent identity and preference data across all touchpoint</li>
+      </ul>
+
+      <div class="rn-subgroup">Theme · SEO</div>
+      <ul class="rn-list">
+        <li>Page Mapper — URL-to-page mapping with predicate-based filtering, custom fallback, multi-page support, and audit trail</li>
+        <li>CMS Maker-Checker — end-to-end page and section approval workflow (Draft → In-Review → Approved/Rejected)</li>
+        <li>Global Sections in CMS — centrally managed sections with versioning, locking, and approval workflow</li>
+        <li>CMS Personalization through user cohorts — section, block, and navigation-level targeting by user group with A/B testing support</li>
+        <li>Page Archival — archive and lifecycle management for static pages</li>
+        <li>Swadesh Internationalization — multi-region URL routing via path-based locale prefixes (/en/usa, /en/ind)</li>
+        <li>Bulk Image Upload — multi-image upload within blocks with auto-filled block names, reducing manual content entry effort</li>
+        <li>Multi-Scheduler — schedule up to 50 content variations per section across different time windows, enabling richer campaign and seasonal planning</li>
+        <li>Predicate Override Warnings — editors are alerted when a higher-level rule silently overrides a section or block's personalization setting, preventing incorrect content from going live</li>
+        <li>User Cohort Targeting — content visibility configurable by individual user cohort attributes such as loyalty tier or B2B status, enabling more precise personalization beyond cohort-level targeting</li>
+        <li>Section-Level Targeting — different content sections served to different customer cohorts on the same page, eliminating the need to maintain duplicate pages per audience</li>
+        <li>Block-Level Targeting — individual blocks within a section targeted independently by cohort, giving brands finer control without restructuring page layout</li>
+        <li>A/B Testing on Storefront — different page layouts and navigation structures served to different user cohorts simultaneously, enabling data-driven decisions on storefront design</li>
+        <li>Platform UI Migration (legacy Vue.js to React.js) — Mirage to Quintessa/Cosmos codebase migration</li>
+      </ul>
+
+      <div class="rn-subgroup">CMS</div>
+      <ul class="rn-list">
+        <li>Navigation Maker-Checker — Draft, review, and approval workflow for navigation with role-based access</li>
+        <li>Archived navigations — ability to archive and restore navigations without permanent deletion</li>
+        <li>Assigned status — navigations track assignment state to support workflow-based publishing</li>
+        <li>Sub-menu user group targeting — sub-menu items can be shown or hidden based on user cohort membership</li>
+        <li>Inactive icon support — separate icon state for inactive navigation items</li>
+        <li>GIF and SVG support — navigation items support animated and vector image formats</li>
+        <li>Multiple JSON support per item — custom metadata can be attached at the navigation item level for extended configurability</li>
+        <li>Performance optimization — replaced Mongoose toObject with lean queries and manual getters to reduce API latency</li>
+        <li>Store in Store Catalog Scoping — Store-level catalog configuration for Store-in-Store</li>
+        <li>CMS Platform Upgrade — Node.js v24 + fit.js v3.x migration across all CMS services</li>
+      </ul>
+
+      <div class="rn-subgroup">Communications &amp; Shortlinks</div>
+      <ul class="rn-list">
+        <li>JioCX Integration — SMS and email provider onboarding as default provider with custom payload support</li>
+        <li>Pointblank SMS Coverage — Mobile update OTP, cancel flows, DLT-compliant URL shortening, connection pooling</li>
+        <li>Granular Email Subscription Management — per-event subscription control</li>
+      </ul>
+
+      <div class="rn-subgroup">Haptik</div>
+      <ul class="rn-list">
+        <li>React, Vue.js dual support — chatbot supported across both React and Vue.js applications</li>
+        <li>OMS flow remapping — integrated with Fynd OMS for TIRA and Hellcat for JioMart order management</li>
+        <li>New authentication flow — redesigned authentication for Haptik usage; used across mobile and web apps; no PII data in third-party handshake</li>
+      </ul>
+    </div>
+  </details>
+
+</div></section>
+
+<section class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <a href="/jcp" class="btn-secondary text-sm">← Back to JCP overview</a>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

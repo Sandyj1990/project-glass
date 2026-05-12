@@ -1,0 +1,128 @@
+{
+  "page": "agents/index.html + agents/cortex-planning/index.html + agents/zip/index.html",
+  "spec": "docs/agents-spec.md (v0.5)",
+  "audit_date": "2026-05-02",
+  "audit_revision": "v2 · post-§Sources-rule-update",
+  "audit_scope": "first-cut template validation · 3 pages · index + 2 detail exemplars (rich-source + thin-source)",
+  "score": 82,
+  "grade": "B",
+  "pass": true,
+  "pass_threshold": 75,
+  "rule_changes_since_v1_audit": [
+    "tone-of-voice §3 · §Sources block carve-outs revoked · always remove",
+    "section-authoring spec-template + SKILL.md · §Sources row removed from canonical ordering",
+    "page-reviewer SKILL.md · §Sources flag changed from carve-out-aware to always-CRITICAL",
+    "agents-spec D18 · index drops §05, detail drops §09; provenance moves to inline eyebrows + YAML metadata",
+    "tools/build_agents.py · render_index + render_detail no longer emit Sources section",
+    "3 pages re-rendered (~1.1KB smaller each); grep confirms 0 'Sources' hits across all 3"
+  ],
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 85,
+    "tone_of_voice": 80,
+    "honesty_register": 80,
+    "visual_completeness": 95,
+    "cross_page_consistency": 50
+  },
+  "dimensions_note": "Tone-of-voice climbed from 70 to 80 (Sources blocks no longer in violation since they're gone). Cross-page still 50; P7 nav-wiring intentionally not run yet — exclude as N/A and the score is ~86 (B+).",
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "tone_of_voice",
+      "section": "§07 In flight (cortex-planning)",
+      "issue": "Renderer outputs raw ISO dates: 2026-01-15, 2026-03-06, 2026-04-06. Tone-of-voice §4 mandates DD-MMM-YYYY.",
+      "fix": "Add a date formatter to tools/build_agents.py: convert ISO YYYY-MM-DD to DD-MMM-YYYY before rendering ifr-date pills. Template-level fix.",
+      "files": ["tools/build_agents.py:render_status_section"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§02 The agents · by value-chain track (index page)",
+      "issue": "Index hosts 15 'Pending' card stubs alongside 2 live cards. Honesty-register fine ('Pending' label is honest), but visually reads as an incomplete deliverable.",
+      "fix": "render_index() · skip stub cards entirely. Per band, render only live cards + a single muted line: 'Plan · 1 of 4 published · 3 more extracting'.",
+      "files": ["tools/build_agents.py:render_index"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§07 In flight (cortex-planning)",
+      "issue": "Three In-flight milestones dated Jan-15, Mar-06, Apr-06 — all in the past today (02-May-2026). Page reads as if planned items haven't shipped.",
+      "fix": "Author judgment: (a) move shipped milestones to Live today, (b) tag '(shipped DD-MMM-YYYY)' / '(slipped, new ETA)', or (c) repopulate with current 90-day plan. Needs source-of-truth from Aushin G / Shahid K.",
+      "files": ["data/agents/cortex-planning.yaml:131-134"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "Footer (all 3 pages)",
+      "issue": "Footer renders 'Owner · Salman Saudagar (COO, Fynd) · v0.8.4' — site-wide footer from tools/site_chrome.py. Per canonical convention, footer should be copyright-only.",
+      "fix": "Out of scope (site-wide pre-existing). Flag for separate site-wide cleanup.",
+      "files": ["tools/site_chrome.py:footer"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Home · mega-menu · catalog",
+      "issue": "/agents/ not yet linked from home (index.html), Tracks mega-menu, or /catalog/. Apex reader has no path into the catalog.",
+      "fix": "P7 nav-wiring task. ~3 hr per spec phase plan. Ship blocker for the section.",
+      "files": ["index.html", "tools/site_chrome.py:PLATFORMS_OR_AI_NATIVE", "catalog/index.html (if exists)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§07 In flight (zip)",
+      "issue": "ZIP in-flight date is '2026 H2' — neither DD-MMM-YYYY nor a recognised quarter format.",
+      "fix": "Either swap to a specific date or render quarter as 'Q3 2026'. If milestone has no committed date, drop from In-flight and move to Roadmap.",
+      "files": ["data/agents/zip.yaml:106"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "Hero pill row (cortex-planning, zip)",
+      "issue": "Hero pill row places 4 pills inline. On 1440px sits on one line; on 768-1024px wraps to 2.",
+      "fix": "Acceptable. Confirm on mobile (375px) that pills wrap cleanly.",
+      "files": ["tools/build_agents.py:render_detail (pills_row)"],
+      "auto_fixable": false
+    }
+  ],
+  "removed_findings_v2": [
+    {
+      "id": "M1-v1",
+      "reason": "v1 finding 'M1 · ZIP §09 Sources fails carve-out test' — moot. §Sources blocks now removed from all pages by D18 rule update; tone-of-voice §3 carve-outs revoked across the board."
+    },
+    {
+      "id": "H1-v1",
+      "reason": "v1 finding 'H1 · Farooq Adam full-name source citation' — moot in rendered output. The §09 Sources block where this rendered no longer exists. The author's first-name-only citation persists as a `source_citations:` YAML metadata field but is never rendered to the page; left as-is per D18 (YAML provenance metadata is developer-facing, not page-facing)."
+    }
+  ],
+  "strengths": [
+    "Banned-vocab sweep clean across all 3 pages — no transformative / world-class / leverages / unlocks / empowers / enables.",
+    "Honesty contract on the ZIP §04 architecture — yellow 'Detail expanding · ETA <date>' block rather than fabricating internal architecture details. Sets precedent for the other 14 thin-source agents.",
+    "8-section template (was 9) renders identically across both detail pages with no per-agent special cases — proves the renderer scales.",
+    "Workflow visual tiering (D11) works as designed: ZIP renders Tier-B Accenture s37 image with caption + clickable lightbox; Cortex Planning renders the step strip alone with no image (Tier D), and the page still reads complete.",
+    "Provenance survives the §Sources removal — workflow steps cite Farooq §1.4, image captions cite Accenture s37, hero stat-tile context lines cite source slides. Apex reader can verify without a trailing block."
+  ],
+  "blockers_to_ship_v1": [
+    "C1 · date formatter in renderer (template-level)",
+    "H1 · drop or restyle 15 'Pending' index cards",
+    "H2 · cortex-planning past-date In-flight milestones · author judgment",
+    "M2 · P7 nav wiring (separate phase, planned)"
+  ],
+  "non_blockers": [
+    "M1 · site-wide footer drift (separate cleanup)",
+    "M3 · ZIP '2026 H2' date format",
+    "L1 · hero pill row mobile wrap"
+  ]
+}

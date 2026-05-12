@@ -1,0 +1,18 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2026-04-09
+    title: Weekly Farooq update · BRD execution + team expansion
+    summary: Two devs + Paul Lobo added internally. Major SIT updates · AI Score Calibration, Email Templates, Candidate Portal, SAP OM Integration.
+  - date: 2026-04-07
+    title: SIT deploy · 3 majors
+    summary: Negative Feedback Loop AI Score Calibration · Customisable Email Templates · SAP OM RFC daily sync.
+  - date: 2026-04-03
+    title: Candidate Blocklist · GCP infra production-ready
+    summary: Block list at platform scope. GCP project, billing, network with IDC, Cloud Run, Bastion, Postgres, Artifact Registry.
+  - date: 2026-04-02
+    title: Apollo.io Auto Enrich · Instant Interview Quick Job · RIL portal branding to HireFirst
+    summary: Three production releases
+  - date: 2026-04-01
+    title: Daily todos · GCP setup, RFC integration, Apollo, branding, IRM approval, domain split
+    summary: null

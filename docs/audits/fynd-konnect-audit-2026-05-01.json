@@ -1,0 +1,79 @@
+{
+  "page": "fynd-konnect/index.html",
+  "spec": "docs/fynd-konnect-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 92,
+  "grade": "A",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 95,
+    "tone_of_voice": 85,
+    "honesty_register": 95,
+    "visual_completeness": 95,
+    "cross_page_consistency": 80
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§04 · aggregator ecosystem table",
+      "issue": "Petpooja POS row uses banned filler verb 'unlocks' — 'India's largest F&B POS — unlocks the F&B hyperlocal category for JioMart Quick'. Per tone-of-voice §7 banned vocabulary table, 'unlocks' must be replaced with 'delivers / produces / changes' or just state the outcome.",
+      "fix": "Replace 'unlocks' with 'opens'. New text: 'India's largest F&B POS — opens the F&B hyperlocal category for JioMart Quick.'",
+      "files": ["fynd-konnect/index.html:258"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§08 · Sources card #2",
+      "issue": "Date '2026-02-24' uses ISO format instead of the canonical DD-MMM-YYYY (per tone-of-voice §4). Every visible date on the register must be 'DD-MMM-YYYY'.",
+      "fix": "Replace '2026-02-24' with '24-Feb-2026'.",
+      "files": ["fynd-konnect/index.html:645"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "/catalog (sibling)",
+      "issue": "/catalog/index.html does not list Fynd Konnect as a catalog entry — only the mega-menu nav references it. Spec §6 explicitly defers this as 'lazy strategy', but flagging for completeness.",
+      "fix": "Add a Fynd Konnect entry to /catalog/index.html on the next catalog touch. Spec §6 acceptable for v0.1.",
+      "files": ["catalog/index.html"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§06 Pillar 3",
+      "issue": "Cross-link 'see capability 10' anchors to '#pillar-2' (top of Pillar 2 section) rather than directly to capability 10. Per-capability anchor IDs not added.",
+      "fix": "Add id='cap-10' to the capability 10 card and update the link to '#cap-10'. Optional polish.",
+      "files": ["fynd-konnect/index.html:540", "fynd-konnect/index.html:457"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§04 deep-dive ordering",
+      "issue": "Spec §3 D2 documents the override (no §03 layered architecture; the diagram is in §02 instead and §03 becomes 'four pillars summary'). The decision is recorded in the spec, so this is compliant — flagging for the reviewer's awareness only.",
+      "fix": "No fix required. D2 in the spec covers this.",
+      "files": ["docs/fynd-konnect-spec.md:138"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Section labels run §0 → §08 contiguously; chrome (nav, crumb, footer, version pill) all present and correct",
+    "Every claim on the page traces back to one of the 3 source files: ~800 brands and 3-4 lakh shipments → Partnership Review §3.1; 13 RBL capabilities → §4.2 table verbatim; Emazing 73%/8.8%/20%/100% + Mohd Suhel Ansari quote → DOC-20260224 case study",
+    "Brand portfolio (TUMI, GAP, WestElm, Pottery Barn, PB Kids, Sephora, Hamleys, Superdry, Ritu Kumar, Performax, Reliance Trends, YOUSTA, TIRA, Freshpik, Swadesh, 7-Eleven India, Nexus) rendered verbatim from source §2.2 / §4.1 with exact casing — 72 brand-name mentions, all consistent",
+    "13 capability deliveries grouped into 6 themes (Foundation Architecture · Compliance & Finance · Brand Enablement · Loyalty & Programmes · Payments Modernisation · Performance & Ops) with cap-badge numbering — mirrors source PDF §4.2 organisation exactly",
+    "Status pills accurate: 14× Live + 1× Building (capability 12 Split Payment Readiness — proactive assessment ahead of platform launch, matches source); no overclaims",
+    "Inline Emazing evidence card uses native HTML metric tiles (not the source PNG with embedded UI text), so all 4 numbers are legible and accessible — the supporting flow image is decorative",
+    "No banned constructions, no emojis, no exclamation marks; 'we / our team' avoided throughout; outcomes attributed to Reliance, not Fynd",
+    "Mobile (375px) renders cleanly without overflow; all 4 page resources return 200 status; only console message is the standard Tailwind CDN dev warning",
+    "Hero stat tiles read in plain English — '~800 live omni-seller brands', '3-4 lakh shipments / month', '13 RBL capability deliveries', '50+ marketplaces · 9+ countries' — no engineering jargon"
+  ]
+}

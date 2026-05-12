@@ -1,0 +1,68 @@
+{
+  "page": "organisation/index.html#tab-ai-native",
+  "spec": "docs/organisation-ai-native-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_round": "post-fix delta",
+  "score": 92,
+  "grade": "A-",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 100,
+    "source_traceability": 100,
+    "tone_of_voice": 90,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 90
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "global naming",
+      "issue": "Site-wide spelling drift between 'AI Native' (proper-noun labels), 'AI-native' (body copy), and 'AI-Native' (mega-menu). Within this page the three forms are correctly differentiated (label, body, menu category) but the convention is not documented.",
+      "fix": "Add a one-line entry to tone-of-voice §7 Vocabulary: body copy uses 'AI-native', mega-menu category uses 'AI-Native', preserved proper-noun labels (e.g. existing 'AI Native Ways of Working' tab) stay as-is.",
+      "files": [".claude/skills/website-tone-of-voice.md"],
+      "auto_fixable": false
+    }
+  ],
+  "fixed_in_this_round": [
+    {
+      "id": "T1",
+      "before": "How Fynd works AI-natively.",
+      "after": "Ten principles · one operating mandate.",
+      "files": ["organisation/index.html:225"]
+    },
+    {
+      "id": "T2",
+      "before": "What the org actually does today.",
+      "after": "Adoption measured across two internal surveys.",
+      "files": ["organisation/index.html:307"]
+    },
+    {
+      "id": "T3",
+      "before": "What people actually run.",
+      "after": "External tools and Fynd-built tools in active use.",
+      "files": ["organisation/index.html:370"]
+    },
+    {
+      "id": "T4",
+      "before": "Hours / wk saved · Claude · ~34h / person / wk",
+      "after": "Hours saved per week · Claude · ~34h per person per week",
+      "files": ["organisation/index.html:312"]
+    },
+    {
+      "id": "S1",
+      "before": "tab-local section numbering undocumented",
+      "after": "added D5 to spec §6 Decisions documenting tab-local §01 → §NN sequences as compliant",
+      "files": ["docs/organisation-ai-native-spec.md"]
+    }
+  ],
+  "strengths": [
+    "Source traceability holds at 100% — every number on the page (65%, 73%, 7989, 73%, 162/156/55/56, 570/424/268/221/88/80/52/43, 300/192/71/53/32/6) verifies exactly against the two source spreadsheets.",
+    "Three rewritten H2s now lead with facts ('Ten principles', 'Adoption measured', 'External tools and Fynd-built tools') instead of rhetorical 'How / What' openers.",
+    "Eyebrow citations are inline and named on every section; no redundant Sources block.",
+    "Mobile (375px) renders correctly; console clean; all six Fynd-tool links resolve 200.",
+    "Spec §6 Decisions now records D5 tab-local numbering so future audits accept the dual §01 sequence."
+  ]
+}

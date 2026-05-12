@@ -1,0 +1,11 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+production_urls:
+  - url: "https://hiring.ril.com"
+    label: RIL HireFirst Production · sign-off pending
+
+sit_urls:
+  - url: "https://ril.sit.fyndx1.de"
+    label: SIT environment
+  - url: "https://hiring-ril.sit.fyndx1.de"
+    label: Hiring SIT

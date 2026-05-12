@@ -1,0 +1,26 @@
+{
+  "slug": "scan-and-go",
+  "name": "Scan & Go",
+  "tagline": "8 RIL brands live \u00b7 \u20b92.5 Cr/year invoice savings \u00b7 5 min/customer saved.",
+  "track": "samarth",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2023-08-09",
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery",
+    "beauty"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/jcp#scan-and-go",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "self-checkout",
+    "qr"
+  ]
+}

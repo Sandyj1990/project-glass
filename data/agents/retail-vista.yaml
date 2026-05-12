@@ -1,0 +1,261 @@
+# Retail Vista
+# Sources:
+#  · /retail-vista/ page · Reliance internal product
+#  · RetailVista_Business_Overview.docx · 4-stage Opportunity Engine + 10-dim scoring
+#  · RetailVista_Agentic_Platform_Writeup.docx · 4 specialist sub-agents + H3 spatial primitives
+#  · Farooq · §4.2 Plan (Store Intelligence Agent)
+#  · Agentisation §3.3 (New Store Opportunity Agent)
+#
+# Per docs/agents-spec.md v0.8
+
+slug: retail-vista
+name: Retail Vista
+sub_title: "All-India spatial intelligence — site discovery, scoring, and a conversational workspace for the expansion team."
+status: build
+status_label: Building
+track: plan
+autonomy_level: L4
+primary_workflow: "Network Planning"
+date: 2026-04-15
+source_folder: docs/agent-catalog-notes-compilation/
+source_citations:
+  - "RetailVista_Business_Overview.docx"
+  - "RetailVista_Agentic_Platform_Writeup.docx"
+  - "/retail-vista/ page"
+
+# § 0 · Hero stats
+stats:
+  - { label: "Spatial fabric",    value: "H3 grid",      context: "All-India · uniform hex resolution" }
+  - { label: "Curated datasets",  value: "61",           context: "BigQuery · refreshed continuously" }
+  - { label: "Scoring dimensions", value: "10",          context: "wealth · demand · competition · ..." }
+  - { label: "Specialist agents", value: "4",            context: "Location · Catchment · Intelligence · Strategic" }
+
+primary_platform:
+  name: "Retail Vista"
+  route: "/retail-vista/"
+
+# § 01 · Job
+job:
+  pain: |
+    Site selection runs on manual research, fragmented data, and individual
+    judgement — weeks per location, inconsistent across teams, missed
+    high-potential markets, and no visibility into cannibalisation risk.
+  what_it_does: |
+    Builds a single spatial fabric over India — H3 hex grid, 61 curated
+    datasets, competitor map. Surfaces high-potential sites, scores them
+    on 10 business dimensions, ranks by vertical-specific weights. The
+    expansion team interrogates the map and the pipeline through a
+    conversational workspace.
+  human_role: |
+    Expansion lead reviews the prioritised pipeline, signs off on shortlist
+    visits, and takes the final lease decision. The agent does the
+    discovery, scoring and analysis; the human owns commitment.
+
+# § 02 · Workflow
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+workflow_svg: |
+  <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>Retail Vista · 4-stage opportunity engine + workspace</title>
+    <desc>Inputs (competitor map, demographics, JioMart density, property leads) feed a 4-stage pipeline that produces a ranked opportunity list, surfaced through a conversational workspace.</desc>
+    <defs>
+      <marker id="rv-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+        .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+      </style>
+    </defs>
+
+    <!-- Inputs zone -->
+    <g>
+      <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1"/>
+      <text x="36" y="46" class="zh">Inputs</text>
+
+      <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+      <text x="50" y="86" class="h-ttl">Expansion lead</text>
+      <text x="50" y="102" class="h-sub">vertical · target city</text>
+      <text x="50" y="116" class="h-sub">capex envelope</text>
+
+      <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="168" class="src-ttl">Competitor map</text>
+      <text x="50" y="186" class="src-sub">stores · brands · density</text>
+
+      <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="242" class="src-ttl">Demographics</text>
+      <text x="50" y="260" class="src-sub">income · density · GDP</text>
+
+      <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="316" class="src-ttl">JioMart density</text>
+      <text x="50" y="334" class="src-sub">order hotspots · catchment</text>
+
+      <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="390" class="src-ttl">Property leads</text>
+      <text x="50" y="408" class="src-sub">listings · rates · footfall</text>
+
+      <text x="36" y="490" class="gl">Substrate</text>
+      <text x="36" y="506" class="src-sub">H3 hex grid · 61 datasets</text>
+    </g>
+
+    <!-- Workflow zone -->
+    <g>
+      <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="306" y="46" class="zh">Pipeline · 4 stages + workspace</text>
+
+      <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="86" class="stp-num">01</text>
+      <text x="354" y="86" class="stp-ttl">Candidate sourcing</text>
+      <text x="324" y="106" class="stp-sub">competitor ring expansion · whitespace</text>
+      <text x="324" y="120" class="stp-sub">density hotspots · property leads</text>
+
+      <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="86" class="stp-num">02</text>
+      <text x="644" y="86" class="stp-ttl">Whitespace filtering</text>
+      <text x="614" y="106" class="stp-sub">isolate top-20% demand areas</text>
+      <text x="614" y="120" class="stp-sub">no-existing-coverage filter</text>
+
+      <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="182" class="stp-num">03</text>
+      <text x="354" y="182" class="stp-ttl">10-dimension scoring</text>
+      <text x="324" y="202" class="stp-sub">wealth · density · GDP · footfall</text>
+      <!-- Per spec §5.2 · drop the trailing "..." · workflow_steps Step 03
+           detail below already lists all 10 dimensions in full. -->
+      <text x="324" y="216" class="stp-sub">competition · accessibility · rates</text>
+
+      <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="182" class="stp-num">04</text>
+      <text x="644" y="182" class="stp-ttl">Vertical-weighted ranking</text>
+      <text x="614" y="202" class="stp-sub">Quick Commerce vs Fashion weights</text>
+      <text x="614" y="216" class="stp-sub">geographic diversity capping</text>
+
+      <rect x="310" y="256" width="560" height="78" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="324" y="278" class="stp-num" style="fill:#4338CA;">05</text>
+      <text x="354" y="278" class="stp-ttl">Conversational workspace</text>
+      <text x="324" y="298" class="stp-sub">root orchestrator (Gemini 2.5 Pro) routes to 4 specialist agents:</text>
+      <text x="324" y="316" class="stp-sub">Location · Catchment · Intelligence · Strategic — each with dedicated tools</text>
+
+      <rect x="310" y="358" width="560" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+      <text x="324" y="380" class="stp-num" style="fill:#B45309;">06</text>
+      <text x="354" y="380" class="stp-ttl">Human verification gates</text>
+      <text x="324" y="400" class="stp-sub">expansion team reviews shortlist · authorises field visits</text>
+      <text x="324" y="414" class="stp-sub">final lease commitment stays human</text>
+
+      <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="324" y="468" class="gl">KPIs moved</text>
+      <text x="324" y="492" class="stp-sub">Time-to-shortlist · selection accuracy · cannibalisation rate · expansion velocity</text>
+    </g>
+
+    <!-- Outputs zone -->
+    <g>
+      <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+      <text x="936" y="46" class="zh">Outputs</text>
+
+      <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="86" class="out-ttl">Opportunity pipeline</text>
+      <text x="950" y="104" class="out-sub">ranked, scored, vertical-weighted</text>
+      <text x="950" y="120" class="out-sub">geographic diversity</text>
+
+      <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="180" class="out-ttl">Site dossier</text>
+      <text x="950" y="198" class="out-sub">10-dim breakdown · competitor</text>
+      <text x="950" y="214" class="out-sub">benchmark · catchment</text>
+
+      <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="274" class="out-ttl">Live map answers</text>
+      <text x="950" y="292" class="out-sub">natural-language queries</text>
+      <text x="950" y="308" class="out-sub">over 61-dataset substrate</text>
+
+      <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="368" class="gl" style="fill:#15803D;">Format</text>
+      <text x="950" y="388" class="out-sub">Quick Commerce live · Fashion in build</text>
+
+      <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+      <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+      <text x="950" y="482" class="out-sub">human reviews shortlist</text>
+      <text x="950" y="498" class="out-sub">system runs the pipeline</text>
+    </g>
+
+    <!-- Connectors · trunk pattern for 5 inputs into Stage 01 -->
+    <path d="M244 95 H275" class="conn"/>
+    <path d="M244 175 H275" class="conn"/>
+    <path d="M244 249 H275" class="conn"/>
+    <path d="M244 323 H275" class="conn"/>
+    <path d="M244 397 H275" class="conn"/>
+    <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+    <path d="M275 98 H310" class="conn" marker-end="url(#rv-arr)"/>
+
+    <!-- Pipeline flow -->
+    <path d="M580 98 H600" class="conn" marker-end="url(#rv-arr)"/>
+    <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#rv-arr)"/>
+    <path d="M580 194 H600" class="conn" marker-end="url(#rv-arr)"/>
+    <path d="M735 228 V242 H590 V256" class="conn" marker-end="url(#rv-arr)"/>
+    <path d="M590 334 V358" class="conn" marker-end="url(#rv-arr)"/>
+
+    <!-- Workspace → outputs -->
+    <path d="M870 295 H920" class="conn" marker-end="url(#rv-arr)"/>
+  </svg>
+workflow_diagram_caption: "Inputs (blue) → 4-stage pipeline + workspace (grey) → Outputs (green). Human verification gate (yellow) before lease commitment."
+
+workflow_steps:
+  - { num: "01", title: "Candidate sourcing",         detail: "Competitor ring expansion · whitespace detection · density hotspots · city seeding · property leads — surfaces a long-list per query." }
+  - { num: "02", title: "Whitespace filtering",       detail: "BigQuery spatial queries isolate the top-20% demand areas with no existing coverage." }
+  - { num: "03", title: "10-dimension scoring",       detail: "Wealth Index · Building Density · Demographics · District GDP · Spending Power · Footfall · Competitive Intensity · Accessibility · Property Rates · JioMart Order Density." }
+  - { num: "04", title: "Vertical-weighted ranking",  detail: "Composite score with vertical-specific weights. Quick Commerce emphasises demand + order density; Fashion emphasises footfall + complementary retail. Geographic diversity capping prevents cluster-heavy recommendations." }
+  - { num: "05", title: "Conversational workspace",   detail: "Root orchestrator (Gemini 2.5 Pro) routes natural-language queries to 4 specialist sub-agents — Location · Catchment · Intelligence · Strategic. Each runs its own tool stack against BigQuery, Google Maps APIs, and the H3 grid." }
+  - { num: "06", title: "Human verification gates",   detail: "Expansion team reviews the shortlist, signs off on field visits, takes the lease commitment. Agent does the discovery and analysis; human owns the decision." }
+
+# § 03 · Data
+data:
+  sources:
+    - { name: "BigQuery (61 tables)", classification: "Mixed",            entities: "Population · Demographics · GDP · Wealth Index · Property Rates" }
+    - { name: "Competitor map",       classification: "Machine-Created",  entities: "Store locations · brand mix · density per hex" }
+    - { name: "JioMart order data",   classification: "Machine-Created",  entities: "Order density · catchment · delivery time" }
+    - { name: "Google Maps APIs",     classification: "Machine-Readable", entities: "Routes · isochrones · POI · footfall proxies" }
+    - { name: "Property leads",       classification: "Mixed",            entities: "Listings · rates · landlord contacts" }
+  refresh_cadence: "Substrate refreshed continuously; opportunity pipeline auto-runs on startup or on demand."
+  kpis_moved:
+    - "Time-to-shortlist"
+    - "Selection accuracy (year-1 sales vs plan)"
+    - "Cannibalisation rate"
+    - "Expansion velocity (sites opened per quarter)"
+
+# § 04 · Patterns
+patterns:
+  - { name: "Tool Calling",         usage: "Each specialist sub-agent calls BigQuery, Google Maps, Routes API, and the H3 spatial library" }
+  - { name: "Deep / Hierarchical",  usage: "Root orchestrator routes queries to Location · Catchment · Intelligence · Strategic specialists" }
+  - { name: "Wide Research",        usage: "4-stage opportunity engine generates many candidates before scoring narrows to a shortlist" }
+  - { name: "Context Graphs",       usage: "H3 hex grid is the spatial graph; every entity (store, household, property) carries hex-level context" }
+  - { name: "Observability",        usage: "Every score breakdown is traceable back to the 10 dimensions and the underlying datasets" }
+
+# § 05 · Evals
+evals:
+  status: "in-development"
+  approach: |
+    Backtest opportunity scores against year-1 sales of recently opened
+    Reliance Retail stores. Compare ranked recommendations vs the lease
+    decisions actually taken; measure selection accuracy and missed-market
+    cost.
+  gates:
+    - "Top-20% recommended sites match year-1 sales-per-sq-ft above the format median"
+    - "Cannibalisation rate on recommended sites stays below 5%"
+    - "Conversational workspace returns answers grounded in source datasets — every claim cites the dataset"
+
+# § 06 · Linked platforms
+linked_platforms:
+  - { name: "Retail Vista", route: "/retail-vista/", role: "Platform home · live storefront for the agent" }
+  - { name: "Cortex",       route: "/impetus/cortex/", role: "Consumes spatial / catchment context for store-level planning" }
+  - { name: "JCP",          route: "/jcp/",            role: "Delivery routing and catchment-aware fulfilment" }

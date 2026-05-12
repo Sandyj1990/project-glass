@@ -1,0 +1,62 @@
+HireFirst | Release Note & Updates | April 2, 2026 @channel
+
+1. Auto Enrich — Apollo.io Integration
+With Auto Enrich, recruiters can now fill in missing profile details with a single click — powered by Apollo's 275M+ contact database.
+Available now: Candidates section → open any profile → Auto Enrich
+
+2. Instant Interview — Quick Job Creation
+You can now create a new job role on the fly directly inside the Instant Interview flow — no need to set up a job in advance.
+Available now: Interviews → Instant Interview
+
+3. Branding Update — RIL Portal
+The "Orion" name and logo have been replaced with "HireFirst" across the RIL-facing portal. This applies to the logo, page title, and all visible entry points for the RIL team. The Fynd-internal instance is not affected.
+
+4. RIL Environments — Now Live
+Both Production and SIT environments are set up and accessible on the RIL domain:
+Production — https://hiring.ril.com
+SIT — https://hiring-ril.sit.fyndx1.de/
+
+5. SAP Integration — Connectivity Verified 
+SAP connectivity is established and verified. We are currently working through a few SAP proprietary library issues to complete the sync of all OM data.
+Core connection is stable, resolution on the library side is in progress and an update will follow once full OM data sync is confirmed.
+
+
+1. Candidate Blocklist
+You can now blocklist a candidate directly from Settings, preventing them from being assigned to any job across the platform while keeping their profile searchable for reference.
+Available now: Settings → Block List
+
+2. GCP Infrastructure & Application Deployment Completed | Non-Prod & Prod
+
+Project creation 
+Billing Enable 
+Access to Project 
+Network setup with IDC connectivity 
+Resource deployment (Cloud Run, Bastion Host, Postgress SQL, Artifact Registry) 
+Application deployment 
+Connectivity Test 
+Application reachability test to SAS system 
+SAP connectivity 
+
+
+3. Bug Fixes
+
+Web: Admin: Inconsistent back navigation for 'AI Council'
+Web: Admin: Error toast appears when user creates a job (intermittent)
+Web: Hiring Manager: User is not getting any EXIT confirmation pop up when logging out from Interviewer mode
+Web: Hiring Manager: Interviews: Resume notes while submitting any other resume does not changes
+Web: Admin: Jobs: Candidate created via resume sourcing in 'Instant Interviews' is not visible in Kanban View
+Web: Blocklist: No validation for Blocked email field under Blocklist 
+Web: Interviews: User is unable to upload a resume from the instant interview window on the second attempt
+Web: Admin: Intermittent "Response Not Successful: Received Status Code 403" error when editing candidate profile or cancelling resume upload
+Web: Settings: Leadership role is able to access the Blocklist tab but cannot view Blocked Emails or Blocked Companies, nor perform any blocking actions
+Web: Admin: "Resume parsed successfully” toast displayed and data fetched after cancelling resume upload
+Web: Settings: When the Blocklist tab is open and you switch roles (like Hiring Manager, Recruiter, etc.), the Candidate Blocklist tab still stays visible even for roles that shouldn’t have access, even after refreshing
+
+
+4. Upcoming Next Week
+
+Email templates
+Microsoft teams integration
+Interview Bot: teams + google
+Autofill instant interview with AI prompt
+Native SAP OM integration

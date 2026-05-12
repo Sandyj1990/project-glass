@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Culture · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  .value-tile { padding: 24px; background: white; border: 1px solid var(--border); border-radius: 16px; transition: transform .2s, border-color .2s; }
+  .value-tile:hover { transform: translateY(-2px); border-color: var(--ink); }
+  .value-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); letter-spacing: .04em; }
+  .value-name { font-weight: 600; font-size: 17px; color: var(--ink); margin-top: 6px; line-height: 1.2; }
+  .value-sub { font-size: 12px; color: var(--ink-muted); margin-top: 6px; }
+
+  .person-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: border-color .2s, transform .2s; }
+  .person-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .person-photo { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; background: var(--bg-soft); margin-bottom: 14px; }
+  .person-fallback { width: 72px; height: 72px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 20px; margin-bottom: 14px; font-family: 'Inter', sans-serif; }
+  .person-name { font-weight: 600; font-size: 16px; color: var(--ink); }
+  .person-role { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
+  .person-since { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-top: 8px; }
+  .person-quote { font-size: 13px; color: var(--ink); margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-soft); font-style: italic; }
+
+  .life-photo { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 12px; }
+  .life-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-top: 6px; letter-spacing: .04em; }
+
+  .review-hero { background: white; border: 1px solid var(--border); border-radius: 18px; padding: 32px; }
+  .review-stars { color: #f59e0b; font-size: 14px; letter-spacing: 2px; }
+  .review-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px; transition: border-color .2s; }
+  .review-card:hover { border-color: var(--ink); }
+  .review-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); letter-spacing: .04em; }
+  .review-quote { font-size: 14px; color: var(--ink); margin: 8px 0 10px; font-weight: 500; line-height: 1.4; }
+  .review-role { font-size: 12px; color: var(--ink-muted); }
+  .review-pill { display: inline-block; padding: 2px 8px; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; border-radius: 999px; font-size: 11px; font-weight: 500; margin-right: 6px; margin-top: 6px; }
+
+  .award-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 22px; transition: border-color .2s; min-height: 140px; display: flex; flex-direction: column; justify-content: space-between; }
+  .award-card:hover { border-color: var(--ink); }
+  .award-name { font-weight: 600; font-size: 16px; color: var(--ink); line-height: 1.3; }
+  .award-source { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-top: 12px; letter-spacing: .04em; }
+
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Culture</span></div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Culture.</h1>
+<p class="text-lg max-w-3xl" style="color: var(--ink-muted);">Over a decade of building Fynd has taught one thing. Culture isn't what you say. It's what you do when no one's watching.</p>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#core-values">01 · Core values</a>
+<a href="#decade-tenure">02 · 10+ years</a>
+<a href="#life-at-fynd">03 · Life at Fynd</a>
+<a href="#glassdoor">04 · Glassdoor</a>
+<a href="#awards">05 · Awards</a>
+</div>
+</div>
+
+<!-- 01 · CORE VALUES -->
+<section id="core-values" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Fynd Core Values</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Ten rules. One bar.</h2>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+<div class="value-tile"><div class="value-num">01</div><div class="value-name">Consumer is the Boss</div></div>
+<div class="value-tile"><div class="value-num">02</div><div class="value-name">Do More with Less</div></div>
+<div class="value-tile"><div class="value-num">03</div><div class="value-name">No Politics No Bullshit</div></div>
+<div class="value-tile"><div class="value-num">04</div><div class="value-name">Be Humble</div></div>
+<div class="value-tile"><div class="value-num">05</div><div class="value-name">Treat Others as You Would Like to Be Treated</div></div>
+<div class="value-tile"><div class="value-num">06</div><div class="value-name">Do It Once Do It Right</div></div>
+<div class="value-tile"><div class="value-num">07</div><div class="value-name">Treat Work as Sports</div><div class="value-sub">Continuous Self Improvement</div></div>
+<div class="value-tile"><div class="value-num">08</div><div class="value-name">Be Ethical and Accountable</div></div>
+<div class="value-tile"><div class="value-num">09</div><div class="value-name">Brutal Honesty</div></div>
+<div class="value-tile"><div class="value-num">10</div><div class="value-name">Disagree but Commit</div></div>
+</div>
+</div></section>
+
+<!-- 02 · 10+ YEARS -->
+<section id="decade-tenure" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · 10+ years building Fynd</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-2" style="color: var(--ink);">Ten people. Decade-plus tenure.</h2>
+<p class="text-sm mb-8" style="color: var(--ink-muted);">All on the roster since 2015 or earlier · most joined as engineers or designers and now run major parts of the org.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3">
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1033.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>KV</div>'" />
+  <div class="person-name">Kavish Vora</div>
+  <div class="person-role">Staff Engineering Manager - 1</div>
+  <div class="person-since">Started as SDE-1 · 2015</div>
+  <div class="person-quote">"Fynd helps me push my limits of what I can do"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1014.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>KP</div>'" />
+  <div class="person-name">Kinjal Patel</div>
+  <div class="person-role">Software Development Engineer - 3</div>
+  <div class="person-since">Started as SDE-1 · 2015</div>
+  <div class="person-quote">"Fynd made me the person I am today"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1013.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>KB</div>'" />
+  <div class="person-name">Kingshuk Bhattacharya</div>
+  <div class="person-role">Engineering Manager - 2</div>
+  <div class="person-since">Started as SDE-1 · 2015</div>
+  <div class="person-quote">"At Fynd I am always around so many knowledgeable people"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1026.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>KK</div>'" />
+  <div class="person-name">Kapil Kapri</div>
+  <div class="person-role">Staff Engineering Manager - 1</div>
+  <div class="person-since">Started as SDE-1 · 2015</div>
+  <div class="person-quote">"At Fynd I get to work on new age technologies"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1022.png" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>JD</div>'" />
+  <div class="person-name">Jigar Dafda</div>
+  <div class="person-role">Chief Technology &amp; Product Officer</div>
+  <div class="person-since">Started as Web Team Lead · 2015</div>
+  <div class="person-quote">"When I joined Fynd, I knew I was building something extraordinary"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1027.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>ME</div>'" />
+  <div class="person-name">Muralidhar Edam</div>
+  <div class="person-role">Engineering Manager - 2</div>
+  <div class="person-since">Tenure: 10+ years</div>
+  <div class="person-quote">"Fynd gives me new challenges everyday"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1010.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>KS</div>'" />
+  <div class="person-name">Kushan Shah</div>
+  <div class="person-role">Chief Technology &amp; Product Officer</div>
+  <div class="person-since">Tenure: 10+ years</div>
+  <div class="person-quote">"At Fynd I can solve problems across various domains"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1024.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>MT</div>'" />
+  <div class="person-name">Mayur Thanekar</div>
+  <div class="person-role">Technical Integration Manager - 3</div>
+  <div class="person-since">Started as Reliability Manager · 2015</div>
+  <div class="person-quote">"At Fynd I can contribute to solving real world problems"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1028.jpg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>RM</div>'" />
+  <div class="person-name">Ronak Modi</div>
+  <div class="person-role">Chief Business Officer · Global</div>
+  <div class="person-since">Started as Associate PM · 2015</div>
+  <div class="person-quote">"I am relearning and learning something new everyday"</div>
+</div>
+
+<div class="person-card">
+  <img class="person-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/keka-photos/1011.jpeg" alt="" onerror="this.outerHTML='<div class=&quot;person-fallback&quot;>DS</div>'" />
+  <div class="person-name">Debajit Sardar</div>
+  <div class="person-role">Design Lead</div>
+  <div class="person-since">Started as Junior UI Designer · 2015</div>
+  <div class="person-quote">"Where Fynd can go excites me"</div>
+</div>
+
+</div>
+</div></section>
+
+<!-- 03 · LIFE AT FYND -->
+<section id="life-at-fynd" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Life at Fynd</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Built over a decade.</h2>
+
+<div class="grid md:grid-cols-3 gap-4 mb-10">
+<div class="card p-6"><div class="cap-num mb-2">Quarterly</div><h3 class="font-semibold text-xl mb-2" style="color: var(--ink);">State of the Firm</h3><p class="text-sm" style="color: var(--ink-muted);">Quarterly gathering of all Fynd employees to learn and discuss progress.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Three times a year</div><h3 class="font-semibold text-xl mb-2" style="color: var(--ink);">Fynd Stars</h3><p class="text-sm" style="color: var(--ink-muted);">Awarded to top performers across the organisation thrice a year.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Once a year</div><h3 class="font-semibold text-xl mb-2" style="color: var(--ink);">Fynd Annual Awards</h3><p class="text-sm" style="color: var(--ink-muted);">Awarded to top performers across the organisation once a year.</p></div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+<div><img class="life-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/life-hactimus.png" alt="Hactimus Hackathon" /><div class="life-cap">Hactimus Hackathon</div></div>
+<div><img class="life-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/life-navratri.png" alt="Navratri Celebrations" /><div class="life-cap">Navratri Celebrations</div></div>
+<div><img class="life-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/life-state-of-firm.png" alt="State of the Firm" /><div class="life-cap">State of the Firm</div></div>
+<div><img class="life-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/life-holi.png" alt="Holi Celebrations" /><div class="life-cap">Holi Celebrations</div></div>
+<div><img class="life-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/life-womens-day.png" alt="Women's Day" /><div class="life-cap">Women's Day</div></div>
+<div><img class="life-photo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/life-fynd-stars.png" alt="Fynd Stars Winners" /><div class="life-cap">Fynd Stars Winners</div></div>
+</div>
+</div></section>
+
+<!-- 04 · WHAT FYND PEOPLE SAY -->
+<section id="glassdoor" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · What Fynd people say · Glassdoor</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">"A rocketship for builders."</h2>
+
+<div class="review-hero mb-6 max-w-4xl">
+<div class="flex items-center justify-between mb-4">
+<div class="review-stars">★★★★★ <span class="mono text-xs ml-2" style="color: var(--ink-muted);">5.0</span></div>
+<div class="review-meta">19 - Jun - 2025 · Glassdoor</div>
+</div>
+<p class="text-2xl font-semibold mb-4" style="color: var(--ink); line-height: 1.3;">"A rocketship for builders who thrive on ownership and velocity."</p>
+<div class="review-role">Associate Director, Sales · Mumbai · Current employee, less than 1 year</div>
+<div>
+<span class="review-pill">✓ Recommend</span>
+<span class="review-pill">✓ CEO approval</span>
+<span class="review-pill">✓ Business outlook</span>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+
+<div class="review-card">
+<div class="review-meta">10 - Jul - 2025 · ★★★★★</div>
+<div class="review-quote">"Perfect place to grow if you're very proactive and adaptable"</div>
+<div class="review-role">Anonymous · Current employee</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">19 - Jun - 2025 · ★★★★</div>
+<div class="review-quote">"Innovative culture, great exposure, but could use more structure"</div>
+<div class="review-role">Anonymous · Current employee, &gt; 3 years</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">10 - Jul - 2025 · ★★★★★</div>
+<div class="review-quote">"More than just a company"</div>
+<div class="review-role">Business Program Manager · Former, &gt; 1 year · Mumbai</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">26 - May - 2025 · ★★★★★</div>
+<div class="review-quote">"A supportive, growth-oriented workplace that truly cares"</div>
+<div class="review-role">Senior Program Manager · Current, &gt; 5 years · Mumbai</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">28 - May - 2025 · ★★★★★</div>
+<div class="review-quote">"AI First Opportunities"</div>
+<div class="review-role">Engineering Manager · Current, &gt; 1 year · Mumbai</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">14 - Dec - 2025 · ★★★★</div>
+<div class="review-quote">"I love the work there related to the AI"</div>
+<div class="review-role">AI Intern · Current, &lt; 1 year</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">14 - Dec - 2025 · ★★★★★</div>
+<div class="review-quote">"Love the project I was at"</div>
+<div class="review-role">AI Intern · Former, &lt; 1 year</div>
+</div>
+
+<div class="review-card">
+<div class="review-meta">9 - Nov - 2025 · ★★★★★</div>
+<div class="review-quote">"Great place to learn, grow and take ownership"</div>
+<div class="review-role">Anonymous · Current, &lt; 1 year · Mumbai</div>
+</div>
+
+</div>
+</div></section>
+
+<!-- 05 · AWARDS & RECOGNITION -->
+<section id="awards" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Awards &amp; Recognition</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Recognised as both an employer and a tech company.</h2>
+
+<div class="grid md:grid-cols-3 gap-3 mb-8">
+<a class="award-card" href="https://www.fynd.com/events/nrf-apac-2025" target="_blank" rel="noopener"><div><div class="award-name">2025 NRF APAC Innovators</div></div><div class="award-source">NRF · Forrester · 2025</div></a>
+<a class="award-card" href="https://www.hbs.edu/faculty/Pages/item.aspx?num=60511" target="_blank" rel="noopener"><div><div class="award-name">HBS Case Study</div></div><div class="award-source">Harvard Business School</div></a>
+<div class="award-card"><div><div class="award-name">Digital Commerce Tech Vendor 2024</div></div><div class="award-source">Gartner · 2024</div></div>
+<div class="award-card"><div><div class="award-name">Great Place to Work</div></div><div class="award-source">Great Place to Work Institute</div></div>
+<a class="award-card" href="https://www.fastcompany.com/90724356/most-innovative-companies-asia-pacific-2022" target="_blank" rel="noopener"><div><div class="award-name">World's Most Innovative Company · APAC 2022</div></div><div class="award-source">Fast Company · 2022</div></a>
+<a class="award-card" href="https://retailtechinnovationhub.com/home/2026/2/22/fynd-founder-sreeraman-mohan-girija-talks-going-global-and-ai-powered-unified-commerce" target="_blank" rel="noopener"><div><div class="award-name">AI in Retail Awards 2025</div></div><div class="award-source">RTIH · 2026 Finalist</div></a>
+</div>
+
+<div class="grid md:grid-cols-2 gap-4">
+<div>
+<div class="w-full rounded-2xl" style="aspect-ratio: 16/10; overflow: hidden; position: relative; background: var(--bg-soft);">
+  <img style="position: absolute; left: 50%; bottom: 0; width: 150%; max-width: none; transform: translateX(-50%); display: block;" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/award-photo-women-leader.png" alt="" />
+</div>
+<div class="life-cap mt-2">Women Leader in Business · Ragini Varma · CBO India</div>
+</div>
+<div>
+<img class="w-full rounded-2xl" style="aspect-ratio: 16/10; object-fit: cover;" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/culture-deck/award-photo-devops-show.png" alt="" />
+<div class="life-cap mt-2">The India DevOps Show Award</div>
+</div>
+</div>
+
+</div></section>
+
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

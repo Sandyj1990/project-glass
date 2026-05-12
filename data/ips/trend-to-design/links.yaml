@@ -1,0 +1,5 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+production_urls:
+  - url: "https://www.ajio.com/superdry-sdx-keys-t-shirt"
+    label: Trend-to-Design Agent

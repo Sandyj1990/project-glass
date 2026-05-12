@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RD DDD Conversions — Analysis Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f3ef;
+    --surface: #fffefb;
+    --ink: #1a1714;
+    --ink-2: #6b6560;
+    --accent: #c84b2f;
+    --accent-2: #2f6fc8;
+    --accent-3: #2a9d5c;
+    --rule: #e0ddd8;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Sora', sans-serif;
+  }
+
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); line-height: 1.6; }
+
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding: 2.5rem 3rem 2rem;
+    background: var(--surface);
+  }
+  header .eyebrow { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  header h1 { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700; line-height: 1.15; }
+  header .meta { margin-top: 0.75rem; font-size: 0.82rem; color: var(--ink-2); font-family: var(--mono); }
+
+  .layout { max-width: 1280px; margin: 0 auto; padding: 2.5rem 3rem; display: grid; gap: 2.5rem; }
+  .section-label { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); border-left: 3px solid var(--accent); padding-left: 0.75rem; margin-bottom: 1.25rem; }
+
+  /* KPI strip */
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+  .kpi { background: var(--surface); padding: 1.4rem 1.5rem; }
+  .kpi-val { font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+  .kpi-val.accent { color: var(--accent); }
+  .kpi-val.blue   { color: var(--accent-2); }
+  .kpi-val.green  { color: var(--accent-3); }
+  .kpi-label { font-size: 0.75rem; color: var(--ink-2); margin-top: 0.4rem; font-family: var(--mono); }
+  .kpi-asterisk { color: var(--accent); font-weight: 700; margin-left: 0.15em; }
+  .kpi-footnote { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-2); margin-top: 0.6rem; padding-left: 0.25rem; }
+  .kpi-footnote .kpi-asterisk { margin-right: 0.25em; margin-left: 0; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .three-col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  @media (max-width: 860px) { .two-col, .three-col { grid-template-columns: 1fr; } .layout { padding: 1.5rem; } header { padding: 1.5rem; } }
+
+  .panel { background: var(--surface); border: 1px solid var(--rule); padding: 1.75rem; }
+  .panel h3 { font-size: 0.9rem; font-weight: 600; margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule); }
+  .chart-wrap { position: relative; }
+
+  /* Campaign legend */
+  .campaign-legend { margin-top: 1.25rem; border-top: 1px solid var(--rule); padding-top: 1rem; }
+  .campaign-legend-title { font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 0.6rem; }
+  .campaign-legend dl { display: grid; grid-template-columns: auto 1fr; gap: 0.2rem 0.75rem; font-size: 0.78rem; }
+  .campaign-legend dt { font-family: var(--mono); font-weight: 600; color: var(--accent); white-space: nowrap; }
+  .campaign-legend dd { color: var(--ink-2); }
+
+  /* Lift table */
+  .lift-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .lift-table th { text-align: left; font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); padding: 0.5rem 0.75rem; border-bottom: 2px solid var(--ink); }
+  .lift-table td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--rule); }
+  .lift-table td.num { text-align: right; font-family: var(--mono); }
+  .lift-pill { display: inline-block; background: #e8f5ee; color: var(--accent-3); font-family: var(--mono); font-weight: 600; font-size: 0.8rem; padding: 0.15rem 0.55rem; border-radius: 2px; }
+
+  .day-peak { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); margin-top: 0.5rem; padding-left: 0.25rem; }
+
+  .caveat-list { list-style: none; display: grid; gap: 1rem; }
+  .caveat-list li { padding: 1rem 1.25rem; border-left: 3px solid var(--rule); background: var(--surface); font-size: 0.85rem; line-height: 1.65; }
+  .caveat-list li strong { display: block; font-size: 0.78rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 0.3rem; }
+
+  .src-table { width: 100%; border-collapse: collapse; font-size: 0.83rem; }
+  .src-table th { text-align: left; font-family: var(--mono); font-size: 0.67rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-2); padding: 0.45rem 0.75rem; border-bottom: 2px solid var(--ink); }
+  .src-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+  .src-table code { font-family: var(--mono); font-size: 0.78rem; background: #eeeae4; padding: 0.1rem 0.35rem; }
+
+  .donut-legend { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; font-size: 0.78rem; }
+  .donut-legend span { display: flex; align-items: center; gap: 0.4rem; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  footer { text-align: center; padding: 2rem; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-2); border-top: 1px solid var(--rule); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Reliance Digital · DDD Campaign Analysis</div>
+  <h1>RD DDD Conversions — Analysis Report</h1>
+  <div class="meta">Report date: 2026-04-22 &nbsp;|&nbsp; Scope: 2026-04-11 → 2026-04-19 (9 days) &nbsp;|&nbsp; 10 campaigns &nbsp;|&nbsp; 1.25M recipients</div>
+</header>
+
+<div class="layout">
+
+  <!-- KPIs -->
+  <div>
+    <div class="section-label">At a glance</div>
+    <div class="kpis">
+      <div class="kpi"><div class="kpi-val">1.25M</div><div class="kpi-label">Total recipients</div></div>
+      <div class="kpi"><div class="kpi-val accent">₹20.39 Cr</div><div class="kpi-label">Product revenue</div></div>
+      <div class="kpi"><div class="kpi-val blue">5,693</div><div class="kpi-label">Converted Customers</div></div>
+      <div class="kpi"><div class="kpi-val green">339<span class="kpi-asterisk">*</span></div><div class="kpi-label">New Customers<span class="kpi-asterisk">*</span></div></div>
+      <div class="kpi"><div class="kpi-val accent">5,354<span class="kpi-asterisk">*</span></div><div class="kpi-label">Repeat Customers<span class="kpi-asterisk">*</span></div></div>
+      <div class="kpi"><div class="kpi-val">5,973</div><div class="kpi-label">Unique tickets</div></div>
+      <div class="kpi"><div class="kpi-val">17,229</div><div class="kpi-label">Sales line items</div></div>
+      <div class="kpi"><div class="kpi-val">₹36,033</div><div class="kpi-label">Average revenue per customer</div></div>
+      <div class="kpi"><div class="kpi-val">₹34,145</div><div class="kpi-label">Avg revenue / ticket</div></div>
+      <div class="kpi"><div class="kpi-val blue">10</div><div class="kpi-label">Campaigns</div></div>
+      <div class="kpi"><div class="kpi-val">30.68%</div><div class="kpi-label">Open rate (full audience)</div></div>
+      <div class="kpi"><div class="kpi-val">0.56%</div><div class="kpi-label">Click rate (full audience)</div></div>
+      <div class="kpi"><div class="kpi-val">1.82%</div><div class="kpi-label">CTOR (full audience)</div></div>
+    </div>
+    <div class="kpi-footnote"><span class="kpi-asterisk">*</span> as per the transaction records since January 2022</div>
+  </div>
+
+  <!-- Campaign funnel + Transactor comparison -->
+  <div>
+    <div class="section-label">§2–4 · Campaign funnel &amp; transactor segment</div>
+    <div class="two-col">
+      <div class="panel">
+        <h3>Full audience — funnel by campaign</h3>
+        <div class="chart-wrap"><canvas id="funnelChart" height="280"></canvas></div>
+        <div class="campaign-legend">
+          <div class="campaign-legend-title">Campaign descriptions</div>
+          <dl>
+            <dt>166312</dt><dd>Dormant Customers – AP/TG – iOS – Apr 11</dd>
+            <dt>166313</dt><dd>Dormant Customers – Rest of India – iOS – Apr 11</dd>
+            <dt>166324</dt><dd>Dormant Customers – AP/TG – iOS – Apr 16</dd>
+            <dt>166325</dt><dd>Dormant Customers – Rest of India – iOS – Apr 16</dd>
+            <dt>166326</dt><dd>Dormant Customers – AP/TG – Android – Apr 16</dd>
+            <dt>166327</dt><dd>Dormant Customers – Rest of India – Android – Apr 16</dd>
+            <dt>166345</dt><dd>JioMart Electronics Buyers – Rest of India – iOS – Apr 17</dd>
+            <dt>166346</dt><dd>Other formats potential buyers – iOS – Apr 17</dd>
+            <dt>166347</dt><dd>JioMart Electronics Buyers – Rest of India – Android – Apr 17</dd>
+            <dt>166348</dt><dd>Other formats potential buyers – Android – Apr 17</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Converted customers per campaign</h3>
+        <div class="chart-wrap"><canvas id="campaignOverlapChart" height="280"></canvas></div>
+        <div class="campaign-legend">
+          <div class="campaign-legend-title">Campaign descriptions</div>
+          <dl>
+            <dt>166312</dt><dd>Dormant Customers – AP/TG – iOS – Apr 11</dd>
+            <dt>166313</dt><dd>Dormant Customers – Rest of India – iOS – Apr 11</dd>
+            <dt>166324</dt><dd>Dormant Customers – AP/TG – iOS – Apr 16</dd>
+            <dt>166325</dt><dd>Dormant Customers – Rest of India – iOS – Apr 16</dd>
+            <dt>166326</dt><dd>Dormant Customers – AP/TG – Android – Apr 16</dd>
+            <dt>166327</dt><dd>Dormant Customers – Rest of India – Android – Apr 16</dd>
+            <dt>166345</dt><dd>JioMart Electronics Buyers – Rest of India – iOS – Apr 17</dd>
+            <dt>166346</dt><dd>Other formats potential buyers – iOS – Apr 17</dd>
+            <dt>166347</dt><dd>JioMart Electronics Buyers – Rest of India – Android – Apr 17</dd>
+            <dt>166348</dt><dd>Other formats potential buyers – Android – Apr 17</dd>
+          </dl>
+        </div>
+        <div class="day-peak">▲ Sum across campaigns = 5,820; true unique converted customers = 5,693 (125 received more than one campaign)</div>
+      </div>
+    </div>
+    <div style="margin-top:2rem">
+      <div class="panel">
+        <h3>Product revenue per campaign (₹ Cr)</h3>
+        <div class="chart-wrap"><canvas id="campaignRevenueChart" height="180"></canvas></div>
+        <div class="day-peak">▲ Sum across campaigns = ₹20.82 Cr; true unique-RRID total = ₹20.39 Cr (125 multi-campaign customers double-counted)</div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:2rem">
+      <div class="panel">
+        <h3>Full audience funnel — iOS vs. Android</h3>
+        <div class="chart-wrap"><canvas id="platformFunnelChart" height="280"></canvas></div>
+        <div class="campaign-legend">
+          <div class="campaign-legend-title">Platform mapping</div>
+          <dl>
+            <dt>iOS</dt><dd>166312, 166313, 166324, 166325, 166345, 166346</dd>
+            <dt>Android</dt><dd>166326, 166327, 166347, 166348</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>Engagement rates — iOS vs. Android</h3>
+        <div class="chart-wrap"><canvas id="platformRateChart" height="280"></canvas></div>
+        <div style="margin-top:1.25rem">
+          <table class="lift-table">
+            <thead><tr><th>Metric</th><th class="num">iOS</th><th class="num">Android</th></tr></thead>
+            <tbody>
+              <tr><td>Recipients</td><td class="num">118,998</td><td class="num">1,133,184</td></tr>
+              <tr><td>Open rate</td><td class="num">10.92%</td><td class="num">32.76%</td></tr>
+              <tr><td>Click rate</td><td class="num">1.18%</td><td class="num">0.49%</td></tr>
+              <tr><td>CTOR</td><td class="num">10.82%</td><td class="num">1.50%</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daily revenue -->
+  <div>
+    <div class="section-label">§5.7 · Daily product revenue (Apr 11–19)</div>
+    <div class="panel">
+      <h3>Product revenue by day (₹ Crore)</h3>
+      <div class="chart-wrap"><canvas id="dailyChart" height="180"></canvas></div>
+      <div class="day-peak">▲ Sunday 19 Apr is peak day — ₹4.08 Cr (~20% of 9-day total)</div>
+    </div>
+  </div>
+
+  <!-- Category + Brand + Zone -->
+  <div>
+    <div class="section-label">§5.4–5.8 · Revenue mix</div>
+    <div class="two-col">
+      <div class="panel">
+        <h3>Revenue by L2 category</h3>
+        <div class="chart-wrap"><canvas id="catChart" height="240"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Revenue by L3 category</h3>
+        <div class="chart-wrap"><canvas id="cat3Chart" height="240"></canvas></div>
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:2rem">
+      <div class="panel">
+        <h3>Top 10 brands by revenue</h3>
+        <div class="chart-wrap"><canvas id="brandChart" height="240"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Revenue by zone</h3>
+        <div class="chart-wrap" style="max-width:220px;margin:0 auto"><canvas id="zoneChart" height="220"></canvas></div>
+        <div class="donut-legend">
+          <span><span class="dot" style="background:#c84b2f"></span>South 44.5%</span>
+          <span><span class="dot" style="background:#2f6fc8"></span>West 20.3%</span>
+          <span><span class="dot" style="background:#2a9d5c"></span>East 19.4%</span>
+          <span><span class="dot" style="background:#b07d2a"></span>North 15.9%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top states -->
+  <div>
+    <div class="section-label">§5.8 · Top states (AP &amp; TG combined)</div>
+    <div class="panel">
+      <h3>Product revenue by state (₹ Crore)</h3>
+      <div class="chart-wrap"><canvas id="stateChart" height="160"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Source files -->
+  <div>
+    <div class="section-label">§1 · Source files</div>
+    <div class="panel">
+      <h3>Input datasets</h3>
+      <table class="src-table">
+        <thead><tr><th>File</th><th>Rows</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>campaign_rrids.csv</code></td><td>1,252,229</td><td>user_id × campaign_id × status. 47 rows have blank campaign_id/status.</td></tr>
+          <tr><td><code>RD Transactors DDD (1).txt</code> (v2)</td><td>273,287</td><td>Header <code>rrid</code> + UUID list. <strong>Used for all overlap analysis.</strong></td></tr>
+          <tr><td><code>RD DDD Transactors Records.xlsx</code></td><td>17,229 (in scope)</td><td>Sales transactions for 5,693 overlapping transactors. <strong>Apr 20 excluded.</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Caveats -->
+  <div>
+    <div class="section-label">§6 · Caveats &amp; open questions</div>
+    <ul class="caveat-list">
+      <li><strong>Attribution vs. overlap</strong>These numbers show transactors who were also messaged — not causal proof. To attribute revenue, campaign send dates, first-transaction dates, and a pre/post or holdout comparison are needed.</li>
+      <li><strong>Date scope</strong>Analysis restricted to Apr 11–19 (9 days). April 20th data (1,466 line items, 488 transactors unique to that date) excluded to align with campaign measurement window.</li>
+      <li><strong>Service-line exclusions</strong>Excluded L2s: HA/TELECOM/CE/IT SPARES, CONCESSIONAIRE SERVICES, ENHANCEMENT, SERVICES. SWAPEASY &amp; CASHIFY kept as real product sales.</li>
+      <li><strong>5,693 vs. 5,660</strong>33 transactors appear in the sales file on service-only tickets — they technically transacted but bought no product line.</li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>RD DDD Conversions Analysis · Generated 2026-04-22 · Scope: Apr 11–19 · Data: retail_bus.ucp_tech_dataset.overall_sales_view</footer>
+
+<script>
+const ACCENT='#c84b2f',BLUE='#2f6fc8',GREEN='#2a9d5c',AMBER='#b07d2a',MUTED='#9e9890',RULE='#e0ddd8',INK2='#6b6560';
+Chart.defaults.font.family="'Sora',sans-serif";
+Chart.defaults.color=INK2;
+
+const campaigns=['166312','166313','166324','166325','166326','166327','166345','166346','166347','166348'];
+
+new Chart(document.getElementById('funnelChart'),{type:'bar',data:{labels:campaigns,datasets:[
+  {label:'Delivered only',data:[1385,51313,12505,6960,77329,556009,16728,17114,55146,73499],backgroundColor:RULE,borderWidth:0},
+  {label:'Read only',data:[787,5568,1236,513,42171,263672,1803,1680,23185,36590],backgroundColor:BLUE,borderWidth:0},
+  {label:'Clicked',data:[77,657,122,51,562,3674,271,228,666,681],backgroundColor:ACCENT,borderWidth:0}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y.toLocaleString()}`}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:10,family:"'JetBrains Mono'"}}},y:{stacked:true,grid:{color:RULE},ticks:{callback:v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v,font:{size:10}}}}}});
+
+const campaignOverlap=[16,338,84,41,650,3804,114,71,330,372];
+const campaignOverlapColors=campaignOverlap.map(v=>v>=1000?ACCENT:v>=300?BLUE:MUTED);
+new Chart(document.getElementById('campaignOverlapChart'),{type:'bar',data:{labels:campaigns,datasets:[
+  {label:'Converted customers',data:campaignOverlap,backgroundColor:campaignOverlapColors,borderWidth:0,borderRadius:2}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.parsed.y.toLocaleString()} converted customers`}}},scales:{x:{grid:{display:false},ticks:{font:{size:10,family:"'JetBrains Mono'"}}},y:{grid:{color:RULE},ticks:{callback:v=>v.toLocaleString(),font:{size:10}},beginAtZero:true}}}});
+
+const campaignRevenue=[0.08,1.26,0.33,0.15,2.29,13.58,0.42,0.30,1.05,1.36];
+const campaignRevColors=campaignRevenue.map(v=>v>=10?ACCENT:v>=1?BLUE:MUTED);
+new Chart(document.getElementById('campaignRevenueChart'),{type:'bar',data:{labels:campaigns,datasets:[
+  {label:'Product revenue (₹ Cr)',data:campaignRevenue,backgroundColor:campaignRevColors,borderWidth:0,borderRadius:2}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ₹${c.parsed.y.toFixed(2)} Cr`}}},scales:{x:{grid:{display:false},ticks:{font:{size:10,family:"'JetBrains Mono'"}}},y:{grid:{color:RULE},ticks:{callback:v=>'₹'+v+' Cr',font:{size:10}},beginAtZero:true}}}});
+
+new Chart(document.getElementById('platformFunnelChart'),{type:'bar',data:{labels:['iOS','Android'],datasets:[
+  {label:'Delivered only',data:[106005,761983],backgroundColor:RULE,borderWidth:0},
+  {label:'Read only',data:[11587,365618],backgroundColor:BLUE,borderWidth:0},
+  {label:'Clicked',data:[1406,5583],backgroundColor:ACCENT,borderWidth:0}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y.toLocaleString()}`}}},scales:{x:{stacked:true,grid:{display:false},ticks:{font:{size:11,family:"'JetBrains Mono'"}}},y:{stacked:true,grid:{color:RULE},ticks:{callback:v=>v>=1e6?(v/1e6).toFixed(1)+'M':v>=1e3?(v/1e3).toFixed(0)+'K':v,font:{size:10}}}}}});
+
+new Chart(document.getElementById('platformRateChart'),{type:'bar',data:{labels:['Open rate','Click rate','CTOR'],datasets:[
+  {label:'iOS',data:[10.92,1.18,10.82],backgroundColor:BLUE,borderWidth:0},
+  {label:'Android',data:[32.76,0.49,1.50],backgroundColor:ACCENT,borderWidth:0}
+]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:c=>` ${c.dataset.label}: ${c.parsed.y.toFixed(2)}%`}}},scales:{x:{grid:{display:false},ticks:{font:{size:11}}},y:{grid:{color:RULE},ticks:{callback:v=>v+'%',font:{size:10}}}}}});
+
+const dayRev=[2.00,2.70,1.45,2.14,1.73,1.80,1.84,2.65,4.08];
+const barColors=dayRev.map(v=>v===4.08?ACCENT:v>=2.5?BLUE:MUTED);
+new Chart(document.getElementById('dailyChart'),{type:'bar',data:{labels:['Apr 11 Sat','Apr 12 Sun','Apr 13 Mon','Apr 14 Tue','Apr 15 Wed','Apr 16 Thu','Apr 17 Fri','Apr 18 Sat','Apr 19 Sun'],datasets:[{label:'Revenue (₹ Cr)',data:dayRev,backgroundColor:barColors,borderWidth:0,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ₹${c.parsed.y.toFixed(2)} Cr`}}},scales:{x:{grid:{display:false},ticks:{font:{size:10,family:"'JetBrains Mono'"}}},y:{grid:{color:RULE},ticks:{callback:v=>'₹'+v+' Cr',font:{size:10}},beginAtZero:true}}}});
+
+new Chart(document.getElementById('catChart'),{type:'doughnut',data:{labels:['Large Appliances','Telecom','ENT (TVs)','IT','Small Appliances','AIoT','Tail'],datasets:[{data:[8.11,6.90,1.91,1.81,1.37,0.30,0.003],backgroundColor:[ACCENT,BLUE,GREEN,AMBER,'#8b6ec8','#c87c2f',MUTED],borderWidth:2,borderColor:'#fffefb'}]},options:{responsive:true,maintainAspectRatio:true,cutout:'62%',plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}},tooltip:{callbacks:{label:c=>` ₹${c.parsed.toFixed(2)} Cr (${((c.parsed/20.39)*100).toFixed(1)}%)`}}}}});
+
+new Chart(document.getElementById('cat3Chart'),{type:'doughnut',data:{labels:['Wireless Phone','Air Care','Food Preservation','Laptop','High End TV','Laundry & Wash Care','SDA'],datasets:[{data:[6.90,5.31,1.86,1.73,1.65,0.94,0.88],backgroundColor:[BLUE,ACCENT,GREEN,AMBER,'#8b6ec8','#c87c2f','#2a9d8f'],borderWidth:2,borderColor:'#fffefb'}]},options:{responsive:true,maintainAspectRatio:true,cutout:'62%',plugins:{legend:{position:'bottom',labels:{boxWidth:10,font:{size:10}}},tooltip:{callbacks:{label:c=>` ₹${c.parsed.toFixed(2)} Cr (${((c.parsed/20.39)*100).toFixed(1)}%)`}}}}});
+
+new Chart(document.getElementById('brandChart'),{type:'bar',data:{labels:['Samsung','Apple','LG','Haier','VIVO','Voltas','Motorola','LLOYD','HP','OPPO'],datasets:[{label:'Revenue (₹ Cr)',data:[3.98,3.19,2.59,1.18,0.80,0.62,0.56,0.52,0.50,0.48],backgroundColor:[ACCENT,ACCENT,ACCENT,BLUE,BLUE,BLUE,MUTED,MUTED,MUTED,MUTED],borderWidth:0,borderRadius:2}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ₹${c.parsed.x.toFixed(2)} Cr`}}},scales:{x:{grid:{color:RULE},ticks:{callback:v=>'₹'+v,font:{size:10}}},y:{grid:{display:false},ticks:{font:{size:10,family:"'JetBrains Mono'"}}}}}});
+
+new Chart(document.getElementById('zoneChart'),{type:'doughnut',data:{labels:['South','West','East','North'],datasets:[{data:[9.07,4.14,3.95,3.23],backgroundColor:[ACCENT,BLUE,GREEN,AMBER],borderWidth:2,borderColor:'#fffefb'}]},options:{responsive:true,maintainAspectRatio:true,cutout:'58%',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ${c.label}: ₹${c.parsed.toFixed(2)} Cr`}}}}});
+
+new Chart(document.getElementById('stateChart'),{type:'bar',data:{labels:['KAR','AP/TG','MAH','TN','WB','UP','OR','GJ','HR'],datasets:[{label:'Revenue (₹ Cr)',data:[3.27,3.14,2.89,2.35,1.98,1.36,0.86,0.67,0.52],backgroundColor:[ACCENT,ACCENT,ACCENT,BLUE,BLUE,BLUE,MUTED,MUTED,MUTED],borderWidth:0,borderRadius:2}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>` ₹${c.parsed.y.toFixed(2)} Cr`}}},scales:{x:{grid:{display:false},ticks:{font:{size:11,family:"'JetBrains Mono'"}}},y:{grid:{color:RULE},ticks:{callback:v=>'₹'+v,font:{size:10}},beginAtZero:true}}}});
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

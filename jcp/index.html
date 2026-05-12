@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="robots"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>JCP · Jio Commerce Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/present.css" rel="stylesheet"/>
+<script defer="" src="/present.js"></script>
+<style>
+  /* In-page section nav */
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  /* People bar chart */
+  .bar-row { display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 12px; padding: 6px 0; }
+  .bar-row .lbl { font-size: 13px; color: var(--ink); }
+  .bar-row .num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); text-align: right; font-weight: 500; }
+  .bar-track { background: var(--bg-soft); height: 18px; border-radius: 4px; position: relative; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--accent); display: block; }
+  .bar-fill.shared { background: var(--ink-soft); }
+  /* Roadmap timeline */
+  .timeline { display: grid; grid-template-columns: 140px 1fr; gap: 24px; padding: 18px 0; border-bottom: 1px solid var(--border-soft); }
+  .timeline:last-child { border-bottom: 0; }
+  .timeline .when { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); font-weight: 500; padding-top: 2px; }
+  .timeline .what { font-size: 15px; color: var(--ink); }
+  .timeline .why { font-size: 13px; color: var(--ink-muted); margin-top: 4px; }
+  /* Channel gallery */
+  .ch-group { margin-bottom: 36px; }
+  .ch-group-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .ch-group-title { font-weight: 600; font-size: 16px; color: var(--ink); }
+  .ch-group-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+  .ch-status { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 7px; border-radius: 3px; }
+  .ch-status.live { background: #ECFDF5; color: #047857; border: 1px solid #BBF7D0; }
+  .ch-status.progress { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+  .ch-status.planned { background: #F3F4F6; color: #4B5563; border: 1px solid #D1D5DB; }
+  .ch-status.b2b { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+  .ch-card { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: block; }
+  .ch-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .ch-thumb { position: relative; aspect-ratio: 9/16; background: var(--bg-soft); border-bottom: 1px solid var(--border); overflow: hidden; }
+  .ch-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+  .ch-icon { position: absolute; top: 8px; left: 8px; width: 36px; height: 36px; border-radius: 8px; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); background: white; overflow: hidden; }
+  .ch-icon img { width: 100%; height: 100%; object-fit: cover; }
+  .ch-meta { padding: 12px; }
+  .ch-meta h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 6px 0 2px; }
+  .ch-meta .vert { font-size: 11px; color: var(--ink-muted); }
+  /* Storefront 16:9 card */
+  .ch-shot { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: block; }
+  .ch-shot:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .ch-shot-thumb { position: relative; aspect-ratio: 16/9; background: var(--bg-soft); border-bottom: 1px solid var(--border); overflow: hidden; }
+  .ch-shot-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+  /* Logo card · centered brand image · for brands without storefront screenshots */
+  .ch-logo-card { aspect-ratio: 9/16; background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: flex; flex-direction: column; }
+  .ch-logo-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .ch-logo-thumb { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+  .ch-logo-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  /* Collapsed chip · compact inline pill for brands without logos */
+  .ch-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px 6px 6px; transition: all .15s; }
+  .ch-chip:hover { border-color: var(--ink); }
+  .ch-chip h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.2; }
+  .ch-chip .vert { display: none; }
+  .ch-chip .ch-status { margin: 0; }
+  .ch-chip-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0 4px; border-top: 1px solid var(--border-soft); margin-top: 16px; }
+  .ch-chip-row-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); width: 100%; margin-bottom: 4px; }
+  /* Mobile tweaks */
+  @media (max-width: 640px) {
+    .hero-h1 { font-size: 40px !important; line-height: 1.05 !important; }
+    .bar-row { grid-template-columns: 110px 1fr 50px; gap: 8px; }
+    .timeline { grid-template-columns: 1fr; gap: 4px; }
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+<!-- Hero -->
+<section class="pt-12 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-8"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">JCP</span></div>
+<div class="section-label mb-3">Enterprise Commerce · FY 2025-26 · Live</div>
+<h1 class="hero-h1 display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Jio Commerce Platform.</h1>
+<p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">One Sell + Support layer underneath every B2C and B2B Reliance Retail brand. 78 channels. AI shipped in production. Modular, microservice-based, AI-native.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+<div class="card p-4"><div class="cap-num mb-1">Orders / day</div><div class="display-2 text-3xl accent">700K+</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Peak / hour</div><div class="display-2 text-3xl accent">350K</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Tested · headroom held</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Customers · FY26</div><div class="display-2 text-3xl accent">200M+</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Channels live</div><div class="display-2 text-3xl accent">78</div></div>
+</div>
+</div></section>
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#bet">01 · The bet</a>
+<a href="#scale">02 · Scale</a>
+<a href="#coverage">03 · Coverage</a>
+<a href="#people">04 · People</a>
+<a href="#architecture">05 · Architecture</a>
+<a href="#properties">06 · Properties</a>
+<a href="#ai">07 · AI</a>
+<a href="#path-to-l4">08 · Path to L4</a>
+<a href="#shipped">09 · Shipped</a>
+<a href="#roadmap">10 · Roadmap</a>
+<a href="#receipts">11 · Receipts</a>
+</div>
+</div>
+<!-- §01 · The bet -->
+<section class="py-16 border-b" id="bet" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · The bet</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">78 stacks. Or one.</h2>
+<p class="text-base max-w-3xl mb-4" style="color: var(--ink-muted);">Reliance Retail runs 78 commerce channels across 10 verticals: fashion, grocery, electronics, beauty, furniture, pharma, jewellery, home decor, fresh food, digital top-up. Built channel-by-channel, that is 78 codebases, 78 OMS instances, 78 release trains, 78 catalog systems, 78 AI roadmaps. Every brand pays its own engineering tax. Every breakthrough has to be re-built 78 times.</p>
+<p class="text-base max-w-3xl mb-4" style="color: var(--ink);"><strong>JCP is the bet that one stack does it instead.</strong> One codebase. One release train. One AI substrate. Every brand inherits, no brand loses its identity.</p>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The math only works if the platform holds at peak. It does. <strong style="color: var(--ink);">350K orders / hour tested · 700K+ orders / day live.</strong> Vertex Search shipped to 5 channels in one cutover, not 5 projects. Web Grounding shipped to Netmeds, Reliance Digital and Tira off one pipeline.</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl">
+<div class="card p-6" style="background: #FFF7ED; border-color: #FED7AA;">
+<div class="cap-num mb-2" style="color: #C2410C;">Before · the tax</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">78 separate stacks.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· 78 codebases to keep alive</li>
+<li>· 78 release trains to coordinate</li>
+<li>· 78 catalogs to enrich</li>
+<li>· Every AI capability built 78 times</li>
+<li>· Brand teams blocked on shared ops</li>
+</ul>
+</div>
+<div class="card p-6" style="background: #ECFDF5; border-color: #A7F3D0;">
+<div class="cap-num mb-2" style="color: #047857;">After · one stack</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">One stack. 78 brands.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· One codebase, one release train</li>
+<li>· Each capability builds once · ships everywhere</li>
+<li>· Vertex Search · 5 channels · 1 cutover</li>
+<li>· Web Grounding · 3 brands · 1 pipeline</li>
+<li>· 200M+ customers on the same substrate</li>
+</ul>
+</div>
+<div class="card p-6" style="background: var(--bg-soft); border-color: var(--border);">
+<div class="cap-num mb-2" style="color: var(--accent);">What it took</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Discipline at the core, freedom at the edge.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· Microservice tenant isolation</li>
+<li>· Strict release trains across verticals</li>
+<li>· Brand identity preserved at the edge</li>
+<li>· Infrastructure compounded at the core</li>
+<li>· AI built into the substrate, not bolted on</li>
+</ul>
+</div>
+</div>
+</div></section>
+<!-- §02 · Scale -->
+<section class="py-16 border-b" id="scale" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Scale</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What it carries today.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">FY 2025-26 production load. Measured, not promised.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+<div class="card p-5"><div class="cap-num mb-1">Orders / day</div><div class="display-2 text-3xl accent">700K+</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Orders / min · peak</div><div class="display-2 text-3xl accent">50K+</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Architecture peak</div><div class="display-2 text-3xl accent">350K/hr</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Tested, headroom held</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Customers · FY26</div><div class="display-2 text-3xl accent">200M+</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Stores served</div><div class="display-2 text-3xl" style="color: var(--ink);">30K+</div></div>
+<div class="card p-5"><div class="cap-num mb-1">JioMart · daily orders</div><div class="display-2 text-3xl" style="color: var(--ink);">1.6M</div></div>
+<div class="card p-5"><div class="cap-num mb-1">AJIO · sellers</div><div class="display-2 text-3xl" style="color: var(--ink);">12.4K</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Tira · AOV uplift</div><div class="display-2 text-3xl" style="color: var(--ink);">2.5×</div></div>
+</div>
+<div class="mt-6 max-w-5xl">
+<div class="card p-5"><div class="cap-num mb-1">RPOS daily orders streaming into UCP</div><div class="display-2 text-3xl" style="color: var(--ink);">1.5M</div><div class="text-xs mt-1" style="color: var(--ink-muted);">75+ formats · 15K+ stores · the offline world wired into the same brain.</div></div>
+</div>
+</div></section>
+<!-- §03 · Coverage -->
+<section class="py-16 border-b" id="coverage" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Coverage</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where JCP runs.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">78 channels (73 B2C, 5 B2B) across the full Reliance Retail surface. 68 already serving live customers. 10 verticals, with Agri planned.</p>
+<div class="grid grid-cols-3 gap-3 max-w-3xl mb-10">
+<div class="card p-5"><div class="cap-num mb-1">Live</div><div class="display-2 text-3xl" style="color: var(--green);">68</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Customer-using-it</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Pilot</div><div class="display-2 text-3xl" style="color: var(--amber);">5</div><div class="text-xs mt-1" style="color: var(--ink-muted);">UAT or single-store live</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Build</div><div class="display-2 text-3xl" style="color: var(--ink-muted);">5</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Active engineering</div></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">B2C · 73 channels</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Headline storefronts</h3>
+<p class="text-sm" style="color: var(--ink-muted);">JioMart · AJIO · Tira · Netmeds · FreshPik · MilkBasket · Reliance Digital · Smart Bazaar · Reliance Trends · Hamleys · Sephora · Coach · Shein · Urban Ladder · Swadesh · Jio.com Shop · AJIO Luxe · 7-Eleven · Reliance Jewels · Mothercare · Yousta · Azorte · GAP · The Sleep Company · Wedding Tales · plus a long tail of brand microsites.</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">B2B · 5 channels</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">DMS distribution</h3>
+<p class="text-sm" style="color: var(--ink-muted);">JioMart Partner (live since 10 - Aug - 2023) · AJIO Business · Netmeds Wholesale · RCPL FMCG (Campa, Independence) · PBG Electronics · plus RBL Fashion B2B.</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">In-store · 8 brands</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Scan &amp; Go</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Reliance Trends (2,171 stores) · Yousta · Azorte · GAP · FreshPik · Reliance Jewels · JioGames · Fashion Factory. Companion-app footprint extends to 3,000+ stores with RD and Smart Bazaar added.</p>
+</div>
+</div>
+<h3 class="font-semibold text-lg mt-12 mb-2" style="color: var(--ink);">Every channel, grouped.</h3>
+<p class="text-sm mb-8" style="color: var(--ink-muted);">All 78 channels across 6 groups: flagship channels, in-store commerce, B2B distribution, furniture &amp; beauty, fashion &amp; lifestyle storefronts, and emerging commerce.</p>
+<!-- Group 1 · Flagship Channels -->
+<div class="ch-group">
+<div class="ch-group-head">
+<div class="ch-group-title">Flagship Channels · 7</div>
+<div class="ch-group-count">B2C apps · the household names</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+<a class="ch-card" href="https://www.jiomart.com" rel="noopener" target="_blank"><div class="ch-thumb"><img alt="JioMart" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/accenture-s33-img03.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>JioMart</h4><div class="vert">1.6M orders/day</div></div></a>
+<a class="ch-card" href="https://www.tirabeauty.com" rel="noopener" target="_blank"><div class="ch-thumb"><img alt="Tira" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/accenture-s33-img04.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Tira</h4><div class="vert">Beauty · 2.5× AOV</div></div></a>
+<a class="ch-card" href="https://www.ajio.com" rel="noopener" target="_blank"><div class="ch-thumb"><img alt="AJIO" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/icon.png"/></div></div><div class="ch-meta"><span class="ch-status progress">In-Progress</span><h4>AJIO</h4><div class="vert">12.4K sellers</div></div></a>
+<a class="ch-card" href="https://www.netmeds.com" rel="noopener" target="_blank"><div class="ch-thumb"><img alt="Netmeds" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Netmeds</h4><div class="vert">Pharma · Vertex</div></div></a>
+<a class="ch-card" href="https://www.reliancedigital.in" rel="noopener" target="_blank"><div class="ch-thumb"><img alt="Reliance Digital" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/accenture-s34-img03.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Reliance Digital</h4><div class="vert">Electronics</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="FreshPik" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/shot-1.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>FreshPik</h4><div class="vert">Fresh Food</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="Milkbasket" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/shot-4.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Milkbasket</h4><div class="vert">Grocery · Headless</div></div></a>
+</div>
+</div>
+<!-- Group 2 · In Store Commerce -->
+<div class="ch-group">
+<div class="ch-group-head">
+<div class="ch-group-title">In Store Commerce · 14</div>
+<div class="ch-group-count">3,000+ stores · companion-app footprint</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+<a class="ch-card"><div class="ch-thumb"><img alt="Trends" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/trends/accenture-s33-img01.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Trends</h4><div class="vert">2,171 stores</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="7-Eleven" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/shot-2.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>7-Eleven</h4><div class="vert">Convenience</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="JioGames" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/shot-1.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>JioGames</h4><div class="vert">Digital · Top-Up</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="Reliance Jewels" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/shot-2.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Reliance Jewels</h4><div class="vert">Jewellery</div></div></a>
+
+
+
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="GAP" loading="lazy" src="/assets/jcp-channels-mobile/gap.svg"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>GAP</h4><div class="vert">F&amp;L</div></div></a>
+
+
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Centro Shoes" loading="lazy" src="/assets/jcp-channels-mobile/centro-shoes.jpg"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Centro Shoes</h4><div class="vert">F&amp;L</div></div></a>
+
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Zivame" loading="lazy" src="/assets/jcp-channels-mobile/zivame.png"/></div><div class="ch-meta"><span class="ch-status planned">Planned</span><h4>Zivame</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Clovia" loading="lazy" src="/assets/jcp-channels-mobile/clovia.jpg"/></div><div class="ch-meta"><span class="ch-status planned">Planned</span><h4>Clovia</h4><div class="vert">F&amp;L</div></div></a>
+</div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Yousta</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Azorte</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Fashion Factory</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Trends Footwear</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Performax</h4></div><div class="ch-chip planned"><span class="ch-status planned">Planned</span><h4>Amante</h4></div></div>
+</div>
+<!-- Group 3 · B2B / DMS -->
+<div class="ch-group">
+<div class="ch-group-head">
+<div class="ch-group-title">B2B · DMS distribution · 6</div>
+<div class="ch-group-count">Wholesale · partner · FMCG · electronics ASP</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<a class="ch-card"><div class="ch-thumb"><img alt="Metro Kirana" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/accenture-s34-img04.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/icon.png"/></div></div><div class="ch-meta"><span class="ch-status b2b">B2B · Wholesale</span><h4>Metro Kirana</h4><div class="vert">Grocery</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="RCPL" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/rcpl/accenture-s34-img01.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/rcpl/icon.png"/></div></div><div class="ch-meta"><span class="ch-status b2b">B2B · FMCG DMS</span><h4>RCPL</h4><div class="vert">Campa · Independence</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="JioMart Digital" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart-digital/accenture-s34-img06.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart-digital/icon.png"/></div></div><div class="ch-meta"><span class="ch-status b2b">B2B · Electronics</span><h4>JioMart Digital</h4><div class="vert">ASP · StoreSell · COFO</div></div></a>
+
+
+
+</div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>JioMart Partner</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>AJIO Business</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>Netmeds Wholesale</h4></div></div>
+</div>
+<!-- Group 4 · Furniture · Beauty · Toys · Home -->
+<div class="ch-group">
+<div class="ch-group-head">
+<div class="ch-group-title">Furniture · Beauty · Home · Toys · 11</div>
+<div class="ch-group-count">Single-tenant flagships and category brands</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<a class="ch-card"><div class="ch-thumb"><img alt="Urban Ladder" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/shot-2.png"/><div class="ch-icon"><img alt="" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/icon.png"/></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Urban Ladder</h4><div class="vert">Furniture · Vertex</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="Sephora App" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora-app/shot-1.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Sephora · App</h4><div class="vert">Beauty</div></div></a>
+<a class="ch-card"><div class="ch-thumb"><img alt="Hamleys App" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys-app/shot-1.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Hamleys · App</h4><div class="vert">Toys &amp; Kids</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Sephora" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Sephora</h4><div class="vert">Beauty</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Pottery Barn" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Pottery Barn</h4><div class="vert">Home</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Pottery Barn Kids" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn-kids.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Pottery Barn Kids</h4><div class="vert">Home</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="West Elm" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/westelm.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>West Elm</h4><div class="vert">Home</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Muji" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/muji.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Muji</h4><div class="vert">Lifestyle</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Mothercare" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/mothercare.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Mothercare</h4><div class="vert">Mother &amp; Child</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Molton Brown" loading="lazy" src="/assets/jcp-channels-mobile/molton-brown.png"/></div><div class="ch-meta"><span class="ch-status planned">Planned</span><h4>Molton Brown</h4><div class="vert">Beauty</div></div></a>
+
+</div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip progress"><span class="ch-status progress">In-Progress</span><h4>Facegym</h4></div></div>
+</div>
+<!-- Group 5 · Fashion brand storefronts (FP-50) · visual sample -->
+<div class="ch-group">
+<div class="ch-group-head">
+<div class="ch-group-title">Fashion &amp; Lifestyle storefronts · FP-50 · 28 visual</div>
+<div class="ch-group-count">Single-brand commerce on Fynd Platform</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="SuperDry" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>SuperDry</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Hamleys" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Hamleys</h4><div class="vert">Toys</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Sunglass Hut" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sunglasshut.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Sunglass Hut</h4><div class="vert">Eyewear</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Armani Exchange" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/armani-exchange.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Armani Exchange</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Coach" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coach.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Coach</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Diesel" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/diesel.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Diesel</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Tiffany" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tiffany.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Tiffany</h4><div class="vert">Jewellery</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Bally" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/bally.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Bally</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Tumi" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tumi.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Tumi</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="LensCrafters" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/lenscrafters.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>LensCrafters</h4><div class="vert">Eyewear</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Vision Express" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/vision-express.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Vision Express</h4><div class="vert">Eyewear</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Steve Madden" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/steve-madden.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Steve Madden</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Charles Tyrwhitt" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/charles-tyrwhitt.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Charles Tyrwhitt</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Brooks Brothers" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/brooks-brothers.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Brooks Brothers</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Gas Jeans" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gas-jeans.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Gas Jeans</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Ritu Kumar" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ritu-kumar.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Ritu Kumar</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Satya Paul" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/satya-paul.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Satya Paul</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Hunkemoller" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hunkemoller.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Hunkemoller</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="CoverStory" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coverstory.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>CoverStory</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Ed-A-Mamma" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ed-a-mamma.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Ed-A-Mamma</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="AFEW by Rahul Mishra" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/afew-rahul-mishra.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>AFEW · Rahul Mishra</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="AKOK" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/akok.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>AKOK</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Gulabo" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gulabo.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Gulabo</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="SuperDry App" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry-app/shot-1.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>SuperDry · App</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Centro Shoes" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/centro.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Centro Shoes</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="GAP" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gap.png"/></div><div class="ch-meta"><span class="ch-status progress">In-Progress</span><h4>GAP</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="La Martina" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/la-martina.png"/></div><div class="ch-meta"><span class="ch-status progress">In-Progress</span><h4>La Martina</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Facegym" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/facegym.png"/></div><div class="ch-meta"><span class="ch-status progress">In-Progress</span><h4>Facegym</h4><div class="vert">Beauty</div></div></a>
+</div>
+</div>
+<!-- Group 6 · Emerging Commerce -->
+<div class="ch-group">
+<div class="ch-group-head">
+<div class="ch-group-title">Emerging Commerce · 22 microsites</div>
+<div class="ch-group-count">Live brand storefronts on the same Fynd Platform substrate</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="ADIDAS Kids" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>ADIDAS Kids</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Kate Spade" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Kate Spade</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="VERSACE" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>VERSACE</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Tory Burch" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Tory Burch</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Scotch &amp; Soda" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Scotch &amp; Soda</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Paul Smith" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Paul Smith</h4><div class="vert">F&amp;L</div></div></a>
+
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Michael Kors" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Michael Kors</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="BOSS" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>BOSS</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Emporio Armani</h4><div class="vert">F&amp;L</div></div></a>
+
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Dune London" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Dune London</h4><div class="vert">F&amp;L</div></div></a>
+
+
+
+
+
+<a class="ch-logo-card"><div class="ch-logo-thumb"><img alt="Kiko Milano" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/></div><div class="ch-meta"><span class="ch-status planned">Planned</span><h4>Kiko Milano</h4><div class="vert">Beauty</div></div></a>
+
+
+
+
+</div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Paul &amp; Shark</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>EA7 Emporio Armani</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>PRET</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Catwalk</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Avantra</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Swadesh</h4></div><div class="ch-chip"><span class="ch-status progress">In-Progress</span><h4>AJSK</h4></div><div class="ch-chip"><span class="ch-status planned">Planned</span><h4>Farmer</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>PBG Websites</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>AJIO DMS</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>RBL Fashion B2B</h4></div></div>
+</div>
+<div class="mt-8">
+<a class="btn-primary inline-block" href="/jcp/channels">Open the full channel gallery →</a>
+</div>
+</div></section>
+<!-- §04 · People -->
+<section class="py-16 border-b" id="people" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · People</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">274 hands on JCP.</h2>
+<div class="card p-8">
+<div class="cap-num mb-4">Where they sit · 13 tracks</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1">
+<div class="bar-row"><span class="lbl">Core Platform</span><div class="bar-track"><span class="bar-fill" style="width: 100%"></span></div><span class="num">95</span></div>
+<div class="bar-row"><span class="lbl">Fynd Konnect</span><div class="bar-track"><span class="bar-fill" style="width: 36.8%"></span></div><span class="num">35</span></div>
+<div class="bar-row"><span class="lbl">AJIO</span><div class="bar-track"><span class="bar-fill" style="width: 23.2%"></span></div><span class="num">22</span></div>
+<div class="bar-row"><span class="lbl">PixelBin</span><div class="bar-track"><span class="bar-fill" style="width: 17.9%"></span></div><span class="num">17</span></div>
+<div class="bar-row"><span class="lbl">Platform Support</span><div class="bar-track"><span class="bar-fill" style="width: 16.8%"></span></div><span class="num">16</span></div>
+<div class="bar-row"><span class="lbl">Emerging Businesses</span><div class="bar-track"><span class="bar-fill" style="width: 16.8%"></span></div><span class="num">16</span></div>
+<div class="bar-row"><span class="lbl">JioMart</span><div class="bar-track"><span class="bar-fill" style="width: 16.8%"></span></div><span class="num">16</span></div>
+<div class="bar-row"><span class="lbl">Boltic</span><div class="bar-track"><span class="bar-fill" style="width: 15.8%"></span></div><span class="num">15</span></div>
+<div class="bar-row"><span class="lbl">GlamAR</span><div class="bar-track"><span class="bar-fill" style="width: 14.7%"></span></div><span class="num">14</span></div>
+<div class="bar-row"><span class="lbl">Ratl</span><div class="bar-track"><span class="bar-fill" style="width: 13.7%"></span></div><span class="num">13</span></div>
+<div class="bar-row"><span class="lbl">Kaily</span><div class="bar-track"><span class="bar-fill" style="width: 9.5%"></span></div><span class="num">9</span></div>
+<div class="bar-row"><span class="lbl">Leadership</span><div class="bar-track"><span class="bar-fill" style="width: 3.2%"></span></div><span class="num">3</span></div>
+<div class="bar-row"><span class="lbl">Autonomous Commerce</span><div class="bar-track"><span class="bar-fill" style="width: 3.2%"></span></div><span class="num">3</span></div>
+</div>
+</div>
+</div></section>
+<!-- §05 · Architecture -->
+<section class="py-16 border-b" id="architecture" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Architecture</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What sits underneath.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JCP coverage across the full retail surface: Online Customer · Store · Warehouse · Back Office. Single platform, modular services.</p>
+<div class="card p-4 overflow-x-auto" style="max-width: 1100px;">
+<svg preserveaspectratio="xMidYMid meet" role="img" style="width:100%;min-width:720px;height:auto;display:block;font-family:'Inter',system-ui,sans-serif;" viewbox="0 0 1200 590" xmlns="http://www.w3.org/2000/svg">
+<title>JCP architecture · single Sell + Support layer underneath every Reliance Retail brand</title>
+<desc>Four operational zones connected by JCP: Online Customer, Store, Warehouse, and Back Office.</desc>
+<defs>
+<marker id="jcp-arr" markerheight="8" markerwidth="8" orient="auto-start-reverse" refx="9" refy="5" viewbox="0 0 10 10">
+<path d="M0,0 L10,5 L0,10 z" fill="#6B7280"></path>
+</marker>
+<style>
+      .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+      .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; fill: #6B7280; }
+      .tl { font-family: 'Inter', system-ui, sans-serif; font-size: 11.5px; font-weight: 500; fill: #0A0A0A; text-anchor: middle; }
+      .ai { fill: #6B5BD6; font-weight: 700; font-size: 13px; }
+      .conn { stroke: #6B7280; stroke-width: 1.5; fill: none; }
+    </style>
+</defs>
+<g>
+<rect fill="#EFF6FF" height="240" rx="14" stroke="#DBEAFE" stroke-width="1" width="230" x="15" y="15"></rect>
+<rect fill="#FFFFFF" height="24" rx="6" stroke="#DBEAFE" width="154" x="28" y="28"></rect>
+<g fill="none" stroke="#1D4ED8" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" transform="translate(38,34)"><path d="M0 6 L5 1 L10 6 V11 H0 Z"></path><path d="M4 11 V8 H6 V11"></path></g>
+<text class="zh" x="58" y="44">Online Customer</text>
+<rect fill="#fff" height="34" rx="6" stroke="#E5E5E5" width="100" x="28" y="65"></rect>
+<text class="tl" x="78" y="86">Home Delivery</text>
+<rect fill="#fff" height="34" rx="6" stroke="#E5E5E5" width="100" x="132" y="65"></rect>
+<text class="tl" x="182" y="86">Express Delivery</text>
+<rect fill="#fff" height="34" rx="6" stroke="#E5E5E5" width="100" x="28" y="105"></rect>
+<text class="tl" x="78" y="126">Track Order</text>
+<rect fill="#fff" height="34" rx="6" stroke="#E5E5E5" width="100" x="132" y="105"></rect>
+<text class="tl" x="182" y="126">Re-Order</text>
+<rect fill="#fff" height="34" rx="6" stroke="#E5E5E5" width="204" x="28" y="145"></rect>
+<text class="tl" x="130" y="166">AI Recommendation <tspan class="ai">✦</tspan></text>
+<rect fill="#fff" height="34" rx="6" stroke="#E5E5E5" width="204" x="28" y="185"></rect>
+<text class="tl" x="130" y="206">Loyalty</text>
+</g>
+<g>
+<rect fill="#FFF7ED" height="350" rx="14" stroke="#FED7AA" stroke-width="1" width="525" x="265" y="15"></rect>
+<rect fill="#FFFFFF" height="24" rx="6" stroke="#FED7AA" width="78" x="278" y="28"></rect>
+<g fill="none" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" transform="translate(288,34)"><path d="M0 4 H10 L9 1 H1 Z"></path><path d="M1 4 V11 H9 V4"></path><path d="M4 11 V7 H6 V11"></path></g>
+<text class="zh" x="306" y="44">Store</text>
+<rect fill="#fff" height="115" rx="6" stroke="#E5E5E5" width="160" x="278" y="80"></rect>
+<g fill="none" opacity="0.7" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" transform="translate(346,98)"><path d="M0 0 H16 V12 H0 Z"></path><path d="M3 4 H13 M3 8 H13"></path></g>
+<text class="tl" x="358" y="148">Returns &amp;</text>
+<text class="tl" x="358" y="164">Credit Notes</text>
+<rect fill="#fff" height="115" rx="6" stroke="#E5E5E5" width="160" x="446" y="80"></rect>
+<g fill="none" opacity="0.7" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" transform="translate(514,98)"><circle cx="5" cy="4" r="3"></circle><circle cx="13" cy="4" r="3"></circle><path d="M0 12 Q5 8 9 12 Q13 8 18 12"></path></g>
+<text class="tl" x="526" y="148">Staff</text>
+<text class="tl" x="526" y="164">Management</text>
+<rect fill="#fff" height="115" rx="6" stroke="#E5E5E5" width="160" x="614" y="80"></rect>
+<g fill="none" opacity="0.7" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" transform="translate(682,98)"><rect height="11" rx="1" width="16" x="0" y="0"></rect><path d="M3 5 H13 M3 8 H10"></path></g>
+<text class="tl" x="694" y="148">Endless Aisle</text>
+<rect fill="#fff" height="140" rx="6" stroke="#E5E5E5" width="160" x="278" y="210"></rect>
+<g fill="none" opacity="0.7" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" transform="translate(346,228)"><rect height="11" rx="1" width="16" x="0" y="2"></rect><path d="M0 6 H16"></path><circle cx="8" cy="9" r="1.5"></circle></g>
+<text class="tl" x="358" y="285">Order Management</text>
+<text class="tl" x="358" y="301">System (OMS)</text>
+<rect fill="#fff" height="140" rx="6" stroke="#E5E5E5" width="160" x="446" y="210"></rect>
+<g fill="none" opacity="0.7" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" transform="translate(514,228)"><rect height="11" rx="1" width="18" x="0" y="0"></rect><path d="M4 11 V13 M14 11 V13"></path></g>
+<text class="tl" x="526" y="285">Self-Checkouts &amp;</text>
+<text class="tl" x="526" y="301">Payment Links</text>
+<rect fill="#fff" height="140" rx="6" stroke="#E5E5E5" width="160" x="614" y="210"></rect>
+<g fill="none" opacity="0.7" stroke="#C2410C" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.3" transform="translate(682,228)"><rect height="10" rx="1" width="16" x="0" y="0"></rect><rect height="4" rx="0.5" width="10" x="3" y="3"></rect></g>
+<text class="tl" x="694" y="293">Point of Sale</text>
+</g>
+<g>
+<rect fill="#ECFDF5" height="195" rx="14" stroke="#A7F3D0" stroke-width="1" width="775" x="15" y="380"></rect>
+<rect fill="#FFFFFF" height="24" rx="6" stroke="#A7F3D0" width="118" x="28" y="393"></rect>
+<g fill="none" stroke="#047857" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" transform="translate(38,399)"><path d="M0 11 V5 L6 1 L12 5 V11 Z"></path><path d="M4 11 V7 H8 V11"></path></g>
+<text class="zh" x="56" y="409">Warehouse</text>
+<rect fill="#fff" height="105" rx="6" stroke="#E5E5E5" width="240" x="30" y="445"></rect>
+<text class="tl" x="150" y="492">Goods Receiving &amp;</text>
+<text class="tl" x="150" y="508">Quality Assurance</text>
+<rect fill="#fff" height="105" rx="6" stroke="#E5E5E5" width="240" x="285" y="445"></rect>
+<text class="tl" x="405" y="492">Storage &amp; Inventory</text>
+<text class="tl" x="405" y="508">Management</text>
+<rect fill="#fff" height="105" rx="6" stroke="#E5E5E5" width="240" x="540" y="445"></rect>
+<text class="tl" x="660" y="492">Picking, Packing</text>
+<text class="tl" x="660" y="508">&amp; Dispatch</text>
+</g>
+<g>
+<rect fill="#F9FAFB" height="560" rx="14" stroke="#E5E7EB" stroke-width="1" width="375" x="810" y="15"></rect>
+<rect fill="#FFFFFF" height="24" rx="6" stroke="#E5E7EB" width="118" x="823" y="28"></rect>
+<g fill="none" stroke="#0A0A0A" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.4" transform="translate(833,34)"><rect height="9" rx="1" width="12" x="0" y="3"></rect><path d="M4 3 V1 H8 V3"></path></g>
+<text class="zh" x="851" y="44">Back Office</text>
+<text class="gl" x="828" y="85">Sales</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="95"></rect>
+<text class="tl" x="913" y="111">Sell on</text>
+<text class="tl" x="913" y="127">Marketplace</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="143"></rect>
+<text class="tl" x="913" y="167">Regional Price</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="191"></rect>
+<text class="tl" x="913" y="207">Franchise</text>
+<text class="tl" x="913" y="223">Management</text>
+<text class="gl" x="1005" y="85">Marketing</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="95"></rect>
+<text class="tl" x="1090" y="111">Promotion</text>
+<text class="tl" x="1090" y="127">Management</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="143"></rect>
+<text class="tl" x="1090" y="159">Loyalty</text>
+<text class="tl" x="1090" y="175">Management</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="191"></rect>
+<text class="tl" x="1090" y="207">Marketing</text>
+<text class="tl" x="1090" y="223">Campaign</text>
+<text class="gl" x="828" y="270">Operations</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="280"></rect>
+<text class="tl" x="913" y="296">Inventory</text>
+<text class="tl" x="913" y="312">Planning <tspan class="ai">✦</tspan></text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="328"></rect>
+<text class="tl" x="913" y="344">Logistics Partner</text>
+<text class="tl" x="913" y="360">Management</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="376"></rect>
+<text class="tl" x="913" y="392">Self Fleet</text>
+<text class="tl" x="913" y="408">Management</text>
+<text class="gl" x="1005" y="270">Supply Chain</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="280"></rect>
+<text class="tl" x="1090" y="296">Vendor</text>
+<text class="tl" x="1090" y="312">Management</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="328"></rect>
+<text class="tl" x="1090" y="344">Procurement</text>
+<text class="tl" x="1090" y="360">Management</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="376"></rect>
+<text class="tl" x="1090" y="400">Distribution</text>
+<text class="gl" x="828" y="455">Customer Support</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="465"></rect>
+<text class="tl" x="913" y="489">AI Support <tspan class="ai">✦</tspan></text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="828" y="513"></rect>
+<text class="tl" x="913" y="529">Human in the</text>
+<text class="tl" x="913" y="545">Loop <tspan class="ai">✦</tspan></text>
+<text class="gl" x="1005" y="455">Finance</text>
+<rect fill="#fff" height="40" rx="6" stroke="#E5E5E5" width="170" x="1005" y="465"></rect>
+<text class="tl" x="1090" y="489">ERP Konnect</text>
+</g>
+<g>
+<path class="conn" d="M245 135 H265" marker-end="url(#jcp-arr)" marker-start="url(#jcp-arr)"></path>
+<path class="conn" d="M130 255 V380" marker-end="url(#jcp-arr)" marker-start="url(#jcp-arr)"></path>
+<path class="conn" d="M527 365 V380" marker-end="url(#jcp-arr)" marker-start="url(#jcp-arr)"></path>
+<path class="conn" d="M790 200 H810" marker-end="url(#jcp-arr)" marker-start="url(#jcp-arr)"></path>
+<path class="conn" d="M790 470 H810" marker-end="url(#jcp-arr)" marker-start="url(#jcp-arr)"></path>
+</g>
+</svg>
+</div>
+</div></section>
+<!-- §06 · Product surface -->
+<section class="py-16 border-b" id="properties" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Product surface</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Eight products. One platform.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JCP is a unified commerce stack. Every Reliance brand inherits the same eight products, configured to its vertical. Orchestrated end-to-end through a modular API substrate (REST + GraphQL) with 100+ pre-built extensions.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="card p-6"><div class="cap-num mb-2" style="color: var(--accent);">Commerce core · 01</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">eCommerce Platform</h3><p class="text-sm" style="color: var(--ink-muted);">End-to-end online commerce: catalog, cart, checkout, payments. The substrate every brand storefront inherits.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: var(--accent);">Commerce core · 02</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">In-Store Commerce</h3><p class="text-sm" style="color: var(--ink-muted);">Smart POS, endless aisle, Scan &amp; Go. Live across 8 RIL brands and 3,000+ stores including Trends (2,171), FreshPik, GAP.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: var(--accent);">Commerce core · 03</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Order Management System</h3><p class="text-sm" style="color: var(--ink-muted);">Intelligent order routing and fulfilment orchestration. Carries 700K+ orders/day, 50K+/min at peak.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: #047857;">Supply chain · 04</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Transport Management</h3><p class="text-sm" style="color: var(--ink-muted);">End-to-end freight and carrier integration. 10 carrier integrations shipped this year. Polygon serviceability.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: #047857;">Supply chain · 05</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Supply Chain &amp; Logistics</h3><p class="text-sm" style="color: var(--ink-muted);">End-to-end supply chain visibility and optimisation. Vendor management, procurement, distribution.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: #C2410C;">Growth · 06</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Marketing &amp; Promotions</h3><p class="text-sm" style="color: var(--ink-muted);">Campaigns, loyalty programmes, cart recovery. Stackable promotions and brand-segmented eligibility.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: #C2410C;">Growth · 07</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">AI for Commerce</h3><p class="text-sm" style="color: var(--ink-muted);">Vertex Search, Web Grounding cataloging, ViSenze visual search, recommendations. Live across the JCP substrate alongside cart, OMS and search.</p></div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: #C2410C;">Growth · 08</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Analytics &amp; Insights</h3><p class="text-sm" style="color: var(--ink-muted);">Real-time commerce metrics and business intelligence. Streaming RPOS data into UCP across 75+ formats.</p></div>
+</div>
+<div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">Modular APIs</div><div class="font-medium text-base">REST + GraphQL</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Pre-built extensions</div><div class="font-medium text-base">100+</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Multi-storefront</div><div class="font-medium text-base">Multi-brand · multi-market</div></div>
+</div>
+</div></section>
+<!-- §07 · AI shipped -->
+<section class="py-16 border-b" id="ai" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 · AI shipped</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Search, cataloging, recommendations · live.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Three AI capabilities shipped on JCP this year (search, cataloging, recommendations) measured against live A/B traffic, not synthetic benchmarks. Next wave: agentic commerce on top of the same substrate.</p>
+<div class="grid md:grid-cols-2 gap-4 mb-6">
+<div class="card p-8">
+<div class="cap-num mb-3" style="color: var(--accent);">Search · Google Vertex</div>
+<h3 class="font-semibold text-xl mb-3" style="color: var(--ink);">+7.4–10.7% revenue per search.</h3>
+<p class="text-base mb-4" style="color: var(--ink-muted);">Live across 5 channels: Tira, Netmeds, Reliance Digital, Swadesh, Urban Ladder. 90M+ production searches across 70+ days of A/B versus Algolia. Zero-result queries dropped 53–75%. Click-through up 23% on Tira. Cutover happened with zero downtime.</p>
+<p class="cap-num" style="color: var(--ink-soft);">5 channels · 90M+ searches · zero-downtime migration</p>
+</div>
+<div class="card p-8">
+<div class="cap-num mb-3" style="color: var(--accent);">Cataloging · Web Grounding</div>
+<h3 class="font-semibold text-xl mb-3" style="color: var(--ink);">From 40 hours to 2 minutes per 1,000 SKUs.</h3>
+<p class="text-base mb-4" style="color: var(--ink-muted);">Netmeds: 95%+ enrichment time eliminated, vendor cost (~₹100/SKU) collapsed to near-zero. Reliance Digital: 35–40% faster, 75% first-pass auto-fill, 50–64% throughput gain on the same team. Tira × Akind × Google: 10–15 min/SKU → ~14 sec, 332 of 382 attributes filled, 89% accuracy vs ground truth.</p>
+<p class="cap-num" style="color: var(--ink-soft);">3 brands · 1 technique · live production</p>
+</div>
+</div>
+<div class="card overflow-x-auto mb-8">
+<table class="grid-table" style="min-width: 720px;">
+<thead><tr><th>Vertex Search · Metric</th><th>Tira · Beauty (71 days · 97.7M searches)</th><th>Netmeds · Healthcare (80 days · 3.8M searches)</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Revenue per search</td><td class="text-sm">₹92.13 → ₹98.77 ·<strong style="color: var(--green);">+7.39%</strong></td><td class="text-sm">₹2,979.70 → ₹3,301.91 ·<strong style="color: var(--green);">+10.70%</strong></td><td class="text-sm" style="color: var(--ink-muted);">+9% avg across verticals</td></tr>
+<tr><td class="font-medium">Zero-result reduction</td><td class="text-sm">71.14% → 33.37% ·<strong style="color: var(--green);">−53%</strong></td><td class="text-sm">15.81% → 3.89% ·<strong style="color: var(--green);">−75%</strong></td><td class="text-sm" style="color: var(--ink-muted);">Superior relevance</td></tr>
+<tr><td class="font-medium">Click-through rate</td><td class="text-sm">1.77% → 2.18% ·<strong style="color: var(--green);">+23.11%</strong></td><td class="text-sm">20.08% → 20.65% · +2.99%</td><td class="text-sm" style="color: var(--ink-muted);">Stronger engagement</td></tr>
+<tr><td class="font-medium">Add-to-cart rate</td><td class="text-sm">1.43% → 1.68% ·<strong style="color: var(--green);">+16.98%</strong></td><td class="text-sm">25.62% → 27.23% · +6.14%</td><td class="text-sm" style="color: var(--ink-muted);">Consistent funnel lift</td></tr>
+<tr><td class="font-medium">Purchase rate</td><td class="text-sm">0.17% → 0.18% · +2.76%</td><td class="text-sm">17.84% → 20.44% ·<strong style="color: var(--green);">+14.52%</strong></td><td class="text-sm" style="color: var(--ink-muted);">Vertical specialisation</td></tr>
+<tr><td class="font-medium">Average order value</td><td class="text-sm">₹53,495 → ₹56,075 ·<strong style="color: var(--green);">+4.96%</strong></td><td class="text-sm">₹16,698 → ₹16,150 · −3.33%</td><td class="text-sm" style="color: var(--ink-muted);">Cross-sell strength (Tira)</td></tr>
+</tbody>
+</table>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">Recommendations</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Vertex extensions</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Recommendation surfaces powered by Vertex with filter support. Conversational filters layered on top of search.</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Visual search</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">ViSenze image search</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Image-driven discovery integrated into the search funnel. See-it-find-it for fashion and beauty.</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Methodology</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Ground-truth verdicts</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Every AI output buckets into Exact / Partial / No-Match against ground truth before it reaches a customer.</p>
+</div>
+</div>
+<div class="mt-8">
+<a class="btn-secondary inline-block" href="/jcp/cataloging">Open the AI Cataloging deep-dive →</a>
+</div>
+</div></section>
+<!-- =====================================================================
+     §08 · Path to L4 · derived from data/agents-x-platforms.yaml
+     Render contents via: python tools/inject_path_to_l4.py --only jcp
+     ===================================================================== -->
+<!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">08 · PATH TO L4</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How JCP becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Currently at <strong>L3</strong>. 2 named agents close the gap to L4.</p>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl">
+  <a href="/kaily/" class="platform-card">
+    <div class="platform-card-head">
+      <div class="platform-card-name">ZIP · AJIO Commerce Agent</div>
+      <span class="pill pill-live">LIVE</span>
+    </div>
+    <div class="platform-card-desc">Conversational AI shopping on AJIO.com · natural-language search and recommendations over chat and voice · 88% positive engagement · 100% catalog coverage of 2.6M+ AJIO SKUs.</div>
+    <div class="platform-card-foot"><span class="platform-card-tag">Target L4</span></div>
+  </a>
+  <a href="/kaily/" class="platform-card">
+    <div class="platform-card-head">
+      <div class="platform-card-name">JIIA · JioMart Agentic Shopping Assistant</div>
+      <span class="pill pill-live">LIVE</span>
+    </div>
+    <div class="platform-card-desc">Intent → bundle on JioMart · Gemini multimodal pipeline indexes 40M+ catalog images · featured on the Google Cloud Next '26 main stage on 29-Apr-2026.</div>
+    <div class="platform-card-foot"><span class="platform-card-tag">Target L4</span></div>
+  </a>
+</div>
+</div>
+</section>
+<!-- PATH-TO-L4-END -->
+<!-- §09 · Shipped this year -->
+<section class="py-16 border-b" id="shipped" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">09 · Shipped this year</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">~150 capability releases. 10 sub-systems.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">FY 2025-26, sourced from internal JCP product release notes. The shape of a year.</p>
+<div class="card overflow-x-auto">
+<table class="grid-table" style="min-width: 560px;">
+<thead><tr><th>Sub-system</th><th>Releases</th><th>Headline</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Search &amp; Discovery</td><td class="text-sm">~40</td><td class="text-sm" style="color: var(--ink-muted);">Vertex AI Search 100% rollout · Tira, Netmeds, JMD, Swadesh · zero-downtime cutover from Algolia</td></tr>
+<tr><td class="font-medium">Catalog</td><td class="text-sm">~30</td><td class="text-sm" style="color: var(--ink-muted);">Web Grounding live across Netmeds, Reliance Digital, Tira × Akind</td></tr>
+<tr><td class="font-medium">Pricing</td><td class="text-sm">~15</td><td class="text-sm" style="color: var(--ink-muted);">Discount v2 full rewrite · live on Tira production</td></tr>
+<tr><td class="font-medium">OMS &amp; Order Lifecycle</td><td class="text-sm">~25</td><td class="text-sm" style="color: var(--ink-muted);">Cancellation fees, exchange flows, real-time order ringer</td></tr>
+<tr><td class="font-medium">Logistics &amp; Serviceability</td><td class="text-sm">~35</td><td class="text-sm" style="color: var(--ink-muted);">10 carrier integrations · polygon serviceability</td></tr>
+<tr><td class="font-medium">Payments</td><td class="text-sm">~30</td><td class="text-sm" style="color: var(--ink-muted);">Reconciliation hardening, gateway expansion</td></tr>
+<tr><td class="font-medium">Coupons &amp; Promotions</td><td class="text-sm">~25</td><td class="text-sm" style="color: var(--ink-muted);">Stackable promotions, brand-segmented eligibility</td></tr>
+<tr><td class="font-medium">Cart &amp; Checkout</td><td class="text-sm">~6</td><td class="text-sm" style="color: var(--ink-muted);">Single-cart progress for Trends Companion</td></tr>
+<tr><td class="font-medium">Inventory</td><td class="text-sm">~5</td><td class="text-sm" style="color: var(--ink-muted);">Real-time stock pinning across stores and DCs</td></tr>
+<tr><td class="font-medium">Platform · Identity · Theme · Comms</td><td class="text-sm">~35</td><td class="text-sm" style="color: var(--ink-muted);">Foundational hardening, reusable theme primitives, transactional comms</td></tr>
+</tbody>
+</table>
+</div>
+<div class="mt-8">
+<a class="btn-secondary inline-block" href="/jcp/release-notes">Open full release notes →</a>
+</div>
+</div></section>
+<!-- §10 · Roadmap -->
+<section class="py-16 border-b" id="roadmap" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">10 · Roadmap · Q2 AMJ 2026</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">90 Day Roadmap.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
+<div class="card p-6">
+<div class="cap-num mb-3" style="color: var(--accent);">Money flows · 55 features</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Promotions, payments, cart.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">The largest pillar of the cycle. <strong style="color: var(--ink);">27 promotion features</strong> consolidate the unified offers stack: serial coupons, cashback flows, BIN targeting, EMI offers, period limits, free shipping, RBPLT thresholds. <strong style="color: var(--ink);">Payments V2</strong> ships a new endpoint, multi-MoP support, UPI QR, BillDesk and ICICI as aggregators, plus a payment ranking engine. <strong style="color: var(--ink);">Cart</strong> migrates address flows to Atlas gRPC and adds the fraud engine integration.</p>
+<p class="cap-num" style="color: var(--ink-soft);">27 promotions · 14 payments · 10 cart · 4 RBPLT · 3 user-groups</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3" style="color: #047857;">Operations spine · 54 features</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Catalogue, serviceability, OMS.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">The second-largest theme of the cycle. <strong style="color: var(--ink);">Catalogue 24 features</strong>: multi-category support, hierarchy templates v2, attribute overhaul, SKU-level collections, Discount V2 with 4-level cascade. <strong style="color: var(--ink);">Serviceability 23 features</strong>: zone maker-checker, multi-mode fulfilment (Express, Quick, Same-Day), dark-store classification, Clickpost for international, GWP cross-warehouse fulfilment. <strong style="color: var(--ink);">OMS 7 features</strong> centred on Herald promise integration and reconciliation.</p>
+<p class="cap-num" style="color: var(--ink-soft);">24 catalogue · 23 serviceability · 7 OMS</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3" style="color: #C2410C;">Storefront · 23 features</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">CMS, navigation, search, size.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">CMS sections get a full lifecycle with maker-checker and a multi-user lock system. <strong style="color: var(--ink);">Search</strong> adds AJIO RRA recommendations and a JCP product recommendation engine over Solr + MongoDB with Vertex AI provider selection. <strong style="color: var(--ink);">Size &amp; Fit v1.0</strong> ships 42 capabilities for AJIO and JCP; v2.0 introduces body-measurement input and cross-brand size translation. <strong style="color: var(--ink);">SEO</strong> ships a unified sitemap admin with 7 sub-modules and 22 business rules.</p>
+<p class="cap-num" style="color: var(--ink-soft);">7 CMS · 5 navigation · 3 search · 5 size · 3 SEO</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3">Foundation · 31 features</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Console, infrastructure, files.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);"><strong style="color: var(--ink);">12 platform-wide infrastructure upgrades</strong> are the spine: fit.js v2.6 → v3.4 across 30+ services, Node.js 24 + pnpm, Mongoose 8 / MongoDB 8 compatibility, SSH → HTTPS ADO migration, Fortify / BlackDuck remediation, the AI-Native service template (CLAUDE.md, ADRs, event schemas) rolled out across all 49 services. <strong style="color: var(--ink);">Platform Console</strong> adds Nexus deployment aggregator, ad builder, application-migration UI, Microsoft Clarity + PostHog analytics.</p>
+<p class="cap-num" style="color: var(--ink-soft);">12 infra · 8 console · 5 file storage · 4 webhooks · 2 data</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3">Trust and identity · 12 features</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Identity, OTP, compliance.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">A small but security-critical theme. <strong style="color: var(--ink);">OTP cross-flow vulnerability closed</strong> (auth flows can no longer replay each other's tokens). <strong style="color: var(--ink);">Atlas Go migration</strong> on identity. <strong style="color: var(--ink);">Slingshot PII bug fix</strong>. <strong style="color: var(--ink);">JioCX wired in</strong> as the SMS provider. <strong style="color: var(--ink);">Pluggable GST + PAN verification</strong> provider config for seller onboarding.</p>
+<p class="cap-num" style="color: var(--ink-soft);">OTP · identity · PII · SMS provider · GST + PAN verification</p>
+</div>
+</div>
+</div></section>
+<!-- §11 · Receipts -->
+<section class="py-16 border-b" id="receipts" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">11 · Receipts</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every claim above has a deeper artefact behind it.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<a class="card card-hover p-6 block" href="/jcp/channels"><div class="cap-num mb-2">Coverage</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Channel gallery · 78</h3><p class="text-sm" style="color: var(--ink-muted);">Visual inventory of every storefront and app.</p></a>
+<a class="card card-hover p-6 block" href="/jcp/cataloging"><div class="cap-num mb-2">AI</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">AI Cataloging deep-dive</h3><p class="text-sm" style="color: var(--ink-muted);">Web Grounding methodology, brand-by-brand metrics, attribute accuracy.</p></a>
+<a class="card card-hover p-6 block" href="/jcp/release-notes"><div class="cap-num mb-2">Shipped</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Release notes · FY 2025-26</h3><p class="text-sm" style="color: var(--ink-muted);">The full ~150-item changelog across 10 sub-systems.</p></a>
+<a class="card card-hover p-6 block" href="/rcpl"><div class="cap-num mb-2">B2B · FMCG</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">RCPL</h3><p class="text-sm" style="color: var(--ink-muted);">Reliance Consumer Products. ₹20,000 Cr FY26 run-rate · 5 PODs · DMS, CTS, SFA. Now its own register surface.</p></a>
+<a class="card card-hover p-6 block" href="/jcp/7eleven"><div class="cap-num mb-2">Channel</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">7-Eleven</h3><p class="text-sm" style="color: var(--ink-muted);">Reference build for franchise-led convenience retail on JCP.</p></a>
+<a class="card card-hover p-6 block" href="/"><div class="cap-num mb-2">Home</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Back to the register</h3><p class="text-sm" style="color: var(--ink-muted);">Cross-platform overview · all 20+ tracks across the Fynd × RRVL surface.</p></a>
+</div>
+</div></section>
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

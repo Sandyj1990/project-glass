@@ -1,0 +1,31 @@
+# Path: data/fynd-academy/2025-10-ai-for-retail.yaml
+# Source: docs/fynd-academy-compilation/oct-nov-2025/session-description
+
+slug: 2025-10-ai-for-retail
+title: AI for Retail & Context Engineering
+date: 2025-10-13
+status: delivered
+
+source_folder: docs/fynd-academy-compilation/oct-nov-2025/
+source_citation: "session-description (md) + 2 attendance screenshots"
+
+audience: RIL Industries L&D
+venue: Online
+format: online
+headcount: "150+"
+ratings:
+  overall_satisfaction: 4.75
+  instructor_knowledge: 4.95
+  delivery: 4.75
+  relevance: 4.8
+
+summary: |
+  Context engineering, prompting techniques, and effective ChatGPT usage for
+  solving real-world retail challenges. Hands-on demos and practical examples
+  applied to day-to-day work.
+
+photos:
+  - src: /assets/fynd-academy/2025-10-ai-for-retail/01-attendance.png
+    caption: Attendance view · online session
+  - src: /assets/fynd-academy/2025-10-ai-for-retail/02-attendance.png
+    caption: Participant breakdown

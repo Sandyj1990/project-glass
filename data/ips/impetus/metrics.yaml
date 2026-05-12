@@ -1,0 +1,27 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: ips_in_production
+    label: IPs in production
+    value: 14
+    definition: Live IP register
+    source: Impetus product team
+    confidence: live
+  - id: vendor_to_store_days
+    label: Vendor-to-store cycle
+    value: 3.6 days
+    definition: Down from 9-month design-to-shelf baseline
+    source: Impetus ops
+    confidence: live
+  - id: active_manufacturers
+    label: Active manufacturers
+    value: 930
+    definition: Vendor Scan & Pack network
+    source: Impetus ops
+    confidence: live
+  - id: options_per_year
+    label: Options designed per year
+    value: 39.2K
+    definition: Through AI Cataloging + AI Photoshoot pipeline
+    source: Impetus catalog
+    confidence: live

@@ -1,0 +1,85 @@
+{
+  "page": "samarth/index.html",
+  "spec": "docs/samarth-plus-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 87,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 92,
+    "tone_of_voice": 85,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 65
+  },
+  "findings": [
+    {
+      "id": "T1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§02 · step 02 constraint",
+      "issue": "Banned filler verb 'unlocks' used in card constraint line: 'screening must be cleared before Learning unlocks'.",
+      "fix": "Replace with: 'screening must be cleared before the Learning Journey opens' (or 'before Learning becomes available'). Reference: tone-of-voice §7 — 'unlocks' → 'delivers / produces / changes' or rewrite around the actual verb.",
+      "files": ["samarth/index.html:160"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "Home card · IP catalog row",
+      "issue": "Home card (index.html:606) and catalog row (catalog/index.html:276) both say 'Live · 29 - Apr - 2026'. The /samarth page now reads 'Live · limited pilot · Apr 2026'. Sources confirm the prod cutover happened in Apr 2026 with a limited pilot — the specific 29-Apr date isn't cited in either compilation artefact. Either: (a) update home + catalog to 'Live · limited pilot · Apr 2026' to match the page, or (b) restore '29 - Apr - 2026' on the page if a verifiable source for that exact date exists outside this compilation folder.",
+      "fix": "Recommended: align home + catalog with the page's 'Live · limited pilot · Apr 2026' framing — matches the Module Work Breakdown's Phase 6 language and avoids overclaim. If the 29-Apr date is verifiable from a source not in the compilation folder, restore it on the page.",
+      "files": ["index.html:606", "catalog/index.html:276", "samarth/index.html:78"],
+      "auto_fixable": false
+    },
+    {
+      "id": "S1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§06 · QA squad",
+      "issue": "'Naveent (RIL)' — likely a typo for 'Naveen'. Carried over from the prior version of the page; not in either compilation artefact (HRBP deck or Module Work Breakdown). Names matter at Apex level (tone-of-voice §1 rule 5) — wrong spelling reads as carelessness.",
+      "fix": "Confirm spelling with Nishant Amin or Ashish Agrawal. Likely 'Naveen' — fix here and re-verify against any prior comm where the name appeared.",
+      "files": ["samarth/index.html:278"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Organisation · workforce row",
+      "issue": "organisation/index.html:146 lists Samarth team headcount as '~15' with PMs Sai/Manasa/Karan and Nishant Amin as lead. The /samarth squad section now adds Vikas Singh + Yash on engineering. Not a contradiction (those two were UI/SSO collaborators, not core team), but if the org page is meant to reflect the full extended squad, the headcount may now be ~17.",
+      "fix": "Decision call. If org page tracks core-team-only, leave at ~15 and ensure Vikas/Yash are listed under their actual home teams. Otherwise update.",
+      "files": ["organisation/index.html:146"],
+      "auto_fixable": false
+    },
+    {
+      "id": "T2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 · Phase 1 row",
+      "issue": "Phrase 'Behaviour parity, not schema parity' is verbatim from the source doc but is jargon-heavy for an Apex reader. The next sentence in the doc explains it ('Supabase auto-handles RLS, signed URLs, OTP, session — each had to be re-thought, not mechanically copied'); the page omits the explainer, leaving the bare phrase to land cold.",
+      "fix": "Either drop 'Behaviour parity, not schema parity' or expand inline: 'rebuilt for behaviour parity (not just schema parity) — Supabase auto-handles RLS, signed URLs, OTP, sessions; each had to be re-thought from scratch on Node.'",
+      "files": ["samarth/index.html:219"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§02 · all six steps tagged 'Live'",
+      "issue": "All six candidate-journey steps carry the 'Live' pill. Source supports this (HRBP deck says all six steps are in the prod build, and Phase 6 confirms cutover). However, Step 06 'Progress' is described as 'Associate brings the certificate to the Store Manager' — i.e., the step happens *outside* the platform today (LMS+IJP integration is Q4 roadmap). The 'Live' pill on Step 06 is technically defensible (the step exists in the journey) but skirts overclaim.",
+      "fix": "Optional. Either keep 'Live' (the step's *outcome* — handoff to Store Manager — does happen today) or downgrade Step 06 to 'Live · external handoff' to make the platform-vs-process boundary explicit.",
+      "files": ["samarth/index.html:188"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Hero stat strip is exec-readable: Stage / Role transitions / Form factor / Formats covered — no engineering-jargon tiles, every number sourceable.",
+    "§04 7-month delivery table is the page's strongest move — six phases, named environments (Dev → SIT → UAT → Prod), one-line headlines that survive an Apex skim while the source doc is one click away.",
+    "Honesty register is well-handled: 'Live · limited pilot' in the hero pill is the correct rendering of Phase 6's 'Prod (limited pilot)' source language; doesn't overclaim a full rollout.",
+    "Sources block earns its place per the tone-of-voice §3 carve-out — two distinct external artefacts (HRBP deck + engineering breakdown), each linked to its compilation-folder path with verb 'Open the deck →' / 'Open the breakdown →'.",
+    "Section-label run is contiguous (01 → 08, no gaps, no renumber drift) — passes the §10 common-issues check after the Sub-IPs grid was cut."
+  ]
+}

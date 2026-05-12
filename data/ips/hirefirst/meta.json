@@ -1,0 +1,21 @@
+{
+  "slug": "hirefirst",
+  "name": "HireFirst (Orion)",
+  "tagline": "Reliance HR Tech \u00b7 hiring on rails \u00b7 SAP OM RFC daily sync.",
+  "track": "hirefirst",
+  "track_role": "track-headline",
+  "status": "Pilot",
+  "since": "2026-04-07",
+  "last_release": null,
+  "verticals": [],
+  "value_chain": [],
+  "ownership": "reliance",
+  "web_anchor": "/hirefirst",
+  "external_url": "https://hiring.ril.com",
+  "stake_inr_cr": null,
+  "tags": [
+    "hr-tech",
+    "ai-scoring",
+    "sap-om"
+  ]
+}

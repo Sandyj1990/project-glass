@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: positive_engagement
+    label: Positive engagement
+    value: 88%
+    definition: User feedback on ZIP responses
+    source: AJIO product analytics
+    confidence: live
+  - id: catalog_coverage
+    label: Catalog coverage
+    value: 86%
+    definition: "% of catalog ZIP can answer for"
+    source: AJIO product analytics
+    confidence: live
+  - id: chats_total
+    label: Chats driven through ZIP
+    value: 2M+
+    definition: Cumulative
+    source: AJIO product analytics
+    confidence: live

@@ -1,0 +1,34 @@
+# Path: data/fynd-academy/2025-12-rcp-train-the-trainer.yaml
+# Source: docs/fynd-academy-compilation/dec-2025/session-description
+
+slug: 2025-12-rcp-train-the-trainer
+title: GenAI Developer Training · Train-the-Trainer
+date: 2025-12-15
+status: delivered
+
+source_folder: docs/fynd-academy-compilation/dec-2025/
+source_citation: "session-description (md) + 4 session photos"
+
+audience: RCP
+venue: RCP (Reliance Corporate Park)
+format: hybrid
+headcount: "40"          # 25 offline + 15 online
+headcount_breakdown: "25 offline · 15 online"
+ratings:
+  overall_satisfaction: 5.0
+
+summary: |
+  Kicked off the GenAI Developer Training Course with the first
+  Train-the-Trainer session. Introduced LLMs vs LRMs, AI Agents, context
+  engineering, and prompting techniques. Cohort certified to deliver
+  downstream sessions.
+
+photos:
+  - src: /assets/fynd-academy/2025-12-rcp-train-the-trainer/01-session.jpg
+    caption: Training session at RCP
+  - src: /assets/fynd-academy/2025-12-rcp-train-the-trainer/02-session.jpg
+    caption: Participant interaction
+  - src: /assets/fynd-academy/2025-12-rcp-train-the-trainer/03-session.jpg
+    caption: Hands-on segment
+  - src: /assets/fynd-academy/2025-12-rcp-train-the-trainer/04-session.jpg
+    caption: Cohort group

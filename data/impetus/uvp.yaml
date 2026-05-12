@@ -1,0 +1,103 @@
+# UVP · Unified Vendor Platform
+# Sourced verbatim from Q1 2026 Release Compendium pp. 50–56
+# Per docs/impetus-restructure-spec.md
+
+slug: uvp
+title: UVP
+sub_title: "(Unified Vendor Platform)"
+aliases: [Unified Vendor Platform, DSD, Direct Store Delivery]
+tagline: One platform for vendor contracts, pricing and onboarding across every brand. DSD turnaround down to 5 days (industry first); negotiation cycles 2 weeks → 4 days.
+category: Buy · Vendor
+status: live
+status_label: Live
+
+audience:
+  - Sourcing Teams
+  - Vendor Managers
+  - Commercial Teams
+  - "Audit &amp; Compliance Teams"
+
+what_it_does: |
+  One platform for all vendor contracts, pricing and onboarding across every brand.
+  Sourcing teams see standardised vendor pricing, run onboarding workflows and
+  compare pricing across brands in one place — replacing fragmented trackers.
+  Direct Store Delivery (DSD), goods delivered straight from vendor to store,
+  and Procuro orders are configured here. Real-time vendor performance is visible
+  without chasing reports.
+
+  **DSD turnaround down to 5 days (industry first); negotiation cycles from 2 weeks
+  to 4 days.**
+
+scale_label: How Many People Use It
+scale:
+  - "DSD: 5-day turnaround (industry first)"
+  - "Negotiation: 2 weeks → 4 days"
+  - "3.5 Cr DSD shipments processed"
+  - "Cross-brand vendor visibility live"
+scale_caption: |
+  The vendor co-creation platform Shein uses; same surface now hosts Trends,
+  Azorte, Yousta and Fashion Factory vendor relationships.
+
+what_improved:
+  body: |
+    **One place for vendor pricing across all brands** — no more version conflicts.
+    Faster procurement through automated onboarding and approval flows. Vendor
+    performance and compliance visible in real time. Direct Store Delivery (DSD) +
+    Procuro vendor setup and pricing live for Shein. Order placement and fulfilment
+    streamlined end-to-end. **Pricing updates and cost sync happen automatically.**
+  expected_metric_impact: |
+    cutting negotiation from 2 weeks to 4 days lets the buy-plan-to-order cycle
+    compress by the same factor. The 5-day DSD claim is the industry-first metric
+    the cover letter highlights — proven at Shein scale, now extending across formats.
+
+updates_shipped: []
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/uvp/screenshot-051.jpg"
+    caption: "**UVP · Range Architecture** · Centralised dashboard for PO and production management across brands · Shein RA shown."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/uvp/screenshot-052.jpg"
+    caption: "**UVP · MRP Multiplier** · Brick-level cost mapping with min/max cost ranges per category for vendor pricing comparison."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/uvp/screenshot-053.jpg"
+    caption: "**UVP · Size Set &amp; Ratios + Live shipment review** · Vendor performance metrics by SKU base size · Live cross-team review session for shipment management."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/uvp/screenshot-054.jpg"
+    caption: "**UVP · Invoice and payment + ODM inspiration list** · Invoice processing and payment reconciliation · Active inspirations with vendors shared/submitted counts."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/uvp/screenshot-055.jpg"
+    caption: "**UVP · ODM moodboard view + Share to Vendors** · Uploaded inspiration with cluster, expiry, theme · Single/group vendor sharing with vendor ID paste."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/uvp/screenshot-056.jpg"
+    caption: "**UVP · ODM scorecard + Style detail** · Vendors-shared/submitted scorecard · Brick description, design and colorway, fabric costing per uploaded design."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 50–56"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 3
+  current_summary: |
+    UVP sits at **L3 · Intelligent** today: real-time supplier graph, vendor scorecards
+    auto-generated, DSD configured per partner. The Shein implementation already
+    operates at the edge of L4 — system selects supplier, negotiates against target
+    cost, places preliminary orders. The 2-weeks-to-4-days negotiation cycle is the
+    L2 → L3 jump quantified.
+  workflows:
+    - name: "Sourcing"
+      number: "2.1"
+      current: 3
+      target: 4
+      plan: "Real-time supplier graph live; Shein already runs auto-allocation. Target: system selects, negotiates and places preliminary orders against target cost."
+    - name: "Vendor Management"
+      number: "2.5"
+      current: 3
+      target: 3
+      plan: "Predictive risk identification live via vendor scorecards. Holding at L3 — strategic vendor relationships intentionally human-led."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Sourcing · L3 → L4"
+      body: "Auto-allocation generalised beyond Shein; system negotiates against target cost across formats."
+    - eyebrow: "Risk reduction milestone"
+      title: "DSD: 5-day vendor → store (industry first)"
+      body: "Compresses inventory holding cost; goods reach customers nearly twice as fast as before."
+    - eyebrow: "Identity shift indicator"
+      title: "Buyers manage relationships, not POs"
+      body: "Negotiation cycle 2 weeks → 4 days; one platform replaces fragmented per-brand trackers."

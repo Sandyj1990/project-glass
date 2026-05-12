@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Retail Vista · AI Agents · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.agent-stat { padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.agent-stat .a-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+.agent-stat .a-value { font-weight: 700; font-size: 22px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em; }
+.agent-stat .a-context { font-size: 11px; color: var(--ink-muted); margin-top: 4px; line-height: 1.4; }
+
+.pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; }
+.pill-live    { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+.pill-build   { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.pill-scoping { background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }
+.pill-track   { background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; text-transform: uppercase; }
+.pill-l       { background: #0A2454; color: white; }
+.pill-platform a { color: #1E293B; text-decoration: none; }
+.pill-platform { background: #FAFAF9; color: #1E293B; border: 1px solid #E5E7EB; padding: 4px 11px; }
+.pill-platform a:hover { color: var(--accent); }
+
+.agent-card { display: block; padding: 18px 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s; text-decoration: none; color: var(--ink); height: 100%; }
+.agent-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+.agent-card .ac-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+.agent-card .ac-name { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.agent-card .ac-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.45; margin-bottom: 12px; }
+.agent-card .ac-stat { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); padding-top: 10px; border-top: 1px solid var(--border); }
+.agent-card .ac-stat strong { color: var(--accent); font-weight: 700; }
+.agent-card .ac-platform { font-size: 11px; color: var(--ink-muted); margin-top: 6px; }
+
+.band-header { padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 18px; display: flex; align-items: baseline; gap: 14px; }
+.band-header .b-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.band-header .b-framing { font-size: 13px; color: var(--ink-muted); }
+
+.workflow-step { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); align-items: start; }
+.workflow-step:first-child { border-top: none; }
+.workflow-step .ws-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: white; background: var(--accent); padding: 4px 0; text-align: center; border-radius: 6px; height: 28px; }
+.workflow-step .ws-title { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+.workflow-step .ws-detail { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.data-table th { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; background: var(--bg-soft); }
+.data-table td .ent { font-size: 12.5px; color: var(--ink-muted); }
+
+.tech-chip { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #F1F5F9; color: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 11px; margin: 2px 4px 2px 0; border: 1px solid #E2E8F0; }
+.note-pending { padding: 12px 16px; background: #FEF9C3; border-left: 3px solid #CA8A04; border-radius: 0 6px 6px 0; font-size: 13px; color: #713F12; line-height: 1.5; margin-top: 10px; }
+
+.pattern-chip { display: flex; flex-direction: column; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+.pattern-chip .pc-name { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.pattern-chip .pc-usage { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+
+.linked-platform-card { display: block; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+.linked-platform-card:hover { border-color: var(--accent); }
+.linked-platform-card .lp-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.linked-platform-card .lp-role { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+.linked-platform-card .lp-arrow { color: var(--accent); font-size: 12px; margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+
+.workflow-ascii { background: #0F172A; color: #E2E8F0; padding: 18px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.5; overflow-x: auto; white-space: pre; }
+
+.in-flight-row { padding: 12px 0; border-top: 1px solid var(--border); }
+.in-flight-row:first-child { border-top: none; }
+.in-flight-row .ifr-date { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; background: var(--ink); color: white; padding: 3px 8px; border-radius: 4px; margin-right: 10px; }
+.in-flight-row .ifr-milestone { font-size: 13.5px; color: var(--ink); line-height: 1.5; }
+
+.diagram-wrap { padding: 18px 12px; border: 1px solid var(--border); border-radius: 10px; background: #FAFAFA; margin-bottom: 8px; overflow: hidden; }
+.diagram-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; font-family: 'Inter', system-ui, sans-serif; }
+.diagram-caption { font-size: 11px; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+
+@media (max-width: 768px) {
+  .diagram-wrap, .diagram-caption { display: none; }
+}
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-10 pb-8" style="background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <nav class="text-xs mb-4" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">
+      <a href="/" style="color: var(--ink-muted);">Home</a> /
+      <a href="/agents" style="color: var(--ink-muted);">AI Agents</a> /
+      <span style="color: var(--ink);">Retail Vista</span>
+    </nav>
+    <div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase;">AI Agents · RETAIL-VISTA · Building</div>
+    <h1 class="display-1 text-4xl md:text-5xl mb-3" style="color: var(--ink); letter-spacing: -0.02em; font-weight: 800;">Retail Vista.</h1>
+    <p class="text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.5;">All-India spatial intelligence — site discovery, scoring, and a conversational workspace for the expansion team.</p>
+    <div class="mb-6" style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="pill pill-build">Building</span> <span class="pill pill-track">PLAN</span> <span class="pill pill-l">L4</span> <span class="pill pill-platform">Powered by &nbsp;<a href="/retail-vista/">→ Retail Vista</a></span></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2"><div class="agent-stat"><div class="a-label">Spatial fabric</div><div class="a-value">H3 grid</div><div class="a-context">All-India · uniform hex resolution</div></div><div class="agent-stat"><div class="a-label">Curated datasets</div><div class="a-value">61</div><div class="a-context">BigQuery · refreshed continuously</div></div><div class="agent-stat"><div class="a-label">Scoring dimensions</div><div class="a-value">10</div><div class="a-context">wealth · demand · competition · ...</div></div><div class="agent-stat"><div class="a-label">Specialist agents</div><div class="a-value">4</div><div class="a-context">Location · Catchment · Intelligence · Strategic</div></div></div>
+  </div>
+</section>
+<!-- DEPLOYED-IN-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+<!-- (no non-self deployments — agent IS its own deployment surface) -->
+<!-- DEPLOYED-IN-END --><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">01 · The job to be done</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">The pain</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Site selection runs on manual research, fragmented data, and individual
+judgement — weeks per location, inconsistent across teams, missed
+high-potential markets, and no visibility into cannibalisation risk.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What the agent does</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Builds a single spatial fabric over India — H3 hex grid, 61 curated
+datasets, competitor map. Surfaces high-potential sites, scores them
+on 10 business dimensions, ranks by vertical-specific weights. The
+expansion team interrogates the map and the pipeline through a
+conversational workspace.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What humans still do</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Expansion lead reviews the prioritised pipeline, signs off on shortlist
+visits, and takes the final lease decision. The agent does the
+discovery, scoring and analysis; the human owns commitment.
+</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">02 · How it works · the closed loop</div><div class=""><div class="diagram-wrap"><svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+  <title>Retail Vista · 4-stage opportunity engine + workspace</title>
+  <desc>Inputs (competitor map, demographics, JioMart density, property leads) feed a 4-stage pipeline that produces a ranked opportunity list, surfaced through a conversational workspace.</desc>
+  <defs>
+    <marker id="rv-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+    <style>
+      .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+      .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+      .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+      .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+      .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+      .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+      .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+      .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+      .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+      .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+      .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+      .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+    </style>
+  </defs>
+
+  <!-- Inputs zone -->
+  <g>
+    <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1"/>
+    <text x="36" y="46" class="zh">Inputs</text>
+
+    <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+    <text x="50" y="86" class="h-ttl">Expansion lead</text>
+    <text x="50" y="102" class="h-sub">vertical · target city</text>
+    <text x="50" y="116" class="h-sub">capex envelope</text>
+
+    <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="168" class="src-ttl">Competitor map</text>
+    <text x="50" y="186" class="src-sub">stores · brands · density</text>
+
+    <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="242" class="src-ttl">Demographics</text>
+    <text x="50" y="260" class="src-sub">income · density · GDP</text>
+
+    <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="316" class="src-ttl">JioMart density</text>
+    <text x="50" y="334" class="src-sub">order hotspots · catchment</text>
+
+    <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="390" class="src-ttl">Property leads</text>
+    <text x="50" y="408" class="src-sub">listings · rates · footfall</text>
+
+    <text x="36" y="490" class="gl">Substrate</text>
+    <text x="36" y="506" class="src-sub">H3 hex grid · 61 datasets</text>
+  </g>
+
+  <!-- Workflow zone -->
+  <g>
+    <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="306" y="46" class="zh">Pipeline · 4 stages + workspace</text>
+
+    <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="324" y="86" class="stp-num">01</text>
+    <text x="354" y="86" class="stp-ttl">Candidate sourcing</text>
+    <text x="324" y="106" class="stp-sub">competitor ring expansion · whitespace</text>
+    <text x="324" y="120" class="stp-sub">density hotspots · property leads</text>
+
+    <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="614" y="86" class="stp-num">02</text>
+    <text x="644" y="86" class="stp-ttl">Whitespace filtering</text>
+    <text x="614" y="106" class="stp-sub">isolate top-20% demand areas</text>
+    <text x="614" y="120" class="stp-sub">no-existing-coverage filter</text>
+
+    <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="324" y="182" class="stp-num">03</text>
+    <text x="354" y="182" class="stp-ttl">10-dimension scoring</text>
+    <text x="324" y="202" class="stp-sub">wealth · density · GDP · footfall</text>
+    <!-- Per spec §5.2 · drop the trailing "..." · workflow_steps Step 03
+         detail below already lists all 10 dimensions in full. -->
+    <text x="324" y="216" class="stp-sub">competition · accessibility · rates</text>
+
+    <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="614" y="182" class="stp-num">04</text>
+    <text x="644" y="182" class="stp-ttl">Vertical-weighted ranking</text>
+    <text x="614" y="202" class="stp-sub">Quick Commerce vs Fashion weights</text>
+    <text x="614" y="216" class="stp-sub">geographic diversity capping</text>
+
+    <rect x="310" y="256" width="560" height="78" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="324" y="278" class="stp-num" style="fill:#4338CA;">05</text>
+    <text x="354" y="278" class="stp-ttl">Conversational workspace</text>
+    <text x="324" y="298" class="stp-sub">root orchestrator (Gemini 2.5 Pro) routes to 4 specialist agents:</text>
+    <text x="324" y="316" class="stp-sub">Location · Catchment · Intelligence · Strategic — each with dedicated tools</text>
+
+    <rect x="310" y="358" width="560" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+    <text x="324" y="380" class="stp-num" style="fill:#B45309;">06</text>
+    <text x="354" y="380" class="stp-ttl">Human verification gates</text>
+    <text x="324" y="400" class="stp-sub">expansion team reviews shortlist · authorises field visits</text>
+    <text x="324" y="414" class="stp-sub">final lease commitment stays human</text>
+
+    <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="324" y="468" class="gl">KPIs moved</text>
+    <text x="324" y="492" class="stp-sub">Time-to-shortlist · selection accuracy · cannibalisation rate · expansion velocity</text>
+  </g>
+
+  <!-- Outputs zone -->
+  <g>
+    <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+    <text x="936" y="46" class="zh">Outputs</text>
+
+    <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="86" class="out-ttl">Opportunity pipeline</text>
+    <text x="950" y="104" class="out-sub">ranked, scored, vertical-weighted</text>
+    <text x="950" y="120" class="out-sub">geographic diversity</text>
+
+    <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="180" class="out-ttl">Site dossier</text>
+    <text x="950" y="198" class="out-sub">10-dim breakdown · competitor</text>
+    <text x="950" y="214" class="out-sub">benchmark · catchment</text>
+
+    <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="274" class="out-ttl">Live map answers</text>
+    <text x="950" y="292" class="out-sub">natural-language queries</text>
+    <text x="950" y="308" class="out-sub">over 61-dataset substrate</text>
+
+    <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+    <text x="950" y="368" class="gl" style="fill:#15803D;">Format</text>
+    <text x="950" y="388" class="out-sub">Quick Commerce live · Fashion in build</text>
+
+    <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+    <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+    <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+    <text x="950" y="482" class="out-sub">human reviews shortlist</text>
+    <text x="950" y="498" class="out-sub">system runs the pipeline</text>
+  </g>
+
+  <!-- Connectors · trunk pattern for 5 inputs into Stage 01 -->
+  <path d="M244 95 H275" class="conn"/>
+  <path d="M244 175 H275" class="conn"/>
+  <path d="M244 249 H275" class="conn"/>
+  <path d="M244 323 H275" class="conn"/>
+  <path d="M244 397 H275" class="conn"/>
+  <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+  <path d="M275 98 H310" class="conn" marker-end="url(#rv-arr)"/>
+
+  <!-- Pipeline flow -->
+  <path d="M580 98 H600" class="conn" marker-end="url(#rv-arr)"/>
+  <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#rv-arr)"/>
+  <path d="M580 194 H600" class="conn" marker-end="url(#rv-arr)"/>
+  <path d="M735 228 V242 H590 V256" class="conn" marker-end="url(#rv-arr)"/>
+  <path d="M590 334 V358" class="conn" marker-end="url(#rv-arr)"/>
+
+  <!-- Workspace → outputs -->
+  <path d="M870 295 H920" class="conn" marker-end="url(#rv-arr)"/>
+</svg></div><div class="diagram-caption">Inputs (blue) → 4-stage pipeline + workspace (grey) → Outputs (green). Human verification gate (yellow) before lease commitment.</div><div><div class="workflow-step"><div class="ws-num">01</div><div><div class="ws-title">Candidate sourcing</div><div class="ws-detail">Competitor ring expansion · whitespace detection · density hotspots · city seeding · property leads — surfaces a long-list per query.</div></div></div><div class="workflow-step"><div class="ws-num">02</div><div><div class="ws-title">Whitespace filtering</div><div class="ws-detail">BigQuery spatial queries isolate the top-20% demand areas with no existing coverage.</div></div></div><div class="workflow-step"><div class="ws-num">03</div><div><div class="ws-title">10-dimension scoring</div><div class="ws-detail">Wealth Index · Building Density · Demographics · District GDP · Spending Power · Footfall · Competitive Intensity · Accessibility · Property Rates · JioMart Order Density.</div></div></div><div class="workflow-step"><div class="ws-num">04</div><div><div class="ws-title">Vertical-weighted ranking</div><div class="ws-detail">Composite score with vertical-specific weights. Quick Commerce emphasises demand + order density; Fashion emphasises footfall + complementary retail. Geographic diversity capping prevents cluster-heavy recommendations.</div></div></div><div class="workflow-step"><div class="ws-num">05</div><div><div class="ws-title">Conversational workspace</div><div class="ws-detail">Root orchestrator (Gemini 2.5 Pro) routes natural-language queries to 4 specialist sub-agents — Location · Catchment · Intelligence · Strategic. Each runs its own tool stack against BigQuery, Google Maps APIs, and the H3 grid.</div></div></div><div class="workflow-step"><div class="ws-num">06</div><div><div class="ws-title">Human verification gates</div><div class="ws-detail">Expansion team reviews the shortlist, signs off on field visits, takes the lease commitment. Agent does the discovery and analysis; human owns the decision.</div></div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">03 · Underlying data</div><div class=""><table class="data-table mb-4"><thead><tr><th>Data source</th><th>Classification</th><th>Key entities</th></tr></thead><tbody><tr><td><strong>BigQuery (61 tables)</strong></td><td>Mixed</td><td><span class="ent">Population · Demographics · GDP · Wealth Index · Property Rates</span></td></tr><tr><td><strong>Competitor map</strong></td><td>Machine-Created</td><td><span class="ent">Store locations · brand mix · density per hex</span></td></tr><tr><td><strong>JioMart order data</strong></td><td>Machine-Created</td><td><span class="ent">Order density · catchment · delivery time</span></td></tr><tr><td><strong>Google Maps APIs</strong></td><td>Machine-Readable</td><td><span class="ent">Routes · isochrones · POI · footfall proxies</span></td></tr><tr><td><strong>Property leads</strong></td><td>Mixed</td><td><span class="ent">Listings · rates · landlord contacts</span></td></tr></tbody></table><p class="text-sm mb-3" style="color: var(--ink);"><strong>Refresh cadence:</strong> Substrate refreshed continuously; opportunity pipeline auto-runs on startup or on demand.</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>KPIs moved:</strong></p><div><span class="tech-chip">Time-to-shortlist</span><span class="tech-chip">Selection accuracy (year-1 sales vs plan)</span><span class="tech-chip">Cannibalisation rate</span><span class="tech-chip">Expansion velocity (sites opened per quarter)</span></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">04 · Design patterns used</div><div class=""><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"><div class="pattern-chip"><div class="pc-name">Tool Calling</div><div class="pc-usage">Each specialist sub-agent calls BigQuery, Google Maps, Routes API, and the H3 spatial library</div></div><div class="pattern-chip"><div class="pc-name">Deep / Hierarchical</div><div class="pc-usage">Root orchestrator routes queries to Location · Catchment · Intelligence · Strategic specialists</div></div><div class="pattern-chip"><div class="pc-name">Wide Research</div><div class="pc-usage">4-stage opportunity engine generates many candidates before scoring narrows to a shortlist</div></div><div class="pattern-chip"><div class="pc-name">Context Graphs</div><div class="pc-usage">H3 hex grid is the spatial graph; every entity (store, household, property) carries hex-level context</div></div><div class="pattern-chip"><div class="pc-name">Observability</div><div class="pc-usage">Every score breakdown is traceable back to the 10 dimensions and the underlying datasets</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">05 · Evals · what gates each output</div><div class=""><p class="text-sm mb-3" style="color: var(--ink);">Backtest opportunity scores against year-1 sales of recently opened
+Reliance Retail stores. Compare ranked recommendations vs the lease
+decisions actually taken; measure selection accuracy and missed-market
+cost.
+</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>Gates and thresholds.</strong></p><ul class="list-disc pl-5 text-sm" style="color: var(--ink);"><li>Top-20% recommended sites match year-1 sales-per-sq-ft above the format median</li><li>Cannibalisation rate on recommended sites stays below 5%</li><li>Conversational workspace returns answers grounded in source datasets — every claim cites the dataset</li></ul></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">06 · Linked platforms</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-3"><a href="/retail-vista/" class="linked-platform-card"><div class="lp-name">Retail Vista</div><div class="lp-role">Platform home · live storefront for the agent</div><div class="lp-arrow">View platform →</div></a><a href="/impetus/cortex/" class="linked-platform-card"><div class="lp-name">Cortex</div><div class="lp-role">Consumes spatial / catchment context for store-level planning</div><div class="lp-arrow">View platform →</div></a><a href="/jcp/" class="linked-platform-card"><div class="lp-name">JCP</div><div class="lp-role">Delivery routing and catchment-aware fulfilment</div><div class="lp-arrow">View platform →</div></a></div></div></div></section>
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

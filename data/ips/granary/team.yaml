@@ -1,0 +1,8 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+platform_leads:
+  - Aushin Ganguli
+  - Advait Pandit
+
+ml:
+  - Shahid Kazi · DRI ML Forecasting

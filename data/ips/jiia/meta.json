@@ -1,0 +1,25 @@
+{
+  "slug": "jiia",
+  "name": "JIIA \u00b7 Jio Intelligent Agentic shopping",
+  "tagline": "Agentic shopping on JioMart \u00b7 Google Cloud Next '26 keynote.",
+  "track": "jcp",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-09-01",
+  "last_release": null,
+  "verticals": [
+    "grocery"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/jcp#jiia",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "ai-agent",
+    "agentic",
+    "google-cloud"
+  ]
+}

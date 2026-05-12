@@ -1,0 +1,28 @@
+{
+  "slug": "companion-app",
+  "name": "Trends Companion App",
+  "tagline": "The biggest Sell milestone \u00b7 117 \u2192 3,000+ stores \u00b7 \u20b97.83 Cr platform fees.",
+  "track": "samarth",
+  "track_role": "headline",
+  "status": "Live",
+  "since": "2024-09-01",
+  "last_release": "2026-04-15",
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/#companion-app",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "mobile-app",
+    "in-store",
+    "loyalty",
+    "scan-and-go"
+  ]
+}

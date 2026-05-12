@@ -1,0 +1,126 @@
+{
+  "page": "granary/index.html",
+  "spec": "docs/granary-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_type": "delta (post-fix)",
+  "previous_audit": "docs/audits/granary-audit-2026-05-01.json",
+  "auditor_skills": ["website-tone-of-voice", "website-page-reviewer"],
+  "page_version_audited": "v0.9.1",
+  "previous_version": "v0.9.0",
+  "score": 92,
+  "grade": "A-",
+  "weighted_pass": true,
+  "dimensional_pass": true,
+  "verdict": "READY TO SHARE WITH APEX. All 12 findings from prior audit resolved. Source Traceability now passes its dimension threshold (was 65, now 90). Tone-of-voice and Cross-Page Consistency both upgraded. Page is honest about the lack of a current case-study source via the §04 Note paragraph rather than carrying inherited unverifiable claims.",
+  "dimensions": {
+    "source_traceability":   {"score": 90, "threshold": 75, "pass": true,  "delta": "+25"},
+    "tone_of_voice":         {"score": 95, "threshold": 80, "pass": true,  "delta": "+15"},
+    "honesty_register":      {"score": 95, "threshold": 80, "pass": true,  "delta": "+5"},
+    "structural_compliance": {"score": 95, "threshold": 85, "pass": true,  "delta": "0"},
+    "visual_completeness":   {"score": 95, "threshold": 85, "pass": true,  "delta": "0"},
+    "cross_page_consistency":{"score": 90, "threshold": 70, "pass": true,  "delta": "+20"}
+  },
+  "fixes_applied": [
+    {
+      "id": "S1",
+      "severity_resolved": "CRITICAL",
+      "what_changed": "Re-anchored §04 from 'Phase 1 results' to 'Phase 1 implementation · Cortex deck'. Removed all four instances of unsourced +3.8pp/-19.5%/-28% (hero, §01 last bullet, §04 tile block, §10 Apex log entry). Hero stat grid 1 now shows verifiable numbers (Forecast scale 48M, Pilot stores 11, Backend endpoints 33, UI routes 5/37). §04 now has a footnote acknowledging that quantitative outcomes are pending a citable case-study source.",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "S2",
+      "severity_resolved": "HIGH",
+      "what_changed": "Added inline link to /granary/research/transforming-retail-forecasting next to the MAPE 41% mention in §01 and §06 Demand Forecasting row. Added the research subpage as a new card in §11 Sources.",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "S3",
+      "severity_resolved": "LOW",
+      "what_changed": "§11 Sources card title and description updated to reflect the PDF's actual content ('Cortex: Unified Planning System · Phase 1 implementation deck' instead of 'Cortex Granary · Assortment & Forecasting case study'). Filename mismatch acknowledged inline.",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "T1",
+      "severity_resolved": "HIGH",
+      "what_changed": "'unlocks rollout' → 'opens scaling' (§05 ODBC card).",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "T2",
+      "severity_resolved": "HIGH",
+      "what_changed": "'drives smart replenishment' → 'runs smart replenishment' (hero subhead).",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "T3",
+      "severity_resolved": "MEDIUM",
+      "what_changed": "All 9 instances of 'today' resolved: 'Today, ~15-20% is built' → 'As of 30-Apr-2026, ~15-20% is built'; 'Deployed in SIT today' → 'Deployed in SIT'; 'Modules running today' → 'Modules in production'; 'What operators see today' → 'What operators see in production'; '5 of 37 routes wired today' → '5 of 37 routes wired'; 'mock data today' → 'mock data'; 'Validating today' → 'Validating · UAT'; section labels '01 · Status today' → '01 · Status (28-Apr-2026)' and '06 · The 13-module vision · built today vs full' → '06 · The 13-module vision · built vs full'; column header 'Built today' → 'Built'.",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "T4",
+      "severity_resolved": "LOW",
+      "what_changed": "Section labels and column headers cleaned up as part of T3 (no 'today' remaining anywhere on the page).",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "T5",
+      "severity_resolved": "LOW",
+      "what_changed": "'How Fynd transforms Reliance grocery' → 'How Fynd built this'. Removes 'transforms' in spirit of tone-of-voice §7 marketing-voice ban.",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "H1",
+      "severity_resolved": "LOW",
+      "what_changed": "Hero section-label 'Track 03 · Grocery AI Platform · Live + Building' → 'Track 03 · Grocery AI Platform · Phase 1'.",
+      "files_touched": ["granary/index.html"]
+    },
+    {
+      "id": "C1",
+      "severity_resolved": "HIGH",
+      "what_changed": "catalog/index.html:221 'Live · 10 Mumbai stores Phase 1 · Food + HPC SBU/Segment combos' → 'Live · 11 Mumbai stores Phase 1 · 10 segments (Food + HPC) · Smart Bazaar + Smart Point validating'. Also dropped the unsourced '−28% shelving events' from the Intelligent Assortment Rationalization row and replaced with verifiable feature description.",
+      "files_touched": ["catalog/index.html"]
+    },
+    {
+      "id": "C2",
+      "severity_resolved": "HIGH",
+      "what_changed": "Removed 'Price & Promotion Intelligence · Live' row from catalog (matches D4 from spec).",
+      "files_touched": ["catalog/index.html"]
+    },
+    {
+      "id": "C3",
+      "severity_resolved": "MEDIUM",
+      "what_changed": "Research subpage line 130 'The forecasts feed Cortex's daily prod deploys for the Maharashtra grocery rollout. 150+ users trained' → 'The forecasts feed Cortex's daily prod deploys for the 11-store Phase 1 pilot in Mumbai (10 segments · Food + HPC). ODBC + SAP integration in finalisation; rollout extends to 3K-4K stores once the data pipeline closes.'",
+      "files_touched": ["granary/research/transforming-retail-forecasting/index.html"]
+    },
+    {
+      "id": "BONUS-1",
+      "severity_resolved": "HIGH (caught during fix sweep)",
+      "what_changed": "catalog/index.html:228-229 '+3.8pp' and '−19.5%' Granary outcome tiles also unsourced — replaced with verifiable Phase-1 stats (11 stores, 33 endpoints, 5/37 routes).",
+      "files_touched": ["catalog/index.html"]
+    },
+    {
+      "id": "BONUS-2",
+      "severity_resolved": "HIGH (caught during fix sweep)",
+      "what_changed": "index.html:481 'Outcomes · Plan · −19.5% · Inventory value reduction · Granary Cortex case study' replaced with 'Plan · Granary · 11 / 4K · 11-store Mumbai pilot · Phase 1 of 4K-store rollout · 12K SKUs · 48M-row daily refresh' — sources only verifiable claims.",
+      "files_touched": ["index.html"]
+    },
+    {
+      "id": "BONUS-3",
+      "severity_resolved": "MEDIUM (caught during fix sweep)",
+      "what_changed": "index.html:337 'Assortment Intelligence · −28% shelving events · ...' replaced with 'Range Review · Classification matrix CX/CY/CZ · Margin-vs-Volume quadrants · multi-select delist with reason classification' — feature description instead of unsourced metric.",
+      "files_touched": ["index.html"]
+    }
+  ],
+  "page_version_bump": "v0.9.0 → v0.9.1 (nav pill + footer)",
+  "remaining_strengths": [
+    "Hero stat grid now sources every number from the dump folder (Apr-28 update + 30-Apr Status Report).",
+    "Honesty fulcrum (§06 13-module vision + §03 5-of-37 routes statement) intact.",
+    "§04 closing footnote demonstrates the honesty register in action — explicitly acknowledges the prior overclaim and what's pending.",
+    "Cross-page consistency: home + catalog + research subpage all reflect the current Phase-1 framing."
+  ],
+  "what_to_do_next": [
+    "When Aushin Ganguli files the next case-study deck with citable Phase-1 outcomes, add the numbers back to §04 with the actual source link, and add an Apex-log entry in §10. The §04 Note paragraph can be replaced.",
+    "If sibling pages (home page card on index.html line 600) need a stat-tile refresh too, no immediate gap — current copy is verifiable."
+  ]
+}

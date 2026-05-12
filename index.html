@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fynd × Reliance Retail · The AI Frontier</title>
+<meta name="description" content="Project Glass · 22 platforms · 1,056 people · Making Reliance Retail the world's first frontier autonomous retailer." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+/* REVAMP LAYER - Open Design workflow - v0.8.4
+   All colours reference existing brand tokens from style.css :root.
+   No new colours introduced. Content preserved verbatim. */
+
+/* Sticky in-page TOC */
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.story-toc-inner::-webkit-scrollbar { display: none; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; text-decoration: none; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--accent); background: var(--accent-soft); }
+
+/* Hero */
+.hero-grad { background: radial-gradient(ellipse at top, rgba(107,91,214,0.06) 0%, transparent 60%); }
+.hero-subhead { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 32px; }
+
+/* Hero ambient blobs */
+.hero-ambient { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); }
+.hero-blob-1 { width: 600px; height: 600px; background: var(--accent-soft); top: -100px; right: -100px; animation: blob-drift-a 12s ease-in-out infinite; opacity: 0.5; }
+.hero-blob-2 { width: 400px; height: 400px; background: var(--bg-soft); bottom: -80px; left: 10%; animation: blob-drift-b 12s ease-in-out infinite; opacity: 0.6; }
+@keyframes blob-drift-a { 0%,100% { opacity: 0.4; transform: translate(0,0) scale(1); } 33% { opacity: 0.6; transform: translate(20px,-10px) scale(1.02); } 66% { opacity: 0.3; transform: translate(-10px,15px) scale(0.98); } }
+@keyframes blob-drift-b { 0%,100% { opacity: 0.5; transform: translate(0,0) scale(1); } 50% { opacity: 0.7; transform: translate(15px,-8px) scale(1.03); } }
+
+/* Hero UI panels */
+.hero-panels { position: relative; height: 480px; }
+.hero-panel { position: absolute; background: white; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(10,10,10,0.06), 0 2px 8px rgba(10,10,10,0.04); }
+.hero-panel-bar { height: 36px; background: var(--bg-soft); border-bottom: 1px solid var(--border-soft); display: flex; align-items: center; padding: 0 14px; gap: 6px; }
+.hero-panel-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); }
+.hero-panel-title { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--caption); letter-spacing: 0.04em; margin-left: 6px; }
+.hero-panel-body { padding: 16px; }
+.hero-panel-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-soft); font-size: 12px; }
+.hero-panel-row:last-child { border-bottom: none; }
+.hero-panel-label { color: var(--ink-muted); font-size: 11px; }
+.hero-panel-value { font-weight: 600; color: var(--ink); font-size: 13px; }
+.hero-panel-accent { color: var(--accent); }
+.hero-panel-green { color: var(--green); }
+.hero-panel-1 { width: 280px; top: 0; right: 40px; animation: panel-drift-a 8s ease-in-out infinite; }
+.hero-panel-2 { width: 240px; top: 160px; left: 0; animation: panel-drift-b 14s ease-in-out infinite; }
+.hero-panel-3 { width: 220px; bottom: 0; right: 0; animation: panel-drift-a 11s ease-in-out infinite; animation-delay: -3s; }
+@keyframes panel-drift-a { 0%,100% { transform: translateY(0px) translateX(0px); } 50% { transform: translateY(-8px) translateX(4px); } }
+@keyframes panel-drift-b { 0%,100% { transform: translateY(0px) translateX(0px); } 50% { transform: translateY(6px) translateX(-5px); } }
+
+/* Hero layout */
+.hero-inner { position: relative; z-index: 1; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } .hero-panels { display: none; } }
+
+/* Impact */
+.impact-preface { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; text-align: center; margin-bottom: 16px; line-height: 1.6; }
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Org highlight */
+.org-highlight-num { font-size: clamp(32px, 3vw, 48px); color: var(--ink); }
+.org-highlight-cap { font-size: 12px; color: var(--caption); margin-top: 8px; line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; min-height: 48px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.lens-bullet { font-size: 14px; line-height: 1.55; color: var(--ink); margin-bottom: 16px; }
+.lens-bullet strong { font-weight: 600; }
+.lens-bullet-meta { color: var(--ink-muted); display: block; margin-top: 4px; font-size: 13px; }
+
+/* Filter chips */
+.filter-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; background: white; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; font-weight: 500; color: var(--ink); cursor: pointer; transition: all 0.15s; user-select: none; white-space: nowrap; }
+.filter-chip:hover { border-color: var(--ink); }
+.filter-chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+.filter-chip .ct { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.7; }
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">x</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL &middot; JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link active">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&amp;L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP &amp; Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0-L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc" data-od-id="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#impact">01 &middot; Impact</a>
+<a href="#impetus">02 &middot; Impetus</a>
+<a href="#jcp">03 &middot; JCP</a>
+<a href="#ucp">04 &middot; UCP &amp; Marketing</a>
+<a href="#granary">05 &middot; Granary</a>
+<a href="#special-projects">06 &middot; Special Projects</a>
+<a href="#ai-native">07 &middot; AI-Native</a>
+<a href="#recent-innovations">08 &middot; Recent</a>
+<a href="#organisation">09 &middot; Organisation</a>
+<a href="#explore">10 &middot; Every Platform</a>
+</div>
+</div>
+
+<!-- HERO -->
+<section class="hero-grad pt-32 pb-32 border-b" style="border-color: var(--border); position: relative; overflow: hidden;" data-od-id="hero">
+<div class="hero-ambient" aria-hidden="true">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+</div>
+<div class="max-w-7xl mx-auto px-6 hero-inner">
+  <div class="hero-grid">
+    <div>
+      <div class="mb-10">
+        <div class="cap-num mb-3">Confidential &middot; For Apex leadership</div>
+      </div>
+      <h1 class="display max-w-6xl mb-6 text-left" style="font-size: clamp(48px, 8vw, 96px); line-height: 0.95; color: var(--ink);">
+        Making Reliance Retail<br/><span style="color: var(--accent);">World's First Frontier Autonomous Retailer</span>
+      </h1>
+      <div class="hero-subhead">22 platforms &middot; live &middot; in production &middot; scroll for the proof.</div>
+      <div class="flex flex-wrap gap-3 max-w-4xl">
+        <a href="#impact" class="btn-primary">Explore 22 platforms <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    </div>
+    <div class="hero-panels" aria-hidden="true">
+      <div class="hero-panel hero-panel-1">
+        <div class="hero-panel-bar">
+          <div class="hero-panel-dot"></div><div class="hero-panel-dot"></div><div class="hero-panel-dot"></div>
+          <span class="hero-panel-title">JCP &middot; Live Metrics</span>
+        </div>
+        <div class="hero-panel-body">
+          <div class="hero-panel-row"><span class="hero-panel-label">Orders / day</span><span class="hero-panel-value hero-panel-accent">700 K+</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">Peak / minute</span><span class="hero-panel-value">50 K+</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">Channels live</span><span class="hero-panel-value hero-panel-green">68 / 78</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">Customers</span><span class="hero-panel-value">200 M+</span></div>
+        </div>
+      </div>
+      <div class="hero-panel hero-panel-2">
+        <div class="hero-panel-bar">
+          <div class="hero-panel-dot"></div><div class="hero-panel-dot"></div><div class="hero-panel-dot"></div>
+          <span class="hero-panel-title">Impetus &middot; F&amp;L AI</span>
+        </div>
+        <div class="hero-panel-body">
+          <div class="hero-panel-row"><span class="hero-panel-label">Pieces shipped FY 26</span><span class="hero-panel-value hero-panel-accent">15.08 Cr</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">POs automated</span><span class="hero-panel-value">460 K+</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">Articles packed / day</span><span class="hero-panel-value">720 K</span></div>
+        </div>
+      </div>
+      <div class="hero-panel hero-panel-3">
+        <div class="hero-panel-bar">
+          <div class="hero-panel-dot"></div><div class="hero-panel-dot"></div><div class="hero-panel-dot"></div>
+          <span class="hero-panel-title">Platform Status</span>
+        </div>
+        <div class="hero-panel-body">
+          <div class="hero-panel-row"><span class="hero-panel-label">Platforms live</span><span class="hero-panel-value hero-panel-green">22</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">AI agents deployed</span><span class="hero-panel-value hero-panel-accent">1 K+</span></div>
+          <div class="hero-panel-row"><span class="hero-panel-label">People building</span><span class="hero-panel-value">1,056</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 01 IMPACT -->
+<section id="impact" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="impact">
+<div class="max-w-7xl mx-auto px-6">
+<div class="impact-preface">
+Reliance Retail &middot; $39 B FY 25 &middot; 19,979 stores &middot; 378 M+ customers &middot; #1 in Grocery, Electronics, Fashion (India)
+</div>
+<div class="text-center mb-16">
+<div class="section-label mb-3">01 &middot; IMPACT</div>
+<h2 class="display-2 text-3xl md:text-5xl mt-3" style="color: var(--ink); max-width: 800px; margin: 0 auto;">
+Fynd is the AI-native operating layer underneath.
+</h2>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">380 M+</div><div class="impact-tile-cap">Customer identities unified across Reliance Retail &middot; UCP foundation across 100 % of formats (RR registered customers &middot; 387 M)</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">100+</div><div class="impact-tile-cap">Brands replatformed to Jio Commerce Platform &middot; 78 channels &middot; 68 live &middot; 700 K+ orders / day</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">15.08 Cr</div><div class="impact-tile-cap">Pieces delivered FY 26 via Impetus F&amp;L &middot; 11.06 L POs FY 26 &middot; 43 brands live</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">88 %+</div><div class="impact-tile-cap">Positive customer engagement &middot; AJIO ZIP agentic shopping &middot; 86 % chat-driven discovery on 2 M+ products</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">20 K+</div><div class="impact-tile-cap">Stores connected on JCP across the Reliance Retail estate</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">22</div><div class="impact-tile-cap">Platforms running today &middot; across Plan &middot; Buy &middot; Make &middot; Move &middot; Sell &middot; Data &middot; Store Health &middot; HR Tech</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">1 K+</div><div class="impact-tile-cap">Vendors transacting on Impetus across the Reliance F&amp;L supply base</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">2.3 K+</div><div class="impact-tile-cap">Reliance employees trained across platforms</div></div>
+<div class="card impact-tile" data-reveal><div class="num-display impact-tile-num">1.2 K+</div><div class="impact-tile-cap">Developer contributors across Jio Commerce Platform + Impetus</div></div>
+</div>
+</div>
+</section>
+
+<!-- 02 IMPETUS -->
+<section id="impetus" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="impetus">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 &middot; IMPETUS</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">F&amp;L from design to shelf in 21 days &middot; <span style="color: var(--accent);">one AI-native platform.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">15.08 Cr</div><div class="section-hero-cap">Pieces shipped FY 26</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Plan &middot; Buy &middot; Make &middot; Sell on a single fabric for Fashion &amp; Lifestyle. 11.06 L POs FY 26 &middot; 460 K+ POs automated &middot; 720 K articles packed / day. Five named AI Agents &mdash; <a href="/agents/cortex-planning/" style="color: var(--accent); text-decoration: underline;">Cortex Planning</a> &middot; <a href="/agents/retail-vista/" style="color: var(--accent); text-decoration: underline;">Retail Vista</a> &middot; <a href="/agents/category-intelligence/" style="color: var(--accent); text-decoration: underline;">Category Intelligence</a> &middot; <a href="/agents/trend-to-design/" style="color: var(--accent); text-decoration: underline;">Trend-to-Design</a> &middot; <a href="/agents/agentic-marketing/" style="color: var(--accent); text-decoration: underline;">Marketing</a>.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+<a href="/impetus/cortex" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Cortex</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">One screen, the whole F&amp;L business &middot; refreshed daily, with AI that explains why a number moved, not just that it moved.</div><div class="platform-card-foot"><span class="platform-card-tag">Plan/Design</span></div><div class="platform-card-metric mt-3">F&amp;L on one screen</div></a>
+<a href="/impetus/intelliverse" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Vendor Management Platform</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">The backbone of how goods move from suppliers to stores &middot; PO &rarr; Make &rarr; QC &rarr; Pack &rarr; Ship &middot; PO-to-Shipping cut from 55 &rarr; 30 days.</div><div class="platform-card-foot"><span class="platform-card-tag">Buy/Make</span></div><div class="platform-card-metric mt-3">3,867 vendors &middot; 55 &rarr; 30 days</div></a>
+<a href="/impetus/companion-app" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Companion App</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">In-store customer app &middot; detects store entry &rarr; outfit combinations &middot; virtual try-on &middot; scan to check size availability &middot; complete payment without assistance.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">Self-serve in-store ordering</div></a>
+<a href="/impetus/analytics" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Impetus Command Center</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Real-time dashboards across the full journey: planning, design, pricing, supply chain, payments. The data layer that powers Ask Impetus.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">Plan / Design / Pricing / SC / Pay</div></a>
+</div>
+<a href="/impetus" class="btn-secondary">Open Impetus <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 03 JCP -->
+<section id="jcp" class="py-32 border-b" style="border-color: var(--border); background: var(--bg-soft);" data-od-id="jcp">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 &middot; JIO COMMERCE PLATFORM</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Enterprise commerce platform &middot; <span style="color: var(--accent);">powering Reliance Retail.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">100+</div><div class="section-hero-cap">Brands on one commerce stack</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Enterprise-grade commerce platform supporting large-scale operations for Reliance Retail. 78 channels &middot; 68 live &middot; 30 K+ stores served &middot; 700 K+ orders / day &middot; 50 K+ orders / minute peak &middot; 200 M+ customers. Hosts AJIO, JioMart, Reliance Digital, Tira, Trends and 100+ other brands across 10 clusters (website, in-store, marketplace, OMS). AJIO ZIP, agentic shopping inside JCP, at 88 % positive engagement.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+<a href="/jcp/channels" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Channels Overview</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">78 channels across 10 clusters: Ajio, FP, JMD, JMP, JioMart, Netmeds, SNG, Swadesh, Tira. 68 live &middot; 5 in progress &middot; 5 in planning.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span><span class="platform-card-tag">Move</span></div><div class="platform-card-metric mt-3">78 channels &middot; 68 live</div></a>
+<a href="/jcp/cataloging" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">AI Cataloging</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">AI-powered catalog enrichment across the JCP estate. 15 days &rarr; 5 hours per brand &middot; face-consistent &middot; scalable photoshoot library.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">15 days &rarr; 5 hours</div></a>
+<a href="/jcp/release-notes" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Release Notes</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Monthly release log of every shipped capability across Payments, OMS, Storefront, Search, Logistics &middot; 2025-26.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">2025-26 cumulative</div></a>
+</div>
+<a href="/jcp" class="btn-secondary">Open JCP <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 04 UCP -->
+<section id="ucp" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="ucp">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 &middot; UCP &amp; MARKETING OS</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Every Reliance Retail customer &middot; <span style="color: var(--accent);">one profile &middot; ready to act on.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">380 M+</div><div class="section-hero-cap">Customers &middot; one profile</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>380 M+ customers, across AJIO, JioMart, Reliance Digital, Trends, Tira, Smart Bazaar and 75+ other formats, unified into a single profile. The marketing layer above decides what to send to whom and when, in real time. Campaign cycles that took weeks now run in minutes, with offers personalised per customer per moment. Lower acquisition cost &middot; higher repeat spend &middot; fewer wasted touches.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+<a href="/ucp" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">UCP Foundation</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Identity, profile, real-time activation across every format. The single source of truth for every Reliance Retail customer.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">100 % of formats</div></a>
+<a href="/ucp" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Marketing Cockpits</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Marketing Intelligence &middot; Brand Health &middot; JCP Coupons &middot; Self-serve scale-up. Plan-aware KPIs, grounded AI diagnostics, talk-to-data layer.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">Cockpits this quarter</div></a>
+<a href="/ucp" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">AI-Native UCP</div><span class="pill pill-phase2">ROADMAP</span></div><div class="platform-card-desc">Speak-to-data &rarr; cohort &rarr; campaign &rarr; creative &rarr; execution &rarr; retro &middot; all conversational. The complete CDP in one chat interface.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">Next horizon</div></a>
+</div>
+<a href="/ucp" class="btn-secondary">Open UCP &amp; Marketing OS <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 05 GRANARY -->
+<section id="granary" class="py-32 border-b" style="border-color: var(--border); background: var(--bg-soft);" data-od-id="granary">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 &middot; GRANARY</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Agentic planning + assortment <span style="color: var(--accent);">for Grocery.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">11 stores</div><div class="section-hero-cap">Mumbai pilot &middot; MAPE 41 %</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>48 M-row daily forecast across 12 K SKUs x 4 K stores. Live across an 11-store Mumbai pilot (Smart Bazaar + Smart Point) at MAPE 41 % (Phase 1, 28 - Apr - 2026). Cortex Planning (Assortment Intelligence + MBQ Automation + Range Review) live; STP, CDT, Consensus Forecasting on the roadmap. 12,000+ stores served via the wider Granary stack.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 gap-3 mb-8 max-w-xl">
+<a href="/granary" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Granary</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic planning + assortment for Grocery &middot; 48 M-row daily forecast &middot; MAPE 41 % across the 11-store Mumbai pilot.</div><div class="platform-card-foot"><span class="platform-card-tag">Plan/Design</span><span class="platform-card-tag">Buy/Make</span></div><div class="platform-card-metric mt-3">Phase 1 &middot; 28 - Apr - 2026</div></a>
+</div>
+<a href="/granary" class="btn-secondary">Open Granary <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 06 SPECIAL PROJECTS -->
+<section id="special-projects" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="special-projects">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 &middot; SPECIAL PROJECTS</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Six projects beyond the platforms &middot; <span style="color: var(--accent);">taken on by Fynd, shipped for Reliance.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">6</div><div class="section-hero-cap">Builds for Reliance</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Net-new builds where Fynd took on a problem Reliance hadn't yet solved. ALP for new-store opening. RetailVista for site intelligence. Retail Jarvis for non-intrusive CX sensing. Samarth Plus for the frontline career platform. HireFirst for AI-native hiring. SwapEasy for in-store re-commerce.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+<a href="/alp" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">ALP &middot; Asset Lifecycle</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">NSO platform for RR. Lead &rarr; site visit &rarr; approvals &rarr; legal &rarr; fit-out &rarr; hand-off. 6 of 9 Phase 1 initiatives done.</div><div class="platform-card-foot"><span class="platform-card-tag">New Store</span></div><div class="platform-card-metric mt-3">GJ-cluster pilot &middot; Apr - 2026</div></a>
+<a href="/retail-vista" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">RetailVista</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic geospatial intelligence. Internal Track live (Opportunity Explorer &middot; 68 scored leads). Three tracks across UCP, Google Vertex AI, JioGIS.</div><div class="platform-card-foot"><span class="platform-card-tag">New Store</span><span class="platform-card-tag">Plan/Design</span></div><div class="platform-card-metric mt-3">3 tracks &middot; 24 data categories</div></a>
+<a href="/retail-jarvis" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Retail Jarvis</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Predictive non-intrusive CX sensing. Anchor demo on Store 5943 (Mumbai Infinity Malad). Signals &rarr; engine &rarr; playbooks.</div><div class="platform-card-foot"><span class="platform-card-tag">Store Health</span></div><div class="platform-card-metric mt-3">4 scores &middot; Readiness/CX/Friction/Churn</div></a>
+<a href="/samarth" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Samarth Plus</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Career platform for the RR frontline. Served inside People First. 5 career levels &middot; 3 formats &middot; SCORM-compliant.</div><div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div><div class="platform-card-metric mt-3">Prod cutover &middot; Apr - 2026</div></a>
+<a href="/hirefirst" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">HireFirst (Orion)</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Reliance HR Tech &middot; AI-Native Hiring OS. AI score calibration &middot; Apollo enrichment.</div><div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div><div class="platform-card-metric mt-3">SIT live &middot; prod sign-off 15 - Jun - 2026</div></a>
+<a href="/swapeasy" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">SwapEasy</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">RR's in-store re-commerce platform. SAP-traceable &middot; 41 liquidation partners &middot; ~&#8377;85 L wallet &middot; Apple 16+ pilot 10.5 % attach.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">625 RD + 983 MJS &middot; &#8377;3.23 Cr Feb '26</div></a>
+</div>
+<a href="#explore?filter=special-projects" class="btn-secondary">Open every special project <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 07 AI-NATIVE -->
+<section id="ai-native" class="py-32 border-b" style="border-color: var(--border); background: var(--bg-soft);" data-od-id="ai-native">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 &middot; AI-NATIVE PLATFORMS</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Agentic Automation <span style="color: var(--accent);">+ Agentic Commerce.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">88 %</div><div class="section-hero-cap">Positive engagement &middot; AJIO ZIP</div></div>
+<div>
+<p class="text-base mb-4" style="color: var(--ink); line-height: 1.7;" data-reveal><strong>Agentic Automation</strong> &middot; Boltic &middot; PixelBin &middot; Ratl. The platforms that automate work, not workflows.</p>
+<p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal><strong>Agentic Commerce</strong> &middot; Kaily, live in JioMart (JIIA) and AJIO (ZIP). Agents that talk, think, act inside the customer journey.</p>
+</div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
+<a href="/boltic" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Boltic</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic-automation OS. Workflows &middot; AI Agents &middot; MCP &middot; Serverless &middot; Gateway &middot; Storage &middot; Tables &middot; Monitoring. SOC 2 + GDPR.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">8 modules &middot; 500+ integrations</div></a>
+<a href="/pixelbin" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">PixelBin</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">AI-native visual production. PixelBin (transforms) &middot; Fynd Studios (AI ads) &middot; GlamAR (AR/VR commerce). Live across Sephora, Vision Express, West Elm, Reliance Jewels.</div><div class="platform-card-foot"><span class="platform-card-tag">Buy/Make</span><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">100 K images &middot; 50+ AI ads &middot; 200+ AR/VR</div></a>
+<a href="/ratl" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Ratl</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic quality OS. AI agents test APIs, web, mobile, perf end-to-end. 70-80 % faster release cycles &middot; 0 &rarr; 100 % automation across 33+ services and 85+ storefronts.</div><div class="platform-card-foot"><span class="platform-card-tag">Data</span></div><div class="platform-card-metric mt-3">1,300 test cases &middot; AJIO x JCP</div></a>
+<a href="/kaily" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Kaily &middot; Agentic Commerce</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic shopping + service. Talks &middot; Thinks &middot; Acts. Live in AJIO ZIP, JioMart (JIIA), Netmeds Assistant.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">88 % AJIO ZIP &middot; 96 % Netmeds (850 K msgs)</div></a>
+</div>
+<a href="#explore" class="btn-secondary">Open every AI-Native platform <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 08 RECENT INNOVATIONS -->
+<section id="recent-innovations" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="recent-innovations">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">08 &middot; RECENT INNOVATIONS</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">The next horizon &middot; <span style="color: var(--accent);">already shipping.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">7 days</div><div class="section-hero-cap">Order &rarr; doorstep &middot; Fynd Horizon MTO</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Fynd Horizon &middot; Ultra Fast Retail &middot; made-to-measure in 24 hours &middot; live at RCP and Mumbai cluster. AutRi &middot; agentic planogram compliance &middot; Phase 1 live at FreshPik Powai with Fynd Nucleus. Dark Factory &middot; lights-out micro-factory + Mobile Neo Tailor app inside AJIO &middot; 200 pieces / day &middot; alpha pending.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
+<a href="/fynd-horizon" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Fynd Horizon</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Ultra Fast Retail &middot; made-to-measure in 24 hours. Live at RCP (31 - Mar - 2026) and Mumbai cluster (27 - Apr - 2026). Tirupur MTO factory cycle running.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">50 K+ SKUs / store &middot; 98.3 % body-scan accuracy</div></a>
+<a href="/autri" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">AutRi &middot; On-shelf Robotics</div><span class="pill pill-pilot">PILOT</span></div><div class="platform-card-desc">Agentic planogram compliance. AutRi captures shelves &middot; GMetri reads &middot; Command Centre routes fix to PulsePoint. Phase 1 live at FreshPik Powai with Fynd Nucleus.</div><div class="platform-card-foot"><span class="platform-card-tag">Move</span></div><div class="platform-card-metric mt-3">95 %+ shelf compliance &middot; 98 % SKU recog.</div></a>
+<a href="/dark-factory" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Dark Factory &middot; MTM</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Lights-out micro-factory + Mobile Neo Tailor app inside AJIO. 30 - sec phone scan &middot; 3D fit preview &middot; stitched in Bangalore &middot; delivered in 7 days. Alpha pending.</div><div class="platform-card-foot"><span class="platform-card-tag">Buy/Make</span></div><div class="platform-card-metric mt-3">7-day MTM &middot; 200 pieces / day &middot; alpha pending</div></a>
+</div>
+<a href="#explore" class="btn-secondary">Open every Recent Innovation <span aria-hidden="true">&rarr;</span></a>
+</div>
+</section>
+
+<!-- 09 ORGANISATION -->
+<section id="organisation" class="py-32 border-b" style="border-color: var(--border); background: var(--bg-soft);" data-od-id="organisation">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">09 &middot; ORGANISATION</div>
+<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">The team behind <span style="color: var(--accent);">22 platforms.</span></h2>
+<div class="section-hero-split">
+<div><div class="num-display section-hero-num">1,056</div><div class="section-hero-cap">People building Fynd &middot; 14 years</div></div>
+<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Founder-led. Engineering-heavy. AI-native by design. 1,056 people &middot; 14 years building &middot; 66 % product builders. The same team that turned 0 to $ 2.5 B platform GMV (~&#8377; 20,000 Cr) is now turning every workflow autonomous.</p></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
+<div class="card p-5" data-reveal><div class="num-display org-highlight-num">1,056</div><div class="org-highlight-cap">People &middot; founder-led &middot; ~ 200 in 2014 &rarr; 1,056 in 2026</div></div>
+<div class="card p-5" data-reveal><div class="num-display org-highlight-num">66 %</div><div class="org-highlight-cap">Product Builders &middot; Engineering &middot; Product &middot; Design &middot; Data &middot; QA &middot; Research</div></div>
+<div class="card p-5" data-reveal><div class="num-display org-highlight-num">78 %</div><div class="org-highlight-cap">Use AI daily &middot; 66 % advanced &middot; 7,989 hrs / wk saved on Claude</div></div>
+<div class="card p-5" data-reveal><div class="num-display org-highlight-num">10</div><div class="org-highlight-cap">Core Values &middot; disagree but commit &middot; brutal honesty &middot; ethical &amp; accountable</div></div>
+</div>
+<div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+<a href="/organisation" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Organisation</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Founders &middot; CTPOs &middot; CBOs &middot; the leadership stack + the employee directory.</div><div class="platform-card-foot"><span class="platform-card-tag">Culture</span></div></a>
+<a href="/culture" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Culture</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Values, rituals, and what it means to build at Fynd.</div><div class="platform-card-foot"><span class="platform-card-tag">Culture</span></div></a>
+<a href="/ai-native" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">AI-Native Engineering</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">How Fynd builds now &middot; autocomplete &rarr; IDE pair &rarr; agent-led SDLC. The repo is the operating system.</div><div class="platform-card-foot"><span class="platform-card-tag">Culture</span></div></a>
+<a href="/fynd-academy" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Fynd Academy</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Talent + training &middot; 600+ trained &middot; 5 Reliance entities served &middot; all sessions on request.</div><div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div></a>
+</div>
+</div>
+</section>
+
+<!-- 10 EVERY PLATFORM -->
+<section id="explore" class="py-32 border-b" style="border-color: var(--border); background: var(--bg-soft);" data-od-id="explore">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-baseline justify-between gap-8 flex-wrap mb-10">
+<div class="max-w-2xl">
+<div class="section-label mb-4">10 &middot; EVERY PLATFORM</div>
+<h2 class="display-2 text-4xl md:text-6xl mb-6" style="color: var(--ink);">Twenty-two platforms.<br/><span style="color: var(--accent);">Pick a layer.</span></h2>
+</div>
+<div class="text-sm mono" style="color: var(--ink-muted);" id="explore-count">22 platforms shown</div>
+</div>
+<div class="flex flex-wrap gap-2 mb-10" id="filter-chips" role="tablist" aria-label="Filter platforms by stack layer or track">
+<button type="button" class="filter-chip active" data-filter="all">All <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="sell">Sell <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="move">Move <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="make">Buy / Make <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="plan">Plan / Design <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="data">Data &amp; Feedback <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="store-health">Store Health <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="new-store">New Store <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="hr-tech">HR Tech <span class="ct"></span></button>
+<button type="button" class="filter-chip" data-filter="special-projects">Special Projects <span class="ct"></span></button>
+</div>
+<div id="platform-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"></div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>&copy; 2026 RRVL &middot; Jio Platforms Limited &middot; Fynd &middot; Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function(){
+  const PLATFORMS = [
+    { href: '/jcp',           name: 'JCP \u00b7 Jio Commerce Platform', layers: ['sell','move'],          status: 'Live',  metric: '78 channels \u00b7 68 live \u00b7 700K+ orders/day',  desc: "The commerce spine across every Reliance Retail B2C + B2B brand. 105 brands \u00b7 10 verticals \u00b7 200M+ customers \u00b7 30K+ stores." },
+    { href: '/impetus',       name: 'Impetus \u00b7 F&L AI Platform',  layers: ['plan','make','sell'],   status: 'Live',  metric: '15 sub-platforms \u00b7 11.06L POs FY26',        desc: 'F&L AI platform \u00b7 Plan \u00b7 Buy \u00b7 Make \u00b7 Sell. 2,000+ users. 1,06,892 options designed. 15.08 Cr pieces delivered FY26.' },
+    { href: '/granary',       name: 'Granary \u00b7 Grocery AI',       layers: ['plan','make','move','sell'], status: 'Live',  metric: 'Phase 1 \u00b7 11 Mumbai stores \u00b7 MAPE 41%',     desc: 'Agentic planning + assortment for grocery. 48M-row daily forecast across 12K SKUs \u00d7 4K stores. Smart Bazaar + Smart Point pilot.' },
+    { href: '/ucp',           name: 'UCP & Marketing OS',         layers: ['data'],                  status: 'Live',  metric: '380M+ identities \u00b7 1.5M RPOS/day',          desc: 'One identity layer across 100% RR formats. 200+ profile attributes. Marketing OS cockpits climbing to L4 agentic.' },
+    { href: '/alp',           name: 'ALP \u00b7 Asset Lifecycle',      layers: ['new-store'],             track: 'special-projects', status: 'Live',  metric: 'GJ-cluster pilot \u00b7 Apr - 2026',             desc: 'NSO platform for RR. Lead \u2192 site visit \u2192 approvals \u2192 legal \u2192 fit-out \u2192 hand-off. 6 of 9 Phase 1 initiatives done.' },
+    { href: '/retail-vista',  name: 'RetailVista',                layers: ['new-store','plan'],      track: 'special-projects', status: 'Live',  metric: '24 data categories on H3 hex \u00b7 3 tracks',   desc: 'Agentic geospatial intelligence. Internal Track live (Opportunity Explorer \u00b7 68 scored leads).' },
+    { href: '/retail-jarvis', name: 'Retail Jarvis',              layers: ['store-health'],          track: 'special-projects', status: 'Build', metric: '4 scores \u00b7 Readiness/CX/Friction/Churn',    desc: 'Predictive non-intrusive CX sensing. Anchor demo on Store 5943 (Mumbai Infinity Malad). Signals \u2192 engine \u2192 playbooks.' },
+    { href: '/samarth',       name: 'Samarth Plus',               layers: ['hr-tech'],               track: 'special-projects', status: 'Live',  metric: 'Prod cutover \u00b7 Apr - 2026 \u00b7 TA \u2192 DM ladder', desc: "Career platform for the RR frontline. Served inside People First. 5 career levels \u00b7 3 formats \u00b7 SCORM-compliant." },
+    { href: '/forge',         name: 'Forge \u00b7 Manufacturing OS',   layers: ['make'],                  track: 'special-projects', status: 'Pilot', metric: 'NeoLync Tirupati \u00b7 ~1,000 units/day',       desc: 'AI-native Manufacturing OS. Plan \u2192 Buy/Source \u2192 Assemble \u2192 Move on one fabric. 100% on-premise \u00b7 50+ operators.' },
+    { href: '/hirefirst',     name: 'HireFirst (Orion)',          layers: ['hr-tech'],               track: 'special-projects', status: 'Live',  metric: 'SIT live \u00b7 prod sign-off 15 - Jun - 2026',  desc: 'Reliance HR Tech \u00b7 AI-Native Hiring OS. AI score calibration \u00b7 Apollo enrichment.' },
+    { href: '/swapeasy',      name: 'SwapEasy',                   layers: ['sell'],                  track: 'special-projects', status: 'Live',  metric: "625 RD + 983 MJS \u00b7 \u20b93.23 Cr Feb '26",       desc: "RR's in-store re-commerce platform. SAP-traceable \u00b7 41 liquidation partners \u00b7 ~\u20b985 L wallet \u00b7 Apple 16+ pilot 10.5% attach." },
+    { href: '/tms',           name: 'Fynd TMS \u00b7 QC OS',           layers: ['move'],                  status: 'Live',  metric: 'JioMart 1000+ locations \u00b7 100% uptime',     desc: "Transport spine behind JioMart's 10\u201330 min promise. Also runs RBL furniture (West Elm + Pottery Barn \u00b7 4 cities) and Netmeds in-house fleet." },
+    { href: '/fynd-konnect',  name: 'Fynd Konnect',               layers: ['sell','move'],           status: 'Live',  metric: '~800 brands on JioMart \u00b7 25+ marketplaces', desc: "Integration backbone for the Reliance ecosystem. 3-4 lakh shipments/month. 13 RBL SAP/TIBCO deliveries May '25 - May '26. 50+ pre-built integrations." },
+    { href: '/boltic',        name: 'Boltic',                     layers: ['data'],                  status: 'Live',  metric: '8 modules \u00b7 500+ integrations',             desc: 'Agentic-automation OS. Workflows \u00b7 AI Agents \u00b7 MCP \u00b7 Serverless \u00b7 Gateway \u00b7 Storage \u00b7 Tables \u00b7 Monitoring. SOC 2 + GDPR.' },
+    { href: '/pixelbin',      name: 'PixelBin',                   layers: ['make','sell'],           status: 'Live',  metric: '100K images \u00b7 50+ AI ads \u00b7 200+ AR/VR',     desc: 'AI-native visual production. Three sub-products: PixelBin (transforms) \u00b7 Fynd Studios (AI ads) \u00b7 GlamAR (AR/VR commerce). Live across Sephora, Vision Express, West Elm, Reliance Jewels.' },
+    { href: '/ratl',          name: 'Ratl',                       layers: ['data'],                  status: 'Live',  metric: '1,300 test cases \u00b7 AJIO \u00d7 JCP',             desc: 'Agentic quality OS. AI agents test APIs, web, mobile, perf end-to-end. 70-80% faster release cycles \u00b7 0 \u2192 100% automation across 33+ services and 85+ storefronts.' },
+    { href: '/kaily',         name: 'Kaily \u00b7 Agentic Commerce',   layers: ['sell'],                  status: 'Live',  metric: '88% AJIO ZIP \u00b7 96% Netmeds (850K msgs)',    desc: "Agentic shopping + service. Talks \u00b7 Thinks \u00b7 Acts. Live in AJIO ZIP, JioMart (JIIA), Netmeds Assistant." },
+    { href: '/kio',           name: 'Fynd Kio \u00b7 Self-checkout',   layers: ['sell'],                  status: 'Live',  metric: '3\u00d7 faster than POS',                        desc: 'Self-checkout kiosk hardware. Production hardware live at Malad. Built on Fynd Swift Module for OTA fleet management.' },
+    { href: '/autri',         name: 'AutRi \u00b7 On-shelf Robotics',  layers: ['move'],                  status: 'Pilot', metric: '95%+ shelf compliance \u00b7 98% SKU recog.',    desc: 'Agentic planogram compliance. AutRi captures shelves \u00b7 GMetri reads \u00b7 Command Centre routes fix to PulsePoint. Phase 1 live at FreshPik Powai with Fynd Nucleus.' },
+    { href: '/dark-factory',  name: 'Dark Factory \u00b7 MTM',         layers: ['make'],                  status: 'Build', metric: '7-day MTM \u00b7 200 pieces / day \u00b7 alpha pending', desc: 'Lights-out micro-factory + Mobile Neo Tailor app inside AJIO. 30 - sec phone scan, 3D fit preview, stitched in Bangalore, delivered in 7 days. Alpha pending.' },
+    { href: '/fynd-horizon',  name: 'Fynd Horizon',               layers: ['sell'],                  status: 'Build', metric: '50K+ SKUs/store \u00b7 98.3% body-scan accuracy', desc: 'Ultra Fast Retail \u00b7 made-to-measure in 24 hours. Live at RCP (31 - Mar - 2026) and Mumbai cluster (27 - Apr - 2026). Tirupur MTO factory cycle running.' },
+    { href: '/fynd-academy',  name: 'Fynd Academy',               layers: ['hr-tech'],               status: 'Live',  metric: '600+ trained \u00b7 6 sessions \u00b7 4.6 / 5',       desc: 'Talent + training. 5 Reliance entities served \u00b7 RIL L&D \u00b7 RCP \u00b7 Reliance Jewels \u00b7 HSEF \u00b7 Reliance Marketing. All sessions on request.' }
+  ];
+
+  const grid    = document.getElementById('platform-grid');
+  const chips   = document.querySelectorAll('#filter-chips .filter-chip');
+  const counter = document.getElementById('explore-count');
+
+  function statusClass(s){
+    if (s === 'Live')  return 'pill pill-live';
+    if (s === 'Pilot') return 'pill pill-pilot';
+    return 'pill pill-build';
+  }
+
+  function layerLabel(l){
+    return ({sell:'Sell', move:'Move', make:'Buy/Make', plan:'Plan/Design', data:'Data', 'store-health':'Store Health', 'new-store':'New Store', 'hr-tech':'HR Tech', culture:'Culture'})[l] || l;
+  }
+
+  function matches(p, filter){
+    if (filter === 'all') return true;
+    if (p.layers && p.layers.includes(filter)) return true;
+    if (p.track && p.track === filter) return true;
+    return false;
+  }
+
+  function render(filter){
+    grid.innerHTML = '';
+    const visible = PLATFORMS.filter(p => matches(p, filter));
+    visible.forEach(p => {
+      const a = document.createElement('a');
+      a.className = 'platform-card';
+      a.href = p.href;
+      a.innerHTML = '<div class="platform-card-head"><div class="platform-card-name">' + p.name + '</div><span class="' + statusClass(p.status) + '">' + p.status + '</span></div><div class="platform-card-desc">' + p.desc + '</div><div class="platform-card-foot">' + p.layers.map(l => '<span class="platform-card-tag">' + layerLabel(l) + '</span>').join('') + '</div><div class="platform-card-metric mt-3">' + p.metric + '</div>';
+      grid.appendChild(a);
+    });
+    counter.textContent = visible.length + ' of ' + PLATFORMS.length + ' platforms shown';
+  }
+
+  function setFilter(f){
+    chips.forEach(c => c.classList.toggle('active', c.dataset.filter === f));
+    render(f);
+  }
+
+  chips.forEach(c => {
+    const f = c.dataset.filter;
+    const n = PLATFORMS.filter(p => matches(p, f)).length;
+    c.querySelector('.ct').textContent = n;
+  });
+
+  chips.forEach(c => c.addEventListener('click', () => setFilter(c.dataset.filter)));
+
+  function initialFilterFromHash(){
+    const h = window.location.hash || '';
+    const m = h.match(/[?&]filter=([a-z0-9-]+)/i);
+    if (!m) return 'all';
+    const requested = m[1].toLowerCase();
+    const valid = Array.from(chips).some(c => c.dataset.filter === requested);
+    return valid ? requested : 'all';
+  }
+
+  setFilter(initialFilterFromHash());
+  window.addEventListener('hashchange', () => setFilter(initialFilterFromHash()));
+})();
+</script>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

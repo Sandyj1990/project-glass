@@ -1,0 +1,105 @@
+{
+  "page": "jcp/rcpl/index.html",
+  "spec": "docs/jcp-rcpl-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 88,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 98,
+    "source_traceability": 96,
+    "tone_of_voice": 94,
+    "honesty_register": 92,
+    "visual_completeness": 88,
+    "cross_page_consistency": 60
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "home page (siblings)",
+      "issue": "Home index.html carries RCPL claims that the new RCPL page does not — and cannot — corroborate from its source compilation. Specifically: 'ETA 30 - Jun - 2026 · DRI Ashish Chandorkar + Abhishek Shinde' (line 228), 'RCPL · 30 dev sign-off · supplier portal · DSR app · 1.3 Cr outlet ambition by 2028' (line 236), 'Live · Campa · Independence · 1.3 Cr outlet target by 2028' (line 346), 'RCPL revenue · 2× YoY · 40+ countries · 3M+ outlets' (line 542). These 1.3 Cr / 2× YoY / 40+ countries / 3M+ outlets / supplier portal / DSR app / Ashish Chandorkar+Abhishek Shinde DRI facts are not in the Monthly Status Report (24-Apr-2026), the APEX Board Note (1-May-2026), or the DMS Knowledge Base. The new page (truthful to its sources) names Leena B. as Fynd delivery lead with Ashish C. as reviewer, and reports ₹20,000 Cr FY26 run-rate — not 2× YoY against an unstated baseline. An Apex reviewer toggling between home and the deep-dive will see two different RCPL stories.",
+      "fix": "Reconcile home-page RCPL stats against the Monthly Status + APEX Board Note. Either (a) update home to match the deep-dive's verifiable numbers (₹20,000 Cr FY26 run-rate; 5 PODs; 1.86 L assets; Leena B. delivery lead), or (b) cite separate sources for the home-page-only claims (1.3 Cr outlet ambition by 2028; 3M+ outlets; supplier portal + DSR app scope) inline. Recommend (a) — the deep dive is the canonical surface now; home should mirror it.",
+      "files": ["index.html:228", "index.html:236", "index.html:346", "index.html:540"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "/jcp/channels",
+      "issue": "jcp/channels/index.html line 217-227 has an RCPL channel card (data-slug='rcpl', status='Live', surface='mobile-app') that does not link out to the new /jcp/rcpl/ deep-dive. The card body copy is a single Accenture-derived screenshot caption with no platform context. Now that a dedicated RCPL surface exists, the channel-grid card should route into it.",
+      "fix": "Add href='/jcp/rcpl' to the RCPL card in jcp/channels/index.html (around line 217-230) — wrap the existing card or add a 'Open RCPL deep-dive →' button. Consider trimming the Accenture-screenshot focus and pointing the reader at the deep-dive instead.",
+      "files": ["jcp/channels/index.html:217"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "/jcp · §01 Where JCP is deployed",
+      "issue": "jcp/index.html line 121 lists RCPL as one of seven B2B businesses with a one-line caption ('RCPL — Reliance Consumer Products (Campa, Independence)'). The card itself opens /jcp/channels, not the new /jcp/rcpl/. Now that RCPL has its own deep dive, the parent JCP page could surface a direct link.",
+      "fix": "Add an inline link from the RCPL mention on /jcp/ §01 (line 121) to /jcp/rcpl. Minimal change: wrap the bold 'RCPL' in <a href='/jcp/rcpl'>. Keeps the card grid the same; just makes RCPL discoverable from the parent index without forcing the channel-gallery detour.",
+      "files": ["jcp/index.html:121"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "page footer",
+      "issue": "Carries 'Owner · Salman Saudagar (COO, Fynd) · v0.8.5' line. Per website-section-authoring §4 'No author/version metadata on the page', this line should be dropped — provenance lives in git, not on the page. Documented as D4 in the spec (matches sibling JCP pages for visual consistency until a register-wide sweep). Surface as a known deviation, not a fix-this-page item.",
+      "fix": "Defer to register-wide sweep via tools/scratch/strip_author_owner.py. Spec D4 already notes the decision.",
+      "files": ["jcp/rcpl/index.html:615"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§06 Vision · sources line + §08",
+      "issue": "Date '1-May-2026' appears with single-digit day. Tone-of-voice §4 specifies DD-MMM-YYYY (two-digit day). Should be '01-May-2026'. Two occurrences: §06 sources eyebrow (line 481) and §08 Sources card (line 540).",
+      "fix": "sed -i '' 's/1-May-2026/01-May-2026/g' jcp/rcpl/index.html",
+      "files": ["jcp/rcpl/index.html:481", "jcp/rcpl/index.html:540"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "nav-version pill",
+      "issue": "RCPL page uses v0.8.5; the five sibling JCP pages all show v0.8.4. Nav-block is duplicated across pages so a real bump requires editing all of them. Site-wide convention is to bump together.",
+      "fix": "Either (a) drop RCPL back to v0.8.4 to match siblings (recommended — lets the next register-wide bump pick everything up together), or (b) sweep all JCP pages plus all top-level pages to v0.8.5 in a single commit. Option (a) is one-line; option (b) is ~25 file edits.",
+      "files": ["jcp/rcpl/index.html:123"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§08 Sources",
+      "issue": "Sources block is present, which is a documented exception to the default-no rule (spec §9 D2). The block does the job — 12 cards, each citing a source file. Minor: card body copy uses long paragraphs in a few cards (e.g., CTS card describes the full 12-stage workflow). Could be shorter to keep the block scannable.",
+      "fix": "Optional polish: trim the SOP-card descriptions to one declarative sentence each. Current copy ranges from 1 sentence (Saarthi) to 3 (CTS) — normalise to 1-2.",
+      "files": ["jcp/rcpl/index.html:534"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "page-wide",
+      "issue": "No product UI screenshots. Spec §5 defers screenshots to v2 (would require pdfimages -j extraction from the Monthly Status PDF). For a first cut this is acceptable — Apex doesn't read release-notes screenshots — but the page would gain credibility from one architecture diagram or one Saarthi/CSO-app UI capture in §03 or §04.",
+      "fix": "Defer to v2 per spec. If asked to add: extract the Saarthi screenshot from SOP for Saarthi.pdf via pdfimages -j; add to assets/jcp/rcpl/; embed in §03 surface card 04 with the lightbox snippet from website-section-authoring §6.",
+      "files": ["jcp/rcpl/index.html"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Every numerical claim (~20 numbers) is traceable to either the Monthly Status Report (24-Apr-2026) or the APEX Board Note (01-May-2026) — verified by spot-check on ₹20,000 Cr, 1.86 L assets, 5 PODs, ~35,000 visits, 60-70% L1 ticket resolution, 3-8% sales uplift, 8-12% AOV, ₹1,200 Cr/month pricing.",
+    "Honesty register is well-maintained: §06 Vision uses 'Proposal · 6-month plan' pills throughout (per spec D3), §05 In flight uses 'In flight' pills, §04 Recent shipments uses 'Live' pills, the critical-fix card uses a distinct 'Critical security · closed' pill. No tier-mixing within sentences.",
+    "Tone of voice is clean: zero banned vocabulary (no transformative/world-class/unlocks/leverages), zero banned constructions (no 'strong interest in', no 'has shifted the mindset', no trailing summaries), no emojis, no exclamations.",
+    "Section ordering follows the canonical website-section-authoring §4 default (Hero → 01 Status → 02 What's live → 03 Architecture → 04 Deep dive → 05 In flight → 06 Vision/Roadmap → 07 [Phase 2 ask] → 08 Sources). The §07 deviation is documented as a kept exception in the spec.",
+    "Page reads end-to-end as a coherent two-track story: 'we own a ₹20K Cr FMCG platform that we're stabilising' + 'we are proposing the AI-native FMCG OS to the APEX board'. The Apex ask in §07 pulls the whole document together."
+  ]
+}

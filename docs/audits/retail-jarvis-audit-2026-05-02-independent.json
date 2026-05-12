@@ -1,0 +1,170 @@
+{
+  "page": "retail-jarvis/index.html",
+  "spec": null,
+  "spec_note": "No docs/retail-jarvis-spec.md exists. Audit run against website-section-authoring canonical ordering and website-tone-of-voice rules. This is an INDEPENDENT audit — no inheritance of the prior 2026-05-02 self-audit's grade.",
+  "source_compilation": "docs/retail-jarvis-notes-compilation/",
+  "source_inventory": [
+    "Retail Jarvis_ Rethinking Customer Experience Sensing.docx.pdf (11 pages, working note rev 2025.12.16)",
+    "Screenshot 2026-05-01 at 10.28.46 PM.png (Customer Journey Funnel)",
+    "Screenshot 2026-05-01 at 10.28.55 PM.png (Walk-in Journey)",
+    "Screenshot 2026-05-01 at 10.29.04 PM.png (Trial / Selection Journey)",
+    "Screenshot 2026-05-01 at 10.29.13 PM.png (Billing Journey)",
+    "Screenshot 2026-05-01 at 10.29.21 PM.png (Action Tracker)"
+  ],
+  "audit_date": "2026-05-02",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "prior_audit_comparison": {
+    "prior_score": 89,
+    "prior_grade": "B+",
+    "delta": -5,
+    "rationale": "Independent re-score lands lower than the self-audit. Prior audit understated three issues that warrant Medium severity: (a) the MDA letter cited as Source 03 is not present in the compilation folder, (b) the 'DPDP-compliant' label appears 3 times on the page but the cornerstone PDF never uses the term DPDP, and (c) the Online table tags 6 advanced-tier rows as 'Adv.' while the page intro promises 'three tiers each' — the Intermediate online tier is absent from the table though promised in the intro. Prior audit's structural and visual scores hold; tone-of-voice score holds (banned-vocab grep returns zero hits). Source-traceability and honesty-register scores drop."
+  },
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 78,
+    "tone_of_voice": 92,
+    "honesty_register": 78,
+    "visual_completeness": 95,
+    "cross_page_consistency": 82
+  },
+  "verification_evidence": {
+    "section_label_contiguity": "Sections §01 through §08 contiguous, no gaps. (Verified by grep on 'section-label mb-3' lines 80, 110, 141, 176, 226, 287, 326, 402, 447.)",
+    "lightbox_click_test": "Clicked uid=1_131 (first screenshot card). evaluate_script returned {display:'flex', src:'/assets/retail-jarvis/screenshots/01-customer-journey-funnel.jpg', bodyOverflow:'hidden'}. Lightbox markup uses display:none default, JS sets display:flex on click — no anti-pattern.",
+    "image_network": "All 8 image requests returned 200 (architecture.jpg + 5 screenshots + fynd-logo.png + document). No 404s.",
+    "console": "Single warn: 'cdn.tailwindcss.com should not be used in production' — standard dev-mode CDN warning, expected.",
+    "mobile_overflow": "375px viewport: documentElement.scrollWidth === window.innerWidth (no horizontal scroll).",
+    "banned_vocab_grep": "Grep for transformative|world-class|cutting-edge|game-changing|next-generation|best-in-class|leading|premier|robust|leverages|harnesses|empowers|enables|unlocks|perhaps|could potentially|arguably|moreover|furthermore|additionally|in addition|importantly|the future is now|Strong interest|seamless|innovative — zero hits.",
+    "screenshot_numbers_spot_check": "Spot-checked 22 distinct numerical claims in §04 against the 5 PNG screenshots. ALL match exactly: Footfall 10,265 / Browsing 7,185 / Trial 3,593 / Billing 1,383 / drop-offs -30/-50/-62 / W2 Mar 2-8 / 20.6K walk-ins / 9,433→10,265 (+8.8%) / 30% walked out / ~6,186 customers / ~12-15 min / 1:12 peak vs 1:6 / ~15%/~85% / 18:00-20:00 (10-12) / 14:00-16:00 (2-4) / ~8-12 min trial dwell / ~60% over 5 min / 2 critical+1 attention+1 obs+2 well / 3-5 min queue / ~1-2/day >15 min / ₹1,450 avg bill / 5 POS (#121,#126,#135,#166,#167) / 2-3 min billing / 10-15 returns/day / 8 actions, 6 tickets, 2/3/2/1 / 98% wrong size, ₹2.4L/month / Rajesh Kumar / 72%/90%/65%/+5pts.",
+    "pdf_table_row_counts": "Cornerstone PDF Section 2 Offline: A.Basic 9 rows, B.Intermediate 8 rows, C.Advanced 6 rows. Page §06 offline table: 9+8+6 rows = exact match. Cornerstone PDF Section 3 Online: A.Basic 18 rows, B.Intermediate/Advanced (combined header in PDF) 6 rows. Page §06 online table: 18 Basic + 6 Adv = match the count, but the page tags all 6 as 'Adv.' though PDF labels them 'B. Intermediate / Advanced Signals' (combined). Page intro promises 'three tiers each' which does not match the online table which has only two tiers.",
+    "pdf_authors_check": "PDF page 1 byline: 'Farooq Adam, Advait Pandit, Salman Saudagar, Shyam Dixit · 26 Nov 2025'. Page co-authors line: 'Farooq Adam · Advait Pandit · Salman Saudagar · Shyam Dixit'. Match.",
+    "dpdp_check": "Grep for 'DPDP' in the PDF: zero hits. Page uses 'DPDP-compliant' 3 times (hero pill line 88, §01 card title line 131, §01 card body line 132). The non-biometric silhouette/posture CV claim IS supported by PDF Section 2C; the DPDP-compliance label is an interpretation by the author, not a direct citation.",
+    "mda_letter_check": "ls of docs/retail-jarvis-notes-compilation/ shows no MDA letter file. Source 03 card cites a 30-Apr-2026 Farooq → MM Sir letter that is not present in the compilation folder this page declares as its source set."
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§08 Sources · Source 03",
+      "issue": "Source 03 card cites 'Farooq → MM Sir · 30 - Apr - 2026' MDA update letter, but no such file exists in docs/retail-jarvis-notes-compilation/. The page-level §08 Sources block claim 'Where every claim on this page comes from' is therefore overclaimed: it lists a source the reader cannot navigate to.",
+      "fix": "Either (a) add the MDA letter PDF to the compilation folder and link from Source 03 the same way Source 01 links to the cornerstone PDF, or (b) drop Source 03 entirely and remove derivative claims (Re-housing card, §01 card third paragraph 're-housed under Impetus as Impetus Jarvis per Farooq'). Recommend (a) — the MDA letter is referenced in v0.9.0 commit history and on /retail-vista, so it likely exists outside the folder.",
+      "files": ["retail-jarvis/index.html:466-471"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§0 hero pill · §01 card title and body",
+      "issue": "'DPDP-compliant' appears 3 times on the page (line 88 hero pill, line 131 card title, line 132 card body). The cornerstone PDF — the page's own primary source — never uses the word 'DPDP'. Section 2C says 'Silhouette/posture CV (non-biometric)' which supports a non-biometric framing, NOT a regulatory-compliance statement. Asserting DPDP compliance without a legal review or compliance memo is a material overclaim for an Apex-readable register.",
+      "fix": "Replace 'DPDP-compliant' with 'non-biometric by design' or 'silhouette-CV only · non-biometric' across all three occurrences. The non-biometric phrasing is directly traceable to PDF Section 2C; the DPDP label requires a legal review citation that does not appear in the compilation folder.",
+      "files": ["retail-jarvis/index.html:88", "retail-jarvis/index.html:131", "retail-jarvis/index.html:132"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§0 hero stat tile",
+      "issue": "Sponsor 'Salman Saudagar' appears as a dedicated stat tile (line 102) AND as the closing line of §01 card 3 (line 133). Salman Saudagar is already named as a co-author on the cornerstone (line 101). The compilation folder contains no document designating anyone as 'Sponsor' separately from co-authorship. This is duplicate information dressed up as new information.",
+      "fix": "Drop the dedicated Sponsor stat tile (line 102). Co-authors line already names him. If a separate sponsor mandate exists, cite the source memo; otherwise the label adds no information beyond co-authorship. Same change carried by prior 2026-05-02 audit M1 — has not been applied.",
+      "files": ["retail-jarvis/index.html:102", "retail-jarvis/index.html:133"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§06 Online signal-inventory table",
+      "issue": "Section intro on line 326 reads 'offline + online · three tiers each' and the prose on line 328 explicitly defines Basic / Intermediate / Advanced. The online table renders only two tiers (Basic, Adv.) — the Intermediate tier is missing. This appears to be because the cornerstone PDF combines Online Intermediate and Advanced under one heading 'B. INTERMEDIATE / ADVANCED SIGNALS', but the page does not disclose the merge — instead it tags all 6 rows as 'Adv.', overstating that they are advanced-tier when the PDF itself classifies some as Intermediate.",
+      "fix": "Either (a) split the online B-rows into 'Inter.' and 'Adv.' if the cornerstone authors can disambiguate, or (b) change the section-intro phrasing to 'offline · three tiers · online · two tiers (Basic + Inter./Adv. combined per cornerstone)' and tag the 6 rows 'Inter. / Adv.' rather than just 'Adv.'. Option (b) is faithful to the source.",
+      "files": ["retail-jarvis/index.html:326", "retail-jarvis/index.html:328", "retail-jarvis/index.html:411-440"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 Demo product cards",
+      "issue": "Each of the five §04 demo cards carries a pill labelled 'Demo' (lines 237, 247, 257, 267, 277). The canonical pill set on this register is Live / Pilot / Build / Roadmap (per pill-build / pill-live / pill-pilot / pill-phase2 CSS classes). 'Demo' is not in that set. The pill currently uses class 'pill-build' (amber) — visually consistent with Build — but the label drifts. Prior audit flagged this as L1; it is correctly Medium because pill labels are the canonical honesty-register convention and label-drift undermines the system.",
+      "fix": "Replace 'Demo' with 'Build' across all five §04 cards. The card cap-num already says 'Console · Customer Journey Funnel' / 'Walk-in Journey' / etc., and the section header carries 'Demo product · Store 5943' — the demo context is already established. The pill should be the register-standard 'Build'.",
+      "files": ["retail-jarvis/index.html:237", "retail-jarvis/index.html:247", "retail-jarvis/index.html:257", "retail-jarvis/index.html:267", "retail-jarvis/index.html:277"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "/catalog row 183",
+      "issue": "/catalog/index.html:183 still describes Retail Jarvis as 'Build · multi-sensor fusion (CCTV · audio · POS · NPS) · DPDP-compliant'. The new page framing centres on the cornerstone's 'three signal families (offline · online · external) → 4 outputs' model. The /catalog row's 'audio' and 'NPS' inputs are not in the cornerstone signal inventory. Sibling page references stale framing.",
+      "fix": "Update /catalog row to: 'Build · sensing engine · 4 outputs (Readiness · CX · Friction · Churn) · Demo on Store 5943 · non-biometric'. Drops the audio sensor (not in cornerstone) and the DPDP claim (per H2).",
+      "files": ["catalog/index.html:183"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "/autonomous and /impetus sub-page references",
+      "issue": "/autonomous/index.html:208 says 'Lovable proto · feeds Retail Jarvis. No-survey signal fusion across channels' and line 320 says 'Connect to Retail Jarvis listening fabric Q2' — both retain the older 'Retail Jarvis as listening fabric' framing rather than the cornerstone's 'experience sensing engine' framing. Minor terminology drift across the register; not a fact contradiction but reads as two different products if Apex compares pages.",
+      "fix": "Optional sweep when /autonomous and /impetus are next touched. Replace 'listening fabric' with 'experience sensing engine' to align with the new cornerstone-grounded framing on /retail-jarvis. Defer until next sweep.",
+      "files": ["autonomous/index.html:208", "autonomous/index.html:317", "autonomous/index.html:320"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§0 hero · stat tile metadata",
+      "issue": "Hero band carries Co-authors / Sponsor / Fynd DRI / Re-housing / Cornerstone date / Cornerstone PDF link as stat tiles. This is dense people-and-provenance metadata in the above-the-fold band. Per tone-of-voice §3 banned-constructions, hero stat tiles should translate to outcomes, not provenance. The Co-authors and Cornerstone tiles earn their place (they ARE the credibility); Sponsor and Fynd DRI partially duplicate Co-authors (Salman) and footer-DRI conventions respectively.",
+      "fix": "After applying M1 (drop Sponsor tile), consider also moving Fynd DRI to a footer DRI-line or to §01 Status card 2 only — keeping the hero to four tiles (Demo store · Core outputs · Engine stages · Cornerstone) plus a single second-row tile for Co-authors. Defer; not blocking.",
+      "files": ["retail-jarvis/index.html:100-105"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§08 Sources block presence",
+      "issue": "Per tone-of-voice §3 'default-no Sources block' rule, a §08 Sources block is justified only if (a) the page combines 3+ named distinct artefacts the reader needs to navigate to, OR (b) the source files are themselves the deliverable. This page DOES qualify under carve-out (a): cornerstone PDF + 5 demo screenshots + MDA letter. Block is justified. However, finding H1 lands here — Source 03 cites a file that doesn't exist in the compilation. So the §08 carve-out only earns its place if H1 is fixed by adding the MDA letter; otherwise the block reduces to '1 named PDF + 5 unnamed screenshots' which would not earn the carve-out.",
+      "fix": "After H1 is resolved (link the MDA letter from compilation), the Sources block earns its place. If H1 cannot be resolved, drop §08 and surface Source 01 inline as an eyebrow on the cornerstone-related sections.",
+      "files": ["retail-jarvis/index.html:445-474"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§04 Trial / Selection card body",
+      "issue": "Line 258 quotes 'No staff assistance during product selection — customers cannot find sizes, match outfits, or get recommendations.' The screenshot uses straight ASCII double-quotes; the page renders smart-quotes (curly) via the browser snapshot, but raw HTML uses unescaped &quot; — verify the encoding is intentional and matches the screenshot caption byte-for-byte. (This is a polish item, not a substance issue.)",
+      "fix": "Confirm quotation marks render as expected in production. No code change required if visually correct.",
+      "files": ["retail-jarvis/index.html:258"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "footer",
+      "issue": "Footer reads '© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only'. Tone-of-voice §6 standard footer is 'Built by Fynd. Owned and run by Reliance.' — this page omits the standard line. The single copyright line is acceptable per pre-publish checklist (no Owner/version line — good), but the standard 'Built by Fynd. Owned and run by Reliance.' framing is omitted across the register here.",
+      "fix": "Optional. The current footer matches sibling-page conventions, so leaving it as-is is consistent with the rest of the register.",
+      "files": ["retail-jarvis/index.html:502-504"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source rigour for §04 demo product · 22 numerical claims spot-checked against the 5 Jarvis console screenshots — every single number matches exactly (Footfall 10,265 / Browsing 7,185 / Trial 3,593 / Billing 1,383 / +8.8% W1→W2 / ~6,186 walk-outs / ₹1,450 avg bill / 5 POS machines #121,#126,#135,#166,#167 / 98% wrong-size returns / ₹2.4L/month projected reduction / Rajesh Kumar named owner / 72%→90% greeting target).",
+    "Cornerstone-table fidelity · §06 reproduces the cornerstone PDF Section 2 (Offline) row-counts exactly: 9 Basic + 8 Intermediate + 6 Advanced rows. Online Basic 18 rows also matches. Each row's Signal · How captured · What it tells · Feeds-output mapping is preserved verbatim from the PDF tables.",
+    "Tone-of-voice discipline · Banned-vocab grep returns ZERO hits across the entire 506-line page (transformative, world-class, cutting-edge, leverages, empowers, enables, unlocks, etc.). No exclamation marks, no emojis, no marketing closers. Strong scannability discipline — most lines fall under the 30-word hero / 60-word prose limits.",
+    "Architecture diagram extracted and rendered at sensible width · Cornerstone-page-1 Signals → Engine → Playbooks diagram embedded as architecture.jpg with max-width:1100px (per visual-audit checklist), wrapped in js-lightbox for click-to-zoom. Lightbox click test passed: display:flex set on click, body scroll locked, no display:flex anti-pattern.",
+    "Section structure is clean and contiguous · §01-§08 contiguous (lines 110, 141, 176, 226, 287, 326, 402, 447), no gaps, no renumbering. Mega-menu version pill v0.9.0 matches footer / nav across the register. Mobile 375px viewport renders without horizontal overflow."
+  ],
+  "removed_from_prior_page_inherited": [
+    "Sub-IPs 11-card grid · removed (correctly — Impetus-anchored not Retail Jarvis cornerstone material)",
+    "Pulse Point '17 stores · 33 users · 2,948 tasks live' · removed (correctly — belongs on /impetus)",
+    "Sense → Analyze → Act → Verify framing · replaced with cornerstone-true Signals → Engine → Playbooks → Feedback (correct)",
+    "Roadmap Q1-Q4 strip · removed (correctly — not in compilation, replaced with §01 Status card framing)"
+  ]
+}

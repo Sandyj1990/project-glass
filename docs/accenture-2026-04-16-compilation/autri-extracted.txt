@@ -1,0 +1,323 @@
+Autri-Agentic Planogram Compliance for
+Grocery: Fynd Necleus
+Author: Saaket Chawali, Product
+Date: 21 April 2026
+1. The use case: Planogram Compliance
+Planogram compliance is the use case. Everything in this document, every system, every
+handoff, every metric, exists to serve that one goal.
+A planogram is the visual plan of what goes where on the shelf: which SKU sits on which
+fixture, at which shelf level, how many facings, and at what price. Compliance means the
+live shelf matches that plan in every store, all day, every day.
+In grocery, non compliance shows up as out of stocks on high velocity SKUs, wrong
+products on wrong shelves, incorrect facings, expired or wrong price tags, and missed
+promotional displays. Each of these has a direct hit on revenue, customer trust, and vendor
+contracts. Today, this is managed through manual walks, spot audits, and reactive fixes.
+That is what we are replacing.
+1.1 What we are defining as a compliance check
+ Compliance dimension          What the system is checking       Example non-compliance
+  Product presence              Is the SKU on the shelf at all    Empty slot for a top velocity
+                                                                  SKU
+  Product placement             Is the right SKU on the right     Wrong brand of cooking oil on
+                                fixture and shelf level           the premium shelf
+                                Are the expected number of        2 facings instead of the
+  Facing count                  facings present                   planned 4 for a promotional
+                                                                  SKU
+  Price tag accuracy            Does the price tag match the      Old price tag on a live
+                                current price master              promotional SKU
+  Promotional execution         Are promotional end caps          Missing end cap for the
+                                and POS displays set up           week's featured SKU
+  Shelf cleanliness and order   Is the shelf set up as per the   Products toppled, stacked
+                                visual standard                  incorrectly, or damaged
+
+This is what the Autri scan reads, what Gmetri interprets, and what the Agentic Command
+Center decides on. The Action layer then fixes exactly one of these.
+2. What we want to achieve
+Run planogram compliance as a continuous, autonomous loop across the grocery estate.
+The store gets scanned, the system identifies what is off, the right person gets a specific
+task to fix it, and the next scan confirms whether the fix held.
+The outcome is a self verifying loop that catches every compliance gap, closes it with the
+right person, and proves it was actually fixed. Fewer out of stocks on high velocity SKUs,
+promotional price errors caught inside the hour, and Cluster Managers spending their time
+on the stores that actually need them.
+3. Autri: Today vs. The Agentic Flow
+Autri is already deployed and scanning shelves. Today, it operates as a standalone data
+collection and analytics tool. In this plan, it becomes the autonomous eyes of a closed-loop
+agentic workflow.
+3.1 How Autri operates today
+Today, Autri runs scheduled scan sessions across the store, capturing high-resolution
+images of every fixture. It uses its own AI models to draw bounding boxes around
+recognized SKUs, matching them against its internal SKU master.
+Autri's current dashboard showing session scheduling and completion status.
+
+
+
+
+A completed scan session broken down by grocery categories.
+High-density grocery shelf capture with Autri's AI bounding boxes detecting individual SKUs.
+The output today is a set of analytics dashboards showing brand occupancy and facing
+heatmaps. While this provides visibility, it requires a human to log in, interpret the
+heatmap, figure out what is wrong, and manually tell someone to fix it.
+Current analytics output: Brand by shelf level and facing count heatmaps.
+3.2 How Autri will operate in the Agentic Flow
+In the new architecture, Autri stops being an analytics dashboard and becomes a pure, high-
+fidelity data producer for the Agentic Command Center.
+  1. No more human interpretation: Autri's tagged shelf captures flow directly into Gmetri
+     via API.
+  2. Context-aware scanning: Instead of generic daily scans, Autri's schedule is
+     dynamically tied to the store's restocking windows and promotional calendar.
+  3. The closer of the loop: Autri's most important new role is verification. When a staff
+     member marks a PulsePoint ticket as "Done", the ticket stays open until Autri's next
+     scan of that specific fixture confirms the compliance gap is actually resolved.
+4. The loop at a glance
+
+
+ Step                   Owner                 What happens (for      Output
+                                              planogram
+                                              compliance)
+  1. Scan               Autri                  Robot runs             Tagged shelf images
+                                               scheduled sessions,    in the image
+                                               captures shelf         repository
+                                                 images per fixture
+                                                 and zone
+                                                 Reads the shelf
+                                                 against the active
+                                                 planogram version       Discrepancy list per
+  2. Read                Gmetri                  and detects             fixture with evidence
+                                                 presence,               and confidence
+                                                 placement, facings,
+                                                 price, promotions
+                                                 Triages each
+                         Agentic Command         discrepancy by          Triaged compliance
+  3. Decide              Center, powered by      compliance              alert with SOP
+                         Gmetri                  dimension, severity,    mapping and route
+                                                 and SKU velocity,
+                                                 decides the action
+                                                 Auto creates a ticket
+                                                 with the shelf image,   Ticket on the right
+  4. Act                 PulsePoint              expected planogram      person's PulsePoint
+                                                 view, and SOP,          app
+                                                 routes to the right
+                                                 role
+                                                 Staff evidence moves    Compliance
+                                                 ticket to pending       confirmed, ticket
+  5. Verify              Autri and PulsePoint    verified. Next Autri    closed, audit trail
+                                                 scan closes or          updated
+                                                 escalates
+
+A ticket is closed only when the next Autri scan confirms compliance on that fixture. Staff
+evidence alone is not closure. This is what makes the loop self verifying and what makes
+the compliance number trustworthy.
+5. Architecture, aligned to planogram compliance
+Three layers, one shared master data plane. Every layer exists to serve the planogram
+compliance use case, no more, no less.
+ Layer                            Systems                              What it does for compliance
+                                                                       Produces the ground truth of
+  Data                             Autri robot, Image repository       the shelf, tagged to fixture,
+                                                                       zone, and timestamp
+                                                                       Turns that ground truth into a
+                                   Gmetri, Agentic Command             compliance judgement,
+  Intelligence                     Center                              dimension by dimension,
+                                                                       then decides what to do
+                                                                       about it
+                                                                       Turns the decision into the
+  Action                           PulsePoint Admin, PulsePoint        specific act that restores
+                                   App                                 compliance, with the right
+                                                                       person, SOP, and evidence
+                                                                       The single source of truth for
+  Master data plane                SKU catalogue, Planogram            what compliance means on
+                                   library, Store hierarchy, Roles     every fixture, in every store,
+                                                                       for every role
+
+Every planogram compliance check in Section 1.1 has a home in this architecture. The Data
+layer sees it, the Intelligence layer judges it, the Action layer fixes it, and the Data layer re-
+sees it to close the loop.
+5.1 How each compliance dimension is handled
+ Compliance               Detected by               Decided by                  Acted on in PulsePoint
+ dimension
+                          Gmetri detects             Command Center             Restock SOP routed
+  Product presence        empty or non               weights by SKU             to Department
+                          matching slot              velocity, flags Critical   Manager
+                                                     for top velocity SKUs
+                          Gmetri detects             Command Center             Planogram reset SOP
+  Product placement       wrong SKU on fixture       flags High                 routed to
+                                                                                Department Manager
+                                                Command Center
+                         Gmetri counts          flags Medium unless       Facing correction
+ Facing count            facings vs planogram   the SKU is                SOP routed to CSA
+                                                promotional, then
+                                                High
+                         Gmetri reads tag       Command Center            Price correction SOP
+ Price tag accuracy      text, compares to      flags Critical for live   routed to Store
+                         price master           promotional SKUs,         Manager
+                                                High otherwise
+                         Gmetri detects         Command Center            End cap setup SOP
+ Promotional             missing or             flags Critical during     routed to Visual
+ execution               incomplete end cap     the promotion             Merchandiser
+                         vs planogram           window
+ Shelf cleanliness and   Gmetri detects         Command Center            Shelf reset SOP
+ order                   toppled or out of      flags Medium              routed to CSA
+                         order state
+
+
+5.2 What flows between the layers
+From                     To                     Payload                   Cadence
+                                                 Tagged shelf
+ Autri                   Image Repository        captures (fixture,       Per scan session
+                                                 zone, timestamp,
+                                                 robot session)
+ Image Repository        Gmetri                  New captures ready       Event driven
+                                                 for reading
+                                                 Discrepancy set per
+                                                 fixture, per
+ Gmetri                  Agentic Command         compliance               Event driven
+                         Center                  dimension, with
+                                                 evidence and
+                                                 confidence
+                                                 Triaged compliance
+ Command Center          PulsePoint              alert with SOP, route,   Event driven
+                                                 severity, and
+                                                 attachments
+ PulsePoint              Command Center          Staff evidence, ticket   Event driven
+                                                 state transitions
+                                                 SKU, planogram
+  Master data plane      All layers              version, store          Hourly sync
+                                                 hierarchy, role map,
+                                                 promotion calendar
+
+
+6. End to end flow
+
+
+
+
+The exact sequence the system runs, from a scheduled scan to a verified closure. Every step
+has an owner and a handoff, and there are no manual bridges between them. The
+promotion calendar is in the master data plane, so the system knows, at any moment, what
+it is supposed to be checking.
+7. Plan
+Four stages. Each stage is a standalone unlock for planogram compliance, so value starts
+flowing before the full loop is live. Stages run in sequence, with Stages 2 and 3 overlapping
+through the middle of the build.
+ Stage                   Scope                  Key deliverables        Exit criteria
+                      Align fixture, zone,    Shared data
+                      SKU, and store IDs      dictionary, ID           Shared data model
+                      across Autri, Gmetri,   mapping tables,          signed off by all
+                      and PulsePoint. Load    planogram library        three teams,
+ 1. Foundation        grocery SKU             loaded, store            planogram live in
+                      catalogue and           hierarchy mapped to      Gmetri, promotion
+                      planogram library       PulsePoint roles,        calendar ingested
+                      into Gmetri. Ingest     promotion calendar
+                      promotion calendar      live
+                      Tune Gmetri on          Gmetri grocery
+                      grocery SKUs across     model calibrated per     Gmetri reliable at
+                      all six compliance      dimension, triage        shelf level on the six
+ 2. Intelligence      dimensions. Write       rule set (dimension,     dimensions, triage
+                      grocery triage rules    severity, velocity,      rules approved by
+                      in the Agentic          promotion window),       grocery ops
+                      Command Center          SOP to issue             leadership
+                                              mapping
+                                              Intake endpoint live,
+                                              auto ticket creation
+                                              configured, SOP
+                      Build intake from       library (restock,        Auto ticketing live
+                      Command Center          placement reset,         end to end, SOPs
+ 3. Action in         into PulsePoint.        facing correction,       configured,
+ PulsePoint           Configure grocery       price correction, end    escalation matrix
+                      SOPs, evidence          cap setup, shelf         live, audit trail
+                      requirements, and       reset), escalation       captured
+                      escalation matrix       matrix from Store
+                                              Manager to Cluster
+                                              Manager to State
+                                              Head
+                      Run end to end
+                      compliance loop in      Pilot run in two         Pilot KPIs steady for
+                      two pilot grocery       stores, weekly loop      four consecutive
+ 4. Pilot and scale   stores. Measure loop    health review, rollout   weeks, sign off for
+                      health. Scale to the    playbook, training       chain wide rollout
+                      rest of the grocery     for Cluster Managers
+                      estate
+
+
+7.1 What we are building in each stage, per layer
+ Stage                Data layer              Intelligence layer       Action layer
+                         Autri scan schedule     Gmetri catalogue
+  1. Foundation          per zone, image         and planogram           PulsePoint store,
+                         tagging schema          ingest, promotion       zone, role maps
+                                                 calendar hooked in
+                                                 Gmetri per
+                         Scan cadence tuned      dimension
+  2. Intelligence        to restocking and       calibration,            PulsePoint SOP
+                         promotion windows       Command Center          library drafted
+                                                 triage rules, SOP
+                                                 mapping
+                         Image handoff to        Command Center to       Auto ticketing,
+  3. Action              Gmetri formalised       PulsePoint intake       evidence rules,
+                                                 contract                escalation matrix
+                         Pilot scan coverage,    Loop health
+  4. Pilot and scale     fallback for coverage   dashboards by           Pilot SOPs refined,
+                         gaps                    compliance              rollout playbook
+                                                 dimension
+
+
+8. Design choices specific to grocery
+Three choices make this compliance loop work for the grocery format.
+Velocity weighted severity. An empty slot for a top velocity SKU is not the same as a facing
+drift on a slow mover. The Command Center weights triage by SKU velocity, not by raw
+count of violations. This keeps the store manager's PulsePoint inbox focused on what
+actually hits revenue and customer experience.
+Promotional execution is its own lane. Promotions drive a disproportionate share of
+grocery sales and customer trust. Price mismatches and missing end caps during an active
+promotion window are flagged Critical and go as push, regardless of the underlying
+compliance dimension. This lane has its own SLA.
+Scans timed to restocking. Compliance signal is only meaningful after restocking has
+happened. Autri scans are scheduled immediately after the primary restocking windows so
+that the alerts reflect post restock reality. This single choice removes a large class of false
+alerts and earns trust with store staff from day one.
+9. Outcomes
+Planogram compliance rate is the headline, but the real product is a self closing loop. These
+are the outcomes we are targeting.
+Outcome                            Target                             Why it matters
+Planogram compliance rate
+(grocery estate, velocity           95 percent and above               Direct measure of shelf health
+weighted, across all six
+dimensions)
+Time to ticket (scan to             Under 10 minutes                   Tells us the intelligence layer
+PulsePoint ticket created)                                             is responsive
+Time to first action (ticket        Under 30 minutes for Critical      Tells us the action layer is
+created to staff                    and High                           reaching the right person
+acknowledgement)
+Time to verified closure                                               Tells us the loop is actually
+(ticket created to next scan        Under 24 hours                     closing, not just marked
+confirming compliance)                                                 closed
+Share of tickets auto created       90 percent and above               Tells us the system, not the
+versus manually raised                                                 human, is driving the loop
+Re-open rate after staff            Under 5 percent                    Tells us evidence is not being
+marked closed                                                          gamed
+Manual shelf audit effort per       Reduced by 70 percent              Direct operational saving for
+store per week                                                         Cluster Managers
+Out of stock rate on top            Reduced by 40 percent              Business impact on revenue
+velocity SKUs
+Promotional price and end                                              Customer experience and
+cap errors caught inside the        95 percent and above               trust
+hour
+
+
+10. Risks and how we design against them
+Risk                                                  How we design against it
+                                                      Confidence threshold inside the Agentic
+ AI noise on dense shelves, visually similar SKUs     Command Center. Low confidence items queue
+                                                      for a quick review before becoming a ticket.
+                                                      Continuous calibration on misses
+ Staff alert fatigue                                  Strict severity tiers. Critical and High go as
+                                                      push. Medium and Low batch into one daily
+                                               task per zone. One pager per SOP, no ambiguity
+                                               Hourly sync of planogram library and
+Planogram or promotion calendar drift          promotion calendar. Block ticketing on any
+                                               fixture whose planogram version is stale
+                                               Graceful fallback to manual audit checklist in
+Scan coverage gaps when the robot is offline   PulsePoint for affected zones, auto resuming
+                                               once the robot is back online
+Role mapping errors routing tickets to the     Master data plane owns the role map, with
+wrong person                                   daily reconciliation against HRMS. Incorrect
+                                               routes get flagged in the Command Center
+

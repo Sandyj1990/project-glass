@@ -1,0 +1,14 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2026-04-29
+    title: Bodygram pivot to in-house pipeline · 27-29 Apr 2026
+    summary: In-house pipeline cutover begins to remove third-party licence dependency.
+    next: Q2 FY27 cutover target
+  - date: 2026-04-27
+    title: AP Sir + Vineeth follow-up
+    summary: Detailed engagement after MDA unveil
+  - date: 2026-04-14
+    title: MDA + MM Sir unveil at RCP
+    summary: Mirror failed evening before. Team rebuilt overnight at venue. MDA spent 30 minutes in detailed engagement.
+    next: Q2 public launch on Nexus Seawoods 15 - Jul - 2026

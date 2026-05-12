@@ -1,0 +1,25 @@
+{
+  "slug": "ai-cataloging",
+  "name": "AI Cataloging",
+  "tagline": "Auto-generated catalog imagery, attributes, copy across brands.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2024-08-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make",
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#ai-cataloging",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "catalog",
+    "ai-pim"
+  ]
+}

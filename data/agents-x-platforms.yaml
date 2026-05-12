@@ -1,0 +1,164 @@
+# Agents × Platforms · single source of truth for the Path to L4 surfacing
+# ===
+# Per docs/path-to-l4-spec.md §6.1.
+#
+# Each canonical agent (from /agents/index.html) lists every platform page it is
+# deployed in, with a 1-line "what it unlocks for THIS platform" string per
+# deployment. tools/inject_path_to_l4.py reads this and:
+#   - injects the §03 Path to L4 section into each listed platform page
+#   - injects the "deployed in: [platforms]" list into each agent page
+#   - --check exits non-zero if either side drifts from the registry
+#
+# Edit this file when an agent lands on a new platform OR an existing
+# deployment changes state. Then run:
+#   python tools/inject_path_to_l4.py --dry      # preview
+#   python tools/inject_path_to_l4.py            # apply
+#   python tools/inject_path_to_l4.py --check    # CI / pre-commit gate
+#
+# Format note · resolved Round 2 · 03-May-2026:
+#   The reverse index (platform -> [agents]) is auto-derived by the sweep
+#   tool from this `agents:` map. Do NOT hand-maintain a `platforms:` block
+#   here — it would diverge.
+
+agents:
+
+  cortex-planning:
+    name: "Cortex Planning Agent"
+    state: Building            # Live | Building | Roadmap
+    target_rung: L4
+    deployments:
+      - platform: impetus
+        unlocks: "Store-realistic Plan of Record + continuous, exception-led replanning across the Impetus stack."
+        next_milestone: "25-May-2026 · Pilot Hit/Year decision (category-led model)"
+      - platform: granary
+        unlocks: "Same agent applied to grocery: assortment + replenishment for 12 K SKUs × 4 K stores."
+        next_milestone: "-"
+
+  trend-to-design:
+    name: "Trend-to-Design Agent"
+    state: Live
+    target_rung: L4
+    deployments:
+      - platform: impetus
+        unlocks: "Trend brief → manufacturable design package without humans in the design cycle middle."
+        next_milestone: "30-May-2026 · Saree drape (Category 15) + Indian designer (Category 42) + sherwani craft (Category 7) improvement window"
+
+  category-intelligence:
+    name: "Category Intelligence Agent"
+    state: Building
+    target_rung: L4
+    deployments:
+      - platform: impetus
+        unlocks: "Category × season × geography → 40-50 pp evidence-tagged trend report for buying teams."
+        next_milestone: "-"
+
+  ai-photoshoot:
+    name: "AI Photoshoot Agent"
+    state: Live
+    target_rung: L4
+    deployments:
+      - platform: impetus
+        unlocks: "Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit and Ajio-standard delivery."
+        next_milestone: "28-May-2026 · Ethnic wear pipeline (kurtas, kurta sets, ethnic dresses)"
+
+  generative-media:
+    name: "Generative Media Agent"
+    state: Building
+    target_rung: L4
+    # No Reliance brand deployment yet (03-May-2026). Agent runs end-to-end on
+    # the Fynd-product side (SocialPilot). Add `- platform: <slug>` block here
+    # when the Reliance pilot lands; injector will then surface this agent on
+    # that platform's §03 PATH TO L4 section.
+    deployments: []
+
+# DISABLED 2026-05-03 · agent page removed pending rebuild · re-enable
+# by uncommenting this block + restoring data/agents/ai-cataloging.yaml
+# (currently parked at data/agents/_disabled-ai-cataloging.yaml).
+#  ai-cataloging:
+#    name: "AI Cataloging Agent"
+#    state: Live
+#    target_rung: L4
+#    deployments:
+#      - platform: jcp
+#        unlocks: "Mannequin or product image → enriched catalog page with model-on photo, attribute set, and motion video. 5 hours, not 15 days."
+
+  zip:
+    name: "ZIP · AJIO Commerce Agent"
+    state: Live
+    target_rung: L4
+    # No /agents/zip/ detail page · documented on /kaily/ §04. The
+    # link_override field routes the §03/§08 card to the platform page
+    # where the agent is described instead of the canonical /agents/<slug>/.
+    link_override: "/kaily/"
+    deployments:
+      - platform: jcp
+        unlocks: "Conversational AI shopping on AJIO.com · natural-language search and recommendations over chat and voice · 88% positive engagement · 100% catalog coverage of 2.6M+ AJIO SKUs."
+
+  jiia:
+    name: "JIIA · JioMart Agentic Shopping Assistant"
+    state: Live
+    target_rung: L4
+    link_override: "/kaily/"
+    deployments:
+      - platform: jcp
+        unlocks: "Intent → bundle on JioMart · Gemini multimodal pipeline indexes 40M+ catalog images · featured on the Google Cloud Next '26 main stage on 29-Apr-2026."
+
+  agentic-marketing:
+    name: "Marketing Agent"
+    state: Building
+    target_rung: L4
+    deployments:
+      - platform: ucp
+        unlocks: "Goal in plain English → audience, creative, channel mix, send time, measurement · autonomously, with humans only on guardrails."
+
+  retail-vista:
+    name: "Retail Vista"
+    state: Building            # composite — Internal Live, Google Pilot, JioGIS Build
+    target_rung: L4
+    deployments:
+      - platform: retail-vista
+        unlocks: "Three-track agent · Internal (Opportunity Explorer Live · 68 scored leads) · Google (Vertex AI Pilot · Mumbai catchments) · JioGIS (Foundation model Building)."
+        # Special case · the retail-vista platform IS the retail-vista agent's
+        # own deployment surface. Per path-to-l4-spec §4.5, the §03 PATH TO L4
+        # section here renders as a .grid-table with rows = the 3 tracks (not
+        # rows = agents · since there's only one agent: itself). The tool reads
+        # the `tracks:` list below and emits one row per track.
+        tracks:
+          - name: "Internal · UCP / JioMart"
+            state: Live
+            unlocks: "Opportunity Explorer · 68 scored leads · agentic decisioning end-to-end."
+          - name: "Google · Joint MVP"
+            state: Pilot
+            unlocks: "Cannibalisation, feasibility and site-selection agents on Vertex AI · Mumbai catchments."
+          - name: "JioGIS"
+            state: Building
+            unlocks: "Spatial reasoning core · Foundation model · feeds all 3 tracks once secured."
+
+# Per-platform "current rung" — used by the sweep when rendering each
+# platform's Path to L4 section header. These are the page-owner-confirmed
+# values from path-to-l4-spec.md §8 R-O6.
+platform_current_rungs:
+  impetus: L3
+  jcp: L3
+  ucp: L3
+  granary: L2
+  retail-vista: L3
+
+# Per-platform section number override. The default is "03" (canonical
+# ordering: Path to L4 right after §02 What's live). Pages whose existing
+# section spine puts What's live at a different number override here.
+# JCP example: spine is Architecture §01 · Platform properties §02 ·
+# What's live §03 · Deep dive §04 — so the new Path to L4 inserts at §04.
+platform_section_nums:
+  impetus: "03"
+  jcp: "08"          # spine: 10-section story page · PATH-TO-L4 sits between §07 AI shipped and §09 Shipped this year
+  ucp: "04"          # spine: Status · Architecture · Marketing OS · Case study · Release timeline; PATH-TO-L4 sits right after Marketing OS
+  granary: "03"
+  retail-vista: "03"
+
+# Per-platform render-pattern override. The default rule is grid-table when
+# 2+ agents on a platform, platform-card when 1. JCP overrides this to keep
+# the card grid even with 3+ agents · the page's visual story is built around
+# cards, and the milestone column doesn't apply (no source-grounded dates yet).
+platform_pattern_overrides:
+  jcp: platform-card

@@ -1,0 +1,194 @@
+{
+  "page": "dark-factory/index.html",
+  "spec": null,
+  "spec_note": "No spec authored before page build. Page → spec backfill recommended (Stage 1 of website-section-authoring) so future revisions follow the lifecycle.",
+  "source_compilation": "docs/mtm-notes-compilation/ + docs/2026-04-30-farooq-mda-update-letter.md",
+  "audit_date": "2026-05-02",
+  "audit_version": "v2 (replaces v1 after deeper protocol pass)",
+  "audit_scope": "full",
+  "v1_to_v2_delta": "v1 was a B-effort run that skipped per-claim source verification, full tone-of-voice §5-§9, full-page visual review, dead-code check, and the cross-page consistency grep. v2 ran the full prescribed protocol. Net score unchanged (86) but the breakdown shifted: tone -12, visual -5, honesty +3, cross-page +5. The tone drop surfaces a HIGH finding v1 missed (hero subhead 51 words vs 30-word ceiling).",
+  "score": 86,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 88,
+    "source_traceability": 95,
+    "tone_of_voice": 78,
+    "honesty_register": 95,
+    "visual_completeness": 65,
+    "cross_page_consistency": 92
+  },
+  "dimension_thresholds_met": {
+    "source_traceability": "PASS (95 ≥ 75)",
+    "tone_of_voice": "FAIL (78 < 80)",
+    "honesty_register": "PASS (95 ≥ 80)",
+    "structural_compliance": "PASS (88 ≥ 85)",
+    "visual_completeness": "FAIL (65 < 85)",
+    "cross_page_consistency": "PASS (92 ≥ 70)"
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§0 Hero subhead",
+      "issue": "Hero subhead is 51 words. tone-of-voice §5 says max 30 words for a hero subhead, three sentences. Current copy: 'A Trends customer scans her body in 30 seconds on the Mobile Tailor tab in the AJIO app, picks a garment she sees on a 3D model of herself, and the garment is stitched in a Bangalore micro-factory and delivered home in 7 days. Made to order, never made to stock.' Also opens with subject ('A Trends customer scans...') rather than the lead number/scope/differentiator formula.",
+      "fix": "Rewrite to ~28 words, three sentences, lead with the headline number. Recommended: '30-second body scan in the AJIO app, garment stitched in a Bangalore micro-factory, delivered home in 7 days. Made to order, never made to stock. Same selling price as a regular Reliance Trends garment.'",
+      "files": ["dark-factory/index.html:102"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "§04 Live Kitchen, §05 Operating model, §07 Capex",
+      "issue": "Source concept note carries 6 embedded images (image1: headline-numbers viz; image2: 8-step journey + entry-points diagram; image3: live-kitchen 5-stage strip; image4: demand loop; image5: supply loop; image6: factory layout). Page renders zero images. Sibling /fynd-horizon and /autri carry 1+ hero image and 4-9 in-section images; the bar for visual evidence on a Recent Innovations page is set by them.",
+      "fix": "Extract base64 images from docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md (or convert the .pptx decks via soffice → pdf → pdfimages -j). Place under assets/dark-factory/ as 01-headline-numbers.jpg through 06-factory-layout.jpg. Wire into §0 hero (image1), §03 journey (image2), §04 live kitchen (image3), §05 demand+supply loops (image4 + image5 side-by-side), §07 capex factory layout (image6). Once images land, the lightbox infrastructure stops being dead code (see L2 below).",
+      "files": ["dark-factory/index.html:255-270", "dark-factory/index.html:283-303", "dark-factory/index.html:354-393"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§0 Hero, §01 Status, §02 Strategic shift, §03 Customer journey, §06, §10",
+      "issue": "Page uses 'Trends' 20 times, 'Reliance Trends' 0 times. tone-of-voice §7 lists the canonical Reliance entity name as 'Reliance Trends'. At minimum the first mention in the hero, the first mention in §02, and the §10 Decision Ask should use the full name; subsequent body mentions can elide to 'Trends'.",
+      "fix": "Edit hero subhead, §02 lead-in ('Reliance Trends today sells ready-made garments...'), and §10 Ask 3 ('Adopted as the Reliance Trends standard for this category') to use the full canonical name. Elsewhere 'Trends' is OK.",
+      "files": ["dark-factory/index.html:102", "dark-factory/index.html:173", "dark-factory/index.html:474"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§3 page structure",
+      "issue": "Page deviates from canonical default ordering (status → what's live → architecture → deep dive → in flight → vision → research → sources) without a recorded spec entry. Deviations: no §03 Architecture (replaced with Customer journey); extra §04 Live Kitchen; extra §07 Capex line-item table; extra §10 Decision ask. The deviations are coherent for a proposal-stage page, but per audit-framework.md §1A 'undocumented override is a MEDIUM finding'.",
+      "fix": "Author docs/dark-factory-spec.md in update mode with §3 page-structure as Add/Keep/Remove diff and §9 Decisions D1-D4 recording: D1 'No §03 Architecture — page is operational concept, not engineering platform'; D2 'Extra §04 Live Kitchen — load-bearing trust-building element of the proposal'; D3 'Extra §07 Capex line-item table — Apex sees the ₹8.27 Cr breakdown in line with the Decision Ask'; D4 'Extra §10 Decision Ask — proposal-stage page, this is the call to action'.",
+      "files": ["dark-factory/index.html:127-491", "docs/dark-factory-spec.md (does not exist)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog page (does not exist)",
+      "issue": "No /catalog/ sibling page exists in the repo. When/if catalog is restored, dark-factory needs an entry, and the metric/desc on the entry must match the home-page card and the page hero.",
+      "fix": "When /catalog/ ships, add row: {name: 'Dark Factory · MTM', status: 'Build', layer: 'make', summary: 'Lights-out micro-factory + Mobile Tailor app inside AJIO. ₹8.27 Cr capex, 7-day MTM. Concept note 30-Apr-2026 (Farooq Adam · Vipin Tyagi); awaiting alpha sign-off.', source: 'docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md'}. Match the home-page card metric exactly.",
+      "files": ["catalog/index.html (does not exist)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§09 Phase-gate plan",
+      "issue": "Each phase card carries exit criteria but no DRI and no dates. tone-of-voice §3 last bullet requires forward-looking phases to carry a date OR a named DRI. §01 acknowledges 'Single named DRI · Trends-side accountable owner · pending', which mitigates the rule, but the §09 phase cards still read as undated promises.",
+      "fix": "Either (a) once Trends-side DRI is named, drop into each phase card as 'DRI: <name>'; or (b) tighten the phase-card pill from 'Pending sign-off' to 'Pending · DRI + dates locked at sign-off' so the unbinding is visible on each card. Lower priority — the page is honest about the gap; this is polish.",
+      "files": ["dark-factory/index.html:432-453"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "page chrome",
+      "issue": "Page ships the full lightbox infrastructure (CSS · overlay markup · JS handler · 15 references) but zero in-body images bind to it. img.zoomable selector resolves to zero elements; the lightbox script is dead code on first ship. Defensible as 'ready for image-extraction follow-up' (see H2) but worth flagging.",
+      "fix": "Either (a) extract source images per H2 — the lightbox then earns its keep; or (b) strip the lightbox CSS + markup + script if the image extraction is deferred indefinitely. Recommend (a).",
+      "files": ["dark-factory/index.html:13-31", "dark-factory/index.html:520-541"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§0 hero subhead",
+      "issue": "Hero uses gendered 'her body... she sees on a 3D model of herself'. Source uses 'she' throughout (acceptable to mirror) but tone-of-voice §2 prefers impersonal/institutional voice. Sibling /fynd-horizon hero uses subject-less 'three clicks · 30 seconds...' construction. Subsumed by H1 (the rewrite there should also drop the gendered pronoun chain).",
+      "fix": "Subsumed by H1 fix.",
+      "files": ["dark-factory/index.html:102"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "§07 Capex table row 10 (Eton conveyor)",
+      "issue": "Row 10 'Eton conveyor system · $1,60,000 · INR column blank.' Faithful to source — concept note carries the same gap. Total ₹8,27,05,510 reconciles without the Eton row, suggesting source either omitted INR conversion or absorbed elsewhere.",
+      "fix": "Optional — note as a footnote on the table: 'Eton conveyor INR conversion pending; total of ₹8.27 Cr per concept-note line items.' Lower priority — Apex review of capex will surface this directly.",
+      "files": ["dark-factory/index.html:373"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L5",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§11 Sources",
+      "issue": "Sources block contains 4 cards. Per tone-of-voice §3 default-no-Sources-block rule, a Sources block earns its keep when the page combines multiple distinct artefacts AND/OR when the reader will reasonably want to navigate to the source files. Both carve-outs apply here (4 source artefacts; reader benefit from dropping into the .md and .pptx). Block is justified — flagging only because the rule defaults to removal and this is one of the few cases where it stays.",
+      "fix": "Keep the Sources block. No action.",
+      "files": ["dark-factory/index.html:488-518"],
+      "auto_fixable": false
+    }
+  ],
+  "verifications_run": {
+    "structural": {
+      "section_label_contiguity": "PASS · 01 02 03 04 05 06 07 08 09 10 11 contiguous",
+      "page_chrome": "PASS · nav, crumb, section-labels, H1, footer, auth.js, Tailwind CDN, style.css all present",
+      "version_pill": "PASS · v0.8.4 in nav (matches sibling /autri and /fynd-horizon)"
+    },
+    "source_traceability": {
+      "hero_stats_verified": "PASS · 30 sec / 7 days / ₹8.27 Cr / 0 days all trace to concept note",
+      "60_150_200_chain": "PASS · concept note line 70 'Capacity | Single Bangalore line. | 60 pieces / day (alpha) → 150 (beta) → 200 / day at full run rate.' matches page §08 row + §07 hero + §0 hero exactly",
+      "15326_sqft": "PASS · concept note line 140 'Single floor, 15,326 sq ft' matches page §07 §01",
+      "8_27_05_510_total": "PASS · concept note line 122 '8,27,05,510' matches page §07 capex table total",
+      "499_243_pricing": "PASS · concept note lines 94-95 match page §06 unit-economics table",
+      "100_1000_10000_phase_exits": "PASS · concept note Phase Gate Plan lines 150-152 match page §09 exit criteria",
+      "70_NPS_95_98_SLA": "PASS · concept note Customer outcomes lines 56-59 match page §08 outcome targets",
+      "sources_block_paths": "PASS · all 4 cited paths exist; dev server returns 200 for /docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md and /docs/2026-04-30-farooq-mda-update-letter.md",
+      "fabricated_claims": "NONE detected"
+    },
+    "tone_of_voice": {
+      "banned_vocabulary_grep": "ZERO matches (transformative, world-class, cutting-edge, game-changing, next-generation, best-in-class, premier, robust, leverages, harnesses, empowers, enables, unlocks, perhaps, could potentially, arguably, moreover, furthermore, additionally, in addition, importantly, the future is now, trust layer, step-change)",
+      "banned_constructions_grep": "ZERO matches (Strong interest in, has shifted the mindset, This is not X. It is Y., In summary, trailing summaries)",
+      "we_our_grep": "ZERO instances of 'we' or 'our' in user-facing copy",
+      "exclamation_emoji_grep": "ZERO matches",
+      "date_format": "PASS · only 30-Apr-2026 used, DD-MMM-YYYY",
+      "indian_number_format": "PASS · ₹8.27 Cr · ₹8,27,05,510 · ₹499 · ₹243",
+      "AJIO_casing": "PASS (after audit-time fix from 'Ajio' to 'AJIO' across 8 occurrences)",
+      "Reliance_Trends_full_name": "FAIL · 0/20 mentions use full canonical name (M1 finding)",
+      "engineering_jargon": "PASS · no routes/endpoints/UAT/RBAC/ODBC/microservices/kubernetes",
+      "hero_subhead_word_limit": "FAIL · 51 words (limit 30) (H1 finding)",
+      "forbidden_chrome": "PASS · no Author/Date/Version block, no Owner footer line",
+      "card_lede_formula": "PASS sample-checked · §03 Steps 1-8, §05 loops, §06 'why' cards all under 30 words and follow Function/Capability/Number formula"
+    },
+    "honesty_register": {
+      "live_pills_count": "0 · correct for proposal-stage page",
+      "build_pills_count": "8 · all paired with 'Proposal' or 'Pending sign-off' framing",
+      "phase2_pills_count": "5 · Roadmap framing throughout",
+      "mixed_tier_sentences": "ZERO detected",
+      "overclaims": "ZERO detected · every status claim explicitly framed as proposal/pending",
+      "underclaims": "ZERO detected"
+    },
+    "visual": {
+      "dev_server_reachable": "PASS · HTTP 200 · 44267 bytes initial",
+      "auth_bypass": "PASS · sessionStorage bypass works",
+      "console_clean": "PASS · only standard Tailwind CDN dev warning",
+      "network_image_load": "PASS · only fynd-logo.png (200) — page has zero in-body images (H2)",
+      "broken_links": "ZERO · /docs/2026-04-30... and /docs/mtm-notes-compilation/... both return 200",
+      "hero_above_fold_1280x900": "PASS · H1 + section-label + crumb + subhead + 3 status pills + 4 stat tiles all visible",
+      "mobile_375px": "PASS · H1 readable, status pills wrap correctly, stat tiles stack to 2-column",
+      "fullpage_layout": "PASS · 11 sections render in clean alternating border/bg-soft rhythm; 18-row capex table and 10-row outcomes table fit; no overflow"
+    },
+    "cross_page": {
+      "home_card_consistency": "PASS · index.html:188 metric '₹8.27 Cr capex · 7-day MTM · alpha pending' matches page hero pills",
+      "mega_menu_consistency": "PASS · all sibling pages use identical 'Dark Factory · made-to-measure' string · zero drift",
+      "stale_placeholder_copy": "PASS · grep 'Page in progress · owner TBD' / 'Hub page coming soon' / 'named in the 30 - Apr - 2026' returns ZERO hits across all sibling .html files",
+      "catalog_entry": "N/A · /catalog/ does not exist (M3)"
+    }
+  },
+  "strengths": [
+    "Source traceability is exhaustive. Every numerical claim on the page (30 sec / 7 days / ₹8.27 Cr / 14 measurements / <1 cm / 60→150→200 capacity / 15,326 sq ft / ₹499 / ₹243 / 100/1000/10000 phase exits / >70 NPS / >95% SLA / >18 months payback / 18 capex line items totalling ₹8,27,05,510) verified to a specific source line in Mobile_Tailor_Concept_Note_Formatted.md or the cover letter. Zero fabrications. Zero magnitude shifts.",
+    "Honesty register is calibrated above the bar. Page carries zero Live pills — every status is Proposal / Pending sign-off / Roadmap. The §10 Decision Ask is direct (Approve ₹8.27 Cr · Approve alpha trial · Approve standard). The §01 Status block explicitly names 'Single named DRI · pending' rather than glossing the gap. This is exactly the proposal-page register Apex needs.",
+    "Cross-page consistency is exact. Mega-menu mono-suffix matches across all 30+ sibling pages with zero drift; home-card metric matches the hero pills word-for-word; AJIO casing now matches the canonical site convention (3/3 uppercase elsewhere); zero stale placeholder copy survives on any sibling page.",
+    "Sibling-page consistency in chrome and pattern. Same nav block, same lightbox infrastructure, same footer, same CSS variables, same section-label format, same status pill colours, same stat-tile pattern, same grid-table styles as /fynd-horizon and /autri. New visitor cannot tell the page is freshly authored.",
+    "Tone-of-voice baseline is clean. Zero matches on 26 banned-vocabulary terms (transformative, world-class, empowers, leverages, etc.); zero 'we / our' first-person; zero exclamation marks; zero emojis; dates uniformly in DD-MMM-YYYY; Indian number format used throughout (₹L Cr); engineering jargon absent. The HIGH finding (hero word count) and MEDIUM finding (Reliance Trends full name) are specific and mechanically fixable."
+  ]
+}

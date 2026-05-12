@@ -1,0 +1,51 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: identities_unified
+    label: Identities unified
+    value: 400M+
+    definition: UCP profile records across RR online + offline · multi-device
+    source: UCP production
+    confidence: live
+  - id: rpos_daily_orders
+    label: RPOS daily orders streaming
+    value: 1.5M
+    definition: Every in-store transaction streams into UCP within minutes
+    source: UCP analytics
+    confidence: audited
+  - id: rpos_stores
+    label: Stores streaming RPOS
+    value: 15,000+
+    definition: Across 75+ formats · RRL + RBL
+    source: UCP × RPOS integration
+    confidence: audited
+  - id: nps_formats
+    label: NPS coverage · formats
+    value: 79
+    definition: SMS-based NPS triggered 1-2 hours after POS purchase
+    source: UCP NPS
+    confidence: live
+  - id: nps_orders_processed
+    label: NPS orders processed
+    value: 7.2M
+    definition: Cumulative since rollout 01 - Apr - 2026
+    source: UCP NPS
+    confidence: live
+  - id: api_latency_ms
+    label: API latency p50
+    value: ~19 ms
+    definition: UCP API
+    source: UCP SRE
+    confidence: live
+  - id: event_processing_ms
+    label: Event processing end-to-end
+    value: ~300 ms
+    definition: Stream-to-segment
+    source: UCP SRE
+    confidence: live
+  - id: throughput_events_per_sec
+    label: Throughput sustained
+    value: 500/sec
+    definition: Production load
+    source: UCP SRE
+    confidence: live

@@ -1,0 +1,21 @@
+{
+  "slug": "mtailor",
+  "name": "mTailor (MAGA)",
+  "tagline": "Body-scan-driven made-to-measure for Reliance fashion portfolio.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Pilot",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#mtailor",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

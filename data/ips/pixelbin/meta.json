@@ -1,0 +1,23 @@
+{
+  "slug": "pixelbin",
+  "name": "PixelBin",
+  "tagline": "DAM + transformations \u00b7 cross-team \u00b7 5K+ images for Tira alone.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "beauty"
+  ],
+  "value_chain": [
+    "buy-make",
+    "sell"
+  ],
+  "ownership": "fynd",
+  "web_anchor": "/jcp#pixelbin",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

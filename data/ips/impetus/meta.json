@@ -1,0 +1,28 @@
+{
+  "slug": "impetus",
+  "name": "Impetus",
+  "tagline": "Reliance's AI-first platform for Fashion and Lifestyle retail.",
+  "track": "impetus",
+  "track_role": "track-headline",
+  "status": "Live",
+  "since": "2024-11-13",
+  "last_release": "2026-04-25",
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "plan",
+    "buy-make",
+    "move",
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "ai-platform",
+    "fashion",
+    "fl"
+  ]
+}

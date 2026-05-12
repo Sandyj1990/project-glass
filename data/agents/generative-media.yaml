@@ -1,0 +1,385 @@
+# Generative Media Agent
+# Sourced verbatim from:
+#  · ~/Documents/work/social-pilot/.ai/agents.md (system overview, AI providers,
+#    6 named sub-agents, Temporal workflows, integration layer)
+#  · ~/Documents/work/social-pilot/.ai/architecture/system-overview.md (layer
+#    model, post-production pipeline, data-flow examples for short-form +
+#    long-form video)
+#  · ~/Documents/work/social-pilot/.ai/modules/video-generation-workflow.md
+#    (FirstLastFrameVideoWorkflow + LongFormVideoWorkflow + Kling alternative)
+#
+# Per docs/agents-spec.md v0.8 (7-section detail-page template).
+
+slug: generative-media
+name: Generative Media Agent
+sub_title: "Brief → script → frames → video → post-production → distribution. Multi-agent autonomous pipeline producing shoppable, on-brand video for social and storefront."
+status: build           # live | build | scoping
+status_label: Building
+track: sell
+autonomy_level: L4
+primary_workflow: "Video Production"
+date: 2026-05-03
+source_folder: ~/Documents/work/social-pilot/.ai/
+source_citations:
+  - "social-pilot/.ai/agents.md · system overview + module map + 6 named sub-agents"
+  - "social-pilot/.ai/architecture/system-overview.md · layer model + post-production pipeline"
+  - "social-pilot/.ai/modules/video-generation-workflow.md · 3 Temporal workflows · Veo + Kling providers"
+  - "social-pilot/.ai/architecture/data-flow.md · brief → script → frames → video state machine"
+
+# § 0 · Hero stat tiles (4)
+stats:
+  - { label: "Specialist sub-agents", value: "6",     context: "Script Writer · Trend Scout · Brand Analyzer · Ralph Ideation · Performance · Brief Suggestion" }
+  - { label: "Pipeline depth",        value: "6 steps", context: "Brief → Script → Frames → Video → Post-Production → Distribution" }
+  - { label: "Workflow level",        value: "L4 Agentic", context: "Durable orchestration · multi-scene fan-out · auto-grade gate" }
+  - { label: "AI providers",          value: "9",          context: "Text · Claude · OpenAI · Gemini  ·  Image · Vertex Imagen · fal.ai  ·  Video · Veo · Kling · Runway  ·  CDN · Pixelbin" }
+
+# Primary platform anchor intentionally omitted for v1 — no Reliance brand
+# deployment yet. (Per user direction · 03-May-2026.)
+# When the Reliance pilot lands, set:
+#   primary_platform:
+#     name: "<platform>"
+#     route: "/<platform>/"
+
+# § 01 · Job to be done
+job:
+  pain: |
+    Brand video for social and storefront is the most expensive and slowest
+    creative artefact a retailer ships. A single 15-30 s product reel runs
+    through brief → storyboard → studio → shoot → edit → grade → CTA design
+    — typically 3-6 weeks per format per brand, with talent and post costs
+    that scale linearly with volume. Reliance's brand portfolio needs this
+    output weekly across 100s of SKUs; the manual pipeline cannot.
+  what_it_does: |
+    Produces shoppable, on-brand video end-to-end. Trend Scout watches
+    formats in market; Ralph Ideation drafts a brief; Brand Analyzer keeps
+    style discipline; Script Writer turns the brief into a shot-by-shot
+    storyboard; the frame stage generates first/last-frame stills using
+    Vertex AI Imagen (AI Photoshoot output planned as scene reference);
+    Veo or Kling animates each scene; FFmpeg post-production stitches text
+    overlays and an AI-generated CTA frame; the Shoppable widget feeds the
+    output into storefronts with product hotspots and analytics. Each
+    stage is a durable workflow with retries and resumable state.
+  human_role: |
+    Brand reviews the storyboard at the Storyboard Review gate; can edit
+    or reorder scenes inline. Performance Agent flags weak signals after
+    publish; the human marketer decides which learnings feed back into
+    the brief library. Trend selection and brand-safety overrides stay
+    human.
+
+# § 02 · Workflow steps · the closed loop
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+# Inline SVG flowchart · matches AI Photoshoot 3-zone convention
+# Inputs (left, blue) — trend signals, brand DNA, product + AI Photoshoot
+# output, brief approvals · 6-stage pipeline (centre, grey) with
+# Storyboard Review gate (yellow, human-in-loop) · Outputs (right, green)
+workflow_svg: |
+  <svg viewBox="0 0 1240 620" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>Generative Media Agent · multi-agent video pipeline</title>
+    <desc>Inputs (trend signals, brand DNA, product catalogue with planned AI Photoshoot integration, brief approvals) flow through 6 durable workflow stages to produce shoppable video. Storyboard Review gate is human-in-loop. Outputs deliver to cloud storage, the Shoppable feed, and the Performance Agent for post-publish learnings.</desc>
+    <defs>
+      <marker id="gm-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="gm-arr-gate" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <marker id="gm-arr-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#9333EA"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .gate-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; fill: #B45309; letter-spacing: 0.04em; }
+        .loop-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; fill: #9333EA; letter-spacing: 0.04em; }
+        .agent-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 9.5px; font-weight: 600; fill: #6B5BD6; letter-spacing: 0.04em; text-transform: uppercase; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-gate { stroke: #B45309; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+        .conn-loop { stroke: #9333EA; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+      </style>
+    </defs>
+
+    <!-- Zone backgrounds -->
+    <rect x="14" y="14" width="220" height="592" rx="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+    <rect x="250" y="14" width="740" height="592" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="1006" y="14" width="220" height="592" rx="14" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+
+    <!-- Zone headers -->
+    <text x="32" y="40" class="zh">Inputs</text>
+    <text x="268" y="40" class="zh">Workflow · 6 stages · Durable orchestration</text>
+    <text x="1024" y="40" class="zh">Outputs</text>
+
+    <!-- Inputs (left band) · 5 cards -->
+    <rect x="32" y="58" width="184" height="64" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="80" class="src-ttl">Trend signals</text>
+    <text x="44" y="98" class="src-sub">Audio · format · hashtag</text>
+    <text x="44" y="111" class="src-sub">Trend Scout watches feeds</text>
+
+    <rect x="32" y="134" width="184" height="64" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="156" class="src-ttl">Brand DNA + style</text>
+    <text x="44" y="174" class="src-sub">Palette · silhouette · voice</text>
+    <text x="44" y="187" class="src-sub">Brand Analyzer extracts</text>
+
+    <rect x="32" y="210" width="184" height="64" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="232" class="src-ttl">Product catalogue</text>
+    <text x="44" y="250" class="src-sub">SKU · price · garment specs</text>
+    <text x="44" y="263" class="src-sub">AI Photoshoot integration planned</text>
+
+    <rect x="32" y="286" width="184" height="64" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="308" class="src-ttl">Brief library</text>
+    <text x="44" y="326" class="src-sub">Approved by brand</text>
+    <text x="44" y="339" class="src-sub">Ralph Ideation drafts</text>
+
+    <rect x="32" y="362" width="184" height="64" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="384" class="src-ttl">Performance signals</text>
+    <text x="44" y="402" class="src-sub">Engagement · CTR · sales</text>
+    <text x="44" y="415" class="src-sub">Performance Agent feedback</text>
+
+    <!-- Workflow stages (centre band) · 6 cards in 2 rows of 3 -->
+    <!-- Row 1: 01 Brief · 02 Script · 03 Frames -->
+    <rect x="268" y="62" width="200" height="96" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="282" y="84" class="stp-num">01</text>
+    <text x="282" y="102" class="stp-ttl">Brief intake</text>
+    <text x="282" y="120" class="stp-sub">Brand approves a brief</text>
+    <text x="282" y="133" class="stp-sub">— from chat ideation,</text>
+    <text x="282" y="146" class="stp-sub">trend, or template</text>
+
+    <!-- Step 02 · pre-fix: 3 sub-text lines + agent-lbl `VIA CLAUDE / VERTEX`
+         overflowed (5 text rows in 96px · agent-lbl effectively in the
+         inter-card gap with bottom padding 3px). Per spec §5.1 + §5.8 fix:
+         folded the Claude/Vertex attribution into sub-2 so the card holds
+         exactly 3 sub-text lines like its row-1 siblings. Y-baselines match
+         step 01 / step 03 so the row stays aligned. -->
+    <rect x="498" y="62" width="200" height="96" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="512" y="84" class="stp-num">02</text>
+    <text x="512" y="102" class="stp-ttl">Script + storyboard</text>
+    <text x="512" y="120" class="stp-sub">ScriptWriterAgent · multi-scene</text>
+    <text x="512" y="133" class="stp-sub">Claude / Vertex · narrative arc,</text>
+    <text x="512" y="146" class="stp-sub">scenes, captions, treatment</text>
+
+    <rect x="728" y="62" width="200" height="96" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="742" y="84" class="stp-num">03</text>
+    <text x="742" y="102" class="stp-ttl">Frame generation</text>
+    <text x="742" y="120" class="stp-sub">Per-scene first/last frames</text>
+    <text x="742" y="133" class="stp-sub">via Vertex Imagen + fal.ai</text>
+    <text x="742" y="146" class="stp-sub">Auto-grade gate</text>
+
+    <!-- Storyboard Review gate (orange, between row 1 and row 2) ·
+         sub-text shortened to fit inside the 660px card width per spec §5.1
+         (was 135 chars · spilled past right edge). -->
+    <rect x="268" y="186" width="660" height="56" rx="10" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1"/>
+    <text x="282" y="208" class="gate-lbl">Storyboard Review gate · human-in-loop · brand can edit or reorder scenes</text>
+    <text x="282" y="226" class="stp-sub">Brief enters review · workflow waits for storyboard_approved · edits persist to scene store before unblock.</text>
+
+    <!-- Row 2: 04 Video · 05 Post-Production · 06 Distribution -->
+    <rect x="268" y="266" width="200" height="96" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="282" y="288" class="stp-num">04</text>
+    <text x="282" y="306" class="stp-ttl">Video animation</text>
+    <text x="282" y="324" class="stp-sub">Per-scene Veo or Kling</text>
+    <text x="282" y="337" class="stp-sub">first/last-frame animation</text>
+    <text x="282" y="350" class="stp-sub">Veo 4-8 s · Kling 5-10 s</text>
+
+    <rect x="498" y="266" width="200" height="96" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="512" y="288" class="stp-num">05</text>
+    <text x="512" y="306" class="stp-ttl">Post-production</text>
+    <text x="512" y="324" class="stp-sub">Text overlays, transitions,</text>
+    <text x="512" y="337" class="stp-sub">colour grade, film grain</text>
+    <text x="512" y="350" class="stp-sub">+ AI CTA frame stitch</text>
+
+    <rect x="728" y="266" width="200" height="96" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="742" y="288" class="stp-num">06</text>
+    <text x="742" y="306" class="stp-ttl">Distribution</text>
+    <text x="742" y="324" class="stp-sub">Shoppable feed</text>
+    <text x="742" y="337" class="stp-sub">product hotspots · CTAs</text>
+    <text x="742" y="350" class="stp-sub">+ analytics events</text>
+
+    <!-- Performance loop card (purple, below row 2) ·
+         sub-text shortened per §5.1 (was 141 chars · spilled past right edge). -->
+    <rect x="268" y="406" width="660" height="56" rx="8" fill="#FAF5FF" stroke="#D8B4FE" stroke-width="1"/>
+    <text x="282" y="428" class="loop-lbl">Performance loop · post-publish</text>
+    <text x="282" y="446" class="stp-sub">Reads engagement, CTR, storefront conversion · feeds learnings to the brief library for the next round.</text>
+
+    <!-- Eval / observability footer card ·
+         line-2 shortened per §5.1 (was 113 chars · close to overflow). -->
+    <rect x="268" y="498" width="660" height="80" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1"/>
+    <text x="282" y="520" class="zh">Eval + observability</text>
+    <text x="282" y="540" class="stp-sub">Frame grading · per-scene quality checks · auto-retry on fail.</text>
+    <text x="282" y="556" class="stp-sub">Langfuse trace · every AI, image and video call captured · lineage back through the pipeline.</text>
+    <text x="282" y="572" class="stp-sub">AI provider resilience · automatic fallback across Claude, OpenAI, Gemini, Vertex.</text>
+
+    <!-- Outputs (right band) · 4 cards -->
+    <rect x="1024" y="58" width="184" height="64" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="80" class="out-ttl">Storyboard data</text>
+    <text x="1036" y="98" class="out-sub">Scenes · captions · arc</text>
+    <text x="1036" y="111" class="out-sub">Editable in brand UI</text>
+
+    <rect x="1024" y="134" width="184" height="64" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="156" class="out-ttl">Video clips · cloud storage</text>
+    <text x="1036" y="174" class="out-sub">Per-scene + assembled</text>
+    <text x="1036" y="187" class="out-sub">9:16 / 16:9 · 720p / 1080p</text>
+
+    <rect x="1024" y="210" width="184" height="64" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="232" class="out-ttl">Shoppable feed</text>
+    <text x="1036" y="250" class="out-sub">Embeddable widget</text>
+    <text x="1036" y="263" class="out-sub">Product hotspots + CTAs</text>
+
+    <rect x="1024" y="286" width="184" height="64" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="308" class="out-ttl">Performance traces</text>
+    <text x="1036" y="326" class="out-sub">Per-asset engagement</text>
+    <text x="1036" y="339" class="out-sub">CTR · attributed sales</text>
+
+    <!-- Inputs into workflow zone · per spec §5.4 · short horizontal arrows
+         ending at workflow zone left edge (x=250) · no diagonals · no
+         crossings. Per-input → per-step mapping in step strip prose below.
+         Pre-fix: 4 diagonals fanning to row-1 cards · input #5 had no
+         connector at all. -->
+    <path class="conn" d="M216,90 L250,90" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M216,166 L250,166" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M216,242 L250,242" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M216,318 L250,318" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M216,394 L250,394" marker-end="url(#gm-arr)"/>
+
+    <!-- Single entry arrow from workflow zone edge → Step 01 (Brief intake) -->
+    <path class="conn" d="M250,110 L268,110" marker-end="url(#gm-arr)"/>
+
+    <!-- Connectors · row 1 left-to-right -->
+    <path class="conn" d="M468,110 L498,110" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M698,110 L728,110" marker-end="url(#gm-arr)"/>
+
+    <!-- Connector · Step 03 (Frame generation) → review gate · clean vertical -->
+    <path class="conn-gate" d="M828,158 L828,186" marker-end="url(#gm-arr-gate)"/>
+
+    <!-- Connector · review gate → Step 04 (Video animation) · clean vertical -->
+    <path class="conn-gate" d="M368,242 L368,266" marker-end="url(#gm-arr-gate)"/>
+
+    <!-- Connectors · row 2 left-to-right -->
+    <path class="conn" d="M468,314 L498,314" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M698,314 L728,314" marker-end="url(#gm-arr)"/>
+
+    <!-- Performance loop · perf card → input #5 (Performance signals) ·
+         orthogonal · routes through inter-zone gap (x=242). Output→perf-card
+         arrow dropped · the perf card body text states it reads outputs. -->
+    <path class="conn-loop" d="M268,434 L242,434 L242,394 L216,394" marker-end="url(#gm-arr-loop)"/>
+
+    <!-- Outputs · single exit from Step 06 (Distribution) into outputs zone ·
+         then per-output short horizontal arrows · per spec §5.4. -->
+    <path class="conn" d="M928,314 L990,314" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M1006,90 L1024,90" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M1006,166 L1024,166" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M1006,242 L1024,242" marker-end="url(#gm-arr)"/>
+    <path class="conn" d="M1006,318 L1024,318" marker-end="url(#gm-arr)"/>
+  </svg>
+workflow_diagram_caption: "Inputs (blue, left · trend signals · brand DNA · product catalogue with planned AI Photoshoot integration · brief library · performance feedback) → 6 durable stages (centre · grey, with the orange Storyboard Review gate as the human-in-loop checkpoint) → Outputs (green, right · storyboard data · per-scene clips · shoppable feed · performance traces). Performance loop closes back to the brief library."
+
+workflow_steps:
+  - { num: "01", title: "Brief intake",        detail: "Brand approves a brief — sourced from chat ideation, a tracked trend, or a template. The brief kicks off the content production workflow." }
+  - { num: "02", title: "Script + storyboard", detail: "Script Writer agent runs in multi-scene mode — generates narrative arc, scenes, visual treatment and captions. Routes through Claude (primary) with OpenAI / Gemini as backup." }
+  - { num: "03", title: "Frame generation",    detail: "Per-scene first/last-frame stills generated via Vertex AI Imagen or fal.ai. Reference images sourced from the product catalogue today; AI Photoshoot integration on the roadmap. The grader scores quality checks and auto-retries on fail." }
+  - { num: "04", title: "Video animation",     detail: "Per-scene Veo (Vertex · 4-8 s per clip) or Kling (fal.ai · 5-10 s per clip) animation between first and last frame · 9:16 or 16:9 · 720p or 1080p. Long-form videos fan out parallel scene generation; assembled with cross-fade scene transitions." }
+  - { num: "05", title: "Post-production",     detail: "Video editor overlays text, colour-grades, applies film grain, and stitches an AI-generated CTA frame — single product card, multi-product grid, or brand outro. Non-blocking — original video is used if post-production fails." }
+  - { num: "06", title: "Distribution",        detail: "Output ships to cloud storage, then served through the Shoppable feed (cached for 60-second freshness) with product hotspots and analytics tracking. Per-brand API keys exchanged for short-lived (15-minute) access tokens." }
+
+# § 03 · Underlying data
+data:
+  sources:
+    - { name: "Trend signals",            classification: "Mixed",            entities: "Trending audio · format · hashtag · velocity per market" }
+    - { name: "Brand DNA + style guide",  classification: "Human-Created",    entities: "Palette · silhouette · voice · prior-season bestsellers" }
+    - { name: "Product catalogue",        classification: "Mixed",            entities: "SKU · price · garment specs (incl. pattern_description / pattern_scale)" }
+    - { name: "AI Photoshoot output",     classification: "Machine-Created",  entities: "On-model 4K stills · planned as scene-reference images for video frames (integration on the roadmap)" }
+    - { name: "Brief library",            classification: "Human-Created",    entities: "Approved briefs · scenes · captions · CTAs" }
+    - { name: "Performance signals",      classification: "Machine-Created",  entities: "Engagement · CTR · attributed sales · feed analytics" }
+  refresh_cadence: "Per-brief — short-form clips ~3-4 minutes end-to-end; long-form (multi-scene assembly) ~10-15 minutes. Trend signals refreshed daily."
+  kpis_moved:
+    - "Time-to-video (weeks → minutes)"
+    - "Cost per video"
+    - "Brand-style adherence (auto-grade score)"
+    - "Storefront engagement / CTR"
+    - "Attributed sales per asset"
+
+# § 04 · Architecture · how it's built (developer-facing metadata · not rendered per agents-spec D22)
+architecture:
+  topology: "Multi-agent pipeline orchestrated by Temporal · 6 named sub-agents (Script Writer · Trend Scout · Brand Analyzer · Ralph Ideation · Performance · Brief Suggestion) · 9 durable Temporal workflows (ContentProduction · FrameGeneration · FirstLastFrameVideo · LongFormVideo · StoryboardFrame · AvatarGeneration · BrandAnalysis · TrendSync · ChatIdeation) · per-provider LLM circuit breakers + fallback chain."
+  models:
+    - "Claude (Anthropic) · primary LLM · scripts, brand analysis, chat, agentic tool-use loops"
+    - "OpenAI · brief suggestions, trend analysis"
+    - "Gemini · vision LLM · garment specs, frame grading"
+    - "Vertex AI Imagen · primary frame and CTA generation"
+    - "fal.ai (nano-banana-pro) · alternative frame generation"
+    - "Veo · primary first-last-frame animation"
+    - "Kling (fal.ai) · alternative video generation"
+    - "Runway · video generation"
+  tools:
+    - "Temporal · workflow durability, retries, signals"
+    - "FFmpeg · post-production · text overlays, xfade, colour grade, film grain, assembly"
+    - "Pixelbin CDN · image delivery"
+    - "GCS · video and asset storage"
+    - "Langfuse · LLM / image / video tracing"
+    - "Tool executor · agentic tool-use loops (search_products, update_draft, select_product)"
+  memory:
+    - "Brief library · approved briefs feed Ralph Ideation context"
+    - "Brand DNA · style guide informs Script Writer + frame generation"
+    - "Performance traces · feed back into the brief library via Performance Agent"
+    - "Reference images · AI Photoshoot output + prior-season bestsellers as scene references"
+  runtime: "FastAPI backend (Python 3.11+ · async) · PostgreSQL · Redis cache · Temporal.io for workflow durability · GCS + Pixelbin for storage · React + Zustand frontend"
+
+# § 04 (rendered) · Design patterns used
+patterns:
+  - { name: "Multi-Agent Orchestration", usage: "6 specialist sub-agents (Script Writer · Trend Scout · Brand Analyzer · Ralph Ideation · Performance · Brief Suggestion) coordinated as durable workflows." }
+  - { name: "Tool Calling",              usage: "Ralph Ideation Agent uses tool-use loops (search products · update draft · select product) to draft briefs against the live catalogue." }
+  - { name: "Wide Research",             usage: "Long-form videos fan out parallel frame and video generation per scene (max 3 concurrent), then converge in video assembly." }
+  - { name: "Context Engineering",       usage: "The reference processor categorises reference images (product · character · style) and prepares multimodal inputs for Gemini · brand-style context injected per script run." }
+  - { name: "Agent Memory",              usage: "Brief library + brand DNA + performance traces persist as semantic + episodic memory · Performance Agent learnings feed back into the next brief." }
+  - { name: "Observability",             usage: "Langfuse traces every AI, image and video call · grading reports trace back through the full pipeline · root-cause analysis runs on failures." }
+  - { name: "Evals",                     usage: "Per-scene frame grading (quality checks · auto-retry on fail) · prompt eval test suite · 68% backend test-coverage gate enforced in CI." }
+
+# § 05 (rendered) · Evals · how we know it works
+evals:
+  status: "in-development"
+  approach: |
+    Three layers run today on the Fynd-product side. **Layer 1 ·
+    per-asset frame grading** — the grader scores every generated frame
+    against quality checks (colour accuracy · print fidelity ·
+    silhouette · category compliance); auto-retries on fail; ships only
+    when checks pass. **Layer 2 · trace lineage** — Langfuse captures
+    every AI, image and video call; the grader reconstructs full
+    pipeline lineage from any grading report. **Layer 3 · post-publish
+    performance** — Performance Agent reads engagement, CTR and
+    attributed sales; learnings feed back into the brief library so the
+    next brief starts smarter.
+  gates:
+    - "Frame grade passes per-scene quality checks before the scene goes to video"
+    - "Storyboard Review gate · brand approves the storyboard before any video call (cost gate)"
+    - "Post-production failure is non-blocking — original video ships if overlays fail"
+    - "AI provider resilience · automatic fallback chain (Claude → OpenAI → Gemini → Vertex) when any provider fails"
+    - "68% backend test-coverage gate enforced in CI · separate eval suites for prompt regression"
+
+# § 07 · Status · developer-facing metadata only (not rendered per agents-spec D23)
+live_today: |
+  Live on the Fynd-product side (SocialPilot · AI-native social media
+  management platform for Instagram growth). 6 named sub-agents in
+  production; 9 Temporal workflows running; Veo + Kling + Vertex Imagen
+  + Claude / OpenAI / Gemini integrated with circuit breakers. No
+  Reliance brand pilot in production yet.
+
+in_flight:
+  - { date: "TBD", milestone: "Reliance brand pilot scoping · primary deployment surface to be locked." }
+  - { date: "TBD", milestone: "AI Photoshoot output as a first-class scene reference · pipeline wiring to consume Trends Reboot delivery feed." }
+
+roadmap:
+  - "Reliance brand pilot · scope, brand selection, KPI baselines"
+  - "Trend Scout extended to Indian retail format library (RBL + RRVL brand portfolio)"
+  - "Performance Agent feeding back into Cortex Planning Agent's range plan (cross-agent loop)"
+
+# § 06 (rendered) · Linked platforms (drop "Impetus " prefix per agents-spec D21)
+linked_platforms:
+  - { name: "AI Photoshoot",   route: "/impetus/ai-photoshoot/", role: "Planned upstream · on-model 4K stills as scene-reference images for video frames" }
+  - { name: "PixelBin Videos", route: "/pixelbin/videos/",       role: "Live AI-video gallery — long-form landscape + short-form vertical output" }
+  - { name: "PixelBin",        route: "/pixelbin/",              role: "Image and CDN delivery layer" }

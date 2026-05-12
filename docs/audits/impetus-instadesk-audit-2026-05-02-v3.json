@@ -1,0 +1,132 @@
+{
+  "page": "impetus/instadesk/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "source_compilation": "docs/Impetus notes compilation/Impetus Release Notes.pdf (pp. 101-103)",
+  "audit_date": "2026-05-02",
+  "auditor": "website-page-reviewer · Group E · v3",
+  "score": 86,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 95,
+    "tone_of_voice": 80,
+    "honesty_register": 88,
+    "visual_completeness": 95,
+    "cross_page_consistency": 85
+  },
+  "section_inventory": [
+    "Hero (IMPETUS · INSTADESK · LIVE)",
+    "§02 What it does for you",
+    "§03 How Many People Use It",
+    "§04 What improved",
+    "§05 Screenshots"
+  ],
+  "section_label_contiguity": "OK · §02 → §05 contiguous after §05 Updates Shipped + §06 Progress deletions per recent change note",
+  "findings": [
+    {
+      "id": "I1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero",
+      "issue": "Hero subhead opens with 'One support tool for everyone — replaced Freshdesk' — the 'for everyone' phrasing reads softly; Apex hero formula prefers number-first.",
+      "fix": "Reorder to lead with the number: '₹55L/year saved · 100% adoption in 2 weeks · replaced Freshdesk. Single helpdesk for 2,000+ Impetus users; AI suggests resolutions that update after every customer reply.'",
+      "files": ["impetus/instadesk/index.html:165"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I2",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§05 Screenshots",
+      "issue": "Section is labelled '05 · Screenshots' which makes the contiguous run §02 · §03 · §04 · §05 — but the page is missing §01 entirely (the 'For:' audience block was absorbed into hero per template §3.2). Either re-tag screenshots as §05 explicitly or note the §01 absorption in the spec.",
+      "fix": "Either renumber screenshots to '04 · Screenshots' if §04 collapses into hero too (no — §04 is What Improved), or add a one-word eyebrow re-purpose. Cleanest: keep §02→§05 numbering and confirm spec §3.2 (drop heading if PDF section missing) is the recorded override. No code change needed; document in spec.",
+      "files": ["impetus/instadesk/index.html:212", "docs/impetus-restructure-spec.md"],
+      "auto_fixable": false
+    },
+    {
+      "id": "I3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 What improved",
+      "issue": "Improved-callout body mixes bold inline tags ('Everyone', 'Support agents', 'The organisation') in an essay-paragraph form. The Apex register prefers checkmark bullet list per spec §3.1 ('Each line starts with ✓').",
+      "fix": "Convert the dense paragraph to a 3-bullet checkmark list: '✓ Everyone · one place for support, no tool-switching. ✓ Support agents · AI-suggested solutions refresh with every message. ✓ The organisation · ~₹55L/year saved by retiring Freshdesk; 100% adoption in 2 weeks; TAT cut 40-60%.'",
+      "files": ["impetus/instadesk/index.html:194-207"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 expected metric impact",
+      "issue": "'L1 capacity effectively expands ~2x without hiring' is a derivation, not a number from the source PDF. Source supports cost saving + TAT reduction; the 2x extrapolation has no source line.",
+      "fix": "Either drop the 2x clause or attribute it: 'Implies first-touch capacity expands roughly 2x at constant headcount.' Better: cut the speculation; let the ₹55L + 40-60% numbers do the work.",
+      "files": ["impetus/instadesk/index.html:202-206"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I5",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 expected metric impact",
+      "issue": "Phrase 'L2 → L3 path for InstaDesk on the autonomy ladder' references the autonomy ladder but §06 Progress section was deleted. Reader cannot click through to context.",
+      "fix": "Either delete the autonomy-ladder reference, or convert to inline link: '... on the <a href=\"/autonomous/\">autonomy ladder</a>'. Without the §06 anchor on this page, the bare reference is now hanging.",
+      "files": ["impetus/instadesk/index.html:204-206"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I6",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "hero audience pills",
+      "issue": "Audience pill 'Anyone who needs to raise or manage support tickets' is filler — 'Anyone' overlaps with the prior 2,000+ pill.",
+      "fix": "Drop the 'Anyone…' pill; the first pill (2,000+ users — buyers, ops, sourcing) plus Suppliers and Store Teams already cover the audience.",
+      "files": ["impetus/instadesk/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I7",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 chip strip",
+      "issue": "Chip 'Support TAT cut 40-60% (Q1)' uses 'TAT' acronym. Per tone-of-voice §7 jargon table, plain English ('resolution time') reads cleaner for Apex; though the §04 callout already expands as 'Turnaround Time'. Inconsistent register: chip jargon, callout plain.",
+      "fix": "Change chip to 'Resolution time cut 40-60% (Q1)' so the chip and callout match.",
+      "files": ["impetus/instadesk/index.html:187"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I8",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "page chrome",
+      "issue": "<title> tag is 'Support Platform · Impetus' but the data file slug + breadcrumb labels InstaDesk. Inconsistent with the eyebrow line 'IMPETUS · INSTADESK · LIVE' which preserves the brand name.",
+      "fix": "Acceptable per recent change note (module names simplified). Confirm intentional; if so no action. If not, restore '<title>InstaDesk · Impetus</title>'.",
+      "files": ["impetus/instadesk/index.html:6"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I9",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§05 Screenshots",
+      "issue": "Image alt text contains markdown asterisks: 'alt=\"**Support ticket detail** · ...\"'. Asterisks render literally for screen readers.",
+      "fix": "Strip the ** from alt attributes; the visible caption already carries the bold. e.g. 'alt=\"Support ticket detail · Ticket history, status, contact info for issue tracking.\"'",
+      "files": ["impetus/instadesk/index.html:215", "impetus/instadesk/index.html:222", "impetus/instadesk/index.html:229", "impetus/instadesk/index.html:236"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Source traceability is excellent — every claim (2,000+ users, 100% in 2 weeks, ~₹55L, 40-60% TAT, AI for ASN/AWB/Fit/PP/DPR) traces verbatim to PDF p. 101.",
+    "Honesty register is clean — single Live pill, no overclaims, the acquisition-price ₹55L is from Compendium not invented.",
+    "Image asset hygiene is clean — all 4 -v2/-v2-b URLs return 200; lightbox working (verified open:true via Chrome DevTools).",
+    "Page chrome complete — nav mega-menu, crumb, footer copyright, auth.js script, Tailwind + style.css all present.",
+    "Cross-page consistency strong — /impetus/index.html card 15 says 'Replaced Freshdesk · ₹55L/year saved' which matches; home page makes no stale claim."
+  ],
+  "verification_notes": {
+    "image_loads_200": "verified · 4/4 images returned 200 in audit-grpE-instadesk context",
+    "lightbox_works": "verified · openImpetusLightbox + classList.contains('open') === true",
+    "console_clean": "only standard Tailwind CDN dev warning",
+    "section_label_run": "§02 · §03 · §04 · §05 contiguous after §05 Updates Shipped + §06 Progress deletions",
+    "deleted_sections_confirmed": "§05 Updates Shipped removed per recent change note · Sources block removed · §06 Progress removed"
+  }
+}

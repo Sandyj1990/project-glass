@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: modules_live_sit
+    label: Modules Live on SIT
+    value: 8
+    definition: Per release timeline
+    source: Orion-squad
+    confidence: live
+  - id: modules_in_dev
+    label: Modules in development
+    value: 6
+    definition: Per Slack todos
+    source: Orion-squad
+    confidence: live
+  - id: apollo_db_size
+    label: Apollo.io contact database
+    value: 275M+
+    definition: Auto-enrich corpus
+    source: Apollo.io
+    confidence: live

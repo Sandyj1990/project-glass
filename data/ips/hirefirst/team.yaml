@@ -1,0 +1,22 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+dri:
+  - Pritam Jamsandekar
+
+principal_engineer:
+  - Sameer Dev
+
+engineering:
+  - Paul Lobo
+  - Manish
+
+devops:
+  - Vijay
+  - Amboj Goyal
+
+mentors:
+  - Jigarkumar Dafda · CTPO
+
+ril_counterpart:
+  - Naren · Bond team · RIL HR Tech
+  - Mythili · Hypercare lead for New Energy

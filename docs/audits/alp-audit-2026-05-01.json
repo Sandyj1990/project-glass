@@ -1,0 +1,133 @@
+{
+  "page": "alp/index.html",
+  "spec": "docs/alp-spec.md",
+  "source_compilation": "docs/alp-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "score": 86,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 98,
+    "source_traceability": 92,
+    "tone_of_voice": 88,
+    "honesty_register": 92,
+    "visual_completeness": 95,
+    "cross_page_consistency": 50
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "index.html (home)",
+      "issue": "Home-page ALP card still says 'Building' status pill + title 'ALP · Asset Lifecycle' (incomplete) + body 'New-store-opening · 4 PRDs locked · Lovable protos live. Lead: Karan Muley.' — every framing element here is stale relative to the restructured page (MVP live, no 4-PRDs, no Karan Muley).",
+      "fix": "Replace card body with: title 'ALP · Asset Lifecycle Platform'; pill 'pill-live' with 'Live · MVP'; body 'NSO platform for Reliance Retail · MVP live for GJ-cluster pilot, Apr-2026 · Phase 2 = AI feasibility + 5 integrations.' Drop the Karan Muley DRI line.",
+      "files": ["index.html:610-614"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "catalog/index.html",
+      "issue": "IP catalog row reads 'ALP · Asset Lifecycle Planning' (wrong word — should be Platform) + status text '4 PRDs locked Aug to Sep 2025 (Network Planning · Real Estate · Feasibility · Lease)' (now-dropped framing) + Owner 'Karan Muley' (now stripped from page).",
+      "fix": "Rename to 'ALP · Asset Lifecycle Platform'. Replace status text with 'MVP live · Apr-2026 · GJ-cluster pilot · 7 of 9 Phase 1 Done · Phase 2: AI feasibility + 5 integrations'. Drop Owner cell or set to 'Fynd · Reliance NSO team' (no individual).",
+      "files": ["catalog/index.html:273"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§02 row 2 (AOP & catchment ingestion)",
+      "issue": "'Drives the funnel cards on the dashboard.' — 'Drives' is on the banned filler-verb list (tone-of-voice §7). Substitute table requires 'produces / increases / raises' with the metric, or just state the outcome.",
+      "fix": "Rewrite as: 'Powers the AOP funnel cards on the dashboard.' or 'Feeds the AOP funnel cards on the dashboard.'",
+      "files": ["alp/index.html:147"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§01 Impact card",
+      "issue": "'5 leads in GJ cluster on the dashboard at launch' is presented as MVP impact. Source (Screenshots PDF) shows 5 leads but they include a 'TEST' lead and one 'Test RE' lead — not all 5 are real. Risk of overclaim.",
+      "fix": "Soften to 'Live data captured for the GJ-cluster pilot, including TEST leads during UAT' OR drop the bullet entirely. The other three bullets in this card carry the load.",
+      "files": ["alp/index.html:122"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§01 What ALP is for Reliance, Problem card",
+      "issue": "Bullets 'Lead status tracked in Excel · no canonical source / Approvals chased over email' are an inferred problem narrative — PRD does not state these as the today-problem in those words. Reasonable inference (PRD discusses replacing email exchange) but not directly cited.",
+      "fix": "Either (a) cite PRD §Lead Creation point 3a explicitly: 'Ability to upload documents and add comments — this ensures exchange of emails is removed from existing process'; or (b) reword bullet to mirror the source: 'Document exchange ran over email · ALP replaces with in-app uploads + comments per lead.'",
+      "files": ["alp/index.html:97-103"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§07 Sources",
+      "issue": "Per tone-of-voice §3 'default-no Sources block' rule, the §08 Sources block should only appear if the page combines 3+ distinct verifiable artefacts that the reader needs to navigate to. ALP qualifies (PRD + project plan + screenshots), so the block is justified — but the in-line eyebrows already cite each source. Mild redundancy.",
+      "fix": "Acceptable to keep (passes the carve-out with 3 distinct file types). If trimming, drop the block and rely on inline eyebrows. No action required.",
+      "files": ["alp/index.html:463-489"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§06A Phase 2 plan",
+      "issue": "All 10 Phase 2 items carry 'Build' pills. Project plan Sheet2 actually marks all of them 'Not Started' (no start dates filled). 'Build' overstates active development.",
+      "fix": "Replace 'Build' pills with 'Roadmap' or introduce a 'Planned' pill style. Source-honest phrasing: 'Phase 2 plan · sequenced, not yet started.'",
+      "files": ["alp/index.html:362-410"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§03 Lead lifecycle deviates from canonical §03 = Architecture",
+      "issue": "Spec §9 D7 documents this as a deliberate override. Compliant — no fix needed; logged for record-keeping.",
+      "fix": "None. Override is documented.",
+      "files": ["docs/alp-spec.md:Decisions D7"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§00 Hero subhead",
+      "issue": "Subhead is 41 words across two sentences (target: <30 for hero per pre-publish checklist). Trims would help scannability for Apex.",
+      "fix": "Tighten to: 'Asset Lifecycle Platform. The internal NSO system for Reliance Retail. One record per candidate site · lead → site visit → validation → approvals → legal → fit-out → operational hand-off.'",
+      "files": ["alp/index.html:80"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "Console",
+      "issue": "Tailwind CDN dev warning emitted (standard for this register). No fix.",
+      "fix": "None.",
+      "files": [],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "All 7 on-page section labels run as a contiguous §01 → §07 with no gaps. Spec §3 page-structure matches the rendered page section-by-section.",
+    "Every numerical claim in §02 (9 initiatives, 7 Done, 2 In Progress, 1 Phase 2) is directly mappable to a row in ALP project plan Sheet1.",
+    "Lead lifecycle §03 (11 statuses, 7 tabs, 7 timeline stages) is verbatim from the PRD's named lists — no embellishment.",
+    "Honesty register holds: roadmap-intent §06B explicitly disclaims 'No PRD or named owner today; treat as direction, not commitment.' Apex-grade transparency.",
+    "Author/Date/Version metadata stripped from hero and footer per website-section-authoring §4 convention. Footer is single copyright line.",
+    "All 5 product screenshots load, render legibly (extracted via pdfimages -j to preserve native resolution), and wrap in js-lightbox with verified click → display:flex behaviour.",
+    "Title corrected from 'Asset Lifecycle Planning' to 'Asset Lifecycle Platform' (PRD-correct + user-confirmed)."
+  ],
+  "post_audit_actions": [
+    "Apply fixes C1, C2, H1 before sharing (3 mechanical edits).",
+    "Decide on H2 (5-leads framing) and H3 (Problem-card source attribution) with author judgement.",
+    "M2 Phase-2 pill recalibration is a judgement call — 'Build' vs 'Roadmap' vs 'Planned'; align with Phase 2 PM before ship."
+  ]
+}

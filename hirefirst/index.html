@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HireFirst · Reliance HR Tech · Reliance Retail × Fynd</title>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* In-page section nav */
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">HireFirst</span></div>
+<div class="section-label mb-3">Track 12 · Reliance HR Tech · Hiring Platform · Live on SIT · Prod sign-off in flight</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">HireFirst.<br/><span style="color: var(--accent);">Hiring on rails for Reliance.</span></h1>
+<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">Fynd's AI-native Hiring OS for RIL HR Tech. 9 modules live on SIT · Prod sign-off targeted 15-Jun-2026. Codename "Orion" inside Fynd; HireFirst on every RIL surface.</p>
+<p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">Replaces a manual recruiter workflow with an AI-scored hiring pipeline that pulls from SAP OM and turns vacancy-to-job creation into one click.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+<div class="card p-4"><div class="cap-num mb-1">RIL counterpart</div><div class="display-2 text-xl" style="color: var(--ink);">Bond team</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Naren · RIL HR Tech</div></div>
+<div class="card p-4"><div class="cap-num mb-1">SIT environment</div><a href="https://hiring-ril.sit.fyndx1.de/" target="_blank" rel="noopener" class="display-2 text-base mono hover:underline" style="color: var(--ink);">ril.sit.fyndx1.de</a><div class="text-xs mt-1" style="color: var(--green);">Live</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Production</div><a href="https://hiring.ril.com" target="_blank" rel="noopener" class="display-2 text-base mono hover:underline" style="color: var(--ink);">hiring.ril.com</a><div class="text-xs mt-1" style="color: var(--amber);">Target sign-off 15 - Jun - 2026</div></div>
+<div class="card p-4"><div class="cap-num mb-1">SAP OM sync</div><div class="display-2 text-3xl accent">Daily</div><div class="text-xs mt-1" style="color: var(--ink-muted);">RFC integration · 9 entities</div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+  <div class="story-toc-inner" id="story-toc">
+    <a href="#for-reliance">01 · For Reliance</a>
+    <a href="#live-today">02 · Live today</a>
+    <a href="#architecture">03 · Architecture</a>
+    <a href="#modules">04 · Intelligence modules</a>
+    <a href="#roadmap">05 · In development</a>
+    <a href="#governance">06 · Governance</a>
+    <a href="#tech-stack">07 · Tech stack</a>
+    <a href="#competitive">08 · Competitive</a>
+  </div>
+</div>
+
+<!-- §01 · WHAT HIREFIRST IS FOR RELIANCE -->
+<section id="for-reliance" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · What HireFirst is for Reliance</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">Problem</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Fragmented hiring stack.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Multiple ATS systems · siloed candidate data across BUs</li>
+<li>· Manual screening · recruiter day spent on data entry</li>
+<li>· Inconsistent vendor SLAs · no central scoring</li>
+<li>· No real-time hiring intelligence at the apex level</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Solution</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">HireFirst · AI-Native Hiring OS.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Unified pipeline from job creation to offer</li>
+<li>· AI-assisted screening, interviewing, and decision support</li>
+<li>· Centralised vendor governance and SLA tracking</li>
+<li>· SAP OM as the source of truth · daily RFC sync</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Impact for RIL</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Recruiter day shifts to judgement.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Vacancy → job in one click from SAP OM</li>
+<li>· Standardised AI scoring with structured feedback loop</li>
+<li>· Vendor performance becomes measurable</li>
+<li>· Audit trail intact end-to-end · compliance bar held</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<!-- §02 · LIVE FOR RIL TODAY -->
+<section id="live-today" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Live for RIL today · 9 modules shipped to SIT</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What HireFirst does today.</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">01</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">SAP OM · RFC Daily Sync</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">HireFirst connected to RIL's SAP OM via RFC. Daily automated sync pulls jobs, requisitions, org units, people, positions, vacancies, users, candidates, resumes, analytics. Plus one-click vacancy → job creation from SAP. Shipped 07 - Apr - 2026. Library-side issues for full OM sync in progress.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">02</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Negative Feedback Loop · AI Score Calibration</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Recruiter downvotes a candidate's AI score with a structured reason. HireFirst recalibrates scoring for future candidates on the same job. Feedback appended to Scoring Notes · AI reads on every analysis. -5 ranking penalty per downvote.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">03</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Customisable Email Templates</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Three ready-to-use templates · Interview Schedule (Online), Interview Schedule (Offline / In-person), Rejection. Rich text editor + dynamic variable substitution (name, role, date, link). Auto-trigger at hiring stage. Preview before save.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">04</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Candidate Portal</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Candidate-facing surface for application, resume upload, status tracking. Will live at <a href="https://careersfirst.ril.com" target="_blank" rel="noopener" class="mono hover:underline" style="color: var(--accent);">careersfirst.ril.com</a> · server-side rendered so job-aggregator sites can scrape it cleanly.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">05</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Auto Enrich · Apollo.io</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">One click fills missing profile details from Apollo's 275M+ contact database · phone, email, role, company. Candidates section → open profile → Auto Enrich. Shipped 02 - Apr - 2026.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">06</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Instant Interview · Quick Job Creation</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Create a job role on the fly directly inside the Instant Interview flow. No need to pre-set up a job. Resume upload + form filling auto-creates the job and shortlists in one pass.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">07</span><span class="pill pill-live">Live · SIT</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Candidate Blocklist</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Block candidates from being assigned to any job platform-wide while keeping the profile searchable for reference. Settings → Block List. Role-based access enforced (Leadership read-only). Shipped 03 - Apr - 2026.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">08</span><span class="pill pill-live">Live · Prod-grade</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">GCP Infra · Non-Prod + Prod</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Project creation · billing · network with IDC connectivity · Cloud Run · Bastion Host · Postgres SQL · Artifact Registry · application deployed · SAP connectivity verified. Application reachability test to SAP system passed.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">09</span><span class="pill pill-live">Live · Prod</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">RIL Branding · "HireFirst"</h3>
+<p class="text-sm mb-2" style="color: var(--ink-muted);">Codename "Orion" replaced with "HireFirst" across the RIL-facing portal · logo, page title, all visible entry points. Fynd-internal instance keeps the Orion codename. Shipped 02 - Apr - 2026.</p>
+</div>
+</div>
+</div></section>
+
+<!-- §03 · ORION ARCHITECTURE -->
+<section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · The HireFirst architecture · 4 layers</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four layers. One core.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">HireFirst is built on a 4-layer platform. Most enterprise capabilities are pre-built; what's enabled on day one is a subset, expanded over the roadmap.</p>
+
+<div class="card overflow-hidden mb-8">
+<img src="/assets/hirefirst/diagrams/structure.jpg" alt="HireFirst 4-layer architecture · Enterprise · BU & Hiring Ops · AI & Interview · Intelligence Core · Integration Layer" class="w-full" />
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="card p-5">
+<div class="cap-num mb-2">Layer 01</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Enterprise Layer</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Workforce planning · interview performance · background-verification APIs · vendor performance insights · budget &amp; offer governance · board KPI dashboard · cost per hire · job requisition engine.</p>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Layer 02</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">BU · Hiring Ops + AI / Interview</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Approval workflow automation · role &amp; skill template engine · interview panel mgmt · internal mobility · vendor scorecards · offer mgmt · digital offer &amp; onboarding · campus &amp; bulk hiring · AI video interview engine · proctoring · candidate experience portal · diversity &amp; compliance.</p>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Layer 03</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Intelligence Core</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Skill ontology graph · candidate knowledge graph · org ontology graph · AI matching engine · vendor question generator · bias detection · compensation benchmark · predictive hiring ML models · applied AI ontology.</p>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Layer 04</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Integration &amp; Data</h3>
+<p class="text-sm" style="color: var(--ink-muted);">HRMS · finance systems · job portals · payroll · SSO / identity · data lake &amp; warehouse. RIL deployment integrates SAP OM via RFC daily sync.</p>
+</div>
+</div>
+
+</div></section>
+
+<!-- §04 · FIVE INTELLIGENCE MODULES -->
+<section id="modules" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Five intelligence modules</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Where AI does the work.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Five modules organise HireFirst's AI surface. Each card lists sub-features with explicit status. <span class="pill pill-live">Live</span> ships on SIT today. <span class="pill pill-phase2">Roadmap</span> is on the platform plan, not yet enabled.</p>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<!-- Module 01 -->
+<div class="card overflow-hidden">
+<img src="/assets/hirefirst/modules/job.jpg" alt="Job Intelligence module · Project Director job page with AI JD generation" class="w-full border-b" style="border-color: var(--border);" />
+<div class="p-6">
+<div class="cap-num mb-1">Module 01</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Job Intelligence</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Precision from the start. Natural-language prompt → enterprise-grade JD with skills, OKRs, target companies, comp bench.</p>
+<ul class="space-y-1.5 text-sm">
+<li class="flex items-start gap-2"><span class="pill pill-live shrink-0 mt-0.5">Live</span><span style="color: var(--ink);">Quick Job Creation · job role on the fly inside Instant Interview</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Prompt-to-JD generator</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Similar Job Detection · reduce redundancy across BUs</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Auto Stage Configure · hiring stages by role complexity</span></li>
+</ul>
+</div>
+</div>
+
+<!-- Module 02 -->
+<div class="card overflow-hidden">
+<img src="/assets/hirefirst/modules/candidate.jpg" alt="Candidate Intelligence module · VP Network Operations candidate list with AI fit scores" class="w-full border-b" style="border-color: var(--border);" />
+<div class="p-6">
+<div class="cap-num mb-1">Module 02</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Candidate Intelligence</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Data-driven talent discovery. Embeddings + vector search + fit-score &amp; skill-gap analysis layered over a unified candidate database.</p>
+<ul class="space-y-1.5 text-sm">
+<li class="flex items-start gap-2"><span class="pill pill-live shrink-0 mt-0.5">Live</span><span style="color: var(--ink);">Profile Enrichment · Apollo.io 275M+ contact database</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-live shrink-0 mt-0.5">Live</span><span style="color: var(--ink);">AI Fit Score + structured downvote feedback loop</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Semantic / RAG search · intent + context, not keywords</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Automated dedup across multiple sources</span></li>
+</ul>
+</div>
+</div>
+
+<!-- Module 03 -->
+<div class="card overflow-hidden">
+<img src="/assets/hirefirst/modules/interview.jpg" alt="Interview Intelligence module · live transcript with AI assistance and auto-generated summary" class="w-full border-b" style="border-color: var(--border);" />
+<div class="p-6">
+<div class="cap-num mb-1">Module 03</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Interview Intelligence</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">AI assistant for the interviewer. Real-time transcription, follow-up suggestions, structured assessment, bias monitoring.</p>
+<ul class="space-y-1.5 text-sm">
+<li class="flex items-start gap-2"><span class="pill pill-live shrink-0 mt-0.5">Live</span><span style="color: var(--ink);">Instant Interview flow · resume → shortlist in minutes</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-build shrink-0 mt-0.5">Building</span><span style="color: var(--ink);">Interview Chatbot · Teams + Meet integration</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Real-time transcription with speaker ID</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Bias detection · pattern monitoring on questioning</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Auto interview summary · scores + highlights</span></li>
+</ul>
+</div>
+</div>
+
+<!-- Module 04 -->
+<div class="card overflow-hidden">
+<img src="/assets/hirefirst/modules/vendor.jpg" alt="Vendor Management module · vendor list with assign-job and analytics panels" class="w-full border-b" style="border-color: var(--border);" />
+<div class="p-6">
+<div class="cap-num mb-1">Module 04</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Vendor Management</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Optimising external talent partners. Assign job → submission → shortlist → interview → offer → join, with SLA + ranking layered over.</p>
+<ul class="space-y-1.5 text-sm">
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">SLA tracking · response time + submission quality</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Vendor ranking · auto-prioritise high-quality sources</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Conversion analytics · submission-to-hire + cost-per-hire</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Status control · vendor access + comms protocols</span></li>
+</ul>
+</div>
+</div>
+
+<!-- Module 05 -->
+<div class="card overflow-hidden md:col-span-2">
+<img src="/assets/hirefirst/modules/council.jpg" alt="AI Decision Council module · multi-persona Chairman/HR/Finance/Risk orchestration" class="w-full border-b" style="border-color: var(--border);" />
+<div class="p-6">
+<div class="cap-num mb-1">Module 05</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">AI Decision Council</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Multi-model orchestration. Strategic personas (Chairman, HR, Finance, Risk Analyser) debate a shortlist and produce a consolidated recommendation with objective scoring and an executive export.</p>
+<div class="grid md:grid-cols-2 gap-2">
+<ul class="space-y-1.5 text-sm">
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Chairman persona · strategic alignment + final oversight</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">HR persona · culture fit, behavioural assessment</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Finance persona · budget + comp benchmarking</span></li>
+</ul>
+<ul class="space-y-1.5 text-sm">
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Risk Analyser · compliance + background verification</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Multi-model orchestration · consolidated reporting</span></li>
+<li class="flex items-start gap-2"><span class="pill pill-phase2 shrink-0 mt-0.5">Roadmap</span><span style="color: var(--ink);">Executive export · objective scoring artefact</span></li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §05 · IN DEVELOPMENT FOR RIL -->
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · In development for RIL · shipping next</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Six modules in flight.</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">10</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Ideal Candidate Profile</h3>
+<p class="text-sm" style="color: var(--ink-muted);">AI synthesises an "ideal candidate" archetype per role from historical hires + JD analysis · used to pre-rank inbound applications.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">11</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Interview Chatbot</h3>
+<p class="text-sm" style="color: var(--ink-muted);">AI-led first-round interview agent. Microsoft Teams integration · Google Meet integration. Auto-generates structured assessment + score for human reviewer.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">12</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">AI-prompt autofill for Instant Interview</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Natural-language prompt to set up an interview in one shot · "schedule a senior backend interview for tomorrow at 4pm with João, focus on system design" · HireFirst configures the rest.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">13</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Native SAP OM Integration</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Beyond the daily RFC sync · real-time event-driven push from SAP OM into HireFirst for vacancy creation, status changes, org reorgs.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">14</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">LinkedIn Job Filler · Chrome extension</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Recruiter installs Chrome extension · scrapes LinkedIn search results into HireFirst with one click · zero copy-paste.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">15</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Domain split · hiring + careersfirst</h3>
+<p class="text-sm" style="color: var(--ink-muted);"><a href="https://hiring.ril.com" target="_blank" rel="noopener" class="mono hover:underline" style="color: var(--accent);">hiring.ril.com</a> · for managers, recruiters, vendors. <a href="https://careersfirst.ril.com" target="_blank" rel="noopener" class="mono hover:underline" style="color: var(--accent);">careersfirst.ril.com</a> · candidate-facing with SSR for job-aggregator scraping. IRM approval in flight.</p>
+</div>
+</div>
+</div></section>
+
+<!-- §06 · GOVERNANCE & SECURITY -->
+<section id="governance" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Governance &amp; security</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Enterprise compliance posture.</h2>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Layer</th><th>Capability</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Access</td><td class="font-medium">RBAC · org isolation · BU segregation</td><td class="text-sm"><span class="pill pill-live">Live · SIT</span> RBAC enforced (Leadership read-only)</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Authentication</td><td class="font-medium">SSO / SAML · MFA</td><td class="text-sm"><span class="pill pill-phase2">Roadmap</span> Phase 1 of strategic roadmap</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Monitoring</td><td class="font-medium">Per-action audit logs · real-time security alerts</td><td class="text-sm"><span class="pill pill-live">Live · SIT</span> GCP-native audit on Cloud Run</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Data protection</td><td class="font-medium">End-to-end encryption · enterprise data residency</td><td class="text-sm"><span class="pill pill-live">Live · SIT</span> Hosted in IDC GCP · India residency</td></tr>
+</tbody>
+</table>
+</div>
+
+</div></section>
+
+<!-- §07 · TECH STACK -->
+<section id="tech-stack" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 · Tech stack</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What HireFirst runs on.</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="card p-5">
+<div class="cap-num mb-2">Languages &amp; runtime</div>
+<ul class="space-y-1.5 text-sm" style="color: var(--ink);">
+<li>· TypeScript · JavaScript</li>
+<li>· Node.js · React.js</li>
+<li>· Electron.js (desktop)</li>
+</ul>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Database &amp; cache</div>
+<ul class="space-y-1.5 text-sm" style="color: var(--ink);">
+<li>· Azure DB PostgreSQL (Fynd instance)</li>
+<li>· Cloud SQL Postgres (RIL · GCP)</li>
+<li>· Azure Cache Redis · Firebase</li>
+</ul>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Cloud · RIL deployment</div>
+<ul class="space-y-1.5 text-sm" style="color: var(--ink);">
+<li>· GCP via IDC connectivity</li>
+<li>· Cloud Run · Bastion · Artifact Registry</li>
+<li>· Azure Event Hub · Service Bus (Fynd)</li>
+</ul>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">CI/CD · data · storage</div>
+<ul class="space-y-1.5 text-sm" style="color: var(--ink);">
+<li>· GitHub + GitHub Actions</li>
+<li>· Synapse Analytics (warehouse)</li>
+<li>· Azure Blob Storage</li>
+</ul>
+</div>
+</div>
+
+</div></section>
+
+<!-- §08 · COMPETITIVE LANDSCAPE -->
+<section id="competitive" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">08 · Competitive landscape</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Where HireFirst sits.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Comparison set · traditional ATS (Workday, Greenhouse, Zoho Recruit, Keka) and point AI tools (TurboHire, Expertia AI). Six core capabilities below.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Core capability</th><th class="text-center">Traditional ATS</th><th class="text-center">Point AI tools</th><th class="text-center">HireFirst</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">End-to-end automation</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--ink-muted);">~</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td></tr>
+<tr><td class="font-medium">AI decision intelligence</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td></tr>
+<tr><td class="font-medium">Enterprise governance</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td></tr>
+<tr><td class="font-medium">RAG-based semantic search</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--ink-muted);">~</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td></tr>
+<tr><td class="font-medium">Vendor management (VMS)</td><td class="text-center" style="color: var(--ink-muted);">~</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td></tr>
+<tr><td class="font-medium">Cross-BU talent reuse</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--ink-muted);">✗</td><td class="text-center" style="color: var(--green); font-weight: 600;">✓</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="text-sm mt-4" style="color: var(--ink-muted);">Comparators referenced · Workday · Greenhouse · Zoho Recruit · Keka · TurboHire · Expertia AI.</p>
+</div></section>
+
+<!-- §09 · BUILT BY -->
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

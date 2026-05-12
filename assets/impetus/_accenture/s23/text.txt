@@ -1,0 +1,51 @@
+Impetus Platform: Manufacturing Execution System
+
+---
+
+Revolutionising Apparel Manufacturing
+
+---
+
+The Challenges
+
+---
+
+Scattered Tools & Manual Reports
+WhatsApp / Email Coordination
+Data Duplication & Loss
+
+---
+
+The Solution
+
+---
+
+Unified AI-native vendor OS that connects every stage of the factory
+
+---
+
+Key Benefits
+
+---
+
+Unified Vendor OS
+Smarter Pre-Production
+Seamless Daily Reporting
+Proactive in Quality
+Faster to Packing
+End-to-End Traceability
+
+---
+
+System Modules
+
+---
+
+Pre-Production Order Summary
+Daily Production Reporting (DPR)
+Quality Audit Module
+Full QC Visibility
+IntelliPack Integration
+Capacity Declaration
+Integrations & Webhooks
+AI Orchestration

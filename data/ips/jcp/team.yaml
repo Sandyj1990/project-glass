@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+cpo:
+  - Ashish Chandorkar
+
+cpo_jcp:
+  - Arunoday Ray
+
+engineering:
+  - Pratikkumar Patel · Director Engineering
+  - Kapil Kapri · Staff EM
+  - Imran Khan · EM
+  - Avinash Ajith Kumar · EM
+
+ril_counterpart:
+  - Jeyandran
+  - Vineeth Nair
+
+mentors:
+  - Jigarkumar Dafda · CTPO Fynd Central
+  - Farooq Adam

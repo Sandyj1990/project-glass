@@ -1,0 +1,27 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: stores_live
+    label: Stores live
+    value: 17
+    definition: Pilot footprint since 07 - Nov - 2025
+    source: PulsePoint ops
+    confidence: live
+  - id: users_active
+    label: Active users
+    value: 33
+    definition: Across pilot stores
+    source: PulsePoint ops
+    confidence: live
+  - id: tasks_logged
+    label: Tasks logged
+    value: 2,948
+    definition: Cumulative since launch
+    source: PulsePoint
+    confidence: live
+  - id: task_completion_rate
+    label: Task completion rate
+    value: 77.42%
+    definition: Pilot performance
+    source: PulsePoint
+    confidence: live

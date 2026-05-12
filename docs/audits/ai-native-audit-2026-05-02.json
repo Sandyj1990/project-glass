@@ -1,0 +1,115 @@
+{
+  "page": "ai-native/index.html",
+  "spec": "docs/ai-native-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 79,
+  "grade": "C+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 70,
+    "tone_of_voice": 88,
+    "honesty_register": 65,
+    "visual_completeness": 90,
+    "cross_page_consistency": 65
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "source_traceability",
+      "section": "§04 · proof card",
+      "issue": "Day 01 / Day 02 / Day 03 micro-timeline is fabricated. Source (Agentisation docx §'Orion: Agentic Talent Acquisition') only states 'less than 3 days' total — there is no per-day breakdown of what was built when. The narrative ('Brief → scaffold' / 'Five capabilities, end-to-end' / 'Polish → deploy') is author voice presented as fact.",
+      "fix": "Three options: (a) drop the day-by-day cards entirely; (b) reframe as a single 'How a 3-day build flows' illustrative pattern with an explicit 'illustrative · not from source' caption; (c) replace with the SDLC stages from the source ('AI Software Development Lifecycle in <3 days') as a 5-stage strip without per-day attribution.",
+      "files": ["ai-native/index.html:485-505"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "honesty_register",
+      "section": "§04 · proof card",
+      "issue": "HireFirst proof card states 'Now Live — used by Reliance for end-to-end hiring across JD creation, sourcing, screening, interview design, and final decision support.' Canonical /hirefirst/ page shows status is 'Live on SIT · Prod sign-off in flight · Target sign-off 15-Jun-2026'. The ai-native page overstates current production usage at Reliance.",
+      "fix": "Reword to match /hirefirst/ register: 'Live on SIT today · prod sign-off targeted 15-Jun-2026 (RIL HR Tech). Five capabilities wired end-to-end: ...'. Drop 'used by Reliance for end-to-end hiring' — it asserts current production adoption that the canonical page does not support.",
+      "files": ["ai-native/index.html:478-481"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§01 closing line",
+      "issue": "'A single engineer + an agent now ships what a feature team shipped two years ago.' The 'two years ago' framing and feature-team comparison are interpretive author voice, not lifted from any source. Source says cycles compressed from weeks to days, and gives Orion as the example, but does not draw the 'feature team two years ago' comparison.",
+      "fix": "Either remove the line, soften to 'A single engineer + an agent can now ship what previously took a feature team weeks' (drops the 'two years ago' anchor that lacks a source), or cite the comparator (if such a comparator exists in an internal source).",
+      "files": ["ai-native/index.html:235"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "global",
+      "issue": "/organisation/#ai-native still carries the same 10 principles + adoption survey + tools sections that ai-native/ now hosts. Two register entries currently report the same content. Apex readers landing on /organisation/ will not realise /ai-native/ is the canonical page; readers landing on /ai-native/ may get a duplicate experience if they then click to /organisation/.",
+      "fix": "Resolve via the deferred Decision D8 step (Task #4): strip §01-§03 from /organisation/ and leave only the directory tab. Pending user confirmation.",
+      "files": ["organisation/index.html:222-406"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§0 hero subhead",
+      "issue": "Bold opener 'Code is cheap. Judgment, taste, and verification are the new constraints.' is a synthesis of Principle 06 ('Generating code is no longer a scarce skill. Scarce: clarity of thought, strong judgment, deep problem understanding, the ability to move fast with conviction.') The substitution of 'taste' and 'verification' for 'speed/conviction' is author voice. Defensible synthesis but worth surfacing as not-verbatim.",
+      "fix": "Either keep as-is (synthesis is acceptable when the meaning aligns and the source is reachable in §02 Principle 06) or align more tightly: 'Code is cheap. Clarity of thought, judgment, and the speed to act are the new constraints.' Lower priority — the line works as a hero opener.",
+      "files": ["ai-native/index.html:144"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "navigation",
+      "issue": "Mega-menu entry for /ai-native/ is present only on home page (index.html) and on the new /ai-native/ page itself. ~25 sibling pages still carry the old More menu without /ai-native/. Per spec D8 + lazy-strategy decision, this is acceptable for v1 but is a known gap.",
+      "fix": "v0.2 sweep: grep -rl 'mega-link\">Organisation' --include='*.html' to find all sites of the More mega-menu, add the /ai-native/ entry to each. ~10 minutes of mechanical sed work. Defer until other v1 polish lands.",
+      "files": ["~25 sibling page nav blocks"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "/catalog/",
+      "issue": "/catalog/index.html does not yet include an /ai-native/ entry. Apex readers using the IP catalog as the canonical index will not find this page.",
+      "fix": "Add an entry under the 'Culture' or 'Meta' grouping (whichever the catalog uses for /organisation/, /culture/, /agents/). Per spec, deferred to v0.2 alongside the mega-menu sweep.",
+      "files": ["catalog/index.html"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 stage-3 card",
+      "issue": "'Engineer briefs an agent; the agent plans, codes, tests, and ships. Engineer steers, reviews, and owns the outcome.' Reads as author synthesis rather than direct lift. Source (Agentisation docx) covers the agent-led arc but doesn't supply this exact tagline.",
+      "fix": "Acceptable as long-form synthesis. No change needed unless you want a verbatim quote from a source — which would require choosing one.",
+      "files": ["ai-native/index.html:172-173"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "hero eyebrow",
+      "issue": "Hero eyebrow is 'AI-Native · How Fynd builds now' (no §NN number) — but later sections use 01 / 02 / 03 / 04. This is consistent with how /fynd-academy/ and /culture/ render their hero eyebrows (also un-numbered) so it is in-register. Surfacing for completeness only.",
+      "fix": "No change. Pattern matches sibling meta-pages.",
+      "files": ["ai-native/index.html:140"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero arc strip (Autocomplete → IDE pair programming → Agent-led SDLC) is the strongest visual anchor on the page; the current-stage highlight in accent purple lands the 'where Fynd is on the arc' point in one read.",
+    "§03 'Repo as the operating system' lands the OpenAI-harness framing in our own register without copying the source's voice — the 'Into the repo / Displaced' two-column comparison + monospace tree mock makes the abstract idea concrete in seconds.",
+    "Adoption stat tiles are sourced (1,168 survey responses, 65% / 73% / 7,989 hrs/wk are all traceable to the existing /organisation/#ai-native data) and lead with the most defensible numbers.",
+    "Footer is the single copyright line; no Author / Date / Version block in hero or footer (per spec D7 and the broader register convention).",
+    "Mobile (375px) renders cleanly: arc strip stacks vertically with rotated arrows, stat tiles drop to 2-col, repo-tree mock has overflow-x scroll. No layout breakage."
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "page": "index.html",
+  "spec": "docs/home-redesign-spec.md",
+  "audit_date": "2026-05-03",
+  "score": 83,
+  "grade": "B",
+  "pass": false,
+  "pass_blockers": ["source_traceability dimension scored 70, below the 75 threshold (per audit-framework.md §5, this dimension is non-negotiable for Apex pages)"],
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 70,
+    "tone_of_voice": 92,
+    "honesty_register": 78,
+    "visual_completeness": 88,
+    "cross_page_consistency": 75,
+    "design_compliance": 88
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "source_traceability",
+      "section": "§09 ORGANISATION",
+      "issue": "₹2,500 Cr platform GMV claim is off by ~10×; Unlocking Growth deck slide 25 says $2.5 B which is ~₹20,000 Cr.",
+      "fix": "Replace '₹ 2,500 Cr' with '$ 2.5 B' or '~₹ 20,000 Cr'.",
+      "files": ["index.html:659"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§01 IMPACT tile #2 + §03 JCP lead",
+      "issue": "'79 channels live' overclaims; source says 68 of 79 are live (5 in progress, 5 in planning). Same page's §10 PLATFORMS array correctly says '79 channels · 68 live'.",
+      "fix": "Replace both occurrences with '79 channels · 68 live'.",
+      "files": ["index.html:188", "index.html:294"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "Hero · §01 IMPACT tile #6 · §09 ORG headline",
+      "issue": "Page asserts '25 platforms' in 4 places but the PLATFORMS JS array on the same page contains 27 entries; §10 grid renders '27 of 27 platforms shown'. Predates this redesign but the redesign surfaces the inconsistency more.",
+      "fix": "Three options: (1) update copy to '27' everywhere; (2) drop the 5 'context' entries from PLATFORMS (/culture, /organisation, /autonomous, /agents, /ai-native) so the count truly is 25; (3) reframe as '25 platforms + 2 context pages'. Needs a product call.",
+      "files": ["index.html:124", "index.html:127", "index.html:206", "index.html:651"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§01 IMPACT tile #3 caption",
+      "issue": "'11.06 L POs automated' conflates two source metrics: Unlocking Growth slide 6 says '460k+ POs automated' (4.6 L); '11.06 L POs FY26' (from /impetus PLATFORMS metric) is total POs FY26 — not specifically 'automated'.",
+      "fix": "Either '460 K+ POs automated' (deck-aligned) or '11.06 L POs FY 26' (drop 'automated' qualifier). Don't combine.",
+      "files": ["index.html:189"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§06 SPECIAL PROJECTS hero number",
+      "issue": "Hero number says '6 · Builds · live for Reliance' but Retail Jarvis tile carries a BUILD pill (not live). 5 of 6 are LIVE, 1 is BUILD. Caption wording overclaims by 1.",
+      "fix": "Change caption to '6 · Builds for Reliance' (drop 'live') OR '5 Live · 1 in Build · for Reliance'.",
+      "files": ["index.html:447"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "§01 IMPACT tile · CSS",
+      "issue": "`.impact-tile { padding: 32px 28px; ... }` — 28px horizontal padding is off the design.md §1.3 padding rhythm (4/8 scale; card padding must be 16/20/24/32).",
+      "fix": "Change to `padding: 32px;` (uniform p-8) and consider using Tailwind class `card p-8` instead of a custom rule.",
+      "files": ["index.html:27"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§04 UCP lead",
+      "issue": "'70+ other formats' drift; existing /ucp/ page and /ucp PLATFORMS metric on this same page say '75+ formats'.",
+      "fix": "Replace '70+ other formats' with '75+ formats' to match existing canonical number.",
+      "files": ["index.html:343"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "design_compliance",
+      "section": "§01 IMPACT section label",
+      "issue": "section-label has `style=\"display: inline-block;\"` inline override to keep the §-prefix from breaking out of the centered parent — code smell.",
+      "fix": "Remove the inline override; wrap label in a centered flex/block container instead.",
+      "files": ["index.html:170"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Section-label discipline — all 10 labels render as a perfect contiguous numeric run (01-10, no skips).",
+    "Zero banned vocabulary — no transformative/world-class/cutting-edge/unlocks/enables/empowers anywhere in user-facing copy.",
+    "No `we / our` first-person plural and no exclamation marks. No §Sources block. No internal source-document refs (no 'slide N', 'p. N', 'Accenture sN').",
+    "Pill discipline — only documented variants used (.pill-live × 23, .pill-build × 4, .pill-pilot × 1, .pill-phase2 × 1). No invented variants.",
+    "Design-system inheritance executed cleanly — zero new hex literals; all custom font-sizes on the documented scale; alternating --bg/--bg-soft section rhythm honoured; new .section-hero-split correctly scoped to page-level <style> per design.md §3."
+  ],
+  "verification_run": {
+    "section_labels_contiguous": true,
+    "chrome_present": ["nav.topnav", "<h1 class=\"display\">", "/auth.js", "cdn.tailwindcss.com", "/style.css", "<footer>"],
+    "console_messages": ["Tailwind CDN dev warning (acceptable per visual-audit-checklist)"],
+    "deep_link_filter_works": "Yes — #explore?filter=special-projects activates chip + renders 7 of 27 cards",
+    "inject_chrome_check": "exit 0 (no drift)",
+    "inject_meta_robots_check": "exit 0 (69 pages unchanged)"
+  }
+}

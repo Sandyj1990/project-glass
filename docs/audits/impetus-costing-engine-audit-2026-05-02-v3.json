@@ -1,0 +1,66 @@
+{
+  "page": "impetus/costing-engine/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_version": "v3",
+  "score": 86,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 88,
+    "source_traceability": 82,
+    "tone_of_voice": 92,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 95
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "between §02 and §03",
+      "issue": "PDF p.25 carries usage stats — 'Buy Plan pipeline: 3,492 shortlisted-to-buy options', 'Trends: 1,598 (46%) | Yousta: 836 (85%) | Azorte: 385 (43%) | Integrated with Cortex + PLM' — that the page does NOT surface anywhere. The §03 'How Many People Use It' chip strip was deleted per critical-changes; the underlying usage facts disappeared with it. Apex reading PDF p.25 will notice the page-omits scale-of-use proof.",
+      "fix": "Either (a) reinstate a single-line stat strip after §02 with the four chips ('3,492 options in pipeline · Trends 1,598 (46%) · Yousta 836 (85%) · Azorte 385 (43%)') OR (b) document the deletion in the spec with a sentence on why the partial-rollout numbers were judged not-yet-Apex-ready.",
+      "files": ["impetus/costing-engine/index.html:181"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 What improved · impact",
+      "issue": "Phrase 'the substrate for the L2 → L3 jump on Costing in the autonomy framework' uses 'substrate' (jargon — exec audience won't parse) and references the autonomy framework without the §06 Progress section to anchor the L2→L3 move (that section was deleted). Reads as orphan jargon now.",
+      "fix": "Replace 'is the substrate for the L2 → L3 jump on Costing in the autonomy framework' with 'is the foundation for higher autonomy on Costing — see /autonomous/ for the framework'. Or drop the autonomy reference entirely now that §06 Progress is gone.",
+      "files": ["impetus/costing-engine/index.html:191-193"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "page chrome",
+      "issue": "Hero is missing the parenthetical sub-line that intelliverse and pulsepoint carry under H1 (the small italic 'descriptor line' — e.g. '(Procuro · IntelliMake · IntelliQC · IntelliPack)'). Costing Engine has H1 → strap → audience pills with no sub-line. Asymmetric vs siblings.",
+      "fix": "Add a sub-line under H1, e.g. '<p class=\"text-xl mb-6\" style=\"color: var(--ink-muted);\">(Bill of Materials · vendor RFQ · cost-sheet)</p>' — or accept the asymmetry if intentional. Minor.",
+      "files": ["impetus/costing-engine/index.html:163-165"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§04 Screenshots caption (card 1)",
+      "issue": "Card 1 caption 'Costing review and approval dashboard' maps to PDF p.27. PDF p.27 caption is 'Costing review and approval dashboard with cost breakdowns by style' — page caption appends 'Cost breakdowns by style with brick, season, fashion grade, option, hit, issue date, assigned PM and stage.' — page is more verbose than source. Fine, but slight drift from verbatim convention.",
+      "fix": "Optional: trim card 1 caption to match PDF more closely, OR keep the current expansion as it adds reader-useful detail. Document the expansion choice if challenged.",
+      "files": ["impetus/costing-engine/index.html:203-205"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Tight, factual page — no banned vocabulary detected, no exclamation marks, no emojis, no engineering jargon in stat positions. Tone-of-voice check passes cleanly.",
+    "Screenshot deduplication is correctly applied — 3 unique cards (027 review-dashboard, 028 BOM-breakdown, 028-b activity-log) with no repeat of the BOM line-items view that PDF p.26/p.28 duplicate.",
+    "Caption swap (between 028-v2 and 028-v2-b) verified correct: card 2 'Detailed BOM cost breakdown' = PDF p.28 caption; card 3 'Costing activity log' = PDF p.28 activity-log image. Matches the critical-changes notes.",
+    "Section renumbering (§04 What improved → §03; §06 Screenshots → §04) is contiguous and correct after the §03 Buy Plan Pipeline + §04 Updates Shipped + §06 Progress deletions.",
+    "Cross-page consistency clean — /impetus/ index card 05 reads 'Costing Engine · Automated material-level costing with vendor pricing & approval workflows' which matches hero strap exactly."
+  ]
+}

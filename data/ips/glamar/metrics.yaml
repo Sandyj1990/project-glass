@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: returns_reduction
+    label: Returns reduction
+    value: −40%
+    definition: Across deployed brands
+    source: GlamAR product analytics
+    confidence: live
+  - id: revenue_per_visit_lift
+    label: Revenue per visit lift
+    value: +106%
+    definition: GlamAR sessions vs control
+    source: GlamAR analytics
+    confidence: live
+  - id: engagement_lift
+    label: Engagement lift
+    value: +90%
+    definition: GlamAR sessions
+    source: GlamAR analytics
+    confidence: live

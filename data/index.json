@@ -1,0 +1,478 @@
+{
+  "generated_at": "2026-04-30",
+  "total_ips": 49,
+  "by_status": {
+    "Live": 38,
+    "Pilot": 7,
+    "Build": 4
+  },
+  "by_track": {
+    "jcp": [
+      "jcp",
+      "ucp",
+      "konnect",
+      "jiia",
+      "boltic",
+      "ratl-ai",
+      "swap-easy"
+    ],
+    "samarth": [
+      "companion-app",
+      "samarth",
+      "scan-and-go",
+      "pulsepoint",
+      "store-command-center",
+      "r-one-loyalty",
+      "digital-coupons",
+      "ai-campaigns",
+      "fynd-kio"
+    ],
+    "autonomous": [
+      "zip",
+      "autonomous",
+      "ai-photoshoot",
+      "ai-design",
+      "fynd-studios",
+      "mtailor",
+      "fynd-horizon",
+      "nps",
+      "silent-nps",
+      "fynd-snap",
+      "pixelbin"
+    ],
+    "impetus": [
+      "impetus",
+      "trend-to-design",
+      "ai-cataloging",
+      "print-designer",
+      "garment-designer",
+      "cortex",
+      "fynd-create",
+      "autri",
+      "vendor-scan-pack",
+      "digital-twin",
+      "ask-impetus"
+    ],
+    "granary": [
+      "granary",
+      "fynd-quick"
+    ],
+    "alp": [
+      "alp"
+    ],
+    "rcpl": [
+      "rcpl"
+    ],
+    "rbl": [
+      "rbl",
+      "glamar"
+    ],
+    "retail-vista": [
+      "retail-vista"
+    ],
+    "retail-jarvis": [
+      "retail-jarvis",
+      "nps-intelligence"
+    ],
+    "forge": [
+      "forge"
+    ],
+    "hirefirst": [
+      "hirefirst"
+    ]
+  },
+  "ips": [
+    {
+      "slug": "jcp",
+      "name": "Jio Commerce Platform",
+      "track": "jcp",
+      "track_role": "track-headline",
+      "status": "Live",
+      "web_anchor": "/jcp"
+    },
+    {
+      "slug": "ucp",
+      "name": "Unified Customer Platform",
+      "track": "jcp",
+      "track_role": "headline",
+      "status": "Live",
+      "web_anchor": "/jcp#ucp"
+    },
+    {
+      "slug": "companion-app",
+      "name": "Trends Companion App",
+      "track": "samarth",
+      "track_role": "headline",
+      "status": "Live",
+      "web_anchor": "/#companion-app"
+    },
+    {
+      "slug": "konnect",
+      "name": "Fynd Konnect",
+      "track": "jcp",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#konnect"
+    },
+    {
+      "slug": "zip",
+      "name": "ZIP \u00b7 AJIO Commerce Agent",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#zip"
+    },
+    {
+      "slug": "jiia",
+      "name": "JIIA \u00b7 Jio Intelligent Agentic shopping",
+      "track": "jcp",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#jiia"
+    },
+    {
+      "slug": "impetus",
+      "name": "Impetus",
+      "track": "impetus",
+      "track_role": "track-headline",
+      "status": "Live",
+      "web_anchor": "/impetus"
+    },
+    {
+      "slug": "trend-to-design",
+      "name": "Trend-to-Design Agent",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#trend-to-design"
+    },
+    {
+      "slug": "ai-cataloging",
+      "name": "AI Cataloging",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#ai-cataloging"
+    },
+    {
+      "slug": "print-designer",
+      "name": "Print Designer",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#print-designer"
+    },
+    {
+      "slug": "garment-designer",
+      "name": "Garment Designer",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#garment-designer"
+    },
+    {
+      "slug": "cortex",
+      "name": "Cortex \u00b7 Planning Agent",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#cortex"
+    },
+    {
+      "slug": "fynd-create",
+      "name": "Fynd Create",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#fynd-create"
+    },
+    {
+      "slug": "autri",
+      "name": "AutRi \u00b7 Autonomous Robotics",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Pilot",
+      "web_anchor": "/impetus#autri"
+    },
+    {
+      "slug": "vendor-scan-pack",
+      "name": "Vendor Scan & Pack",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#vendor-scan-pack"
+    },
+    {
+      "slug": "digital-twin",
+      "name": "Digital Twin",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#digital-twin"
+    },
+    {
+      "slug": "ask-impetus",
+      "name": "Ask Impetus \u00b7 AI Business Analyst",
+      "track": "impetus",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/impetus#ask-impetus"
+    },
+    {
+      "slug": "granary",
+      "name": "Granary",
+      "track": "granary",
+      "track_role": "track-headline",
+      "status": "Live",
+      "web_anchor": "/granary"
+    },
+    {
+      "slug": "samarth",
+      "name": "Samarth",
+      "track": "samarth",
+      "track_role": "track-headline",
+      "status": "Live",
+      "web_anchor": "/samarth"
+    },
+    {
+      "slug": "scan-and-go",
+      "name": "Scan & Go",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#scan-and-go"
+    },
+    {
+      "slug": "pulsepoint",
+      "name": "Retail PulsePoint",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Pilot",
+      "web_anchor": "/samarth#pulsepoint"
+    },
+    {
+      "slug": "store-command-center",
+      "name": "Store Command Center",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/samarth#store-command-center"
+    },
+    {
+      "slug": "r-one-loyalty",
+      "name": "Club R-One Loyalty",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/samarth#r-one-loyalty"
+    },
+    {
+      "slug": "digital-coupons",
+      "name": "Digital Coupons",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/samarth#digital-coupons"
+    },
+    {
+      "slug": "ai-campaigns",
+      "name": "AI-Led Digital Campaigns",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/samarth#ai-campaigns"
+    },
+    {
+      "slug": "alp",
+      "name": "ALP \u00b7 Adaptive Land Platform",
+      "track": "alp",
+      "track_role": "track-headline",
+      "status": "Build",
+      "web_anchor": "/alp"
+    },
+    {
+      "slug": "rcpl",
+      "name": "RCPL \u00b7 FMCG B2B platform",
+      "track": "rcpl",
+      "track_role": "track-headline",
+      "status": "Build",
+      "web_anchor": "/rcpl"
+    },
+    {
+      "slug": "rbl",
+      "name": "RBL \u00b7 Reliance Brands Limited",
+      "track": "rbl",
+      "track_role": "track-headline",
+      "status": "Live",
+      "web_anchor": "/rbl"
+    },
+    {
+      "slug": "retail-vista",
+      "name": "Retail Vista",
+      "track": "retail-vista",
+      "track_role": "track-headline",
+      "status": "Pilot",
+      "web_anchor": "/retail-vista"
+    },
+    {
+      "slug": "retail-jarvis",
+      "name": "Retail Jarvis",
+      "track": "retail-jarvis",
+      "track_role": "track-headline",
+      "status": "Build",
+      "web_anchor": "/retail-jarvis"
+    },
+    {
+      "slug": "nps-intelligence",
+      "name": "NPS Intelligence Dashboard",
+      "track": "retail-jarvis",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/retail-jarvis#nps-intelligence"
+    },
+    {
+      "slug": "forge",
+      "name": "Forge MES",
+      "track": "forge",
+      "track_role": "track-headline",
+      "status": "Pilot",
+      "web_anchor": "/forge"
+    },
+    {
+      "slug": "autonomous",
+      "name": "Autonomous",
+      "track": "autonomous",
+      "track_role": "track-headline",
+      "status": "Live",
+      "web_anchor": "/autonomous"
+    },
+    {
+      "slug": "ai-photoshoot",
+      "name": "AI Photoshoot",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/autonomous#ai-photoshoot"
+    },
+    {
+      "slug": "ai-design",
+      "name": "AI Design",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/autonomous#ai-design"
+    },
+    {
+      "slug": "fynd-studios",
+      "name": "Fynd Studio",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/autonomous#fynd-studios"
+    },
+    {
+      "slug": "mtailor",
+      "name": "mTailor (MAGA)",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Pilot",
+      "web_anchor": "/autonomous#mtailor"
+    },
+    {
+      "slug": "fynd-horizon",
+      "name": "Fynd Horizon",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/autonomous#fynd-horizon"
+    },
+    {
+      "slug": "nps",
+      "name": "NPS",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/autonomous#nps"
+    },
+    {
+      "slug": "silent-nps",
+      "name": "Silent NPS (SNPS)",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Build",
+      "web_anchor": "/autonomous#silent-nps"
+    },
+    {
+      "slug": "hirefirst",
+      "name": "HireFirst (Orion)",
+      "track": "hirefirst",
+      "track_role": "track-headline",
+      "status": "Pilot",
+      "web_anchor": "/hirefirst"
+    },
+    {
+      "slug": "fynd-quick",
+      "name": "Fynd Quick \u00b7 Q-commerce OS",
+      "track": "granary",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/granary#fynd-quick"
+    },
+    {
+      "slug": "fynd-snap",
+      "name": "Fynd Snap",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/autonomous#ai-photoshoot"
+    },
+    {
+      "slug": "pixelbin",
+      "name": "PixelBin",
+      "track": "autonomous",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#pixelbin"
+    },
+    {
+      "slug": "boltic",
+      "name": "Boltic",
+      "track": "jcp",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#boltic"
+    },
+    {
+      "slug": "ratl-ai",
+      "name": "ratl.ai",
+      "track": "jcp",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#ratl"
+    },
+    {
+      "slug": "fynd-kio",
+      "name": "Fynd Kio",
+      "track": "samarth",
+      "track_role": "sub-ip",
+      "status": "Pilot",
+      "web_anchor": "/samarth#fynd-kio"
+    },
+    {
+      "slug": "glamar",
+      "name": "GlamAR",
+      "track": "rbl",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#glamar"
+    },
+    {
+      "slug": "swap-easy",
+      "name": "SwapEasy",
+      "track": "jcp",
+      "track_role": "sub-ip",
+      "status": "Live",
+      "web_anchor": "/jcp#swap-easy"
+    }
+  ]
+}

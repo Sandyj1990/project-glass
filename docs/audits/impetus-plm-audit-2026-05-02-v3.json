@@ -1,0 +1,65 @@
+{
+  "page": "impetus/plm/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 80,
+    "tone_of_voice": 85,
+    "honesty_register": 88,
+    "visual_completeness": 95,
+    "cross_page_consistency": 75
+  },
+  "findings": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§04",
+      "issue": "§04 impact line claims 'Replacing Centric eliminates a per-seat licence cost' — source PDF p.14 does not mention per-seat licence cost savings; this is an unsourced inference.",
+      "fix": "Drop the per-seat-licence claim, or cite a separate source. Keep the verifiable 80% time reduction.",
+      "files": ["impetus/plm/index.html:204"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "§02 'What it does for you' header label retained from source-PDF deck; tone-of-voice prefers third-person institutional voice over second-person ('you').",
+      "fix": "Rename label to '02 · What it does' (drop 'for you'); body copy is already impersonal.",
+      "files": ["impetus/plm/index.html:173"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§05",
+      "issue": "Screenshot alt texts missing a space before the trailing '·' separator (e.g., 'Material code search· Drag-and-drop' should be 'Material code search · Drag-and-drop'). Visible cap-num captions render correctly because of the surrounding HTML; only alt text and lightbox meta strings carry the typo.",
+      "fix": "Insert a space before the '·' in alt text and the openImpetusLightbox meta argument across all 10 cards.",
+      "files": ["impetus/plm/index.html:221", "impetus/plm/index.html:228", "impetus/plm/index.html:235", "impetus/plm/index.html:242", "impetus/plm/index.html:249", "impetus/plm/index.html:256", "impetus/plm/index.html:263", "impetus/plm/index.html:270"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "page chrome (mega-menu)",
+      "issue": "PLM page mega-menu omits 'SwapEasy' and 'TMS' entries that the home page mega-menu carries; sibling drift but does not break navigation.",
+      "fix": "Resync mega-menu block with home page on next chrome sweep.",
+      "files": ["impetus/plm/index.html:115"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Hero subhead is exactly tone-of-voice register — outcome-first ('End-to-end product lifecycle'), names the displaced product (Centric PLM), no marketing voice.",
+    "10 screenshots all return HTTP 200, lightbox open + Esc-close works, captions verbatim from source PDF p.15-20 with role attribution (Designer / Technical Designer / Buyer / Product Manager).",
+    "§03 Rollout Status pills correctly stripped of parenthetical dates per brief instruction; pills now read as forward-looking inventory rather than time-binding promises.",
+    "§04 What Improved callout uses the spec'd light-green block with a separated 'Expected metric impact' card; format matches the canonical sub-platform template.",
+    "Section numbering contiguous (hero / 02 / 03 / 04 / 05) after Updates-Shipped removal — renumber correctly applied."
+  ]
+}

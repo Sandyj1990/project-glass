@@ -1,0 +1,101 @@
+{
+  "page": "kaily/index.html",
+  "spec": "docs/kaily-spec.md",
+  "source_compilation": "docs/kaily-notes-compilation/ + docs/accenture-2026-04-16-compilation/ + autonomous/index.html (cross-reference)",
+  "audit_date": "2026-05-01",
+  "audit_type": "re-audit · post-skill-update · catches checks v1 audit missed",
+  "previous_audits": [
+    "docs/audits/kaily-audit-2026-05-01.json (initial · 68)",
+    "docs/audits/kaily-audit-2026-05-01-delta.json (post-fix · 90)"
+  ],
+  "previous_score": 90,
+  "score": 87,
+  "grade": "B+",
+  "weighted_pass": true,
+  "dimensional_pass": false,
+  "verdict": "PASS overall (weighted 87 ≥ 75 · Source + Honesty non-negotiables both clear). FAILS tone-of-voice dimensional threshold (78 < 80) due to four findings the v1 audit could not catch — the skill's tone-of-voice ruleset has since added rules for (a) the §08 Sources block default-no convention and (b) Fynd-IC attribution in section subheads. Both rules cite worked examples where existing pages were stripped down in feedback rounds (`/jcp/`, `/jcp/release-notes/`, `/jcp/7eleven/`, `/jcp/channels/` all dropped Sources blocks; `/jcp/` v0.7 dropped 'Lead: Vidit Kumar Gupta' from the Vertex Search subhead). The v1 fix pass introduced both patterns to address other v1 findings (§08 Sources to address M2 missing-Sources-block, hero/§05/§06 DRI lines to address C2 missing-Sreeraman-MG). New rules now reverse the v1 prescription. Resolution: page-level DRI moves to footer Owner line; cross-page DRI continuity is preserved by the catalog row.",
+  "what_v1_missed": [
+    "§08 Sources block default-no rule (tone-of-voice §3, added after v1 audit) — page added §08 to fix v1 M2; new rule says default-no, repeats inline eyebrows.",
+    "Fynd-IC attribution in section subheads (tone-of-voice §6 last subsection, added after v1 audit) — page added DRI lines in hero, §05 team card, §06 stat tile to fix v1 C2; new rule reads these as Fynd self-attribution at exec level.",
+    "Decorative `↗` arrows on cards rule (tone-of-voice §3) — page is clean here, no `↗` arrows present, so no finding triggered. Worth noting the rule was checked.",
+    "ROI / payback tile rule (tone-of-voice §3) — page clean, no payback tiles."
+  ],
+  "dimensions": {
+    "source_traceability":   {"score": 92, "threshold": 75, "pass": true,  "delta": 0,  "note": "Unchanged from v1-delta. Hero, §01, §02, §03, §04, §06, §07 all carry inline source eyebrows. If §08 is dropped per N1, the inline eyebrows alone still satisfy traceability."},
+    "tone_of_voice":         {"score": 78, "threshold": 80, "pass": false, "delta": -14, "note": "Fails dimensional threshold by 2 points due to four findings against new tone-of-voice rules: (1) §08 Sources block violates default-no (HIGH · N1); (2) hero line carries 'DRI · Sreeraman MG' Fynd-IC attribution (HIGH · N2); (3) §05 'Lead · Ashish Chandorkar. Build team · 8 names' is a Fynd-IC team list in a deep-dive subhead (HIGH · N3); (4) §06 stat tile sub-text 'Sreeraman MG · Kaily-on-RR' is the same Fynd-IC pattern (MEDIUM · N4). Banned-vocab grep still clean. Other tone checks pass."},
+    "honesty_register":      {"score": 92, "threshold": 80, "pass": true,  "delta": 0,  "note": "Unchanged. No new pill overclaims, no forward-looking phases without dates, no mixed-tier sentences."},
+    "structural_compliance": {"score": 88, "threshold": 85, "pass": true,  "delta": -4, "note": "Section labels still contiguous §01 → §08, chrome present, version pill v0.9.1. Slight ding because the §08 Sources block (which v1 audit added as a structural plus) is now flagged as a removal candidate, leaving a §07-terminating structure that needs to be re-numbered if §08 is dropped."},
+    "visual_completeness":   {"score": 85, "threshold": 85, "pass": true,  "delta": 0,  "note": "Unchanged. Single embedded image (slide_37 ZIP screenshot) loads. HTML balanced. Kaily deck has annotated UI screens (slides 41-50) for Agent Studio, Analytics, Sentiment Analysis etc. that could enrich §03 Architecture or §02 Capability framework — opportunity, not gap. Visual phase still skipped pending dev-server verify."},
+    "cross_page_consistency":{"score": 88, "threshold": 70, "pass": true,  "delta": 0,  "note": "Unchanged. ZIP stats consistent across 5 surfaces. JIIA team list consistent kaily ↔ catalog. Sreeraman MG attribution lives in catalog row + /autonomous — those are the canonical DRI surfaces. Removing DRI lines from /kaily per N2/N3/N4 does NOT break cross-page consistency because the catalog table column IS the proper register-wide DRI ledger."}
+  },
+  "findings": [
+    {
+      "id": "N1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§08 Sources block",
+      "issue": "§08 Sources block (lines 364-393) violates the tone-of-voice §3 'default-no Sources block' rule. The rule allows Sources blocks only when (a) the page is a deep-dive disambiguating which fact came from which of multiple distinct artefacts, or (b) the reader will reasonably want to navigate to source files (training PDFs, papers, recordings). /kaily satisfies neither cleanly: every numerical claim already carries an inline eyebrow citation (Kaily Master Deck slide N · Accenture slide 37 · /autonomous register §08), so the §08 block repeats what the inline citations already disambiguate. Worked examples cited in the rule: /jcp/, /jcp/release-notes/, /jcp/7eleven/, /jcp/channels/ all had Sources blocks removed in feedback rounds 3-4.",
+      "fix": "Drop §08 Sources block entirely. Renumber nothing (no following sections). Update kaily-spec.md §3 to remove the §08 row and add D5 to §9 Decisions: 'D5 · No §08 Sources block. Per tone-of-voice §3 default-no rule. Provenance lives in inline source eyebrows under each section.' Update kaily-spec.md §3 row count from 8 to 7.",
+      "files": ["kaily/index.html:364-393", "docs/kaily-spec.md"],
+      "auto_fixable": true
+    },
+    {
+      "id": "N2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero subhead (line 78)",
+      "issue": "Hero subhead ends with 'DRI · Sreeraman MG.' Sreeraman MG is the Fynd-side Kaily product DRI (per /autonomous lines 214, 322, 352, and catalog row 243). Tone-of-voice §6 last subsection: 'No, don't name them when: the named person is a Fynd engineer / IC who shipped the work. The page shows what shipped, not who shipped it... Naming a Fynd IC inside a section reads as Fynd self-attribution at exec level even when factually correct.' The hero is the most-read part of the page; the Fynd-IC name there is the most exposed instance of this pattern. Worked example: /jcp/ v0.7 dropped 'Lead: Vidit Kumar Gupta' from the Vertex Search subhead in feedback round 4.",
+      "fix": "Drop 'DRI · Sreeraman MG.' from line 78. If page-level DRI is needed, add a single mono line in the footer: '<div class=\"mono text-xs mt-2\" style=\"opacity: 0.5;\">Owner · Sreeraman MG · Kaily-on-RR</div>' inside the existing footer block. Cross-page DRI continuity is preserved by the catalog row 243 + /autonomous which both already name Sreeraman MG.",
+      "files": ["kaily/index.html:78", "kaily/index.html:400 (footer)"],
+      "auto_fixable": true
+    },
+    {
+      "id": "N3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05 JIIA team card (lines 283-286)",
+      "issue": "§05 ends with a card titled 'Team' listing 'Lead · Ashish Chandorkar. Build team · Punit Kalro · Shreyash · Abhay · Sukhpreet · Raj Pratap · Kapil · Manish Kumar · Bijan Kundu.' Per tone-of-voice §6: this is a Fynd-IC team list inside a deep-dive section subhead — the page should show what shipped (Gemini multimodal · 40M+ images indexed · Google Cloud Next '26 keynote), not who shipped it. Worked example: /jcp/ v0.7 dropped 'Lead: Vidit Kumar Gupta' from the Vertex Search subhead.",
+      "fix": "Delete the entire team card (lines 283-286 inclusive). Cross-page DRI continuity: catalog row 147 already lists the full team list — that's the right surface for Apex who wants to see who built JIIA. The page itself should report what JIIA does, not its build roster.",
+      "files": ["kaily/index.html:283-286"],
+      "auto_fixable": true
+    },
+    {
+      "id": "N4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§06 Netmeds stat tile 3 (line 301)",
+      "issue": "§06 stat tile 3 carries sub-text 'Sreeraman MG · Kaily-on-RR' under a 'Status · DRI' label. Same Fynd-IC-in-subhead pattern as N2 and N3, scoped down to MEDIUM because the surrounding context (a stat tile sub-text rather than a hero or named card) is less load-bearing.",
+      "fix": "Change line 301 stat tile to drop the DRI sub-text. Either (a) make tile 3 status-only: '<div class=\"card p-5\"><div class=\"cap-num mb-2\">Status</div><div class=\"display-2 text-3xl\" style=\"color: var(--ink);\">Live</div><div class=\"text-xs mt-1\" style=\"color: var(--ink-muted);\">Live RR · pharma vertical</div></div>'; or (b) replace with a different stat (e.g., 'Channels · WhatsApp · web · app' if sourceable).",
+      "files": ["kaily/index.html:301"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "page-wide visual richness",
+      "issue": "Page carries one image (slide_37 ZIP screenshot in §04). Kaily Master Deck slides 41-50 contain annotated UI captures for Agent Studio (slide 41 · setup guide), Overview & Analytics (42), Define Personality (43), Set Appearance (44), Human Handover Settings (45), Deployment Options (46), AI Voice Calls (47), AI Video Calls (48), Easy Integrations (49), AI Sentiment Analysis (50). §03 Architecture and §02 Capability framework are pure-text divs that could carry one or two of these as evidence — same pattern /boltic uses with its 6 console screens.",
+      "fix": "Optional follow-up: extract 2-3 Kaily-deck UI screens via `python3 tools/scratch/extract_all_slides.py`-style script, host on the socialassets CDN under `kaily-deck/` namespace, and embed in §02 Capability framework or §03 Architecture for visual richness. Out of scope for this audit pass.",
+      "files": ["kaily/index.html (any section)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "X1",
+      "severity": "INFO",
+      "dimension": "visual_completeness",
+      "section": "page chrome",
+      "issue": "Visual phase still not run against a live dev server. HTML balance verified via parser; no Chrome DevTools render check has been performed in any of the three audit passes.",
+      "fix": "Out of scope for this re-audit. If a dev-server verify is wanted, run the boltic-style recipe: `npm run dev` → bypass auth via sessionStorage → Chrome DevTools MCP screenshot at 1280×900 + 375×812.",
+      "files": ["kaily/index.html"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source rigour holds: hero + every section carries an inline source eyebrow. The §08 block becomes redundant precisely because the inline rigour is doing its job.",
+    "Honesty register clean: hero now correctly counts three RR Kaily agents (was two), every Live claim carries a pill matching its source state, no forward-looking phases without dates.",
+    "Cross-page consistency strong: ZIP stats identical across 5 surfaces; JIIA team list synced kaily ↔ catalog; Netmeds figures match /autonomous canonical reference.",
+    "Banned vocabulary, banned constructions, date format, entity-name casing all clean. No 'transformative', 'world-class', 'today', 'now', 'leverages', 'unlocks', emojis, exclamation marks.",
+    "v1 audit's CRITICAL findings (brand-portfolio overclaim, missing Netmeds, hero count drift) all correctly fixed and stay fixed in v2 — the v2 findings are entirely against rules the skill added after v1, not regressions.",
+    "Spec docs/kaily-spec.md captures decisions cleanly; ready to extend with D5 (no §08 block) for the v2 fix."
+  ]
+}

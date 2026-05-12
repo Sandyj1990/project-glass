@@ -1,0 +1,26 @@
+{
+  "slug": "retail-jarvis",
+  "name": "Retail Jarvis",
+  "tagline": "Real-time store intelligence \u00b7 Sense \u2192 Analyze \u2192 Act \u2192 Verify loop.",
+  "track": "retail-jarvis",
+  "track_role": "track-headline",
+  "status": "Build",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/retail-jarvis",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "cx",
+    "sensing",
+    "ai"
+  ]
+}

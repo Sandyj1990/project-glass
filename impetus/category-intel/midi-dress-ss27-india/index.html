@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Midi Dress · SS27 · India · Category Intel</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: white; cursor: pointer; user-select: none; transition: all 0.15s;
+}
+.filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.filter-chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+.filter-chip .count { color: inherit; opacity: 0.55; }
+.cat-pill {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+  padding: 3px 8px; border-radius: 4px; background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+}
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox img, .lightbox video { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.lightbox .meta {
+  position: absolute; bottom: 14px; left: 22px; color: white; opacity: 0.75;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em;
+}
+/* Video lightbox: iframe sized to its aspect ratio, fits viewport. */
+.video-lightbox-frame {
+  background: black; border-radius: 8px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.video-lightbox-frame.long {
+  aspect-ratio: 16/9; width: min(90vw, 1280px); max-height: 86vh;
+}
+.video-lightbox-frame.shorts {
+  aspect-ratio: 9/16; height: min(86vh, 760px); max-width: 90vw;
+}
+.video-lightbox-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.image-tile {
+  position: relative; background: var(--bg-soft);
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden; cursor: zoom-in;
+}
+.image-tile img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+.image-tile:hover img { transform: scale(1.02); }
+/* When a tile needs uniform sizing (regular grid, not masonry), opt into
+   fit-cover. Image fills its container, anchored to top so faces/heads/
+   garment necklines stay visible instead of being cropped. */
+.image-tile.fit-cover img {
+  height: 100%; object-fit: cover; object-position: center top;
+}
+.image-tile .badge {
+  position: absolute; top: 6px; right: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  background: rgba(0,0,0,0.6); color: white; padding: 2px 6px; border-radius: 3px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.image-tile:hover .badge { opacity: 1; }
+
+/* Masonry layout — true Pinterest-style. Lets each tile keep its natural
+   aspect ratio so we never crop a design. Columns rebalance on resize. */
+.masonry {
+  column-gap: 12px;
+  /* Column counts mirror Tailwind responsive grid: 2 cols mobile → 6 cols desktop. */
+  column-count: 2;
+}
+@media (min-width: 768px) { .masonry { column-count: 4; } }
+@media (min-width: 1024px) { .masonry { column-count: 6; } }
+.masonry > .image-tile {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  display: block;
+  width: 100%;
+}
+.video-thumb {
+  position: relative; aspect-ratio: 16/9; background: var(--bg-soft);
+  border-radius: 8px 8px 0 0; overflow: hidden; border-bottom: 1px solid var(--border);
+}
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-thumb .play-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
+  color: white; font-size: 40px; opacity: 0.85;
+}
+.video-thumb.shorts { aspect-ratio: 9/16; }
+.video-thumb.placeholder {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.placeholder-tile {
+  background: linear-gradient(135deg, var(--accent-soft), var(--bg-soft));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 500; text-align: center; padding: 12px;
+}
+.gender-bar { display: flex; height: 4px; border-radius: 2px; overflow: hidden; background: var(--border-soft); }
+.gender-bar > span { display: block; height: 100%; }
+.g-womens { background: #EC4899; }
+.g-mens { background: #3B82F6; }
+.g-kids, .g-kids-boys, .g-kids-girls { background: #F59E0B; }
+.g-_unknown { background: var(--border); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+
+<section class="pt-16 pb-8 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <a href="/impetus">Impetus</a> <span class="sep">/</span> <a href="/impetus/category-intel">Category Intel</a> <span class="sep">/</span> <span style="color: var(--ink);">Midi Dress · SS27 · India</span></div>
+  <div class="section-label mb-3">Report · SS27 · India</div>
+  <div class="flex items-center gap-2 mb-4">
+    <span class="pill pill-live">Live</span>
+    <span class="pill">SS27</span>
+    <span class="pill">womens</span>
+    <span class="pill">India</span>
+    <span class="pill">Dresses</span>
+  </div>
+  <h1 class="display-2 text-3xl md:text-5xl mb-4" style="color: var(--ink);">Midi Dress · SS27 · India.</h1>
+</div></section>
+
+<section class="py-8 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  
+<div class="flex flex-wrap gap-2 mb-6" id="report-tabs"><button class="subnav-link active" data-tab="0" onclick="showTab(0)">Category report</button><button class="subnav-link " data-tab="1" onclick="showTab(1)">Trend report</button></div>
+
+<div class="tab-panel " data-panel="0">
+  <div class="card overflow-hidden" style="height: 80vh;">
+    <iframe src="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/midi-dress-ss27-india/midi-dress-ss27-category-report.pdf" style="width:100%;height:100%;border:0;"></iframe>
+  </div>
+  <div class="mt-4 flex items-center gap-3">
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/midi-dress-ss27-india/midi-dress-ss27-category-report.pdf" download class="btn-secondary text-xs" style="padding:8px 16px;">Download PDF</a>
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/midi-dress-ss27-india/midi-dress-ss27-category-report.pdf" target="_blank" rel="noopener" class="text-xs accent">Open in new tab →</a>
+  </div>
+</div>
+
+<div class="tab-panel hidden" data-panel="1">
+  <div class="card overflow-hidden" style="height: 80vh;">
+    <iframe src="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/midi-dress-ss27-india/midi-dress-ss27-trend-report.pdf" style="width:100%;height:100%;border:0;"></iframe>
+  </div>
+  <div class="mt-4 flex items-center gap-3">
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/midi-dress-ss27-india/midi-dress-ss27-trend-report.pdf" download class="btn-secondary text-xs" style="padding:8px 16px;">Download PDF</a>
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/midi-dress-ss27-india/midi-dress-ss27-trend-report.pdf" target="_blank" rel="noopener" class="text-xs accent">Open in new tab →</a>
+  </div>
+</div>
+
+<script>
+function showTab(i) {
+  document.querySelectorAll('#report-tabs .subnav-link').forEach((b, j) => b.classList.toggle('active', j === i));
+  document.querySelectorAll('.tab-panel').forEach((p, j) => p.classList.toggle('hidden', j !== i));
+}
+</script>
+
+</div></section>
+
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

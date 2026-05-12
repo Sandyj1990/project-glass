@@ -1,0 +1,9 @@
+{
+  "name": "reliance-retail-fynd",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Project Glass · Fynd × Reliance Retail register · gated by middleware.ts",
+  "dependencies": {
+    "@vercel/functions": "^3.5.0"
+  }
+}

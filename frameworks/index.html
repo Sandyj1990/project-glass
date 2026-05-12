@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frameworks · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* Sticky in-page TOC */
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .fw-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .04em; }
+  .fw-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
+
+  .fw-quick { display: block; background: white; border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: border-color .2s, transform .2s; }
+  .fw-quick:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .fw-quick-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #16a34a; font-weight: 600; letter-spacing: .04em; }
+  .fw-quick-q { font-size: 12px; color: var(--ink-muted); margin-top: 10px; font-style: italic; }
+  .fw-quick-name { font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 4px; line-height: 1.25; }
+
+  .fw-connect { background: white; border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+  .fw-connect-row { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border-soft); }
+  .fw-connect-row:first-child { border-top: 0; padding-top: 0; }
+  .fw-connect-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: #16a34a; padding-top: 2px; }
+  .fw-connect-text { font-size: 14px; color: var(--ink); line-height: 1.55; }
+  .fw-connect-text strong { font-weight: 600; }
+
+  .fw-card { background: white; border: 1px solid var(--border); border-radius: 18px; transition: border-color .2s; overflow: hidden; }
+  .fw-card[open], .fw-card:hover { border-color: var(--ink); }
+  .fw-card > summary { list-style: none; cursor: pointer; padding: 28px; display: grid; grid-template-columns: 56px 1fr 24px; gap: 20px; align-items: start; }
+  .fw-card > summary::-webkit-details-marker { display: none; }
+  .fw-icon { width: 44px; height: 44px; border-radius: 12px; background: #ecfdf5; color: #16a34a; display: flex; align-items: center; justify-content: center; }
+  .fw-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); letter-spacing: .04em; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .fw-meta .num { font-weight: 600; color: #16a34a; }
+  .fw-meta .sep { color: var(--ink-soft); }
+  .fw-meta .q { font-style: italic; }
+  .fw-title { font-weight: 700; font-size: 22px; color: var(--ink); margin-top: 8px; line-height: 1.2; letter-spacing: -0.01em; }
+  .fw-sub { font-size: 14px; color: var(--ink-muted); margin-top: 4px; }
+  .fw-quote { border-left: 2px solid #86efac; padding-left: 14px; margin-top: 16px; font-size: 14px; color: var(--ink); font-style: italic; line-height: 1.5; }
+  .fw-chev { color: var(--ink-muted); transition: transform .2s; align-self: center; }
+  .fw-card[open] .fw-chev { transform: rotate(180deg); }
+  .fw-body { padding: 0 28px 28px 104px; border-top: 1px solid var(--border-soft); padding-top: 24px; }
+  .fw-body p { font-size: 14.5px; color: var(--ink); line-height: 1.65; margin-top: 16px; }
+  .fw-body p:first-child { margin-top: 0; }
+  .fw-insights-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--ink); letter-spacing: .08em; text-transform: uppercase; margin-top: 24px; }
+  .fw-insights { list-style: none; padding: 0; margin: 12px 0 0; }
+  .fw-insights li { position: relative; padding-left: 18px; font-size: 14px; color: var(--ink); line-height: 1.55; margin-top: 8px; }
+  .fw-insights li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
+  .fw-pullquote { background: var(--bg-soft); border-radius: 12px; padding: 22px; margin-top: 24px; }
+  .fw-pullquote p { font-size: 16px; font-style: italic; font-weight: 500; color: var(--ink); line-height: 1.5; margin: 0; }
+  .fw-pullquote .cite { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-top: 12px; letter-spacing: .04em; }
+  .fw-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: white; padding: 12px 22px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-top: 22px; transition: opacity .15s; }
+  .fw-cta:hover { opacity: 0.85; }
+  @media (max-width: 640px) {
+    .fw-card > summary { grid-template-columns: 44px 1fr 20px; padding: 20px; gap: 14px; }
+    .fw-body { padding: 24px 20px 24px 20px; }
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#four-papers">01 · Four Papers</a>
+<a href="#how-connects">02 · How It Connects</a>
+<a href="#full-papers">03 · Full Argument</a>
+</div>
+</div>
+
+<!-- HERO -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Frameworks</span></div>
+<div class="mb-5"><span class="fw-eyebrow">The intellectual framework</span></div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">The AI Transformation Framework.</h1>
+<p class="text-lg max-w-3xl" style="color: var(--ink-muted);">Six working papers by Farooq Adam mapping the rebuild — of work, of roles, of organisations, of the surgery to force the split open, and of the software itself.</p>
+</div></section>
+
+<!-- 01 · QUICK ACCESS -->
+<section id="four-papers" class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · The six papers</div>
+<h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">Six questions. Six papers.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+  <a href="#paper-01" class="fw-quick">
+    <div class="fw-quick-num">01</div>
+    <div class="fw-quick-q">Why is this urgent?</div>
+    <div class="fw-quick-name">Clock Speed</div>
+  </a>
+  <a href="#paper-02" class="fw-quick">
+    <div class="fw-quick-num">02</div>
+    <div class="fw-quick-q">What is changing?</div>
+    <div class="fw-quick-name">Singularity of Job Roles</div>
+  </a>
+  <a href="#paper-03" class="fw-quick">
+    <div class="fw-quick-num">03</div>
+    <div class="fw-quick-q">How do individuals progress?</div>
+    <div class="fw-quick-name">Naive, Native, Nirvana</div>
+  </a>
+  <a href="#paper-04" class="fw-quick">
+    <div class="fw-quick-num">04</div>
+    <div class="fw-quick-q">What happens to the org?</div>
+    <div class="fw-quick-name">The K-Shaped Organisation</div>
+  </a>
+  <a href="#paper-05" class="fw-quick">
+    <div class="fw-quick-num">05</div>
+    <div class="fw-quick-q">How does the K actually form?</div>
+    <div class="fw-quick-name">K-Shape Org Tearing</div>
+  </a>
+  <a href="#paper-06" class="fw-quick">
+    <div class="fw-quick-num">06</div>
+    <div class="fw-quick-q">What does software become?</div>
+    <div class="fw-quick-name">The Rise of Malleable Software</div>
+  </a>
+</div>
+</div></section>
+
+<!-- 02 · HOW THE FRAMEWORK CONNECTS -->
+<section id="how-connects" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · How the framework connects</div>
+<h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">One argument, six papers.</h2>
+<div class="fw-connect max-w-4xl">
+  <div class="fw-connect-row">
+    <div class="fw-connect-num">01</div>
+    <div class="fw-connect-text"><strong>Clock Speed</strong> establishes the urgency. The tempo of work has changed. Organisations that cannot match the new clock speed will be replaced.</div>
+  </div>
+  <div class="fw-connect-row">
+    <div class="fw-connect-num">02</div>
+    <div class="fw-connect-text"><strong>Singularity of Job Roles</strong> explains what is changing. Specialist titles are collapsing. One person can now do what required an entire team.</div>
+  </div>
+  <div class="fw-connect-row">
+    <div class="fw-connect-num">03</div>
+    <div class="fw-connect-text"><strong>Naive, Native, Nirvana</strong> maps how individuals progress through AI maturity, and where they get stuck in the Native Trap.</div>
+  </div>
+  <div class="fw-connect-row">
+    <div class="fw-connect-num">04</div>
+    <div class="fw-connect-text"><strong>K-Shaped Organisation</strong> reveals the organisational consequence. A small group pulls away at 100x. The middle is hollow. The K-shape is already forming.</div>
+  </div>
+  <div class="fw-connect-row">
+    <div class="fw-connect-num">05</div>
+    <div class="fw-connect-text"><strong>K-Shape Org Tearing</strong> is the surgery for paper 04. The split is now happening. Without sustained executive sponsorship the splinter group is reabsorbed and the K closes.</div>
+  </div>
+  <div class="fw-connect-row">
+    <div class="fw-connect-num">06</div>
+    <div class="fw-connect-text"><strong>The Rise of Malleable Software</strong> widens the lens. The same AI economics that rebuild work also rebuild the software itself. The tool now adapts to us.</div>
+  </div>
+</div>
+</div></section>
+
+<!-- 03 · DEEP CARDS -->
+<section id="full-papers" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · The papers</div>
+<h2 class="display-2 text-2xl md:text-3xl mb-8" style="color: var(--ink);">Read the full argument.</h2>
+
+<div class="grid grid-cols-1 gap-4 max-w-4xl">
+
+  <details id="paper-01" class="fw-card">
+    <summary>
+      <div class="fw-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+      </div>
+      <div>
+        <div class="fw-meta">
+          <span class="num">01</span><span class="sep">·</span><span>February 2026</span><span class="sep">·</span><span class="q">Why is this urgent?</span>
+        </div>
+        <div class="fw-title">Clock Speed</div>
+        <div class="fw-sub">Why AI Transformation Is an AI Rebuild</div>
+        <blockquote class="fw-quote">"The organisation that cannot match the new clock speed will not be upgraded. It will be replaced."</blockquote>
+      </div>
+      <svg class="fw-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="fw-body">
+      <p>Every system operates at a fixed tempo: its clock speed. AI has fundamentally altered the tempo of work itself. What took months of research, drafting, iteration, and review can now be compressed into days or hours. But the organisation around you (its approval cycles, its meeting cadence, its quarterly planning rituals) still runs at the old clock speed.</p>
+      <p>The gap is in tempo, not technology. And tempo gaps are fatal. The paper argues that AI transformation is a misnomer. There is no gentle upgrade path from the old organisation to the new one. The organisation that cannot match the new clock speed must be rebuilt from scratch. The slower org does not evolve. It dies.</p>
+      <p>Farooq outlines a practical playbook: carve out a small, empowered squad operating at AI speed, accept resistance as a natural immune response, and let the results speak until the output becomes undeniable.</p>
+      <div class="fw-insights-label">Key insights</div>
+      <ul class="fw-insights">
+        <li>AI collapses 'the work behind work': research, drafting, iteration, review</li>
+        <li>The tempo gap between AI-speed teams and traditional orgs is fatal</li>
+        <li>Transformation is a misnomer; it is a complete rebuild</li>
+        <li>Start with a small AI-speed squad and let results create undeniable proof</li>
+      </ul>
+      <div class="fw-pullquote">
+        <p>"If AI does the work in half an hour but the person responsible sits on it for a week, the organisation gets zero benefit from AI."</p>
+        <div class="cite">Farooq Adam · Founder · Fynd</div>
+      </div>
+      <a href="https://d2xsxph8kpxj0f.cloudfront.net/117836872/Por7xa7ppgyjv6XQef35w3/Clock_Speed_AI_Rebuild_628d8122.pdf" target="_blank" rel="noopener" class="fw-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download the full paper
+      </a>
+    </div>
+  </details>
+
+  <details id="paper-02" class="fw-card">
+    <summary>
+      <div class="fw-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="fw-meta">
+          <span class="num">02</span><span class="sep">·</span><span>February 2026</span><span class="sep">·</span><span class="q">What is changing?</span>
+        </div>
+        <div class="fw-title">Singularity of Job Roles</div>
+        <div class="fw-sub">The AI Rebuild of Work</div>
+        <blockquote class="fw-quote">"In an era of commoditised intelligence, your value is not how intelligent you are: it is how intelligently you harness AI."</blockquote>
+      </div>
+      <svg class="fw-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="fw-body">
+      <p>Job roles are collapsing. Front-end, back-end, QA, DevOps: these distinct specialist titles have evaporated into something far simpler. What remains is two types of work: jobs where you direct AI, and jobs where AI directs you.</p>
+      <p>The paper introduces the concept of "Prisoners of Designation": leaders and specialists who have spent decades building identity around a title, and who freeze when you strip away the team and hand them an agent. They cannot articulate what they want because they have always had someone else to translate intent into execution.</p>
+      <p>The singularity of job roles is a present reality, not a future prediction. The new grading system has one axis: your ability to direct AI. Designation will not protect you. Tenure will not protect you. Only your ability to direct AI, or to be directed by it with discipline, will determine your place in the new structure.</p>
+      <div class="fw-insights-label">Key insights</div>
+      <ul class="fw-insights">
+        <li>Specialist titles are evaporating into meta-roles: builders and verifiers</li>
+        <li>'Prisoners of Designation' freeze when handed an agent instead of a team</li>
+        <li>Two types of jobs will exist: directing AI, or being directed by AI</li>
+        <li>The new grading system has one axis: ability to direct AI</li>
+      </ul>
+      <div class="fw-pullquote">
+        <p>"They are prisoners of their designation. When you strip away the team and hand them an agent, they freeze."</p>
+        <div class="cite">Farooq Adam · Founder · Fynd</div>
+      </div>
+      <a href="https://d2xsxph8kpxj0f.cloudfront.net/117836872/Por7xa7ppgyjv6XQef35w3/Singularity_of_Job_Roles_e112f40b.pdf" target="_blank" rel="noopener" class="fw-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download the full paper
+      </a>
+    </div>
+  </details>
+
+  <details id="paper-03" class="fw-card">
+    <summary>
+      <div class="fw-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      </div>
+      <div>
+        <div class="fw-meta">
+          <span class="num">03</span><span class="sep">·</span><span>March 2026</span><span class="sep">·</span><span class="q">How do individuals progress?</span>
+        </div>
+        <div class="fw-title">Naive, Native, Nirvana</div>
+        <div class="fw-sub">The Three Stages of Embracing AI</div>
+        <blockquote class="fw-quote">"The gap between using AI and becoming AI is the gap between competence and transcendence."</blockquote>
+      </div>
+      <svg class="fw-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="fw-body">
+      <p>Every new technology creates a maturity curve, but AI is different. This is about identity, not adoption or proficiency. The paper maps three stages of AI maturity that every individual and organisation must navigate.</p>
+      <p>AI Naive is where most of the world sits: AI as a convenience layer. Autocomplete, grammar checks, summarisation. You are still the worker. AI is the tool. AI Native is the early-adopter plateau: workflows rewired around AI, dramatically more productive, but still constrained by functional identity. The software engineer writing code 10x faster is still a software engineer. They have optimised the how without questioning the what.</p>
+      <p>AI Nirvana begins with a single realisation: infinite intelligence is available on tap. You no longer ask "how do I do this faster?" You ask "why should I be limited to this at all?" The constraint is no longer skill, domain knowledge, or experience. It is imagination and clarity of intent. The jump from Native to Nirvana is an identity shift, not a skill upgrade.</p>
+      <div class="fw-insights-label">Key insights</div>
+      <ul class="fw-insights">
+        <li>AI Naive: tool user. AI Native: workflow rewired. AI Nirvana: identity rewritten</li>
+        <li>The Native Trap: competence creates comfort that prevents the identity shift</li>
+        <li>Nirvana thinking: 'Why should I be limited to this at all?'</li>
+        <li>An org with 20 people in Nirvana outperforms one with 2,000 in Native</li>
+      </ul>
+      <div class="fw-pullquote">
+        <p>"Naive will be automated. Native will be commoditised. Only Nirvana creates the asymmetric value that defines the next decade."</p>
+        <div class="cite">Farooq Adam · Founder · Fynd</div>
+      </div>
+      <a href="https://d2xsxph8kpxj0f.cloudfront.net/117836872/Por7xa7ppgyjv6XQef35w3/Naive_Native_Nirvana_b993722a.pdf" target="_blank" rel="noopener" class="fw-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download the full paper
+      </a>
+    </div>
+  </details>
+
+  <details id="paper-04" class="fw-card">
+    <summary>
+      <div class="fw-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 17 17 7"/><path d="M7 7l10 10"/></svg>
+      </div>
+      <div>
+        <div class="fw-meta">
+          <span class="num">04</span><span class="sep">·</span><span>March 2026</span><span class="sep">·</span><span class="q">What happens to the org?</span>
+        </div>
+        <div class="fw-title">The K-Shaped Organisation</div>
+        <div class="fw-sub">The Rise of the 100x Super Employee</div>
+        <blockquote class="fw-quote">"The organisation is not flattening. It is splitting. A few people will do the work of hundreds. Everyone else will wonder what happened."</blockquote>
+      </div>
+      <svg class="fw-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="fw-body">
+      <p>For decades the debate has been flat vs hierarchical, matrix vs functional, hub-and-spoke vs federated. AI makes that entire debate irrelevant. The new organisational shape is K-shaped, borrowed from economics, where two groups move in opposite directions and never reconverge.</p>
+      <p>A small group of people is pulling away at an accelerating rate. Their output is not 2x or 5x. It is 100x. They define problems, direct agents, ship solutions, and move to the next problem in the time it takes a traditional team to finish its alignment meeting. These are the 100x Super Employees: not managers, not specialists, but a new category of worker who operates across functional boundaries using AI as their execution layer.</p>
+      <p>The bottom arm of the K is not "people who need more training." It is people whose roles have been absorbed into the agentic layer entirely. The middle is hollow. No middle management, because there is nothing left to manage. Agents handle coordination. The Super Employees handle direction.</p>
+      <div class="fw-insights-label">Key insights</div>
+      <ul class="fw-insights">
+        <li>AI productivity follows a power law, not a bell curve</li>
+        <li>100x Super Employees direct AI across functional boundaries</li>
+        <li>The middle of the org is hollow; agents handle coordination</li>
+        <li>Hiring, grading, and compensation must be rebuilt for the K-shape</li>
+      </ul>
+      <div class="fw-pullquote">
+        <p>"The K-shaped organisation is not a strategy. It is a diagnosis. The only question is which arm of the K you are building for."</p>
+        <div class="cite">Farooq Adam · Founder · Fynd</div>
+      </div>
+      <a href="https://d2xsxph8kpxj0f.cloudfront.net/117836872/Por7xa7ppgyjv6XQef35w3/K_Shaped_Organisation_3057f3da.pdf" target="_blank" rel="noopener" class="fw-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download the full paper
+      </a>
+    </div>
+  </details>
+
+  <details id="paper-05" class="fw-card">
+    <summary>
+      <div class="fw-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+      </div>
+      <div>
+        <div class="fw-meta">
+          <span class="num">05</span><span class="sep">·</span><span>May 2026</span><span class="sep">·</span><span class="q">How does the K actually form?</span>
+        </div>
+        <div class="fw-title">K-Shape Org Tearing</div>
+        <div class="fw-sub">Breaking away of the 100x-ers</div>
+        <blockquote class="fw-quote">"The K-Shape Org is a diagnosis. The split is now the surgery. It is painful, it is invisible, and without sustained executive sponsorship it does not happen at all."</blockquote>
+      </div>
+      <svg class="fw-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="fw-body">
+      <p>The K-Shaped Organisation paper diagnosed the divergence. This paper is about the surgery. The system reaches back for the splinter group constantly: coordinating responsibilities, mentoring, reviews. By the third quarter the 100x-ers are back at the ambient clock speed. The dystopia of the failed split is not loud. It is the quiet return to BAU.</p>
+      <p>The split does not happen on its own. It is physics, not management. An atom does not divide on its own; it crosses a barrier only when activation energy is forced through it. The K-Shape is the same. The energy has one source: the leader at the top who refuses to let the splinter group be reabsorbed and pays the bill in attention, cover, and capital, every quarter.</p>
+      <p>Three signs cut through the invisible split. One: compounding artefacts as performance theatre — the lower arm mass-produces decks at machine speed; volume rises, substance does not. Two: planning artefacts disappear in the upper arm — by the time someone has written the spec, the upper arm has built eighty per cent of it over a weekend. Three: the upper arm collides with the human clock — the world's absorption rate becomes its bottleneck. When a team complains the world is too slow, the leader has found the upper arm.</p>
+      <p>The split shows up first in technology teams, but it does not stay there. Domain leaders sitting close to the splinter group absorb the operating model by osmosis. A merchandiser defines a new category in a fortnight. A finance leader produces the deck themselves and acts on it the same day. The next splinter group is not in technology — it is the small number of business leaders who have started absorbing the new clock by proximity.</p>
+      <div class="fw-insights-label">Key insights</div>
+      <ul class="fw-insights">
+        <li>The split closes the moment sponsorship stops; the splinter group never becomes self-sustaining</li>
+        <li>Stop trusting artefacts; trust tempo — the team complaining the world is too slow is the team that has crossed</li>
+        <li>Whoever drives the outcome fastest gets more work; the rest of the organisation reorganises around the new reality</li>
+        <li>The next splinter group is in business, not tech — pair domain leaders with the tech splinter and sponsor them</li>
+      </ul>
+      <div class="fw-pullquote">
+        <p>"The K-Shape is the diagnosis. The split is the surgery. We are mid-operation. The K does not form on its own. It is forced open by will."</p>
+        <div class="cite">Farooq Adam · Founder · Fynd</div>
+      </div>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/frameworks/k-shape-org-tearing.pdf" target="_blank" rel="noopener" class="fw-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download the full paper
+      </a>
+    </div>
+  </details>
+
+  <details id="paper-06" class="fw-card">
+    <summary>
+      <div class="fw-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <div>
+        <div class="fw-meta">
+          <span class="num">06</span><span class="sep">·</span><span>April 2026</span><span class="sep">·</span><span class="q">What does software become?</span>
+        </div>
+        <div class="fw-title">The Rise of Malleable Software</div>
+        <div class="fw-sub">Why the tool must adapt to us</div>
+        <blockquote class="fw-quote">"The question is no longer how do we adapt to the tool. The question is why does the tool not adapt to us."</blockquote>
+      </div>
+      <svg class="fw-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </summary>
+    <div class="fw-body">
+      <p>For decades the cost of building software was so high that vendors built for the lowest common denominator. Every enterprise bought tools that almost did what they needed and spent years taping them together with custom integrations and workarounds. The business was reshaped to fit the software because there was no alternative. AI has collapsed that economics. The cost of writing software has fallen to near zero. Software can now shape itself to the business, continuously, in real time.</p>
+      <p>The key is separating what is stable from what is fluid. Data models — customers, orders, inventory, transactions — hold steady. Everything above the data layer becomes malleable: workflows, interfaces, decision logic, reports. The malleable enterprise climbs a ladder of autonomy from assist, to recommend, to act, to run, with human oversight progressively reduced to strategic direction. The system auto-corrects. It learns from every transaction. It reshapes itself as the business evolves.</p>
+      <p>The same shift hits consumer apps next. There is no reason every person should see the same interface. Agentic chat is a primitive — a text-based command line dressed up as a conversation. The real shift is anticipatory software that acts before you ask. You walk into the office and every application you review each morning is already open, already showing you what changed since yesterday. You did not ask for any of it. The software anticipated it.</p>
+      <p>At Fynd, this is being built on both sides. On the enterprise side, operating systems that reshape themselves to match how each company actually works. On the consumer side, a commerce platform serving over 300 million customers, reshaping itself around each individual rather than serving a statistical average. The era of software that forces humans to change is ending. The era of software that changes itself has begun.</p>
+      <div class="fw-insights-label">Key insights</div>
+      <ul class="fw-insights">
+        <li>SaaS gave everyone the same product; custom build gave each company a bespoke one; malleable software sits beyond both</li>
+        <li>Data models stay stable; everything above the data layer becomes fluid and reshapes daily</li>
+        <li>Agentic chat is a primitive — the real shift is anticipatory software that acts before you ask</li>
+        <li>Deep context, not browsing history, is what lets the software know you</li>
+      </ul>
+      <div class="fw-pullquote">
+        <p>"The companies that keep buying off-the-shelf tools and taping them together will wonder why they fell behind. The answer will be simple. The software they used was rigid. The world was not."</p>
+        <div class="cite">Farooq Adam · Founder · Fynd</div>
+      </div>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/pdfs/frameworks/the-rise-of-malleable-software.pdf" target="_blank" rel="noopener" class="fw-cta">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download the full paper
+      </a>
+    </div>
+  </details>
+
+</div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function(){
+  function openFromHash(){
+    var id = location.hash.replace('#','');
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (el && el.tagName === 'DETAILS') {
+      el.open = true;
+      setTimeout(function(){ el.scrollIntoView({behavior:'smooth', block:'start'}); }, 30);
+    }
+  }
+  document.querySelectorAll('a.fw-quick[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el && el.tagName === 'DETAILS') { el.open = true; }
+    });
+  });
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+})();
+</script>
+
+<!-- Sticky TOC active-state observer -->
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

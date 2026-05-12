@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Marketing Agent · AI Agents · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.agent-stat { padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.agent-stat .a-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+.agent-stat .a-value { font-weight: 700; font-size: 22px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em; }
+.agent-stat .a-context { font-size: 11px; color: var(--ink-muted); margin-top: 4px; line-height: 1.4; }
+
+.pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; }
+.pill-live    { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+.pill-build   { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.pill-scoping { background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }
+.pill-track   { background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; text-transform: uppercase; }
+.pill-l       { background: #0A2454; color: white; }
+.pill-platform a { color: #1E293B; text-decoration: none; }
+.pill-platform { background: #FAFAF9; color: #1E293B; border: 1px solid #E5E7EB; padding: 4px 11px; }
+.pill-platform a:hover { color: var(--accent); }
+
+.agent-card { display: block; padding: 18px 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s; text-decoration: none; color: var(--ink); height: 100%; }
+.agent-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+.agent-card .ac-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+.agent-card .ac-name { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.agent-card .ac-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.45; margin-bottom: 12px; }
+.agent-card .ac-stat { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); padding-top: 10px; border-top: 1px solid var(--border); }
+.agent-card .ac-stat strong { color: var(--accent); font-weight: 700; }
+.agent-card .ac-platform { font-size: 11px; color: var(--ink-muted); margin-top: 6px; }
+
+.band-header { padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 18px; display: flex; align-items: baseline; gap: 14px; }
+.band-header .b-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.band-header .b-framing { font-size: 13px; color: var(--ink-muted); }
+
+.workflow-step { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); align-items: start; }
+.workflow-step:first-child { border-top: none; }
+.workflow-step .ws-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: white; background: var(--accent); padding: 4px 0; text-align: center; border-radius: 6px; height: 28px; }
+.workflow-step .ws-title { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+.workflow-step .ws-detail { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.data-table th { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; background: var(--bg-soft); }
+.data-table td .ent { font-size: 12.5px; color: var(--ink-muted); }
+
+.tech-chip { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #F1F5F9; color: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 11px; margin: 2px 4px 2px 0; border: 1px solid #E2E8F0; }
+.note-pending { padding: 12px 16px; background: #FEF9C3; border-left: 3px solid #CA8A04; border-radius: 0 6px 6px 0; font-size: 13px; color: #713F12; line-height: 1.5; margin-top: 10px; }
+
+.pattern-chip { display: flex; flex-direction: column; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+.pattern-chip .pc-name { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.pattern-chip .pc-usage { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+
+.linked-platform-card { display: block; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+.linked-platform-card:hover { border-color: var(--accent); }
+.linked-platform-card .lp-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.linked-platform-card .lp-role { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+.linked-platform-card .lp-arrow { color: var(--accent); font-size: 12px; margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+
+.workflow-ascii { background: #0F172A; color: #E2E8F0; padding: 18px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.5; overflow-x: auto; white-space: pre; }
+
+.in-flight-row { padding: 12px 0; border-top: 1px solid var(--border); }
+.in-flight-row:first-child { border-top: none; }
+.in-flight-row .ifr-date { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; background: var(--ink); color: white; padding: 3px 8px; border-radius: 4px; margin-right: 10px; }
+.in-flight-row .ifr-milestone { font-size: 13.5px; color: var(--ink); line-height: 1.5; }
+
+.diagram-wrap { padding: 18px 12px; border: 1px solid var(--border); border-radius: 10px; background: #FAFAFA; margin-bottom: 8px; overflow: hidden; }
+.diagram-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; font-family: 'Inter', system-ui, sans-serif; }
+.diagram-caption { font-size: 11px; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+
+@media (max-width: 768px) {
+  .diagram-wrap, .diagram-caption { display: none; }
+}
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-10 pb-8" style="background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <nav class="text-xs mb-4" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">
+      <a href="/" style="color: var(--ink-muted);">Home</a> /
+      <a href="/agents" style="color: var(--ink-muted);">AI Agents</a> /
+      <span style="color: var(--ink);">Marketing Agent</span>
+    </nav>
+    <div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase;">AI Agents · AGENTIC-MARKETING · Building</div>
+    <h1 class="display-1 text-4xl md:text-5xl mb-3" style="color: var(--ink); letter-spacing: -0.02em; font-weight: 800;">Marketing Agent.</h1>
+    <p class="text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.5;">Goal in plain English → audience, creative, channel mix, send time, measurement — autonomously, with humans only on guardrails.</p>
+    <div class="mb-6" style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="pill pill-build">Building</span> <span class="pill pill-track">SELL</span> <span class="pill pill-l">L4</span> <span class="pill pill-platform">Powered by &nbsp;<a href="/ucp/">→ UCP</a></span></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2"><div class="agent-stat"><div class="a-label">Agent topology</div><div class="a-value">11 agents</div><div class="a-context">Meta-Orchestrator + 9 Domain + Compliance</div></div><div class="agent-stat"><div class="a-label">Cycle target</div><div class="a-value">Hours</div><div class="a-context">in-development · vs weeks today (11 teams · 6 handoffs)</div></div><div class="agent-stat"><div class="a-label">Decisioning</div><div class="a-value">1:1</div><div class="a-context">real-time per-customer · not batch segments</div></div><div class="agent-stat"><div class="a-label">Compliance gate</div><div class="a-value">Always-on</div><div class="a-context">consent · frequency · sensitive-category</div></div></div>
+  </div>
+</section>
+<!-- DEPLOYED-IN-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+<section class="py-10 border-t" style="border-color: var(--border);">
+<div class="container mx-auto px-6 max-w-6xl">
+<div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">Deployed in</div>
+<div class="overflow-x-auto">
+  <table class="grid-table">
+    <thead><tr><th>Platform</th><th>What this agent delivers for that platform</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><a href="/ucp" style="color: var(--accent); text-decoration: underline;">UCP</a></td>
+        <td>Goal in plain English → audience, creative, channel mix, send time, measurement · autonomously, with humans only on guardrails.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</section>
+<!-- DEPLOYED-IN-END --><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">01 · The job to be done</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">The pain</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Today: 11 teams, 6 manual handoffs per campaign, weeks-long cycles.
+Marketing intelligence lives in PowerPoints, not systems. Each new
+campaign starts from scratch — no compounding learning. By the time
+performance data lands, the moment to course-correct has passed.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What the agent does</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">A marketing leader states intent + budget + dates + objective. The
+Meta-Orchestrator decomposes into sub-tasks. 9 Domain Agents
+collaborate on research, audience intelligence, planning, content,
+channel orchestration, experimentation, measurement, opportunity
+detection, and dashboard intelligence. A Compliance Agent enforces
+governance at every step. Outcome signals from each campaign feed
+back into the signal layer — knowledge compounds across runs.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What humans still do</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Marketing leadership defines brand objectives, budget, brand rules,
+sensitive-category policy, approval thresholds. The agent runs the
+campaign loop. Humans intervene on guardrail violations and on
+strategic intent.
+</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">02 · How it works · the closed loop</div><div class=""><div class="diagram-wrap"><svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+  <title>Marketing Agent · 11-agent topology</title>
+  <desc>Marketing intent flows into the Meta-Orchestrator, which fans out to 9 Domain Agents (Research, Audience, Planning, Content, Channel, Experimentation, Measurement, Opportunity, Dashboard). A Compliance Agent gates every action. Outcome signals close the loop.</desc>
+  <defs>
+    <marker id="am-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="am-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+    <style>
+      .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+      .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+      .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+      .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+      .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+      .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+      .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+      .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+      .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+      .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+      .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+      .ag-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 11.5px; font-weight: 600; fill: #0A0A0A; text-anchor: middle; }
+      .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+      .conn-loop { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+      .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+    </style>
+  </defs>
+
+  <!-- Inputs -->
+  <g>
+    <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE"/>
+    <text x="36" y="46" class="zh">Inputs</text>
+
+    <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+    <text x="50" y="86" class="h-ttl">Marketer intent</text>
+    <text x="50" y="102" class="h-sub">goal · budget · dates</text>
+    <text x="50" y="116" class="h-sub">brand rules · objectives</text>
+
+    <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="168" class="src-ttl">UCP signals</text>
+    <text x="50" y="186" class="src-sub">identity · behavioural · CLV · cohorts</text>
+
+    <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="242" class="src-ttl">Channel inventory</text>
+    <text x="50" y="260" class="src-sub">SMS · WhatsApp · RCS · email · push</text>
+
+    <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="316" class="src-ttl">Real-time context</text>
+    <text x="50" y="334" class="src-sub">store proximity · inventory · festival</text>
+
+    <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="390" class="src-ttl">Outcome history</text>
+    <text x="50" y="408" class="src-sub">prior campaign signals · A/B + bandits</text>
+
+    <text x="36" y="490" class="gl">Substrate</text>
+    <text x="36" y="506" class="src-sub">UCP · Databricks · Vertex AI · Claude</text>
+  </g>
+
+  <!-- Workflow zone · 11-agent topology rendered as Meta + 9 specialists + Compliance -->
+  <g>
+    <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB"/>
+    <text x="306" y="46" class="zh">11-agent topology</text>
+
+    <!-- Meta-Orchestrator (top, full width inside zone) ·
+         sub-text was missing text-anchor:middle so it rendered LTR from
+         the card center, spilling past the right edge into outputs zone. -->
+    <rect x="320" y="64" width="540" height="50" rx="8" fill="#1F2937" stroke="#1F2937"/>
+    <text x="590" y="84" class="ag-ttl" style="fill:#FAFAFA;">Meta-Orchestrator · decomposes intent into a workflow DAG</text>
+    <text x="590" y="102" class="stp-sub" style="fill:#CBD5E1; text-anchor:middle;">parses goal · plans tasks in parallel · routes to specialists</text>
+
+    <!-- 9 Domain Agents in 3x3 grid -->
+    <rect x="320" y="134" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="405" y="156" class="ag-ttl">Research</text>
+    <text x="405" y="172" class="stp-sub" style="text-anchor:middle;">prior campaigns · trends</text>
+
+    <rect x="505" y="134" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="590" y="156" class="ag-ttl">Audience</text>
+    <text x="590" y="172" class="stp-sub" style="text-anchor:middle;">segments · lookalikes</text>
+
+    <rect x="690" y="134" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="775" y="156" class="ag-ttl">Planning</text>
+    <text x="775" y="172" class="stp-sub" style="text-anchor:middle;">campaign brief · DAG</text>
+
+    <rect x="320" y="200" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="405" y="222" class="ag-ttl">Content</text>
+    <text x="405" y="238" class="stp-sub" style="text-anchor:middle;">creative · offer · copy</text>
+
+    <rect x="505" y="200" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="590" y="222" class="ag-ttl">Channel</text>
+    <text x="590" y="238" class="stp-sub" style="text-anchor:middle;">mix · send-time · fatigue</text>
+
+    <rect x="690" y="200" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="775" y="222" class="ag-ttl">Experimentation</text>
+    <text x="775" y="238" class="stp-sub" style="text-anchor:middle;">A/B · holdouts · bandits</text>
+
+    <rect x="320" y="266" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="405" y="288" class="ag-ttl">Measurement</text>
+    <text x="405" y="304" class="stp-sub" style="text-anchor:middle;">attribution · incrementality</text>
+
+    <rect x="505" y="266" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="590" y="288" class="ag-ttl">Opportunity Detect</text>
+    <text x="590" y="304" class="stp-sub" style="text-anchor:middle;">anomalies · proactive nudges</text>
+
+    <rect x="690" y="266" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="775" y="288" class="ag-ttl">Dashboard</text>
+    <text x="775" y="304" class="stp-sub" style="text-anchor:middle;">dynamic widgets · summaries</text>
+
+    <!-- Compliance Agent · cross-cutting yellow band -->
+    <rect x="320" y="340" width="540" height="50" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+    <text x="590" y="360" class="ag-ttl" style="fill:#7C2D12;">Compliance &amp; Brand Safety · cross-cuts every action</text>
+    <text x="590" y="378" class="stp-sub" style="text-anchor:middle; fill:#92400E;">consent · frequency caps · sensitive-category rules · brand voice</text>
+
+    <!-- Approval Gate -->
+    <rect x="320" y="400" width="540" height="50" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+    <text x="590" y="422" class="ag-ttl" style="fill:#7C2D12;">Approval gate · marketer reviews before activation</text>
+    <text x="590" y="440" class="stp-sub" style="text-anchor:middle; fill:#92400E;">audience · creative · channel plan · spend</text>
+
+    <!-- Outcome loop annotation ·
+         text shortened (89 → 65 chars uppercase mono) per spec §5.1 ·
+         pre-fix bled past both card edges into adjacent zone backgrounds. -->
+    <rect x="320" y="460" width="540" height="44" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="590" y="482" class="gl" style="text-anchor:middle;">Outcome signals → Audience · Content · Planning · compounding loop</text>
+  </g>
+
+  <!-- Outputs -->
+  <g>
+    <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="936" y="46" class="zh">Outputs</text>
+
+    <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="86" class="out-ttl">Activated campaigns</text>
+    <text x="950" y="104" class="out-sub">SMS · WhatsApp · RCS · push</text>
+    <text x="950" y="120" class="out-sub">email · paid · in-app</text>
+
+    <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="180" class="out-ttl">Personalised journeys</text>
+    <text x="950" y="198" class="out-sub">household + person level</text>
+    <text x="950" y="214" class="out-sub">lifecycle + lifestyle</text>
+
+    <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="274" class="out-ttl">Outcome dashboard</text>
+    <text x="950" y="292" class="out-sub">spend · revenue · NPS</text>
+    <text x="950" y="308" class="out-sub">guardrail-breach alerts</text>
+
+    <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+    <text x="950" y="368" class="gl" style="fill:#15803D;">Compounding</text>
+    <text x="950" y="388" class="out-sub">outcomes write back as signals</text>
+
+    <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+    <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+    <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+    <text x="950" y="482" class="out-sub">human approves the brief</text>
+    <text x="950" y="498" class="out-sub">system runs the loop</text>
+  </g>
+
+  <!-- Connectors · trunk for inputs into Meta-Orchestrator -->
+  <path d="M244 95 H275" class="conn"/>
+  <path d="M244 175 H275" class="conn"/>
+  <path d="M244 249 H275" class="conn"/>
+  <path d="M244 323 H275" class="conn"/>
+  <path d="M244 397 H275" class="conn"/>
+  <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+  <path d="M275 88 H320" class="conn" marker-end="url(#am-arr)"/>
+
+  <!-- Meta → 9 specialists (3 fan-out arrows to top row, others cascade visually via positioning) -->
+  <path d="M405 114 V134" class="conn" marker-end="url(#am-arr)"/>
+  <path d="M590 114 V134" class="conn" marker-end="url(#am-arr)"/>
+  <path d="M775 114 V134" class="conn" marker-end="url(#am-arr)"/>
+
+  <!-- Specialists → Approval gate (collected) -->
+  <path d="M590 322 V340" class="conn" marker-end="url(#am-arr)"/>
+  <path d="M590 390 V400" class="conn" marker-end="url(#am-arr)"/>
+
+  <!-- Approval gate → Outputs -->
+  <path d="M860 425 H905 V100 H920" class="conn" marker-end="url(#am-arr)"/>
+
+  <!-- Outcome loop · Outputs back to Audience/Content (orange dashed) -->
+  <path d="M920 290 H905 V470 H320" class="conn-loop" marker-end="url(#am-loop)"/>
+  <text x="892" y="380" class="lbl" transform="rotate(90 892 380)">outcome → signals</text>
+</svg></div><div class="diagram-caption">Inputs (blue) feed Meta-Orchestrator, which fans out to 9 Domain Agents. Compliance + Approval gates (yellow) sit before activation. Outcome signals close the loop back to the agents.</div><div><div class="workflow-step"><div class="ws-num">01</div><div><div class="ws-title">Marketer states intent</div><div class="ws-detail">Goal in plain English (&quot;Diwali sale for fashion · 30-50yr customers in Mumbai&quot;), budget, dates, objective. No segmentation, no creative briefs.</div></div></div><div class="workflow-step"><div class="ws-num">02</div><div><div class="ws-title">Meta-Orchestrator decomposes</div><div class="ws-detail">Parses intent · creates a workflow DAG · routes parallelisable tasks (Research, Audience) to specialists, sequencing dependents.</div></div></div><div class="workflow-step"><div class="ws-num">03</div><div><div class="ws-title">9 Domain Agents collaborate</div><div class="ws-detail">Research mines prior campaigns. Audience builds segments + lookalikes. Planning drafts the brief. Content generates creatives. Channel selects mix + send-time. Experimentation wires A/B + holdouts. Measurement attributes outcomes. Opportunity detects anomalies. Dashboard surfaces summaries.</div></div></div><div class="workflow-step"><div class="ws-num">04</div><div><div class="ws-title">Compliance Agent gates</div><div class="ws-detail">Cross-cuts every action — consent enforcement, frequency caps, sensitive-category rules, brand-voice guardrails. Blocks any action that violates policy.</div></div></div><div class="workflow-step"><div class="ws-num">05</div><div><div class="ws-title">Approval gate</div><div class="ws-detail">Marketer reviews audience, creative, channel plan, spend forecast. Approves; activation proceeds. Rejects with notes; agents iterate.</div></div></div><div class="workflow-step"><div class="ws-num">06</div><div><div class="ws-title">Activation</div><div class="ws-detail">Campaign launches across channels — SMS, WhatsApp, RCS, push, email, paid, in-app. Each personalised to person + household + context.</div></div></div><div class="workflow-step"><div class="ws-num">07</div><div><div class="ws-title">Outcome → signals</div><div class="ws-detail">Performance signals (clicks, conversions, lift, churn saves, revenue) write back into the signal layer. Next campaign starts from a smarter base — knowledge compounds.</div></div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">03 · Underlying data</div><div class=""><table class="data-table mb-4"><thead><tr><th>Data source</th><th>Classification</th><th>Key entities</th></tr></thead><tbody><tr><td><strong>UCP signals</strong></td><td>Mixed</td><td><span class="ent">Identity · behavioural · transactional · contextual · household · preferences · AI-derived traits</span></td></tr><tr><td><strong>Channel platforms</strong></td><td>Machine-Readable</td><td><span class="ent">CleverTap · Google Ads · Meta · WhatsApp Business · RCS gateway</span></td></tr><tr><td><strong>Databricks</strong></td><td>Machine-Created</td><td><span class="ent">Customer transaction tables · computed CLV · segment definitions</span></td></tr><tr><td><strong>Real-time context</strong></td><td>Machine-Created</td><td><span class="ent">Store proximity · inventory availability · festival windows · device</span></td></tr><tr><td><strong>Outcome history</strong></td><td>Machine-Created</td><td><span class="ent">Prior campaign signals · A/B · holdouts · bandit arms</span></td></tr></tbody></table><p class="text-sm mb-3" style="color: var(--ink);"><strong>Refresh cadence:</strong> Identity stitching real-time; signals continuous; outcome attribution near-real-time post-send.</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>KPIs moved:</strong></p><div><span class="tech-chip">Cycle time (weeks → hours)</span><span class="tech-chip">Campaign ROI / lift on holdouts</span><span class="tech-chip">Suppression and frequency-cap compliance</span><span class="tech-chip">Compounding selection accuracy across runs</span></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">04 · Design patterns used</div><div class=""><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"><div class="pattern-chip"><div class="pc-name">Multi-Agent Orchestration</div><div class="pc-usage">Meta-Orchestrator coordinates 9 Domain Agents + 1 Compliance Agent · peer collaboration with explicit handoffs</div></div><div class="pattern-chip"><div class="pc-name">Tool Calling</div><div class="pc-usage">Channel APIs (CleverTap, Google, Meta, WhatsApp, RCS), UCP signal queries, content generation, outcome attribution — all tool-mediated</div></div><div class="pattern-chip"><div class="pc-name">Agent Memory</div><div class="pc-usage">Per-agent Firestore memory · prior campaign decisions feed next run; episodic + procedural</div></div><div class="pattern-chip"><div class="pc-name">Wide Research</div><div class="pc-usage">Research + Audience agents explore many segment / lookalike candidates before Planning narrows</div></div><div class="pattern-chip"><div class="pc-name">Observability</div><div class="pc-usage">Every agent decision traced · token-economical artefact-passing keeps context lean</div></div><div class="pattern-chip"><div class="pc-name">Evals</div><div class="pc-usage">Holdouts and A/B + bandit experiments built into every campaign by default</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">05 · Evals · what gates each output</div><div class=""><p class="text-sm mb-3" style="color: var(--ink);">Per-campaign holdouts and A/B suites will measure incrementality at
+run time. Cross-campaign: backtest agent-decided audiences and
+creatives against historical campaign outcomes; compare lift versus
+the manual baseline. Compliance Agent&#x27;s gate-pass rate is its own
+audit metric. <strong>Current state: framework documented; first end-to-end
+pilot campaign in setup. No measured numbers yet.</strong>
+</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>Gates and thresholds.</strong></p><ul class="list-disc pl-5 text-sm" style="color: var(--ink);"><li>Lift on holdouts ≥ baseline manual campaign lift</li><li>Compliance violations: zero pre-activation; flagged within 1 hr post-send</li><li>Frequency-cap and consent enforcement: 100% adherence</li></ul></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">06 · Linked platforms</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-3"><a href="/ucp/" class="linked-platform-card"><div class="lp-name">UCP</div><div class="lp-role">Primary surface · agents run inside the marketing OS</div><div class="lp-arrow">View platform →</div></a><a href="/jcp/" class="linked-platform-card"><div class="lp-name">JCP</div><div class="lp-role">Channel activation across the commerce platform</div><div class="lp-arrow">View platform →</div></a></div></div></div></section>
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

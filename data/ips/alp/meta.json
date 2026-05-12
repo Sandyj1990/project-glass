@@ -1,0 +1,27 @@
+{
+  "slug": "alp",
+  "name": "ALP \u00b7 Adaptive Land Platform",
+  "tagline": "Real-estate platform for new-store decisions \u00b7 grounded in revenue forecasts.",
+  "track": "alp",
+  "track_role": "track-headline",
+  "status": "Build",
+  "since": "2025-08-01",
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics"
+  ],
+  "value_chain": [
+    "plan"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/alp",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "real-estate",
+    "geospatial",
+    "agentic"
+  ]
+}

@@ -1,0 +1,9 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: wedding_cards_issued
+    label: Wedding-cards motion · coupons issued
+    value: 1.3L+
+    definition: Single campaign
+    source: Coupons ops
+    confidence: live

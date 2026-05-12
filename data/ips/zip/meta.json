@@ -1,0 +1,25 @@
+{
+  "slug": "zip",
+  "name": "ZIP \u00b7 AJIO Commerce Agent",
+  "tagline": "Natural-language shopping agent on AJIO.com.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-09-15",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/jcp#zip",
+  "external_url": "https://www.ajio.com",
+  "stake_inr_cr": null,
+  "tags": [
+    "ai-agent",
+    "conversational",
+    "search"
+  ]
+}

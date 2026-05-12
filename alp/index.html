@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ALP · Asset Lifecycle Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* In-page section nav */
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Hero -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">ALP</span></div>
+<div class="section-label mb-3">Track 05 · Special Projects · NSO platform · Live</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">ALP.</h1>
+<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);"><strong style="color: var(--ink);">Asset Lifecycle Platform.</strong> Reliance's internal NSO system. One record per candidate site, lead to operational hand-off. GJ-cluster pilot live · 6 of 9 Phase 1 initiatives Done.</p>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Live for the GJ-cluster pilot · Apr-2026. 6 of 9 Phase 1 initiatives Done · 2 In Progress · 1 deferred to Phase 2 (AI Feasibility). Phase 2 plan: AI Business Feasibility scoring + 6 platform integrations (Board, FR Portal, Sirion, R-Dash, SAP, Retail Vista).</p>
+
+<div class="cap-num mb-3">Status · verified Apr-2026</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">Stage</div><div class="font-semibold" style="color: var(--ink);"><span class="status-dot dot-green"></span> Live · Apr-2026</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Phase 1 initiatives</div><div class="display-2 text-3xl" style="color: var(--ink);">9</div><div class="cap-num mt-1">6 Done · 2 In Progress · 1 deferred</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Pilot scope</div><div class="font-semibold" style="color: var(--ink);">GJ cluster · grocery formats</div></div>
+<div class="card p-4"><div class="cap-num mb-1">RIL counterpart</div><div class="font-semibold" style="color: var(--ink);">Irin Mathew</div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+  <div class="story-toc-inner" id="story-toc">
+    <a href="#overview">01 · Overview</a>
+    <a href="#phase1">02 · Phase 1</a>
+    <a href="#lifecycle">03 · Lifecycle</a>
+    <a href="#access">04 · Access</a>
+    <a href="#roadmap">05 · Roadmap</a>
+  </div>
+</div>
+
+<!-- §01 · What ALP is for Reliance -->
+<section id="overview" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · What ALP is for Reliance</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From scouting to keys-in-hand · in one system.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-6"><div class="cap-num mb-2" style="color: var(--red);">Problem</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">NSO ran on email + spreadsheets.</h3>
+<ul class="text-sm space-y-1.5" style="color: var(--ink-muted);">
+<li>· Document exchange ran over email · ALP replaces with in-app uploads + comments per lead (PRD §Lead Creation)</li>
+<li>· Approvals tracked manually across RE, BT, NSO, Format CFO, Apex</li>
+<li>· Site assessment notes scattered · no audit trail</li>
+<li>· No single state-by-state or format-by-format AOP funnel</li>
+</ul>
+</div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: var(--accent);">What ALP does</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">One record per candidate site. End-to-end.</h3>
+<ul class="text-sm space-y-1.5" style="color: var(--ink-muted);">
+<li>· Lead creation form + auto-generated Lead ID (<span class="mono">ALP-2026-NNNN</span>)</li>
+<li>· 7-tab Lead Details · Overview → Site Visit → Validation → Approvals → Legal → Fit-Out → Payments</li>
+<li>· 11-state lifecycle · ageing in days from BT-submission</li>
+<li>· Role-Based Access Control scoped to state (RE) and format-category (BT)</li>
+<li>· Activity log + backend audit trail per lead</li>
+</ul>
+</div>
+<div class="card p-6"><div class="cap-num mb-2" style="color: var(--green);">Impact today</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">GJ-cluster pilot live, Apr-2026.</h3>
+<ul class="text-sm space-y-1.5" style="color: var(--ink-muted);">
+<li>· Live data captured for the GJ-cluster pilot · including TEST leads from UAT</li>
+<li>· 11-status taxonomy live · auto-applied filters by role</li>
+<li>· SAML SSO with Reliance accounts · IRM-compliant</li>
+<li>· 4 manual-update tabs ready for Phase 2 integration with Board / Sirion / R-Dash / SAP</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<!-- §02 · Phase 1 · what's live today -->
+<section id="phase1" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Phase 1 · what's live today</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Nine initiatives · seven Done · two In Progress.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source-of-truth status from <span class="mono">ALP project plan for phase 1.xlsx</span>. Each initiative below maps 1:1 to a row in that plan.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th style="width: 30%;">Initiative</th><th>What it does</th><th style="width: 18%;">Status</th></tr></thead>
+<tbody>
+<tr>
+<td class="font-medium">1 · Governance &amp; Access</td>
+<td class="text-sm">SAML SSO with Reliance accounts. Role-Based Access Control (RBAC) across RE / BT / Legal / EPC teams · scoped by state, format-category, region.</td>
+<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
+</tr>
+<tr>
+<td class="font-medium">2 · AOP &amp; catchment ingestion</td>
+<td class="text-sm">Upload AOP data; tag catchment per lead. Powers the funnel cards on the dashboard.</td>
+<td><span class="pill pill-build"><span class="status-dot dot-amber"></span> In Progress</span></td>
+</tr>
+<tr>
+<td class="font-medium">3 · ALP Dashboard</td>
+<td class="text-sm">AOP funnel in 5 cards (RE view vs BT view differs). Leads table with filter, search, ageing column.</td>
+<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
+</tr>
+<tr>
+<td class="font-medium">4 · Lead Creation</td>
+<td class="text-sm">Detailed lead form. Auto-generated Lead ID. Document upload + comments (replaces email exchange).</td>
+<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
+</tr>
+<tr>
+<td class="font-medium">5 · Lead Journey workflow</td>
+<td class="text-sm">7-tab Lead Details page · Progress Timeline (7 stages) · Activity Log · multi-function approval mechanism · manual updates from Board / Sirion / R-Dash / SAP / FR Portal pending Phase 2.</td>
+<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
+</tr>
+<tr>
+<td class="font-medium">6 · Prototype for feedback</td>
+<td class="text-sm">Frontend-only prototype shipped to limited RE / BT / NSO users for early UAT.</td>
+<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
+</tr>
+<tr>
+<td class="font-medium">7 · AI Business Feasibility scoring</td>
+<td class="text-sm">Ingest location intelligence from Retail Vista; AI scoring + recommendation per site. Blocked on Vista data + sub-team availability.</td>
+<td><span class="pill pill-phase2">Phase 2</span></td>
+</tr>
+<tr>
+<td class="font-medium">8 · Email alerts &amp; escalations</td>
+<td class="text-sm">5–10 email triggers across the workflow · recipients + SLAs + escalation hierarchy gathered from formats.</td>
+<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
+</tr>
+<tr>
+<td class="font-medium">9 · Feedback &amp; Testing</td>
+<td class="text-sm">Feedback incorporation from PMs, formats, NSO. Testing across roles.</td>
+<td><span class="pill pill-build"><span class="status-dot dot-amber"></span> In Progress</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="mt-4 mono text-xs" style="color: var(--ink-muted);">Risk register (per plan) · Retail Vista dependency · cross-format data-gathering for RBAC/SLA config · prototype-feedback turnaround.</p>
+</div></section>
+
+<!-- §03 · Lead lifecycle + screens -->
+<section id="lifecycle" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Lead lifecycle · how the platform works</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">11 statuses · 7 tabs · 7 timeline stages · live screens.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every lead in ALP carries an ID, sits in one of 11 statuses, and progresses through a 7-tab Details page. The Progress Timeline widget at the top of every Lead Details collapses the journey into 7 stages from Site Details through Rent Declaration.</p>
+
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+
+<div class="card p-6">
+<div class="cap-num mb-3">11 statuses · home dashboard</div>
+<ol class="text-sm space-y-1.5 mono" style="color: var(--ink); list-style: decimal inside; padding-left: 0;">
+<li>Draft</li>
+<li>New</li>
+<li>Under BT validation</li>
+<li>Under Negotiations</li>
+<li>Under BT approvals</li>
+<li>Under Apex approval</li>
+<li>Confirmed Properties</li>
+<li>RFC offered</li>
+<li>RFC under fit-outs</li>
+<li>Operational</li>
+<li>Rejected</li>
+</ol>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-3">7 tabs · Lead Details page</div>
+<ul class="text-sm space-y-1.5" style="color: var(--ink);">
+<li><span class="mono text-xs" style="color: var(--ink-muted);">01</span> &nbsp; Overview · basic + property details</li>
+<li><span class="mono text-xs" style="color: var(--ink-muted);">02</span> &nbsp; Site Visit Assessment · BT-led</li>
+<li><span class="mono text-xs" style="color: var(--ink-muted);">03</span> &nbsp; Validations · feasibility + approval</li>
+<li><span class="mono text-xs" style="color: var(--ink-muted);">04</span> &nbsp; Approvals · 11-card ladder ending at Apex</li>
+<li><span class="mono text-xs" style="color: var(--ink-muted);">05</span> &nbsp; Legal · LDD → LOI → Agreement</li>
+<li><span class="mono text-xs" style="color: var(--ink-muted);">06</span> &nbsp; Fit-Out · SDR → RFC offered</li>
+<li><span class="mono text-xs" style="color: var(--ink-muted);">07</span> &nbsp; Payments · post-approval only</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-3">7 stages · Progress Timeline</div>
+<ul class="text-sm space-y-1.5" style="color: var(--ink);">
+<li><span class="status-dot dot-green"></span> Site Details · Lead created + Submitted</li>
+<li><span class="status-dot dot-green"></span> Validations · BT validations + Negotiation</li>
+<li><span class="status-dot dot-green"></span> Approvals · Site → BT → Apex</li>
+<li><span class="status-dot dot-grey"></span> Legal · ATL signed</li>
+<li><span class="status-dot dot-grey"></span> Fit-Out · layout + SOW + handover</li>
+<li><span class="status-dot dot-grey"></span> Operational · store live</li>
+<li><span class="status-dot dot-grey"></span> Rent Declaration · final settlement</li>
+</ul>
+</div>
+
+</div>
+
+<a href="/assets/alp/03-overview-tab.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+<img src="/assets/alp/03-overview-tab.jpg" alt="ALP Lead Details · Overview tab with 7-stage Progress Timeline and 7 tabs" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); cursor: zoom-in;" />
+</a>
+<p class="mt-3 mono text-xs" style="color: var(--ink-muted);">Lead Details · Overview tab · TEST lead · GJ cluster · Progress Timeline at top.</p>
+
+<div class="cap-num mt-12 mb-3" style="color: var(--accent);">Live screens · click any image to enlarge</div>
+<div class="grid md:grid-cols-2 gap-6">
+
+<div>
+<a href="/assets/alp/01-dashboard.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+<img src="/assets/alp/01-dashboard.jpg" alt="ALP Lead Management Dashboard · RE team view" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); cursor: zoom-in;" />
+</a>
+<p class="cap-num mt-2"><strong style="color: var(--ink);">Lead Management Dashboard</strong> · RE team view · GJ cluster · 5 leads. Five AOP funnel cards above; filterable leads table below with State / Format / Format Category / Status / Catchment / City filters.</p>
+</div>
+
+<div>
+<a href="/assets/alp/02-leads-tracker.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+<img src="/assets/alp/02-leads-tracker.jpg" alt="ALP Leads Tracker · all-format pivot view" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); cursor: zoom-in;" />
+</a>
+<p class="cap-num mt-2"><strong style="color: var(--ink);">Leads Tracker · all formats</strong>. Pivot view by Format Category × Format · AOP / Operational / RFC Under Fit-outs / RFC Offered / Confirmed Properties / Total / Balance to Acquire. The leadership view across categories.</p>
+</div>
+
+<div>
+<a href="/assets/alp/05-site-assessment.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+<img src="/assets/alp/05-site-assessment.jpg" alt="ALP Site Visit Assessment tab · BT view, RE locked" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); cursor: zoom-in;" />
+</a>
+<p class="cap-num mt-2"><strong style="color: var(--ink);">Site Visit Assessment tab</strong>. BT-only edit access · RE has read-only view. Free-text fields for Business Potential / Competing Stores / Catchment / Sales Projection. Soft Approve / Reject / On Hold / Raise Query to RE at the bottom.</p>
+</div>
+
+<div>
+<a href="/assets/alp/04-approvals-tab.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+<img src="/assets/alp/04-approvals-tab.jpg" alt="ALP Approvals tab · Site Approvals cards" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); cursor: zoom-in;" />
+</a>
+<p class="cap-num mt-2"><strong style="color: var(--ink);">Approvals tab</strong>. 4 Site Approval cards (Site selection · EPC Contractor · Quality &amp; Quantity BO certification · Quality &amp; Quantity third-party). 11 Business Approval cards above end at <strong>Apex</strong> (after RRVL CFO Office · RRVL CLT). Each card: completion date + status dropdown (Approved / Not applicable / Rejected) + supporting document upload.</p>
+</div>
+
+</div>
+</div></section>
+
+<!-- §04 · Access model · who sees what -->
+<section id="access" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Access model · who sees what</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Role-Based Access Control · scoped on login.</h2>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Role</th><th>Sees</th><th>Creates</th><th>Edits</th></tr></thead>
+<tbody>
+<tr>
+<td class="font-medium">RE State team</td>
+<td class="text-sm">Leads in their state only · across all format categories</td>
+<td class="text-sm">Leads in their state · state filter pre-applied</td>
+<td class="text-sm">Lead creator only · Overview tab editable until BT submission</td>
+</tr>
+<tr>
+<td class="font-medium">RE NHQ / Leadership</td>
+<td class="text-sm">All states · all format categories · same dashboard, no auto-filter</td>
+<td class="text-sm">Same as state RE</td>
+<td class="text-sm">No special edit privilege beyond ownership</td>
+</tr>
+<tr>
+<td class="font-medium">Business team (BT / NSO) · Format-category</td>
+<td class="text-sm">Leads in their format category · across all states</td>
+<td class="text-sm">Leads in their format category <em>and</em> their region only</td>
+<td class="text-sm">Site Visit Assessment + Validation tabs · approval cards per RBAC</td>
+</tr>
+<tr>
+<td class="font-medium">BT Format-category Leadership</td>
+<td class="text-sm">All format categories · cross-region</td>
+<td class="text-sm">Any format category · any region</td>
+<td class="text-sm">Approval cards in their function</td>
+</tr>
+<tr>
+<td class="font-medium">Legal team (part of RE)</td>
+<td class="text-sm">Leads handed to legal · LDD onwards</td>
+<td class="text-sm">n/a</td>
+<td class="text-sm">Legal tab cards (LDD / LOI / Agreement Registered)</td>
+</tr>
+<tr>
+<td class="font-medium">EPC team</td>
+<td class="text-sm">Leads at fit-out stage</td>
+<td class="text-sm">n/a</td>
+<td class="text-sm">Construction tab cards · split with RE per card</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></section>
+
+<!-- §05 · Phase 2 · roadmap -->
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Phase 2 · roadmap</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Two horizons.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Group A is the explicit Phase 2 plan from the project file · scoped, sequenced, not yet started (per plan Sheet 2). Group B captures longer-horizon platform intent that does not yet have a PRD or build owner.</p>
+
+<h3 class="font-semibold text-lg mb-4" style="color: var(--ink);">A · Phase 2 plan</h3>
+<div class="card overflow-hidden mb-10">
+<table class="grid-table">
+<thead><tr><th style="width: 28%;">Item</th><th>What it does</th><th style="width: 14%;">Status</th></tr></thead>
+<tbody>
+<tr>
+<td class="font-medium">AI Business Feasibility scoring</td>
+<td class="text-sm">Standardise the go / no-go decision per site · ingest Retail Vista location intelligence · weight against past-store performance · iterate prompts and agent architecture.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">Retail Vista integration</td>
+<td class="text-sm">Auto-fetch Catchment ID per lead · feed feasibility model. Catalogued as mandatory in the project plan.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">Board · Approvals integration</td>
+<td class="text-sm">Replace manual Approvals-tab updates · two-way data exchange + redirection without re-login.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">Sirion · Legal integration</td>
+<td class="text-sm">Replace manual Legal-tab updates · LDD / LOI / Agreement milestones flow back into ALP.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">R-Dash · Construction integration</td>
+<td class="text-sm">Replace manual Construction/Fit-Out updates · SDR / RFC milestones reflect inside ALP.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">FR Portal / SAP · Payments integration</td>
+<td class="text-sm">Payments-tab cards updated post-approval via FR Portal &amp; SAP integration.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">Mobile lead creation</td>
+<td class="text-sm">Limited-fields create-lead on mobile · including offline mode (subject to Reliance info-sec sign-off).</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">Advanced forms</td>
+<td class="text-sm">Term Sheet · LDD · Site Evaluation Report · Rent Intelligence Dashboard · License Tracking · Maintenance. (Today only the SOW form ships; the rest are tagged Coming Soon.)</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">Advanced SLA &amp; escalation matrix</td>
+<td class="text-sm">Beyond the 5–10 live triggers · per-format and per-state SLA tiers, escalation hierarchy.</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+<tr>
+<td class="font-medium">AI summary on lead details</td>
+<td class="text-sm">Auto-generated summary of stage, last update, key blockers (today shown as "Coming soon" placeholder in screenshots).</td>
+<td><span class="pill pill-phase2">Planned</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="font-semibold text-lg mb-4" style="color: var(--ink);">B · Longer-horizon platform intent</h3>
+<p class="text-sm max-w-3xl mb-6" style="color: var(--ink-muted);">Capabilities under consideration for the platform beyond Phase 2.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Site selection AI</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Geospatial site scoring on Vista signals (catchment, parcel-gravity, drive-time) per format.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Lease intelligence</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Lease &amp; Contracts module · LOI to keys · renewal calendar · auto-link to ERP and legal repo.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Rent benchmarking</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Per-hex, per-format rent comparables · flag overpay risk during LOI.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Footfall prediction</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Pre-open forecast · feeds the Feasibility Engine.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Productivity scorecard</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Per-store sales-per-sqft, footfall-conversion, attach-rate score · loop back into Feasibility v2.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Closure / relocation</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Decision framework for underperforming stores · revenue-displacement modelling per format.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Cross-format visibility</div><span class="pill pill-phase2">Roadmap</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Single pane · every site, every format, on one map for Apex review.</p>
+</div>
+
+</div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<!-- Lightbox overlay (vanilla JS, no deps) -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

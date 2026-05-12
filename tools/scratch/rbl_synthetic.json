@@ -1,0 +1,308 @@
+[
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/fde3ad317afa424c.png",
+    "slug": "superdry",
+    "brand": "SuperDry",
+    "domain": "superdry.in",
+    "vertical": "FASHION",
+    "loadTime": "2.97s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/e55b973b4b5e35d4.png",
+    "slug": "gas-jeans",
+    "brand": "GAS Jeans",
+    "domain": "gasjeans.in",
+    "vertical": "FASHION",
+    "loadTime": "0.77s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/c935a3087a645982.png",
+    "slug": "pottery-barn",
+    "brand": "Pottery Barn",
+    "domain": "potterybarn.in",
+    "vertical": "HOME & FURNITURE",
+    "loadTime": "2.00s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/7d974f47e9fbf172.png",
+    "slug": "hamleys",
+    "brand": "Hamleys",
+    "domain": "hamleys.in",
+    "vertical": "TOYS & KIDS",
+    "loadTime": "11.78s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/367a5eed21af2c5a.png",
+    "slug": "vision-express",
+    "brand": "Vision Express",
+    "domain": "visionexpress.in",
+    "vertical": "EYEWEAR",
+    "loadTime": "3.11s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/40a5befe1c1f0f32.png",
+    "slug": "westelm",
+    "brand": "West Elm",
+    "domain": "westelm.in",
+    "vertical": "HOME & FURNITURE",
+    "loadTime": "15.34s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/ed1fdbbed217978d.png",
+    "slug": "hunkemoller",
+    "brand": "Hunkemoller",
+    "domain": "hunkemoller.in",
+    "vertical": "FASHION",
+    "loadTime": "7.92s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/a1e825186da261ee.png",
+    "slug": "coach",
+    "brand": "Coach",
+    "domain": "coach.in",
+    "vertical": "LUXURY FASHION",
+    "loadTime": "5.42s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/09a46ec68e94933a.png",
+    "slug": "afew-rahul-mishra",
+    "brand": "AFEW by Rahul Mishra",
+    "domain": "afew.rahulmishra.in",
+    "vertical": "LUXURY FASHION",
+    "loadTime": "1.89s",
+    "accessibility": 81
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/2509f49950f29a66.png",
+    "slug": "centro",
+    "brand": "Centro",
+    "domain": "centro.style",
+    "vertical": "FASHION / FOOTWEAR",
+    "loadTime": "6.39s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/0eef29c04958b9fa.png",
+    "slug": "mothercare",
+    "brand": "Mothercare",
+    "domain": "mothercare.in",
+    "vertical": "KIDS & MATERNITY",
+    "loadTime": "15.64s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/c32542cabd042419.png",
+    "slug": "akok",
+    "brand": "AKOK",
+    "domain": "akok.in",
+    "vertical": "FASHION",
+    "loadTime": "11.74s",
+    "accessibility": 80
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/a4fe042b3f89a9b1.png",
+    "slug": "tumi",
+    "brand": "Tumi",
+    "domain": "tumi.in",
+    "vertical": "LUXURY ACCESSORIES",
+    "loadTime": "19.29s",
+    "accessibility": 81
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/1a6f4617c572241e.png",
+    "slug": "sephora",
+    "brand": "Sephora",
+    "domain": "sephora.in",
+    "vertical": "BEAUTY",
+    "loadTime": "20.16s",
+    "accessibility": 92
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/09818d4d0d338eed.png",
+    "slug": "bally",
+    "brand": "Bally",
+    "domain": "bally.in",
+    "vertical": "LUXURY FASHION",
+    "loadTime": "3.87s",
+    "accessibility": 83
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/8b1c2ad2e2ca61e2.png",
+    "slug": "sunglasshut",
+    "brand": "Sunglass Hut India",
+    "domain": "sunglasshut.in",
+    "vertical": "EYEWEAR",
+    "loadTime": "13.61s",
+    "accessibility": 92
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/e6ef5ba34d4084ae.png",
+    "slug": "charles-tyrwhitt",
+    "brand": "Charles Tyrwhitt",
+    "domain": "charlestyrwhitt.in",
+    "vertical": "FASHION",
+    "loadTime": "5.88s",
+    "accessibility": 81
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/14daca40522ba560.png",
+    "slug": "gap",
+    "brand": "GAP",
+    "domain": "gap.com",
+    "vertical": "FASHION",
+    "loadTime": "7.72s",
+    "accessibility": 100
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/957c835a423b4228.png",
+    "slug": "ritu-kumar",
+    "brand": "Ritu Kumar",
+    "domain": "ritukumar.com",
+    "vertical": "FASHION",
+    "loadTime": "12.18s",
+    "accessibility": 86
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/3f85f475288ebaaf.png",
+    "slug": "lenscrafters",
+    "brand": "LensCrafters",
+    "domain": "lenscrafters.in",
+    "vertical": "EYEWEAR",
+    "loadTime": "30.55s",
+    "accessibility": 75
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/a4a6bbedb6d3b77b.png",
+    "slug": "satya-paul",
+    "brand": "Satya Paul",
+    "domain": "satyapaul.com",
+    "vertical": "FASHION",
+    "loadTime": "17.32s",
+    "accessibility": 92
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/97dccf7c70458606.png",
+    "slug": "steve-madden",
+    "brand": "Steve Madden",
+    "domain": "stevemadden.in",
+    "vertical": "FASHION / FOOTWEAR",
+    "loadTime": "14.92s",
+    "accessibility": 90
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/005f8b8b3a53ca75.png",
+    "slug": "muji",
+    "brand": "Muji",
+    "domain": "muji.in",
+    "vertical": "LIFESTYLE",
+    "loadTime": "12.77s",
+    "accessibility": 88
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/cf1b9372f7ae7234.png",
+    "slug": "ed-a-mamma",
+    "brand": "Ed-A-Mamma",
+    "domain": "edamamma.com",
+    "vertical": "KIDS FASHION",
+    "loadTime": "7.62s",
+    "accessibility": 86
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/6de622d7cf76749f.png",
+    "slug": "pottery-barn-kids",
+    "brand": "Pottery Barn Kids",
+    "domain": "potterybarnkids.in",
+    "vertical": "HOME & KIDS",
+    "loadTime": "14.29s",
+    "accessibility": 86
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/b98201c18961d65b.png",
+    "slug": "armani-exchange",
+    "brand": "Armani Exchange",
+    "domain": "armaniexchange.in",
+    "vertical": "LUXURY FASHION",
+    "loadTime": "13.79s",
+    "accessibility": 83
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/824b1a40dd43cf8d.png",
+    "slug": "gulabo",
+    "brand": "Gulabo",
+    "domain": "gulabo.abusandeep.com",
+    "vertical": "FASHION",
+    "loadTime": "4.38s",
+    "accessibility": 85
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/48077c2c389127eb.png",
+    "slug": "diesel",
+    "brand": "Diesel",
+    "domain": "dieselindia.com",
+    "vertical": "FASHION",
+    "loadTime": "15.72s",
+    "accessibility": 88
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/517230033c2da9d9.png",
+    "slug": "tiffany",
+    "brand": "Tiffany",
+    "domain": "tiffany.com",
+    "vertical": "LUXURY JEWELLERY",
+    "loadTime": "25.62s",
+    "accessibility": 90
+  },
+  {
+    "src": "https://storage.googleapis.com/rattle-prod-artifacts/channel-summary/90aba0b0e5654cf2/4342f6b0edd9ebe9.png",
+    "slug": "brooks-brothers",
+    "brand": "Brooks Brothers",
+    "domain": "brooksbrothers.in",
+    "vertical": "FASHION",
+    "loadTime": "3.86s",
+    "accessibility": 87
+  },
+  {
+    "src": "https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coverstory.png",
+    "slug": "coverstory",
+    "brand": "CoverStory",
+    "domain": "coverstory.co.in",
+    "vertical": "F&L",
+    "loadTime": "\u2014",
+    "accessibility": null
+  },
+  {
+    "src": "https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/la-martina.png",
+    "slug": "la-martina",
+    "brand": "La Martina",
+    "domain": "lamartina.com",
+    "vertical": "F&L",
+    "loadTime": "\u2014",
+    "accessibility": null
+  },
+  {
+    "src": "https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/molton-brown.png",
+    "slug": "molton-brown",
+    "brand": "Molton Brown",
+    "domain": "moltonbrown.com",
+    "vertical": "Beauty",
+    "loadTime": "\u2014",
+    "accessibility": null
+  },
+  {
+    "src": "https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/facegym.png",
+    "slug": "facegym",
+    "brand": "Facegym",
+    "domain": "facegym.com",
+    "vertical": "Beauty",
+    "loadTime": "\u2014",
+    "accessibility": null
+  }
+]

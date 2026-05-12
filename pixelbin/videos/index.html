@@ -1,0 +1,792 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Videos · PixelBin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: white; cursor: pointer; user-select: none; transition: all 0.15s;
+}
+.filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.filter-chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+.filter-chip .count { color: inherit; opacity: 0.55; }
+.cat-pill {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+  padding: 3px 8px; border-radius: 4px; background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+}
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox img, .lightbox video { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.lightbox .meta {
+  position: absolute; bottom: 14px; left: 22px; color: white; opacity: 0.75;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em;
+}
+/* Video lightbox: iframe sized to its aspect ratio, fits viewport. */
+.video-lightbox-frame {
+  background: black; border-radius: 8px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.video-lightbox-frame.long {
+  aspect-ratio: 16/9; width: min(90vw, 1280px); max-height: 86vh;
+}
+.video-lightbox-frame.shorts {
+  aspect-ratio: 9/16; height: min(86vh, 760px); max-width: 90vw;
+}
+.video-lightbox-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.image-tile {
+  position: relative; background: var(--bg-soft);
+  border: 1px solid var(--border); border-radius: 8px; overflow: hidden; cursor: zoom-in;
+}
+.image-tile img { width: 100%; height: auto; display: block; transition: transform 0.3s; }
+.image-tile:hover img { transform: scale(1.02); }
+/* When a tile needs uniform sizing (regular grid, not masonry), opt into
+   fit-cover. Image fills its container, anchored to top so faces/heads/
+   garment necklines stay visible instead of being cropped. */
+.image-tile.fit-cover img {
+  height: 100%; object-fit: cover; object-position: center top;
+}
+.image-tile .badge {
+  position: absolute; top: 6px; right: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  background: rgba(0,0,0,0.6); color: white; padding: 2px 6px; border-radius: 3px;
+  opacity: 0; transition: opacity 0.2s;
+}
+.image-tile:hover .badge { opacity: 1; }
+
+/* Masonry layout · true Pinterest-style. Lets each tile keep its natural
+   aspect ratio so designs are never cropped. Columns rebalance on resize. */
+.masonry {
+  column-gap: 12px;
+  /* Column counts mirror Tailwind responsive grid: 2 cols mobile → 6 cols desktop. */
+  column-count: 2;
+}
+@media (min-width: 768px) { .masonry { column-count: 4; } }
+@media (min-width: 1024px) { .masonry { column-count: 6; } }
+.masonry > .image-tile {
+  break-inside: avoid;
+  margin-bottom: 12px;
+  display: block;
+  width: 100%;
+}
+.video-thumb {
+  position: relative; aspect-ratio: 16/9; background: var(--bg-soft);
+  border-radius: 8px 8px 0 0; overflow: hidden; border-bottom: 1px solid var(--border);
+}
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-thumb .play-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
+  color: white; font-size: 40px; opacity: 0.85;
+}
+.video-thumb.shorts { aspect-ratio: 9/16; }
+.video-thumb.placeholder {
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+.placeholder-tile {
+  background: linear-gradient(135deg, var(--accent-soft), var(--bg-soft));
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent); font-family: 'JetBrains Mono', monospace;
+  font-size: 13px; font-weight: 500; text-align: center; padding: 12px;
+}
+.gender-bar { display: flex; height: 4px; border-radius: 2px; overflow: hidden; background: var(--border-soft); }
+.gender-bar > span { display: block; height: 100%; }
+.g-womens { background: #EC4899; }
+.g-mens { background: #3B82F6; }
+.g-kids, .g-kids-boys, .g-kids-girls { background: #F59E0B; }
+.g-_unknown { background: var(--border); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <a href="/pixelbin">PixelBin</a> <span class="sep">/</span> <span style="color: var(--ink);">Videos</span></div>
+  <div class="section-label mb-3">PixelBin · AI Videos · all live</div>
+  <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Videos.</h1>
+  <p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">
+    AI-generated motion delivered for Reliance brands: brand films, ads, reels, product videos. Hosted on YouTube and Instagram, embedded here.
+  </p>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/pixelbin" class="subnav-link">Overview</a><a href="/pixelbin/glamar" class="subnav-link">GlamAR</a><a href="/pixelbin/videos" class="subnav-link active">Videos</a></div>
+
+  <div class="cap-num mb-3">28 videos · 9 brands · 11 long-form · 17 vertical</div>
+</div></section>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">Filter by brand</div>
+  <div class="flex flex-wrap gap-2" id="brand-filters"><button class="filter-chip active" data-brand="all">All <span class="count">· 28</span></button><button class="filter-chip" data-brand="dnmx">DNMX <span class="count">· 1</span></button><button class="filter-chip" data-brand="jiomart">JioMart <span class="count">· 1</span></button><button class="filter-chip" data-brand="metro-wholesale">Metro Wholesale <span class="count">· 7</span></button><button class="filter-chip" data-brand="nmacc">NMACC <span class="count">· 3</span></button><button class="filter-chip" data-brand="reliance-digital">Reliance Digital <span class="count">· 1</span></button><button class="filter-chip" data-brand="reliance-jewels">Reliance Jewels <span class="count">· 5</span></button><button class="filter-chip" data-brand="satya-paul">Satya Paul <span class="count">· 4</span></button><button class="filter-chip" data-brand="superdry">Superdry <span class="count">· 1</span></button><button class="filter-chip" data-brand="swadesh">Swadesh <span class="count">· 5</span></button></div>
+</div></section>
+
+<section class="py-12 border-b" id="section-reach" style="border-color: var(--border); background: var(--paper-soft, #fafafa);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">Reach · snapshot 16-Apr-2026</div>
+  <h2 class="display-2 text-2xl md:text-3xl mb-8" style="color: var(--ink);">1.38M Instagram views across 10 AI-generated reels.</h2>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+    <div class="card p-5"><div class="cap-num mb-1">Total views</div><div class="display-2 text-3xl" style="color: var(--ink);">1.38M</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Sum across 10 reels</div></div>
+    <div class="card p-5"><div class="cap-num mb-1">Reels in panel</div><div class="display-2 text-3xl" style="color: var(--ink);">10</div><div class="text-xs mt-1" style="color: var(--ink-muted);">9:16 vertical · IG-native</div></div>
+    <div class="card p-5"><div class="cap-num mb-1">Best performer</div><div class="display-2 text-3xl accent">1.1M</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Streetwear reel · single AI clip</div></div>
+    <div class="card p-5"><div class="cap-num mb-1">Reliance Jewels reels</div><div class="display-2 text-3xl" style="color: var(--ink);">4</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Diyas · Lanterns · Rangoli · Flowers</div></div>
+  </div>
+
+  <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_01.png" alt="AI-generated streetwear reel · 1.1M Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">1.1M · streetwear</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_02.png" alt="AI-generated saree reel · 139K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">139K · saree editorial</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_04.png" alt="AI-generated saree reel · 31.5K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">31.5K · saree editorial</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_05.png" alt="AI-generated fantasy still · 19.7K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">19.7K · fantasy still</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_06.png" alt="Reliance Jewels reel · Inspired by the lively lanterns · 18.9K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">18.9K · RJ · lanterns</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_03.png" alt="Reliance Jewels reel · Inspired by sacred festive flowers · 16.8K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">16.8K · RJ · flowers</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_09.png" alt="Reliance Jewels reel · Inspired by vibrant rangoli patterns · 15.8K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">15.8K · RJ · rangoli</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_08.png" alt="AI-generated saree reel · 12.5K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">12.5K · saree editorial</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_07.png" alt="AI-generated circus performers reel · 12.1K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">12.1K · circus performers</figcaption></figure>
+    <figure class="m-0"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/accenture-2026-04-16/slide_22/img_10.png" alt="Reliance Jewels reel · Inspired by auspicious diyas · 12K Instagram views" loading="lazy" class="w-full block rounded" style="aspect-ratio: 9/16; object-fit: cover; border: 1px solid var(--border);" /><figcaption class="cap-num mt-2" style="color: var(--ink-muted);">12K · RJ · diyas</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="py-12 border-b" id="section-landscape" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">Long-form · landscape · 11</div>
+  <h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">Long-form films + ads.</h2>
+  <div id="grid-landscape" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    
+<article class="card overflow-hidden video-card"
+  data-brand="jiomart" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/H3wWavuJiiI?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/H3wWavuJiiI/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/H3wWavuJiiI/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/H3wWavuJiiI" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">JioMart × AI  Video</h3>
+    <div class="cap-num">JioMart</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/5-C3l2z6Opw?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/5-C3l2z6Opw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/5-C3l2z6Opw/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://www.youtube.com/watch?v=5-C3l2z6Opw" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Metro Catering Video</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/NlWtO5Lezzk?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/NlWtO5Lezzk/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/NlWtO5Lezzk/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/NlWtO5Lezzk" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Metro Chaitra Sale</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/cIzsTVt1vpg?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/cIzsTVt1vpg/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/cIzsTVt1vpg/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://www.youtube.com/watch?v=cIzsTVt1vpg" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Metro Wholesale  Celebrate Ramzan</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/7u2DWF1jjTw?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/7u2DWF1jjTw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/7u2DWF1jjTw/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://www.youtube.com/watch?v=7u2DWF1jjTw" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Metro Wholesale Holi</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/zaEZqVGn9kw?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/zaEZqVGn9kw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/zaEZqVGn9kw/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/zaEZqVGn9kw" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Super Save Summer | Metro Wholesale</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/H5FFVSFY6R8?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/H5FFVSFY6R8/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/H5FFVSFY6R8/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/H5FFVSFY6R8" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Super Saver Summers with Metro Wholesale</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="reliance-digital" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/nuGH40P9vaw?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/nuGH40P9vaw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/nuGH40P9vaw/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/nuGH40P9vaw" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Reliance Digital Diwali Video</h3>
+    <div class="cap-num">Reliance Digital</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="reliance-jewels" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/cgA0eYOU86A?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/cgA0eYOU86A/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/cgA0eYOU86A/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/cgA0eYOU86A" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Reliance Jewels ads</h3>
+    <div class="cap-num">Reliance Jewels</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="superdry" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/DzWJo0qBtYU?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/DzWJo0qBtYU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/DzWJo0qBtYU/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/DzWJo0qBtYU" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Superdry Surf and Skate</h3>
+    <div class="cap-num">Superdry</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="swadesh" data-platform="youtube-long"
+  data-embed="https://www.youtube.com/embed/xH1Oh49cmew?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="0">
+  <div class="video-thumb" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/xH1Oh49cmew/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/xH1Oh49cmew/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube</span>
+      <a href="https://youtu.be/xH1Oh49cmew" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Swadesh Kolhapuri</h3>
+    <div class="cap-num">Swadesh</div>
+  </div>
+</article>
+
+  </div>
+  <p class="hidden text-center py-8 cap-num" id="empty-landscape" style="color: var(--ink-muted);">No long-form videos for this filter.</p>
+</div></section>
+
+<section class="py-12 border-b" id="section-vertical" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">Vertical · shorts + reels · 17</div>
+  <h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">Shorts + reels.</h2>
+  <div id="grid-vertical" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-5">
+    
+<article class="card overflow-hidden video-card"
+  data-brand="dnmx" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/lu7ktlCXtf4?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/lu7ktlCXtf4/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/lu7ktlCXtf4/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/lu7ktlCXtf4" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">DNMX Collection Video</h3>
+    <div class="cap-num">DNMX</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="metro-wholesale" data-platform="instagram-reel"
+  data-embed="https://www.instagram.com/reel/DWGDXe8E7Zp/embed/?autoplay=1" data-shorts="1">
+  <div class="video-thumb shorts placeholder-tile" onclick="playVideo(this)" style="cursor:pointer">METRO WHOLESALE<div class="play-overlay" style="background:none">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">Instagram Reel</span>
+      <a href="https://www.instagram.com/reels/DWGDXe8E7Zp/" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on Instagram Reel">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">72Hr Sale is LIVE at METRO Wholesale</h3>
+    <div class="cap-num">Metro Wholesale</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="nmacc" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/61dndAJcOmo?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/61dndAJcOmo/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/61dndAJcOmo/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/61dndAJcOmo" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">NMAAC Wicked</h3>
+    <div class="cap-num">NMACC</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="nmacc" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/2RlNAbqlwyE?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/2RlNAbqlwyE/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/2RlNAbqlwyE/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/2RlNAbqlwyE" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">The Nutcracker on Ice</h3>
+    <div class="cap-num">NMACC</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="nmacc" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/TbZ5Rvhwyvo?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/TbZ5Rvhwyvo/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/TbZ5Rvhwyvo/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/TbZ5Rvhwyvo" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">The Nutcracker on Ice Christmas story,</h3>
+    <div class="cap-num">NMACC</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="reliance-jewels" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/UA2VJdVGRK8?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/UA2VJdVGRK8/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/UA2VJdVGRK8/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/UA2VJdVGRK8" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Reliance  Rangoli Collection</h3>
+    <div class="cap-num">Reliance Jewels</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="reliance-jewels" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/Hy7bGNpR6cU?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/Hy7bGNpR6cU/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/Hy7bGNpR6cU/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/Hy7bGNpR6cU" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Reliance Jewels Diya Collection</h3>
+    <div class="cap-num">Reliance Jewels</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="reliance-jewels" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/2Mlfeh5toCY?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/2Mlfeh5toCY/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/2Mlfeh5toCY/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/2Mlfeh5toCY" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Reliance Jewels Floral Collection</h3>
+    <div class="cap-num">Reliance Jewels</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="reliance-jewels" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/1vxfpb9A5O0?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/1vxfpb9A5O0/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/1vxfpb9A5O0/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/1vxfpb9A5O0" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Reliance Jewels Lantern Collection</h3>
+    <div class="cap-num">Reliance Jewels</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="satya-paul" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/0VsKX_-rBKs?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/0VsKX_-rBKs/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/0VsKX_-rBKs/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/0VsKX_-rBKs" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Satya Paul Product Video</h3>
+    <div class="cap-num">Satya Paul</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="satya-paul" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/LzeP1k_qQw0?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/LzeP1k_qQw0/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/LzeP1k_qQw0/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/LzeP1k_qQw0" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Satya Paul Product Video</h3>
+    <div class="cap-num">Satya Paul</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="satya-paul" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/gRA8JdklUbY?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/gRA8JdklUbY/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/gRA8JdklUbY/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/gRA8JdklUbY" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Satya Paul Product Video</h3>
+    <div class="cap-num">Satya Paul</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="satya-paul" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/mZM-JISAGqs?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/mZM-JISAGqs/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/mZM-JISAGqs/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/mZM-JISAGqs" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Satya Paul Product Video</h3>
+    <div class="cap-num">Satya Paul</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="swadesh" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/9AWE6wYB7qA?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/9AWE6wYB7qA/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/9AWE6wYB7qA/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/9AWE6wYB7qA" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Swadesh Block Print Office Wear</h3>
+    <div class="cap-num">Swadesh</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="swadesh" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/SbnQ6Tp9Olo?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/SbnQ6Tp9Olo/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/SbnQ6Tp9Olo/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/SbnQ6Tp9Olo" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Swadesh Chanderi Product Video</h3>
+    <div class="cap-num">Swadesh</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="swadesh" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/lXIfi4Ivz3s?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/lXIfi4Ivz3s/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/lXIfi4Ivz3s/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/lXIfi4Ivz3s" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Swadesh Painting</h3>
+    <div class="cap-num">Swadesh</div>
+  </div>
+</article>
+
+<article class="card overflow-hidden video-card"
+  data-brand="swadesh" data-platform="youtube-shorts"
+  data-embed="https://www.youtube.com/embed/v-dIDtXESSo?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1" data-shorts="1">
+  <div class="video-thumb shorts" onclick="playVideo(this)"><img src="https://i.ytimg.com/vi/v-dIDtXESSo/hqdefault.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/v-dIDtXESSo/hqdefault.jpg'" loading="lazy" alt="" /><div class="play-overlay">▶</div></div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2">
+      <span class="pill">YouTube Shorts</span>
+      <a href="https://youtube.com/shorts/v-dIDtXESSo" target="_blank" rel="noopener" class="text-xs accent ml-auto" title="Open on YouTube Shorts">↗</a>
+    </div>
+    <h3 class="font-medium text-sm mb-2" style="color: var(--ink);">Swadesh festive wear.</h3>
+    <div class="cap-num">Swadesh</div>
+  </div>
+</article>
+
+  </div>
+  <p class="hidden text-center py-8 cap-num" id="empty-vertical" style="color: var(--ink-muted);">No vertical videos for this filter.</p>
+</div></section>
+
+<div id="video-lightbox" class="lightbox" onclick="if(event.target===this)closeVideoLightbox()">
+  <span class="close" onclick="closeVideoLightbox()">×</span>
+  <div id="video-lightbox-frame" class="video-lightbox-frame long"></div>
+</div>
+
+<script>
+// YouTube serves a tiny 120x90 placeholder with HTTP 200 (not 404) when
+// maxresdefault.jpg doesn't exist for an upload. Detect that by checking
+// naturalWidth after load and swap to hqdefault, which is always available.
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.video-card').forEach(card => {
+    const platform = card.dataset.platform || '';
+    if (!platform.startsWith('youtube')) return;
+    const m = (card.dataset.embed || '').match(/\/embed\/([^?]+)/);
+    if (!m) return;
+    const fallback = 'https://i.ytimg.com/vi/' + m[1] + '/hqdefault.jpg';
+    const img = card.querySelector('img');
+    if (!img) return;
+    function check() {
+      if (img.naturalWidth > 0 && img.naturalWidth < 200 && img.src !== fallback) {
+        img.src = fallback;
+      }
+    }
+    if (img.complete) check(); else img.addEventListener('load', check, { once: true });
+  });
+});
+
+// Click-to-play: open an autoplaying iframe in a centered overlay.
+function playVideo(thumbEl) {
+  const card = thumbEl.closest('.video-card');
+  const embed = card.dataset.embed;
+  const shorts = card.dataset.shorts === '1';
+  const frame = document.getElementById('video-lightbox-frame');
+  frame.className = 'video-lightbox-frame ' + (shorts ? 'shorts' : 'long');
+  frame.innerHTML = `<iframe src="${embed}"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe>`;
+  document.getElementById('video-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoLightbox() {
+  // Empty the iframe container so the video stops playing immediately.
+  document.getElementById('video-lightbox-frame').innerHTML = '';
+  document.getElementById('video-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideoLightbox(); });
+(function() {
+  let curBrand = 'all';
+  function applyToSection(gridId, emptyId, sectionId) {
+    const grid = document.getElementById(gridId);
+    let visible = 0;
+    grid.querySelectorAll('.video-card').forEach(card => {
+      const ok = (curBrand === 'all' || card.dataset.brand === curBrand);
+      card.style.display = ok ? '' : 'none';
+      if (ok) visible++;
+    });
+    document.getElementById(emptyId).classList.toggle('hidden', visible > 0);
+    // Hide whole section if grid is empty AND a brand filter is active.
+    document.getElementById(sectionId).style.display = (visible === 0 && curBrand === 'all') ? '' : '';
+  }
+  function apply() {
+    applyToSection('grid-landscape', 'empty-landscape', 'section-landscape');
+    applyToSection('grid-vertical',  'empty-vertical',  'section-vertical');
+  }
+  document.querySelectorAll('#brand-filters .filter-chip').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('#brand-filters .filter-chip').forEach(x => x.classList.remove('active'));
+    b.classList.add('active'); curBrand = b.dataset.brand; apply();
+  }));
+})();
+</script>
+
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

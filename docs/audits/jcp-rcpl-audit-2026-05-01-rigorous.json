@@ -1,0 +1,168 @@
+{
+  "page": "jcp/rcpl/index.html",
+  "spec": "docs/jcp-rcpl-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_type": "rigorous_full",
+  "previous_audits": [
+    "docs/audits/jcp-rcpl-audit-2026-05-01.json (initial · 88/B+)",
+    "docs/audits/jcp-rcpl-audit-2026-05-01-delta.json (delta · 96/A — overscored)"
+  ],
+  "score": 90,
+  "grade": "A",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 98,
+    "source_traceability": 92,
+    "tone_of_voice": 82,
+    "honesty_register": 94,
+    "visual_completeness": 94,
+    "cross_page_consistency": 78
+  },
+  "calibration_note": "Read all 3 references files (audit-framework, source-audit-protocol, visual-audit-checklist) and tone-of-voice in full before scoring. Exhaustive source trace against Monthly Status Report (24-Apr-2026) + APEX Board Note (01-May-2026) + DMS Knowledge Base. Three hero/mobile/full-page screenshots taken. Cross-page sweep across /catalog, /organisation, mega-menu, all 6 JCP siblings. The casual delta audit (96/A) missed three new findings — captured here.",
+  "delta_closures_verified": {
+    "C1_home_reconciliation": "VERIFIED — index.html:541 reads ₹20,000 Cr (was ₹22K Cr); index.html:346 reads '₹20,000 Cr FY26 run-rate · 5 PODs · 1.86 L assets'; lines 228, 236, 346 all linked to /jcp/rcpl",
+    "H1_channels_link": "VERIFIED — jcp/channels/index.html RCPL card title + 'deep dive →' both link to /jcp/rcpl",
+    "M1_jcp_link": "VERIFIED — jcp/index.html:123 RCPL bold linked",
+    "M2_footer": "VERIFIED — single-line copyright; Owner/version dropped (also swept across all 57 register pages)",
+    "L1_date_format": "VERIFIED — DD-MMM-YYYY clean (01-May-2026, 10-Apr-2026, 20-Apr-2026, 24-Apr-2026, 28-Apr-2026)",
+    "L2_nav_version": "VERIFIED — all 6 JCP pages on v0.8.4",
+    "L3_sources_trim": "VERIFIED — 4 cards trimmed to 1-sentence",
+    "L4_screenshots": "VERIFIED — 5 images embedded; all return 304; lightbox click→display:flex confirmed; ESC→display:none confirmed; no hidden+display:flex bug"
+  },
+  "verification_evidence": {
+    "exhaustive_source_trace": {
+      "method": "Read Monthly Status Report (24-Apr-2026) p.1-11 and APEX Board Note (01-May-2026) end-to-end via pdftotext + python-docx; matched every numerical claim, named person, date, and pill on the page against source text.",
+      "claims_traced": 47,
+      "verified": 44,
+      "drift_findings": 3
+    },
+    "screenshots_taken": [
+      "/tmp/rcpl-rigorous-hero.png · 1280×900 · hero clean, all 4 stat tiles + 3 ownership cards visible",
+      "/tmp/rcpl-rigorous-mobile.png · 500×812 (Chrome DevTools min-width clamp) · stats stack 2-col, no horizontal overflow, hero readable",
+      "/tmp/rcpl-rigorous-fullpage.png · 1280×full · 8 sections render top-to-bottom"
+    ],
+    "network_audit": {
+      "all_assets_200_or_304": true,
+      "image_count": 6,
+      "console_messages": "1 message — standard cdn.tailwindcss.com production warning (acceptable per visual-audit-checklist Phase B)"
+    },
+    "lightbox_interaction_test": {
+      "click_first_image": "display becomes 'flex'",
+      "esc_key": "display becomes 'none'",
+      "modified_click_fallback_preserved": "yes (handler skips if metaKey/ctrlKey/shiftKey)"
+    },
+    "cross_page_sweep": {
+      "siblings_checked": ["index.html", "jcp/index.html", "jcp/channels/index.html", "jcp/cataloging/index.html", "jcp/7eleven/index.html", "jcp/release-notes/index.html", "catalog/index.html", "organisation/index.html"],
+      "rcpl_mentions_found": ["index.html (4 places, all reconciled)", "jcp/index.html:123 (linked)", "jcp/channels/index.html:217 (RCPL card linked)", "organisation/index.html:116, 150, 243 (org roster)", "catalog/index.html (NONE — gap)", "culture/index.html, forge/index.html (passing references)"]
+    }
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "hero stat tile",
+      "issue": "Hero stat tile labelled 'Order coverage · UAT' surfaces engineering jargon in the highest-read part of the page. Per audit-framework §4 'Engineering jargon in hero / above-the-fold tiles ... HIGH if in hero stat tiles' and tone-of-voice §7 jargon-translation table 'UAT tables · DB tables → data tables · live data'. The casual delta audit missed this.",
+      "fix": "Change label to 'Order coverage · in test' or 'Order coverage · pre-launch'. Source phrase is '₹5,000 Cr+ Order Coverage (UAT)' — translation preserves the meaning (order volume currently in user-acceptance-test environment) without requiring the reader to know what UAT means.",
+      "files": ["jcp/rcpl/index.html:144"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "hero ownership cards",
+      "issue": "Hero card labels 'Fynd delivery lead: Leena B.' with 'Reviewed by Ashish C.' — but organisation/index.html:150 lists the RCPL DRIs as 'Product · Ashish Chandorkar · Abhishek Shinde / Engineering · Abhishek Shinde · Farhan Khan / Headcount · ~30'. Leena B. does not appear in the org roster for RCPL. Source attribution: she is the 'Prepared By' on the Monthly Status Report front page (not the delivery lead). The page repurposes report-preparation attribution as delivery-lead attribution.",
+      "fix": "Restructure ownership cards to match organisation/ pattern: 'Product · Ashish Chandorkar · Director of Product, Fynd' / 'Engineering · Abhishek Shinde · Farhan Khan' / 'Status report by · Leena B. (Apr-2026)'. Mirrors /jcp/ which uses Product/Eng/RIL-counterpart triple.",
+      "files": ["jcp/rcpl/index.html:149"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "hero subhead",
+      "issue": "Hero subhead reads 'Fynd owns the end-to-end digital platform — Pre-Sales, Van Sales, Primary DMS, CTS, Pricing & Promotions, SFA — across five parallel PODs spanning Beverage and Non-Beverage.' Tone-of-voice §6 'Reliance-owned framing': 'Subject-of-sentence preference. When something happened, the Reliance entity is usually the subject. ... Built by Fynd. Owned and run by Reliance.' Fynd-as-subject in the hero reads as Fynd self-attribution at exec level. Source Board Note uses the same Fynd-as-subject phrasing ('Fynd has now taken full ownership...') — page faithfully reproduces but inherits the register slip.",
+      "fix": "Reframe to Reliance-led subject. Example: 'Reliance Consumer Products' end-to-end digital platform — Pre-Sales, Van Sales, Primary DMS, CTS, Pricing & Promotions, SFA — built and run by Fynd across five PODs spanning Beverage and Non-Beverage.' Same facts, Reliance-led grammar.",
+      "files": ["jcp/rcpl/index.html:139"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§01 Status · In flight card",
+      "issue": "§01 In-flight card body lists '5 modules — Asset Mgmt (CTS), Primary DMS, Pre-Sales, SFA, Configuration'. Source Monthly Status Report p.5 lists the IN-FLIGHT 5 modules as 'Asset Management, CTS, Primary DMS, Pre-Sales, and SFA' (no Configuration). Configuration items appear in the DELIVERED workflow areas (front-page summary and Annexure A), not in the 28-Apr in-flight cycle. Page conflates the two.",
+      "fix": "Replace 'Asset Mgmt (CTS), Primary DMS, Pre-Sales, SFA, Configuration' with 'Asset Mgmt, CTS, Primary DMS, Pre-Sales, SFA' (matching source's 5 IN-FLIGHT modules). The §05 In-flight table on the page already uses the correct list — only the §01 summary card drifts.",
+      "files": ["jcp/rcpl/index.html:176"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "page-wide acronym usage",
+      "issue": "Spec §9 D5 explicitly required: 'introduce the term inline on first use (e.g., CSO · channel sales officer), then use the short form.' Page only expands 3 acronyms inline (CTS · Cooler Tracking System in §03 Surface 6; FOS in §03 Surface 6 workflow; SFA implicitly via 'Saarthi SFA app'). Many RCPL-specific acronyms used without expansion: CSO, ASE/ASM, BPO, GRN, CCO, FTL, KT, UAT, MAT, FOS (first use is in §01, but only expanded in §03). Spec deviation.",
+      "fix": "Either (a) add a one-line 'Glossary' band right after the hero (CSO · channel sales officer, ASE/ASM · area sales executive/manager, BPO · business process outsourcing, etc.), or (b) expand each acronym inline on first use as spec D5 requires. Option (a) is faster and reads cleaner for an Apex audience.",
+      "files": ["jcp/rcpl/index.html:139", "jcp/rcpl/index.html:166"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "/catalog",
+      "issue": "catalog/index.html has zero mentions of RCPL (verified by grep). RCPL is now a deep-dive surface on the register; the IP catalog should list it. Per audit-framework §3 'The catalog is a sibling Apex looks at often.' RCPL absence from catalog means an Apex reviewer browsing the catalog won't discover it.",
+      "fix": "Add an RCPL row to catalog/index.html under JCP-cluster IPs. Status pill: Live. Body: 'Reliance Consumer Products DMS — Campa, Independence FMCG distribution. ₹20,000 Cr FY26 run-rate. /jcp/rcpl'.",
+      "files": ["catalog/index.html"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "index.html DRI claim",
+      "issue": "index.html:228 lists RCPL DRI as 'Ashish Chandorkar + Abhishek Shinde + Leena B.' — but Leena B. is not a delivery DRI per organisation/index.html:150 ('Product · Ashish Chandorkar · Abhishek Shinde / Engineering · Abhishek Shinde · Farhan Khan'). The C1 fix added Leena B. to the home page DRI line based on the report 'Prepared By' attribution, which mis-elevates her role.",
+      "fix": "Restore home page DRI line to 'DRI Ashish Chandorkar + Abhishek Shinde' (matching organisation/) and remove the Leena B. addition I made during the C1 fix. The hero of the deep-dive should also stop claiming Leena B. as 'delivery lead' (see H2).",
+      "files": ["index.html:228"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "hero ownership cards",
+      "issue": "Hero card label 'RIL counterpart: RCPL Business + Digital' — RCPL is a Reliance Consumer Products Limited entity, not part of RIL directly. The label is technically loose; the body specifies the right entity. Sibling /jcp/index.html uses the same 'RIL counterpart' label, so this is a register-wide pattern — not a page-specific drift. Per audit-framework §4 'Reliance entity confusion' is HIGH only when the actual counterpart is at a different entity (e.g., RRL). Here the label is a level-of-abstraction issue, not entity confusion.",
+      "fix": "Optional: change label to 'RCPL counterpart' for technical accuracy. If changed here, also update /jcp/, /jcp/cataloging, /jcp/channels, etc. for consistency. Recommend deferring until the next register-wide chrome sweep.",
+      "files": ["jcp/rcpl/index.html:150"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 In-flight card 2 body",
+      "issue": "'KT lag' abbreviation used without expansion. Reader who doesn't know the term has to infer from context.",
+      "fix": "Expand to 'knowledge-transfer lag' on first use.",
+      "files": ["jcp/rcpl/index.html:178"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§06 Vision intro paragraph",
+      "issue": "§06 reproduces source Board Note language verbatim ('AI at the core, not bolted on; hyper-personalised down to the call; plug-in anything, plug into anything'). These are pitch-flavoured but the section is pillared 'Proposal · 6-month plan' so the tier is honest. Borrowing source tone without translation is acceptable here but worth noting that the register slip is inherited.",
+      "fix": "No action — section is honestly pilled and the source text is what is being reviewed. Leaving as-is preserves source fidelity.",
+      "files": ["jcp/rcpl/index.html:398"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source traceability is comprehensive: 47 numerical / named / pillared claims traced across the page, of which 44 are exact-source-match. The 3 drifts (M1 module-list conflation, H2 attribution, M4 home-page DRI add) are corrections, not fabrications.",
+    "Honesty register is the strongest dimension: §06 Vision is pillared 'Proposal · 6-month plan' throughout (no Live overclaims of unbuilt features); §05 In-flight uses 'In flight' pills; §04 Recent shipments uses 'Live · Production' with release numbers; §01 has three distinct pills for the three temporal tiers (Delivered / In flight / Phase 2).",
+    "Lightbox implementation is correct under the website-section-authoring §6 spec: js-lightbox class wrapping every product UI image, modified-click new-tab fallback preserved, ESC + overlay-click both close, no hidden+display:flex bug. Tested empirically via DevTools.",
+    "Cross-page link wiring is comprehensive: 4 entry points on home/jcp/channels all route into /jcp/rcpl; subnav RCPL tab present on all 6 sibling JCP pages; matrix cell on home reads the verified deep-dive numbers (₹20,000 Cr, 5 PODs, 1.86 L assets) — not the prior conflicting ₹22K Cr.",
+    "Visual completeness: hero renders cleanly at 1280×900; mobile renders without overflow at min-clamp 500×812; all 6 page assets return 200/304; console clean (only standard Tailwind dev warning); section labels 01-08 are a contiguous run."
+  ]
+}

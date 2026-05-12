@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ratl · Agentic Quality OS · Reliance Retail × Fynd</title>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.image-lightbox-frame {
+  max-width: 95vw; max-height: 92vh;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
+img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
+img.zoomable:hover { opacity: 0.92; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Ratl</span></div>
+<div class="section-label mb-3">AI-Native · Agentic quality · Ratl · Live in production at Reliance Retail</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Ratl.<br/><span style="color: var(--accent);">The agentic quality OS for Reliance Retail.</span></h1>
+<p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">Ratl is Fynd's AI-first reliability layer. Agents autonomously test APIs, web, mobile, performance, and emit a release confidence score. Live at Reliance Retail across 100+ releases/month.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">Productivity gain</div><div class="display-2 text-3xl accent">3–5×</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Same team delivering 4–5× the output</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Release cycles</div><div class="display-2 text-3xl accent">70–80%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Faster vs. pre-Ratl baseline</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Automation coverage</div><div class="display-2 text-3xl accent">0 → 100%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across 33+ backend services and 85+ storefronts</div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#what-ratl-is">01 · What Ratl is</a>
+<a href="#whats-live">02 · What's live</a>
+<a href="#architecture">03 · Architecture</a>
+<a href="#deep-dive">04 · Deep dive</a>
+<a href="#catalog-intelligence">05 · Catalog Intelligence</a>
+<a href="#outcomes">06 · Outcomes</a>
+</div>
+</div>
+
+<!-- §01 · WHAT RATL IS FOR RELIANCE -->
+<section id="what-ratl-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · What Ratl is for Reliance</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">Problem</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Manual QA could not keep up.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· 100+ releases/month across Reliance Retail brands</li>
+<li>· 35+ storefronts at start, growing to 85+ in production</li>
+<li>· Millions of daily users · zero margin for silent regressions</li>
+<li>· Manual & assisted QA models priced engineering time out of reach</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Solution</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">AI-driven, agentic quality systems embedded into the SDLC.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Natural-language → test generation · auto-mapped via OpenAPI + changelogs</li>
+<li>· Failure clustering and root-cause analysis on every run</li>
+<li>· AI-generated release confidence score · risk class · go/no-go</li>
+<li>· Synthetic monitoring continuously across every storefront</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Impact for Reliance Retail</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Reactive testing replaced by autonomous release systems.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· 70–80% faster release cycles</li>
+<li>· 40–50% reduction in UI defects · ~90% reduction in broken links</li>
+<li>· 35–45% reduction in regression issues</li>
+<li>· 60–70% reduction in manual operational checks</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<!-- §02 · WHAT'S LIVE · SEVEN ENGINES -->
+<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · What's live · seven engines</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Seven engines. One reliability layer.</h2>
+<p class="text-base max-w-3xl mb-6" style="color: var(--ink-muted);">Each engine ships as a live surface in the Ratl console. Used together as one stack in production at Reliance Retail.</p>
+
+<div class="card p-6 mb-8" style="background: white; border-color: var(--border);">
+<div class="flex items-baseline justify-between mb-3 flex-wrap gap-2"><span class="cap-num">Live RR estate · headline</span><span class="pill pill-live">Live · AJIO × JCP</span></div>
+<div class="flex items-baseline gap-4 flex-wrap">
+<div class="display-2 text-3xl accent">1,300</div>
+<div class="text-sm" style="color: var(--ink);">test cases running on the AJIO × JCP estate · Boltic + Ratl AI-first testing pipeline</div>
+</div>
+</div>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">01</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Release Intelligence</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Aggregates signals across API, web, mobile, load, security, and compliance. Every release ships with a confidence score, a risk class (Critical / Medium / Low), and an automated go/no-go recommendation.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">02</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Autonomous Testing</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Natural-language to test generation. Auto-mapped via OpenAPI and changelogs. 10,000+ validations/day across services · 1,000+ scenarios per release · ~80% reduction in manual test creation.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">03</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Synthetic Monitoring</h3>
+<p class="text-sm" style="color: var(--ink-muted);">AI agents continuously capture screenshots and detect visual failures across every storefront. Catches blank pages, broken UI flows, and silent production failures before customers notice.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">04</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Mobile AI Automation</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Agentic mobile testing in natural language across Android and iOS · real-device cloud infrastructure · crash analysis with auto-fix and PR generation. Continuous validation of P0 user journeys, ANR, frame drops, CPU.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">05</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Compliance & Security</h3>
+<p class="text-sm" style="color: var(--ink-muted);">80,000+ URLs scanned for compliance · autonomous penetration testing · continuous audit-ready validation. Replaces weeks of manual audits with real-time validation; reduces dependency on external vendors.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">06</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Automation Utilities</h3>
+<p class="text-sm" style="color: var(--ink-muted);">PDP compliance validation · SEO/GEO checks · broken-link detection · image-quality checks · delivery and pincode validation. 60–70% reduction in manual operations.</p>
+</div>
+<div class="card p-6 lg:col-span-3" style="background: var(--accent-soft); border-color: #DDD6FE;">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num" style="color: var(--accent);">07</span><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--accent);">Catalog Intelligence</h3>
+<p class="text-sm" style="color: var(--ink);">End-to-end catalog observability: source systems → pipelines → consumer apps. Detects out-of-stock inconsistencies, add-to-cart failures, unserviceable listings, sync failures, and price/catalog mismatches in real time. Evolving into the core intelligence layer for Jiomart OS · see §05 below.</p>
+</div>
+</div>
+</div></section>
+
+<!-- §03 · ARCHITECTURE -->
+<section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Architecture · the agentic SDLC layer</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four layers. One reliability layer across the SDLC.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Signals flow up from the systems under test; intelligence flows back into developer, release, and oncall surfaces. Every layer is live.</p>
+
+<div class="card p-8" style="background: white;">
+
+<!-- Layer 1: Surfaces -->
+<div class="mb-6">
+<div class="cap-num mb-3" style="color: var(--accent);">Layer 01 · SDLC surfaces · where Ratl shows up</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--accent-soft); color: var(--accent); border: 1px solid #DDD6FE;">Developer · IDE + PR</div>
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--accent-soft); color: var(--accent); border: 1px solid #DDD6FE;">Release Manager · console</div>
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--accent-soft); color: var(--accent); border: 1px solid #DDD6FE;">Oncall · alerts + runbooks</div>
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--accent-soft); color: var(--accent); border: 1px solid #DDD6FE;">Storefront Ops · dashboards</div>
+</div>
+</div>
+
+<div class="text-center my-3" style="color: var(--ink-soft);">▴</div>
+
+<!-- Layer 2: Release Intelligence -->
+<div class="mb-6">
+<div class="cap-num mb-3" style="color: var(--ink);">Layer 02 · Release Intelligence · the decision layer</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--ink); color: white;">Confidence score</div>
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--ink); color: white;">Risk classification</div>
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--ink); color: white;">Failure clustering</div>
+<div class="rounded-lg p-3 text-center text-sm font-medium" style="background: var(--ink); color: white;">Go / No-go</div>
+</div>
+</div>
+
+<div class="text-center my-3" style="color: var(--ink-soft);">▴</div>
+
+<!-- Layer 3: Agentic engines -->
+<div class="mb-6">
+<div class="cap-num mb-3" style="color: var(--ink-muted);">Layer 03 · Agentic engines · what executes the work</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-2">
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Test Generation</span><div class="text-xs mt-1" style="color: var(--ink-muted);">NL → tests · OpenAPI mapping</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Autonomous Execution</span><div class="text-xs mt-1" style="color: var(--ink-muted);">10K+ validations/day</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Visual Diffing</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Synthetic monitoring agents</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">RCA Agent</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Failure clustering · root cause</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Crash → Fix → PR</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Mobile auto-remediation</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Pen-Test Agent</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Autonomous security probing</div></div>
+</div>
+</div>
+
+<div class="text-center my-3" style="color: var(--ink-soft);">▴</div>
+
+<!-- Layer 4: Signals -->
+<div>
+<div class="cap-num mb-3" style="color: var(--ink-muted);">Layer 04 · Signals · what Ratl tests</div>
+<div class="rounded-lg p-5 text-center" style="background: var(--bg-soft); border: 1px solid var(--border);">
+<div class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm" style="color: var(--ink);">
+<span>API</span><span style="color: var(--border);">·</span>
+<span>Web</span><span style="color: var(--border);">·</span>
+<span>Mobile (Android · iOS)</span><span style="color: var(--border);">·</span>
+<span>Load</span><span style="color: var(--border);">·</span>
+<span>Security</span><span style="color: var(--border);">·</span>
+<span>Compliance</span><span style="color: var(--border);">·</span>
+<span>Catalog pipelines</span>
+</div>
+<div class="text-xs mt-3 mono" style="color: var(--ink-muted);">33+ backend services · 85+ storefronts · web, mobile, SDKs, admin · 80,000+ URLs in compliance scope</div>
+</div>
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §04 · DEEP DIVE · LIVE CONSOLE -->
+<section id="deep-dive" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Deep dive · the live console</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Three surfaces from the running platform.</h2>
+<p class="text-base max-w-3xl mb-2" style="color: var(--ink-muted);">Screenshots from the live Ratl console used by Reliance Retail brand teams. Click any image to enlarge.</p>
+<p class="text-base max-w-3xl mb-8"><a href="https://ratl.ai" target="_blank" rel="noopener" class="mono" style="color: var(--accent);">View at ratl.ai →</a></p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="card overflow-hidden">
+<img src="/assets/ratl/release-intelligence.jpg" alt="Release Intelligence · confidence score, risk classification, and go/no-go recommendation per release" class="w-full zoomable" />
+<div class="p-5"><div class="cap-num mb-1">01 · Release Intelligence</div><p class="text-sm" style="color: var(--ink);">Per-release confidence score, risk class, and go/no-go view. Aggregates API, web, mobile, load, security, and compliance signals into one decision surface.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/ratl/synthetic-monitoring.jpg" alt="Synthetic Monitoring · continuous storefront screenshot capture and visual-failure detection" class="w-full zoomable" />
+<div class="p-5"><div class="cap-num mb-1">02 · Synthetic Monitoring</div><p class="text-sm" style="color: var(--ink);">Continuous AI capture and visual-diff across 85+ storefronts. Catches blank pages, broken UI flows, and silent production failures before customers do.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/ratl/compliance-monitoring.jpg" alt="Compliance Monitoring · 80,000+ URLs scanned for compliance with audit-ready dashboards" class="w-full zoomable" />
+<div class="p-5"><div class="cap-num mb-1">03 · Compliance Monitoring</div><p class="text-sm" style="color: var(--ink);">80,000+ URLs scanned continuously. Audit-ready dashboards. Replaces multi-week manual audit cycles with real-time validation.</p></div>
+</div>
+</div>
+</div></section>
+
+<!-- §05 · CATALOG INTELLIGENCE -->
+<section id="catalog-intelligence" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Catalog Intelligence · the Jiomart OS foundation</div>
+<div class="flex items-center gap-3 mb-3 flex-wrap">
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Catalog Intelligence.</h2>
+<span class="pill pill-live">Live · Catalog observability</span>
+<span class="pill" style="background: #FEF3C7; color: #92400E; border-color: #FDE68A;">Building · Jiomart OS layer</span>
+</div>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">An AI-driven platform that tracks catalog data end-to-end (from source systems through pipelines to consumer apps) and maps every breakpoint directly to customer impact.</p>
+
+<div class="grid md:grid-cols-2 gap-6 mb-8">
+<div class="card overflow-hidden">
+<img src="/assets/ratl/catalog-siteops.jpg" alt="Catalog Intelligence · site operations view with cross-pipeline observability" class="w-full zoomable" />
+<div class="p-5"><div class="cap-num mb-1">Catalog Intelligence · site ops</div><p class="text-sm" style="color: var(--ink);">Cross-pipeline view of catalog health. Real-time visibility across the catalog stack: source through storefront.</p></div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">Signals detected</div>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Out-of-stock inconsistencies</li>
+<li>· Add-to-cart failures</li>
+<li>· Unserviceable or stale listings</li>
+<li>· Sync failures across systems</li>
+<li>· Price / catalog mismatches</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Business impact</div>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Improved conversion rates</li>
+<li>· Reduced revenue loss from catalog issues</li>
+<li>· Faster issue resolution</li>
+<li>· Real-time visibility across the catalog pipeline</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="card p-6" style="background: var(--bg-soft);">
+<div class="cap-num mb-2">Forward beat · evolving into the Jiomart OS intelligence layer</div>
+<p class="text-sm" style="color: var(--ink);">Catalog Intelligence is being extended into the core intelligence layer for Jiomart OS: unified data observability, cross-system orchestration, and AI-driven decisioning. Building.</p>
+</div>
+</div></section>
+
+<!-- §06 · OUTCOMES -->
+<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Outcomes · the running scorecard</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">What changed once Ratl was running.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Numbers below are pre-Ratl baseline → post-Ratl steady-state across the Reliance Retail ecosystem.</p>
+
+<table class="grid-table">
+<thead>
+<tr><th>Area</th><th>Outcome</th><th>Evidence</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="font-medium">Release velocity</td>
+<td>70–80% faster release cycles</td>
+<td><span class="mono text-xs">100+ releases/month sustained</span></td>
+</tr>
+<tr>
+<td class="font-medium">Engineering productivity</td>
+<td>3–5× output from the same team</td>
+<td><span class="mono text-xs">~80% reduction in manual test creation</span></td>
+</tr>
+<tr>
+<td class="font-medium">Automation coverage</td>
+<td>0 → 100% across in-scope services + storefronts</td>
+<td><span class="mono text-xs">33+ services · 85+ storefronts</span></td>
+</tr>
+<tr>
+<td class="font-medium">UI defects</td>
+<td>40–50% reduction</td>
+<td><span class="mono text-xs">Synthetic monitoring across all storefronts</span></td>
+</tr>
+<tr>
+<td class="font-medium">Broken links</td>
+<td>~90% reduction</td>
+<td><span class="mono text-xs">Automation utilities · continuous scan</span></td>
+</tr>
+<tr>
+<td class="font-medium">Regression issues</td>
+<td>35–45% reduction</td>
+<td><span class="mono text-xs">1,000+ scenarios per release</span></td>
+</tr>
+<tr>
+<td class="font-medium">Compliance scope</td>
+<td>Real-time validation replacing weeks of manual audit</td>
+<td><span class="mono text-xs">80,000+ URLs scanned continuously</span></td>
+</tr>
+<tr>
+<td class="font-medium">Operational checks</td>
+<td>60–70% reduction in manual operations</td>
+<td><span class="mono text-xs">PDP · SEO/GEO · image · pincode utilities</span></td>
+</tr>
+</tbody>
+</table>
+</div></section>
+
+<div id="image-lightbox" class="lightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <span class="close" onclick="closeImageLightbox()">×</span>
+  <div id="image-lightbox-frame" class="image-lightbox-frame"></div>
+</div>
+
+<script>
+function openImageLightbox(imgEl) {
+  const frame = document.getElementById('image-lightbox-frame');
+  frame.innerHTML = `<img src="${imgEl.src}" alt="${imgEl.alt || ''}" />`;
+  document.getElementById('image-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImageLightbox() {
+  document.getElementById('image-lightbox-frame').innerHTML = '';
+  document.getElementById('image-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeImageLightbox();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img.zoomable').forEach(img => {
+    img.addEventListener('click', () => openImageLightbox(img));
+  });
+});
+</script>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

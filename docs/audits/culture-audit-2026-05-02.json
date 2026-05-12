@@ -1,0 +1,163 @@
+{
+  "page": "culture/index.html",
+  "spec": "docs/culture-spec.md",
+  "source_compilation": "docs/org-notes-compilation/Fynd - Unlocking Growth.pdf (slides 17-23)",
+  "audit_date": "2026-05-02",
+  "score": 73,
+  "grade": "C",
+  "pass": false,
+  "pass_blocked_by": [
+    "Source Traceability below 75 threshold",
+    "Tone of Voice below 80 threshold",
+    "Honesty Register below 80 threshold"
+  ],
+  "dimensions": {
+    "source_traceability": 70,
+    "tone_of_voice": 65,
+    "honesty_register": 75,
+    "structural_compliance": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 60
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "honesty_register",
+      "section": "§02",
+      "issue": "Two '2015' dates fabricated for Muralidhar Edam and Kushan Shah. Slide 22 does not state their start year — the spec admits it ('not in slide, inferred 2015') but the page presents the date as fact with no caveat.",
+      "fix": "Either drop the date line for these two cards (show only role), or change to 'Tenure: 10+ years' which is true without claiming 2015 specifically. Match the slide's silence rather than invent.",
+      "files": ["culture/index.html:198", "culture/index.html:206"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§07",
+      "issue": "Five emoji characters (🥉 trophy / 🏆 cup) on ProductHunt pills. Tone-of-voice §7 says 'Emojis. Ever.' — this is an explicit, unconditional ban.",
+      "fix": "Remove all 🥉 and 🏆 from the .ph-pill spans. Use the existing .ph-pill.live class (purple) to mark the most-recent / highest award, and plain .ph-pill for the rest. Order matters: first pill in each card is the highest award.",
+      "files": ["culture/index.html:420", "culture/index.html:428", "culture/index.html:438", "culture/index.html:447", "culture/index.html:464"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero",
+      "issue": "Hero subhead uses 'we've learned' — direct first-person Fynd voice. Tone-of-voice §2 Person says 'Never \"we\", \"our team\", \"our people\" in user-facing copy. They read as Fynd self-promotion.' This is in the most-read line on the page.",
+      "fix": "Rewrite to impersonal/Fynd-as-actor: 'Over a decade of building Fynd has taught one thing — culture isn't what you say. It's what you do when no one's watching.' Drops the first-person voice while preserving the deck quote's intent.",
+      "files": ["culture/index.html:125"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C4",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero",
+      "issue": "Em-dash in hero subhead ('you say — it's what you do'). Spec § 6 acceptance checklist explicitly bans em-dashes; audit framework Phase 4 reinforces (MDA bar). The deck quote uses one but the page is responsible for its register, not the source's.",
+      "fix": "Replace ' — ' with ' · ' or split into two sentences. With the C3 fix above, this also resolves naturally.",
+      "files": ["culture/index.html:125"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C5",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "external page",
+      "issue": "/organisation page (line 228, AI Native Ways of Working tab) tells the reader: 'the existing AI-native evidence (December 2025 assessment, tools usage, Anthropic Cowork outcomes) lives on the Culture page'. The new /culture page no longer has any of that content — it was replaced wholesale per spec decision #1. The cross-link is now misleading.",
+      "fix": "Edit organisation/index.html line 228 to drop the 'lives on the Culture page' clause, or move the AI-native evidence content (923 responses, tools usage, Anthropic Cowork) into a dedicated section here so the link is accurate. Probably the former, since the AI Native tab itself is the placeholder for new content.",
+      "files": ["organisation/index.html:228"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§07",
+      "issue": "All six ProductHunt cards carry product subtitles ('Agentic commerce', 'In-store companion', 'AI assistant', 'Generative imagery', 'DAM & transformations', 'Background removal') that are NOT in slide 21. Slide 21 lists only the product name + the launch awards. The subtitles are author inventions.",
+      "fix": "Either drop the subtitles entirely (slide-faithful), or replace with a single inline source like 'per Fynd product catalogue' / link to the relevant /pixelbin or /kaily page. If kept, they should be sourceable from somewhere (e.g., the home page mega-nav suffixes already say 'Kaily · agentic commerce' which would justify keeping that one).",
+      "files": ["culture/index.html:418", "culture/index.html:426", "culture/index.html:435", "culture/index.html:445", "culture/index.html:453", "culture/index.html:462"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§04",
+      "issue": "Three Life at Fynd program descriptions paraphrase + add interpretive content beyond slide 18. Slide says 'Quarterly gathering of all Fynd employees to learn and discuss our progress'; page expands to 'learn what shipped, where the company is going, and what's blocking next'. Same pattern on Fynd Stars ('Public recognition tied to outcomes shipped, not effort spent') and Annual Awards ('the highest bar of the Fynd Stars cycle').",
+      "fix": "Restate close to the source: 'State of the Firm — quarterly all-hands. Fynd employees gather to learn and discuss progress.' Drop the editorialising. The three short slide-faithful lines are stronger than three padded ones.",
+      "files": ["culture/index.html:295", "culture/index.html:296", "culture/index.html:297"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "Footer",
+      "issue": "Footer extends the standard copyright line with '· Source: Fynd Unlocking Growth deck, slides 17–23'. Audit framework forbids deviation from the single-line footer pattern; the source is already announced in the hero eyebrow.",
+      "fix": "Strip the trailing '· Source: …' so the footer matches the canonical: '© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only'. Source attribution stays in the hero eyebrow where it already lives.",
+      "files": ["culture/index.html:474"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "'most started as ICs' uses internal jargon. Apex audience parses 'individual contributor' but 'IC' alone reads as Fynd-engineering shorthand.",
+      "fix": "Spell out: 'most started as individual contributors and now run major parts of the org'. Or rephrase: 'most joined as engineers / designers and now run major parts of the org'.",
+      "files": ["culture/index.html:150"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§02",
+      "issue": "Page reuses Mayur Suresh Thanekar's Reliability Manager origin from the slide as 'Started as Reliability Manager · 2015'. Slide says 'Started as Reliability Manager in 2015'. The 2015 here is in the slide so it's fine, but call out: spec acknowledged Muralidhar/Kushan as inferred and didn't apply the same caveat to the others — verify each card's origin date is actually in slide 22 before C1 fix.",
+      "fix": "Already covered by C1. After applying C1 to Muralidhar and Kushan, audit the remaining 8 cards once more against slide 22 to confirm each origin date is sourced.",
+      "files": ["culture/index.html:154-232"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "§01",
+      "issue": "Three Core Values have minor punctuation drift from slide 17: 'No Politics, No Bullshit' (slide: no comma), 'Do It Once, Do It Right' (slide: no comma), 'Treat Work as Sports · Continuous self-improvement' (slide: 'Continuous Self Improvement', different capitalisation).",
+      "fix": "Match slide 17 exactly. Drop the commas in 03 and 06. Keep the subtitle on 07 but change to 'Continuous Self Improvement' (slide casing). LOW because the meaning is preserved and these are matters of taste, but the audit's job is to flag drift.",
+      "files": ["culture/index.html:135", "culture/index.html:138", "culture/index.html:139"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "Three person cards use 'Started as SDE-1 · 2015' format with a middle dot, which is fine — but the two cards without explicit slide origins ('Muralidhar Edam: 2015', 'Kushan Shah: 2015') break the pattern by showing only the year. After C1 fix, these become consistent.",
+      "fix": "Resolved by C1 fix.",
+      "files": ["culture/index.html:198", "culture/index.html:206"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "Hero",
+      "issue": "Hero eyebrow 'Culture · sourced from the Unlocking Growth deck · slides 17–23' is non-standard. Most pages use a topic eyebrow ('Culture · how we work') or a numbered section label. This eyebrow announces the source up front, which is a defensible move for a single-source page, but it's an idiosyncratic pattern across the register.",
+      "fix": "Either keep (acknowledged as deliberate honesty signal) or shorten to 'Culture · sourced from the Unlocking Growth deck'. The 'slides 17–23' precision is for the spec, not the reader.",
+      "files": ["culture/index.html:123"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Section structure maps cleanly to spec — 7 sections in spec'd order, no gaps, no skips. Section labels render contiguously 01-07.",
+    "All 22 image requests return 200 — keka photos, life-at-Fynd photos, award photos all serve from CDN. Initials fallback for Ragini Varma works as designed.",
+    "Date format compliant throughout: every visible date uses 'DD - MMM - YYYY' with the spaced-hyphen pattern (Glassdoor reviews, ProductHunt pills, footer copyright).",
+    "Mobile (375px) renders cleanly: Core Values stacks 5×2 → 2 cols, person cards stack to 1 col, photo collage stacks 3×2 → 2 cols. No overflow.",
+    "Console clean — only the standard Tailwind CDN dev warning, no errors, no other warnings. The 1022.png vs 1022.jpg fix from earlier in the session held.",
+    "Quotes in §02 (10+ years tenure) match slide 22 verbatim — eight of ten cards reproduce the exact quote with no editorial drift."
+  ],
+  "summary": "The page is structurally and visually sound but fails on three dimensions where the bar is highest: source traceability (CRITICAL: two fabricated 2015 dates; HIGH: invented ProductHunt subtitles), tone of voice (HIGH: em-dash + 'we've' in hero, 5 emojis in PH cards), and honesty register (the 2015 fabrications). One cross-page break: /organisation routes the reader to /culture for AI-native evidence that no longer exists on /culture. Six fixes are auto-applicable rewrites; the cross-page fix needs a content decision. Estimated time to bring to PASS: 30 minutes."
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "fynd-studios",
+  "name": "Fynd Studio",
+  "tagline": "Gen-Media studio \u00b7 50+ AI ads \u00b7 4K films \u00b7 cinematics.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-08-01",
+  "last_release": "2026-04-25",
+  "verticals": [
+    "fashion",
+    "beauty"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#fynd-studios",
+  "external_url": null,
+  "stake_inr_cr": 100.0,
+  "tags": [
+    "gen-media",
+    "video"
+  ]
+}

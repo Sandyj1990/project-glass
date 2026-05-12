@@ -1,0 +1,12 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2026-04-15
+    title: Single Cart architecture · Apex sign-off
+    summary: Single Cart won over Dual Cart at Apex review. Sets template for every future companion-app surface.
+  - date: 2025-12-01
+    title: 3,000+ store milestone reached
+    summary: From 117 stores at start. 25× scale.
+  - date: 2025-09-01
+    title: P0 feature freeze · 12 features in production
+    summary: Store Detection, Scan & Go, Endless Aisle, Look Builder, Wishlist Transfer, Trends Tube, Post-Visit, Wallet, Lookbook, Wardrobe, Missions, Coupons.

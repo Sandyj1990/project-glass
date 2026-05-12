@@ -1,0 +1,103 @@
+{
+  "page": "retail-jarvis/index.html",
+  "spec": null,
+  "spec_note": "No docs/retail-jarvis-spec.md exists. Audit run against website-section-authoring canonical ordering and website-tone-of-voice rules.",
+  "source_compilation": "docs/retail-jarvis-notes-compilation/",
+  "audit_date": "2026-05-02",
+  "score": 89,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 88,
+    "tone_of_voice": 92,
+    "honesty_register": 88,
+    "visual_completeness": 95,
+    "cross_page_consistency": 80
+  },
+  "findings": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§0 hero",
+      "issue": "Sponsor 'Salman Saudagar' framing retained from prior page. Cornerstone PDF lists him as a co-author, not separately as sponsor. The sponsor label adds no information beyond co-author already shown.",
+      "fix": "Either (a) drop the Sponsor stat tile and let the Co-authors tile carry it, or (b) keep Sponsor label only if a separate explicit sponsor mandate is sourced. Recommend (a).",
+      "files": ["retail-jarvis/index.html:99"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§0 hero · §01 Status",
+      "issue": "Fynd DRI 'Devam Gosalia · Saaket Chawali' retained from prior page. Compilation folder does not name them; assignment is consistent with /catalog and /autonomous, so cross-page inference holds, but the immediate source folder does not back the names.",
+      "fix": "Acceptable based on cross-page consistency (/catalog row 183 names Devam · Saaket on Retail Jarvis Customer Listening). No action; flag for source confirmation if a Jarvis-specific spec is later authored.",
+      "files": ["retail-jarvis/index.html:101", "retail-jarvis/index.html:124"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§04 Demo product surfaces",
+      "issue": "Each card is pilled 'Demo' which is not a register-standard pill (the canonical set is Live / Pilot / Build / Roadmap). 'Demo' is descriptive but inconsistent.",
+      "fix": "Replace 'Demo' pill with 'Build · Demo on 5943' or simply 'Build' — keeps the four-pill convention. Currently rendered as pill-build colour, so visual consistency is intact; only the label differs.",
+      "files": ["retail-jarvis/index.html:235", "retail-jarvis/index.html:247", "retail-jarvis/index.html:259", "retail-jarvis/index.html:271", "retail-jarvis/index.html:283"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§0 hero stat tile",
+      "issue": "Cornerstone date stat shows '26 - Nov - 2025' (with spaces) — site convention. But the citation eyebrow on §08 source 02 shows '01 - May - 2026' (correct) while §08 source 01 author byline shows '26 - Nov - 2025'. Date format is consistent with spaces — confirmed contiguous.",
+      "fix": "No action — verified consistent.",
+      "files": [],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "section ordering",
+      "issue": "Page has eight contiguous sections (§01-§08) per canonical ordering. §07 Actions is positioned before §08 Sources — slight deviation from the default canonical order which puts Sources last after a Roadmap or Vision section. Here there is no separate Roadmap/Vision because the cornerstone is foundational and Production rollout is already covered in §01 Status.",
+      "fix": "Acceptable. Document override in §9 Decisions of any future spec: 'no separate Roadmap/Vision section because Production rollout is covered in §01 Status; Actions & Feedback is the closing operational beat before Sources.'",
+      "files": [],
+      "auto_fixable": false
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "/catalog row",
+      "issue": "/catalog row 183 reads 'Retail Jarvis (Customer Listening) · Build · multi-sensor fusion (CCTV · audio · POS · NPS) · DPDP-compliant'. Page now reframes around four core outputs and three signal families (offline · online · external) rather than a multi-sensor fusion phrasing. Light drift, still consistent.",
+      "fix": "Optional update to catalog row to align: 'Build · sensing engine · 4 outputs · Demo on Store 5943 · DPDP-compliant'. Defer until next catalog sweep.",
+      "files": ["catalog/index.html:183"],
+      "auto_fixable": true
+    }
+  ],
+  "fixes_applied_this_pass": [
+    "Renaming · 18-Mar-2026 unsourced date removed; relabelled to 'Re-housing · CX-sensing layer of Impetus per Farooq'.",
+    "Cornerstone link suffixed with .pdf for download clarity.",
+    "Cornerstone description updated to note working-note rev 16-Dec-2025 (matches PDF header).",
+    "Source 03 description softened: 'Re-housed under Impetus' (fact) instead of 'to be re-housed' (date-implied).",
+    "DPDP-compliant claim grounded with cornerstone citation: 'silhouette / posture CV only (non-biometric), per cornerstone Section 2C'.",
+    "Home page (index.html:639) Retail Jarvis card resynced to new framing: 'Predictive, non-intrusive CX sensing. Signals → engine → playbooks. Four scores · Readiness, CX, Friction, Churn. Demo on Store 5943.'"
+  ],
+  "strengths": [
+    "Source rigour · every numerical claim in §04 Demo product surfaces (Footfall 10,265, Trial 3,593, queue 3-5 min, ₹1,450 avg bill, ~6,186 walk-outs, +5pts CXS) is traceable to one of the five Jarvis console screenshots.",
+    "Cornerstone fidelity · the four-principle framing (operational reality first → behaviour reveals truth → bottom-up build → external context) and the four-stage engine (Readiness → Journey → Behaviour → AI Inference) are read from cornerstone Sections 1-2 verbatim.",
+    "Architecture diagram embedded · cornerstone-page-1 Signals → Engine → Playbooks diagram is extracted (pdfimages -j) and rendered with lightbox at sensible max-width 1100px.",
+    "Signal inventory completeness · §06 reproduces the cornerstone basic / intermediate / advanced offline + online tables in full (24 + 24 rows) with feeds-output mapping.",
+    "Honesty pills consistent · Live (cornerstone shipped), Build (demo), Roadmap (production rollout) are pinned and contradicted nowhere on the page."
+  ],
+  "removed_from_prior_page": [
+    "Sub-IPs · 11-card grid claiming NPS Intelligence / Silent NPS / NPS Fraud Engine / Anomaly Detection / Customer journey clustering / Cross-channel signal fusion / Lovable proto / Feedback loop into store ops / Re-engagement triggers / NPS dashboard / Cornerstone doc — these were Impetus-anchored claims, not Retail Jarvis cornerstone material.",
+    "Pulse Point '17 stores · 33 users · 2,948 tasks live' adoption stat — belongs on /impetus, not Retail Jarvis.",
+    "'7-Eleven wedge live' / nps.jioimpetus.com claim — belongs on /autonomous and /impetus.",
+    "Sense → Analyze → Act → Verify framing — replaced with the cornerstone-true Signals → Engine → Playbooks → Feedback.",
+    "Connections section (Inputs / Consumers cards) — implicit in the cornerstone diagram now embedded in §03.",
+    "Roadmap Q1-Q4 strip — not in source compilation; replaced with §01 Status three-card framing (Cornerstone shipped · Demo running · Production rollout)."
+  ]
+}

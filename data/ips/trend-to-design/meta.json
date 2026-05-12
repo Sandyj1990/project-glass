@@ -1,0 +1,25 @@
+{
+  "slug": "trend-to-design",
+  "name": "Trend-to-Design Agent",
+  "tagline": "Trend \u2192 moodboard \u2192 linesheet \u2192 tech-pack \u00b7 Claude Code skill.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-10-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#trend-to-design",
+  "external_url": "https://www.ajio.com/superdry-sdx-keys-t-shirt",
+  "stake_inr_cr": null,
+  "tags": [
+    "ai-agent",
+    "design",
+    "claude-code"
+  ]
+}

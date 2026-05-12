@@ -1,0 +1,64 @@
+{
+  "page": "tms/index.html",
+  "spec": "docs/tms-spec.md",
+  "source_compilation": "docs/tms-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_round": 3,
+  "score": 95,
+  "grade": "A",
+  "round_3_changes": "Per user feedback: Netmeds elevated from buried-in-bullets to a dedicated third deployment card in §03. Surfaced in 5 places (page title, hero eyebrow, hero subhead, hero status pill, §03 deep-dive card). §03 grid expanded from 2 to 3 columns. Honesty note explicitly flags that Netmeds operating numbers are not in the deck source — telemetry pull in flight. Recorded as D9 in spec §9. Footer Owner-line drift (M3) also resolved this round.",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 95,
+    "tone_of_voice": 88,
+    "honesty_register": 92,
+    "visual_completeness": 95,
+    "cross_page_consistency": 88
+  },
+  "round_2_changes": "Per user feedback: merged §03 Architecture into §02 What's live. The 4-layer frame stays as a compact strip; the 5 module screenshots that were under §04 Deep dive moved into §02 with each card now carrying a Layer NN eyebrow + status pill + live-for + anchor outcome. Page now flows hero → 01 Status → 02 What's live (layers + modules) → 03 Deep dive (JioMart + RBL only) → 04 In flight. Section-label run contiguous 01-04. Recorded as D8 in spec §9.",
+  "findings_round_1_status": {
+    "C1": "RESOLVED — Salman attribution corrected to Fynd-side",
+    "H1": "RESOLVED — Netmeds (Reliance Health) → Netmeds (Pharma)",
+    "M1": "RESOLVED — Catalog single canonical TMS row at line 139",
+    "M2": "RESOLVED — Hero stat tile changed to 85% RBL shipment automation",
+    "L2": "RESOLVED — Citations now plain mono text"
+  },
+  "findings_round_2_new": [
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "Footer",
+      "issue": "Linter-applied footer added 'Owner · Salman Saudagar (COO, Fynd) · v0.8.4' line, violating tone-of-voice §0 'No author / version metadata on the page' and spec D6.",
+      "fix": "RESOLVED — User explicitly requested the fix; Owner+version line stripped, footer reverted to canonical single-copyright pattern.",
+      "files": ["tms/index.html:401"],
+      "auto_fixable": true,
+      "status": "RESOLVED"
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 layer cards · Layer 01",
+      "issue": "Layer 01 carries two pills inline: 'Live · + email-AI Building'. Reads slightly busy for a register card; an apex reader scanning pills sees one mixed-tier card.",
+      "fix": "Acceptable given the inline 'email-AI Building' qualifier explicitly tags the building piece, matching tone-of-voice §3 mixed-tier tagging rule. No change required.",
+      "files": ["tms/index.html:198"],
+      "auto_fixable": false
+    }
+  ],
+  "structural_audit_round_2": {
+    "section_run": "01 → 02 → 03 → 04 (contiguous)",
+    "section_count": 5,
+    "override_documented": "D8 in spec §9 — merge §03 Architecture into §02. Recorded.",
+    "div_balance": "157 open / 157 close · OK",
+    "section_balance": "5 open / 5 close · OK"
+  },
+  "strengths": [
+    "Merge collapsed three blocks (architecture stack, module table, module screenshot strip) into one coherent §02 — removes the double-counting flagged in audit round 1 commentary. Each module card now carries layer + status + live-for + anchor outcome in one place.",
+    "Section-label run contiguous 01-04; spec D8 documents the override per the audit framework's no-undocumented-overrides rule.",
+    "All 5 module screenshots load 200 from CDN (socialassets.impetusz0.de); local mirror retained as belt-and-suspenders fallback.",
+    "Zero banned vocabulary, zero exclamation marks, zero forward-looking phases without dates. Hero stat tiles plain English.",
+    "Honesty contract intact — every Live claim carries a Live pill; the building email-AI piece in Layer 01 is inline-tagged Building per tone-of-voice §3."
+  ]
+}

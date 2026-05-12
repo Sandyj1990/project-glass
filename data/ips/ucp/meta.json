@@ -1,0 +1,30 @@
+{
+  "slug": "ucp",
+  "name": "Unified Customer Platform",
+  "tagline": "One identity across every Reliance retail business.",
+  "track": "jcp",
+  "track_role": "headline",
+  "status": "Live",
+  "since": "2024-01-11",
+  "last_release": "2026-04-21",
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics",
+    "beauty",
+    "pharma"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/jcp#ucp",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "customer-data",
+    "identity",
+    "cdp",
+    "audience"
+  ]
+}

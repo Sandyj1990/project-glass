@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Photoshoot Agent · AI Agents · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.agent-stat { padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.agent-stat .a-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+.agent-stat .a-value { font-weight: 700; font-size: 22px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em; }
+.agent-stat .a-context { font-size: 11px; color: var(--ink-muted); margin-top: 4px; line-height: 1.4; }
+
+.pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; }
+.pill-live    { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+.pill-build   { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.pill-scoping { background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }
+.pill-track   { background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; text-transform: uppercase; }
+.pill-l       { background: #0A2454; color: white; }
+.pill-platform a { color: #1E293B; text-decoration: none; }
+.pill-platform { background: #FAFAF9; color: #1E293B; border: 1px solid #E5E7EB; padding: 4px 11px; }
+.pill-platform a:hover { color: var(--accent); }
+
+.agent-card { display: block; padding: 18px 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s; text-decoration: none; color: var(--ink); height: 100%; }
+.agent-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+.agent-card .ac-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+.agent-card .ac-name { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.agent-card .ac-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.45; margin-bottom: 12px; }
+.agent-card .ac-stat { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); padding-top: 10px; border-top: 1px solid var(--border); }
+.agent-card .ac-stat strong { color: var(--accent); font-weight: 700; }
+.agent-card .ac-platform { font-size: 11px; color: var(--ink-muted); margin-top: 6px; }
+
+.band-header { padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 18px; display: flex; align-items: baseline; gap: 14px; }
+.band-header .b-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.band-header .b-framing { font-size: 13px; color: var(--ink-muted); }
+
+.workflow-step { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); align-items: start; }
+.workflow-step:first-child { border-top: none; }
+.workflow-step .ws-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: white; background: var(--accent); padding: 4px 0; text-align: center; border-radius: 6px; height: 28px; }
+.workflow-step .ws-title { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+.workflow-step .ws-detail { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.data-table th { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; background: var(--bg-soft); }
+.data-table td .ent { font-size: 12.5px; color: var(--ink-muted); }
+
+.tech-chip { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #F1F5F9; color: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 11px; margin: 2px 4px 2px 0; border: 1px solid #E2E8F0; }
+.note-pending { padding: 12px 16px; background: #FEF9C3; border-left: 3px solid #CA8A04; border-radius: 0 6px 6px 0; font-size: 13px; color: #713F12; line-height: 1.5; margin-top: 10px; }
+
+.pattern-chip { display: flex; flex-direction: column; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+.pattern-chip .pc-name { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.pattern-chip .pc-usage { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+
+.linked-platform-card { display: block; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+.linked-platform-card:hover { border-color: var(--accent); }
+.linked-platform-card .lp-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.linked-platform-card .lp-role { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+.linked-platform-card .lp-arrow { color: var(--accent); font-size: 12px; margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+
+.workflow-ascii { background: #0F172A; color: #E2E8F0; padding: 18px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.5; overflow-x: auto; white-space: pre; }
+
+.in-flight-row { padding: 12px 0; border-top: 1px solid var(--border); }
+.in-flight-row:first-child { border-top: none; }
+.in-flight-row .ifr-date { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; background: var(--ink); color: white; padding: 3px 8px; border-radius: 4px; margin-right: 10px; }
+.in-flight-row .ifr-milestone { font-size: 13.5px; color: var(--ink); line-height: 1.5; }
+
+.diagram-wrap { padding: 18px 12px; border: 1px solid var(--border); border-radius: 10px; background: #FAFAFA; margin-bottom: 8px; overflow: hidden; }
+.diagram-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; font-family: 'Inter', system-ui, sans-serif; }
+.diagram-caption { font-size: 11px; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+
+@media (max-width: 768px) {
+  .diagram-wrap, .diagram-caption { display: none; }
+}
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-10 pb-8" style="background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <nav class="text-xs mb-4" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">
+      <a href="/" style="color: var(--ink-muted);">Home</a> /
+      <a href="/agents" style="color: var(--ink-muted);">AI Agents</a> /
+      <span style="color: var(--ink);">AI Photoshoot Agent</span>
+    </nav>
+    <div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase;">AI Agents · AI-PHOTOSHOOT · Live</div>
+    <h1 class="display-1 text-4xl md:text-5xl mb-3" style="color: var(--ink); letter-spacing: -0.02em; font-weight: 800;">AI Photoshoot Agent.</h1>
+    <p class="text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.5;">Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit, and Ajio-standard delivery.</p>
+    <div class="mb-6" style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="pill pill-live">Live</span> <span class="pill pill-track">SELL</span> <span class="pill pill-l">L4</span> <span class="pill pill-platform">Powered by &nbsp;<a href="/impetus/ai-photoshoot/">→ AI Photoshoot</a></span></div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2"><div class="agent-stat"><div class="a-label">Trends</div><div class="a-value">47,473</div><div class="a-context">images for Ajio · 2,975 styles · 3,957 products</div></div><div class="agent-stat"><div class="a-label">Shots per product</div><div class="a-value">12</div><div class="a-context">across 12 camera view types</div></div><div class="agent-stat"><div class="a-label">Auto QC score</div><div class="a-value">8.06/10</div><div class="a-context">current crop-extraction pipeline</div></div><div class="agent-stat"><div class="a-label">Workflow level</div><div class="a-value">L4 Agentic</div><div class="a-context">Detect → Edit → Check loop</div></div></div>
+  </div>
+</section>
+<!-- DEPLOYED-IN-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+<section class="py-10 border-t" style="border-color: var(--border);">
+<div class="container mx-auto px-6 max-w-6xl">
+<div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">Deployed in</div>
+<div class="overflow-x-auto">
+  <table class="grid-table">
+    <thead><tr><th>Platform</th><th>What this agent delivers for that platform</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><a href="/impetus" style="color: var(--accent); text-decoration: underline;">Impetus</a></td>
+        <td>Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit and Ajio-standard delivery.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</section>
+<!-- DEPLOYED-IN-END --><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">01 · The job to be done</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">The pain</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Catalogue photoshoots gate every retail launch. Studio booking, model
+availability, stylists and post-production stretch each category drop by
+weeks. Lingerie alone runs 3-4× standard cost on talent and lighting,
+with turnarounds of 4-6 weeks. Volume scales linearly with cost.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What the agent does</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Generates on-model catalogue images from flat-lay or mannequin reference
+shots. Three modes — Instant (2-4 minutes per set), Batch (cost-optimised
+bulk), and Single Image (on-demand QC fixes). Agentic across accessory
+placement, lighting extraction, autonomous issue detection and surgical
+Auto-Edit. Output lands on GCS with Ajio-standard naming, ready to list.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What humans still do</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Brand QC reviews any image scoring below 7.0 (routed to Manual QC).
+Category onboarding remains human-led for new pods. Final approval before
+go-live to Ajio stays with the brand cataloguing team.
+</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">02 · How it works · the closed loop</div><div class=""><div class="diagram-wrap"><svg viewBox="0 0 1240 620" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+  <title>AI Photoshoot Agent · closed-loop workflow</title>
+  <desc>Inputs (product references, avatar, pose, background) flow through 10 workflow steps to produce on-model 4K images. Detection, Auto-Edit and Quality form an explicit validate-retry loop with max 2 attempts. Approved images deliver to GCS/CDN; below-threshold routes to Manual QC.</desc>
+  <defs>
+    <marker id="ap-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="ap-arr-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+    <marker id="ap-arr-route" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9333EA"/>
+    </marker>
+    <style>
+      .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+      .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+      .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+      .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+      .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #6B7280; }
+      .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+      .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+      .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+      .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+      .loop-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; fill: #B45309; letter-spacing: 0.04em; }
+      .route-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; fill: #9333EA; letter-spacing: 0.04em; }
+      .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+      .conn-loop { stroke: #B45309; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+      .conn-route { stroke: #9333EA; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+    </style>
+  </defs>
+
+  <!-- Zone backgrounds -->
+  <rect x="14" y="14" width="220" height="592" rx="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+  <rect x="250" y="14" width="740" height="592" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+  <rect x="1006" y="14" width="220" height="592" rx="14" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+
+  <!-- Zone headers -->
+  <text x="32" y="40" class="zh">Inputs</text>
+  <text x="268" y="40" class="zh">Workflow · 10 steps</text>
+  <text x="1024" y="40" class="zh">Outputs</text>
+
+  <!-- Inputs (left band) · 5 cards · h=66 · text padding: 12px x · 20px top · 18px line-1 · 16px line-2 · 12px bottom -->
+  <rect x="32" y="58" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="44" y="78" class="src-ttl">Product references</text>
+  <text x="44" y="96" class="src-sub">Front · back · side</text>
+  <text x="44" y="112" class="src-sub">Clothing · footwear · lingerie</text>
+
+  <rect x="32" y="132" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="44" y="152" class="src-ttl">Avatar selection</text>
+  <text x="44" y="170" class="src-sub">Gender · age · ethnicity</text>
+  <text x="44" y="186" class="src-sub">Text-based identity (lingerie)</text>
+
+  <rect x="32" y="206" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="44" y="226" class="src-ttl">Pose pool</text>
+  <text x="44" y="244" class="src-sub">12 camera view types</text>
+  <text x="44" y="260" class="src-sub">Front · back · side · closeup</text>
+
+  <rect x="32" y="280" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="44" y="300" class="src-ttl">Background</text>
+  <text x="44" y="318" class="src-sub">Lighting direction · warmth</text>
+  <text x="44" y="334" class="src-sub">Type extracted for blending</text>
+
+  <rect x="32" y="354" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+  <text x="44" y="374" class="src-ttl">Mode selection</text>
+  <text x="44" y="392" class="src-sub">Instant · Batch · Single</text>
+  <text x="44" y="408" class="src-sub">Up to 20 concurrent</text>
+
+  <!-- Workflow steps (centre band) · 10 cards in 2 rows of 5
+       Step-card text padding: 12px x · 20px top (step num) · 18px to title · 18px to sub-1 · 16px to sub-2 · 14px bottom -->
+  <!-- Row 1: 01 Upload · 02 Analyse · 03 Avatar/Pose · 04 Background · 05 Prompt -->
+  <rect x="268" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="82" class="stp-num">01</text>
+  <text x="280" y="100" class="stp-ttl">Upload</text>
+  <text x="280" y="118" class="stp-sub">Product reference</text>
+  <text x="280" y="134" class="stp-sub">images received</text>
+
+  <rect x="416" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="428" y="82" class="stp-num">02</text>
+  <text x="428" y="100" class="stp-ttl">Analyse</text>
+  <text x="428" y="118" class="stp-sub">Views classified</text>
+  <text x="428" y="134" class="stp-sub">Garment details extracted</text>
+
+  <rect x="564" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="576" y="82" class="stp-num">03</text>
+  <text x="576" y="100" class="stp-ttl">Avatar &amp; Pose</text>
+  <text x="576" y="118" class="stp-sub">Selection · 12 camera</text>
+  <text x="576" y="134" class="stp-sub">view types</text>
+
+  <rect x="712" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="724" y="82" class="stp-num">04</text>
+  <text x="724" y="100" class="stp-ttl">Background</text>
+  <text x="724" y="118" class="stp-sub">Image + lighting</text>
+  <text x="724" y="134" class="stp-sub">extracted for blend</text>
+
+  <rect x="860" y="62" width="120" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="872" y="82" class="stp-num">05</text>
+  <text x="872" y="100" class="stp-ttl">Prompt</text>
+  <text x="872" y="118" class="stp-sub">NL assembly</text>
+  <text x="872" y="134" class="stp-sub">view-aware</text>
+
+  <!-- Row 2: 06 Generate · 07 Detection · 08 Auto-Edit · 09 Quality · 10 Deliver -->
+  <rect x="268" y="240" width="138" height="100" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="280" y="262" class="stp-num">06</text>
+  <text x="280" y="280" class="stp-ttl">Generate</text>
+  <text x="280" y="298" class="stp-sub">On-model 4K · parallel</text>
+  <text x="280" y="314" class="stp-sub">batches up to 20</text>
+
+  <!-- Detect / Edit / Check loop block (steps 07-09) with bg highlight ·
+       extended up (h=144) so the retry arrow gets a dedicated band above
+       the step cards, no collision with the header label. -->
+  <rect x="416" y="210" width="430" height="144" rx="10" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1"/>
+  <text x="428" y="230" class="loop-lbl">Detect → Edit → Check loop · max 2 attempts</text>
+
+  <rect x="416" y="256" width="138" height="86" rx="8" fill="#fff" stroke="#FDBA74" stroke-width="1"/>
+  <text x="428" y="276" class="stp-num">07</text>
+  <text x="428" y="294" class="stp-ttl">Detection</text>
+  <text x="428" y="312" class="stp-sub">Unified Detection</text>
+  <text x="428" y="328" class="stp-sub">Agent · code execution</text>
+
+  <rect x="564" y="256" width="138" height="86" rx="8" fill="#fff" stroke="#FDBA74" stroke-width="1"/>
+  <text x="576" y="276" class="stp-num">08</text>
+  <text x="576" y="294" class="stp-ttl">Auto-Edit</text>
+  <text x="576" y="312" class="stp-sub">BBox-guided surgical</text>
+  <text x="576" y="328" class="stp-sub">edit · identity preserved</text>
+
+  <rect x="712" y="256" width="134" height="86" rx="8" fill="#fff" stroke="#FDBA74" stroke-width="1"/>
+  <text x="724" y="276" class="stp-num">09</text>
+  <text x="724" y="294" class="stp-ttl">Quality</text>
+  <text x="724" y="312" class="stp-sub">Score = 10 −</text>
+  <text x="724" y="328" class="stp-sub">issues × conf × 1.5</text>
+
+  <rect x="860" y="240" width="120" height="100" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+  <text x="872" y="262" class="stp-num">10</text>
+  <text x="872" y="280" class="stp-ttl">Deliver</text>
+  <text x="872" y="298" class="stp-sub">GCS · CDN</text>
+  <text x="872" y="314" class="stp-sub">Ajio naming</text>
+
+  <!-- Manual QC routing card (below the workflow band) -->
+  <rect x="416" y="404" width="430" height="64" rx="8" fill="#FAF5FF" stroke="#D8B4FE" stroke-width="1"/>
+  <text x="428" y="426" class="route-lbl">Score &lt; 7.0 → routes to Manual QC (brand catalogue team)</text>
+  <text x="428" y="448" class="src-sub">Identity penalty −4.0 · background change −3.0 · regression −2.0 each</text>
+
+  <!-- Eval gate card -->
+  <rect x="268" y="500" width="712" height="84" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1"/>
+  <text x="282" y="522" class="zh">Eval gate</text>
+  <text x="282" y="544" class="src-sub">Realism weighted: Human Realism 55% · Product Details 30% · Scene Composition 15%</text>
+  <text x="282" y="562" class="src-sub">9.0-10.0 Exceptional · 8.0-8.9 Very good · 7.0-7.9 Good · &lt;7.0 Needs correction</text>
+  <text x="282" y="578" class="loop-lbl">Current pipeline: 8.06/10 Auto QC · 47,473 images delivered for Trends Reboot</text>
+
+  <!-- Outputs (right band) · 4 cards · h=66 · text padding mirrors Inputs -->
+  <rect x="1024" y="58" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="1036" y="78" class="out-ttl">4K on-model images</text>
+  <text x="1036" y="96" class="out-sub">Per pose · per camera view</text>
+  <text x="1036" y="112" class="out-sub">Optimised: 1117×1400, &lt;250 KB</text>
+
+  <rect x="1024" y="132" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="1036" y="152" class="out-ttl">GCS upload</text>
+  <text x="1036" y="170" class="out-sub">Ajio-standard naming</text>
+  <text x="1036" y="186" class="out-sub">style/colour/product/MODEL</text>
+
+  <rect x="1024" y="206" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="1036" y="226" class="out-ttl">CDN delivery</text>
+  <text x="1036" y="244" class="out-sub">Resolution-optimised</text>
+  <text x="1036" y="260" class="out-sub">JPEG compressed</text>
+
+  <rect x="1024" y="280" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+  <text x="1036" y="300" class="out-ttl">Score breakdown</text>
+  <text x="1036" y="318" class="out-sub">Per image · per issue</text>
+  <text x="1036" y="334" class="out-sub">Confidence · penalty trace</text>
+
+  <!-- Connectors · inputs into workflow zone (per spec §5.4 · short horizontal
+       arrows ending at workflow zone left edge · no diagonals · no crossings).
+       Y-coords match input-card midpoints (h=66 · y=58/132/206/280/354 → mid 91/165/239/313/387). -->
+  <path class="conn" d="M216,91 L250,91" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M216,165 L250,165" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M216,239 L250,239" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M216,313 L250,313" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M216,387 L250,387" marker-end="url(#ap-arr)"/>
+
+  <!-- Single entry arrow from workflow zone edge into Step 01 -->
+  <path class="conn" d="M250,105 L268,105" marker-end="url(#ap-arr)"/>
+
+  <!-- Connectors · row 1 left-to-right -->
+  <path class="conn" d="M406,105 L416,105" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M554,105 L564,105" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M702,105 L712,105" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M850,105 L860,105" marker-end="url(#ap-arr)"/>
+
+  <!-- Connector · row 1 → row 2 (Prompt 05 → Generate 06) -->
+  <path class="conn" d="M920,148 L920,200 L337,200 L337,240" marker-end="url(#ap-arr)"/>
+
+  <!-- Connectors · row 2 -->
+  <path class="conn" d="M406,290 L416,299" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M554,299 L564,299" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M702,299 L712,299" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M846,299 L860,290" marker-end="url(#ap-arr)"/>
+
+  <!-- Loop arrow · Quality fail → Auto-Edit retry · routed into the
+       dedicated band between header label (y=230) and step cards (y=256).
+       "retry · max 2" annotation removed · header already states "max 2 attempts". -->
+  <path class="conn-loop" d="M779,256 L779,246 L633,246 L633,256" marker-end="url(#ap-arr-loop)"/>
+
+  <!-- Routing arrow · Quality &lt; 7.0 → Manual QC -->
+  <path class="conn-route" d="M779,342 L779,404" marker-end="url(#ap-arr-route)"/>
+
+  <!-- Output connectors · Deliver exits the workflow zone (single arrow);
+       each output enters the outputs zone via its own short horizontal arrow.
+       Y-coords match output-card midpoints (h=66 · y=58/132/206/280 → mid 91/165/239/313). -->
+  <path class="conn" d="M980,290 L990,290" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M1006,91 L1024,91" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M1006,165 L1024,165" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M1006,239 L1024,239" marker-end="url(#ap-arr)"/>
+  <path class="conn" d="M1006,313 L1024,313" marker-end="url(#ap-arr)"/>
+</svg></div><div class="diagram-caption">Inputs (blue, left) → Workflow 10 steps (centre, grey) with explicit Detect → Edit → Check loop (orange, max 2 retries) → Outputs (green, right). Below-7.0 score routes to Manual QC (purple).</div><div><div class="workflow-step"><div class="ws-num">01</div><div><div class="ws-title">Upload</div><div class="ws-detail">Product reference images (front · back · side) uploaded to the platform. Supports clothing, footwear and lingerie.</div></div></div><div class="workflow-step"><div class="ws-num">02</div><div><div class="ws-title">Analyse</div><div class="ws-detail">Product image views classified (front · back · side · three-quarter). Garment details extracted: fabric · colour · pattern · silhouette.</div></div></div><div class="workflow-step"><div class="ws-num">03</div><div><div class="ws-title">Avatar &amp; Pose</div><div class="ws-detail">User selects avatars (gender · age · ethnicity) and poses from the pool. 12 camera view types available — front · back · side · full-angle · closeup · angled.</div></div></div><div class="workflow-step"><div class="ws-num">04</div><div><div class="ws-title">Background &amp; Lighting</div><div class="ws-detail">Background image selected. Lighting characteristics (direction · warmth · type) extracted to blend the model into the scene.</div></div></div><div class="workflow-step"><div class="ws-num">05</div><div><div class="ws-title">Prompt</div><div class="ws-detail">Natural language prompt assembled per pose: product + avatar + theme + view-aware lighting + filtered accessories. Polished for flow and grammar.</div></div></div><div class="workflow-step"><div class="ws-num">06</div><div><div class="ws-title">Generate</div><div class="ws-detail">On-model images generated in parallel batches (up to 20 concurrent). Background reference image passed alongside the prompt. Supports 4K output.</div></div></div><div class="workflow-step"><div class="ws-num">07</div><div><div class="ws-title">Detection</div><div class="ws-detail">Unified Detection Agent scans each generated image against product references. Detects colour · logo · print · fabric · pose mismatches with code execution for zoom/crop inspection.</div></div></div><div class="workflow-step"><div class="ws-num">08</div><div><div class="ws-title">Auto-Edit</div><div class="ws-detail">Edit Agent fixes detected issues with bounding-box-guided surgical editing. Validate-retry loop with max 2 attempts per image. Identity and background preservation enforced.</div></div></div><div class="workflow-step"><div class="ws-num">09</div><div><div class="ws-title">Quality</div><div class="ws-detail">Images scored — 10.0 base, deductions per issue. Score ≥ 7.0 → Approved. Below routes to Manual QC. Realism weighted: Human 55% · Product 30% · Scene 15%.</div></div></div><div class="workflow-step"><div class="ws-num">10</div><div><div class="ws-title">Deliver</div><div class="ws-detail">Final images uploaded to GCS, resolution-optimised, available via CDN. Ajio-standard naming convention: style_id/color_id/product_id/MODEL.jpg.</div></div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">03 · Underlying data</div><div class=""><table class="data-table mb-4"><thead><tr><th>Data source</th><th>Classification</th><th>Key entities</th></tr></thead><tbody><tr><td><strong>Product reference store</strong></td><td>Human-Created</td><td><span class="ent">Front/back/side images · garment metadata · brand SKU spine</span></td></tr><tr><td><strong>Brand pose library</strong></td><td>Human-Created</td><td><span class="ent">12 camera view types · gender × age × ethnicity matrix</span></td></tr><tr><td><strong>Garment attribute extract</strong></td><td>Mixed</td><td><span class="ent">Fabric · colour · pattern · silhouette (extracted by Analyse step)</span></td></tr><tr><td><strong>Background catalogue</strong></td><td>Human-Created</td><td><span class="ent">Studio · lifestyle · seasonal backgrounds with extracted lighting profiles</span></td></tr><tr><td><strong>Generated image store</strong></td><td>Machine-Created</td><td><span class="ent">All output images · scored · with detection/edit traces preserved</span></td></tr></tbody></table><p class="text-sm mb-3" style="color: var(--ink);"><strong>Refresh cadence:</strong> Per-job — Instant mode 2-4 minutes; Batch mode async server-side; Single Image on-demand for QC fixes.</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>KPIs moved:</strong></p><div><span class="tech-chip">Cost per shot</span><span class="tech-chip">Time-to-catalogue</span><span class="tech-chip">Style coverage per category</span><span class="tech-chip">Auto QC pass rate</span><span class="tech-chip">Manual QC routing %</span></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">04 · Design patterns used</div><div class=""><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"><div class="pattern-chip"><div class="pc-name">Tool Calling</div><div class="pc-usage">Detection Agent uses code execution for zoom/crop inspection of fine details (logos · text · embroidery)</div></div><div class="pattern-chip"><div class="pc-name">Multi-Agent Orchestration</div><div class="pc-usage">Detection · Edit · Check loop with validate-retry · max 2 attempts. The canonical multi-agent example across the catalog.</div></div><div class="pattern-chip"><div class="pc-name">Wide Research</div><div class="pc-usage">Generates N candidate images per pose in parallel batches (up to 20 concurrent), scores, picks above-threshold.</div></div><div class="pattern-chip"><div class="pc-name">Context Engineering</div><div class="pc-usage">Per-pose NL prompt assembly · product + avatar + theme + view-aware lighting + filtered accessories.</div></div><div class="pattern-chip"><div class="pc-name">Observability</div><div class="pc-usage">Every image carries structured score breakdown — issues found · confidence · penalty applied · final score.</div></div><div class="pattern-chip"><div class="pc-name">Evals</div><div class="pc-usage">10-base scoring rule with deductions runs on every output before delivery. Enforced as a hard gate, not a report.</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">05 · Evals · what gates each output</div><div class=""><p class="text-sm mb-3" style="color: var(--ink);">Every generated image is scored before delivery. Base 10.0; deduct =
+`total_issues × (avg_confidence / 100) × 1.5`. Score ≥ 7.0 → Approved
+and delivered. Below 7.0 → routed to Manual QC for brand review. Current
+crop-extraction pipeline runs at 8.06/10 average.
+</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>Gates and thresholds.</strong></p><ul class="list-disc pl-5 text-sm" style="color: var(--ink);"><li>Auto QC ≥ 7.0 to ship</li><li>Identity preservation enforced — face change penalty −4.0 · background change −3.0 · new regression −2.0 each</li><li>Realism weighted: Human Realism 55% · Product Details 30% · Scene Composition 15%</li><li>Bands: 9.0-10.0 Exceptional · 8.0-8.9 Very good · 7.0-7.9 Good · below 7.0 needs correction</li></ul></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">06 · Linked platforms</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-3"><a href="/impetus/ai-photoshoot/" class="linked-platform-card"><div class="lp-name">AI Photoshoot</div><div class="lp-role">Primary execution surface · Trends Reboot delivery · lingerie pipeline</div><div class="lp-arrow">View platform →</div></a><a href="/pixelbin/" class="linked-platform-card"><div class="lp-name">PixelBin</div><div class="lp-role">Resolution optimisation + CDN delivery layer</div><div class="lp-arrow">View platform →</div></a></div></div></div></section>
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

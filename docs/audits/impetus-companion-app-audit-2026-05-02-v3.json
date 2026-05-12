@@ -1,0 +1,159 @@
+{
+  "page": "impetus/companion-app/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_round": "v3",
+  "score": 58,
+  "grade": "F",
+  "pass": false,
+  "dimensions": {
+    "structural_compliance": 45,
+    "source_traceability": 88,
+    "tone_of_voice": 50,
+    "honesty_register": 70,
+    "visual_completeness": 75,
+    "cross_page_consistency": 80
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "structural_compliance",
+      "section": "Section labels",
+      "issue": "Section labels are non-contiguous AND start at the wrong base. The labels run: hero → '02 · WHAT IT DOES FOR YOU' → '03 · Rollout Status' → '04 · What improved' → '06 · SCREENSHOTS'. Both §01 (missing entirely) and §05 (skipped) are gaps. Per audit-framework §1, contiguity is a MEDIUM finding — but two gaps is CRITICAL because Apex reads it as 'two sections were deleted in mid-edit and not cleaned up.' Spec says §05 'Updates Shipped' was deliberately deleted; the renumber cascade was never applied.",
+      "fix": "Renumber section labels to contiguous run: 02 → 01, 03 → 02, 04 → 03, 06 → 04. Files: index.html:173, 186, 194, 210.",
+      "files": [
+        "impetus/companion-app/index.html:173",
+        "impetus/companion-app/index.html:186",
+        "impetus/companion-app/index.html:194",
+        "impetus/companion-app/index.html:210"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "tone_of_voice",
+      "section": "§04 Screenshots captions and alt text",
+      "issue": "Every §04 screenshot caption and alt attribute contains literal '**bold**' markdown asterisks. The visible <div class='cap-num'> emits real <strong>...</strong> so the visible caption renders fine — but the alt attribute (a11y) and the lightbox onclick meta string both carry raw '**Scan for a Smarter In-Store Experience**' etc. 7 images affected. Same root cause as gmetri/H1 — the source compilation pipeline doesn't strip markdown from string attributes.",
+      "fix": "Strip leading/trailing '**' from alt and onclick meta on lines 213, 220, 227, 234, 241, 248, 255.",
+      "files": [
+        "impetus/companion-app/index.html:213",
+        "impetus/companion-app/index.html:220",
+        "impetus/companion-app/index.html:227",
+        "impetus/companion-app/index.html:234",
+        "impetus/companion-app/index.html:241",
+        "impetus/companion-app/index.html:248",
+        "impetus/companion-app/index.html:255"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "C3",
+      "severity": "CRITICAL",
+      "dimension": "tone_of_voice",
+      "section": "§04 Screenshots cards 6 and 7",
+      "issue": "Cards 6 and 7 (lines 248, 255) carry malformed broken-into-fragments captions that read like a paste-from-spec bug: '<strong>Endless Aisle</strong> · Six in-store features (Scan &amp;amp; Go. · Endless Aisle. · Order History.' (line 250) — opens '(' but never closes, ends with '.' mid-list. And card 7 '<strong>Find-in-store barcode</strong> · Dual Cart. · Store Switch. · Store Aisle). · Show-staff barcode for items not on the floor.' (line 257) — closes ')' that was never opened, with a fragment-style sentence chain. The 6 in-store features (Scan & Go / Endless Aisle / Order History / Dual Cart / Store Switch / Store Aisle) appear to have been split across two cards mid-string.",
+      "fix": "Rewrite both captions cleanly. Card 6: '<strong>Endless Aisle</strong> · Six in-store features (Scan & Go · Endless Aisle · Order History · Dual Cart · Store Switch · Store Aisle).' Card 7: '<strong>Find-in-store barcode</strong> · Show-staff barcode for items not on the floor.' Strip the fragment sentence chain.",
+      "files": [
+        "impetus/companion-app/index.html:248-251",
+        "impetus/companion-app/index.html:255-258"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§04 Screenshots captions",
+      "issue": "Lightbox onclick meta strings on lines 220, 227, 234, 241, 248, 255 are all missing the space before the '·' delimiter (e.g., 'In-Store Experience· Store detection...'). 6 captions affected. Same auto-generation bug as gmetri/H2.",
+      "fix": "Insert a space before each '·' in the onclick meta strings on lines 220, 227, 234, 241, 248, 255.",
+      "files": [
+        "impetus/companion-app/index.html:220",
+        "impetus/companion-app/index.html:227",
+        "impetus/companion-app/index.html:234",
+        "impetus/companion-app/index.html:241",
+        "impetus/companion-app/index.html:248",
+        "impetus/companion-app/index.html:255"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero subhead + §02 body",
+      "issue": "Hero subhead at line 164 reads '(Store Shopping Companion)' — duplicate of H1 'Store Companion App.' (a parenthetical synonym, not a content subhead). Same pattern as gmetri H3. Also §02 body line 174 begins '<strong>App Feature Map · Optimising the sales force for peak performance.</strong>' — this is the Accenture deck slide title (s24) imported verbatim and lands as a brochure-deck header on the page rather than a content lede. Per tone-of-voice §3 banned constructions.",
+      "fix": "Hero subhead: replace '(Store Shopping Companion)' with the rollout-anchored content lede already present below the bold paragraph. §02: drop the 'App Feature Map · Optimising the sales force for peak performance.' deck-header sentence — start §02 with 'The Companion App is the in-store counterpart to AJIO web — the surface where customer intent meets store inventory in real time.'",
+      "files": ["impetus/companion-app/index.html:164", "impetus/companion-app/index.html:174"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§03 Rollout Status",
+      "issue": "§03 stat chip at line 187 says 'All stores targeted by end of March'. Today is 02-May-2026. The end-of-March target has either been hit (in which case the chip is stale and should say 'All stores · live since 31-Mar-2026') or missed (in which case the chip overclaims). Per tone-of-voice §3 forward-looking-without-dates rule and audit-framework §2 honesty register: a forward-looking commitment that is past its date is an overclaim by silence.",
+      "fix": "Either update the chip to the actual May-2026 status ('All stores · rolled out since [date]') or to the current state ('100 stores live · rollout to balance gated on [reason]'). Verify against PDF p87 update or a more recent status report.",
+      "files": ["impetus/companion-app/index.html:187"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§04 Status callout",
+      "issue": "§04 callout at line 196-197 opens with '<strong>No formal release note yet.</strong> Active rollout underway.' For an Apex page that's two months past the cited 13-Feb-2026 pilot, 'no formal release note yet' reads as either neglect or stalled momentum. Either there IS a release note now (then cite it) or the rollout itself slipped (then say so). 'Active rollout underway' followed by 'Moving from pilot to full rollout' is a tautology.",
+      "fix": "Replace with a current-state status. Options: 'Pilot complete; rollout to all stores in flight, no committed completion date' OR 'Rolled out across N stores as of [date]' with the actual count.",
+      "files": ["impetus/companion-app/index.html:196-197"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 callout impact paragraph",
+      "issue": "§04 callout 'Expected metric impact' at line 200-204 contains 'every store interaction becomes a data point — wishlists, scan frequency, completion rates — helping merchandising teams understand what customers actually want vs. what's on the shelf.' This is unverifiable assertion (no measured data given). The closing 'extends omnichannel from \"buy online, pick in store\" to \"discover in store, complete on phone.\"' uses retail-marketing scare quotes — fine in a deck, off-register on an Apex page.",
+      "fix": "Quantify or drop. If the dashboard mentioned in §03 ('Live adoption dashboard (Geckoboard) tracking metrics') has actual numbers, cite them. Drop the scare-quoted slogan.",
+      "files": ["impetus/companion-app/index.html:200-204"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 body",
+      "issue": "§02 body at lines 176-181 contains scare-quoted phrases throughout: '\"companion mode,\"' (line 176-177), '\"buy online, pick in store\"' / '\"discover in store, complete on phone\"' (line 204), and 'fun challenges (scanning products, trying outfits, referrals)' (line 180-181) which is consumer-app marketing voice. Per tone-of-voice §3 'No marketing voice' — the page is for Apex review, not the AJIO product page.",
+      "fix": "Strip scare quotes; rewrite 'fun challenges' as the actual mechanic ('point-earning actions: scan, try-on, refer'). Keep the consumer-feature list factual.",
+      "files": ["impetus/companion-app/index.html:174-181"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "Audience pills",
+      "issue": "Audience pills at line 166 carry parenthetical notes inside the pill: 'Customers (personalised in-store experience)', 'Store Managers (seeing what customers want)'. The pill is a chip; parenthetical content makes them long and loses the scannability they were designed for. Sibling pages keep pills tight ('Buyers', 'Planners').",
+      "fix": "Drop the parenthetical: 'Customers' / 'Store Managers'. Move the parenthetical context into the §02 body if it adds anything.",
+      "files": ["impetus/companion-app/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 callout impact",
+      "issue": "Whitespace artifact in the impact block at line 200 — '<span class=\"impact-label\">Expected metric impact</span>every store interaction...' — the span closes with no space before 'every', making the rendered output read 'Expected metric impacteevery store interaction'. Visible to readers though only mildly ugly.",
+      "fix": "Add a space or block-level break after the </span>. Same pattern fix needed across §04 of all sister pages built from the same template.",
+      "files": ["impetus/companion-app/index.html:200"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "All 7 §04 screenshots load HTTP 200; lightbox open/close + Esc work correctly.",
+    "Source claims (100 stores pilot March 2026, Geckoboard dashboard, Trends Kamanhalli Bangalore Feb 13 test) match PDF p87 verbatim.",
+    "Cross-page consistency with impetus/index.html grid (line 206-211) is clean: name 'Store Companion App', Live pill — both surfaces aligned.",
+    "Hero H1 uses the simplified 'Store Companion App' name (per the Apr-30 rename round) and the audience pills name the actual users without inflation.",
+    "§04 (mislabeled as §06) screenshot grid covers the 7 distinct app states — QR launch, store detection, complete-the-look cross-sell, scan-and-go PDP, order confirmed, endless aisle, find-in-store barcode — giving an Apex reader a defensible visual tour."
+  ]
+}

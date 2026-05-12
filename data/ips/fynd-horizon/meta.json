@@ -1,0 +1,25 @@
+{
+  "slug": "fynd-horizon",
+  "name": "Fynd Horizon",
+  "tagline": "Immersive in-store 3D body scan + virtual try-on \u00b7 MDA + MM Sir unveil 14 - Apr - 2026.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2026-04-14",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#fynd-horizon",
+  "external_url": null,
+  "stake_inr_cr": 1000.0,
+  "tags": [
+    "immersive",
+    "3d",
+    "body-scan"
+  ]
+}

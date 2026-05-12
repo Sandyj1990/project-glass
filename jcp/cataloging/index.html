@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Cataloging · JCP</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* Page-local helpers */
+  .verdict-pill {
+    display: inline-flex; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px; border-radius: 999px;
+    border: 1px solid transparent;
+  }
+  .verdict-pill.exact   { background: #ECFDF5; color: #047857; border-color: #A7F3D0; }
+  .verdict-pill.partial { background: #FFFBEB; color: #B45309; border-color: #FDE68A; }
+  .verdict-pill.no-match{ background: #FEF2F2; color: #B91C1C; border-color: #FECACA; }
+
+  .compare-table { width: 100%; border-collapse: collapse; }
+  .compare-table th, .compare-table td {
+    border-bottom: 1px solid var(--border);
+    padding: 14px 18px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+  }
+  .compare-table th {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--ink-muted);
+    text-transform: uppercase; letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--ink);
+    background: var(--bg-soft);
+  }
+  .compare-table td:first-child { font-weight: 600; color: var(--ink); }
+  .compare-table .impact-cell { color: var(--ink); font-weight: 500; }
+  .compare-table .as-is-cell { color: var(--ink-muted); }
+
+  .stat-panel {
+    background: white; border: 1px solid var(--border); border-radius: 12px;
+    padding: 22px;
+  }
+  .stat-panel .label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .stat-panel .big {
+    font-family: 'Inter', sans-serif; font-weight: 700;
+    letter-spacing: -0.03em; line-height: 1.05;
+    color: var(--ink); font-size: 30px;
+    margin-bottom: 4px;
+  }
+
+  .why-callout {
+    background: var(--accent-soft);
+    border: 1px solid #DDD6FE;
+    border-radius: 12px;
+    padding: 22px 26px;
+  }
+  .why-callout .why-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .findings-list { padding-left: 0; list-style: none; }
+  .findings-list li {
+    padding: 10px 0; border-bottom: 1px solid var(--border-soft);
+    color: var(--ink); font-size: 14px; line-height: 1.55;
+  }
+  .findings-list li:last-child { border-bottom: 0; }
+  .findings-list li::before {
+    content: "·"; color: var(--accent); font-weight: 700;
+    margin-right: 8px;
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- =========================================================================
+     HERO
+     ========================================================================= -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+  <div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><a href="/jcp">JCP</a><span class="sep">/</span><span style="color: var(--ink);">AI Cataloging</span></div>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/jcp" class="subnav-link">Overview</a><a href="/jcp/channels" class="subnav-link">Channels</a><a href="/jcp/cataloging" class="subnav-link active">AI Cataloging</a><a href="/jcp/7eleven" class="subnav-link">7-Eleven</a><a href="/jcp/release-notes" class="subnav-link">Release Notes</a><a href="/rcpl" class="subnav-link">RCPL</a></div>
+  <div class="section-label mb-3">JCP · AI Cataloging · Live</div>
+  <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">AI Cataloging.</h1>
+
+  <p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">
+    Reliance brands are catalog-bound. Enrichment used to be slow (days to weeks per brand) and entirely manual. <strong style="color: var(--ink);">AI Cataloging removes that bottleneck.</strong>
+  </p>
+  <p class="text-lg max-w-3xl mb-10" style="color: var(--ink-muted);">
+    A single pipeline — Google AI + Web Grounding — measured against the existing manual processes at Netmeds and Reliance Digital, then deployed to production for Tira × Akind. Below is the chain of evidence in three steps: <strong style="color: var(--ink);">measured</strong>, <strong style="color: var(--ink);">shipped</strong>, <strong style="color: var(--ink);">how it's verified</strong>.
+  </p>
+
+  <div class="cap-num mb-3">What's on this page</div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl">
+    <a href="#throughput" class="card card-hover p-5 block">
+      <div class="cap-num mb-2">01 · Measured</div>
+      <h3 class="font-semibold mb-1" style="color: var(--ink);">Throughput across brands</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Netmeds + Reliance Digital · same pipeline, two operating models, consistent uplift.</p>
+    </a>
+    <a href="#shipped" class="card card-hover p-5 block">
+      <div class="cap-num mb-2">02 · Shipped</div>
+      <h3 class="font-semibold mb-1" style="color: var(--ink);">Live in production · Tira × Akind</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">First release-noted deployment · 89% accuracy · enriched attributes consumed live by the Tira team.</p>
+    </a>
+    <a href="#showcased" class="card card-hover p-5 block">
+      <div class="cap-num mb-2">03 · Showcased</div>
+      <h3 class="font-semibold mb-1" style="color: var(--ink);">Google Cloud Next '26 main stage</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">Catalog enrichment with Gemini · same pipeline featured on the keynote stage, 29-Apr-2026.</p>
+    </a>
+    <a href="#methodology" class="card card-hover p-5 block">
+      <div class="cap-num mb-2">04 · How it's verified</div>
+      <h3 class="font-semibold mb-1" style="color: var(--ink);">Attribute Accuracy methodology</h3>
+      <p class="text-sm" style="color: var(--ink-muted);">The verdict bucketing that produces every accuracy number on this page.</p>
+    </a>
+  </div>
+</div></section>
+
+<!-- =========================================================================
+     §01 · Throughput · measured across brands (Netmeds + Reliance Digital)
+     ========================================================================= -->
+<section id="throughput" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">01 · Measured · Throughput across brands</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Same pipeline, two operating models, consistent uplift.</h2>
+  <p class="text-lg max-w-3xl mb-10" style="color: var(--ink-muted);">
+    Web Grounding was measured against two existing catalog-enrichment processes — one fully outsourced to vendors (<strong style="color: var(--ink);">Netmeds</strong>), one run by an in-house team (<strong style="color: var(--ink);">Reliance Digital</strong>). Different starting points, different bottlenecks, but the pipeline delivers in both: time collapses, marginal cost approaches zero, first-pass coverage jumps.
+  </p>
+
+  <!-- ========== Netmeds: vendor replacement ========== -->
+  <div class="mb-16">
+    <div class="flex items-baseline gap-2 mb-3">
+      <span class="pill">Netmeds</span>
+      <span class="pill pill-accent">Study</span>
+      <span class="cap-num">· vendor-replacement scenario</span>
+    </div>
+    <h3 class="display-2 text-2xl mb-3" style="color: var(--ink);">Netmeds · vendor dependency eliminated.</h3>
+    <p class="display-2 text-lg max-w-3xl mb-6 accent">
+      ~95%+ enrichment-time reduction · ~5 days → ~2 minutes per 1,000 SKUs · ₹100/SKU → near-zero marginal cost.
+    </p>
+    <p class="text-base max-w-3xl mb-6" style="color: var(--ink);">
+      Catalog enrichment at Netmeds was fully outsourced — ~40 hours to enrich 1,000 SKUs across 6 attributes, ~₹100 per SKU. Web Grounding compresses the same job to ~2 minutes, automated. Vendor dependency goes away; cycle time goes from <em>days</em> to <em>minutes</em>.
+    </p>
+
+    <div class="card overflow-hidden">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Metric</th><th>As-Is (Vendor-led)</th><th>With Web Grounding</th><th>Impact</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time / SKU</td>
+            <td class="as-is-cell">40 hours per 1,000 SKUs for 6 attributes · ₹100 per SKU · fully dependent on 3rd-party vendors</td>
+            <td>~2 minutes per 1,000 SKUs</td>
+            <td class="impact-cell">~95%+ time reduction · near-zero marginal cost · vendor dependency eliminated</td>
+          </tr>
+          <tr>
+            <td>Days to clear 1,000 SKUs<sup>*</sup></td>
+            <td class="as-is-cell">~5 days</td>
+            <td>~2 minutes</td>
+            <td class="impact-cell">Cycle time reduced from days → minutes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap-num mt-3" style="color: var(--ink-soft);">* Days to clear 1,000 SKUs assumes the prior vendor-led pace.</p>
+  </div>
+
+  <!-- divider -->
+  <div class="border-t mb-12" style="border-color: var(--border-soft);"></div>
+
+  <!-- ========== Reliance Digital: in-house team augmentation ========== -->
+  <div>
+    <div class="flex items-baseline gap-2 mb-3">
+      <span class="pill">Reliance Digital</span>
+      <span class="pill pill-accent">Study</span>
+      <span class="cap-num">· in-house team augmentation scenario</span>
+    </div>
+    <h3 class="display-2 text-2xl mb-3" style="color: var(--ink);">Reliance Digital · same team, more output.</h3>
+    <p class="display-2 text-lg max-w-3xl mb-6 accent">
+      35–40% faster per SKU · +50–64% throughput on the same team hours · 75% first-pass attribute auto-fill.
+    </p>
+    <p class="text-base max-w-3xl mb-6" style="color: var(--ink);">
+      Reliance Digital runs enrichment in-house — a 5-person team at 90 minutes per SKU. Web Grounding cuts per-SKU time to 55–60 minutes, lifting daily throughput by ~half without adding people. The same hours either unlock more capacity or take cost out — the choice is the operator's.
+    </p>
+
+    <div class="card overflow-hidden mb-3">
+      <table class="compare-table">
+        <thead>
+          <tr><th>Metric</th><th>As-is (Manual)</th><th>With Web Grounding</th><th>Impact</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Time / SKU</td>
+            <td class="as-is-cell">90 min</td>
+            <td>55–60 min</td>
+            <td class="impact-cell">35% to 40% time saved</td>
+          </tr>
+          <tr>
+            <td>Team throughput / day<sup>*</sup></td>
+            <td class="as-is-cell">15–20 SKUs</td>
+            <td>28.5–32.7 SKUs</td>
+            <td class="impact-cell">+50% to +64% additional SKUs enriched</td>
+          </tr>
+          <tr>
+            <td>Days to clear 100 SKUs<sup>*</sup></td>
+            <td class="as-is-cell">5.0–6.5 days</td>
+            <td>3.5–4 days</td>
+            <td class="impact-cell">Faster cycle time</td>
+          </tr>
+          <tr>
+            <td>Attribute fill rate by web grounding</td>
+            <td class="as-is-cell">—</td>
+            <td>75%</td>
+            <td class="impact-cell">High first-pass coverage</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap-num mb-8" style="color: var(--ink-soft);">* Team throughput / day and Days to clear 100 SKUs assume current team strength.</p>
+
+    <div class="cap-num mb-3">Pick the variable to hold constant</div>
+    <div class="grid md:grid-cols-2 gap-4 max-w-4xl">
+      <div class="card p-6">
+        <div class="cap-num mb-2">A · Capacity unlock</div>
+        <h4 class="font-semibold mb-2" style="color: var(--ink);">Keep the team constant.</h4>
+        <p class="text-sm mb-4" style="color: var(--ink-muted);">Team strength of 5 members. Each member ships more.</p>
+        <div class="cap-num mb-1">Additional SKU enrichment / member</div>
+        <div class="display-2 text-2xl mb-1" style="color: var(--ink);">+7.5 to +12.7 / day</div>
+        <div class="text-sm" style="color: var(--ink-muted);">≈ +37 to +64 SKUs / week / member</div>
+      </div>
+      <div class="card p-6">
+        <div class="cap-num mb-2">B · Cost / time takeout</div>
+        <h4 class="font-semibold mb-2" style="color: var(--ink);">Hold output at 15–20 SKUs / day.</h4>
+        <p class="text-sm mb-4" style="color: var(--ink-muted);">Same throughput, fewer person-hours.</p>
+        <div class="cap-num mb-1">Person-hours saved</div>
+        <div class="display-2 text-2xl mb-1" style="color: var(--ink);">7.5–11.7 h / day</div>
+        <div class="text-sm" style="color: var(--ink-muted);">Annualized (250 days): 1,875–2,917 h saved</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== narrative bridge to §02 ========== -->
+  <div class="mt-16 p-6 rounded-xl" style="background: var(--bg-soft); border: 1px solid var(--border);">
+    <p class="text-base" style="color: var(--ink);">
+      <strong>What both studies show:</strong> the pipeline collapses time and cost regardless of the operating model. The next step is whether it actually ships into a live storefront. <a href="#shipped" class="accent" style="text-decoration: underline;">↓ See the Tira × Akind release</a>.
+    </p>
+  </div>
+</div></section>
+
+<!-- =========================================================================
+     §02 · Shipped · Tira × Akind × Google in production
+     ========================================================================= -->
+<section id="shipped" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">02 · Shipped · Live in production</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From measured to deployed.</h2>
+  <p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">
+    The same Web Grounding pipeline benchmarked above is now live inside <strong style="color: var(--ink);">Tira's production environment</strong> for the <strong style="color: var(--ink);">Akind brand</strong>, in collaboration with <strong style="color: var(--ink);">Google</strong>. The Tira team consumes the enriched attributes in production, coordinated with the Akind brand. This is the first release-noted milestone; it validates that the pipeline doesn't just measure well — it ships.
+  </p>
+
+  <div class="flex items-baseline gap-2 mb-6">
+    <span class="pill">Tira</span>
+    <span class="pill">Akind</span>
+    <span class="pill">Google</span>
+    <span class="pill pill-live">Live · in production</span>
+  </div>
+
+  <div class="cap-num mb-3">Key results · Akind brand</div>
+  <div class="grid md:grid-cols-3 gap-4 mb-10">
+    <div class="stat-panel">
+      <div class="label">Time taken for enrichment</div>
+      <div class="big">~14 sec</div>
+      <div class="text-sm" style="color: var(--ink-muted);">Google AI · for all SKUs</div>
+      <div class="cap-num mt-3" style="color: var(--ink-soft);">vs. Tira team manual · 10–15 min per SKU</div>
+    </div>
+    <div class="stat-panel">
+      <div class="label">Attributes filled</div>
+      <div class="big">332 / 382</div>
+      <div class="text-sm" style="color: var(--ink-muted);">With Google AI · 87% overall fill rate</div>
+      <div class="cap-num mt-3" style="color: var(--ink-soft);">Mandatory · 100% · Non-mandatory · ~91%</div>
+      <div class="cap-num" style="color: var(--ink-soft);">Manual baseline (Tira team) · 262 / 382</div>
+    </div>
+    <div class="stat-panel">
+      <div class="label">Accuracy vs. ground truth</div>
+      <div class="big accent">89%</div>
+      <div class="text-sm" style="color: var(--ink-muted);">Google AI</div>
+      <div class="cap-num mt-3"><a href="#methodology" style="color: var(--accent); text-decoration: underline;">How accuracy is measured ↓</a></div>
+    </div>
+  </div>
+
+  <div class="why-callout max-w-4xl mb-4">
+    <div class="why-label">Why this matters</div>
+    <p style="color: var(--ink); font-size: 15px; line-height: 1.55;">
+      Tira maintains catalog data in production with the AI enrichment pipeline · less manual effort · validated reliability · scope to extend to full Tira catalog in the next phase.
+    </p>
+  </div>
+
+  <p class="cap-num" style="color: var(--ink-soft);">Next phase · expand AI enrichment to the entire Tira catalog.</p>
+
+  <!-- ========== narrative bridge to §03 Showcased ========== -->
+  <div class="mt-12 p-6 rounded-xl" style="background: white; border: 1px solid var(--border);">
+    <p class="text-base" style="color: var(--ink);">
+      <strong>The 89% accuracy claim above</strong> is measured against a controlled ground-truth set per attribute (see <a href="#methodology" class="accent" style="text-decoration: underline;">§04 Methodology</a>). The same pipeline that produced it was featured on the Google Cloud Next '26 keynote stage — the catalog-as-intelligence-layer foundation behind JIIA on JioMart. <a href="#showcased" class="accent" style="text-decoration: underline;">↓ §03 Showcased</a>.
+    </p>
+  </div>
+</div></section>
+
+<!-- =========================================================================
+     §03 · Showcased · Google Cloud Next '26 main stage · Catalog enrichment with Gemini
+     ========================================================================= -->
+<section id="showcased" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">03 · Showcased · Google Cloud Next '26 main stage</div>
+  <div class="flex items-center gap-3 mb-3 flex-wrap">
+    <h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Catalog enrichment with Gemini.</h2>
+    <span class="pill pill-live">Live · keynote 29-Apr-2026</span>
+  </div>
+  <p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">
+    Catalog Cloud now combines <strong style="color: var(--ink);">Gemini multimodal vision</strong> with <strong style="color: var(--ink);">web grounding</strong> and <strong style="color: var(--ink);">CAM sheet intelligence</strong> to process millions of product images and generate structured attributes that source systems didn't reliably carry — colour, style, material, usage context (occasion, intent fit), and deeper product semantics beyond titles and descriptions.
+  </p>
+  <p class="text-lg max-w-3xl mb-10" style="color: var(--ink-muted);">
+    A SKU stops being a database row and becomes a queryable entity an AI can reason over. This is the foundation that makes systems like <a href="/kaily" class="accent" style="text-decoration: underline;">JIIA on JioMart</a> work at scale.
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+    <div class="card p-5">
+      <div class="cap-num mb-2">Inputs</div>
+      <h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Three signal sources</h3>
+      <p class="text-sm" style="color: var(--ink);">Gemini multimodal vision (product images) · web grounding (open-web reference data) · CAM sheet intelligence (vendor catalog masters).</p>
+    </div>
+    <div class="card p-5">
+      <div class="cap-num mb-2">Output</div>
+      <h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Structured attributes</h3>
+      <p class="text-sm" style="color: var(--ink);">Colour · style · material · usage context (occasion, intent fit) · semantic enrichment beyond title/description fields.</p>
+    </div>
+    <div class="card p-5">
+      <div class="cap-num mb-2">Reach</div>
+      <h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Designed as single source of truth</h3>
+      <p class="text-sm mb-2" style="color: var(--ink);">Designed to feed Reliance Digital · JioMart · Tira · AJIO · Netmeds with the same attributes, vocabulary, and channel-agnostic API.</p>
+      <p class="text-xs" style="color: var(--ink-muted);"><span class="pill pill-live" style="font-size: 10px; padding: 1px 6px;">Live</span> Tira × Akind &nbsp; · &nbsp; <span class="pill" style="font-size: 10px; padding: 1px 6px;">Measured</span> Netmeds, Reliance Digital &nbsp; · &nbsp; <span class="pill pill-build" style="font-size: 10px; padding: 1px 6px;">Build</span> at-scale rollout</p>
+    </div>
+  </div>
+
+  <div class="cap-num mb-3">What this delivers</div>
+  <ul class="findings-list mb-10 max-w-4xl">
+    <li>Discovery, recommendations, and bundling accuracy improve because the agent reasons over rich attributes, not bag-of-words on titles.</li>
+    <li>Manual catalog operations shrink — vendor enrichment cycles, in-house attribute fill, and per-channel re-enrichment compress to a single pipeline run.</li>
+    <li>Cross-channel parity holds — a SKU listed on JioMart, AJIO, Tira, and Netmeds carries the same enriched truth, so downstream search, pricing, and personalisation systems stop drifting.</li>
+  </ul>
+
+  <div class="why-callout max-w-4xl mb-6">
+    <div class="why-label">Why this matters</div>
+    <p style="color: var(--ink); font-size: 15px; line-height: 1.55;">
+      Reliance Retail was selected as one of a handful of customer deployments featured on the Google Cloud Next '26 opening keynote alongside Vodafone, CME, Macquarie Bank, Colgate-Palmolive, and Citi. The catalog-enrichment layer is what makes JIIA's natural-language commerce work — without rich, queryable attributes the agent has nothing to reason over.
+    </p>
+  </div>
+
+</div></section>
+
+<!-- =========================================================================
+     §04 · How it's verified · Attribute Accuracy methodology
+     ========================================================================= -->
+<section id="methodology" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">04 · How it's verified · Methodology</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Attribute Accuracy.</h2>
+  <p class="text-lg max-w-3xl mb-10" style="color: var(--ink-muted);">
+    Every accuracy number on this page (including the Tira pilot's 89%) comes from this method: each enriched attribute is compared to a ground-truth value and bucketed into one of three verdicts.
+  </p>
+
+  <div class="grid md:grid-cols-3 gap-4 mb-12">
+    <div class="card p-6">
+      <div class="mb-3"><span class="verdict-pill exact">Exact match or similar</span></div>
+      <p class="text-sm" style="color: var(--ink);">Ground truth and enriched value both have the same data.</p>
+    </div>
+    <div class="card p-6">
+      <div class="mb-3"><span class="verdict-pill partial">Partial Match</span></div>
+      <p class="text-sm" style="color: var(--ink);">AI response has correct values but is missing some values from ground truth. Specifically useful for multi-select attributes.</p>
+    </div>
+    <div class="card p-6">
+      <div class="mb-3"><span class="verdict-pill no-match">No Match</span></div>
+      <p class="text-sm" style="color: var(--ink);">AI response is missing all values in ground truth.</p>
+    </div>
+  </div>
+
+  <div class="cap-num mb-3">Sample analysis · observations on the No Match bucket</div>
+  <ul class="findings-list mb-12 max-w-4xl">
+    <li>Among the No Match cases, the majority sits in preference, concern, safety precaution, color hex, and description sections.</li>
+    <li>For most safety-precaution / preference / concern mismatches the data is not present in the image — it's extracted from other sources.</li>
+    <li>In other cases the LLM compares paragraph-style descriptions (in ground truth) against dictionary / sectional descriptions (in the AI response). Similar text, different format — flagged as No Match. Fixable via prompt tuning + ground-truth format changes.</li>
+    <li>Color hex attributes are sometimes near the color shade but not an exact match. Improvable with a constrained list of values and prompt tuning.</li>
+    <li>Preference and concern sections are currently brand-driven; can be improved with brand-specific business rules and prompt tuning.</li>
+  </ul>
+
+  <div class="cap-num mb-3">Sample calculator · how a verdict is reached</div>
+  <div class="card overflow-hidden">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Ground truth (attribute · value)</th>
+          <th>Enriched value</th>
+          <th>Verdict</th>
+          <th>Explanation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Primary_colour</strong> · Gold</td>
+          <td><strong>Primary_colour</strong> · Gold</td>
+          <td><span class="verdict-pill exact">Exact match or similar</span></td>
+          <td class="impact-cell">Ground truth and enriched value both have the same data, 'Gold'.</td>
+        </tr>
+        <tr>
+          <td><strong>Concern</strong> · Pores, Dullness, Blemishes</td>
+          <td><strong>Concern</strong> · Dullness</td>
+          <td><span class="verdict-pill partial">Partial Match</span></td>
+          <td class="impact-cell">AI response only mentions Dullness, missing Pores and Blemishes.</td>
+        </tr>
+        <tr>
+          <td><strong>Benefits</strong> · Lightweight, Moisturising, Nourishing, Smoothening</td>
+          <td><strong>Benefits</strong> · Sun Protection</td>
+          <td><span class="verdict-pill no-match">No Match</span></td>
+          <td class="impact-cell">AI response is missing all of the benefits.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div></section>
+
+<!-- =========================================================================
+     Footer back-link
+     ========================================================================= -->
+<section class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <a href="/jcp" class="btn-secondary text-sm">← View the full JCP track</a>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

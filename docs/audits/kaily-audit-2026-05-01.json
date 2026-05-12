@@ -1,0 +1,141 @@
+{
+  "page": "kaily/index.html",
+  "spec": "no-formal-spec — built ad-hoc from docs/kaily-notes-compilation/Kaily Master Deck | 2026 .pptx, docs/accenture-2026-04-16-compilation/INDEX.md §14, and docs/2026-04-30-farooq-mda-update-letter.md",
+  "source_compilation": "docs/kaily-notes-compilation/ + docs/accenture-2026-04-16-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_type": "post-rebuild",
+  "previous_score": null,
+  "score": 68,
+  "grade": "D",
+  "weighted_pass": false,
+  "dimensional_pass": false,
+  "verdict": "FAIL — do not share with Apex. Two non-negotiable dimensions (Source Traceability, Honesty Register) sit below threshold. The page (a) imports three brand-customer stories from the generic Kaily.ai marketing deck (Being Human, GUESS, Cole Haan) and frames them as RR-context deployments without source support — same category-error pattern as the Boltic v0.9.4 AJIO×JCP overclaim, and (b) misses the Live RR Kaily deployment that the home page, catalog, and /autonomous all surface as the canonical proof: Netmeds Assistant · 850K msgs · 96% favourable · DRI Sreeraman MG. The hero says 'two production agents in Reliance' (true for ZIP and JIIA), but the page register itself documents three.",
+  "dimensions": {
+    "source_traceability":   {"score": 65, "threshold": 75, "pass": false, "note": "Hero stats and §04 ZIP / §05 JIIA numbers verify cleanly against Kaily deck slide 26 and Accenture slide 37. §06 brand-portfolio table numbers verify against deck slides 27-29. The CRITICAL gap: §06's framing layer ('Brands sold via AJIO running Kaily today' and the footnote 'India distribution by Reliance Brands; Kaily is supplied by Fynd') has no source. The Kaily deck never says these brands run Kaily on AJIO — slides 27-29 describe BH Buddy, GUESS's, and Cole Haan's own e-commerce assistants, channel-agnostic. §07 pillar 06 attributes Boltic-as-workflow-backbone to RR Kaily deployments citing slide 15 — but slide 15 is the BFSI vertical example (EMI queries via Boltic), not an RR ZIP/JIIA claim."},
+    "tone_of_voice":         {"score": 90, "threshold": 80, "pass": true,  "note": "No banned constructions (no 'transformative', 'world-class', 'next-generation', 'empowers', 'enables', 'unlocks', 'seamlessly', 'cutting-edge'). No exclamation marks, no emojis. Date format compliant (29-Apr-2026). Reliance entity names cased correctly (RRVL, JPL, AJIO, JioMart, RR). Fynd platform names cased correctly. Minor: §06 H2 uses 'premium and lifestyle brands' — borderline marketing inflator; 'premium' is descriptive but earns its keep only if cited."},
+    "honesty_register":      {"score": 60, "threshold": 80, "pass": false, "note": "Hero subhead 'Two production agents in Reliance' is correct vs Farooq's MDA letter. But §06 introduces three additional brand 'production deployments' framed as 'sold via AJIO running Kaily today' — that channel attribution is unsourced. The page also declares §06 'production deployments' carrying Live · RR-flavoured framing with no pill, when the source deck doesn't establish the RR context. Same category-error class as the Boltic v0.9.4 AJIO×JCP audit. Page silently omits the Netmeds Kaily Live RR deployment that the rest of the register treats as Kaily's headline RR proof. §07 pillar 06 ('Wired to Boltic for live actions') overstates a BFSI-vertical example as if it described ZIP/JIIA."},
+    "structural_compliance": {"score": 82, "threshold": 85, "pass": false, "note": "Section labels contiguous §01 → §07 (clean). Standard chrome present (nav, crumb, H1, footer, version pill v0.9.0, auth.js, Tailwind, style.css). Missing the canonical §08 Sources block (per audit-framework §1A — always last). §02 occupies the canonical 'What's live' slot with a capability framework (Talks/Thinks/Acts) instead of a module status table; the 'what's live' content is split across §04, §05, §06. Acceptable for a small page but worth documenting in a spec §9 Decision."},
+    "visual_completeness":   {"score": 80, "threshold": 85, "pass": false, "note": "SKIPPED — no live verify performed (dev server reachability not confirmed). Default cap of 80 applied. The single embedded image (slide_37 ZIP screenshot via socialassets CDN) was retained from the prior page version and previously verified to load. No new images added."},
+    "cross_page_consistency":{"score": 45, "threshold": 70, "pass": false, "note": "Multiple stale or contradictory cross-references. (1) index.html:468 surfaces 'Netmeds Storefront · App · Kaily · 850K Kaily messages · 96% favourable' as a Live Kaily RR proof — absent from the Kaily page. (2) catalog/index.html:243 lists 'Kaily · Live · AJIO ZIP · Netmeds Assistant (850K msgs · 96% favourable) · Sreeraman MG' as the Kaily IP entry — DRI Sreeraman MG is missing from the page; Netmeds proof is missing. (3) catalog/index.html:297 and /autonomous/ both lead the Kaily-on-RR story with Netmeds. (4) ZIP stats drift: index.html:314 still says '88% +ve CX · 86% catalog · 2M+ chats' (old Accenture deck slide-37 numbers); page now uses '88% / 90% / 100% catalog · 2.6M+ SKUs' (newer Kaily deck slide-26 numbers). (5) JIIA team list: catalog has 'Punit Kalro · Shreyash · Kapil · ashishchandorkar' (4 names, lowercase lead), page has full 8-name list with 'Ashish Chandorkar' lead. Either the page is right and the catalog/home need updating, or vice versa — but they cannot both stand."}
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "honesty_register",
+      "section": "§06 · Brand portfolio on Kaily",
+      "issue": "Section frames Being Human, GUESS, Cole Haan as 'Brands sold via AJIO running Kaily today' and 'additional production deployments'. The Kaily Master Deck slides 27-29 do NOT establish that these Kaily deployments run on AJIO or in any Reliance Retail context — they describe each brand's own e-commerce assistant. This is the same category error pattern caught in the Boltic v0.9.4 → v0.9.5 audit (attributing Ratl's AJIO×JCP test estate to Boltic).",
+      "fix": "Either (a) drop §06 entirely; (b) reframe §06 as 'Kaily customer reference deployments (channel-agnostic) — context for the platform's track record' with explicit non-RR framing and remove the AJIO + Reliance Brands attribution; or (c) replace §06 with the Netmeds RR deployment (see C2) which IS the canonical Live RR Kaily story.",
+      "files": ["kaily/index.html:288-322"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "missing section",
+      "issue": "Page omits the Live RR Kaily deployment that the home register (index.html:468), catalog (catalog/index.html:243, 297), and /autonomous/ (lines 212, 322) all treat as Kaily's headline RR proof: Netmeds Assistant · 850K Kaily messages · 96% favourable · DRI Sreeraman MG. Hero says 'two production agents in Reliance' — actually three by the rest-of-register's count.",
+      "fix": "Add a §06 (or new §03b) 'Netmeds Assistant' card with the 850K msgs / 96% favourable / DRI Sreeraman MG block, sourced to wherever those numbers were originally published (likely an internal status report — the Kaily deck does not contain Netmeds). Update the hero count from 'two' to 'three production agents in Reliance'. Add Sreeraman MG as the Kaily-on-RR DRI somewhere on the page.",
+      "files": ["kaily/index.html:74-82 (hero count)", "kaily/index.html (new section)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§07 pillar 06 · Workflow backbone",
+      "issue": "Pillar 06 'Wired to Boltic for live actions · Real-time actions (e.g. EMI queries, order lookups) routed through Boltic workflows' cites Kaily deck slide 15 as evidence. Slide 15 is the BFSI vertical example showing 'EMI Queries (real-time via Boltic)' — it does not establish that AJIO ZIP or JIIA route through Boltic. The 'order lookups' example is invented (not in the deck).",
+      "fix": "Either (a) drop pillar 06 entirely; (b) reword to 'Kaily can route live actions through Boltic workflows; documented for BFSI EMI lookups (slide 15). Applicability to RR ZIP/JIIA TBD' — but this dilutes the pillar; (c) verify with Sreeraman MG / Punit Kalro whether Netmeds Assistant or ZIP/JIIA actually use Boltic, and re-source.",
+      "files": ["kaily/index.html:362-368"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "ZIP stat drift across register",
+      "issue": "Page §04 uses Kaily-deck slide-26 numbers (88% positive engagement, 90% discovery chats, 100% catalog of 2.6M+ SKUs). index.html:314 still uses Accenture slide-37 numbers (88% +ve CX, 86% catalog, 2M+ chats). catalog/index.html:146 also uses old numbers. Both decks are valid sources, but the register cannot carry two different number sets for the same agent.",
+      "fix": "Decide which set is canonical (recommendation: the more recent Kaily deck — slide 26 dates after Accenture slide 37). Update index.html:314 and catalog/index.html:146 to match. Document the decision in a spec or memory note so future deck rotations don't re-introduce the drift.",
+      "files": ["index.html:314", "catalog/index.html:146", "kaily/index.html:194-198"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "Hero subhead",
+      "issue": "Hero says 'Two production agents in Reliance · ZIP on AJIO · JIIA on JioMart'. Per cross-register evidence (C2), Netmeds Assistant is also a Live RR Kaily deployment. The 'two' count is therefore an undercount.",
+      "fix": "Update hero count to 'three' and name Netmeds alongside ZIP and JIIA, OR explicitly scope the 'two' to 'two consumer-facing commerce agents' (excluding the support-agent class that Netmeds occupies). Either is honest; the current phrasing is not.",
+      "files": ["kaily/index.html:77"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "JIIA team list drift",
+      "issue": "Page §05 lists 8 build-team names + lead Ashish Chandorkar. catalog/index.html:147 lists 4 names ('Punit Kalro · Shreyash · Kapil · ashishchandorkar' — note the lowercase concatenated form). The catalog entry is also missing Abhay, Sukhpreet, Raj Pratap, Manish Kumar, Bijan Kundu.",
+      "fix": "Reconcile to a single canonical team list (the page version is more complete). Update catalog/index.html:147. Fix the lowercase 'ashishchandorkar' typo.",
+      "files": ["catalog/index.html:147", "kaily/index.html:282"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "missing §08 Sources block",
+      "issue": "Per audit-framework §1A canonical ordering, every page should end with a §08 Sources block listing every file cited (with paths and date stamps). The page uses inline source citations (good practice) but has no Sources card list at the end.",
+      "fix": "Add a §08 Sources section after §07 with cards for: (1) docs/kaily-notes-compilation/Kaily Master Deck | 2026 .pptx (50 slides), (2) docs/accenture-2026-04-16-compilation/all-slides-text.md slide 37, (3) docs/2026-04-30-farooq-mda-update-letter.md.",
+      "files": ["kaily/index.html (new section)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§06 footnote attribution",
+      "issue": "Footnote 'Brand portfolio framing reflects India distribution by Reliance Brands; Kaily is supplied by Fynd' adds an unsourced India-distribution-rights linkage. Reliance Brands does hold India distribution rights for these brands in real life, but the Kaily deck does not document this connection — the footnote silently tries to launder the brand-customer stories into RR-relevance.",
+      "fix": "If §06 is reworked per C1 option (b), drop the footnote. If §06 is dropped per C1 option (a), the footnote goes with it. Do not soft-pedal an unsourced linkage with an apologetic footnote.",
+      "files": ["kaily/index.html:319"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§06 H2",
+      "issue": "'Brands sold via AJIO running Kaily today' uses 'today' (banned per tone-of-voice §3 'no urgency, no hype · no \"now\", no \"today\"').",
+      "fix": "If §06 survives the C1 rework, replace 'today' with the actual date or scope: 'as of Apr-2026' or just delete it.",
+      "files": ["kaily/index.html:294"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§06 lede",
+      "issue": "'Three premium and lifestyle brands' — 'premium' is borderline marketing inflator; descriptive but not load-bearing.",
+      "fix": "If §06 survives, drop 'premium and lifestyle' or replace with the brand category (e.g., 'Three apparel and accessories brands').",
+      "files": ["kaily/index.html:295"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "no spec recorded",
+      "issue": "Page rebuilt without a written spec. Future audits cannot check 'spec compliance' and cannot record §9 Decisions for non-canonical choices (e.g., the §02 Capability framework instead of 'What's live').",
+      "fix": "Once C1/C2 fixes are applied, write a brief docs/kaily-spec.md capturing §3 page structure, §9 Decisions (e.g., D1 = §02 holds capability framework not module table; D2 = brand-customer references excluded for register-purity).",
+      "files": ["docs/ (new spec file)"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero stats verify cleanly: 88% positive engagement, 90% discovery chats, 100% catalog of 2.6M+ SKUs (Kaily deck slide 26); 40M+ JioMart catalog images on Gemini multimodal pipeline (slide previously documented + existing page).",
+    "Architecture diagram (§03) is a faithful rendering of Kaily deck slide 6's full-stack system with four-layer clarity — and uses the same boltic-style layered visual that Apex has already seen on /boltic.",
+    "Inline source citations under every section ('Source · Kaily Master Deck · 2026 · slide N') — meets the source-line discipline.",
+    "Tone-of-voice clean: no banned vocabulary, no exclamation marks, no emojis, dates in DD-MMM-YYYY format, Reliance/Fynd entity names cased correctly.",
+    "JIIA team named with full build list and Ashish Chandorkar as lead — names where they matter (per tone-of-voice rule 5).",
+    "Section labels contiguous §01 → §07; standard chrome (nav, crumb, footer, version pill v0.9.0) all present and correct."
+  ]
+}

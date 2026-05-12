@@ -1,0 +1,85 @@
+{
+  "page": "impetus/intelliloom/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 82,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 80,
+    "tone_of_voice": 80,
+    "honesty_register": 85,
+    "visual_completeness": 85,
+    "cross_page_consistency": 75
+  },
+  "findings": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero",
+      "issue": "Hero subline '(Fabric Platform)' duplicates the H1 'Fabric Platform.' — the parenthetical is meant to carry the alias (per spec App. B, the alias is 'IntelliMAF'). Currently it just repeats the title.",
+      "fix": "Change line 155 from '(Fabric Platform)' to '(IntelliLoom · IntelliMAF)' to carry the source-PDF brand alias the eyebrow already references.",
+      "files": ["impetus/intelliloom/index.html:155"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§04",
+      "issue": "§04 impact line 'compared to zero 6 months ago' is not in source PDF p.12; this is an unsourced inference about the pre-platform baseline.",
+      "fix": "Drop 'compared to zero 6 months ago', or cite the comparative baseline from a separate IntelliLoom status doc.",
+      "files": ["impetus/intelliloom/index.html:194"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "Section label '02 · What it does for you' uses second-person 'you' against tone-of-voice §2 institutional-voice default.",
+      "fix": "Rename to '02 · What it does'.",
+      "files": ["impetus/intelliloom/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04",
+      "issue": "§04 impact line uses '₹420Cr+' compact form while the §03 chip uses '₹420 crore+ in fabric orders' (long form). Same number, two visible formats on the same page.",
+      "fix": "Pick one rendering — either '₹420 Cr' (preferred per tone-of-voice §4) everywhere, or '₹420 crore' everywhere.",
+      "files": ["impetus/intelliloom/index.html:177", "impetus/intelliloom/index.html:194"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "page chrome (mega-menu)",
+      "issue": "Mega-menu omits 'SwapEasy' and 'TMS' entries that the home page mega-menu carries.",
+      "fix": "Resync mega-menu block on next chrome sweep.",
+      "files": ["impetus/intelliloom/index.html:106"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "page chrome",
+      "issue": "Page omits the impetus-lightbox CSS + script that PLM and UVP carry. No present consequence (this page has no Screenshots section per spec) but if a screenshot is later added to the data file, the renderer will not have lightbox support.",
+      "fix": "Either align the renderer to always emit the lightbox markup, or note in build_impetus.py that screenshot-bearing pages must include it. Not blocking.",
+      "files": ["impetus/intelliloom/index.html:94"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Section labels contiguous (hero / 02 / 03 / 04) — no gap left by the Updates-Shipped removal.",
+    "§03 chip strip is the strongest of the three pages — 7 verifiable rupee/tonne figures from source PDF p.12, lined up cleanly.",
+    "§04 What Improved callout pulls the source's 'Buyer can no longer accidentally over-order fabric' verbatim — preserves the regulator/governance framing the source uses.",
+    "Audience pills name 6 specific roles (Buyers, Planners, FCoE, Format Heads, Sourcing Managers, Mill Vendors) — the most specific of the three pages, and matches the source 'For:' line p.12 word-for-word.",
+    "Hero h1 'Fabric Platform.' + IMPETUS·INTELLILOOM·LIVE eyebrow correctly applies the simplified naming convention while preserving the technical alias for traceability."
+  ]
+}

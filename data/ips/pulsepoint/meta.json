@@ -1,0 +1,24 @@
+{
+  "slug": "pulsepoint",
+  "name": "Retail PulsePoint",
+  "tagline": "Sales-force optimisation \u00b7 pilot at 17 stores since 07 - Nov - 2025.",
+  "track": "samarth",
+  "track_role": "sub-ip",
+  "status": "Pilot",
+  "since": "2025-11-07",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/samarth#pulsepoint",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "store-ops",
+    "kpi"
+  ]
+}

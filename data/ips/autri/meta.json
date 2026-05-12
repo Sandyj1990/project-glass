@@ -1,0 +1,26 @@
+{
+  "slug": "autri",
+  "name": "AutRi \u00b7 Autonomous Robotics",
+  "tagline": "95%+ shelf compliance \u00b7 98% SKU recognition \u00b7 20-30K sq.ft per run.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Pilot",
+  "since": "2025-11-01",
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery"
+  ],
+  "value_chain": [
+    "move"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#autri",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "robotics",
+    "shelf",
+    "computer-vision"
+  ]
+}

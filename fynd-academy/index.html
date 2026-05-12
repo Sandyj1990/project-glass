@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fynd Academy · Reliance training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  .session-card { padding: 24px; background: white; border: 1px solid var(--border); border-radius: 16px; transition: border-color 0.15s, transform 0.15s; }
+  .session-card:hover { border-color: var(--ink); }
+  .ribbon { display: inline-flex; align-items: center; padding: 4px 10px; background: var(--ink); color: white; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; }
+  .format-pill { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; border: 1px solid; }
+  .format-online { background: #EFF6FF; color: #1D4ED8; border-color: #BFDBFE; }
+  .format-in-person { background: #F5F3FF; color: #6D28D9; border-color: #DDD6FE; }
+  .format-hybrid { background: #ECFEFF; color: #0E7490; border-color: #A5F3FC; }
+  .photo-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
+  .stat-tile { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .module-row { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-soft); }
+  .module-row:last-child { border-bottom: 0; }
+  .module-label { flex-shrink: 0; width: 180px; font-weight: 600; color: var(--ink); }
+  .audience-row td { padding: 12px 16px; border-bottom: 1px solid var(--border-soft); font-size: 14px; }
+  .audience-row:last-child td { border-bottom: 0; }
+  .crumb { font-size: 13px; color: var(--ink-muted); }
+  .crumb a { color: var(--ink-muted); }
+  .crumb a:hover { color: var(--ink); }
+  .crumb .sep { margin: 0 8px; color: var(--ink-soft); }
+  .cap-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- =====================================================================
+     HERO
+     ===================================================================== -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Fynd Academy</span></div>
+<div class="section-label mb-3">Frontier 05 · Academy · Live</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Fynd Academy.</h1>
+
+<p class="text-lg max-w-3xl mb-2" style="color: var(--ink-muted);">600+ Reliance employees trained across six sessions, Oct-2025 to Apr-2026.</p>
+<p class="text-lg max-w-3xl mb-2" style="color: var(--ink-muted);">Five Reliance entities: RIL Industries L&amp;D, RCP, Reliance Jewels, HSEF, Reliance Marketing.</p>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);"><strong>All sessions delivered on request from the Reliance side.</strong></p>
+
+<div class="cap-num mb-3" style="color: var(--ink-muted);">FY26 to-date · 13-Oct-2025 → 07-Apr-2026 · sourced from session descriptions in <span class="mono">docs/fynd-academy-compilation/</span></div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+  <div class="stat-tile"><div class="cap-num mb-1">Sessions delivered</div><div class="display-2 text-3xl" style="color: var(--ink);">6</div></div>
+  <div class="stat-tile"><div class="cap-num mb-1">Reliance entities served</div><div class="display-2 text-3xl" style="color: var(--ink);">5</div></div>
+  <div class="stat-tile"><div class="cap-num mb-1">Participants reached</div><div class="display-2 text-3xl" style="color: var(--ink);">600+</div></div>
+  <div class="stat-tile"><div class="cap-num mb-1">Average rating</div><div class="display-2 text-3xl" style="color: var(--ink);">4.6<span class="text-base ml-1" style="color: var(--ink-soft);">/ 5</span></div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#session-formats">01 · Session formats</a>
+<a href="#sessions">02 · Sessions</a>
+<a href="#audience-map">03 · Audience map</a>
+<a href="#curriculum">04 · Curriculum</a>
+<a href="#why-this-matters">05 · Why this matters</a>
+</div>
+</div>
+
+<!-- =====================================================================
+     §01 · Three session formats
+     ===================================================================== -->
+<section id="session-formats" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Session formats</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three session formats.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each format serves a different demand shape from the Reliance side. Selection is led by the requesting team.</p>
+
+<div class="grid md:grid-cols-3 gap-4">
+  <div class="card p-6">
+    <div class="cap-num mb-2" style="color: var(--accent);">Format A</div>
+    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Online masterclass</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">150-250 participants per session.</p>
+    <p class="text-sm" style="color: var(--ink);">Channel: <strong>RIL Industries L&amp;D.</strong> Used Oct + Nov 2025. Two sessions, 400+ participants total.</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2" style="color: var(--accent);">Format B</div>
+    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">In-person workshop</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">40-100 participants, single Reliance team.</p>
+    <p class="text-sm" style="color: var(--ink);">Requested by L&amp;D or business COO. Used Jan, Feb, Apr 2026 with Reliance Jewels, HSEF, Reliance Marketing.</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2" style="color: var(--accent);">Format C</div>
+    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Train-the-Trainer</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">RCP-anchored. Cohort certified to deliver downstream.</p>
+    <p class="text-sm" style="color: var(--ink);">Used Dec 2025. 40 participants (25 offline + 15 online). Rated 5 / 5.</p>
+  </div>
+</div>
+</div></section>
+
+<!-- =====================================================================
+     §02 · Sessions delivered
+     ===================================================================== -->
+<section id="sessions" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Sessions delivered · reverse-chronological</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six sessions, seven months.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each card lists the session date, audience, venue, format, headcount, and what was covered. Photos and materials shown where captured at source.</p>
+
+<div class="space-y-5 max-w-5xl">
+
+  <!-- 2026-04-07 · Claude Cowork · Reliance Marketing -->
+  <article class="session-card">
+    <div class="flex items-start justify-between gap-4 mb-3 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="ribbon">07 - Apr - 2026</span>
+        <span class="format-pill format-in-person">In-person · ~40 pax</span>
+      </div>
+      <span class="cap-num" style="color: var(--ink-soft);">06 of 06</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1" style="color: var(--ink);">Claude Cowork Power User Training</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">Reliance Marketing · Makers Chamber, Nariman Point</p>
+    <p class="text-sm mb-4" style="color: var(--ink);">Claude as agentic workspace. Marketing workflow automation, campaign asset generation, competitive analysis, browser-based research. Trainer manual covers the 5-Layer Architecture: Connectors → Instructions → Skills → Multi-Agent → Automation.</p>
+    <div class="card overflow-hidden mt-3" style="height: 80vh;">
+      <iframe src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-04-claude-cowork/claude-cowork-power-user-training.pdf" style="width:100%;height:100%;border:0;" title="Claude Cowork Power User Training · trainer manual"></iframe>
+    </div>
+    <div class="mt-4 flex items-center gap-3">
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-04-claude-cowork/claude-cowork-power-user-training.pdf" download class="btn-secondary text-xs" style="padding:8px 16px;">Download PDF (430 KB)</a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-04-claude-cowork/claude-cowork-power-user-training.pdf" target="_blank" rel="noopener" class="text-xs accent">Open in new tab →</a>
+    </div>
+  </article>
+
+  <!-- 2026-02-16 · HSEF -->
+  <article class="session-card">
+    <div class="flex items-start justify-between gap-4 mb-3 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="ribbon">16 - Feb - 2026</span>
+        <span class="format-pill format-in-person">In-person · ~50 pax</span>
+        <span class="cap-num" style="color: var(--accent); padding: 4px 10px; background: var(--accent-soft); border-radius: 999px;">Series · 1 of 3</span>
+      </div>
+      <span class="cap-num" style="color: var(--ink-soft);">05 of 06</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1" style="color: var(--ink);">GenAI Series · Session 1 of 3 · HSEF</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">HSEF · RCP</p>
+    <p class="text-sm mb-4" style="color: var(--ink);">First session of a three-part GenAI series. Covered AI fundamentals, agentic AI concepts, structured prompting, responsible AI usage. Hands-on demos across Gemini, Claude, ChatGPT, and Microsoft Copilot. Deep-dive on Microsoft Copilot for productivity and workflow acceleration, given HSEF's existing Copilot licences.</p>
+    <div class="grid md:grid-cols-3 gap-3">
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-02-hsef-genai/01-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-02-hsef-genai/01-session.jpg" alt="HSEF session" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-02-hsef-genai/02-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-02-hsef-genai/02-session.jpg" alt="HSEF session · hands-on" class="photo-thumb" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+  <!-- 2026-01-16 · Reliance Jewels -->
+  <article class="session-card">
+    <div class="flex items-start justify-between gap-4 mb-3 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="ribbon">16 - Jan - 2026</span>
+        <span class="format-pill format-in-person">In-person · ~100 pax · full day</span>
+      </div>
+      <span class="cap-num" style="color: var(--ink-soft);">04 of 06</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1" style="color: var(--ink);">Full-day AI Workshop · Reliance Jewels</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">Reliance Jewels · 09:30 – 18:00 · requested by <strong style="color: var(--ink);">Vincent Braganza, COO, Reliance Jewels</strong></p>
+    <p class="text-sm mb-4" style="color: var(--ink);">Full-day immersive workshop on applying AI to day-to-day business use cases. Deep-dive on Fynd AI tools (PixelBin for image optimisation and Boltic for workflow automation) applied to retail and enterprise workflows.</p>
+    <div class="grid md:grid-cols-3 gap-3">
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-01-reliance-jewels/01-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-01-reliance-jewels/01-session.jpg" alt="Reliance Jewels workshop" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-01-reliance-jewels/02-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-01-reliance-jewels/02-session.jpg" alt="Reliance Jewels workshop · hands-on" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-01-reliance-jewels/03-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2026-01-reliance-jewels/03-session.jpg" alt="Reliance Jewels workshop · Q&A" class="photo-thumb" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+  <!-- 2025-12-15 · RCP Train-the-Trainer -->
+  <article class="session-card">
+    <div class="flex items-start justify-between gap-4 mb-3 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="ribbon">15 - Dec - 2025</span>
+        <span class="format-pill format-hybrid">Hybrid · 25 offline + 15 online</span>
+        <span class="cap-num" style="color: #047857; padding: 4px 10px; background: #ECFDF5; border-radius: 999px;">Rated 5 / 5</span>
+      </div>
+      <span class="cap-num" style="color: var(--ink-soft);">03 of 06</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1" style="color: var(--ink);">GenAI Developer Training · Train-the-Trainer</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">RCP (Reliance Corporate Park)</p>
+    <p class="text-sm mb-4" style="color: var(--ink);">Kicked off the GenAI Developer Training Course with the first Train-the-Trainer session. Introduced LLMs vs LRMs, AI Agents, context engineering, and prompting techniques. Cohort certified to deliver downstream sessions.</p>
+    <div class="grid md:grid-cols-4 gap-3">
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/01-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/01-session.jpg" alt="RCP Train-the-Trainer · session" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/02-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/02-session.jpg" alt="RCP Train-the-Trainer · interaction" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/03-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/03-session.jpg" alt="RCP Train-the-Trainer · hands-on" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/04-session.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-12-rcp-train-the-trainer/04-session.jpg" alt="RCP Train-the-Trainer · cohort" class="photo-thumb" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+  <!-- 2025-11-12 · AI Agents -->
+  <article class="session-card">
+    <div class="flex items-start justify-between gap-4 mb-3 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="ribbon">12 - Nov - 2025</span>
+        <span class="format-pill format-online">Online · 250+ pax</span>
+        <span class="cap-num" style="color: #047857; padding: 4px 10px; background: #ECFDF5; border-radius: 999px;">Rated 4.4 / 5</span>
+      </div>
+      <span class="cap-num" style="color: var(--ink-soft);">02 of 06</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1" style="color: var(--ink);">AI Agents &amp; Agentic AI</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">RIL Industries L&amp;D</p>
+    <p class="text-sm" style="color: var(--ink);">Follow-up to the October session. Covered the evolution from traditional AI agents to agentic workflows, with live retail-focused demonstrations of enterprise automation and decision-making.</p>
+  </article>
+
+  <!-- 2025-10-13 · AI for Retail -->
+  <article class="session-card">
+    <div class="flex items-start justify-between gap-4 mb-3 flex-wrap">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="ribbon">13 - Oct - 2025</span>
+        <span class="format-pill format-online">Online · 150+ pax</span>
+        <span class="cap-num" style="color: #047857; padding: 4px 10px; background: #ECFDF5; border-radius: 999px;">Rated 4.75 / 5</span>
+      </div>
+      <span class="cap-num" style="color: var(--ink-soft);">01 of 06</span>
+    </div>
+    <h3 class="font-semibold text-xl mb-1" style="color: var(--ink);">AI for Retail &amp; Context Engineering</h3>
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">RIL Industries L&amp;D</p>
+    <p class="text-sm mb-4" style="color: var(--ink);">Context engineering, prompting techniques, and effective ChatGPT usage for solving real-world retail challenges. Hands-on demos and practical examples applied to day-to-day work.</p>
+    <div class="text-xs mb-3" style="color: var(--ink-muted);">
+      Ratings · Overall <strong style="color: var(--ink);">4.75 / 5</strong> · Instructor <strong style="color: var(--ink);">4.95 / 5</strong> · Delivery <strong style="color: var(--ink);">4.75 / 5</strong> · Relevance <strong style="color: var(--ink);">4.8 / 5</strong>
+    </div>
+    <div class="grid md:grid-cols-3 gap-3">
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-10-ai-for-retail/01-attendance.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-10-ai-for-retail/01-attendance.jpg" alt="Attendance view" class="photo-thumb" loading="lazy">
+      </a>
+      <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-10-ai-for-retail/02-attendance.jpg" target="_blank">
+        <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/2025-10-ai-for-retail/02-attendance.jpg" alt="Participant breakdown" class="photo-thumb" loading="lazy">
+      </a>
+    </div>
+  </article>
+
+</div>
+</div></section>
+
+<!-- =====================================================================
+     §03 · Audience map
+     ===================================================================== -->
+<section id="audience-map" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Audience map · five Reliance entities served</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Embedded with five Reliance entities.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each row is a Reliance team that has hosted at least one Academy session. Sessions count toward the FY26 600+ headline.</p>
+
+<div class="card max-w-5xl overflow-hidden">
+  <table class="w-full text-sm">
+    <thead>
+      <tr style="background: var(--bg-soft); border-bottom: 1px solid var(--border);">
+        <th class="text-left p-3 cap-num">Audience</th>
+        <th class="text-left p-3 cap-num">Sessions</th>
+        <th class="text-left p-3 cap-num">Format</th>
+        <th class="text-left p-3 cap-num">Headcount</th>
+        <th class="text-left p-3 cap-num">First touched</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="audience-row"><td><strong>RIL Industries L&amp;D</strong></td><td>2</td><td>Online</td><td>150+ then 250+</td><td>13 - Oct - 2025</td></tr>
+      <tr class="audience-row"><td><strong>RCP</strong> · Train-the-Trainer</td><td>1</td><td>Hybrid</td><td>40 (25 + 15)</td><td>15 - Dec - 2025</td></tr>
+      <tr class="audience-row"><td><strong>Reliance Jewels</strong></td><td>1</td><td>In-person</td><td>~100</td><td>16 - Jan - 2026</td></tr>
+      <tr class="audience-row"><td><strong>HSEF</strong></td><td>1 of 3-series</td><td>In-person</td><td>~50</td><td>16 - Feb - 2026</td></tr>
+      <tr class="audience-row"><td><strong>Reliance Marketing</strong></td><td>1</td><td>In-person</td><td>~40</td><td>07 - Apr - 2026</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="cap-num mt-6">Sources · session descriptions in <span class="mono">docs/fynd-academy-compilation/</span> per-month folders. Headcounts marked <span class="mono">~</span> are approximations pending confirmation from Raghav Mehra.</p>
+</div></section>
+
+<!-- =====================================================================
+     §04 · Curriculum
+     ===================================================================== -->
+<section id="curriculum" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Curriculum</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five modules. Drawn from delivered sessions.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Apex-readable list of what Academy actually teaches. New requesting teams can choose modules à la carte or take the full stack.</p>
+
+<div class="card max-w-5xl p-6">
+  <div class="module-row">
+    <div class="module-label">Foundations</div>
+    <div class="text-sm" style="color: var(--ink-muted);">LLMs vs LRMs · AI Agents · Agentic AI</div>
+  </div>
+  <div class="module-row">
+    <div class="module-label">Context engineering</div>
+    <div class="text-sm" style="color: var(--ink-muted);">Structured prompting across ChatGPT, Claude, Gemini, Microsoft Copilot</div>
+  </div>
+  <div class="module-row">
+    <div class="module-label">Tools in practice</div>
+    <div class="text-sm" style="color: var(--ink-muted);">PixelBin (image) · Boltic (workflow) · Claude Cowork (agentic workspace) · Microsoft Copilot (where licensed)</div>
+  </div>
+  <div class="module-row">
+    <div class="module-label">Responsible AI</div>
+    <div class="text-sm" style="color: var(--ink-muted);">Usage guardrails</div>
+  </div>
+  <div class="module-row">
+    <div class="module-label">Workplace use cases</div>
+    <div class="text-sm" style="color: var(--ink-muted);">Marketing workflows · image optimisation · decision support · documentation</div>
+  </div>
+</div>
+
+<div class="mt-10">
+  <div class="cap-num mb-3">Master deck · GenAI for Everyone · 2025 · reused across sessions</div>
+  <p class="text-sm max-w-3xl mb-4" style="color: var(--ink-muted);">Foundations + agentic AI + tools-in-practice. Trainers cherry-pick modules per audience.</p>
+  <div class="card overflow-hidden" style="height: 80vh;">
+    <iframe src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/_master/genai-for-everyone.pdf" style="width:100%;height:100%;border:0;" title="GenAI for Everyone · 2025 master deck"></iframe>
+  </div>
+  <div class="mt-4 flex items-center gap-3">
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/_master/genai-for-everyone.pdf" download class="btn-secondary text-xs" style="padding:8px 16px;">Download PDF (17 MB)</a>
+    <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-academy/_master/genai-for-everyone.pdf" target="_blank" rel="noopener" class="text-xs accent">Open in new tab →</a>
+  </div>
+</div>
+
+</div></section>
+
+<!-- =====================================================================
+     §05 · Why this matters
+     ===================================================================== -->
+<section id="why-this-matters" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Why this matters</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Adoption depends on trained users.</h2>
+
+<div class="max-w-3xl space-y-5 text-base" style="color: var(--ink);">
+  <p>Demand is Reliance-led. Sessions are requested by Reliance L&amp;D, COOs (<strong>Vincent Braganza, Reliance Jewels</strong>), and functional teams (<strong>HSEF Copilot enablement</strong>, <strong>Reliance Marketing</strong>). Average session rating to date: <strong>4.6 / 5</strong>. The Dec-2025 RCP Train-the-Trainer cohort rated <strong>5 / 5</strong> and now serves as a local-trainer base for further rollout.</p>
+</div>
+</div></section>
+
+<!-- =====================================================================
+     FOOTER
+     ===================================================================== -->
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

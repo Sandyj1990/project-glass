@@ -1,0 +1,25 @@
+{
+  "slug": "ai-design",
+  "name": "AI Design",
+  "tagline": "Trend \u2192 moodboard \u2192 linesheet \u2192 tech-pack \u00b7 same Claude Code skill as Trend-to-Design.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#ai-design",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "ai",
+    "design",
+    "claude-code"
+  ]
+}

@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI-Native Engineering · Reliance Retail × Fynd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  .stat-tile { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .bar { height: 6px; background: var(--accent-soft); border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+  .crumb { font-size: 13px; color: var(--ink-muted); }
+  .crumb a { color: var(--ink-muted); }
+  .crumb a:hover { color: var(--ink); }
+  .crumb .sep { margin: 0 8px; color: var(--ink-soft); }
+
+  /* Arc strip */
+  .arc-strip { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 0; }
+  .arc-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; position: relative; }
+  .arc-card.current { border-color: var(--accent); background: var(--accent-soft); }
+  .arc-connector { display: flex; align-items: center; justify-content: center; padding: 0 12px; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; font-size: 18px; font-weight: 600; }
+  .arc-year { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); letter-spacing: .08em; text-transform: uppercase; }
+  .arc-stage { font-weight: 700; font-size: 17px; color: var(--ink); margin-top: 4px; margin-bottom: 8px; }
+  .arc-card.current .arc-year { color: var(--accent); }
+  @media (max-width: 768px) {
+    .arc-strip { grid-template-columns: 1fr; gap: 12px; }
+    .arc-connector { transform: rotate(90deg); padding: 4px 0; }
+  }
+
+  /* Day timeline */
+  .day-card { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 18px; position: relative; }
+  .day-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .day-headline { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 6px; }
+  .day-detail { font-size: 13px; color: var(--ink-muted); }
+
+  /* Disciplines-collapse diagram (§03) */
+  .disc-diagram { background: white; border: 1px solid var(--border); border-radius: 18px; padding: 32px; }
+  .disc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; }
+  .disc-eyebrow.accent { color: var(--accent); }
+
+  .silo-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-bottom: 10px; }
+  .silo-card { background: var(--bg-soft); border: 1px solid var(--border-soft); border-radius: 10px; padding: 12px 8px; text-align: center; }
+  .silo-card .silo-name { display: block; color: var(--ink); font-weight: 600; font-size: 13px; margin-bottom: 2px; }
+  .silo-card .silo-tool { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-soft); display: block; }
+
+  .funnel-row { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; margin-bottom: 14px; }
+  .funnel-arrow { text-align: center; color: var(--ink-soft); font-size: 16px; line-height: 1; font-family: 'JetBrains Mono', monospace; }
+
+  .repo-box { background: var(--accent-soft); border: 1px solid #DDD6FE; color: var(--ink); border-radius: 14px; padding: 24px; }
+  .repo-box-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid #DDD6FE; }
+  .repo-box-path { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink); font-weight: 500; }
+  .repo-box-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; }
+  .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .skill-card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+  .skill-card .skill-disc { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 999px; margin-bottom: 8px; }
+  .skill-card .skill-name { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink); font-weight: 500; margin-bottom: 4px; word-break: break-word; }
+  .skill-card .skill-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.4; }
+
+  .invoker-strip { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 22px 0 6px; flex-wrap: wrap; }
+  .invoker { display: inline-flex; align-items: center; padding: 8px 14px; border: 1px solid var(--border); border-radius: 999px; font-size: 13px; color: var(--ink); background: var(--bg-soft); }
+  .invoker.agent { background: var(--accent-soft); color: var(--accent); border-color: #DDD6FE; font-weight: 500; }
+  .invoker-arrow { color: var(--ink-soft); font-family: 'JetBrains Mono', monospace; }
+  .invoker-caption { text-align: center; font-size: 13px; color: var(--ink-muted); margin-top: 4px; }
+
+  @media (max-width: 768px) {
+    .silo-row, .funnel-row { grid-template-columns: repeat(4, 1fr); }
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .disc-diagram { padding: 20px; }
+    .repo-box { padding: 18px; }
+  }
+
+  /* Tool chips */
+  .tool-chip { display: inline-flex; align-items: center; padding: 6px 11px; border: 1px solid var(--border); border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink); background: white; }
+  .tool-chip .count { color: var(--ink-muted); margin-left: 6px; font-size: 11px; }
+
+  /* Proof card */
+  .proof-wrap { background: var(--accent-soft); border: 1px solid #DDD6FE; color: var(--ink); border-radius: 16px; padding: 36px 32px; }
+  .proof-wrap .proof-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+  .proof-wrap .proof-headline { font-weight: 700; font-size: 24px; line-height: 1.3; margin-top: 10px; color: var(--ink); }
+  .proof-wrap a { color: var(--accent); }
+  .proof-wrap a:hover { color: var(--ink); }
+  .proof-wrap .day-card { background: white; border-color: var(--border); }
+  .proof-wrap .day-headline { color: var(--ink); }
+  .proof-wrap .day-detail { color: var(--ink-muted); }
+  .proof-wrap .day-label { color: var(--accent); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- =====================================================================
+     HERO
+     ===================================================================== -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">AI-Native Engineering</span></div>
+<div class="section-label mb-3">AI-Native · How Fynd builds now</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Engineering, AI-native.</h1>
+
+<p class="text-lg max-w-3xl mb-2" style="color: var(--ink-muted);">What used to take a team weeks now ships in days. The repo replaces the wiki.</p>
+<p class="text-lg max-w-3xl mb-8" style="color: var(--ink);"><strong>Code is cheap. Judgment, taste, and verification are the new constraints.</strong></p>
+
+<!-- Arc strip -->
+<div class="arc-strip mb-8">
+  <div class="arc-card">
+    <div class="arc-year">~2021</div>
+    <div class="arc-stage">Autocomplete</div>
+    <p class="text-sm" style="color: var(--ink-muted);">Engineer types; the tool suggests the next line. Faster typing, same job, same SDLC.</p>
+  </div>
+  <div class="arc-connector">→</div>
+  <div class="arc-card">
+    <div class="arc-year">~2023</div>
+    <div class="arc-stage">IDE pair programming</div>
+    <p class="text-sm" style="color: var(--ink-muted);">Engineer chats with the model inside the IDE. Pair-programmed features, debugging, code exploration. Cycle weeks → days.</p>
+  </div>
+  <div class="arc-connector">→</div>
+  <div class="arc-card current">
+    <div class="arc-year">2025-26 · Current</div>
+    <div class="arc-stage">Agent-led SDLC</div>
+    <p class="text-sm" style="color: var(--ink);">Engineer briefs an agent; the agent plans, codes, tests, and ships. Engineer steers, reviews, and owns the outcome.</p>
+  </div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+  <div class="stat-tile"><div class="cap-num mb-1">Org-wide AI fluency</div><div class="display-2 text-3xl accent">65%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">607 of 929 report Fluent or Advanced</div></div>
+  <div class="stat-tile"><div class="cap-num mb-1">Daily AI use</div><div class="display-2 text-3xl" style="color: var(--ink);">73%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">675 of 929 use AI tools every day</div></div>
+  <div class="stat-tile"><div class="cap-num mb-1">Hours saved per week · Claude</div><div class="display-2 text-3xl" style="color: var(--ink);">7,989</div><div class="text-xs mt-1" style="color: var(--ink-muted);">235 active users · ~34h each</div></div>
+  <div class="stat-tile"><div class="cap-num mb-1">HireFirst built in</div><div class="display-2 text-3xl" style="color: var(--ink);">&lt;3 days</div><div class="text-xs mt-1" style="color: var(--ink-muted);">1 engineer + AI coding agent</div></div>
+</div>
+</div></section>
+
+<!-- =====================================================================
+     §01 · What changed in the engineer's day
+     ===================================================================== -->
+<section class="py-14 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · What changed in the engineer's day</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">From typing the next line, to briefing an agent.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Three stages, four years. Each shift redefined what the engineer actually does, and compressed the cycle from weeks to days.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--ink-muted); letter-spacing: .08em;">STAGE 01 · ~2021</div>
+    <div class="font-semibold text-lg mb-3" style="color: var(--ink);">Autocomplete</div>
+    <div class="space-y-3 text-sm">
+      <div>
+        <div class="cap-num mb-1">Then</div>
+        <p style="color: var(--ink);">Engineer types every line. Tool suggests function templates and the next-line completion.</p>
+      </div>
+      <div>
+        <div class="cap-num mb-1">Now</div>
+        <p style="color: var(--ink-muted);">Treated as table-stakes. No engineering team turns it off; no team builds a feature around it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--ink-muted); letter-spacing: .08em;">STAGE 02 · ~2023</div>
+    <div class="font-semibold text-lg mb-3" style="color: var(--ink);">IDE pair programming</div>
+    <div class="space-y-3 text-sm">
+      <div>
+        <div class="cap-num mb-1">Then</div>
+        <p style="color: var(--ink);">Engineer chats with the model in the IDE. Pair-programs features, debugs, explores unfamiliar code.</p>
+      </div>
+      <div>
+        <div class="cap-num mb-1">Now</div>
+        <p style="color: var(--ink-muted);">Standard daily workflow on Cursor, Claude Code, and Codex across Fynd. Cycle for routine features compresses from weeks to days.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-6" style="border-color: var(--accent); background: var(--accent-soft);">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">STAGE 03 · 2025-26 · CURRENT</div>
+    <div class="font-semibold text-lg mb-3" style="color: var(--ink);">Agent-led SDLC</div>
+    <div class="space-y-3 text-sm">
+      <div>
+        <div class="cap-num mb-1" style="color: var(--accent);">What it looks like</div>
+        <p style="color: var(--ink);">Engineer briefs an agent with a problem statement. Agent plans, writes the code, runs the tests, opens the PR. Engineer steers, reviews, and owns the outcome.</p>
+      </div>
+      <div>
+        <div class="cap-num mb-1" style="color: var(--accent);">Proof</div>
+        <p style="color: var(--ink);">A single engineer + an AI coding agent built <a href="/hirefirst" class="emp-link" style="color: var(--accent);">HireFirst</a> end-to-end in under 3 days.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<p class="text-base mt-8 max-w-3xl" style="color: var(--ink);"><strong>A single engineer + an agent can now ship what previously took a feature team weeks.</strong> The constraint is no longer headcount. It is the clarity of the brief and the strength of the verification step.</p>
+</div></section>
+
+<!-- =====================================================================
+     §02 · Ten principles · the operating mandate
+     ===================================================================== -->
+<section class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3" id="principles">02 · The operating mandate</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Ten principles · one operating mandate.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Issued to all of Product Engineering: Dev, PM, Program, QA. Repos, knowledge hubs, agent design, team shape, role boundaries, QA automation, architecture restraint, curiosity.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 01</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Single repo per product. Easy to clone, set up, contribute.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">All microservices for a product live in one Git repo. Long-term target: ~25 repos for the entire company. Microservices architecture preserved. The change is purely at the code-repo level.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">PMs contribute at SDE-1 level with AI assist; designers ship UI/UX changes directly.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 02</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Repo as the central knowledge hub.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">All docs, skills, rules, hooks, runtime versions live inside the repo under <span class="mono">/docs</span>. Markdown by default. No more scattered Quip docs, Jira tickets, or PDFs.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">The repo becomes the indexed knowledge base for Cursor and Claude Code. QA, Program, and Product query the codebase directly instead of routing through engineers.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 03</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Stop coding APIs. Start coding agents.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">CRUD is now the "hello world" prompt. Anyone with clear English can generate a CRUD app in under an hour. Engineering attention shifts to autonomous systems that reason, decide, and act.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">Build on LangGraph, OpenAI Agents, CrewAI. Don't reinvent agent infrastructure.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 04</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Feature-based teams, not service-based teams.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">No more frontend / backend / OMS silos. One team owns a feature end-to-end: problem definition, design, development, integration, testing, release, post-launch impact.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">End-to-end ownership. Clear accountability. Real outcomes.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 05</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Go beyond role boundaries.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">Boundaries between Dev, QA, PM, and Program are dissolving. AI lowered the barrier to execution across frontend, backend, testing, automation, documentation.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">PMs and Program Managers prototype with AI. Engineers engage directly with customers and shape solutions, not just implement tickets.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 06</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Code is cheap. Ownership, deep thinking, and speed matter.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">Generating code is no longer a scarce skill. Scarce: clarity of thought, strong judgment, deep problem understanding, the ability to move fast with conviction.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">Either expand the role beyond defined boundaries, or specialise in problems AI cannot easily solve: deep performance engineering, advanced security analysis, large-scale architecture, complex domain challenges built on non-public knowledge.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 07</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">QA moves beyond manual work.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">Quality engineer becomes Quality + automation engineer. Automation that used to take weeks now takes 15 minutes with AI.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">Building has become easy; verification is still the unsolved phase of SDLC. Manual-only work is counterproductive.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 08</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Keep architecture simple until scale earns the complexity.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">No Kafka or Redis on new projects without real scale. Speed and clarity beat architectural sophistication in early stages.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">Optimise fundamentals first. If database indexes aren't tuned, adding Redis just masks inefficiency. Complexity is earned, not assumed.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 09</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Don't fall for the "AI will make me forget how to code" hoax.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">Same argument once said washing machines would make people forget how to wash clothes by hand. The outcome and the value matter, not the manual effort behind it.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">Most systems aren't written in Assembly or C any more, despite their efficiency. AI is the next step in the same evolution. At core, the work is problem-solving; code is a tool.</p>
+  </div>
+
+  <div class="card p-6">
+    <div class="mono text-xs mb-2" style="color: var(--accent); letter-spacing: .08em;">PRINCIPLE 10</div>
+    <div class="font-semibold text-lg mb-2" style="color: var(--ink);">Be curious. Ask AI everything. No question is too stupid.</div>
+    <p class="text-sm mb-2" style="color: var(--ink);">AI is endlessly patient and available 24/7. The fastest way to close a knowledge gap is to ask, not to pretend or to spend hours searching.</p>
+    <p class="text-sm" style="color: var(--ink-muted);">Learning runs both ways: as people ask AI questions, they teach it their codebase, product, and constraints. The people who grow fastest are the ones who keep asking until they truly understand.</p>
+  </div>
+
+</div>
+</div></section>
+
+<!-- =====================================================================
+     §03 · The repo is now the operating system
+     ===================================================================== -->
+<section class="py-14 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3" id="repo-os">03 · The repo is the operating system</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Disciplines collapse into skills.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">One repo per product. Frontend, backend, QA, SRE, UI/UX, DevOps, security, docs. What used to be eight teams with eight stacks now live as skills inside the repo. Any engineer or agent invokes any skill.</p>
+
+<!-- Diagram -->
+<div class="disc-diagram mb-8">
+
+  <!-- Yesterday: silo row -->
+  <div class="disc-eyebrow">Yesterday · 8 disciplines · 8 silos · 8 toolchains</div>
+  <div class="silo-row">
+    <div class="silo-card"><span class="silo-name">Frontend</span><span class="silo-tool">React · CSS</span></div>
+    <div class="silo-card"><span class="silo-name">Backend</span><span class="silo-tool">API · DB</span></div>
+    <div class="silo-card"><span class="silo-name">QA</span><span class="silo-tool">JIRA · manual</span></div>
+    <div class="silo-card"><span class="silo-name">SRE</span><span class="silo-tool">runbooks</span></div>
+    <div class="silo-card"><span class="silo-name">UI / UX</span><span class="silo-tool">Figma</span></div>
+    <div class="silo-card"><span class="silo-name">DevOps</span><span class="silo-tool">CI · deploy</span></div>
+    <div class="silo-card"><span class="silo-name">Security</span><span class="silo-tool">audits · scans</span></div>
+    <div class="silo-card"><span class="silo-name">Docs</span><span class="silo-tool">Confluence</span></div>
+  </div>
+
+  <!-- Funnel -->
+  <div class="funnel-row">
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+    <div class="funnel-arrow">↓</div>
+  </div>
+
+  <!-- Today: the repo -->
+  <div class="disc-eyebrow accent">Today · the product repo</div>
+  <div class="repo-box">
+    <div class="repo-box-header">
+      <span class="repo-box-path">product-repo/</span>
+      <span class="repo-box-tag">.claude/skills/  ·  /docs</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <span class="skill-disc">Frontend</span>
+        <div class="skill-name">component-patterns.md</div>
+        <div class="skill-desc">Design tokens, layout primitives, accessibility rules</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">Backend</span>
+        <div class="skill-name">api-conventions.md</div>
+        <div class="skill-desc">Endpoint shapes, error handling, validation, versioning</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">QA</span>
+        <div class="skill-name">evals/</div>
+        <div class="skill-desc">Scenario tests + golden cases that gate ship</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">SRE</span>
+        <div class="skill-name">runbooks/</div>
+        <div class="skill-desc">Outage response, deploys, rollbacks, on-call drills</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">UI / UX</span>
+        <div class="skill-name">design-system/</div>
+        <div class="skill-desc">Colour, type, spacing · single source for every screen</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">DevOps</span>
+        <div class="skill-name">deploy-pipeline.md</div>
+        <div class="skill-desc">CI rules, env promotion, ship-gate criteria</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">Security</span>
+        <div class="skill-name">security-rules.md</div>
+        <div class="skill-desc">Secret handling, auth patterns, dependency policy</div>
+      </div>
+      <div class="skill-card">
+        <span class="skill-disc">Docs</span>
+        <div class="skill-name">CLAUDE.md  ·  specs/</div>
+        <div class="skill-desc">Repo orientation, spec template, doc conventions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invokers -->
+  <div class="invoker-strip">
+    <div class="invoker">Any engineer</div>
+    <div class="invoker-arrow">·</div>
+    <div class="invoker">Any PM / QA / designer</div>
+    <div class="invoker-arrow">·</div>
+    <div class="invoker agent">Any agent</div>
+  </div>
+  <div class="invoker-caption">All read from the same skills. The repo is the contract.</div>
+
+</div>
+
+</div></section>
+
+<!-- =====================================================================
+     §04 · How it shows up · adoption + HireFirst proof
+     ===================================================================== -->
+<section class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3" id="proof">04 · How it shows up</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Adoption, measured. Outcome, demonstrated.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Two internal surveys, 1,168 responses four months apart. The numbers below are the baseline pulse. The HireFirst proof point is the existence proof.</p>
+
+<!-- Adoption stat tiles -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+  <div class="card p-4"><div class="cap-num mb-1">Org-wide AI fluency</div><div class="display-2 text-3xl accent">65%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">607 of 929 report Fluent or Advanced</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Daily AI use</div><div class="display-2 text-3xl" style="color: var(--ink);">73%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">675 of 929 use AI tools every day</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Hours saved per week · Claude</div><div class="display-2 text-3xl" style="color: var(--ink);">7,989</div><div class="text-xs mt-1" style="color: var(--ink-muted);">235 active users · ~34h each</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Leadership clarity</div><div class="display-2 text-3xl" style="color: var(--ink);">73%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">682 of 929 agree direction is clear</div></div>
+</div>
+
+<!-- Bar charts -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+
+  <div class="card p-6">
+    <div class="cap-num mb-3">AI fluency distribution · 929 responses</div>
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Fluent · uses AI tools regularly</span><span class="mono" style="color: var(--ink-muted);">476 · 51%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 51%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Developing · uses AI for specific tasks</span><span class="mono" style="color: var(--ink-muted);">263 · 28%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 28%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Advanced · builds with AI APIs / fine-tunes</span><span class="mono" style="color: var(--ink-muted);">131 · 14%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 14%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Just getting started</span><span class="mono" style="color: var(--ink-muted);">58 · 6%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 6%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-6">
+    <div class="cap-num mb-3">Claude surface · daily users · 239 responses</div>
+    <div class="space-y-3">
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Claude Chat · research, writing, analysis</span><span class="mono" style="color: var(--ink-muted);">162 · 68%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 68%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Claude Code · feature dev, debugging, refactoring</span><span class="mono" style="color: var(--ink-muted);">156 · 65%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 65%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Claude Cowork · desktop automation, reports</span><span class="mono" style="color: var(--ink-muted);">55 · 23%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 23%;"></div></div>
+      </div>
+      <div>
+        <div class="flex justify-between text-sm mb-1"><span style="color: var(--ink);">Claude Chrome · browser automation, research</span><span class="mono" style="color: var(--ink-muted);">56 · 23%</span></div>
+        <div class="bar"><div class="bar-fill" style="width: 23%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tool mix as chips -->
+<div class="card p-6 mb-12">
+  <div class="cap-num mb-3">Tools in active use · mention counts across 929 respondents</div>
+  <div class="mb-4">
+    <div class="cap-num mb-2" style="color: var(--ink);">External</div>
+    <div class="flex flex-wrap gap-2">
+      <span class="tool-chip">ChatGPT <span class="count">570</span></span>
+      <span class="tool-chip">Cursor <span class="count">424</span></span>
+      <span class="tool-chip">Gemini <span class="count">268</span></span>
+      <span class="tool-chip">Claude <span class="count">221</span></span>
+      <span class="tool-chip">Perplexity <span class="count">88</span></span>
+      <span class="tool-chip">Lovable <span class="count">80</span></span>
+      <span class="tool-chip">Antigravity <span class="count">52</span></span>
+      <span class="tool-chip">Codex <span class="count">43</span></span>
+    </div>
+  </div>
+  <div>
+    <div class="cap-num mb-2" style="color: var(--ink);">Fynd-built · used internally</div>
+    <div class="flex flex-wrap gap-2">
+      <a href="/boltic" class="tool-chip" style="color: var(--accent);">Boltic <span class="count">300</span></a>
+      <a href="/pixelbin" class="tool-chip" style="color: var(--accent);">PixelBin <span class="count">192</span></a>
+      <a href="/kaily" class="tool-chip" style="color: var(--accent);">Kaily <span class="count">71</span></a>
+      <a href="/ratl" class="tool-chip" style="color: var(--accent);">Ratl <span class="count">53</span></a>
+      <a href="/pixelbin/glamar" class="tool-chip" style="color: var(--accent);">GlamAR <span class="count">32</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- HireFirst proof point -->
+<div class="proof-wrap">
+  <div class="proof-eyebrow">Proof point · agent-led SDLC end-to-end</div>
+  <div class="proof-headline mb-2"><a href="/hirefirst">HireFirst</a> (Reliance HR Tech platform) built end-to-end by 1 engineer + an AI coding agent in &lt;3 days.</div>
+  <p class="text-base mb-6" style="color: var(--ink-muted);">Prompted by an MM Sir WhatsApp message describing the platform. Live on SIT today; production sign-off targeted 15-Jun-2026 (RIL HR Tech). Five capabilities wired end-to-end across JD creation, sourcing, screening, interview design, and final decision support.</p>
+
+  <!-- The how: brief, builders, scope -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+    <div class="day-card">
+      <div class="day-label">The brief</div>
+      <div class="day-headline">A single WhatsApp message from MM Sir</div>
+      <div class="day-detail">One platform statement: what the system should do for Reliance hiring. No spec deck, no kick-off call.</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">The builders</div>
+      <div class="day-headline">1 engineer + 1 AI coding agent</div>
+      <div class="day-detail">The engineer steered, reviewed, and shipped. The agent traversed the full AI Software Development Lifecycle: plan, code, test, integrate.</div>
+    </div>
+    <div class="day-card">
+      <div class="day-label">The result</div>
+      <div class="day-headline">&lt;3 days · five capabilities live on SIT</div>
+      <div class="day-detail">JD creation · sourcing · shortlisting · interview design · final decision support. All five wired end-to-end and demo-able.</div>
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <a href="/hirefirst" class="inline-flex items-center gap-2 text-sm font-medium" style="color: var(--accent); border-bottom: 1px solid var(--accent); padding-bottom: 2px;">See the HireFirst page →</a>
+  </div>
+</div>
+
+<p class="text-base mt-8 max-w-3xl" style="color: var(--ink);">HireFirst is one platform built this way. The target for Fynd Engineering itself: <strong><a href="/autonomous" style="color: var(--accent);">L5 on the autonomy framework</a>: a fully autonomous SDLC.</strong> Engineer sets intent. Agents plan, code, test, ship. Humans intervene only at the boundary.</p>
+
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

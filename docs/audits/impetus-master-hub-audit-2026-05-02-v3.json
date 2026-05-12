@@ -1,0 +1,106 @@
+{
+  "page": "impetus/master-hub/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 76,
+  "grade": "C+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 85,
+    "source_traceability": 88,
+    "tone_of_voice": 70,
+    "honesty_register": 75,
+    "visual_completeness": 82,
+    "cross_page_consistency": 75
+  },
+  "notes": "Visual phase partially run: dev server unreachable (net::ERR_EMPTY_RESPONSE) during the audit. CDN spot-check for master-hub/screenshot-030-v2.jpg returned 200. Phase E section-label contiguity verified by direct grep on the file (only-04 + 05; no gap). Lightbox markup + script present.",
+  "findings": [
+    {
+      "id": "MH-1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§02 What it does for you",
+      "issue": "Line 180 uses first-person 'we' twice: 'This quarter, we started validating every partner's data at the gate ...' and 'We also connected 13 PLM masters and 5 mapping tables...'. tone-of-voice §2 Person rule: 'Never \"we\", \"our team\", \"our people\" in user-facing copy. They read as Fynd self-promotion.'",
+      "fix": "Rewrite to impersonal/institutional voice. e.g. 'This quarter, the platform began validating every partner's data at the gate...' and 'It also connects 13 PLM masters and 5 mapping tables from PLM (Product Lifecycle Management), so information is richer and more complete at the source.'",
+      "files": ["impetus/master-hub/index.html:177", "impetus/master-hub/index.html:180"],
+      "auto_fixable": true
+    },
+    {
+      "id": "MH-2",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "Hero · eyebrow vs H1 mismatch",
+      "issue": "Hero eyebrow (line 162) reads 'IMPETUS · MASTER HUB · LIVE'. H1 (line 163) reads 'Master Data Platform.' The recent rename told sub-platform pages that 'master-hub is Master Data Platform'. The H1 was renamed; the eyebrow was not. An Apex reviewer reads the two-name conflict in the hero zone first.",
+      "fix": "Update the eyebrow to 'IMPETUS · MASTER DATA PLATFORM · LIVE' so it matches the H1 and the impetus/index.html card title.",
+      "files": ["impetus/master-hub/index.html:162"],
+      "auto_fixable": true
+    },
+    {
+      "id": "MH-3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 What it does for you",
+      "issue": "Opener (line 174) 'Think of this as the \"single source of truth\" for all product and supplier information' uses a conversational/explanatory cadence not in the register. tone-of-voice §1 rule 5: 'Numbers up front. Names up front. Verbs early. No throat-clearing openers.'",
+      "fix": "Open with the fact: 'Single source of truth for product and supplier data. Validation runs at every ingestion point; downstream systems only receive data that has passed the gate.' (Tagline can move to lede.)",
+      "files": ["impetus/master-hub/index.html:174"],
+      "auto_fixable": false
+    },
+    {
+      "id": "MH-4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "Hero · audience pills",
+      "issue": "Audience pill #4 (line 166) reads 'Anyone whose downstream work breaks when master data is wrong' — a 12-word colloquial sentence in a pill slot designed for 1-3 word role labels (cf. tone-of-voice §5 Hero subhead pattern, where audience pills carry compact role labels).",
+      "fix": "Replace with the canonical downstream-consumer roles: 'Procuro · IntelliPack · Cortex · Format Heads' or simply drop and rely on the §02 prose to name them.",
+      "files": ["impetus/master-hub/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "MH-5",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 Expected metric impact",
+      "issue": "'Every data error caught at the gate is one less fire to fight downstream.' (line 202-203) — the 'fire to fight' metaphor is marketing-deck cadence. Register prefers verifiable verbs.",
+      "fix": "'Every data error caught at the gate is one less downstream PO failure or warehouse rejection.' Names the actual failure modes.",
+      "files": ["impetus/master-hub/index.html:202"],
+      "auto_fixable": true
+    },
+    {
+      "id": "MH-6",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "Hero status pill",
+      "issue": "Hero pill = 'Live' but the §03 Coverage strip shows '3 partners live (AJIO, LivSmart, Fynd Create)' against a roster of 5 brands listed in the next chip ('Trends · Azorte · Yousta · Shein · AJIO'). The remaining 2 (Shein) and the format wording (Trends, Azorte, Yousta count as a separate entity per the YAML) imply incomplete coverage. 'Live' is defensible (some partners are live) but a finer-grained pill ('Live · partial coverage' or 'Live · 3 of 5 partners') would survive Apex challenge.",
+      "fix": "Add an inline qualifier next to the Live pill: 'Live · 3 partners of 5 in scope'. Source the count line below the chip strip.",
+      "files": ["impetus/master-hub/index.html:168", "impetus/master-hub/index.html:186"],
+      "auto_fixable": false
+    },
+    {
+      "id": "MH-7",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 Screenshots captions",
+      "issue": "Caption alt texts (line 213, line 220) use the renderer's split-caption artefact: 'Supplier master· 3,334 suppliers...' and 'Upload history· Site Master upload tracking...'. No space before the '·' separator.",
+      "fix": "Same fix as cortex CTX-4 — sweep build_impetus.py caption split logic.",
+      "files": ["impetus/master-hub/index.html:213", "impetus/master-hub/index.html:220"],
+      "auto_fixable": true
+    },
+    {
+      "id": "MH-8",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "Cross-page · impetus index 'Plan' band",
+      "issue": "impetus/index.html line 248 'Plan' band lists platforms as 'NextWave (trends) · Cortex (Command Center) · Master-Hub (CMT) · Analytics (SuperSet)'. The card headline at line 166 uses 'Master Data Platform' but the value-chain band reverts to 'Master-Hub (CMT)'. Two names for the same surface circulate on the same parent page.",
+      "fix": "Update the value-chain band on impetus/index.html:248 to 'Master Data Platform (CMT)' or just 'Master Data Platform' to match the card title and the page H1.",
+      "files": ["impetus/index.html:248"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Section labels are contiguous (hero · 02 · 03 · 04 · 05) — no gap from the deleted §05 Updates Shipped + Sources sections.",
+    "§04 What improved is name-naming and concrete: 'Procuro ingestion failures', 'IntelliPack rejections', 'Specialist buyers (ODM)', 'Format teams' — every claim points at a real downstream consumer.",
+    "Screenshot URLs use the -v2/-v2-b versioned pattern; both load (CDN spot-check 200); lightbox markup + script present.",
+    "Eyebrow + status-pill + chip strip carry no Accenture attributions or stripped-source residue (the Accenture-stripping pass landed cleanly).",
+    "Cortex eyebrow + sub-section label disambiguate it from Cortex (Planning Engine) cleanly — no mega-menu drift on Master Data Platform on the cortex page or vice versa."
+  ]
+}

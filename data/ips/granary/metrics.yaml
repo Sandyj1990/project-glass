@@ -1,0 +1,39 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: skus_modeled
+    label: SKUs modeled
+    value: 12K
+    definition: Per ML forecasting cycle
+    source: Granary ops
+    confidence: live
+  - id: stores_modeled
+    label: Stores modeled
+    value: 4K
+    definition: Per ML forecasting cycle
+    source: Granary ops
+    confidence: live
+  - id: rows_processed
+    label: Rows processed per cycle
+    value: 48M
+    definition: Per LightGBM run
+    source: Granary data spine
+    confidence: live
+  - id: mape
+    label: MAPE
+    value: 41%
+    definition: 16-loc validation · down from 55%+ baseline · L4 target ~25-30%
+    source: Granary ML team
+    confidence: live
+  - id: autonomous_decisions
+    label: Autonomous decisions
+    value: 70-80%
+    definition: Replenishment + assortment
+    source: Granary ops
+    confidence: live
+  - id: shelving_events_reduction
+    label: Shelving events reduction
+    value: −28%
+    definition: Phase 1 · 10 Mumbai stores
+    source: Assortment Intelligence
+    confidence: live

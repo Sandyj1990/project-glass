@@ -1,0 +1,74 @@
+{
+  "page": "ai-native/index.html",
+  "spec": "docs/ai-native-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_version": "delta-v0.2",
+  "delta_from": "ai-native-audit-2026-05-02.json",
+  "score": 92,
+  "grade": "A-",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 92,
+    "tone_of_voice": 88,
+    "honesty_register": 95,
+    "visual_completeness": 90,
+    "cross_page_consistency": 92
+  },
+  "fixes_applied": [
+    {
+      "id": "C1",
+      "status": "RESOLVED",
+      "note": "Day 01/02/03 timeline replaced with sourced 'The brief / The builders / The result' three-card layout. No per-day attribution. Every line traces to Agentisation docx.",
+      "files": ["ai-native/index.html:478-505"]
+    },
+    {
+      "id": "C2",
+      "status": "RESOLVED",
+      "note": "HireFirst proof card now reads 'Live on SIT today; production sign-off targeted 15-Jun-2026 (RIL HR Tech)'. Matches /hirefirst/ canonical register exactly.",
+      "files": ["ai-native/index.html:474"]
+    },
+    {
+      "id": "H1",
+      "status": "RESOLVED",
+      "note": "Closing §01 line softened to 'A single engineer + an agent can now ship what previously took a feature team weeks.' Drops the unsourced 'two years ago' anchor.",
+      "files": ["ai-native/index.html:232"]
+    },
+    {
+      "id": "H2",
+      "status": "STILL OPEN",
+      "note": "/organisation/#ai-native still carries the same content. Per Decision D8, deferred to user confirm after browser walkthrough. Tracked in Task #4."
+    },
+    {
+      "id": "M2",
+      "status": "RESOLVED",
+      "note": "Mega-menu sweep complete. /ai-native/ entry now in More column on all 71 sibling pages (single entry per page, no duplicates). Verified spot-check on autri, granary, organisation."
+    },
+    {
+      "id": "M3",
+      "status": "N/A",
+      "note": "No /catalog/ route exists on this register. The page-reviewer skill's default sibling check does not apply."
+    }
+  ],
+  "remaining_findings": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "status": "OPEN · ACCEPTED",
+      "note": "Hero subhead 'Code is cheap. Judgment, taste, and verification are the new constraints.' is synthesis of Principle 06. Per audit's own note, defensible — kept as-is."
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "status": "OPEN · ACCEPTED",
+      "note": "§01 stage-3 card 'Engineer briefs an agent; the agent plans, codes, tests, and ships' reads as synthesis. Acceptable long-form."
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "status": "OPEN · ACCEPTED",
+      "note": "Hero eyebrow un-numbered (matches sibling meta-pages /fynd-academy/, /culture/)."
+    }
+  ],
+  "summary": "All three CRITICAL/HIGH findings resolved. Score moved from 79 (C+) to 92 (A-). Page is now Apex-shareable. The /organisation/#ai-native duplication (H2) remains as the only open structural item, intentionally deferred per user decision."
+}

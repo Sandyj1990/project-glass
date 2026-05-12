@@ -1,0 +1,238 @@
+# Cortex / Command Center
+# Sourced verbatim from Q1 2026 Release Compendium pp. 5–11
+# Per docs/impetus-restructure-spec.md · §A.1 + §10.1
+
+slug: cortex
+title: Cortex
+sub_title: "(Command Center)"
+aliases: [Command Center, IBP, Impetus Business Pulse]
+tagline: One screen, the whole F&L business — refreshed daily, with AI that explains why a number moved, not just that it moved.
+category: Plan / Buy / Make / Sell
+status: live
+status_label: Live
+
+# § 01 · For
+audience:
+  - CEO / Business Head
+  - F&L Leadership
+  - Buyers
+  - Sourcing Managers
+  - Planning Teams
+
+# § 02 · What It Does for You
+what_it_does: |
+  **A unified command center to monitor, plan, and act across your entire retail
+  ecosystem from a single pane** — with real-time visibility into stores, inventory,
+  workforce, and customer metrics. (Accenture · slide s13)
+
+  Open one screen and the whole business is there — revenue, gross margin %, store
+  performance, inventory health, vendor compliance and Annual Plan tracking, refreshed
+  daily with no reports to request. The system surfaces what matters: aged inventory
+  piling up, stores running out of stock, vendors missing delivery targets. Built-in
+  AI explains why a number moved, not just that it moved. Works on Desktop, iPad and
+  Mobile (iOS), use it in meetings and store visits.
+
+  Six modules live: Portfolio Health, Margin Analysis, Store Intelligence, Inventory
+  Health, Vendor Performance and AOP (Annual Operating Plan) Tracking.
+
+# Sidebar callout · Retail Clock from Accenture s4
+what_it_does_sidebar:
+  tag: "Operating cadence · Accenture s4"
+  title: "Cortex IS the cadence layer"
+  body: |
+    All decisions and operations are governed by a **six-cadence Retail Clock** —
+    real-time (milliseconds · RFID, POS, IoT) → minutes (low-stock alerts, footfall) →
+    hourly (store vs plan) → shift (manager scorecards) → daily (sales, aged stock) →
+    monthly (model retraining). With AI, every cadence compresses; monthly reviews
+    become continuous. Cortex is where this clock lives.
+
+# § 03 · Features live today (sub-sectioned per spec §10.1, replaces flat chip strip)
+subsections:
+  label: "How Many People Use It · Features Live Today"
+  section_num: "03"
+  items:
+    - tag: "Sub-section · Command Center [1/2] + [2/2] · Accenture s13–s14"
+      heading: "Command Center · the unified monitor-plan-act surface"
+      body: |
+        **Monitor, plan, and act across your entire retail ecosystem from a single
+        pane** — real-time visibility into stores, inventory, workforce and customer
+        metrics. Scan to watch the demo video.
+
+        **Six modules live:** Store Operations (real-time health, footfall,
+        conversion, staffing per store) · Inventory Intelligence (stock-level
+        visibility, auto-replenishment triggers, demand forecasting) · Workforce
+        Management (scheduling, attendance, performance dashboards) · Campaign
+        Control (launch, monitor, optimise AI campaigns with unified analytics) ·
+        Customer 360° (NPS, loyalty, purchase history, engagement) · Alerts &amp;
+        Escalations (configurable thresholds with automated workflows).
+
+        **Today's numbers (verbatim from Q1 Compendium pp. 5-11):** Revenue
+        ₹22.2 Cr/day · GM% 39.9% · 4 zones, 10 states, 3,198 stores · Inventory
+        ₹1,442 Cr total (6.9% aged &gt;180 days, ₹85.1 Cr at risk) · Vendor OTIF
+        70.6% (vs 90% target) · Fill Rate 87% (vs 95%) · CEO + 8 leadership roles
+        · Desktop, iPad, iOS.
+      image: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/_accenture/s14/img-01.jpg"
+      caption: "Accenture · Command Center [2/2] · slide s14"
+
+    - tag: "Sub-section · Accenture s12 · AI Agents"
+      heading: "AI Agents · Trend-to-Design"
+      body: |
+        **Transforms trend + brand context into manufacturable design options and
+        auto-generates complete tech packs** (specs, BOM, trims, artwork) for
+        vendor-ready handoff.
+
+        Sibling agents in the same family: **Planning Agent (Cortex)** — builds a
+        store-realistic Plan of Record and converts it into fixture/slot-level VM
+        layouts, with exception-led replans. **Agentic Marketing** — autonomously
+        builds and optimises campaigns (audiences, creatives, timing, measurement)
+        using customer signals. **Ask Impetus · AI Business Analyst** — turns
+        cross-system retail data into executive-ready answers, explains "why,"
+        quantifies impact, and recommends the next best fix.
+
+    - tag: "Sub-section · Accenture s15 · Agentic Control Tower"
+      heading: "Agentic Control Tower"
+      body: |
+        **An agent-driven control tower that detects, prioritises, and resolves
+        business exceptions in real time.** This is where the Retail Clock cadences
+        meet automatic action — every alert is an exception flowing into a workflow
+        that the system attempts to resolve before it reaches a human.
+      image: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/_accenture/s15/img-01.jpg"
+      caption: "Accenture · Agentic Control Tower · slide s15"
+
+    - tag: "Sub-section · Accenture s16 · Store Intelligence"
+      heading: "Store Intelligence"
+      body: |
+        **AI-powered store intelligence that decodes demand, competition, and
+        localised growth opportunities.** Every store becomes a node in a sensing
+        network — local demand signals, competitive density and demographics feed
+        the assortment, pricing and marketing decisions for that catchment.
+      image: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/_accenture/s16/img-01.jpg"
+      caption: "Accenture · Store Intelligence · slide s16"
+
+# § 04 · What Improved
+what_improved:
+  body: |
+    Leadership gets a daily portfolio view without asking for reports. You can find
+    exactly where profit is leaking and drill down in 2 clicks. Underperforming zones
+    and stores are sorted and surfaced instantly. Aged inventory (₹85.1 Cr >180 days)
+    and stockouts (805 stores running out) are flagged automatically. Vendor ranking
+    and lead times are live, with on-time delivery and fill rate tracked. You can
+    compare actuals to the annual plan by category, channel or format. The Buy Plan
+    module shortlists 3,492 styles flowing straight to the Costing Engine.
+  expected_metric_impact: |
+    decisions move from monthly review meetings to the same screen everyone uses
+    daily — with AI explaining the "why" behind every number. The shortest path
+    between a number changing and someone deciding to act on it.
+
+# § 05 · Updates Shipped (Latest First)
+updates_shipped:
+  - date: "15 Apr 2026"
+    heading: "Command Center (Beta) LIVE · Public Launch"
+    bullets:
+      - "Public launch across Desktop, iPad, Mobile (iOS). Access: **console.jioimpetus.com/dashboard**."
+      - "**6 modules live:** Portfolio Health · Margin Analysis · Store Intelligence · Inventory · Vendor · AOP."
+      - "AI automatically surfaces unusual patterns across revenue, margin and inventory."
+  - date: "14 Apr 2026"
+    heading: "Buy Plan Status + UX Enhancements Shipped"
+    bullets:
+      - "**3,492 shortlisted-to-buy options;** 46% (1,598) in costing stage across Trends/Azorte/Yousta."
+      - "UX shipped: Search bar · Edit MRP · Download button in Buy Plan module."
+      - "Issues fixed: Quantity mismatch · Style drops · Costing failures (~20 tickets resolved)."
+  - date: "11 Apr 2026"
+    heading: "Submit-to-Costing Workflow Went Live"
+    bullets:
+      - "Buy Plan → Costing Engine pipeline activated end-to-end."
+      - "Shortlisted-to-Buy styles from PLM loading to Cortex twice daily (up from once)."
+  - date: "10 Apr 2026"
+    heading: "Costing Buy Plan Sync + iOS Crash Fix Deployed"
+    bullets:
+      - "Costing buy plan and approved cost sync deployed to production."
+      - "iOS app crash fix resolved; mobile-responsive dashboard pushed."
+      - "Cleaner, layered data pipeline now powering the dashboard."
+  - date: "9 Apr 2026"
+    heading: "14 Dashboard Refinements Shipped"
+    bullets:
+      - "Column alignment, search & filter in drilldowns, default date range (60 days)."
+      - "Info tooltips for metrics, font size improvements, AI insights labeled clearly."
+      - "Store Intelligence moved under Command Center; inventory health table reordered."
+  - date: "8 Apr 2026"
+    heading: "Multi-Platform Deployment + Insights Agent"
+    bullets:
+      - "Web, iOS and Android apps deployed to production."
+      - "Insights agent live; AOP (Annual Plan) variance tracker now active."
+      - "Data pipeline: quality checks done, final reporting layer in progress."
+  - date: "6 Apr 2026"
+    heading: "Native Mobile Apps Created"
+    bullets:
+      - "iOS app with biometric security (Face ID); Android configuration completed."
+  - date: "3 Apr 2026"
+    heading: "Buy Plan Module Rolled Out"
+    bullets:
+      - "Buy Plan module rolled out to users with **Submit to Costing** button in UI."
+  - date: "17 Mar 2026"
+    heading: "AOP Dashboard + Store Intelligence + Inventory Exit"
+    bullets:
+      - "Annual Plan Dashboard live: volume, average selling price, revenue and margin tracked."
+      - "Drill down by channel and format; switch between daily, monthly and yearly views."
+      - "Store Intelligence on live data; old stock (180+ days) now visible for exit decisions."
+      - "Annual Plan Dashboard using real store data; allocation and Open-to-Buy issues fixed."
+
+# § 06 · Screenshots (rendered from PDF pp. 7-11)
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/cortex/screenshot-007.jpg"
+    caption: "**AOP dashboard** · Variance summary and trend tracking (WTD metrics)."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/cortex/screenshot-008.jpg"
+    caption: "**Range architecture + Buy plans** · Segment metrics by category · Buy plans by category and brand with approval status and costs."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/cortex/screenshot-009.jpg"
+    caption: "**Buy plan · Women's Western Tops** · ₹5,209L revenue target · 4 styles · 54% budget used · 163K units planned."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/cortex/screenshot-010.jpg"
+    caption: "**Style drill-down (Ruffle Sleeve) + Distribution plans** · Color-wise units, sell-through, 55% margin, ₹680L intake · Allocation and fulfillment status."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/cortex/screenshot-011.jpg"
+    caption: "**Execute calendar + Inventory command center** · Product launch timeline with campaigns · Stock levels, order aging and compliance metrics."
+
+# § 07 · Sources
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 5–11"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md · §A.1 + §10.1"
+    href: "/docs/impetus-restructure-spec.md"
+  - label: "Accenture · Updated Retail Platforms+Agents · 16 Apr 2026 · slides s12-s16 (AI Agents · Command Center · Control Tower · Store Intelligence)"
+    href: ""
+  - label: "Live · console.jioimpetus.com/dashboard"
+    href: "https://console.jioimpetus.com/dashboard"
+
+# § 06 · Progress · path to L3 / L4 (per spec §9)
+progress:
+  current_level: 3
+  current_summary: |
+    Cortex sits at **L3 · Intelligent** today: the system senses across revenue,
+    margin, inventory, vendor and AOP signals in real time and surfaces what
+    matters; humans handle the exceptions and approve the responses. The L4 jump
+    happens when Cortex starts triggering downstream actions (auto-reallocating
+    OTB, chase-orders, markdowns) without a buyer in the loop.
+  workflows:
+    - name: "OTB Budgeting"
+      number: "1.2"
+      current: 2
+      target: 3
+      plan: "Buy Plan module live; AOP variance tracker shipping daily; next is auto-reallocating constraint when categories outperform."
+    - name: "Assortment Planning"
+      number: "1.5"
+      current: 2
+      target: 3
+      plan: "Buy plans + range architecture views consolidated; targeting store-level demand-driven assortment by end Q2."
+    - name: "Store Operations"
+      number: "4.1"
+      current: 2
+      target: 3
+      plan: "Store Intelligence module surfaces same-day KPI deviations; next is per-store recommendation feed (every store a market of one)."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "OTB Budgeting · L2 → L3"
+      body: "Buy Plan auto-reallocates when category sell-through diverges &gt;10% from plan."
+    - eyebrow: "Risk reduction milestone"
+      title: "₹85.1 Cr aged stock at risk → ₹40 Cr"
+      body: "Inventory-exit decisions surfaced 60 days earlier through Store Intelligence."
+    - eyebrow: "Identity shift indicator"
+      title: "Daily review meetings retired"
+      body: "Leadership shifts from chasing reports to handling exceptions Cortex flags."

@@ -1,0 +1,9 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2026-04-27
+    title: FATP push · Luxshare IDU
+    summary: Final Assembly Test Pack push following pivot.
+  - date: 2026-04-22
+    title: Pivot · Bluebank STB → Luxshare IDU on MTK 6601
+    summary: We slipped, then re-aimed. Bluebank STB demand softened. Pivoted to Luxshare IDU MTK 6601 (Jio WiFi). MES, BOM, production tooling carried over.

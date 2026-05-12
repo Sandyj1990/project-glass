@@ -1,0 +1,102 @@
+{
+  "page": "index.html",
+  "spec": "docs/home-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "version": "v0.10.1",
+  "score": 95,
+  "grade": "A",
+  "pass": true,
+  "history": [
+    { "version": "v0.10",   "date": "2026-05-02", "score": 90, "open_findings": 5 },
+    { "version": "v0.10.1", "date": "2026-05-02", "score": 95, "open_findings": 0, "note": "all 5 findings resolved" }
+  ],
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 96,
+    "tone_of_voice": 96,
+    "honesty_register": 97,
+    "visual_completeness": 92,
+    "cross_page_consistency": 92
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "Hero · Stats strip · §07 Sources",
+      "issue": "/numbers route returns 404 but was referenced 7 times on the page including the §07 Sources card.",
+      "fix": "All /numbers references replaced. Hero now points at docs/home-restructure-spec.md. Stats tile 1 (Channels Live) now points at /jcp. §07 card 2 rewrote as 'Spec & audit trail' pointing at the spec + this audit JSON.",
+      "files": ["index.html:148", "index.html:167", "index.html:525"],
+      "status": "RESOLVED",
+      "resolved_at": "2026-05-02"
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 Explore · Fynd Horizon card",
+      "issue": "Date '14-Apr-2026' missing canonical spaces.",
+      "fix": "Replaced with '14 - Apr - 2026'.",
+      "files": ["index.html:574"],
+      "status": "RESOLVED",
+      "resolved_at": "2026-05-02"
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§02 Stack · layer subtitles",
+      "issue": "Sell + Move subtitles read 'live' but contain Pilot platforms (Kio, AutRi).",
+      "fix": "Both retitled 'live + pilot' to match Buy/Make precedent.",
+      "files": ["index.html:285", "index.html:294"],
+      "status": "RESOLVED",
+      "resolved_at": "2026-05-02"
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 Transformation · column 1",
+      "issue": "JCP card '100+ brands' framing not reconciled with mega-menu's '79 channels' framing.",
+      "fix": "Added '— 79 channels live, building, or in pilot' to the brands line so both framings reconcile in one sentence.",
+      "files": ["index.html:217"],
+      "status": "RESOLVED",
+      "resolved_at": "2026-05-02"
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§02 Stack · side-guard cards",
+      "issue": "Side-guard cards (Retail Jarvis, ALP, RetailVista) had no visible status pill — readers scanning §02 had no signal of Build/Live status.",
+      "fix": "Added .stack-side-head row with status pill. Retail Jarvis · Build, ALP · Live, RetailVista · Live.",
+      "files": ["index.html:271", "index.html:336", "index.html:341"],
+      "status": "RESOLVED",
+      "resolved_at": "2026-05-02"
+    }
+  ],
+  "strengths": [
+    "Spec mode discipline: §9 decisions block locked all 5 open questions with explicit user sign-off before any HTML was written. Restructure reads like the spec, line-for-line.",
+    "§03 filter chip counts compute from PLATFORMS data — drift-proof (initial v0.10 build had 3 wrong counts; fix made the bug structurally impossible).",
+    "All 25 §03 platform card links return 200 (verified via curl sweep).",
+    "§02 stack-layer click → §03 filter scroll-and-apply interaction implemented and verified end-to-end via Chrome DevTools MCP.",
+    "Mobile (375px) order correctly puts the main 5-layer tower BEFORE side guards via CSS order, so the load-bearing visual lands first on small screens.",
+    "All 5 audit findings resolved in same session — no carry-over to future iteration."
+  ],
+  "checks_passed": [
+    "Zero /numbers references remaining (grep -c '/numbers' returns 0)",
+    "All 12 dates use canonical 'DD - MMM - YYYY' format",
+    "No banned vocabulary (transformative · world-class · cutting-edge · leverages · seamless · etc.)",
+    "No banned constructions ('strong interest in', 'In summary', 'This is not X. It is Y.')",
+    "No emojis or exclamation marks in copy",
+    "Indian number format (L Cr) preserved in Reliance scale numbers",
+    "Reliance entity names cased correctly (RIL · RRVL · RBL · RCPL · JPL · JioMart · AJIO · Tira · Reliance Trends · Reliance Jewels · Smart Bazaar · FreshPik)",
+    "Fynd platform names cased correctly (JCP · UCP · Impetus · Granary · PixelBin · Boltic · Ratl · Kaily · Fynd Horizon · AutRi · PulsePoint · Cortex)",
+    "Section labels contiguous (00 → 01 → 02 → 03 → 04 → 05 → 06 → 07)",
+    "Topnav verbatim with sibling pages (mega-menu suffixes match)",
+    "Footer copy matches register convention",
+    "Stack-layer subtitles honest about mixed Live + Pilot status",
+    "Side-guard cards now expose status pill (Build / Live)",
+    "Console clean (only standard Tailwind CDN dev warning)"
+  ]
+}

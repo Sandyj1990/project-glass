@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fynd Horizon · Ultra Fast Retail · Fynd × RRVL · JPL</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.image-lightbox-frame {
+  max-width: 95vw; max-height: 92vh;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
+img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
+img.zoomable:hover { opacity: 0.92; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- §0 · Hero -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Fynd Horizon</span></div>
+<div class="section-label mb-3">Recent Innovations · Ultra Fast Retail · Made-to-Order in 24 hours</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Fynd Horizon.</h1>
+
+<p class="text-lg max-w-3xl mb-6" style="color: var(--ink-muted);">The same Trends store, <strong>25× the SKUs</strong>, made-to-measure in <strong>24 hours</strong>. Body scan in three clicks, virtual try-on in under two seconds, doorstep in 30 minutes or 24-48 hours.</p>
+
+<div class="flex flex-wrap gap-2 mb-8">
+  <span class="pill pill-live">Live · RCP cluster · 31-Mar-2026</span>
+  <span class="pill pill-live">Live · Mumbai cluster · 27-Apr-2026</span>
+  <span class="pill pill-live">Live · Tirupur MTO factory · cycle running since 25-Mar-2026</span>
+</div>
+
+<div class="cap-num mb-3">Headline numbers · 27-Apr-2026</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mb-10">
+<div class="card p-4"><div class="cap-num mb-1">SKUs available · per store</div><div class="display-2 text-3xl" style="color: var(--ink);">50,000+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">all from JCP unified catalog</div></div>
+<div class="card p-4"><div class="cap-num mb-1">vs Trends today</div><div class="display-2 text-3xl" style="color: var(--ink);">~2,000</div><div class="text-xs mt-1" style="color: var(--ink-muted);">SKUs displayed per store today</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Body-measurement accuracy</div><div class="display-2 text-3xl" style="color: var(--ink);">98.3%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Ratl study · n=200 · 18-Apr-2026</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Order → doorstep</div><div class="display-2 text-3xl" style="color: var(--ink);">30 min<span class="text-xl" style="color: var(--ink-muted);"> / </span>24-48 hr</div><div class="text-xs mt-1" style="color: var(--ink-muted);">standard / made-to-order</div></div>
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/fynd-horizon/01-installation.jpg" alt="Fynd Horizon LED-wall installation at a Reliance Trends store · Infinite Aisle catalog grid + branded sign" class="w-full block zoomable" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">Live installation · Reliance Trends store · LED wall renders Infinite Aisle catalog + life-size customer try-on. Photo: in-store, 27-Apr-2026.</div>
+</div>
+
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#status">01 · Status</a>
+<a href="#shift">02 · Strategic shift</a>
+<a href="#journey">03 · User journey</a>
+<a href="#hardware">04 · Hardware kit</a>
+<a href="#ai-native">05 · AI-native layer</a>
+<a href="#fit-paths">06 · Fit paths</a>
+<a href="#benchmarks">07 · Benchmarks</a>
+<a href="#research">08 · Research</a>
+</div>
+</div>
+
+<!-- §01 · Status (27-Apr-2026) -->
+<section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Status · 27-Apr-2026</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Running today</div><span class="pill pill-live">Live</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>RCP store</strong> · live to customers since 31-Mar-2026 · first Horizon-enabled Trends store</li>
+<li><strong>Mumbai cluster</strong> · live 27-Apr-2026 · LED wall + iPad + RealSense kit deployed in-store</li>
+<li><strong>Tirupur partner factory</strong> · 24-hour MTO cycle running since 25-Mar-2026 · automated cut + sew + AI QC</li>
+<li><strong>Infinite Studio admin</strong> · operator surface live · 178 try-ons in week of 24-Apr-2026 → 01-May-2026 · 103 looks generated · 25% engagement</li>
+<li><strong>14-Apr-2026</strong> · MDA + MM Sir unveil at RCP · 30-min deep engagement</li>
+<li><strong>Catalog from Fynd UNO · Rendering QA by Ratl · Order routing through JCP</strong> · the three-platform substrate</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Building this quarter</div><span class="pill pill-build">Building</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Store-by-store rollout</strong> · expanding across the Mumbai cluster after the 27-Apr go-live</li>
+<li><strong>Demand-prediction agent</strong> · next-3-outfit forecast feeding tonight's pre-cut at the Tirupur factory</li>
+<li><strong>Token-economics dashboard</strong> · per-session cost vs AOV tracked daily · break-even at AOV ≥ ₹780</li>
+<li><strong>Self-healing rendering</strong> · Ratl QA-agent reviewing 100% of nightly renders · drift-flag pipeline hardening</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Next horizon</div><span class="pill pill-phase2">Roadmap</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>15-Jul-2026</strong> · public launch · Nexus Seawoods</li>
+<li><strong>Pre-cut pipeline at scale</strong> · target factory yield <strong>+18% by Q2 2026</strong></li>
+<li><strong>Expansion beyond Mumbai cluster</strong> · sequencing TBD with Trends ops</li>
+<li><strong>On-call rotation</strong> · 5-minute page-out on any photoreal drift > 0.5%</li>
+<li><strong>L3 autonomy targets</strong> · per the <a href="/autonomous" style="color: var(--accent); text-decoration: underline;">autonomy framework</a> that anchors the 30-Apr-2026 letter to MM Sir</li>
+</ul>
+</div>
+
+</div>
+</div></section>
+
+<!-- §02 · The strategic shift -->
+<section id="shift" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · The strategic shift</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From inventory-heavy retail to AI-native ultra fast retail.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Trends today is constrained by floor square footage. When a customer's size or colour isn't on the floor, they walk out. Horizon decouples the store from physical stock: scan, try, buy, manufacture, deliver, without ever holding inventory.</p>
+
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>Lens</th><th>Trends today</th><th>Horizon</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">SKUs per store</td><td class="text-sm">~2,000 displayed · physical only</td><td class="text-sm" style="color: var(--ink);"><strong>50,000+</strong> · all virtual via JCP catalog</td></tr>
+<tr><td class="font-medium">Inventory risk</td><td class="text-sm">Markdown risk on every garment · ~45 days holding</td><td class="text-sm" style="color: var(--ink);"><strong>Zero</strong> · only manufacture what's sold · 0 days holding</td></tr>
+<tr><td class="font-medium">Returns rate</td><td class="text-sm">8.5% online · sizing-driven</td><td class="text-sm" style="color: var(--ink);"><strong>&lt;2% target</strong> · deep-tech fit eliminates sizing returns</td></tr>
+<tr><td class="font-medium">Order → doorstep</td><td class="text-sm">48 hr (standard) · 7 days (custom)</td><td class="text-sm" style="color: var(--ink);"><strong>30 min</strong> (dark store) · <strong>24-48 hr</strong> (MTO factory)</td></tr>
+<tr><td class="font-medium">Revenue density</td><td class="text-sm">Limited by floor sq ft</td><td class="text-sm" style="color: var(--ink);"><strong>25× reach</strong> from same footprint</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="text-sm" style="color: var(--ink-muted);">Strategic shift: <strong style="color: var(--ink);">Ultra Fast Retail powered by automated factories that turn orders into products in 24 hours.</strong> Deep-tech cameras for precision measurement → automated factory for 24-hour manufacturing → next-day logistics for rapid fulfilment.</p>
+
+</div></section>
+
+<!-- §03 · User journey -->
+<section id="journey" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · User journey · 6 steps</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One store. One system. Infinite inventory.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The end-to-end customer flow at any Horizon-enabled Trends store. Step 0 is one-time onboarding; steps 1-5 repeat per visit.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 0 · Body Scan</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">3-click profile.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Selfie + front-full + side-full. Captures shoulder width, chest, waist, inseam · plus depth, posture, and volume for 3D reconstruction.</p>
+<div class="text-xs" style="color: var(--ink-muted);"><strong>Deep tech:</strong> Intel RealSense depth cameras · SMPL parametric model infers body shape under clothing · 98.3% accuracy (Ratl study, n=200).</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 1 · Browse</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">50,000+ styles at your fingertips.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Swipe through the entire brand inventory · filter by occasion, colour, trend, or price · single-tap to add to the Virtual Try-On queue.</p>
+<div class="text-xs" style="color: var(--ink-muted);"><strong>Deep tech:</strong> Catalog from Fynd UNO · live sync with brand inventory.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 2 · Try</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">See it on you, not on a model.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Visualise any garment on your own body · best-fit size recommendation from your scan data · mix &amp; match complete outfits in seconds.</p>
+<div class="text-xs" style="color: var(--ink-muted);"><strong>Deep tech:</strong> Gemini Cloud Rendering · physics-accurate fabric drape · &lt;2 s render · generative-AI lighting and texture.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 3 · Buy</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">One-tap checkout. "Manufacturing started."</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">One-tap purchase of items just tried on virtually · instant confirmation · live track from "Order Placed" → "Cutting Fabric".</p>
+<div class="text-xs" style="color: var(--ink-muted);"><strong>Deep tech:</strong> Unified OMS routes to optimal facility · factory API integration · real-time fabric availability check.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 4 · Make</div><span class="pill pill-build">Building · scaling</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Made just for you. 24-hour turnaround.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Garment manufactured from scratch, not pulled from a shelf. From raw fabric to finished product in less than a day. Every stitch matches the customer's exact specifications.</p>
+<div class="text-xs" style="color: var(--ink-muted);"><strong>Deep tech:</strong> Automated laser cutting · robotic sewing lines · AI computer-vision defect inspection on every seam.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 5 · Deliver</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">30 min or 24-48 hours. Doorstep.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Standard fit from local Trends dark store in 30 min · returns OK within 7 days. Custom MTO from Tirupur in 24-48 hr · remake-free guarantee if fit imperfect.</p>
+<div class="text-xs" style="color: var(--ink-muted);"><strong>Deep tech:</strong> AI route optimisation · automated sortation · predictive logistics for courier capacity.</div>
+</div>
+
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/fynd-horizon/02-infinite-aisle.jpg" alt="Trends Infinite Aisle catalog grid · 14 garment thumbnails (tops + bottoms + dresses) shown to a customer browsing in-store" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-5">
+<div class="cap-num mb-2">Step 1 evidence · Infinite Aisle catalog grid</div>
+<p class="text-sm" style="color: var(--ink-muted);">What the customer sees on the iPad and the LED wall during Browse. Catalog rendered from Fynd UNO · 50,000+ SKUs paged through filter and search.</p>
+</div>
+</div>
+
+<p class="text-xs mt-6 mono" style="color: var(--ink-muted);">Catalog from Fynd UNO  ·  Rendering QA by Ratl  ·  Order routing through JCP</p>
+
+</div></section>
+
+<!-- §04 · In-store hardware kit -->
+<section id="hardware" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · In-store hardware kit</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Plug-and-play. ≤6 hours per store.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Standardised SKUs · zero local config · the same kit ships to every Horizon-enabled Trends store. Five components (one wall, one tablet, two depth cameras, one edge box, one webcam) assembled in under a working day.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+
+<div class="card p-5">
+<div class="cap-num mb-2">Component 1 · Display</div>
+<h3 class="font-semibold mb-1" style="color: var(--ink);">LED Wall</h3>
+<p class="text-sm" style="color: var(--ink);">16 ft × 8 ft 4K LED wall · life-size mirror surface for the virtual try-on render.</p>
+</div>
+
+<div class="card p-5">
+<div class="cap-num mb-2">Component 2 · Customer + staff control</div>
+<h3 class="font-semibold mb-1" style="color: var(--ink);">iPad Pro 12.9″</h3>
+<p class="text-sm" style="color: var(--ink);">Catalog browse · checkout · staff control surface for manual override.</p>
+</div>
+
+<div class="card p-5">
+<div class="cap-num mb-2">Component 3 · Depth sensing</div>
+<h3 class="font-semibold mb-1" style="color: var(--ink);">Intel RealSense D555</h3>
+<p class="text-sm" style="color: var(--ink);">Dual depth cameras · captures the 3D body scan that powers measurement and try-on.</p>
+</div>
+
+<div class="card p-5">
+<div class="cap-num mb-2">Component 4 · Local compute</div>
+<h3 class="font-semibold mb-1" style="color: var(--ink);">Edge Compute Box</h3>
+<p class="text-sm" style="color: var(--ink);">Local inference fallback when the network goes down · 90-second cold-start warmup.</p>
+</div>
+
+<div class="card p-5">
+<div class="cap-num mb-2">Component 5 · Capture</div>
+<h3 class="font-semibold mb-1" style="color: var(--ink);">48 MP WebCam</h3>
+<p class="text-sm" style="color: var(--ink);">Full-body image for the customer profile and the try-on composite.</p>
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/fynd-horizon/03-hardware-kit.jpg" alt="Render of the in-store hardware setup · LED wall + iPad kiosk + customer in front of the display" class="w-full block zoomable" />
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §05 · AI-native layer -->
+<section id="ai-native" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · AI-native layer</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Predicting the future. Not reflecting the past.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Three agents make Horizon AI-native rather than AI-flavoured: a demand-prediction loop that pre-cuts factory fabric tonight for tomorrow's predicted orders, a self-healing render-QA loop that catches model drift before customers see it, and a token-economics loop that meters every try-on against a profitability threshold.</p>
+
+<div class="grid md:grid-cols-3 gap-4 mb-10">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Agent 1</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Demand prediction</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Predicts the customer's next 3 outfits from scan + browse history. Surfaces top-12 looks before the customer asks. Pre-cuts factory fabric tonight for tomorrow's predicted orders.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Target:</strong> factory yield <strong style="color: var(--ink);">+18% by Q2 2026</strong>.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Agent 2</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Self-healing rendering</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Auto-reviews 100% of VTO renderings every night via the Ratl QA agent. Flags photoreal drift &gt; 0.5% to the DRI within the hour. Catches Gemini-cloud regressions before customer impact.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>SLA:</strong> on-call rotation pages within <strong style="color: var(--ink);">5 minutes</strong> of a red flag.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Agent 3</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Token economics</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Every try-on metered at <strong>₹4.20 / session</strong> today. Profit threshold: AOV must clear <strong>₹780</strong> to break even. Hard cap: 50 try-ons per customer per session.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Outcome:</strong> per-session profit-positive at every store.</div>
+</div>
+
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/fynd-horizon/04-infinite-studio-admin-v2.jpg" alt="Infinite Studio admin dashboard · Weekly Performance Report showing 178 try-ons, 17 today, 58% completion rate, 103 looks, 25% engagement, ₹1358 estimated profit, 14-day activity trend, key highlights, peak hours, size distribution, recent sessions" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Operator surface · Infinite Studio admin · Weekly Performance Report (24-Apr-2026 → 01-May-2026)</div><span class="pill pill-live">Live</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">178 try-ons · 17 today · 58% completion rate · 103 looks generated · 25% engagement · ₹1,358 estimated profit. The metering loop in Agent 3 isn't aspirational. It's the surface that operators use today. 14-day activity trend, peak hours, size distribution, and per-session detail all live.</p>
+</div>
+</div>
+
+</div></section>
+
+<!-- §06 · Two fit paths -->
+<section id="fit-paths" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Two fit paths</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Speed or measure-perfect. Both end with a perfect fit.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Re-framed from D01: not casual vs formal. Speed vs measure-perfect. The customer picks the trade-off they want at checkout.</p>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<div class="card p-7">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Path A · Standard Fit</div><span class="pill pill-live">Live</span></div>
+<h3 class="display-2 text-2xl mb-1" style="color: var(--ink);">Ready to wear.</h3>
+<div class="text-sm font-semibold mb-4" style="color: var(--accent);">30 min · doorstep</div>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Best-matched standard size from scan (S / M / L / XL)</li>
+<li>· Fulfilled from local Trends dark store (Mumbai cluster · 3 stores)</li>
+<li>· Inventory pre-positioned · no-stockout &gt; 99% of the time</li>
+<li>· Free returns within 7 days · max 2 per customer (MDA policy)</li>
+</ul>
+</div>
+
+<div class="card p-7" style="border-color: var(--accent);">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Path B · Measure-Perfect Fit · Next Gen</div><span class="pill pill-build">Building · scaling</span></div>
+<h3 class="display-2 text-2xl mb-1" style="color: var(--ink);">Made to order.</h3>
+<div class="text-sm font-semibold mb-4" style="color: var(--accent);">24-48 hr · doorstep</div>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Manufactured to exact body measurements from depth scan</li>
+<li>· Tirupur partner factory · automated cut + sew + AI QC</li>
+<li>· Pre-cut fabric tonight for tomorrow's predicted orders</li>
+<li>· Remake-free guarantee if fit imperfect · owner: factory DRI</li>
+</ul>
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §07 · Benchmarks -->
+<section id="benchmarks" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 · Benchmarks · vs Uniqlo, Shein, Zara</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Benchmarked against the global standard. Not against ourselves.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The honest read on how Horizon compares to the fast-fashion playbooks the world has already validated. Targets are Ratl-verified, not internal projections.</p>
+
+<div class="card overflow-hidden mb-6">
+<table class="grid-table">
+<thead><tr><th>Metric</th><th>Horizon target</th><th>Trends today</th><th>Uniqlo Tokyo</th><th>Shein on-demand</th><th>Zara</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">SKU reach / store</td><td class="text-sm" style="color: var(--ink);"><strong>50,000</strong></td><td class="text-sm">2,000</td><td class="text-sm">~8,000</td><td class="text-sm">600,000 (online only)</td><td class="text-sm">~10,000</td></tr>
+<tr><td class="font-medium">Returns rate</td><td class="text-sm" style="color: var(--ink);"><strong>&lt;2%</strong></td><td class="text-sm">8.5% (online)</td><td class="text-sm">~6%</td><td class="text-sm">~12%</td><td class="text-sm">~10%</td></tr>
+<tr><td class="font-medium">Order → doorstep · custom</td><td class="text-sm" style="color: var(--ink);"><strong>24-48 hr</strong></td><td class="text-sm">7 days</td><td class="text-sm">n/a (no MTO)</td><td class="text-sm">5-10 days</td><td class="text-sm">14 days</td></tr>
+<tr><td class="font-medium">Order → doorstep · standard</td><td class="text-sm" style="color: var(--ink);"><strong>30 min</strong></td><td class="text-sm">48 hr</td><td class="text-sm">n/a</td><td class="text-sm">n/a</td><td class="text-sm">n/a</td></tr>
+<tr><td class="font-medium">Inventory holding</td><td class="text-sm" style="color: var(--ink);"><strong>0 days (MTO)</strong></td><td class="text-sm">45 days</td><td class="text-sm">~14 days</td><td class="text-sm">~3 days</td><td class="text-sm">14 days</td></tr>
+</tbody>
+</table>
+</div>
+
+
+</div></section>
+
+<!-- §08 · Research -->
+<section id="research" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">08 · Research · Mathematics behind measurements</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">A single phone camera + a 100-year-old equation = tape-measure-grade body data.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">The CEO Brief on the math powering Horizon's body-measurement engine. Three pillars: 17-keypoint pose estimation, depth-sensing pixel→world projection, and Ramanujan's ellipse approximation for body circumferences. Read it inline below or download the 2-page PDF.</p>
+
+<div class="grid md:grid-cols-3 gap-4 mb-8">
+<div class="card p-5">
+<div class="cap-num mb-2">Pillar 1</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Pose Estimation · 17 Keypoints</h3>
+<p class="text-sm" style="color: var(--ink);">AI vision model maps the human body to 17 anatomical landmarks (head/face · upper body · lower body) in real time from a single camera frame. Output: 2D pixel coordinates + confidence per joint.</p>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Pillar 2</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Depth Sensing · Pixel → Real World</h3>
+<p class="text-sm" style="color: var(--ink);">Depth map gives Z-distance for every pixel. Converts a flat image into a 3D point cloud. Drives Euclidean distances between joints (height, arm, inseam, shoulder width, torso length).</p>
+</div>
+<div class="card p-5">
+<div class="cap-num mb-2">Pillar 3</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Ramanujan's Ellipse · Circumferences</h3>
+<p class="text-sm" style="color: var(--ink);">Body cross-sections (waist, chest, hips, thigh) modelled as ellipses. Ramanujan's Approximation 3 gives near-exact perimeter · error &lt; 0.04% across all eccentricities · runs on-device in microseconds.</p>
+</div>
+</div>
+
+<div class="card p-5 mb-6 flex flex-wrap items-center justify-between gap-3">
+<div>
+<div class="cap-num mb-1">Accuracy</div>
+<div class="text-sm" style="color: var(--ink);"><strong>± 1 cm</strong> measurement · <strong>&lt; 0.04%</strong> formula error · <strong>98.3%</strong> body-shape accuracy vs Bodygram (n=200, Ratl-verified)</div>
+</div>
+<a href="/assets/fynd-horizon/horizon-math-ceo-brief-v2.pdf" target="_blank" rel="noopener" class="text-sm font-semibold px-4 py-2 rounded" style="background: var(--accent); color: white; text-decoration: none;">Download PDF · 1 pp · 410 KB ↗</a>
+</div>
+
+<div class="card overflow-hidden">
+<iframe src="/assets/fynd-horizon/horizon-math-ceo-brief-v2.pdf#view=FitH" width="100%" height="900" class="pdf-embed" style="border: 0; display: block;"></iframe>
+</div>
+
+</div></section>
+
+<style>
+@media (max-width: 768px) {
+  .pdf-embed { height: 600px; }
+}
+</style>
+
+<div id="image-lightbox" class="lightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <span class="close" onclick="closeImageLightbox()">×</span>
+  <div id="image-lightbox-frame" class="image-lightbox-frame"></div>
+</div>
+
+<script>
+function openImageLightbox(imgEl) {
+  const frame = document.getElementById('image-lightbox-frame');
+  frame.innerHTML = `<img src="${imgEl.src}" alt="${imgEl.alt || ''}" />`;
+  document.getElementById('image-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImageLightbox() {
+  document.getElementById('image-lightbox-frame').innerHTML = '';
+  document.getElementById('image-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeImageLightbox();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img.zoomable').forEach(img => {
+    img.addEventListener('click', () => openImageLightbox(img));
+  });
+});
+</script>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

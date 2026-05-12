@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Glass Security Report · 2026-05-04</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+@page { size: A4; margin: 11mm 12mm 9mm 12mm; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { font-family: Inter, -apple-system, sans-serif; color: #1a1a1c; font-size: 8.5pt; line-height: 1.35; -webkit-font-smoothing: antialiased; }
+.mono { font-family: 'JetBrains Mono', monospace; }
+.brand { display: flex; align-items: center; gap: 12px; padding-bottom: 6px; border-bottom: 1.5px solid #1a1a1c; margin-bottom: 8px; }
+.brand .lockup { font-family: 'JetBrains Mono', monospace; font-size: 8.5pt; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
+.brand .sep { flex: 1; }
+.brand .meta { font-family: 'JetBrains Mono', monospace; font-size: 7pt; letter-spacing: 0.1em; text-transform: uppercase; color: #5a5a5e; text-align: right; }
+h1 { font-size: 15pt; font-weight: 700; letter-spacing: -0.01em; line-height: 1.15; margin-bottom: 3px; }
+.subtitle { font-size: 8.5pt; color: #5a5a5e; margin-bottom: 8px; }
+h2 { font-family: 'JetBrains Mono', monospace; font-size: 7.5pt; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #1a1a1c; margin: 8px 0 4px; padding-bottom: 2px; border-bottom: 0.5px solid #d4d4d2; }
+.exec { background: #fafafa; border-left: 3px solid #1a1a1c; padding: 7px 11px; margin: 6px 0 6px; font-size: 8.5pt; line-height: 1.4; }
+.exec strong { font-weight: 600; }
+table { width: 100%; border-collapse: collapse; font-size: 8pt; }
+th { text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #5a5a5e; font-weight: 600; padding: 3px 5px; border-bottom: 0.5px solid #1a1a1c; }
+td { padding: 3px 5px; border-bottom: 0.5px solid #ececea; vertical-align: top; line-height: 1.35; }
+tr:last-child td { border-bottom: none; }
+.sev { font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; font-weight: 600; letter-spacing: 0.05em; padding: 2px 5px; border-radius: 3px; display: inline-block; min-width: 50px; text-align: center; }
+.sev.crit { background: #fde7e7; color: #c4322f; }
+.sev.high { background: #fef0e0; color: #b45309; }
+.sev.med  { background: #fef9c3; color: #92670e; }
+.sev.low  { background: #e7f0ff; color: #1e40af; }
+.status { font-weight: 600; font-size: 8pt; }
+.status.fixed { color: #15803d; }
+.status.deferred { color: #92670e; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+.box { font-size: 7.5pt; }
+.box .head { font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #5a5a5e; font-weight: 600; margin-bottom: 3px; }
+.box ul { list-style: none; }
+.box li { padding: 1px 0; line-height: 1.35; }
+.box li::before { content: "▸ "; color: #5a5a5e; }
+code { font-family: 'JetBrains Mono', monospace; font-size: 7pt; background: #f5f5f3; padding: 1px 3px; border-radius: 2px; }
+.verif { font-family: 'JetBrains Mono', monospace; font-size: 6.8pt; line-height: 1.45; background: #fafafa; border: 0.5px solid #ececea; border-radius: 3px; padding: 6px 9px; margin-top: 4px; }
+.verif .ok { color: #15803d; font-weight: 600; }
+.verif .ln { color: #5a5a5e; }
+.verif .v { color: #1a1a1c; }
+.footer { margin-top: 8px; padding-top: 5px; border-top: 0.5px solid #d4d4d2; font-family: 'JetBrains Mono', monospace; font-size: 6.5pt; letter-spacing: 0.1em; text-transform: uppercase; color: #9a9a9d; display: flex; justify-content: space-between; }
+.score { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10pt; font-weight: 700; color: #15803d; padding: 1px 8px; border: 1.5px solid #15803d; border-radius: 4px; vertical-align: middle; margin-left: 6px; }
+</style>
+</head>
+<body>
+<div class="brand">
+<span class="lockup">Fynd × RRVL · JPL</span>
+<span class="sep"></span>
+<span class="meta">Confidential · Authorised Use Only</span>
+</div>
+
+<h1>Project Glass · Post-Remediation Pen-Test Report</h1>
+<div class="subtitle">Target <span class="mono">glass.jiocommerce.io</span> · Tested 2026-05-04 · Scope passive recon (HTTP, headers, asset graph, exposed-path probes) · Spec <span class="mono">docs/glass-security-spec.md</span></div>
+
+<div class="exec">
+<strong>Result · 6 of 7 findings closed</strong>. The two CRITICAL findings (bypassable client-side gate, published password hash) and both HIGH findings (missing security headers, wildcard CORS) are fixed and verified in production. One MEDIUM (third-party JS) is deferred to Step&nbsp;2 by design — it is build-pipeline work, not a security fix. The site is no longer in the &ldquo;treat as public&rdquo; category. Estimated header posture <span class="score">A+</span>
+</div>
+
+<h2>Findings · severity-ordered · status as of 2026-05-04</h2>
+<table>
+<tr><th style="width:6%">§</th><th style="width:8%">Sev</th><th style="width:36%">Finding</th><th style="width:36%">Verification</th><th style="width:14%">Status</th></tr>
+<tr><td>3.1</td><td><span class="sev crit">CRIT</span></td><td>Client-side gate bypassable · workspace HTML shipped pre-auth</td><td><code>curl /</code> → 401 · body 4,075&nbsp;B challenge only · 0 workspace text leaks · all deep routes 401</td><td><span class="status fixed">Closed PR&nbsp;#63</span></td></tr>
+<tr><td>3.2</td><td><span class="sev crit">CRIT</span></td><td>SHA-256 password hash published in <code>auth.js</code> line 3 · offline-bruteforce-able</td><td>0 hex hashes in any served asset · <code>/auth.js</code> → 401 (deleted)</td><td><span class="status fixed">Closed PR&nbsp;#63</span></td></tr>
+<tr><td>3.3</td><td><span class="sev high">HIGH</span></td><td>Zero security headers beyond HSTS · no CSP, X-Frame-Options, Referrer-Policy, etc.</td><td>All 8 headers present · CSP <code>frame-ancestors 'none'</code> · X-Frame DENY · COOP/CORP same-origin · HSTS preload</td><td><span class="status fixed">Closed PR&nbsp;#63</span></td></tr>
+<tr><td>3.4</td><td><span class="sev high">HIGH</span></td><td>Wildcard <code>Access-Control-Allow-Origin: *</code> on confidential HTML</td><td><code>ACAO: null</code> confirmed · including with <code>Origin: https://evil.example</code> request header</td><td><span class="status fixed">Closed PR&nbsp;#63</span></td></tr>
+<tr><td>3.5</td><td><span class="sev med">MED</span></td><td>Third-party JS in production · <code>cdn.tailwindcss.com</code>, Google Fonts</td><td>Still loaded · CSP whitelists explicitly · supply-chain risk persists until self-host</td><td><span class="status deferred">Deferred Step 2</span></td></tr>
+<tr><td>3.6</td><td><span class="sev med">MED</span></td><td><code>robots.txt</code> body leaks &ldquo;Internal property · Fynd × Reliance Retail&rdquo; comments</td><td>Stripped · file is now <code>User-agent: * / Disallow: /</code> only · 0 comment lines</td><td><span class="status fixed">Closed PR&nbsp;#66</span></td></tr>
+<tr><td>3.7</td><td><span class="sev low">LOW</span></td><td>Hygiene cluster · no security.txt, HSTS lacks preload, autocomplete missing</td><td><code>/.well-known/security.txt</code> RFC&nbsp;9116 valid · HSTS includes <code>preload</code> · <code>autocomplete=&quot;off&quot;</code> on form</td><td><span class="status fixed">Closed PR&nbsp;#63 + #66</span></td></tr>
+</table>
+
+<div class="cols">
+<div class="box">
+<div class="head">Defence-in-depth side-effects (positive)</div>
+<ul>
+<li>Probes for <code>.env</code>, <code>.git/config</code>, <code>package.json</code>, <code>.DS_Store</code>, <code>middleware.ts</code>, <code>lib/auth.ts</code> all return 401 — middleware fires before the static-file 404 handler. Adversaries can no longer fingerprint file existence by status code.</li>
+<li>Cookie tampering (<code>Cookie: glass_v1=invalid</code>) → 401. Replay attacks blocked by HMAC signature verification.</li>
+<li><code>TRACE</code> blocked (405); other methods return 401 from the gate.</li>
+</ul>
+</div>
+<div class="box">
+<div class="head">Residual surface (acceptable / out of scope)</div>
+<ul>
+<li>The access phrase itself · social-engineering / phishing risk, not a code issue.</li>
+<li>Vercel dashboard account compromise · insider threat, out of scope for this spec.</li>
+<li>Third-party JS supply chain · §3.5 above; Step 2 closes it.</li>
+<li><code>OPTIONS /</code> returns 401 (was 204) · harmless since site has no public APIs needing CORS preflight.</li>
+</ul>
+</div>
+</div>
+
+<h2>Verification transcript · representative</h2>
+<div class="verif">
+<span class="ln">$</span> <span class="v">curl -s -o /dev/null -w "%{http_code}\n" https://glass.jiocommerce.io/</span><br/>
+<span class="ok">401</span> &nbsp;<span class="ln"># pre-fix: 200 with full workspace HTML</span><br/>
+<span class="ln">$</span> <span class="v">curl -sI https://glass.jiocommerce.io/ | grep -ciE "x-frame|content-security|referrer-policy|permissions-policy|cross-origin|x-content-type"</span><br/>
+<span class="ok">6</span> &nbsp;<span class="ln"># pre-fix: 0</span><br/>
+<span class="ln">$</span> <span class="v">curl -sI -H "Origin: https://evil.example" https://glass.jiocommerce.io/ | grep -i access-control</span><br/>
+<span class="ok">access-control-allow-origin: null</span> &nbsp;<span class="ln"># pre-fix: *</span><br/>
+<span class="ln">$</span> <span class="v">curl -s https://glass.jiocommerce.io/ | grep -oE '[0-9a-f]{64}' | wc -l</span><br/>
+<span class="ok">0</span> &nbsp;<span class="ln"># pre-fix: 1 (the published SHA-256 hash)</span><br/>
+<span class="ln">$</span> <span class="v">curl -s https://glass.jiocommerce.io/.well-known/security.txt | head -1</span><br/>
+<span class="ok">Contact: mailto:security@fynd.com</span> &nbsp;<span class="ln"># pre-fix: 404</span>
+</div>
+
+<div class="footer">
+<span>Prepared by Kushan Shah · Fynd</span>
+<span>Document Classification · Confidential</span>
+<span>Page 1 of 1</span>
+</div>
+</body>
+</html>

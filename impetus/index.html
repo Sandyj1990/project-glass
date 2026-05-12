@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Impetus · F&L AI Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  .platform-card { transition: border-color 0.15s, transform 0.15s; }
+  .platform-card:hover { border-color: var(--ink); transform: translateY(-1px); }
+  .platform-card .cat { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px; }
+  .stage-band {
+    background: var(--bg-soft);
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- =====================================================================
+     HERO
+     ===================================================================== -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Impetus</span></div>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/impetus" class="subnav-link active">Overview</a><a href="/impetus/brands" class="subnav-link">Design Library</a><a href="/impetus/category-intel" class="subnav-link">Category Intel</a></div>
+<div class="section-label mb-3">F&amp;L AI Platform · Live</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Impetus.</h1>
+<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">Reliance's AI-first platform for Fashion &amp; Lifestyle retail. <strong style="color: var(--ink);">15 sub-platforms in production</strong>, used by 2,000+ people across the F&amp;L value chain: Plan · Buy · Make · Sell.</p>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);"><strong>One integrated system across planning, execution, measurement and governance.</strong> Continuously learning, autonomously acting, always accountable to a human.</p>
+
+<div class="cap-num mb-3">FY26 scale · 1 Apr 2025 → 31 Mar 2026 · verified</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+  <div class="card p-4"><div class="cap-num mb-1">Options designed</div><div class="display-2 text-3xl" style="color: var(--ink);">1,06,892</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Active vendors</div><div class="display-2 text-3xl" style="color: var(--ink);">1,316</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Shipments dispatched</div><div class="display-2 text-3xl" style="color: var(--ink);">27,48,859</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Peak packing / day</div><div class="display-2 text-3xl" style="color: var(--ink);">1,11,241<span class="text-base ml-1" style="color: var(--ink-soft);">qty</span></div></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mt-3">
+  <div class="card p-4"><div class="cap-num mb-1">Total POs created</div><div class="display-2 text-3xl accent">11,06,954</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Pieces delivered</div><div class="display-2 text-3xl accent">15.08<span class="text-base ml-1" style="color: var(--ink-soft);">Cr</span></div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Vendor → store</div><div class="display-2 text-3xl accent">5<span class="text-base ml-1" style="color: var(--ink-soft);">days avg</span></div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Q1 release compendium</div><div class="display-2 text-3xl" style="color: var(--ink);">40+<span class="text-base ml-1" style="color: var(--ink-soft);">updates</span></div></div>
+</div>
+
+<div class="cap-num mt-8 mb-3">Platform breadth · sub-IPs in production</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl">
+  <div class="card p-4"><div class="cap-num mb-1">Sub-platforms</div><div class="display-2 text-3xl" style="color: var(--ink);">15<span class="text-base ml-1" style="color: var(--ink-soft);">in production</span></div></div>
+  <div class="card p-4"><div class="cap-num mb-1">At L3+ today</div><div class="display-2 text-3xl" style="color: var(--ink);">5<span class="text-base ml-1" style="color: var(--ink-soft);">of 15 platforms</span></div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Active users</div><div class="display-2 text-3xl" style="color: var(--ink);">2,000+<span class="text-base ml-1" style="color: var(--ink-soft);">across F&amp;L</span></div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Release compendium</div><div class="display-2 text-3xl" style="color: var(--ink);">18<span class="text-base ml-1" style="color: var(--ink-soft);">product tracks</span></div></div>
+  <div class="card p-4"><div class="cap-num mb-1">RIL counterpart</div><div class="text-base font-semibold leading-tight" style="color: var(--ink);">Anand Thakur</div><div class="text-base font-semibold leading-tight" style="color: var(--ink);">Vineet Nair</div></div>
+</div>
+</div></section>
+
+<!-- =====================================================================
+     §01 · The 15 sub-platforms
+     ===================================================================== -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · 15 sub-platforms in production</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">All 15 sub-platforms.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every sub-platform lives by the same template: who it's for, what it does, how many use it, what improved, what shipped, screenshots.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<a href="/impetus/cortex" class="card platform-card p-5 block">
+  <div class="cat">01 · Plan / Buy / Make / Sell</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Cortex (Planning Engine)</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Revenue, margin, inventory, vendor &amp; AOP dashboards with AI-explained insights.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/intelliloom" class="card platform-card p-5 block">
+  <div class="cat">02 · Buy</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Fabric Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Unified fabric ordering &amp; inventory management. ₹420Cr+ on-platform.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/plm" class="card platform-card p-5 block">
+  <div class="cat">03 · Buy / Make</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Impetus PLM</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">End-to-end product lifecycle: Design → Tech Pack → Sourcing → Production.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/nextwave" class="card platform-card p-5 block">
+  <div class="cat">04 · Plan</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">NextWave (Fashion Trends Forecasting)</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Fashion Trends Forecasting: celebrity, regional &amp; marketplace trend signals.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/costing-engine" class="card platform-card p-5 block">
+  <div class="cat">05 · Buy</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Costing Engine</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Automated material-level costing with vendor pricing &amp; approval workflows.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/master-hub" class="card platform-card p-5 block">
+  <div class="cat">06 · Plan · master data</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Master Data Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Single source of truth for vendor, material &amp; product data.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/intelliverse" class="card platform-card p-5 block">
+  <div class="cat">07 · Make / Move</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Vendor Management Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Procuro · IntelliMake · IntelliQC · IntelliPack · PO to shipping. PO→Ship 55→30 days.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/uvp" class="card platform-card p-5 block">
+  <div class="cat">08 · Buy · Vendor</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Design Co-Creation Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Vendor co-creation platform · used by Shein.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/recollect" class="card platform-card p-5 block">
+  <div class="cat">09 · Sell · Reconciliation</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Reconciliation Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Reconciliation engine for invoice ↔ PO ↔ GRN matching. Auto-flags discrepancies.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/gmetri" class="card platform-card p-5 block">
+  <div class="cat">10 · Sell · Store ops</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Store Digital Twin</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">3D store visualisation &amp; shelf/planogram compliance auditing. 109 stores · ~70% target.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/pulsepoint" class="card platform-card p-5 block">
+  <div class="cat">11 · Sell · Store ops</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Store Ops Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Store-ops task management, surveys &amp; KPI dashboards. 1,605 of 1,926 stores (83%).</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/companion-app" class="card platform-card p-5 block">
+  <div class="cat">12 · Sell · In-store</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Store Companion App</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">In-store shopping companion for product discovery &amp; assistance.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/ai-photoshoot" class="card platform-card p-5 block">
+  <div class="cat">13 · Sell · Catalog</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">AI Photoshoot</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">AI-powered product photography &amp; video generation. 88% first-pass · 90% cost reduction.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/analytics" class="card platform-card p-5 block">
+  <div class="cat">14 · Cross-cutting · Analytics</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Impetus Command Center</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Analytics &amp; real-time dashboards for all business functions. Powers Ask Impetus.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+<a href="/impetus/instadesk" class="card platform-card p-5 block">
+  <div class="cat">15 · Operate · Helpdesk</div>
+  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Support Platform</h3>
+  <p class="text-sm mb-3" style="color: var(--ink-muted);">Unified helpdesk for support tickets &amp; SLA tracking. Replaced Freshdesk.</p>
+  <span class="pill pill-live">Live</span>
+</a>
+
+</div>
+
+</div></section>
+
+<!-- =====================================================================
+     §02 · Adoption · F&L value chain
+     ===================================================================== -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Adoption · across the F&amp;L value chain</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Embedded in every F&amp;L stage · Plan · Buy · Make · Sell.</h2>
+<div class="grid md:grid-cols-4 gap-4">
+  <div class="card p-6">
+    <div class="cap-num mb-2">Plan</div>
+    <h3 class="font-semibold mb-2" style="color: var(--ink);">Demand → assortment → space.</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">NextWave (trends) · Cortex (Command Center) · Master-Hub (CMT) · Analytics (SuperSet).</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2">Buy</div>
+    <h3 class="font-semibold mb-2" style="color: var(--ink);">Trend → design → vendor.</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">PLM · IntelliLoom · Costing Engine · UVP · Cortex.</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2">Make / Move</div>
+    <h3 class="font-semibold mb-2" style="color: var(--ink);">Factory → DC → shelf.</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">IntelliVerse (Procuro · IntelliMake · IntelliQC · IntelliPack).</p>
+  </div>
+  <div class="card p-6">
+    <div class="cap-num mb-2">Sell · Operate</div>
+    <h3 class="font-semibold mb-2" style="color: var(--ink);">Discover → buy → serve.</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">AI Photoshoot · Companion App · GMetri · PulsePoint · Recollect · InstaDesk.</p>
+  </div>
+</div>
+</div></section>
+
+<!-- =====================================================================
+     §03 · Path to L4 · derived from data/agents-x-platforms.yaml
+     Render contents via: python tools/inject_path_to_l4.py --only impetus
+     ===================================================================== -->
+<!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · PATH TO L4</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How IMPETUS becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Currently at <strong>L3</strong>. 4 named agents from the <a href="/agents/" style="color: var(--accent); text-decoration: underline;">/agents/</a> directory close the gap to L4. &nbsp;<a href="#path-to-l4-buildplan" style="color: var(--accent); text-decoration: underline; font-family: 'JetBrains Mono', monospace; font-size: 13px;">See the 3-week build plan ↓</a></p>
+<div class="overflow-x-auto">
+  <table class="grid-table">
+    <thead>
+      <tr><th>Agent</th><th>State</th><th>Target rung</th><th>Next milestone</th><th>What it delivers for this platform</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="/agents/cortex-planning/" style="color: var(--accent); text-decoration: underline;">Cortex Planning Agent</a></td>
+        <td><span class="pill pill-build">Building</span></td>
+        <td><span class="cap-num">L4</span></td>
+        <td><span class="cap-num">25-May-2026 · Pilot Hit/Year decision (category-led model)</span></td>
+        <td>Store-realistic Plan of Record + continuous, exception-led replanning across the Impetus stack.</td>
+      </tr>
+      <tr>
+        <td><a href="/agents/trend-to-design/" style="color: var(--accent); text-decoration: underline;">Trend-to-Design Agent</a></td>
+        <td><span class="pill pill-live">Live</span></td>
+        <td><span class="cap-num">L4</span></td>
+        <td><span class="cap-num">30-May-2026 · Saree drape (Category 15) + Indian designer (Category 42) + sherwani craft (Category 7) improvement window</span></td>
+        <td>Trend brief → manufacturable design package without humans in the design cycle middle.</td>
+      </tr>
+      <tr>
+        <td><a href="/agents/category-intelligence/" style="color: var(--accent); text-decoration: underline;">Category Intelligence Agent</a></td>
+        <td><span class="pill pill-build">Building</span></td>
+        <td><span class="cap-num">L4</span></td>
+        <td><span class="cap-num">-</span></td>
+        <td>Category × season × geography → 40-50 pp evidence-tagged trend report for buying teams.</td>
+      </tr>
+      <tr>
+        <td><a href="/agents/ai-photoshoot/" style="color: var(--accent); text-decoration: underline;">AI Photoshoot Agent</a></td>
+        <td><span class="pill pill-live">Live</span></td>
+        <td><span class="cap-num">L4</span></td>
+        <td><span class="cap-num">28-May-2026 · Ethnic wear pipeline (kurtas, kurta sets, ethnic dresses)</span></td>
+        <td>Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit and Ajio-standard delivery.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</section>
+<!-- PATH-TO-L4-END -->
+
+<!-- =====================================================================
+     §04 · Path to L4 · the build plan
+     Source: docs/agent-catalog-notes-compilation/F&L AI Projects.xlsx
+     Spec:   docs/impetus-l4-buildplan-spec.md §3 D
+     Three project cards (Cortex pivot · AI Photoshoot · AI Design) as
+     <details> blocks; Cortex default-expanded.
+     ===================================================================== -->
+<style>
+  .bp-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 16px 20px; cursor: pointer; list-style: none; background: var(--bg-soft, #FAFAF9); border-radius: 8px 8px 0 0; }
+  .bp-summary::-webkit-details-marker { display: none; }
+  .bp-summary::before { content: '▸'; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-muted); transition: transform 0.15s; margin-right: 4px; }
+  details[open] > .bp-summary::before { transform: rotate(90deg); }
+  .bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: white; }
+  .bp-card-title { font-weight: 700; font-size: 16px; color: var(--ink); flex: 1 1 auto; }
+  .bp-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+  .bp-body { padding: 18px 20px 22px; border-top: 1px solid var(--border); overflow-x: auto; }
+  .bp-body h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 18px 0 8px; }
+  .bp-body h4:first-child { margin-top: 0; }
+  table.bp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; }
+  table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+  table.bp-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--ink); }
+  table.bp-table td.bp-step { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); white-space: nowrap; width: 8em; }
+  table.bp-table td.bp-when { font-family: 'JetBrains Mono', monospace; font-size: 11px; white-space: nowrap; }
+  table.bp-table td.bp-pill { white-space: nowrap; width: 7em; }
+  .bp-legend { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 12px; color: var(--ink-muted); padding: 12px 14px; border: 1px dashed var(--border); border-radius: 8px; margin-top: 14px; }
+  .bp-legend > span { display: inline-flex; align-items: center; gap: 6px; }
+  .bp-honesty { font-size: 12px; color: var(--ink-muted); padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--bg-soft); margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+  .bp-uplink { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: underline; }
+</style>
+
+<section id="path-to-l4-buildplan" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · PATH TO L4 · the build plan</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How <span style="color: var(--accent);">Impetus gets there.</span></h2>
+<p class="mb-8"><a href="#path-to-l4" class="bp-uplink">↑ §03 Path to L4 · the agents</a></p>
+
+<!-- ============== Card 1 · Cortex pivot ============== -->
+<details class="bp-card" open>
+  <summary class="bp-summary">
+    <span class="bp-card-title">Cortex · Operationalize the Category-Led Model</span>
+    <span class="pill pill-build">Building</span>
+    <span class="bp-card-meta">31 deliverables</span>
+    <span class="bp-card-meta">Day-0 04-May</span>
+    <span class="bp-card-meta">Pilot decision 25-May</span>
+    <span class="bp-card-meta">3-week build</span>
+  </summary>
+  <div class="bp-body">
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">Plan &amp; Buy modules operationalize the category-led model alongside the existing brand-led one. Both approaches run in parallel for the same Hit/Year; mutual exclusion enforced; one approach per Hit/Year. Pre-req: hierarchy mapping, brand-allocation rules, pilot Hit/Year locked by 04-May.</p>
+
+    <h4>Pre-work · 04-May</h4>
+    <table class="bp-table">
+      <thead><tr><th>Workstream</th><th>Deliverable</th><th>Due</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">Business Clarity</td><td>Category × Subcategory hierarchy mapping; brand-allocation rules; minimum brand allocation threshold finalised in writing</td><td class="bp-when">04-May-2026</td><td class="bp-pill"><span class="pill pill-build">Pre-req</span></td></tr>
+        <tr><td class="bp-step">Pilot Lock-in</td><td>Pilot Hit/Year and pilot store formats locked</td><td class="bp-when">04-May-2026</td><td class="bp-pill"><span class="pill pill-build">Pre-req</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Week 1 · Foundation · 05-May → 11-May</h4>
+    <table class="bp-table">
+      <thead><tr><th>Workstream</th><th>Deliverable</th><th>Window</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">Foundations</td><td>Master hierarchy created and populated; category-led AOP &amp; planogram structures; mapping completeness validated (every brick mapped)</td><td class="bp-when">05-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">AOP Breakdown</td><td>Category-led AOP breakdown built; top-line splits by category in parallel with brand-led split</td><td class="bp-when">05 → 06-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">OTB</td><td>OTB updated to run in category-led mode; data feeds (sales, stock, inward, forecast) rebuilt at new grain; per-approach config switches</td><td class="bp-when">06 → 07-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">OTB Orchestration</td><td>OTB runs brand-led and category-led in parallel for the same Hit/Year</td><td class="bp-when">07-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Range Architecture</td><td>RA built brand-free at category × subcategory × brick × fashion grade; historical RA builder updated; approach &amp; costing-submission status tracked per Hit/Year</td><td class="bp-when">07 → 08-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Brand Allocation</td><td>Scoring logic, allocation rules, manual override path</td><td class="bp-when">08 → 11-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Plan Tagging</td><td>Brand-led and category-led plans clearly distinguished in the system</td><td class="bp-when">08-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Command Center</td><td>Live data feeds wired into Command Center: operational data flowing into dashboards in real time</td><td class="bp-when">10-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Reconciliation</td><td>Cross-check: category-led AOP &amp; OTB totals match brand-led totals at site × month (Eng + Business)</td><td class="bp-when">11-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Integration</td><td>Integration tests across AOP, OTB, RA · both approaches</td><td class="bp-when">11-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Week 2 · Experience &amp; Downstream · 12-May → 18-May</h4>
+    <table class="bp-table">
+      <thead><tr><th>Workstream</th><th>Deliverable</th><th>Window</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">OTB Dashboard</td><td>Approach toggle and dual-view (brand-led / category-led); approach filter across all OTB views</td><td class="bp-when">12-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Range Dashboard</td><td>Category-led navigation supported (category → subcategory → brick)</td><td class="bp-when">12 → 13-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Brand Allocation Review</td><td>Review panel inside Range Dashboard · buyers can see/accept/override system-assigned brand per category slot</td><td class="bp-when">13-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Planogram Uploader</td><td>Category-led planogram upload for VM / Space Planning</td><td class="bp-when">13 → 14-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Costing Submission</td><td>Submission flow with approach selection, lock-in warning, mutual-exclusion (one approach per Hit/Year)</td><td class="bp-when">14-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Admin &amp; Nav</td><td>Admin pages (approach per Hit/Year and per module); hierarchy navigator supports both trees</td><td class="bp-when">14-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Buy Plan</td><td>Buy Plan auto-detects committed approach; reads correct OTB &amp; planogram; approach indicator in UI</td><td class="bp-when">14 → 15-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Command Center</td><td>Business Verification flow within Command Center (tentative)</td><td class="bp-when">15-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Distribution Plan</td><td>Reads correct planogram by approach; approach indicator in UI</td><td class="bp-when">15-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Mutual Exclusion</td><td>One-approach-per-Hit/Year rule enforced end-to-end</td><td class="bp-when">15-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Costing Integration</td><td>Integration with the costing system updated to handle either approach</td><td class="bp-when">15 → 18-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">End-to-End Test</td><td>Full flow tested: Range Architecture → Costing → Buy Plan → Distribution Plan, both approaches</td><td class="bp-when">18-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Week 3 · Test, Validate, Train · 19-May → 25-May</h4>
+    <table class="bp-table">
+      <thead><tr><th>Workstream</th><th>Deliverable</th><th>Window</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">Comprehensive Testing</td><td>Testing across all modified modules</td><td class="bp-when">19-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Integration Testing</td><td>Full end-to-end flow integration tests for both approaches</td><td class="bp-when">19 → 20-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Reconciliation</td><td>Brand-led totals reconcile to category-led at site, month, category, brick, fashion grade</td><td class="bp-when">20-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Performance</td><td>Both approaches running in parallel confirmed within SLA</td><td class="bp-when">20-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Command Center</td><td>Extending the Exceptions and Insights agent's scope to cover the entire operating model</td><td class="bp-when">20-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Brand Allocation QA</td><td>Quality review of brand allocation with merchandising &amp; brand managers (pilot data)</td><td class="bp-when">20 → 21-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Regression</td><td>Edge-case and regression testing complete</td><td class="bp-when">21-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">UAT</td><td>User Acceptance Testing on pilot Hit/Year (buyers, planners, brand managers · business-led)</td><td class="bp-when">21 → 22-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Training</td><td>User training on dual-view experience</td><td class="bp-when">22-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Ops Walkthrough</td><td>Operations and VM team walkthrough</td><td class="bp-when">22 → 25-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Readiness</td><td>Documentation, runbooks, rollback procedures finalised</td><td class="bp-when">25-May</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Pilot decision</td><td>Pilot Hit/Year go-live decision (Business + Engineering)</td><td class="bp-when">25-May</td><td class="bp-pill"><span class="pill pill-pilot">Milestone</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Post Go-Live · 26-May onwards</h4>
+    <table class="bp-table">
+      <thead><tr><th>Workstream</th><th>Deliverable</th><th>Window</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">Pilot Execution</td><td>Run pilot Hit/Year fully category-led; brand-led continues for in-flight Hit/Years (coexistence)</td><td class="bp-when">26-May → ongoing</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+        <tr><td class="bp-step">Broader Rollout</td><td>Migration Hit/Year-by-Hit/Year as each commits to category-led approach</td><td class="bp-when">Jun-2026 onwards</td><td class="bp-pill"><span class="pill pill-phase2">Phased</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<!-- ============== Card 2 · AI Photoshoot ============== -->
+<details class="bp-card">
+  <summary class="bp-summary">
+    <span class="bp-card-title">AI Photoshoot · Category &amp; Pipeline Expansion</span>
+    <span class="pill pill-live">Live</span>
+    <span class="bp-card-meta">Pipeline 10/10 Live</span>
+    <span class="bp-card-meta">Categories: 7 Live · 3 Partial · 1 Upcoming</span>
+    <span class="bp-card-meta">Ethnic Wear 28-May</span>
+  </summary>
+  <div class="bp-body">
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">Generates professional e-commerce catalogue images from flat-lay/mannequin shots. Modes: Instant, Batch, Single Image. Fully agentic: detection, auto-edit, scoring, delivery to GCS/CDN. <a href="/agents/ai-photoshoot/" style="color: var(--accent); text-decoration: underline;">Agent detail page →</a></p>
+
+    <h4>Pipeline · 10 steps · all Live</h4>
+    <table class="bp-table">
+      <thead><tr><th>Step</th><th>Deliverable</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">01 · Upload</td><td>Product reference images (front/back/side) · clothing, footwear, lingerie</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">02 · Analyse</td><td>Product views classified; garment details extracted (fabric, colour, pattern, silhouette)</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">03 · Avatar &amp; Pose</td><td>Avatar selection (gender, age, ethnicity); pose pool with 12 camera view types</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">04 · Background</td><td>Background image selection; lighting (direction, warmth, type) extracted for blending</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">05 · Prompt</td><td>NL prompt assembled per pose: product + avatar + theme + view-aware lighting + filtered accessories</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">06 · Generate</td><td>On-model images generated in parallel batches (up to 20 concurrent); 4K output</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">07 · Detection</td><td>Unified Detection Agent: colour, logo, print, fabric, pose mismatches with code execution</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">08 · Auto-Edit</td><td>Edit Agent surgical fixes via bounding boxes; validate-retry loop (max 2 attempts); identity &amp; background preservation</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">09 · Quality</td><td>Scored on 10.0 base; ≥7.0 → Approved; below routes to Manual QC. Auto QC currently 8.06/10</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">10 · Deliver</td><td>Final images to GCS, resolution-optimised, available via CDN; Ajio-standard naming</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Category coverage · 11 categories</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>ETA / Window</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Men's Western · Shirts, T-shirts</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Men's Western · Denim (Non-Washed)</td><td>Current focus; clean denims &amp; solid washes work well</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Men's Western · Denim (Washed/Distressed)</td><td>Active R&amp;D: washed/distressed patterns difficult to replicate</td><td class="bp-when">Active R&amp;D</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+        <tr><td>Men's Western · Non-Denim Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Women's Western · Tops, Dresses, Jackets</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Women's Western · Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Women's Ethnic Wear · Kurtas, Sets</td><td>Under development: proper draping, embroidery, cultural authenticity</td><td class="bp-when">28-May-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>Kids Apparel · Boys &amp; Girls</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Footwear · Men &amp; Women</td><td>Shoe-specific prompt builder with ground contact</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Lingerie / Innerwear</td><td>Conversation-thread approach, text-based model identity (NSFW workaround); samples for Red Tag</td><td class="bp-when">Live (New)</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Bags &amp; Accessories</td><td>Pose pool available; expanding coverage</td><td class="bp-when">Ongoing</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Execution track record</h4>
+    <table class="bp-table">
+      <thead><tr><th>Programme</th><th>Detail</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Trends Reboot · 4K Catalogue Digitization</td><td>9,936 raw images → 2,975 styles, 3,957 products, 47,473 images generated (12 shots/product) · pushed to GCS for Ajio listing; pipeline V1 → V2 → V3</td><td class="bp-pill"><span class="pill pill-live">Delivered</span></td></tr>
+        <tr><td>Lingerie Pipeline Unlocked</td><td>8-stage pipeline (C1-C8); ZIP bulk processing; sample outputs for Red Tag</td><td class="bp-pill"><span class="pill pill-live">Delivered</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>What's next</h4>
+    <table class="bp-table">
+      <thead><tr><th>Initiative</th><th>Detail</th><th>ETA</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Ethnic Wear Pipeline</td><td>Initial capability: kurtas, kurta sets, ethnic dresses</td><td class="bp-when">28-May-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>Washed Denim Improvement</td><td>Active R&amp;D for washed/distressed denim patterns</td><td class="bp-when">TBD post-May</td><td class="bp-pill"><span class="pill pill-build">In progress</span></td></tr>
+        <tr><td>Pipeline Stitching</td><td>End-to-end automation: data curation → generation → optimisation → GCS upload</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Segmentation Pipeline</td><td>Fabric swatch shot generation for PDP enhancement</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>Auto-Edit at Scale</td><td>Expand auto-detection / auto-edit coverage across all categories</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>Accuracy Improvements</td><td>Continuous quality improvements with feedback from Ajio cataloguing &amp; brand partners</td><td class="bp-when">Continuous</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<!-- ============== Card 3 · AI Design Agent ============== -->
+<details class="bp-card">
+  <summary class="bp-summary">
+    <span class="bp-card-title">AI Design Agent · 43 Category Completion</span>
+    <span class="pill pill-live">Live</span>
+    <span class="bp-card-meta">Pipeline 8/8 Live</span>
+    <span class="bp-card-meta">Categories: 28 Live · 5 Partial · 7 Upcoming · 3 N/A</span>
+  </summary>
+  <div class="bp-body">
+    <p class="text-sm mb-3" style="color: var(--ink-muted);">Multi-agent autonomous system: trend brief → garment images (front + back, on-model, 2K), artworks, swatch panels, BOM costing. Modes: Hybrid, Standard, Variation. Mapped against the 43 F&amp;L categories. <a href="/agents/trend-to-design/" style="color: var(--accent); text-decoration: underline;">Agent detail page →</a></p>
+
+    <h4>Pipeline · 8 steps · all Live</h4>
+    <table class="bp-table">
+      <thead><tr><th>Step</th><th>Deliverable</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="bp-step">01 · Brief Ingestion</td><td>Brand DNA, season direction, category specs, moodboard palette ingested from trend engine</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">02 · Context Agent</td><td>Loads design brief; extracts brand palette, silhouette direction, prints, fabric preferences</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">03 · Artwork Generation</td><td>0-3 artwork images per garment with smart print detection; placement / AOP artworks; VLM quality review</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">04 · Garment Image</td><td>Full garment image (front + back, on-model, 2K) with zone-aware artwork placement, gender-correct model</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">05 · Quality Review</td><td>VLM reviewer scores 30+ checks; auto-retries on failure</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">06 · BOM Costing</td><td>Cost per piece via costing API (fabric, trims, SMV, overheads)</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">07 · Variation Engine</td><td>N silhouette/colour variations from reference images using moodboard palette</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td class="bp-step">08 · Delivery</td><td>Images uploaded via presigned URLs; per-style webhook callbacks fired in real-time</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Men's Apparel</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>ETA</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>1 · Denim Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>2 · Non-Denim Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>3 · Casual T-shirts</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>4 · Casual Shirts</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>5 · Formal Shirts</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>6 · Formal Trouser &amp; Suits</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>7 · Indian Festive Wear</td><td>Live; sherwani craft-detail accuracy improvement targeted</td><td class="bp-when">28-30 May enh.</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>8 · Sports / Athleisure</td><td>Basic designs good; dynamic/complicated fabrics improvement</td><td class="bp-when">28-May-2026</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+        <tr><td>9 · External Brands</td><td>3P marketplace brands</td><td class="bp-when">N/A</td><td class="bp-pill"><span class="pill pill-phase2">N/A</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Women's Apparel</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>ETA</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>10 · Western Tops</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>11 · Western Dresses, Jackets, Blazers</td><td>Live; complex drape constructions enhancement</td><td class="bp-when">25-May enh.</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>12 · Western Denim Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>13 · Western Non-Denim Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>14 · Indian Kurta / SKD / Bottoms</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>15 · Indian Saree / Lehenga</td><td>Saree draping pipeline in development</td><td class="bp-when">30-May-2026</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+        <tr><td>16 · Indian/Fusion Festive SKD</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>17 · Sports / Athleisure</td><td>Basic designs good; dynamic/complicated fabrics improvement</td><td class="bp-when">28-May-2026</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+        <tr><td>18 · External Brands</td><td>3P marketplace brands</td><td class="bp-when">N/A</td><td class="bp-pill"><span class="pill pill-phase2">N/A</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Kids Apparel</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>19 · Infant</td><td>Production-ready</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>20 · Boys</td><td>Production-ready</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>21 · Girls</td><td>Production-ready</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Footwear &amp; Accessories</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>ETA</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>22-25 · Footwear (Sports, Men, Women, External)</td><td>3D footwear pipeline · scoping phase</td><td class="bp-when">30-May (scope)</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>26 · Innerwear: Men &amp; Women</td><td>Basic styles covered; expanding to structured innerwear</td><td class="bp-when">25-May-2026</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+        <tr><td>27 · Accessories: Gold &amp; Jewellery</td><td>Requires accessories pipeline</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>28 · Accessories: Others (Bags, Belts, Wallets)</td><td>Requires accessories pipeline</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>34 · Beauty</td><td>Out of scope · separate division</td><td class="bp-when">N/A</td><td class="bp-pill"><span class="pill pill-phase2">Out of scope</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Quick Fashion</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>ETA</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>29 · Quick Fashion Women</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>30 · Quick Fashion Men</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>31 · Quick Fashion Kids</td><td>Production-ready</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>32 · Quick Fashion Footwear</td><td>Depends on footwear pipeline</td><td class="bp-when">30-May (scope)</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>33 · Quick Fashion Accessories</td><td>Depends on accessories pipeline</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Premium / BTL &amp; Luxury</h4>
+    <table class="bp-table">
+      <thead><tr><th>Category</th><th>Notes</th><th>ETA</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>35 · Premium Men</td><td>Variation Generator: buyers upload references; agent generates on-brand variations</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>36 · Premium Women</td><td>Variation Generator: reference-based style explosions maintaining brand DNA</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>37 · Premium Kids</td><td>Variation Generator: age-appropriate variations from reference images</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>38 · L&amp;BTL Men</td><td>Variation Generator: range building with Pantone-accurate colours</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>39 · L&amp;BTL Women</td><td>Variation Generator: range building with Pantone-accurate colours</td><td class="bp-when">Live</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>40 · Footwear &amp; Accessories (Premium)</td><td>Requires separate pipeline</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>41 · Eyewear</td><td>Eyewear pipeline not yet scoped</td><td class="bp-when">01-Jun-2026</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>42 · Indian Designer Wear</td><td>Lehengas, festive SKD covered; high-craft couture extending</td><td class="bp-when">30-May-2026</td><td class="bp-pill"><span class="pill pill-build">Partial</span></td></tr>
+        <tr><td>43 · Premium Home &amp; Living</td><td>Home textiles pipeline not yet scoped</td><td class="bp-when">TBD post-Jun</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>Execution track record</h4>
+    <table class="bp-table">
+      <thead><tr><th>Programme</th><th>Detail</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Trend Business · 718 Designs in &lt;2 days</td><td>10 brands (DNMX, Netplay, Team Spirit, Rio, Avaasa, Frendz, INF Frendz)</td><td class="bp-pill"><span class="pill pill-live">Delivered</span></td></tr>
+        <tr><td>Impetus × Superdry India · 20 Designs Live on Retail</td><td>SDX SS'26 capsule: 400+ designs in &lt;10 days; 171 selected, 20 launched on Ajio</td><td class="bp-pill"><span class="pill pill-live">Delivered</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>What's next · improvements</h4>
+    <table class="bp-table">
+      <thead><tr><th>Initiative</th><th>Window</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Complex drape constructions: Dresses (Category 11) &amp; Structured Innerwear (Category 26)</td><td class="bp-when">21 → 25-May</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>Dynamic athleisure fabric handling: Sports (Categories 8, 17)</td><td class="bp-when">25 → 28-May</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+        <tr><td>Saree draping (Category 15), high-craft Indian designer wear (Category 42), sherwani craft details (Category 7)</td><td class="bp-when">28 → 30-May</td><td class="bp-pill"><span class="pill pill-phase2">Upcoming</span></td></tr>
+      </tbody>
+    </table>
+
+    <h4>What's next · strategic</h4>
+    <table class="bp-table">
+      <thead><tr><th>Initiative</th><th>Detail</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>Variation Engine at Scale</td><td>Reference-based range building with Pantone-accurate moodboard colours</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Premium brands via Variations</td><td>Categories 35-39 served via Variation Generator · buyers upload references</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+        <tr><td>Trend-to-Design Closed Loop</td><td>Trend Agent outputs feed directly into Design Agent · fully autonomous brief-to-design</td><td class="bp-pill"><span class="pill pill-phase2">01-Jun-2026</span></td></tr>
+        <tr><td>Delta Categories: Footwear, Accessories, Eyewear, Home</td><td>Category-specific pipelines; scoping underway</td><td class="bp-pill"><span class="pill pill-phase2">Scoping</span></td></tr>
+        <tr><td>Eval-driven Improvement</td><td>Continuous automated VLM evaluation; weakest dimension (Brief adherence at 79) is the active target</td><td class="bp-pill"><span class="pill pill-live">Live</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</details>
+
+<!-- Status legend -->
+<div class="bp-legend">
+  <span><span class="pill pill-live">Live</span> In production today</span>
+  <span><span class="pill pill-build">Partial</span> Live for some sub-segments / under active R&amp;D</span>
+  <span><span class="pill pill-phase2">Upcoming</span> Scheduled · see ETA</span>
+  <span><span class="pill pill-build">Pre-req</span> Business decision required before kickoff</span>
+  <span><span class="pill pill-pilot">Milestone</span> Key decision gate</span>
+  <span><span class="pill pill-phase2">Planned</span> Scheduled inside the 3-week build window</span>
+</div>
+</div>
+</section>
+
+<!-- =====================================================================
+     §05 · Design portfolio · output of the platforms
+     ===================================================================== -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Design portfolio · what Impetus has shipped</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What Impetus has shipped.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Distinct from the platform sub-IPs above. This is the creative <strong>work product</strong> (designs, photoshoots, videos, category-intel reports) produced ON the platforms and visible to Reliance brand teams today.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <a href="/impetus/brands" class="card card-hover p-5 block">
+    <div class="cap-num mb-2">A · DESIGN LIBRARY</div>
+    <h3 class="font-semibold mb-1">Garment designs · PLP</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">876 unique designs · gender × category × brand. Image output of the <strong>Trend-to-Design Agent</strong> · full design package (image, BOM, costing, line sheets) flows to Costing Engine and PLM.</p>
+  </a>
+  <a href="/impetus/ai-photoshoot#section-04" class="card card-hover p-5 block">
+    <div class="cap-num mb-2">B · PHOTOSHOOTS</div>
+    <h3 class="font-semibold mb-1">AI on-model shoots</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">4 shoots · representative sample. Output of the <strong>AI Photoshoot platform (SNAP)</strong> · see the platform page for the full output gallery.</p>
+  </a>
+  <a href="/impetus/category-intel" class="card card-hover p-5 block">
+    <div class="cap-num mb-2">C · CATEGORY INTEL</div>
+    <h3 class="font-semibold mb-1">Trend reports · India</h3>
+    <p class="text-sm" style="color: var(--ink-muted);">4 reports · SS27 · AW26.</p>
+  </a>
+</div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

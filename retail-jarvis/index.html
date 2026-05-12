@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Retail Jarvis · Customer Experience Sensing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* In-page section nav */
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Hero -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Retail Jarvis</span></div>
+<div class="section-label mb-3">Special Project · Customer Experience Sensing</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Retail Jarvis.</h1>
+
+<p class="text-lg max-w-3xl mb-6" style="color: var(--ink-muted);">Predictive, non-intrusive, always-on CX sensing. Reads operational reality and customer behaviour without asking a single question. 4 scores · 1 feedback loop. Anchor demo on Store 5943. <strong>In Build.</strong></p>
+
+<div class="flex flex-wrap gap-2 mb-8">
+  <span class="pill pill-build"><span class="status-dot dot-amber"></span> Build · 01 - May - 2026 · Anchor demo on Store 5943 · Mumbai Infinity Malad</span>
+  <span class="pill pill-phase2">Roadmap · Production rollout · non-biometric by design</span>
+</div>
+
+<div class="cap-num mb-3">Status · Build</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">Stage</div><div class="display-2 text-3xl" style="color: var(--ink);">Build</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Anchor demo on Store 5943</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Core outputs</div><div class="display-2 text-3xl" style="color: var(--ink);">4</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Readiness · CX · Friction · Churn</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Engine stages</div><div class="display-2 text-3xl" style="color: var(--ink);">4</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Readiness → Journey → Behaviour → AI</div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+  <div class="story-toc-inner" id="story-toc">
+    <a href="#status">01 · Status</a>
+    <a href="#principles">02 · First principles</a>
+    <a href="#architecture">03 · Architecture</a>
+    <a href="#demo">04 · Anchor demo</a>
+    <a href="#outputs">05 · Core outputs</a>
+    <a href="#signals">06 · Signal inventory</a>
+    <a href="#feedback">07 · Actions &amp; feedback</a>
+  </div>
+</div>
+
+<!-- §01 · Status (01-May-2026) -->
+<section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Status · Build · 01 - May - 2026</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">In Build. Anchor demo on Store 5943. Production rollout next.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Foundation</div><span class="pill pill-build">Build</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Cornerstone in.</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">11-page cornerstone working note shipped 26 - Nov - 2025 (working-note rev 16 - Dec - 2025). First principles, offline signal inventory (Basic / Inter. / Adv.), online signal inventory (Basic / Inter. + Adv. combined), four core outputs, actions and feedback loops. The build proceeds against this spec.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Anchor demo</div><span class="pill pill-build">Build</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Jarvis console · Store 5943.</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Five operator surfaces being built on Store 5943 (Mumbai Infinity Malad) : Customer Journey Funnel · Walk-in · Trial / Selection · Billing · Action Tracker. CCTV-observed and POS-input metrics; estimated where instrumentation is pending. See §04.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Production rollout</div><span class="pill pill-phase2">Roadmap</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Multi-store · non-biometric by design.</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Production rollout across additional formats. Silhouette / posture CV only (non-biometric) per cornerstone Section 2C. Product to be re-housed under Impetus as <em>Impetus Jarvis</em> per Farooq.</p>
+</div>
+
+</div>
+</div></section>
+
+<!-- §02 · First principles -->
+<section id="principles" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · First principles · Why this exists</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Customer experience cannot be understood by asking customers.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">It must be observed. The cornerstone working note states four principles before any signal, score, or action is defined. Every downstream choice in the system rests on these.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+<div class="card p-6">
+<div class="cap-num mb-2">Principle 01</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Start with operational reality.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Temperature, lighting, cleanliness, product availability, navigability, staff readiness, app stability, search performance, delivery completeness, competitor pricing. If readiness is wrong, every downstream customer signal is distorted. Fix the basics first.</p>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2">Principle 02</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Behaviour reveals truth.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Customers communicate through actions long before words. They continue browsing or exit, put items back, abandon a queue, retry payment or drop off, return frequently or slowly stop, switch channels silently. These signals are richer and more honest than any form-based feedback.</p>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2">Principle 03</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Build bottom-up.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Order matters · Readiness, Journey, Behaviour, Inference. Measure the environment first, capture what actually happened, observe the customer response, then (and only then) infer experience quality and predict risk. Inverting the order produces assumptions, not insight.</p>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2">Principle 04</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Include external context.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Customer expectations are shaped before they enter a store or open the app. Competitor pricing, local promotions, social media sentiment, and seasonal or environmental factors must be part of the model. Otherwise behaviour is interpreted out of context.</p>
+</div>
+
+</div>
+</div></section>
+
+<!-- §03 · Architecture -->
+<section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Architecture · Signals → Engine → Playbooks</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One sensing engine. Three sides.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Signals enter on the left (offline · online · external). The Experience Sensing Engine runs four stages (Readiness Measurement, Journey Capture, Behavioural Analytics, AI Inference) and emits four core KPIs. Playbooks on the right route each KPI to the team that can act. Operational changes feed new signals back to the engine for continuous learning.</p>
+
+<div class="grid md:grid-cols-3 gap-3 mb-10">
+
+<div class="card p-5">
+<div class="cap-num mb-2">Left · Signals</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Three signal families.</h3>
+<ul class="text-sm space-y-1.5" style="color: var(--ink);">
+<li>· Offline store · RFQM · AOV · footfall · queue · path · putback · switching</li>
+<li>· Online / digital · RFQM · AOV · micro-journeys · NLP sentiment · channel switching</li>
+<li>· External / market · competitor pricing · local promotions · environment · seasonality</li>
+</ul>
+</div>
+
+<div class="card p-5">
+<div class="cap-num mb-2">Centre · Sensing engine</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Four stages, in order.</h3>
+<ul class="text-sm space-y-1.5" style="color: var(--ink);">
+<li>· <strong>Readiness Measurement</strong> · store readiness · digital readiness · external context</li>
+<li>· <strong>Journey Capture</strong> · offline · digital · fulfilment</li>
+<li>· <strong>Behavioural Analytics</strong> · dwell · paths · queue · funnel</li>
+<li>· <strong>AI Inference</strong> · experience quality · friction locations · churn risk</li>
+</ul>
+</div>
+
+<div class="card p-5">
+<div class="cap-num mb-2">Right · Playbooks &amp; actions</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Four owners, by KPI.</h3>
+<ul class="text-sm space-y-1.5" style="color: var(--ink);">
+<li>· <strong>Store Operations</strong> · readiness · staffing · assortment</li>
+<li>· <strong>Digital &amp; Product</strong> · search · performance · payments</li>
+<li>· <strong>Fulfilment &amp; Logistics</strong> · SLA · substitutions · reliability</li>
+<li>· <strong>CRM &amp; Marketing</strong> · retention · outreach · recovery</li>
+</ul>
+</div>
+
+</div>
+
+<div class="card overflow-hidden">
+<a href="/assets/retail-jarvis/cornerstone/architecture.jpg" target="_blank" rel="noopener" title="Open full-size diagram" class="js-lightbox">
+  <img src="/assets/retail-jarvis/cornerstone/architecture.jpg" alt="Retail Jarvis architecture · Signals → Experience Sensing Engine → Playbooks &amp; Actions · with four core KPIs" class="w-full block" style="border-bottom: 1px solid var(--border); cursor: zoom-in; max-width: 1100px; margin: 0 auto;" />
+</a>
+<div class="p-5"><p class="text-sm" style="color: var(--ink-muted);">Four stages, end to end. <strong>Signals</strong> · Offline Store, Online / Digital, External / Market. <strong>Experience Sensing Engine</strong> · Readiness Measurement, Journey Capture, Behavioural Analytics, AI Inference. <strong>Core KPIs</strong> · Store Readiness, Customer Experience, Friction Index, Churn Risk. <strong>Playbooks</strong> · Store Ops, Digital &amp; Product, Fulfilment &amp; Logistics, CRM &amp; Marketing. Operational changes feed new signals back · scores update.</p></div>
+</div>
+</div></section>
+
+<!-- §04 · Demo product -->
+<section id="demo" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Anchor demo · Store 5943 · Mumbai Infinity Malad</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five operator surfaces in build on the anchor store.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Jarvis console being built against a single anchor store. Each surface answers one operational question : where does the funnel break, what happens at the door, what happens in the trial room, what happens at the till, what does the manager fix. Metrics labelled <em>from input data</em> are POS / roster facts; <em>CCTV observed</em> are silhouette-CV; <em>estimated</em> are model-inferred where instrumentation is still pending.</p>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<div class="card overflow-hidden">
+<a href="/assets/retail-jarvis/screenshots/01-customer-journey-funnel.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+  <img src="/assets/retail-jarvis/screenshots/01-customer-journey-funnel.jpg" alt="Jarvis Console · Customer Journey Funnel for Store 5943 · Footfall 10,265 → Browsing 7,185 (-30%) → Trial 3,593 (-50%) → Billing 1,383 (-62%)" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+</a>
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Console · Customer Journey Funnel</div><span class="pill pill-build">Build</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Stage-wise conversion with drop-off analysis. Last week (W2 · Mar 2-8) · Footfall 10,265, Browsing 7,185 (−30%), Trial / Selection 3,593 (−50%), Billing 1,383 (−62%). Footfall and Billing are <em>from input data</em>; Browsing and Trial are <em>estimated</em> from CCTV observations.</p>
+</div>
+</div>
+
+<div class="card overflow-hidden">
+<a href="/assets/retail-jarvis/screenshots/02-walk-in-journey.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+  <img src="/assets/retail-jarvis/screenshots/02-walk-in-journey.jpg" alt="Jarvis · Walk-in Journey · 20.6K total walk-ins · 30% walked out under 2 minutes · 12-15 min average engagement" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+</a>
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Walk-in Journey</div><span class="pill pill-build">Build</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Entry experience, staff greeting, store readiness, customer engagement. Total walk-ins 20.6K (W1 9,433 to W2 10,265 · +8.8%). 30% walked out in under 2 min (~6,186 customers). Avg engagement ~12-15 min. Staff-to-customer ratio 1:12 peak vs 1:6 non-peak. Staff interaction rate ~15% met / ~85% not met. Product zone activity ranks Women's Wear very high, Shoes / Accessories low.</p>
+</div>
+</div>
+
+<div class="card overflow-hidden">
+<a href="/assets/retail-jarvis/screenshots/03-trial-selection-journey.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+  <img src="/assets/retail-jarvis/screenshots/03-trial-selection-journey.jpg" alt="Jarvis · Trial / Selection Journey · 1:12 peak staff ratio · trial dwell 8-12 min · ~60% dwell over 5 min" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+</a>
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Trial / Selection Journey</div><span class="pill pill-build">Build</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Product selection, trial-room experience, size availability, staff assistance during fitting. Staff-to-customer ratio ~1:12 peak. Peak 18:00-20:00 (10-12 customers / zone) vs non-peak 14:00-16:00 (2-4). Trial-room dwell ~8-12 min. ~60% of trial-room users dwell over 5 min. Zone activity map flags 2 critical issues, 1 needs attention, 1 observation, 2 working well, including <em>"No staff assistance during product selection. Customers cannot find sizes, match outfits, or get recommendations"</em>.</p>
+</div>
+</div>
+
+<div class="card overflow-hidden">
+<a href="/assets/retail-jarvis/screenshots/04-billing-journey.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+  <img src="/assets/retail-jarvis/screenshots/04-billing-journey.jpg" alt="Jarvis · Billing Journey · queue 3-5 min · ~1-2/day queue over 15 min · avg bill ₹1,450 · 5 POS machines" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+</a>
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Billing Journey</div><span class="pill pill-build">Build</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Queue experience, billing speed, POS utilisation, checkout friction. Queue time 3-5 min. ~1-2 instances/day where queue exceeds 15 min. Average bill value ₹1,450. POS machines used 5 (#121 · #126 · #135 · #166 · #167). Avg billing time 2-3 min. Returns processed 10-15/day.</p>
+</div>
+</div>
+
+<div class="card overflow-hidden md:col-span-2">
+<a href="/assets/retail-jarvis/screenshots/05-action-tracker.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
+  <img src="/assets/retail-jarvis/screenshots/05-action-tracker.jpg" alt="Jarvis · Action Tracker · 8 action items · 6 support tickets · 2 critical · 3 high · 2 watch · 1 resolved" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+</a>
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Action Tracker · the closed loop</div><span class="pill pill-build">Build</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Monitors actions, escalations, and support tickets for the store. 8 action items · 6 support tickets · 2 S0 critical · 3 S1 high · 2 S2 watch · 1 resolved. Escalation path · Department Manager → Store Manager → Cluster Manager. Worked example: <em>Address Size Availability Gap</em>. 98% of returns due to wrong size, ₹2.4L/month reduction in returns, owned by Store Manager (Rajesh Kumar). Second item: <em>Staff Greeting Protocol Training</em>. Greeting rate 72% (target 90%), 3 staff below 65%, +5 pts CXS improvement projected.</p>
+</div>
+</div>
+
+</div>
+</div></section>
+
+<!-- §05 · Four core outputs -->
+<section id="outputs" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Four core outputs</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal collapses into four scores.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">All offline and online signals consolidate into four outputs. Each has a defined calculation, a defined meaning, and a downstream playbook.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Output</th><th>What it answers</th><th>How it is calculated · inputs</th><th>Feeds</th></tr></thead>
+<tbody>
+<tr>
+<td class="font-medium">Store Readiness Score</td>
+<td class="text-sm">Was the store / app operationally ready today?</td>
+<td class="text-sm" style="color: var(--ink-muted);">AC / temperature, lighting, cleanliness, staffing presence, assortment completeness, out-of-stock checks, pricing consistency, Experience Manager App logs, maintenance issues.</td>
+<td class="text-sm">Store Operations</td>
+</tr>
+<tr>
+<td class="font-medium">Customer Experience Score</td>
+<td class="text-sm">Survey-less measure of how customers experienced the journey.</td>
+<td class="text-sm" style="color: var(--ink-muted);">RFQM patterns, basket shifts, queue and billing performance, app / web responsiveness, payment reliability, search effectiveness, fulfilment quality, returns, customer-service interactions, ratings, sentiment.</td>
+<td class="text-sm">Store Ops · Product · Fulfilment</td>
+</tr>
+<tr>
+<td class="font-medium">Journey Friction Index</td>
+<td class="text-sm">Where exactly did friction occur : find, decide, pay, receive, support?</td>
+<td class="text-sm" style="color: var(--ink-muted);">Search zero-results, funnel drop-offs, cart abandonment factors, promo / coupon failures, dwell / navigation delays, queue abandonment, pricing conflicts, fulfilment issues, support escalation patterns.</td>
+<td class="text-sm">Product · Merchandising · Store Ops · Customer Service</td>
+</tr>
+<tr>
+<td class="font-medium">Dissatisfaction &amp; Churn Prediction</td>
+<td class="text-sm">Which customers are at risk of disengaging or switching?</td>
+<td class="text-sm" style="color: var(--ink-muted);">Declining RFQM, reduced visit frequency, shrinking basket size, repeated returns, channel switching after friction, fulfilment delays, ongoing negative sentiment.</td>
+<td class="text-sm">CRM · CX Team</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div></section>
+
+<!-- §06 · Signal inventory -->
+<section id="signals" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Signal inventory · offline (Basic / Inter. / Adv.) + online (Basic / Inter.&nbsp;·&nbsp;Adv. combined)</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal that feeds the engine.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">From the cornerstone working note. Basic signals rely on existing POS / app data and can be turned on immediately. Intermediate signals require structured process or instrumentation. Advanced signals rely on CV, ML, identity stitching, or social listening. Cornerstone Section 3 combines online intermediate and advanced into a single tier. The page reflects this as <span class="mono">Inter./Adv.</span>. Each row maps to one or more of the four core outputs.</p>
+
+<h3 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">Offline stores.</h3>
+<p class="text-sm mb-6" style="color: var(--ink-muted);">23 signals · 9 Basic · 8 Intermediate · 6 Advanced.</p>
+
+<div class="card overflow-hidden mb-10">
+<table class="grid-table">
+<thead><tr><th>Tier</th><th>Signal</th><th>How captured</th><th>What it tells</th><th>Feeds output</th></tr></thead>
+<tbody>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">RFQM</td><td class="text-sm">POS transaction history</td><td class="text-sm">Engagement level, early churn signs</td><td class="text-sm">CX · Churn</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">AOV &amp; basket composition</td><td class="text-sm">POS basket data</td><td class="text-sm">Trade-down, premium loss, buying-behaviour shifts</td><td class="text-sm">CX · Churn</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Store readiness · Experience Manager App</td><td class="text-sm">Daily checklist (AC, lighting, cleanliness, fixtures, staffing, maintenance)</td><td class="text-sm">Was the store fit for customers that day</td><td class="text-sm">Readiness</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Simple conversion proxy</td><td class="text-sm">POS bills per time-band (approx walk-ins)</td><td class="text-sm">Early indicator of friction or mismatch</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Billing time</td><td class="text-sm">POS timestamps</td><td class="text-sm">Early detection of slow checkout</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Returns &amp; reason codes</td><td class="text-sm">POS return records</td><td class="text-sm">Product dissatisfaction or mismatch</td><td class="text-sm">CX · Churn</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Discount / promo dependence</td><td class="text-sm">POS applied discounts</td><td class="text-sm">Value-perception challenges</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Competitor pricing (key KVIs)</td><td class="text-sm">Price-intelligence feeds or manual scans</td><td class="text-sm">Whether value perception is aligned before arrival</td><td class="text-sm">Readiness · Churn</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Assortment breadth &amp; depth</td><td class="text-sm">Store ranging files</td><td class="text-sm">Assortment gaps affecting expectations</td><td class="text-sm">Readiness · Friction</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Footfall vs billing</td><td class="text-sm">Door counters</td><td class="text-sm">Customers entering but not buying</td><td class="text-sm">CX · Friction</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Shelf availability (enhanced)</td><td class="text-sm">High-frequency staff scans</td><td class="text-sm">Persistent out-of-stock patterns</td><td class="text-sm">Readiness</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Queue length &amp; abandonment</td><td class="text-sm">Queue counters / overhead count</td><td class="text-sm">Checkout friction and staffing needs</td><td class="text-sm">Friction · CX</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Zone-level dwell (high-level)</td><td class="text-sm">Overhead heatmaps (non-identity)</td><td class="text-sm">Confusing or ignored areas</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Staff responsiveness</td><td class="text-sm">Staff app interaction logs</td><td class="text-sm">Speed of customer assistance</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Staffing allocation</td><td class="text-sm">Roster vs actual POS / staff activity</td><td class="text-sm">Understaffing or misalignment with peak demand</td><td class="text-sm">Readiness · Friction</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Price override / promo mismatch</td><td class="text-sm">POS override logs</td><td class="text-sm">Where pricing or signage is unclear</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Inter.</td><td class="font-medium">Store-level social sentiment</td><td class="text-sm">Geo-tagged store mentions · social listening</td><td class="text-sm">Independent validation of operational issues</td><td class="text-sm">CX · Churn</td></tr>
+<tr><td class="text-xs mono">Adv.</td><td class="font-medium">Detailed path &amp; movement loops</td><td class="text-sm">Full-store heatmap and path analytics</td><td class="text-sm">Navigation and search friction</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Adv.</td><td class="font-medium">Pick-putback &amp; hesitation</td><td class="text-sm">Zone-level CV</td><td class="text-sm">Pricing, quality, or information friction</td><td class="text-sm">Friction · CX</td></tr>
+<tr><td class="text-xs mono">Adv.</td><td class="font-medium">Body-language friction cues</td><td class="text-sm">Silhouette / posture CV (non-biometric)</td><td class="text-sm">Live dissatisfaction pockets</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Adv.</td><td class="font-medium">Comfort index (temp / noise)</td><td class="text-sm">Distributed sensors</td><td class="text-sm">When discomfort affects dwell or conversion</td><td class="text-sm">Readiness</td></tr>
+<tr><td class="text-xs mono">Adv.</td><td class="font-medium">Cross-store switching</td><td class="text-sm">Identity stitching across stores</td><td class="text-sm">Customers avoiding a specific store</td><td class="text-sm">Churn</td></tr>
+<tr><td class="text-xs mono">Adv.</td><td class="font-medium">Offline-to-online migration</td><td class="text-sm">Omni-channel identity graph</td><td class="text-sm">Unresolved in-store friction pushing customers online</td><td class="text-sm">Churn</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">Online · app + web + OMS + CRM.</h3>
+<p class="text-sm mb-6" style="color: var(--ink-muted);">24 signals · 18 Basic · 6 Intermediate / Advanced.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Tier</th><th>Signal</th><th>How captured</th><th>What it tells</th><th>Feeds output</th></tr></thead>
+<tbody>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">RFQM</td><td class="text-sm">Digital transaction history</td><td class="text-sm">Customer engagement and early churn indicators</td><td class="text-sm">CX · Churn</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">AOV &amp; basket composition</td><td class="text-sm">Cart and order logs</td><td class="text-sm">Shifts in value perception or buying behaviour</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Funnel drop-off (View → Cart → Checkout → Pay)</td><td class="text-sm">Clickstream analytics</td><td class="text-sm">Where friction occurs in the digital journey</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Payment failures &amp; retries</td><td class="text-sm">Payment-gateway logs</td><td class="text-sm">Trust or payment-UX friction</td><td class="text-sm">Friction · CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Delivery performance</td><td class="text-sm">OMS + last-mile feeds</td><td class="text-sm">Reliability and quality of fulfilment</td><td class="text-sm">CX · Churn</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Returns &amp; reason codes</td><td class="text-sm">Digital returns workflow</td><td class="text-sm">Product / content mismatch</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Search performance</td><td class="text-sm">Search logs</td><td class="text-sm">Catalogue and tagging quality</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Out of stock</td><td class="text-sm">Real-time catalogue availability</td><td class="text-sm">Immediate friction due to unavailability</td><td class="text-sm">Friction · CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Assortment range</td><td class="text-sm">Category listing completeness</td><td class="text-sm">Whether the digital store meets customer expectations</td><td class="text-sm">Readiness · Friction</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Competitor pricing</td><td class="text-sm">Price-comparison feeds on key SKUs</td><td class="text-sm">How value perception is shaped before checkout</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Promo / coupon issues</td><td class="text-sm">Checkout logs</td><td class="text-sm">Pricing or promotion clarity issues</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">App / web performance</td><td class="text-sm">Telemetry &amp; web vitals</td><td class="text-sm">Technical friction affecting engagement</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Add-to-cart vs purchase</td><td class="text-sm">Cart activity vs orders</td><td class="text-sm">Pricing, delivery, UX or trust issues</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Customer-service touchpoints (Chat / Bot / WhatsApp)</td><td class="text-sm">CRM and chat logs</td><td class="text-sm">Themes driving friction or confusion</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Support tickets</td><td class="text-sm">CRM systems</td><td class="text-sm">Where digital journeys fail operationally</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Ratings and reviews</td><td class="text-sm">App / web review systems</td><td class="text-sm">Customer sentiment on products and service</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Store-pick order quality</td><td class="text-sm">OMS pick logs</td><td class="text-sm">Offline readiness affecting online fulfilment</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Basic</td><td class="font-medium">Social media sentiment</td><td class="text-sm">Public posts referencing digital experience</td><td class="text-sm">External validation of digital experience quality</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Inter./Adv.</td><td class="font-medium">Behavioural micro-journey patterns</td><td class="text-sm">Session-path analytics</td><td class="text-sm">Predicts dissatisfaction before drop-off occurs</td><td class="text-sm">CX · Friction</td></tr>
+<tr><td class="text-xs mono">Inter./Adv.</td><td class="font-medium">NLP sentiment from chats / emails / reviews</td><td class="text-sm">NLP / ML text analysis</td><td class="text-sm">Hidden friction not visible in clickstream data</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Inter./Adv.</td><td class="font-medium">Product-content quality issues</td><td class="text-sm">ML on product descriptions, images, return reasons</td><td class="text-sm">When inaccurate or incomplete content erodes purchase confidence</td><td class="text-sm">Friction</td></tr>
+<tr><td class="text-xs mono">Inter./Adv.</td><td class="font-medium">Personalisation failure signals</td><td class="text-sm">CTR patterns, relevance scoring</td><td class="text-sm">When recommendations degrade experience</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Inter./Adv.</td><td class="font-medium">Delivery experience prediction</td><td class="text-sm">ML on SLA history, traffic, weather</td><td class="text-sm">Proactive intervention before a poor experience occurs</td><td class="text-sm">CX</td></tr>
+<tr><td class="text-xs mono">Inter./Adv.</td><td class="font-medium">Channel switching (online ↔ offline)</td><td class="text-sm">Identity stitching across systems</td><td class="text-sm">When dissatisfaction in one channel pushes customers to another</td><td class="text-sm">Churn</td></tr>
+</tbody>
+</table>
+</div>
+</div></section>
+
+<!-- §07 · Actions & feedback -->
+<section id="feedback" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 · Actions &amp; feedback · the closed loop</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Score → trigger → action → re-measure.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each output is wired to a specific trigger, an action, an owner, and a re-measurement loop. The same signals are measured again after action; scores update; weighting refines based on observed outcomes.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Output</th><th>What triggers action</th><th>Action taken</th><th>Owner</th><th>Feedback loop · re-measured</th></tr></thead>
+<tbody>
+<tr>
+<td class="font-medium">Store Readiness Score</td>
+<td class="text-sm">Low readiness : AC, lighting, cleanliness, staffing gaps, assortment gaps, pricing inconsistencies.</td>
+<td class="text-sm">Fix issues immediately (environment, maintenance, stock, staffing). Mark resolution in Experience Manager App.</td>
+<td class="text-sm">Store Manager · Experience Team</td>
+<td class="text-sm">Readiness re-evaluated next scheduled check or visit.</td>
+</tr>
+<tr>
+<td class="font-medium">Customer Experience Score</td>
+<td class="text-sm">Low or declining : payment failures, delivery delays, long queues, poor app performance, rising returns.</td>
+<td class="text-sm">Identify top drivers by channel; corrective actions across process, staffing, content, UX.</td>
+<td class="text-sm">CX Team · Store Ops · Product · Fulfilment</td>
+<td class="text-sm">Recalculate CX after fixes; track whether engagement and RFQM recover.</td>
+</tr>
+<tr>
+<td class="font-medium">Journey Friction Index</td>
+<td class="text-sm">High friction at a specific journey step : search, navigation, checkout, payment, fulfilment, support.</td>
+<td class="text-sm">Targeted fixes : improve search tagging, correct pricing or promos, reduce queue time, resolve checkout, fix delivery routes, clarify content.</td>
+<td class="text-sm">Product · Merchandising · Store Ops · Customer Service</td>
+<td class="text-sm">Measure reduction in friction signals at the same journey step.</td>
+</tr>
+<tr>
+<td class="font-medium">Dissatisfaction &amp; Churn Prediction</td>
+<td class="text-sm">Customer or household flagged high-risk : declining frequency, smaller baskets, complaints, negative sentiment, fulfilment issues.</td>
+<td class="text-sm">Proactive retention : personalised outreach, issue resolution, cross-channel support, service guarantees, targeted offers.</td>
+<td class="text-sm">CRM · CX Team</td>
+<td class="text-sm">Track whether RFQM improves and churn risk decreases after intervention.</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p class="mt-6 text-sm max-w-3xl" style="color: var(--ink-muted);">Four-step cycle · <strong>signals, outputs, actions, feedback</strong>. After actions are taken, the same signals are measured again; scores update automatically; teams adjust or escalate; models refine signal weighting based on observed outcomes. Self-correcting feedback loop. Operations and predictions both improve with each cycle.</p>
+</div></section>
+
+<!-- Lightbox overlay -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "slug": "forge",
+  "name": "Forge MES",
+  "tagline": "AI-native Manufacturing Execution System \u00b7 electronics + hardware factories.",
+  "track": "forge",
+  "track_role": "track-headline",
+  "status": "Pilot",
+  "since": "2025-09-01",
+  "last_release": null,
+  "verticals": [
+    "electronics"
+  ],
+  "value_chain": [
+    "buy-make"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/forge",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "manufacturing",
+    "mes",
+    "p2p"
+  ]
+}

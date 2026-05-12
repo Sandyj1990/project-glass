@@ -1,0 +1,161 @@
+{
+  "page": "retail-vista/index.html",
+  "spec": "docs/retailvista-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_version": "v2 (proper full pass)",
+  "score": 78,
+  "grade": "C+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 65,
+    "tone_of_voice": 88,
+    "honesty_register": 70,
+    "visual_completeness": 95,
+    "cross_page_consistency": 55
+  },
+  "score_delta_from_v1": "-11 (v1 missed source-traceability gaps and overstated cross-page consistency)",
+  "findings": [
+    {
+      "id": "S1",
+      "severity": "CRITICAL",
+      "dimension": "source_traceability",
+      "section": "page-wide · MDA direction missing",
+      "issue": "The source compilation folder contains TWO MDA-response screenshots dated 22:45 (2026-05-01) — `Screenshot 2026-05-01 at 10.45.18 PM.png` and `Screenshot 2026-05-01 at 10.45.46 PM.png` — that I did not consult during authoring. They contain MDA-issued direction back to Farooq on RetailVista: (a) 'Prioritise the App to 1000 cities as per my prompt'; (b) 'I want to go all in on Google'; (c) 'build best Geospatial full stack (all 12 layers) foundation platform'; (d) 'get debrief from KT / Shyam / A Tiwari / G Verma / Raghu V'; (e) 'Together with KT / Shyam / GV, please give me a joint execution plan and dedicated org'; (f) 'load Alex CDAP platform · by each Customer create his consumption Digital Twin'; (g) 'plot 5G Network / 4G Network and churn customer at home to Mobile / Home'; (h) 'work with Google / Jey / Anish to integrate work Gaurav is doing'; (i) target '100M HH out of 250MM HH from Broadband / Air Fibre consumers'. None of this MDA direction appears on the page.",
+      "fix": "Author a new section §06.5 'MDA direction' or fold these into §06 In Flight as: (a) '1000-city scale ask · MDA direction 01-May-2026'; (b) Google-track weighting bias per MDA; (c) Customer Digital Twin via Alex CDAP integration; (d) Dedicated org formation with KT / Shyam / GV. Also amend §08 Built-by RIL counterparts: add KT, Shyam, A Tiwari, Raghu V, Jey, Anish as the broader RIL leadership cluster MDA has named.",
+      "files": ["retail-vista/index.html (new section needed)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§03 Layer 04 Agentic orchestration card",
+      "issue": "Layer 04 card (line 169) is tagged Live and lists agent skills 'New Store Opening · Customer Sentiment · Pricing Promotion · Catchment Analysis · Land Parcel Availability · Transport Optimisation. Each callable as a skill across all tracks.' But §07 Roadmap table (lines 373-379) honestly marks: Customer Sentiment = Building, Pricing Promotion = Roadmap, Land Parcel Availability = Roadmap, Transport Optimisation = Roadmap. Same-page contradiction. Apex reads §03 first and assumes all six are running today; §07 contradicts that.",
+      "fix": "Rewrite Layer 04 description to only list Live skills (New Store Opening · Catchment Analysis · Dark-store Drive Time) AND a mixed-status caveat — 'Six agent skills mapped (3 Live, 1 Building, 2 Roadmap) — see §07'.",
+      "files": ["retail-vista/index.html:169"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "Hero pill + §01 Google Track card",
+      "issue": "Both hero pill (line 87) and §01 Google Track card (line 123) use Live pill. Status PDF page 3 says 'Google track MVP · Demoed end-to-end. Cannibalisation, feasibility and site-selection agents validated on live Mumbai catchments.' That language ('Demoed', 'MVP', 'validated') is Pilot, not Live. Live implies running on RIL business workflow today; Demoed-MVP implies validation against live data but not yet in business use. Apex will read Live as deployed-and-in-use.",
+      "fix": "Change Google Track pill from Live → Pilot. Update hero pill text from 'Live · Google Track · Cannibalisation + Feasibility + Site-Selection MVP demoed' to 'Pilot · Google Track · MVP demoed end-to-end on Mumbai catchments'. Update §01 Google Track card pill to Pilot.",
+      "files": ["retail-vista/index.html:87", "retail-vista/index.html:123"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§03 Layer 03 GIS visualisation",
+      "issue": "Layer 03 card (line 168) tagged Live claims 'Pan-India and per-city catchment views · per-hex score colouring · Attractability heat at hex resolution.' The cornerstone deck slide 9 references a Claude artifact URL for the Mumbai per-hex coloured visualisation; the live app at retailvista-agentic.ucp.fynd.com (verified during screenshot capture) shows marker maps and a Mumbai catchment overlay but not the full pan-India per-hex Attractability heat. The Mumbai screenshot in §05 is from the cornerstone deck, not from the live production app. Live pill on this layer overstates what is currently running.",
+      "fix": "Either downgrade Layer 03 to Pilot OR clarify the claim to 'Per-hex score colouring on Mumbai catchments today (Internal Track · cornerstone visualisation); pan-India build in flight.'",
+      "files": ["retail-vista/index.html:168"],
+      "auto_fixable": false
+    },
+    {
+      "id": "S2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§02 §04 §07 'JioMart NSO leads'",
+      "issue": "Page uses 'JioMart NSO leads' in three places (hero pill line 86, §04 line 187, §07 line 370). Status PDF says 'real grocery NSO leads' (the leads are grocery-format new-store-opening leads — Smart Bazaar / Smart Point / Dark Store) on 'JioMart data' (the underlying transaction substrate aggregated at hex level). The page conflates these. The leads observed in the live-app pipeline ('Sumeet Construction', 'JANTA CITY CENTER MALL', 'SMART at Olavakkode', 'Smart - Police Line Chauraha') are grocery NSO leads, not JioMart store leads.",
+      "fix": "Replace 'JioMart NSO leads' → 'real grocery NSO leads on JioMart data' (or 'grocery NSO leads aggregated on JioMart data') in all three places.",
+      "files": ["retail-vista/index.html:86", "retail-vista/index.html:187", "retail-vista/index.html:370"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "Home page card · index.html:629-635",
+      "issue": "Verified by reading the file directly. Home page Retail Vista card (lines 629-635) shows: pill 'Pilot' (page now claims Live for 2 of 3 tracks), title 'Retail Vista' (page now uses 'RetailVista'), copy 'Geospatial · H3 hex · 21,911 stores. Joint with Google. Lead: Karan Muley · Sh. Biswaketan Kundu.' The 21,911 stores number does not appear in either source artefact; the cornerstone deck says '40,000+' for owned retail facilities. The home card is stale and contains an unsourced number.",
+      "fix": "Rewrite home card to: <code>09 · Special Project · pill Live</code> · 'RetailVista' · 'Agentic geospatial intelligence · 3 tracks · Internal (UCP/JioMart) · Google joint MVP · Ved/JioGIS data unlock · 24 data categories on H3 hex. DRI: Karan Muley · RIL: Alex Thomas (Steering).'",
+      "files": ["index.html:629-635"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "catalog/index.html:275",
+      "issue": "Verified by reading the file directly. Catalog row says: 'Retail Vista (geospatial) | Vista | Pilot · 36 states · 10.5 Cr buildings · 21,911 stores · 22 data layers · 2 cloud-run pilots | Karan Muley · Biswaketan Kundu'. Stale: '22 data layers' (page now lists 24 categories), '21,911 stores' (unsourced in current artefacts), '2 cloud-run pilots' (no source for the 'cloud-run pilots' framing in current artefacts).",
+      "fix": "Rewrite to: 'Pilot · 3 tracks (Internal · Google · Ved/JioGIS) · 24 data categories · 10 LI dimensions · 68 live opportunities scored · Mumbai NSO MVP demoed end-to-end'.",
+      "files": ["catalog/index.html:275"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "~30 sibling page nav blocks",
+      "issue": "Confirmed by grep — `mega-link\">Retail Vista` appears on 29 sibling pages; only retail-vista/index.html itself has been updated to `mega-link\">RetailVista`. Per skill §8 lazy strategy is acceptable for v0.9.0 of this section but the brand inconsistency is now visible across the site.",
+      "fix": "`grep -rl 'mega-link\">Retail Vista' --include='*.html' .` then `sed -i.bak 's|mega-link\">Retail Vista|mega-link\">RetailVista|g'` across the matched files. Also update mono-suffix if added.",
+      "files": ["29 .html files"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "page-wide · Jio GIS vs JioGIS spelling",
+      "issue": "Page uses both 'Jio GIS' (4 instances) and 'JioGIS' (10 instances). Cornerstone source itself uses both forms inconsistently. Per tone-of-voice §7 'Reliance entity names exactly: case and spacing matter' — pick one and stick with it.",
+      "fix": "Decision needed. Recommend 'JioGIS' (matches the §07 'Ved/JioGIS Track' framing). Replace all 4 'Jio GIS' instances → 'JioGIS'.",
+      "files": ["retail-vista/index.html (4 lines)"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 numbers in Western format",
+      "issue": "§05 data table uses Western format for India-context numbers: '105M buildings', '137M households', '21.7M POIs', '500M+', '0.6M villages', '25.6K cities', '3.8M km'. Per tone-of-voice §4: Indian-context numbers should be in L Cr format. However, the cornerstone source table uses these Western forms verbatim, so this is a 'preserve from source' tradeoff. Mixed precedent on the site (Granary uses '12K SKUs · 4K stores' Western).",
+      "fix": "Optional. Recommend leaving as-is to preserve source fidelity, but note the convention drift. Alternative: convert all to Indian format (10.5 Cr buildings · 13.7 Cr households · 2.17 Cr POIs · 50 Cr+ customer locations).",
+      "files": ["retail-vista/index.html:265-269"],
+      "auto_fixable": false
+    },
+    {
+      "id": "T3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§07 hero subhead",
+      "issue": "§07 subhead opens 'Every business question becomes an agent skill.' This paraphrases the cornerstone Goals section ('Make every business question a callable agent skill'). It's defensible because the table immediately below provides per-skill status pills, but reads slightly aspirational.",
+      "fix": "Acceptable as-is. Optional alternative: 'Use cases mapped to the cornerstone Activation Layer.'",
+      "files": ["retail-vista/index.html:365"],
+      "auto_fixable": false
+    },
+    {
+      "id": "ST1",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "footer · no Owner/version line",
+      "issue": "Footer carries only the copyright line per the new convention (skill §4 'no Author / Date / Version on page'). Some sibling pages still carry the deprecated 'Owner · Salman Saudagar (COO, Fynd) · v0.X.Y' line (e.g., granary/index.html:400, retail-vista was updated). This is intentional per spec §9 D4 but is now inconsistent with siblings.",
+      "fix": "Per spec/skill convention this is correct. Future cleanup: sweep siblings via tools/scratch/strip_author_owner.py to align.",
+      "files": ["retail-vista/index.html:421"],
+      "auto_fixable": false
+    }
+  ],
+  "verified_against_source": [
+    "10 LI dimensions (GDP/Demographics/Accessibility/Property Rates/Wealth/Footfall/Spending/Order Data/Building Density/Competition) — verified from screenshot 04 and Status PDF page 2",
+    "24 data categories — spot-checked rows 4 (Customer locations), 22 (Mobility & Footfall), 24 (Socio-economic) verbatim against cornerstone deck slides 5-8",
+    "H3 resolution numbers (7 = 5.16 km², 9 = 0.10 km²) — verified against cornerstone slide 9 table (5.161293360 / 0.105332513)",
+    "Six business requirements — verified against Status PDF page 3 'Requirements from the Business' (all six match: Customer lat/long unlock · JioGIS data access · Format-specific catchment benchmarks · Live leads & past site decisions · Kentrix MMR data · Sponsor commitment)",
+    "Goregaon East scoring (Score 69 · Site 52 · LI 60 · Whitespace 90 · Competitor Gap 100 · Composite 62/100 · competitors Swiggy/Blinkit/Zepto with distances) — verified directly from live app capture 04-explorer-full-analysis",
+    "Steering Committee names (Prateek Mathur · Alex Thomas · Gaurav Verma · Advait Pandit + Farooq Adam Fynd-side) — verified against cornerstone deck slide 14",
+    "Adoption sequencing 'Shadow → Pilot → Scaled → Institutional Standard' — verified against Status PDF page 3"
+  ],
+  "strengths": [
+    "Source-faithful 24-category data table — three rows spot-checked verbatim against cornerstone deck slides 5-8",
+    "Live-app evidence stream — 6 production screenshots captured and rendered legibly with lightbox; image 200s confirmed via DevTools network panel",
+    "Lightbox correctly implemented (open + close click test passed; no `[hidden]` + inline `display:` regression)",
+    "All banned vocabulary and constructions absent (greped against tone-of-voice §3 and §7 banned lists)",
+    "All dates in DD - MMM - YYYY format (verified by grep for slash/all-numeric date patterns)",
+    "No emojis or exclamation marks",
+    "Footer follows new convention (copyright line only, no Owner/version)",
+    "Section labels contiguous 01 → 08 with no gaps",
+    "Alex Thomas explicit in hero RIL Steering tile and §08 Built-by section per user direction",
+    "Mobile (375px) renders without overflow"
+  ]
+}

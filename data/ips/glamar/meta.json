@@ -1,0 +1,22 @@
+{
+  "slug": "glamar",
+  "name": "GlamAR",
+  "tagline": "VTO \u00b7 3D \u00b7 AR \u00b7 VR \u00b7 Sephora \u00b7 Vision Express \u00b7 LensCrafters \u00b7 WestElm.",
+  "track": "rbl",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "beauty",
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "fynd",
+  "web_anchor": "/jcp#glamar",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

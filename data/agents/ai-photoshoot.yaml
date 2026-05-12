@@ -1,0 +1,368 @@
+# AI Photoshoot Agent
+# Sourced verbatim from:
+#  · AI Photoshoot Note v1 (May 2026) · docs/agent-catalog-notes-compilation/AI_Photoshoot_Note_v1.docx
+#  · F&L AI Projects · Project 2 · docs/agent-catalog-notes-compilation/F&L AI Projects.xlsx
+#  · /impetus/ai-photoshoot/ platform page (live)
+#
+# Per docs/impetus-l4-buildplan-spec.md v0.1 + docs/agents-spec.md v0.8
+
+slug: ai-photoshoot
+name: AI Photoshoot Agent
+sub_title: "Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit, and Ajio-standard delivery."
+status: live            # live | build | scoping
+status_label: Live
+track: sell             # customer | plan | buy | move | sell | hr
+autonomy_level: L4
+primary_workflow: "Catalog Photoshoot"
+date: 2026-05-03
+source_folder: docs/agent-catalog-notes-compilation/
+source_citations:
+  - "AI Photoshoot Note v1 · May 2026 · §1-§6"
+  - "F&L AI Projects · Project 2 · pipeline status + category coverage + what's next"
+  - "/impetus/ai-photoshoot/ platform page"
+
+# § 0 · Hero stat tiles (4)
+stats:
+  - { label: "Trends",                  value: "47,473",  context: "images for Ajio · 2,975 styles · 3,957 products" }
+  - { label: "Shots per product",       value: "12",      context: "across 12 camera view types" }
+  - { label: "Auto QC score",           value: "8.06/10", context: "current crop-extraction pipeline" }
+  - { label: "Workflow level",          value: "L4 Agentic", context: "Detect → Edit → Check loop" }
+
+# Primary platform shown on the catalog card
+primary_platform:
+  name: "AI Photoshoot"
+  route: "/impetus/ai-photoshoot/"
+
+# § 01 · Job to be done
+job:
+  pain: |
+    Catalogue photoshoots gate every retail launch. Studio booking, model
+    availability, stylists and post-production stretch each category drop by
+    weeks. Lingerie alone runs 3-4× standard cost on talent and lighting,
+    with turnarounds of 4-6 weeks. Volume scales linearly with cost.
+  what_it_does: |
+    Generates on-model catalogue images from flat-lay or mannequin reference
+    shots. Three modes — Instant (2-4 minutes per set), Batch (cost-optimised
+    bulk), and Single Image (on-demand QC fixes). Agentic across accessory
+    placement, lighting extraction, autonomous issue detection and surgical
+    Auto-Edit. Output lands on GCS with Ajio-standard naming, ready to list.
+  human_role: |
+    Brand QC reviews any image scoring below 7.0 (routed to Manual QC).
+    Category onboarding remains human-led for new pods. Final approval before
+    go-live to Ajio stays with the brand cataloguing team.
+
+# § 02 · Workflow steps · the closed loop
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+# Inline SVG flowchart · matches JCP / Cortex 3-zone convention
+# Inputs (left, blue) → 10 workflow steps in 2 rows (centre, grey) with
+# explicit Detect → Edit → Check sub-loop → Outputs (right, green).
+# Routing arrow shows below-7.0 → Manual QC.
+workflow_svg: |
+  <svg viewBox="0 0 1240 620" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>AI Photoshoot Agent · closed-loop workflow</title>
+    <desc>Inputs (product references, avatar, pose, background) flow through 10 workflow steps to produce on-model 4K images. Detection, Auto-Edit and Quality form an explicit validate-retry loop with max 2 attempts. Approved images deliver to GCS/CDN; below-threshold routes to Manual QC.</desc>
+    <defs>
+      <marker id="ap-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="ap-arr-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <marker id="ap-arr-route" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#9333EA"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .loop-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; fill: #B45309; letter-spacing: 0.04em; }
+        .route-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 600; fill: #9333EA; letter-spacing: 0.04em; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-loop { stroke: #B45309; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+        .conn-route { stroke: #9333EA; stroke-width: 1.4; fill: none; stroke-dasharray: 4 3; }
+      </style>
+    </defs>
+
+    <!-- Zone backgrounds -->
+    <rect x="14" y="14" width="220" height="592" rx="14" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1"/>
+    <rect x="250" y="14" width="740" height="592" rx="14" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="1"/>
+    <rect x="1006" y="14" width="220" height="592" rx="14" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1"/>
+
+    <!-- Zone headers -->
+    <text x="32" y="40" class="zh">Inputs</text>
+    <text x="268" y="40" class="zh">Workflow · 10 steps</text>
+    <text x="1024" y="40" class="zh">Outputs</text>
+
+    <!-- Inputs (left band) · 5 cards · h=66 · text padding: 12px x · 20px top · 18px line-1 · 16px line-2 · 12px bottom -->
+    <rect x="32" y="58" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="78" class="src-ttl">Product references</text>
+    <text x="44" y="96" class="src-sub">Front · back · side</text>
+    <text x="44" y="112" class="src-sub">Clothing · footwear · lingerie</text>
+
+    <rect x="32" y="132" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="152" class="src-ttl">Avatar selection</text>
+    <text x="44" y="170" class="src-sub">Gender · age · ethnicity</text>
+    <text x="44" y="186" class="src-sub">Text-based identity (lingerie)</text>
+
+    <rect x="32" y="206" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="226" class="src-ttl">Pose pool</text>
+    <text x="44" y="244" class="src-sub">12 camera view types</text>
+    <text x="44" y="260" class="src-sub">Front · back · side · closeup</text>
+
+    <rect x="32" y="280" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="300" class="src-ttl">Background</text>
+    <text x="44" y="318" class="src-sub">Lighting direction · warmth</text>
+    <text x="44" y="334" class="src-sub">Type extracted for blending</text>
+
+    <rect x="32" y="354" width="184" height="66" rx="8" fill="#fff" stroke="#BFDBFE" stroke-width="1"/>
+    <text x="44" y="374" class="src-ttl">Mode selection</text>
+    <text x="44" y="392" class="src-sub">Instant · Batch · Single</text>
+    <text x="44" y="408" class="src-sub">Up to 20 concurrent</text>
+
+    <!-- Workflow steps (centre band) · 10 cards in 2 rows of 5
+         Step-card text padding: 12px x · 20px top (step num) · 18px to title · 18px to sub-1 · 16px to sub-2 · 14px bottom -->
+    <!-- Row 1: 01 Upload · 02 Analyse · 03 Avatar/Pose · 04 Background · 05 Prompt -->
+    <rect x="268" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="280" y="82" class="stp-num">01</text>
+    <text x="280" y="100" class="stp-ttl">Upload</text>
+    <text x="280" y="118" class="stp-sub">Product reference</text>
+    <text x="280" y="134" class="stp-sub">images received</text>
+
+    <rect x="416" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="428" y="82" class="stp-num">02</text>
+    <text x="428" y="100" class="stp-ttl">Analyse</text>
+    <text x="428" y="118" class="stp-sub">Views classified</text>
+    <text x="428" y="134" class="stp-sub">Garment details extracted</text>
+
+    <rect x="564" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="576" y="82" class="stp-num">03</text>
+    <text x="576" y="100" class="stp-ttl">Avatar &amp; Pose</text>
+    <text x="576" y="118" class="stp-sub">Selection · 12 camera</text>
+    <text x="576" y="134" class="stp-sub">view types</text>
+
+    <rect x="712" y="62" width="138" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="724" y="82" class="stp-num">04</text>
+    <text x="724" y="100" class="stp-ttl">Background</text>
+    <text x="724" y="118" class="stp-sub">Image + lighting</text>
+    <text x="724" y="134" class="stp-sub">extracted for blend</text>
+
+    <rect x="860" y="62" width="120" height="86" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="872" y="82" class="stp-num">05</text>
+    <text x="872" y="100" class="stp-ttl">Prompt</text>
+    <text x="872" y="118" class="stp-sub">NL assembly</text>
+    <text x="872" y="134" class="stp-sub">view-aware</text>
+
+    <!-- Row 2: 06 Generate · 07 Detection · 08 Auto-Edit · 09 Quality · 10 Deliver -->
+    <rect x="268" y="240" width="138" height="100" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="280" y="262" class="stp-num">06</text>
+    <text x="280" y="280" class="stp-ttl">Generate</text>
+    <text x="280" y="298" class="stp-sub">On-model 4K · parallel</text>
+    <text x="280" y="314" class="stp-sub">batches up to 20</text>
+
+    <!-- Detect / Edit / Check loop block (steps 07-09) with bg highlight ·
+         extended up (h=144) so the retry arrow gets a dedicated band above
+         the step cards, no collision with the header label. -->
+    <rect x="416" y="210" width="430" height="144" rx="10" fill="#FFF7ED" stroke="#FDBA74" stroke-width="1"/>
+    <text x="428" y="230" class="loop-lbl">Detect → Edit → Check loop · max 2 attempts</text>
+
+    <rect x="416" y="256" width="138" height="86" rx="8" fill="#fff" stroke="#FDBA74" stroke-width="1"/>
+    <text x="428" y="276" class="stp-num">07</text>
+    <text x="428" y="294" class="stp-ttl">Detection</text>
+    <text x="428" y="312" class="stp-sub">Unified Detection</text>
+    <text x="428" y="328" class="stp-sub">Agent · code execution</text>
+
+    <rect x="564" y="256" width="138" height="86" rx="8" fill="#fff" stroke="#FDBA74" stroke-width="1"/>
+    <text x="576" y="276" class="stp-num">08</text>
+    <text x="576" y="294" class="stp-ttl">Auto-Edit</text>
+    <text x="576" y="312" class="stp-sub">BBox-guided surgical</text>
+    <text x="576" y="328" class="stp-sub">edit · identity preserved</text>
+
+    <rect x="712" y="256" width="134" height="86" rx="8" fill="#fff" stroke="#FDBA74" stroke-width="1"/>
+    <text x="724" y="276" class="stp-num">09</text>
+    <text x="724" y="294" class="stp-ttl">Quality</text>
+    <text x="724" y="312" class="stp-sub">Score = 10 −</text>
+    <text x="724" y="328" class="stp-sub">issues × conf × 1.5</text>
+
+    <rect x="860" y="240" width="120" height="100" rx="8" fill="#fff" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="872" y="262" class="stp-num">10</text>
+    <text x="872" y="280" class="stp-ttl">Deliver</text>
+    <text x="872" y="298" class="stp-sub">GCS · CDN</text>
+    <text x="872" y="314" class="stp-sub">Ajio naming</text>
+
+    <!-- Manual QC routing card (below the workflow band) -->
+    <rect x="416" y="404" width="430" height="64" rx="8" fill="#FAF5FF" stroke="#D8B4FE" stroke-width="1"/>
+    <text x="428" y="426" class="route-lbl">Score &lt; 7.0 → routes to Manual QC (brand catalogue team)</text>
+    <text x="428" y="448" class="src-sub">Identity penalty −4.0 · background change −3.0 · regression −2.0 each</text>
+
+    <!-- Eval gate card -->
+    <rect x="268" y="500" width="712" height="84" rx="8" fill="#F0FDF4" stroke="#86EFAC" stroke-width="1"/>
+    <text x="282" y="522" class="zh">Eval gate</text>
+    <text x="282" y="544" class="src-sub">Realism weighted: Human Realism 55% · Product Details 30% · Scene Composition 15%</text>
+    <text x="282" y="562" class="src-sub">9.0-10.0 Exceptional · 8.0-8.9 Very good · 7.0-7.9 Good · &lt;7.0 Needs correction</text>
+    <text x="282" y="578" class="loop-lbl">Current pipeline: 8.06/10 Auto QC · 47,473 images delivered for Trends Reboot</text>
+
+    <!-- Outputs (right band) · 4 cards · h=66 · text padding mirrors Inputs -->
+    <rect x="1024" y="58" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="78" class="out-ttl">4K on-model images</text>
+    <text x="1036" y="96" class="out-sub">Per pose · per camera view</text>
+    <text x="1036" y="112" class="out-sub">Optimised: 1117×1400, &lt;250 KB</text>
+
+    <rect x="1024" y="132" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="152" class="out-ttl">GCS upload</text>
+    <text x="1036" y="170" class="out-sub">Ajio-standard naming</text>
+    <text x="1036" y="186" class="out-sub">style/colour/product/MODEL</text>
+
+    <rect x="1024" y="206" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="226" class="out-ttl">CDN delivery</text>
+    <text x="1036" y="244" class="out-sub">Resolution-optimised</text>
+    <text x="1036" y="260" class="out-sub">JPEG compressed</text>
+
+    <rect x="1024" y="280" width="184" height="66" rx="8" fill="#fff" stroke="#BBF7D0" stroke-width="1"/>
+    <text x="1036" y="300" class="out-ttl">Score breakdown</text>
+    <text x="1036" y="318" class="out-sub">Per image · per issue</text>
+    <text x="1036" y="334" class="out-sub">Confidence · penalty trace</text>
+
+    <!-- Connectors · inputs into workflow zone (per spec §5.4 · short horizontal
+         arrows ending at workflow zone left edge · no diagonals · no crossings).
+         Y-coords match input-card midpoints (h=66 · y=58/132/206/280/354 → mid 91/165/239/313/387). -->
+    <path class="conn" d="M216,91 L250,91" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M216,165 L250,165" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M216,239 L250,239" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M216,313 L250,313" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M216,387 L250,387" marker-end="url(#ap-arr)"/>
+
+    <!-- Single entry arrow from workflow zone edge into Step 01 -->
+    <path class="conn" d="M250,105 L268,105" marker-end="url(#ap-arr)"/>
+
+    <!-- Connectors · row 1 left-to-right -->
+    <path class="conn" d="M406,105 L416,105" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M554,105 L564,105" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M702,105 L712,105" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M850,105 L860,105" marker-end="url(#ap-arr)"/>
+
+    <!-- Connector · row 1 → row 2 (Prompt 05 → Generate 06) -->
+    <path class="conn" d="M920,148 L920,200 L337,200 L337,240" marker-end="url(#ap-arr)"/>
+
+    <!-- Connectors · row 2 -->
+    <path class="conn" d="M406,290 L416,299" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M554,299 L564,299" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M702,299 L712,299" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M846,299 L860,290" marker-end="url(#ap-arr)"/>
+
+    <!-- Loop arrow · Quality fail → Auto-Edit retry · routed into the
+         dedicated band between header label (y=230) and step cards (y=256).
+         "retry · max 2" annotation removed · header already states "max 2 attempts". -->
+    <path class="conn-loop" d="M779,256 L779,246 L633,246 L633,256" marker-end="url(#ap-arr-loop)"/>
+
+    <!-- Routing arrow · Quality &lt; 7.0 → Manual QC -->
+    <path class="conn-route" d="M779,342 L779,404" marker-end="url(#ap-arr-route)"/>
+
+    <!-- Output connectors · Deliver exits the workflow zone (single arrow);
+         each output enters the outputs zone via its own short horizontal arrow.
+         Y-coords match output-card midpoints (h=66 · y=58/132/206/280 → mid 91/165/239/313). -->
+    <path class="conn" d="M980,290 L990,290" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M1006,91 L1024,91" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M1006,165 L1024,165" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M1006,239 L1024,239" marker-end="url(#ap-arr)"/>
+    <path class="conn" d="M1006,313 L1024,313" marker-end="url(#ap-arr)"/>
+  </svg>
+workflow_diagram_caption: "Inputs (blue, left) → Workflow 10 steps (centre, grey) with explicit Detect → Edit → Check loop (orange, max 2 retries) → Outputs (green, right). Below-7.0 score routes to Manual QC (purple)."
+
+workflow_steps:
+  - { num: "01", title: "Upload",              detail: "Product reference images (front · back · side) uploaded to the platform. Supports clothing, footwear and lingerie." }
+  - { num: "02", title: "Analyse",             detail: "Product image views classified (front · back · side · three-quarter). Garment details extracted: fabric · colour · pattern · silhouette." }
+  - { num: "03", title: "Avatar & Pose",       detail: "User selects avatars (gender · age · ethnicity) and poses from the pool. 12 camera view types available — front · back · side · full-angle · closeup · angled." }
+  - { num: "04", title: "Background & Lighting", detail: "Background image selected. Lighting characteristics (direction · warmth · type) extracted to blend the model into the scene." }
+  - { num: "05", title: "Prompt",              detail: "Natural language prompt assembled per pose: product + avatar + theme + view-aware lighting + filtered accessories. Polished for flow and grammar." }
+  - { num: "06", title: "Generate",            detail: "On-model images generated in parallel batches (up to 20 concurrent). Background reference image passed alongside the prompt. Supports 4K output." }
+  - { num: "07", title: "Detection",           detail: "Unified Detection Agent scans each generated image against product references. Detects colour · logo · print · fabric · pose mismatches with code execution for zoom/crop inspection." }
+  - { num: "08", title: "Auto-Edit",           detail: "Edit Agent fixes detected issues with bounding-box-guided surgical editing. Validate-retry loop with max 2 attempts per image. Identity and background preservation enforced." }
+  - { num: "09", title: "Quality",             detail: "Images scored — 10.0 base, deductions per issue. Score ≥ 7.0 → Approved. Below routes to Manual QC. Realism weighted: Human 55% · Product 30% · Scene 15%." }
+  - { num: "10", title: "Deliver",             detail: "Final images uploaded to GCS, resolution-optimised, available via CDN. Ajio-standard naming convention: style_id/color_id/product_id/MODEL.jpg." }
+
+# § 03 · Underlying data
+data:
+  sources:
+    - { name: "Product reference store",   classification: "Human-Created",    entities: "Front/back/side images · garment metadata · brand SKU spine" }
+    - { name: "Brand pose library",        classification: "Human-Created",    entities: "12 camera view types · gender × age × ethnicity matrix" }
+    - { name: "Garment attribute extract", classification: "Mixed",            entities: "Fabric · colour · pattern · silhouette (extracted by Analyse step)" }
+    - { name: "Background catalogue",      classification: "Human-Created",    entities: "Studio · lifestyle · seasonal backgrounds with extracted lighting profiles" }
+    - { name: "Generated image store",     classification: "Machine-Created",  entities: "All output images · scored · with detection/edit traces preserved" }
+  refresh_cadence: "Per-job — Instant mode 2-4 minutes; Batch mode async server-side; Single Image on-demand for QC fixes."
+  kpis_moved:
+    - "Cost per shot"
+    - "Time-to-catalogue"
+    - "Style coverage per category"
+    - "Auto QC pass rate"
+    - "Manual QC routing %"
+
+# § 04 · Architecture · how it's built (developer-facing metadata · not rendered per agents-spec D22)
+architecture:
+  topology: "Multi-agent — Detection Agent · Edit Agent · Check Agent · validate-retry loop with max 2 attempts per image. Conversation-thread approach for face consistency in lingerie pipeline (8-stage C1-C8)."
+  models:
+    - "Vision-Language Models (VLMs) for detection + scoring"
+    - "Image generation models for on-model synthesis"
+    - "Text-based identity construction (NSFW workaround for lingerie)"
+  tools:
+    - "Code execution for zoom/crop inspection of fine details"
+    - "Bounding-box generator with validation loop"
+    - "Conversation threading for cross-view face consistency"
+  memory:
+    - "Per-job · prompt + reference image set + generated outputs"
+    - "Pose pool · 12 camera view types per category"
+    - "Score history · per image, per issue"
+  runtime: "AI Photoshoot platform · agentic pipeline · GCS delivery"
+
+# § 04 (rendered) · Design patterns used
+patterns:
+  - { name: "Tool Calling",              usage: "Detection Agent uses code execution for zoom/crop inspection of fine details (logos · text · embroidery)" }
+  - { name: "Multi-Agent Orchestration", usage: "Detection · Edit · Check loop with validate-retry · max 2 attempts. The canonical multi-agent example across the catalog." }
+  - { name: "Wide Research",             usage: "Generates N candidate images per pose in parallel batches (up to 20 concurrent), scores, picks above-threshold." }
+  - { name: "Context Engineering",       usage: "Per-pose NL prompt assembly · product + avatar + theme + view-aware lighting + filtered accessories." }
+  - { name: "Observability",             usage: "Every image carries structured score breakdown — issues found · confidence · penalty applied · final score." }
+  - { name: "Evals",                     usage: "10-base scoring rule with deductions runs on every output before delivery. Enforced as a hard gate, not a report." }
+
+# § 05 (rendered) · Evals · how we know it works
+evals:
+  status: "in-production"
+  approach: |
+    Every generated image is scored before delivery. Base 10.0; deduct =
+    `total_issues × (avg_confidence / 100) × 1.5`. Score ≥ 7.0 → Approved
+    and delivered. Below 7.0 → routed to Manual QC for brand review. Current
+    crop-extraction pipeline runs at 8.06/10 average.
+  gates:
+    - "Auto QC ≥ 7.0 to ship"
+    - "Identity preservation enforced — face change penalty −4.0 · background change −3.0 · new regression −2.0 each"
+    - "Realism weighted: Human Realism 55% · Product Details 30% · Scene Composition 15%"
+    - "Bands: 9.0-10.0 Exceptional · 8.0-8.9 Very good · 7.0-7.9 Good · below 7.0 needs correction"
+
+# § 07 · Status · developer-facing metadata only (not rendered per agents-spec D23)
+live_today: |
+  Live in production. Trends Reboot 4K Catalogue Digitization delivered:
+  9,936 raw images → 2,975 styles → 47,473 generated images (12 shots per
+  product) → pushed to GCS for Ajio listing. Lingerie pipeline unlocked
+  with sample outputs for Red Tag.
+
+in_flight:
+  - { date: "2026-05-28", milestone: "Ethnic wear pipeline · kurtas · kurta sets · ethnic dresses · proper draping, embroidery, cultural authenticity" }
+  - { date: "2026-06-01", milestone: "Segmentation pipeline · fabric swatch shot generation for PDP enhancement" }
+  - { date: "2026-06-01", milestone: "Auto-Edit at scale · expand auto-detection and auto-edit coverage across all categories" }
+
+roadmap:
+  - "Washed/distressed denim improvement · active R&D"
+  - "Pipeline stitching · end-to-end automation across data curation → generation → optimisation → GCS upload"
+  - "Continuous accuracy improvements as feedback arrives from Ajio cataloguing teams and brand partners"
+
+# § 06 (rendered) · Linked platforms (drop "Impetus " prefix per agents-spec D21)
+linked_platforms:
+  - { name: "AI Photoshoot",  route: "/impetus/ai-photoshoot/", role: "Primary execution surface · Trends Reboot delivery · lingerie pipeline" }
+  - { name: "PixelBin",       route: "/pixelbin/",              role: "Resolution optimisation + CDN delivery layer" }

@@ -1,0 +1,96 @@
+{
+  "page": "retail-vista/index.html",
+  "spec": "docs/retailvista-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 89,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 92,
+    "tone_of_voice": 88,
+    "honesty_register": 88,
+    "visual_completeness": 95,
+    "cross_page_consistency": 70
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "nav · sibling pages",
+      "issue": "Sibling pages (index.html, catalog/index.html, granary/index.html, and ~22 other pages with the shared nav block) still display the mega-menu link as 'Retail Vista' (with space). The new page brand is 'RetailVista' (one word, matching the live app subdomain retailvista-agentic.ucp.fynd.com).",
+      "fix": "grep -rl 'mega-link\">Retail Vista' --include='*.html' and replace with 'mega-link\">RetailVista'. Lazy-strategy acceptable for v0.9.0 — backlinks may lag for one release per skill §8.",
+      "files": ["index.html", "catalog/index.html", "granary/index.html", "+ ~22 other nav blocks"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "home page card",
+      "issue": "Home page (index.html:630) likely carries an older Retail Vista card with v0.8.4-era copy (12 IPs / 22 categories / 21,911 stores). The new page resets to 24 categories, 3-track framing, 68 live opportunities. Home card and new page should align.",
+      "fix": "Read index.html:625-640, rewrite the Retail Vista card to mirror the new hero pills and stat tiles (3 tracks · 68 opportunities · 10 LI dimensions · 24 data categories).",
+      "files": ["index.html:625-640"],
+      "auto_fixable": false
+    },
+    {
+      "id": "T1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§07 hero subhead",
+      "issue": "§07 subhead opens 'Every business question becomes an agent skill.' This is a paraphrase of source text (cornerstone deck Goals: 'Make every business question a callable agent skill — not a roadmap line item'). It reads slightly aspirational without per-cell evidence; defensible because the surrounding table is itself the per-cell evidence with status pills, but worth noting.",
+      "fix": "Acceptable as-is given the table that follows. If trimmed: 'Use cases mapped to the cornerstone Activation Layer.' suffices.",
+      "files": ["retail-vista/index.html:365"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§02 modules table",
+      "issue": "All five modules (Home / Explorer / Workspace / Users / Data & Scoring) carry the Live pill. Live is correct from a functional-deployment standpoint (all four URLs resolve, all five modules are usable today as observed in screenshots), but the Status Update PDF describes the Internal Track as 'deployed, scoring catchments against real grocery NSO leads in an agentic loop' — Live for the build team, not yet Live for RIL business sponsors (who are pending sponsor commitment per §06). The 'Live' here means 'platform live, business adoption pending'. Could read as overclaim if Apex interprets Live as 'in business use'.",
+      "fix": "Optional clarifier under the table: 'Live = platform deployed and usable today by build team and pilot users. Business sponsor adoption is in flight per §06.' Or change pills on §02 to 'Pilot' for sharper register honesty.",
+      "files": ["retail-vista/index.html:144-159"],
+      "auto_fixable": false
+    },
+    {
+      "id": "S1",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "§01 Internal Track card",
+      "issue": "Card eyebrow 'retailvista-agentic.ucp.fynd.com' is the live domain (verified by login during screenshot capture) — sourceable. Card body claim 'Anchored on JioMart BAU production data aggregated at hex level' is verbatim from cornerstone deck §I — sourced. No findings.",
+      "fix": "No fix needed.",
+      "files": ["retail-vista/index.html:117-122"],
+      "auto_fixable": false
+    },
+    {
+      "id": "S2",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "§04 Workspace co-pilot card",
+      "issue": "The chat-output details (rwi_mean 1.25 · Total POIs 217 · epoch_mean · height_mean) are paraphrased from the live app screenshot (07-workspace-copilot.jpg) — fully sourced. Andheri example is verbatim from the actual co-pilot session captured 01-May-2026.",
+      "fix": "No fix needed.",
+      "files": ["retail-vista/index.html:226-235"],
+      "auto_fixable": false
+    },
+    {
+      "id": "V1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§02 quick-summary screenshot omitted",
+      "issue": "9 screenshots captured from the live app but only 5 product screenshots used in §04 (Home / Explorer-list / Full Analysis / Pipeline / Workspace co-pilot / Users — that's 6). The Quick Summary popup (03-explorer-quick-summary.jpg) is captured but unused on the page. Login page (00-login.jpg) also unused. Both are fine omissions — Quick Summary is a transient popup, Login is the gate not a feature.",
+      "fix": "No fix needed. Optional: if §04 feels under-evidenced, swap one card for the quick-summary popup.",
+      "files": ["assets/retail-vista/screenshots/03-explorer-quick-summary.jpg"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero RIL Counterparts tile names Alex Thomas explicitly per user request, plus full Steering Committee from cornerstone deck Slide 14.",
+    "Section ordering follows the canonical default (Hero → Status → What's live → Architecture → Deep dive → … → Built by) with the §05 Data foundation insertion explicitly documented in spec §9 D1.",
+    "Lightbox wired correctly (no `[hidden]` + inline `display:` trap from samarth v0.9.5 regression) — verified by Chrome DevTools click test, opens on click and closes via × button.",
+    "All 9 image assets resolve 200 locally; full evidence stream from the live app (Home / Explorer list / Full Analysis with all 10 LI dimensions / Pipeline kanban / Workspace co-pilot / Users) renders the platform 'as it is today' rather than 'as it was in the deck'.",
+    "24-category data inventory table is the most distinctive credibility artefact on the page — direct from cornerstone deck §I, with all variable counts and source attribution verbatim.",
+    "Footer carries only the copyright line per the new convention; no Author / Date / Version line in the hero, no Owner / version line in the footer."
+  ]
+}

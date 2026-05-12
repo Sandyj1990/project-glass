@@ -1,0 +1,103 @@
+# Master-Hub (CMT, Central Master Table)
+# Sourced verbatim from Q1 2026 Release Compendium pp. 29–30
+# Per docs/impetus-restructure-spec.md
+
+slug: master-hub
+title: Master-Hub
+sub_title: "(CMT · Central Master Table)"
+aliases: [CMT, Central Master Table]
+tagline: Single source of truth for product and supplier data — every partner's data validated at the gate before it reaches anything downstream.
+category: Plan · master data
+status: live
+status_label: Live
+
+audience:
+  - Buyers
+  - Product Managers
+  - Sourcing Teams
+  - "Anyone whose downstream work breaks when master data is wrong"
+
+what_it_does: |
+  Think of this as the "single source of truth" for all product and supplier
+  information. When this data is wrong, everything downstream breaks — purchase
+  orders fail to process, shipments get rejected at the warehouse, accounting
+  reports don't match.
+
+  This quarter, we started **validating every partner's data at the gate** using
+  the same set of rules, so errors are caught before they reach any other system.
+  We also connected 13 PLM masters and 5 mapping tables from PLM (Product Lifecycle
+  Management), so information is richer and more complete at the source.
+
+scale_label: Coverage
+scale:
+  - "3 partners live (AJIO, LivSmart, Fynd Create)"
+  - "13 PLM masters + 5 mapping tables connected"
+  - "3 company divisions tracked"
+  - "Trends · Azorte · Yousta · Shein · AJIO"
+scale_caption: |
+  Validation runs at every ingestion point; downstream systems only receive data
+  that has passed the gate.
+
+what_improved:
+  body: |
+    **Buyers and product managers** no longer face random Procuro ingestion failures
+    caused by bad product data. **Suppliers** no longer see IntelliPack rejections
+    caused by missing size information. **Specialist buyers (ODM)** now have proper
+    access controls, can work across brands with the right permissions. **Format
+    teams** only see suppliers relevant to their division — no more confusion from
+    seeing another division's supplier list.
+  expected_metric_impact: |
+    fewer PO processing failures, fewer warehouse rejections, faster partner
+    onboarding. **Every data error caught at the gate is one less fire to fight
+    downstream.**
+
+updates_shipped:
+  - date: "1 Apr 2026"
+    heading: "Data Validation Extended to 3 Partners + Design System Connected"
+    bullets:
+      - "**For all downstream users:** AJIO, LivSmart and Fynd Create data now validated before it enters the system. Bad data is rejected immediately, no more silent failures reaching purchase orders or warehouse systems."
+      - "**Design system integration:** 13 databases connected — sizing, product categories, materials, embroidery types, cost rates, colours, measurements and seasonal mapping. Means **richer, more complete product information available everywhere.**"
+  - date: "6 Feb 2026"
+    heading: "AJIO Added as New Division"
+    bullets:
+      - "AJIO set up as a separate division (company code 900841). Every data update now includes which division it belongs to, so downstream systems only process data relevant to them. Orakle SDK updated (v1.2.5) to support division-specific data retrieval."
+  - date: "6 Feb 2026"
+    heading: "Division-Specific Supplier Visibility + Specialist Buyer Access"
+    bullets:
+      - "**For format teams:** Trends/Azorte/Yousta/Fashion Factory teams see only their suppliers. Shein teams see only Shein suppliers. AJIO sees only AJIO suppliers. **Eliminates accidentally selecting the wrong division's supplier.**"
+      - "**For specialist buyers (ODM):** Can now work across brands with proper, brand-specific permissions, same access level as product managers and buyers."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/master-hub/screenshot-030.jpg"
+    caption: "**Supplier master + Upload history** · 3,334 suppliers with locations, statuses and account groups · Site Master upload tracking with dates, status and pass/fail indicators."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 29–30"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 2
+  current_summary: |
+    Master-Hub is data infrastructure — the substrate every other Impetus platform
+    depends on. Its autonomy story is "validation at the gate": at **L2 · Augmented**
+    today, it auto-flags bad data and routes it to the right person. L3 is the
+    catalog auto-correcting common errors (sizing typos, mis-mapped SAP colours)
+    without a human in the loop.
+  workflows:
+    - name: "Vendor Management"
+      number: "2.5"
+      current: 2
+      target: 3
+      plan: "Today: at-risk vendors flagged via failed validations. Target: predictive risk identification before a vendor causes a downstream failure."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Validation as a service"
+      body: "Every new partner onboards through the same validation rules — no engineering work needed."
+    - eyebrow: "Risk reduction milestone"
+      title: "Procuro ingestion failures &amp; IntelliPack rejections eliminated"
+      body: "Bad data caught at the gate is one less fire to fight downstream."
+    - eyebrow: "Identity shift indicator"
+      title: "Master data has an owner"
+      body: "Specialist buyers (ODM) and format teams now operate on division-scoped data — no more cross-format leakage."

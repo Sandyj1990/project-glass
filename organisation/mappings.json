@@ -1,0 +1,125 @@
+{
+  "_comment": "Single source of truth for normalising xlsx values to website Platform names, routes, and tier-grouping. Edit this file whenever a new xlsx value needs to be aliased, a new platform page is added, or the tier model changes. The build script (tools/build_org_data.py) reads this on every run and prints an unmapped report at end.",
+  "_shape": {
+    "projects": "{ <xlsx Project value>: { displayName?: string, route?: string, tier: 'rr-platforms'|'external'|'foundation'|'adjacent' } }",
+    "tracks":   "{ <xlsx Track value>:   { displayName?: string, route?: string, chips?: [{ label, route }] } }",
+    "kinds":    "{ <xlsx Dedicated/Platform value>: <display string> } (e.g., 'Platform' -> 'Shared')"
+  },
+  "tiers": {
+    "rr-platforms":  { "label": "What Fynd ships for Reliance Retail",        "order": 1 },
+    "external":      { "label": "External Commercialization · self-sustaining", "order": 2 },
+    "foundation":    { "label": "Shared Foundation",                            "order": 3 },
+    "adjacent":      { "label": "Adjacent JPL builds",                          "order": 4 }
+  },
+  "_placeholderNames_comment": "Names in keka_roster_full.csv that are org-chart placeholder seats (open hires, role labels), not real people. The build script drops these from the organogram tree. Edit when keka adds/removes placeholders.",
+  "placeholderNames": [
+    "Jigar - Robotics",
+    "Jigar - Commerce Channel DoE",
+    "Jigar Extension Lead",
+    "Jigar Fynd Automation Commerce Lead",
+    "Jigar- JCP Projects",
+    "CBO India+Global",
+    "Fynd Dummy"
+  ],
+  "_splitTracksAsProjects_comment": "Tracks that should be promoted to their own project card on /organisation, even though the xlsx files them under a parent project. Build script extracts these tracks from the parent's pivot, creates a new virtual project entry, and re-assigns matching rows so the directory drill-down still works.",
+  "splitTracksAsProjects": [
+    {
+      "fromProject": "UCP & Marketing OS",
+      "track": "Retail Vista",
+      "newProject": "Retail Vista",
+      "route": "/retail-vista/",
+      "tier": "rr-platforms"
+    }
+  ],
+  "kinds": {
+    "Platform": "Shared",
+    "Dedicated": "Dedicated"
+  },
+  "projects": {
+    "JCP":                       { "displayName": "JCP",                       "route": "/jcp",         "tier": "rr-platforms" },
+    "Impetus":                   { "displayName": "Impetus",                   "route": "/impetus",     "tier": "rr-platforms" },
+    "Granary":                   { "displayName": "Granary",                   "route": "/granary",     "tier": "rr-platforms" },
+    "Unified customer Profile":  { "displayName": "UCP & Marketing OS",        "route": "/ucp",         "tier": "rr-platforms" },
+    "ALP":                       { "displayName": "Asset Lifecycle Platform",  "route": "/alp",         "tier": "rr-platforms" },
+    "RCPL":                      { "displayName": "RCPL",                      "route": "/jcp/rcpl",    "tier": "rr-platforms" },
+    "HireFirst":                 { "displayName": "HireFirst",                 "route": "/hirefirst",   "tier": "rr-platforms" },
+    "Samarth Plus":              { "displayName": "Samarth",                   "route": "/samarth",     "tier": "rr-platforms" },
+    "Monobrands":                { "displayName": "Monobrands",                                          "tier": "rr-platforms" },
+    "External Monetization":     { "displayName": "External Commercialization",                          "tier": "external" },
+    "Infrastructure":            { "displayName": "Infrastructure",                                      "tier": "foundation" },
+    "Central Support":           { "displayName": "Central Support",                                     "tier": "foundation" },
+    "JioGames":                  { "displayName": "JioGames Store",                                      "tier": "rr-platforms" },
+    "Neolync":                   { "displayName": "Neolync",                                             "tier": "rr-platforms" }
+  },
+  "tracks": {
+    "AI Photoshoot":             { "displayName": "AI Photoshoot",             "route": "/impetus/photoshoots/" },
+    "InstaDesk":                 { "displayName": "InstaDesk",                 "route": "/impetus/instadesk/" },
+    "AI Design":                 { "displayName": "AI Design",                 "route": "/impetus/brands/" },
+    "AI Catalog":                { "displayName": "AI Catalog",                "route": "/jcp/cataloging/" },
+    "Impetus Command Center / Ask Impetus": { "displayName": "Impetus Command Center · Ask Impetus", "route": "/impetus/analytics/" },
+    "Impetus Command Center - Ask Impetus": { "displayName": "Impetus Command Center · Ask Impetus", "route": "/impetus/analytics/" },
+    "Plan: Cortex":              { "displayName": "Cortex",                    "route": "/impetus/cortex/" },
+    "Cortex":                    { "displayName": "Cortex" },
+    "Plan: Master Hub / CMT / Costing Engine": { "displayName": "Plan: Master Hub / CMT / Costing Engine", "route": "/impetus/master-hub/" },
+    "Impetus PLM":               { "displayName": "Impetus PLM",               "route": "/impetus/plm/" },
+    "Impetus Ops":               { "displayName": "Impetus Ops" },
+    "Gen AI - Impetus 2.0":      { "displayName": "Gen AI · Impetus 2.0" },
+    "Retail Jarvis":             { "displayName": "Retail Jarvis",             "route": "/retail-jarvis/" },
+    "Make : Intellimake / IntelliQC / IntelliPack": { "displayName": "Make: IntelliVerse (Intellimake / QC / Pack)", "route": "/impetus/intelliverse/" },
+    "Make : Intelliverse (Intellimake / QC/Pack)": { "displayName": "Make: IntelliVerse (Intellimake / QC / Pack)", "route": "/impetus/intelliverse/" },
+    "Sell Track: Store Tech Adoption (NPS, Companion App, Pulsepoint, Scan & Go etc)": {
+      "displayName": "Store Tech",
+      "route": "/impetus/companion-app/",
+      "chips": [{ "label": "Pulsepoint", "route": "/impetus/pulsepoint/" }]
+    },
+    "Store Tech (NPS, Companion App, Pulsepoint, Scan & Go etc)": {
+      "displayName": "Store Tech",
+      "route": "/impetus/companion-app/",
+      "chips": [{ "label": "Pulsepoint", "route": "/impetus/pulsepoint/" }]
+    },
+    "Store Automation : Digital Twin, Smart Kiosk": {
+      "displayName": "Store Automation",
+      "route": "/kio",
+      "chips": [{ "label": "AutRi", "route": "/autri" }]
+    },
+    "TMS":                       { "displayName": "Fynd TMS",                  "route": "/tms" },
+    "Move - TMS / WMS":          { "displayName": "Fynd TMS",                  "route": "/tms" },
+    "Fynd Horizon":              { "displayName": "Fynd Horizon",              "route": "/fynd-horizon" },
+    "Retail Vista":              { "displayName": "Retail Vista",              "route": "/retail-vista/" },
+    "Pixelbin":                  { "displayName": "PixelBin",                  "route": "/pixelbin" },
+    "PixelBin":                  { "displayName": "PixelBin",                  "route": "/pixelbin" },
+    "AI Studio":                 { "displayName": "AI Studio",                 "route": "/pixelbin/videos" },
+    "GlamAR":                    { "displayName": "GlamAR",                    "route": "/pixelbin/glamar" },
+    "Boltic":                    { "displayName": "Boltic",                    "route": "/boltic" },
+    "Ratl":                      { "displayName": "Ratl",                      "route": "/ratl" },
+    "Kaily":                     { "displayName": "Kaily",                     "route": "/kaily" },
+    "Konnect":                   { "displayName": "Fynd Konnect",              "route": "/fynd-konnect" },
+    "Fynd Konnect":              { "displayName": "Fynd Konnect",              "route": "/fynd-konnect" },
+    "Horizon":                   { "displayName": "Fynd Horizon",              "route": "/fynd-horizon" },
+    "RCPL":                      { "displayName": "RCPL",                      "route": "/jcp/rcpl" },
+    "Unified customer Profile":  { "displayName": "UCP",                       "route": "/ucp" },
+    "ALP":                       { "displayName": "Asset Lifecycle Platform",  "route": "/alp" },
+    "Storefronts":               { "displayName": "Storefronts",               "route": "/jcp" },
+    "Core Platform":             { "displayName": "Core Platform",             "route": "/jcp" },
+    "Platform Support":          { "displayName": "Platform Support",          "route": "/jcp" },
+    "Ajio":                      { "displayName": "AJIO",                      "route": "/jcp/channels" },
+    "JioMart":                   { "displayName": "JioMart",                   "route": "/jcp/channels" },
+    "Longtail Channels":         { "displayName": "Emerging Businesses",       "route": "/jcp/channels" },
+    "Leadership":                { "displayName": "Leadership" },
+    "Autonomous Commerce":       { "displayName": "Autonomous Commerce" },
+    "Commerce":                  { "displayName": "Commerce",                  "route": "https://www.fynd.com/teams/enterprise" },
+    "Extensions and Developer Ecosystem": { "displayName": "Extensions & Developer Ecosystem", "route": "https://www.fynd.com/solutions/commerce-apis" },
+    "Fynd Create":               { "displayName": "Fynd Create",               "route": "https://www.fynd.com/solutions/create" },
+    "Forge MES":                 { "displayName": "Forge MES",                 "route": "/forge" },
+    "Orion":                     { "displayName": "Orion · HireFirst",         "route": "/hirefirst" },
+    "Samarth Plus":              { "displayName": "Samarth Plus",              "route": "/samarth" },
+    "Central Pricing & Promotion (CPP)":                     { "displayName": "Central Pricing & Promotion",   "route": "/granary" },
+    "Collection Center App, Smart Farmer Bot, Smart Source Admin": { "displayName": "Collection Center · Smart Farmer · Smart Source", "route": "/granary" },
+    "HR, Admin, Finance, IT":    { "displayName": "HR · Admin · Finance · IT" },
+    "QA":                        { "displayName": "Quality Assurance" },
+    "DevOps":                    { "displayName": "DevOps" },
+    "Reliability":               { "displayName": "Reliability · SRE" },
+    "Security / IRM":            { "displayName": "Security · IRM" },
+    "JioGames":                  { "displayName": "JioGames Store" }
+  }
+}

@@ -1,0 +1,127 @@
+All decisions and operations are governed by a six-cadence Retail Clock – ensuring the right information reaches the right person at the right time
+
+---
+
+Operating Rhythm
+
+---
+
+Cycle Time
+
+---
+
+What Gets Monitored
+
+---
+
+Real-time
+
+---
+
+Milliseconds
+
+---
+
+RFID stock moves, POS transactions, CCTV alerts, IoT exceptions, clickstream events, add-to-cart actions, payment failures
+
+---
+
+Minutes
+
+---
+
+1–15 min
+
+---
+
+Low-stock alerts, footfall spikes, conversion drops, delivery SLA breaches, cart abandonment spikes, app latency alerts
+
+---
+
+Hourly
+
+---
+
+Every hour
+
+---
+
+Store performance vs plan, dark store fulfilment, online GMV vs plan by storefront, category conversion rates, search-to-purchase ratio
+
+---
+
+Shift
+
+---
+
+8 hours
+
+---
+
+Store Manager scorecard, pick/pack productivity, staff utilization, fulfilment centre throughput, customer support queue depth
+
+---
+
+Daily
+
+---
+
+End of day
+
+---
+
+Sales report, inventory health, aged stock movement, campaign performance, channel-wise acquisition vs repeat, refund and cancellation rates
+
+---
+
+Monthly
+
+---
+
+~30 days
+
+---
+
+AI model retraining & recalibration, feature store refresh, algorithm governance review, personalization model performance, customer cohort LTV analysis
+
+---
+
+With AI
+
+---
+
+Stays real-time
++ autonomous response
+
+---
+
+→ Real-time
+with auto-correction
+
+---
+
+→ Continuous
+streaming
+
+---
+
+→ Hourly
+with live dashboards
+
+---
+
+→ Shift-level
+or hourly
+
+---
+
+→ Weekly
+or continuous
+
+---
+
+5
+
+---
+
+As AI matures, every cadence compresses — decisions that took days now take minutes, monthly reviews become continuous

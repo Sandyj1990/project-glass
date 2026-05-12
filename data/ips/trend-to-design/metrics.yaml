@@ -1,0 +1,15 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: designs_per_run
+    label: Designs · Superdry SDX
+    value: 120
+    definition: In 5 days
+    source: AJIO product launch
+    confidence: live
+  - id: time_reduction
+    label: Time reduction vs manual
+    value: 90%
+    definition: Design cycle
+    source: Superdry SDX case
+    confidence: live

@@ -1,0 +1,45 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: stores_live
+    label: Stores live
+    value: 3,000+
+    definition: Combined Trends + RD + Smart Bazaar · 25× growth from 117 baseline
+    source: Companion App ops · 29 - Apr - 2026
+    confidence: live
+  - id: platform_fees_inr_cr
+    label: Platform fees booked YTD
+    value: ₹7.83 Cr
+    definition: Cumulative platform fees FY26 · run-rate scaling
+    source: Fynd finance · 29 - Apr - 2026
+    confidence: audited
+  - id: p0_features
+    label: P0 features shipped
+    value: 12
+    definition: Store Detection · Scan & Go · Endless Aisle · Look Builder · Wishlist Transfer · Trends Tube · Post-Visit · Wallet · Lookbook · Wardrobe · Missions · Coupons
+    source: Product roadmap
+    confidence: live
+  - id: trends_stores
+    label: Trends stores · primary footprint
+    value: 2,171
+    definition: Reliance Trends format only
+    source: Reliance Retail FY26
+    confidence: audited
+  - id: rd_stores
+    label: Reliance Digital stores · Companion rolling
+    value: 650+
+    definition: RD format
+    source: Reliance Retail
+    confidence: audited
+  - id: smart_bazaar_stores
+    label: Smart Bazaar stores · Companion + JioGames
+    value: 1,200+
+    definition: Smart Bazaar format
+    source: Reliance Retail
+    confidence: audited
+  - id: yousta_scans
+    label: Yousta · scans on Companion
+    value: 92.4K+
+    definition: Across 87 stores
+    source: Yousta ops
+    confidence: live

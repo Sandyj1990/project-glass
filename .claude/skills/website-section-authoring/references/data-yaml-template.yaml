@@ -1,0 +1,105 @@
+# Path: data/<section>/<slug>.yaml
+# One YAML per sub-page. For single-page sections, one YAML per logical entity.
+# Body content is verbatim from docs/<section>-compilation/. No paraphrasing.
+
+# ============================================================================
+# HEADER · always present
+# ============================================================================
+
+slug: <kebab-case>                      # required · matches output URL: /<section>/<slug>/
+title: <Display Name>                   # required · used in H1
+sub_title: <Optional subtitle>          # optional · italics under H1
+
+aliases: [<other names>]                # optional · alternative names for search
+
+tagline: <one-line description>         # required · used on parent index card
+
+category: <Plan|Buy|Make|Sell|Operate>  # optional · for sectioning on parent index
+status: live | pilot | build            # required
+status_label: Live                      # optional · display label, defaults to status
+
+# Source traceability — every claim on the page should resolve here
+source_folder: docs/<section>-compilation/<sub>/
+source_citation: "<verbatim citation, e.g. Q1 2026 Release Compendium · pp. 47-49>"
+
+# Primary date for the entity (session date, ship date, etc.)
+date: 2026-04-07                        # ISO format · renderer converts for display
+
+# ============================================================================
+# BODY · varies per section
+# ============================================================================
+# Use whatever fields the page template needs. Keep field names consistent
+# across all sub-pages of the same section (don't mix `audience` here and
+# `for_whom` there). Below are the common shapes.
+
+# Audience pills — who the thing serves
+audience:
+  - <Role>
+  - <Role>
+
+# What it does — narrative paragraphs (markdown supported in renderer)
+what_it_does: |
+  Two to three short paragraphs in apex-readable register. No marketing voice.
+  Numbers up front. Names where they matter. See website-tone-of-voice.
+
+# Scale chips — bullet stats
+scale_label: <How many people use it | How much is being managed | Scale>
+scale:
+  - "<stat string with units>"
+  - "<stat string with units>"
+scale_caption: |
+  Optional one-line summary under the chips.
+
+# Improvements — what changed because of the platform
+what_improved:
+  body: |
+    Narrative.
+  metric_impact: <One-line measurable claim>
+
+# Updates timeline — reverse-chronological ship log
+updates:
+  - date: 2026-04-07                    # ISO
+    heading: <Short heading>
+    body: |
+      Bullet or paragraph.
+
+# Screenshots — image grid
+screenshots:
+  - src: /assets/<section>/<slug>/01-<descriptor>.jpg   # web path, not filesystem
+    caption: <Verbatim caption from source>
+  - src: /assets/<section>/<slug>/02-<descriptor>.jpg
+    caption: <Verbatim caption from source>
+
+# Materials — downloadable docs
+materials:
+  - label: <Display label>
+    href: /assets/<section>/<slug>/<doc>.pdf
+    size: <e.g. "12 MB">                # optional
+
+# DRI — Fynd-side owner of this sub-page
+dri:
+  name: <Name>
+  role: <Role at Fynd>
+
+# Reliance counterpart — who at Reliance owns the outcome
+reliance_owner:
+  name: <Name>
+  role: <Role at Reliance entity>
+
+# ============================================================================
+# CONVENTIONS
+# ============================================================================
+#
+# Slugs:        kebab-case · matches URL · no spaces, no underscores
+# Dates:        ISO YYYY-MM-DD in YAML · renderer converts to DD-MMM-YYYY
+# Headcounts:   strings if approximate · "~50", "150+" · ints if exact
+# Numbers:      strings if formatted · "₹420 crore", "1,06,892" · raw if unformatted
+# Asset paths:  absolute web paths starting with / · /assets/..., not assets/...
+# Source paths: relative repo paths · docs/..., not /Users/...
+# Markdown:     supported in body fields (`what_it_does`, `body`, etc.) — bold, italics, lists
+#
+# DO NOT:
+# - Paraphrase from source. Pull verbatim. The citation chain depends on it.
+# - Use placeholder values like "TBD" in shipped YAMLs. Either resolve via
+#   AskUserQuestion or omit the field.
+# - Mix field names across sub-pages of the same section.

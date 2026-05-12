@@ -1,0 +1,275 @@
+{
+  "page": "jcp/index.html",
+  "spec": "docs/jcp-reorient-spec.md (v0.7 · stale vs current 11-section page)",
+  "audit_date": "2026-05-03",
+  "score": 76,
+  "grade": "C",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 70,
+    "source_traceability": 78,
+    "tone_of_voice": 76,
+    "honesty_register": 82,
+    "visual_completeness": 84,
+    "cross_page_consistency": 60,
+    "design_compliance": 88
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "structural_compliance",
+      "section": "story-toc",
+      "issue": "Sticky TOC has 10 entries (01 BET → 10 RECEIPTS) but the page has 11 sections. The auto-injected §08 PATH TO L4 section is missing from the TOC entirely, and TOC entries for §08-§10 (SHIPPED / ROADMAP / RECEIPTS) point at sections that have shifted by 1 (now §09 / §10 / §11). Click-tracking still works via fragment IDs, but the displayed numbers no longer match the section labels — the user sees 08 SHIPPED in the TOC and lands on a section labelled 09.",
+      "fix": "Add `<a href=\"#path-to-l4\">08 · Path to L4</a>` after the AI link, and renumber the existing trailing entries to 09 / 10 / 11.",
+      "files": ["jcp/index.html:163-177"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "global hero · §01 · §02 · §03",
+      "issue": "Channel count is 78 across the entire JCP page (hero subhead, §01 'The bet' eight repetitions, §02 nothing, §03 'Coverage' subhead, group total) while every sibling and the home page is on 79. /index.html line 192 ('79 channels · 68 live · 700 K+ orders / day'), line 313, 324, 326, 781 all say 79. /jcp/channels/index.html line 171 section label says 'JCP · Channel Coverage · 79 channels'. Apex reads both pages.",
+      "fix": "Either bump JCP page to 79 (matching siblings) or push the 78 down across home and /jcp/channels/. Spec §3 §02 in jcp-update-spec.md flagged this as 'reconciliation deferred' — defer ends when two surfaces disagree publicly. Reconcile to 79.",
+      "files": [
+        "jcp/index.html:153",
+        "jcp/index.html:182",
+        "jcp/index.html:183",
+        "jcp/index.html:190",
+        "jcp/index.html:192-201",
+        "jcp/index.html:250",
+        "jcp/index.html:277",
+        "index.html:192",
+        "index.html:313",
+        "jcp/channels/index.html:171"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "§10",
+      "issue": "§10 Roadmap is a stub: `<p class=\"text-base\" style=\"color: var(--ink-muted);\">To be added.</p>`. An empty section is shown to Apex with section label and divider chrome. tone-of-voice §3 forbids forward-looking sections without dates / DRIs.",
+      "fix": "Either fill with a dated near-term roadmap (1-4 week items, named owners) or delete the section and the TOC entry. Default-cut per /hirefirst v0.9 precedent.",
+      "files": ["jcp/index.html:742-746"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§06 Product surface",
+      "issue": "Card 08 'AI for Commerce' body ends with 'Built into the substrate, not bolted on.' That is exactly the 'This is not X. It is Y.' construction banned by tone-of-voice §3 (Farooq-essay register, not website register).",
+      "fix": "Drop the trailing sentence. The preceding line ('Vertex Search, Web Grounding cataloging, ViSenze visual search, Phoenix recos. The AI Commerce Co-Pilot.') stands alone.",
+      "files": ["jcp/index.html:619"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§07 AI shipped · Methodology card",
+      "issue": "Methodology card body: 'Discipline beats hype. Verify before ship.' Two-sentence punchy slogan, marketing-deck register. tone-of-voice §3 banned constructions / §7 marketing closers.",
+      "fix": "Replace with the descriptive line only: 'Every AI output buckets into Exact / Partial / No-Match against ground truth.' Drop the trailing slogan.",
+      "files": ["jcp/index.html:680"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§01 The bet",
+      "issue": "Editorialised opener: 'Every brand pays its own engineering tax. Every breakthrough has to be re-built 78 times.' / 'The math only works if the platform holds at peak. It does.' / 'That is the leverage.' These are essay-voice rhetorical beats — Farooq-paper register imported into the website. Per tone-of-voice §1 (Factual / Scannable / No marketing voice), the same point lands without the editorial metres.",
+      "fix": "Tighten to: 'Reliance Retail runs 78 commerce channels across 10 verticals. Built channel-by-channel that means 78 codebases, 78 release trains, 78 catalog systems. JCP runs one stack instead — one codebase, one release train, one AI substrate.' Drop 'It does.' and 'That is the leverage.' The cards below already make the point.",
+      "files": ["jcp/index.html:183-185"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H5",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§01 hero card · After",
+      "issue": "Card claims 'Vertex Search · 5 channels · 1 cutover'. §07 'AI shipped' lists Vertex live across 5 channels: Tira, Netmeds, Reliance Digital, Swadesh, Urban Ladder. Spec calls it '100% rollout · zero-downtime cutover from Algolia'. The phrase '1 cutover' in the bet card implies a single switchover event for all 5; the source describes it as a sequence (Tira first, then Netmeds 80-day A/B, etc.). Mild overclaim.",
+      "fix": "Reword to 'Vertex Search · 5 channels · zero-downtime migration' — matches §07 source language.",
+      "files": ["jcp/index.html:205"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H6",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "spec drift",
+      "issue": "The page does not match its own spec. docs/jcp-reorient-spec.md v0.7 §11.1 'Final /jcp/ page structure (shipped)' lists 6 sections (Hero / §01 Where deployed / §02 Architecture / §03 Platform properties / §04 What's live / §05 Vertex). The shipped page has 11 sections (The bet · Scale · Coverage · People · Architecture · Product surface · AI shipped · Path to L4 · Shipped this year · Roadmap · Receipts). A second, unspec'd rewrite happened (the user's note: 'big rewrite — story format, channel gallery, dropped Beyond Reliance box, added logo cards, em-dash sweep, hero KPIs back') but no spec captures it. Skill rule: spec is the truth.",
+      "fix": "Either (a) update jcp-reorient-spec.md §11.1 to reflect the 11-section v0.8 story-format reality, or (b) author a fresh /docs/jcp-story-spec.md that anchors the new structure. Without one of those, the page is undocumented and the next reviewer flags this same finding.",
+      "files": ["docs/jcp-reorient-spec.md", "jcp/index.html"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H7",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§04 People",
+      "issue": "274 hands · 13 tracks · the bar chart numbers (95 / 35 / 22 / 17 / 16 / 16 / 16 / 15 / 14 / 13 / 9 / 3 / 3) and the dedicated/shared split (171 / 103) carry no source citation on the page and no source file is referenced in the spec. spec was scoped to Accenture deck + Release Notes PDF — neither contains a JCP-team headcount breakdown. Per source-audit-protocol failure pattern 6, unsourced load-bearing numbers cap traceability.",
+      "fix": "Add an inline cap-num under the chart: 'Source · JCP team roster · {date} · internal' or move the section to /organisation if the data lives there.",
+      "files": ["jcp/index.html:434-457"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 Scale",
+      "issue": "'Tira · AOV uplift · 2.5×' tile carries no source line, while the §07 table cites '+4.96% AOV' for Tira (₹53,495 → ₹56,075). 2.5× would be 250% lift, not 4.96% — the two cannot both be true unless they refer to different timeframes / cohorts. Likely the 2.5× refers to a different Tira metric (mobile vs desktop, or post-Vertex cohort vs pre-Vertex) but is presented without scope.",
+      "fix": "Either replace the tile with '+4.96% AOV vs Algolia (Tira · 71-day A/B)' or add the scope inline. Currently misleading.",
+      "files": ["jcp/index.html:238"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§02 Scale · RPOS card",
+      "issue": "RPOS card body: 'the offline world wired into the same brain.' Metaphor not grounded in a source. tone-of-voice §3 forbids metaphors that aren't strict equivalences.",
+      "fix": "Drop the trailing clause: '75+ formats · 15K+ stores · streamed into UCP daily.' is enough.",
+      "files": ["jcp/index.html:242"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "§03 Coverage subhead",
+      "issue": "Page says '78 channels (73 B2C, 5 B2B)' but the in-page channel gallery groups them as: Flagship 7 · In-Store 14 · B2B 6 · Furniture/Beauty 11 · Fashion 28 · Emerging 22 = 88 cards rendered (some are status:planned). The 73/5 split conflicts with the home page's '105 brands · 10 verticals' claim and with /jcp/channels/'s own coverage label. Pick one canonical split and broadcast.",
+      "fix": "Reconcile in one of: (a) 79 = 73 B2C + 6 B2B (matches /jcp/channels/), (b) 78 = 73 B2C + 5 B2B (this page only). Bring siblings into line. Cross-references C2.",
+      "files": ["jcp/index.html:250"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§02 Architecture peak",
+      "issue": "'Architecture peak · 350K/hr · Tested, headroom held' — 'Tested' is the right modifier (matches the 350K hero tile labelled 'Peak / hour · tested') but 'headroom held' is unsourced and asserts a state ('still has spare capacity') that needs a benchmark date. Either source it or drop the second line.",
+      "fix": "Drop 'Tested, headroom held' or replace with the test date: 'Tested · {date}'.",
+      "files": ["jcp/index.html:233"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 Coverage chips",
+      "issue": "'In-Progress' status pill (yellow) appears on AJIO, GAP, La Martina, Facegym, AJSK. Tone-of-voice and Honesty rubric only document Live / Building / Roadmap / Pilot. 'In-Progress' is undocumented status vocabulary — Apex won't know whether it means Building, Pilot, or 'unfinished'.",
+      "fix": "Either add 'In-Progress' to the documented status set in tone-of-voice §3 (and align CSS), or remap to 'Building' (yellow) which is already documented.",
+      "files": [
+        "jcp/index.html:42",
+        "jcp/index.html:288",
+        "jcp/index.html:353",
+        "jcp/index.html:389",
+        "jcp/index.html:390",
+        "jcp/index.html:391",
+        "jcp/index.html:418"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "M6",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "§07 stat tiles · §08 Path to L4",
+      "issue": "Inline hex literals not in token set: #FFF7ED / #FED7AA / #ECFDF5 / #A7F3D0 / #C2410C / #047857 / #B45309 / #FDE68A / #92400E / #BBF7D0 / #FEF3C7 / #F3F4F6 / #D1D5DB used in card backgrounds and pill backgrounds (the orange / green semantic tier). docs/design.md §1.1 rule: tokens, not hex literals. These are decorative-but-not-architectural so they fall outside the diagram-fill carve-out.",
+      "fix": "Promote to tokens (--accent-warm / --accent-cool / --pill-live-bg etc.) in style.css :root or whitelist as 'card-state semantic palette'. At minimum, document them in design.md §1.1.",
+      "files": [
+        "jcp/index.html:41-44",
+        "jcp/index.html:65-69",
+        "jcp/index.html:188-219"
+      ],
+      "auto_fixable": false
+    },
+    {
+      "id": "M7",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "global page styles",
+      "issue": "Inline <style> uses `font-size: 11.5px` (architecture SVG `.tl` class) and `font-size: 9.5px` (channel status pill). Neither is on the docs/design.md §1.2 scale (10/11/12/13/14/15/16/...).",
+      "fix": "Bump to 11px / 10px respectively. Architecture SVG diagram text is decorative and may be exempted; channel status pill should land on scale.",
+      "files": ["jcp/index.html:40", "jcp/index.html:476"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M8",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "card pattern",
+      "issue": "§03 Coverage gallery carries cards with `<a class=\"ch-card\">` (no href, no target_blank, no js-lightbox). Some channel cards link out (target=_blank), others have no href but still display the visual hover (border-color: var(--ink); transform: translateY(-2px)). Inconsistent affordance — half the cards reward a click, half don't. tone-of-voice §3 'one target per card' / SKILL §6 'never bare <img>'.",
+      "fix": "Either make every <a class=\"ch-card\"> a real link (to /jcp/channels/#<slug>) or strip the hover affordance from the unlinked ones. Minimum: drop href-less <a> and use <div> for the unlinked variant.",
+      "files": [
+        "jcp/index.html:291",
+        "jcp/index.html:292",
+        "jcp/index.html:303",
+        "jcp/index.html:304-306"
+      ],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 hero card · Discipline at the core, freedom at the edge",
+      "issue": "Card headline 'Discipline at the core, freedom at the edge.' is a coined slogan, not a fact. tone-of-voice §1 favours factual register. Lower-impact than H4 because the surrounding bullet list is concrete.",
+      "fix": "Replace headline with 'Microservices · isolated tenants · shared substrate.' Reuse the bullet list as is.",
+      "files": ["jcp/index.html:212"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "global / status pills",
+      "issue": "'JCP 2026 · Agentic' edition tile (§06) — 'Agentic' as a noun-adjective without a date or scope reads marketing-y. Page elsewhere ties agentic commerce to JIIA (Google Cloud Next '26 · 29-Apr-2026), so the term has a footing — but the §06 tile bare-asserts it.",
+      "fix": "Replace with 'JCP Edition 2026 · agentic-ready' or strip. Optional polish.",
+      "files": ["jcp/index.html:627"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§02 Scale RPOS",
+      "issue": "'1.5M · RPOS daily orders streaming into UCP' tile — the same number on /jcp/cataloging/'s related deep-dive uses '1.6M JioMart orders/day' as a separate stat. RPOS daily orders (1.5M) and JioMart daily orders (1.6M) are distinct, but both round-trip into the page's hero (700K+ orders/day for JCP). Worth a brief inline note 'RPOS feeds UCP — distinct from JCP order spine' so Apex doesn't double-count.",
+      "fix": "Append to the context line: '75+ formats · 15K+ stores · feeds UCP analytics, not JCP order count.'",
+      "files": ["jcp/index.html:242"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "design_compliance",
+      "section": "channel gallery",
+      "issue": "ch-icon overlay images (the small brand badge top-left of channel screenshots) lack alt text (`<img src=\"icon.png\" alt=\"\" />`). These are decorative so empty alt is correct, but the brand-name <img> in <a class=\"ch-logo-card\"> (e.g. GAP, Centro Shoes, Versace) does carry `alt=\"GAP\"` etc. — consistent.",
+      "fix": "No fix; documenting as confirmed-clean.",
+      "files": ["jcp/index.html:286-422"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L5",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "global · console",
+      "issue": "Console emits ~50 instances of the Tailwind CDN dev warning (one per HMR cycle). Acceptable per visual-audit-checklist but worth flagging for the Tailwind-CLI migration backlog.",
+      "fix": "Already on the global backlog. No page-level action.",
+      "files": ["site-wide"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero KPIs (700K+ / day · 350K · 200M+ · 78) trace cleanly to the Accenture deck (slide 32 + slide 35) and align with the FY 26 framing the user explicitly restored.",
+    "Vertex Search §07 table is the strongest section on the page — every cell is verifiable against the source A/B note (Tira 71d/97.7M searches · Netmeds 80d/3.8M · 7.39% / 10.70% revenue lift) and the +/- direction is colour-coded responsibly.",
+    "Channel gallery (§03) has zero broken images across 82 image elements, mixes ch-card / ch-shot / ch-logo-card / ch-chip variants cleanly, and grouping into 6 sets reads cleanly at apex grain.",
+    "Architecture SVG (§05) is a load-bearing visual that matches the actual product surface (Online Customer / Store / Warehouse / Back Office) and renders at 1066px inside the 1100px max-width container — no soft scaling.",
+    "Story-format spine (the bet → scale → coverage → people → architecture → product → AI → path → shipped → roadmap → receipts) gives the page a defensible top-down reader path. The auto-injected Path to L4 section is integrated cleanly even if the TOC didn't catch up.",
+    "Mobile (375px) renders without horizontal overflow; hero stacks 2x2; channel cards reflow."
+  ]
+}

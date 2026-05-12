@@ -1,0 +1,27 @@
+{
+  "slug": "ai-photoshoot",
+  "name": "AI Photoshoot",
+  "tagline": "25K+ photoshoots shipped on Tira \u00b7 90% cost reduction \u00b7 enterprise-grade platform.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2024-09-01",
+  "last_release": null,
+  "verticals": [
+    "beauty",
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make",
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#ai-photoshoot",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "ai",
+    "photography",
+    "catalog"
+  ]
+}

@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Category Intelligence Agent · AI Agents · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.agent-stat { padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.agent-stat .a-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
+.agent-stat .a-value { font-weight: 700; font-size: 22px; color: var(--ink); line-height: 1.1; letter-spacing: -0.01em; }
+.agent-stat .a-context { font-size: 11px; color: var(--ink-muted); margin-top: 4px; line-height: 1.4; }
+
+.pill { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; }
+.pill-live    { background: #DCFCE7; color: #166534; border: 1px solid #BBF7D0; }
+.pill-build   { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.pill-scoping { background: #E0E7FF; color: #3730A3; border: 1px solid #C7D2FE; }
+.pill-track   { background: #F1F5F9; color: #1E293B; border: 1px solid #CBD5E1; text-transform: uppercase; }
+.pill-l       { background: #0A2454; color: white; }
+.pill-platform a { color: #1E293B; text-decoration: none; }
+.pill-platform { background: #FAFAF9; color: #1E293B; border: 1px solid #E5E7EB; padding: 4px 11px; }
+.pill-platform a:hover { color: var(--accent); }
+
+.agent-card { display: block; padding: 18px 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); transition: border-color 0.15s, box-shadow 0.15s; text-decoration: none; color: var(--ink); height: 100%; }
+.agent-card:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+.agent-card .ac-pills { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 10px; }
+.agent-card .ac-name { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.agent-card .ac-sub { font-size: 13px; color: var(--ink-muted); line-height: 1.45; margin-bottom: 12px; }
+.agent-card .ac-stat { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink); padding-top: 10px; border-top: 1px solid var(--border); }
+.agent-card .ac-stat strong { color: var(--accent); font-weight: 700; }
+.agent-card .ac-platform { font-size: 11px; color: var(--ink-muted); margin-top: 6px; }
+
+.band-header { padding: 10px 0; border-bottom: 1px solid var(--border); margin-bottom: 18px; display: flex; align-items: baseline; gap: 14px; }
+.band-header .b-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.band-header .b-framing { font-size: 13px; color: var(--ink-muted); }
+
+.workflow-step { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); align-items: start; }
+.workflow-step:first-child { border-top: none; }
+.workflow-step .ws-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; color: white; background: var(--accent); padding: 4px 0; text-align: center; border-radius: 6px; height: 28px; }
+.workflow-step .ws-title { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 4px; }
+.workflow-step .ws-detail { font-size: 13.5px; color: var(--ink); line-height: 1.55; }
+
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
+.data-table th { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; background: var(--bg-soft); }
+.data-table td .ent { font-size: 12.5px; color: var(--ink-muted); }
+
+.tech-chip { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #F1F5F9; color: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 11px; margin: 2px 4px 2px 0; border: 1px solid #E2E8F0; }
+.note-pending { padding: 12px 16px; background: #FEF9C3; border-left: 3px solid #CA8A04; border-radius: 0 6px 6px 0; font-size: 13px; color: #713F12; line-height: 1.5; margin-top: 10px; }
+
+.pattern-chip { display: flex; flex-direction: column; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px; background: var(--bg); }
+.pattern-chip .pc-name { font-weight: 600; font-size: 13px; color: var(--ink); margin-bottom: 4px; }
+.pattern-chip .pc-usage { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+
+.linked-platform-card { display: block; padding: 14px 16px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); text-decoration: none; color: var(--ink); transition: border-color 0.15s; }
+.linked-platform-card:hover { border-color: var(--accent); }
+.linked-platform-card .lp-name { font-weight: 700; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.linked-platform-card .lp-role { font-size: 12px; color: var(--ink-muted); line-height: 1.45; }
+.linked-platform-card .lp-arrow { color: var(--accent); font-size: 12px; margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
+
+.workflow-ascii { background: #0F172A; color: #E2E8F0; padding: 18px 20px; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.5; overflow-x: auto; white-space: pre; }
+
+.in-flight-row { padding: 12px 0; border-top: 1px solid var(--border); }
+.in-flight-row:first-child { border-top: none; }
+.in-flight-row .ifr-date { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; background: var(--ink); color: white; padding: 3px 8px; border-radius: 4px; margin-right: 10px; }
+.in-flight-row .ifr-milestone { font-size: 13.5px; color: var(--ink); line-height: 1.5; }
+
+.diagram-wrap { padding: 18px 12px; border: 1px solid var(--border); border-radius: 10px; background: #FAFAFA; margin-bottom: 8px; overflow: hidden; }
+.diagram-wrap svg { display: block; margin: 0 auto; max-width: 100%; height: auto; font-family: 'Inter', system-ui, sans-serif; }
+.diagram-caption { font-size: 11px; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 18px; }
+
+@media (max-width: 768px) {
+  .diagram-wrap, .diagram-caption { display: none; }
+}
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-10 pb-8" style="background: linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);">
+  <div class="container mx-auto px-6 max-w-6xl">
+    <nav class="text-xs mb-4" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">
+      <a href="/" style="color: var(--ink-muted);">Home</a> /
+      <a href="/agents" style="color: var(--ink-muted);">AI Agents</a> /
+      <span style="color: var(--ink);">Category Intelligence Agent</span>
+    </nav>
+    <div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase;">AI Agents · CATEGORY-INTELLIGENCE · Building</div>
+    <h1 class="display-1 text-4xl md:text-5xl mb-3" style="color: var(--ink); letter-spacing: -0.02em; font-weight: 800;">Category Intelligence Agent.</h1>
+    <p class="text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.5;">Category × season × geography → 40-50pp evidence-tagged trend report. Built for buying teams, not for press.</p>
+    <div class="mb-6" style="display: flex; flex-wrap: wrap; gap: 6px;"><span class="pill pill-build">Building</span> <span class="pill pill-track">PLAN</span> <span class="pill pill-l">L4</span> </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-2"><div class="agent-stat"><div class="a-label">Pipeline</div><div class="a-value">7 steps</div><div class="a-context">Brief → Research → Images → Build → Polish → Verify → Audit → Ship</div></div><div class="agent-stat"><div class="a-label">Output depth</div><div class="a-value">40-50 pp</div><div class="a-context">evidence-tagged · A4 PDF</div></div><div class="agent-stat"><div class="a-label">Quality checks</div><div class="a-value">18 automated</div><div class="a-context">post-build · regression-gated</div></div></div>
+  </div>
+</section>
+<!-- DEPLOYED-IN-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+<section class="py-10 border-t" style="border-color: var(--border);">
+<div class="container mx-auto px-6 max-w-6xl">
+<div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">Deployed in</div>
+<div class="overflow-x-auto">
+  <table class="grid-table">
+    <thead><tr><th>Platform</th><th>What this agent delivers for that platform</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><a href="/impetus" style="color: var(--accent); text-decoration: underline;">Impetus</a></td>
+        <td>Category × season × geography → 40-50 pp evidence-tagged trend report for buying teams.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</section>
+<!-- DEPLOYED-IN-END --><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">01 · The job to be done</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-6"><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">The pain</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Trend research today = ad-hoc Pinterest scrolls + WGSN extracts + a
+designer&#x27;s gut. Inputs are unstitched to brand DNA, evidence rarely
+survives the handoff to buying, and trend calls land as opinions, not
+signals you can audit.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What the agent does</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Takes a category × season × geography brief and produces a 40-50 page
+PDF report: evidence-tagged trend analysis across silhouette, fabric,
+colour, print and detail; 5 capsule design concepts with evidence
+panels and AI-generated line sheets; competitive benchmarking with
+retailer evidence grid; risk classification (safe bet / calculated
+risk / test &amp;amp; react); and a print design brief for textile teams.
+</div></div><div><div class="text-xs mb-2" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">What humans still do</div><div class="text-sm" style="color: var(--ink); line-height: 1.55;">Buying lead approves the brief and the four review checkpoints.
+Designer takes the capsules into pattern-making. Agent does the
+research, structuring, image generation, and writing — humans
+decide what to act on.
+</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">02 · How it works · the closed loop</div><div class=""><div class="diagram-wrap"><svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+  <title>Category Intelligence · 7-step pipeline with 4 review checkpoints</title>
+  <desc>Brief flows through Research, Images, Build, Polish, Verify, Audit and Ship — with 4 human review pauses to prevent wasted work.</desc>
+  <defs>
+    <marker id="ci-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="ci-pause" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+    </marker>
+    <style>
+      .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+      .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+      .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+      .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+      .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+      .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+      .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+      .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+      .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+      .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+      .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+      .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+      .conn-pause { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+      .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+    </style>
+  </defs>
+
+  <!-- Inputs -->
+  <g>
+    <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE"/>
+    <text x="36" y="46" class="zh">Inputs</text>
+
+    <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+    <text x="50" y="86" class="h-ttl">Buying lead brief</text>
+    <text x="50" y="102" class="h-sub">category · season · geo</text>
+    <text x="50" y="116" class="h-sub">brand DNA · price tier</text>
+
+    <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="168" class="src-ttl">Runway shows</text>
+    <text x="50" y="186" class="src-sub">Vogue Runway · Tagwalk</text>
+
+    <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="242" class="src-ttl">Retail crawlers</text>
+    <text x="50" y="260" class="src-sub">Myntra · AJIO · Nykaa · Net-a-Porter</text>
+
+    <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="316" class="src-ttl">Search + social</text>
+    <text x="50" y="334" class="src-sub">Pinterest · Google Trends · TikTok</text>
+
+    <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+    <text x="50" y="390" class="src-ttl">Trade press + forecasts</text>
+    <text x="50" y="408" class="src-sub">WGSN · EDITED · Heuritech</text>
+
+    <text x="36" y="490" class="gl">Evidence rule</text>
+    <text x="36" y="506" class="src-sub">no claim ships without a tag</text>
+  </g>
+
+  <!-- Workflow -->
+  <g>
+    <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB"/>
+    <text x="306" y="46" class="zh">Pipeline · 7 steps · 4 review pauses</text>
+
+    <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="324" y="86" class="stp-num">01</text>
+    <text x="354" y="86" class="stp-ttl">Brief ingestion</text>
+    <text x="324" y="106" class="stp-sub">category · season · geography</text>
+    <text x="324" y="120" class="stp-sub">brand DNA · price tier · occasion</text>
+
+    <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="614" y="86" class="stp-num">02</text>
+    <text x="644" y="86" class="stp-ttl">Research · 3 tiers</text>
+    <text x="614" y="106" class="stp-sub">runway / forecast · retail · consumer</text>
+    <text x="614" y="120" class="stp-sub">every signal evidence-tagged</text>
+
+    <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="324" y="182" class="stp-num">03</text>
+    <text x="354" y="182" class="stp-ttl">Image generation</text>
+    <text x="324" y="202" class="stp-sub">line sheets · capsules · cover</text>
+    <text x="324" y="216" class="stp-sub">GPT Image 2 + Vertex</text>
+
+    <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="614" y="182" class="stp-num">04</text>
+    <text x="644" y="182" class="stp-ttl">Build PDF</text>
+    <text x="614" y="202" class="stp-sub">react-pdf · page-by-page</text>
+    <text x="614" y="216" class="stp-sub">structured data + editorial prose</text>
+
+    <rect x="310" y="256" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="324" y="278" class="stp-num">05</text>
+    <text x="354" y="278" class="stp-ttl">Polish</text>
+    <text x="324" y="298" class="stp-sub">layout · typography · visual hierarchy</text>
+    <text x="324" y="312" class="stp-sub">market-specific framing</text>
+
+    <rect x="600" y="256" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="614" y="278" class="stp-num">06</text>
+    <text x="644" y="278" class="stp-ttl">Verify · 18 auto-checks</text>
+    <text x="614" y="298" class="stp-sub">image ratios · banned strings</text>
+    <text x="614" y="312" class="stp-sub">section ordering · evidence legend</text>
+
+    <rect x="310" y="356" width="560" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+    <text x="324" y="378" class="stp-num" style="fill:#B45309;">07</text>
+    <text x="354" y="378" class="stp-ttl">Audit + Ship</text>
+    <text x="324" y="398" class="stp-sub">independent review against 5-dim rubric</text>
+    <text x="324" y="412" class="stp-sub">evidence rigour · content · visual · structure · editorial</text>
+
+    <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+    <text x="324" y="468" class="gl">Human pauses · 4 review checkpoints</text>
+    <text x="324" y="492" class="stp-sub">after Research · after Images · after Build · after Audit · prevents wasted work</text>
+  </g>
+
+  <!-- Outputs -->
+  <g>
+    <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0"/>
+    <text x="936" y="46" class="zh">Outputs</text>
+
+    <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="86" class="out-ttl">40-50pp PDF report</text>
+    <text x="950" y="104" class="out-sub">runway-to-market translation</text>
+    <text x="950" y="120" class="out-sub">market-specific framing</text>
+
+    <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="180" class="out-ttl">5 capsule designs</text>
+    <text x="950" y="198" class="out-sub">evidence panels · line sheets</text>
+    <text x="950" y="214" class="out-sub">handed to Trend-to-Design</text>
+
+    <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+    <text x="950" y="274" class="out-ttl">Risk classification</text>
+    <text x="950" y="292" class="out-sub">safe bet · calculated risk</text>
+    <text x="950" y="308" class="out-sub">test &amp; react</text>
+
+    <!-- Evidence Tags · h 62 → 78 to hold 2 sub-text lines per spec §5.1
+         (52 chars in 228px card overflowed by ~86px · "FORECAST" was
+         clipped to "F"). Tag list split across 2 lines. -->
+    <rect x="936" y="346" width="228" height="78" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+    <text x="950" y="368" class="gl" style="fill:#15803D;">Evidence tags</text>
+    <text x="950" y="388" class="out-sub">RUNWAY · RETAIL · SEARCH</text>
+    <text x="950" y="404" class="out-sub">SOCIAL · TRADE · FORECAST</text>
+
+    <!-- Autonomy · shifted down 16px (y=424 → 440) to make room for the
+         expanded Evidence Tags card. h=80 unchanged · ends y=520 at zone bottom. -->
+    <rect x="936" y="440" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+    <text x="950" y="460" class="gl" style="fill:#15803D;">Autonomy</text>
+    <text x="950" y="480" class="out-ttl">L4 Agentic</text>
+    <text x="950" y="498" class="out-sub">human reviews 4 checkpoints</text>
+    <text x="950" y="514" class="out-sub">system runs the pipeline</text>
+  </g>
+
+  <!-- Connectors · trunk for inputs -->
+  <path d="M244 95 H275" class="conn"/>
+  <path d="M244 175 H275" class="conn"/>
+  <path d="M244 249 H275" class="conn"/>
+  <path d="M244 323 H275" class="conn"/>
+  <path d="M244 397 H275" class="conn"/>
+  <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+  <path d="M275 98 H310" class="conn" marker-end="url(#ci-arr)"/>
+
+  <!-- Pipeline flow -->
+  <path d="M580 98 H600" class="conn" marker-end="url(#ci-arr)"/>
+  <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#ci-arr)"/>
+  <path d="M580 194 H600" class="conn" marker-end="url(#ci-arr)"/>
+  <path d="M735 228 V242 H445 V256" class="conn" marker-end="url(#ci-arr)"/>
+  <path d="M580 290 H600" class="conn" marker-end="url(#ci-arr)"/>
+  <path d="M735 324 V340 H590 V356" class="conn" marker-end="url(#ci-arr)"/>
+
+  <!-- Step 07 → Outputs -->
+  <path d="M870 390 H905 V100 H920" class="conn" marker-end="url(#ci-arr)"/>
+  <text x="892" y="240" class="lbl" transform="rotate(90 892 240)">delivers</text>
+</svg></div><div class="diagram-caption">Inputs (blue) → 7-step pipeline with 4 human review checkpoints (yellow) → 40-50pp evidence-tagged report.</div><div><div class="workflow-step"><div class="ws-num">01</div><div><div class="ws-title">Brief ingestion</div><div class="ws-detail">Buying lead supplies category · season · geography. Plus brand DNA, price tier, target consumer, occasion calendar (festive / wedding / monsoon).</div></div></div><div class="workflow-step"><div class="ws-num">02</div><div><div class="ws-title">Research · 3 tiers</div><div class="ws-detail">Tier 1 runway + forecast (Vogue Runway, Tagwalk, WGSN, EDITED, Heuritech). Tier 2 retail (Myntra, AJIO, Nykaa, Net-a-Porter, Reliance Trends). Tier 3 consumer (Pinterest, Google Trends, TikTok). Every signal carries an evidence tag — RUNWAY, RETAIL, SEARCH, SOCIAL, TRADE, FORECAST.</div></div></div><div class="workflow-step"><div class="ws-num">03</div><div><div class="ws-title">Image generation</div><div class="ws-detail">Line sheets, capsule illustrations, fabric textures, print swatches, cover images. GPT Image 2 + Vertex Imagen, with Fynd logo as reference for brand-mark fidelity.</div></div></div><div class="workflow-step"><div class="ws-num">04</div><div><div class="ws-title">Build PDF</div><div class="ws-detail">react-pdf renders A4 portrait pages (landscape for line sheets). Structured data (palettes, capsules, ratings) + editorial prose, page-by-page designed — not HTML-to-PDF conversion.</div></div></div><div class="workflow-step"><div class="ws-num">05</div><div><div class="ws-title">Polish</div><div class="ws-detail">Layout, typography, visual hierarchy. Market-specific framing — Indian climate, occasion mapping, fusion sensibility, price tier nuance.</div></div></div><div class="workflow-step"><div class="ws-num">06</div><div><div class="ws-title">Verify · 18 auto-checks</div><div class="ws-detail">Image aspect ratios, banned strings, section ordering, evidence legend presence, Fynd Create branding, file size, swatch visibility, radar-chart label positioning. Regression-gated — fail one, the build doesn&#x27;t ship.</div></div></div><div class="workflow-step"><div class="ws-num">07</div><div><div class="ws-title">Audit + Ship</div><div class="ws-detail">Independent fashion-report-reviewer agent scores against a 5-dimension rubric (evidence rigour, content quality, visual completeness, structural compliance, editorial quality). Buying lead signs off; report ships to design team.</div></div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">03 · Underlying data</div><div class=""><table class="data-table mb-4"><thead><tr><th>Data source</th><th>Classification</th><th>Key entities</th></tr></thead><tbody><tr><td><strong>Vogue Runway / Tagwalk</strong></td><td>Machine-Readable</td><td><span class="ent">Runway looks · designer attribution · season · category</span></td></tr><tr><td><strong>Retail crawlers</strong></td><td>Machine-Created</td><td><span class="ent">SKU listings · price · attributes · brand · stock signals</span></td></tr><tr><td><strong>Pinterest / Google Trends / TikTok</strong></td><td>Machine-Created</td><td><span class="ent">Search velocity · pin counts · hashtag engagement</span></td></tr><tr><td><strong>WGSN · EDITED · Heuritech</strong></td><td>Mixed</td><td><span class="ent">Forecast reports · trend velocity · colour confidence</span></td></tr><tr><td><strong>Brand DNA brief</strong></td><td>Human-Created</td><td><span class="ent">Target consumer · price tier · occasion · construction guardrails</span></td></tr></tbody></table><p class="text-sm mb-3" style="color: var(--ink);"><strong>Refresh cadence:</strong> Per-report run · research is fresh-pulled at brief time. Reports versioned with date stamp.</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>KPIs moved:</strong></p><div><span class="tech-chip">Time-to-trend-call (weeks → days)</span><span class="tech-chip">Evidence coverage (% claims with source tag)</span><span class="tech-chip">Capsule selection rate by buying team</span><span class="tech-chip">Reduction in trend miss-fire (in-season markdown rate on agent-recommended SKUs)</span></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">04 · Design patterns used</div><div class=""><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"><div class="pattern-chip"><div class="pc-name">Wide Research</div><div class="pc-usage">3-tier research generates many candidate trend signals before scoring narrows to a shortlist</div></div><div class="pattern-chip"><div class="pc-name">Tool Calling</div><div class="pc-usage">Crawlers, image generation APIs, PDF rendering, post-build check runners — all tool-mediated</div></div><div class="pattern-chip"><div class="pc-name">Deep / Hierarchical</div><div class="pc-usage">Slash-command orchestrator (/trend-report) routes to specialist sub-pipelines per report stage</div></div><div class="pattern-chip"><div class="pc-name">Context Engineering</div><div class="pc-usage">Brief + brand DNA + market frame compressed into per-section context; report-config layer enforces consistency</div></div><div class="pattern-chip"><div class="pc-name">Evals</div><div class="pc-usage">18 post-build auto-checks + independent fashion-report-reviewer 5-dim audit; both gate ship</div></div><div class="pattern-chip"><div class="pc-name">Observability</div><div class="pc-usage">Every trend call traces back to its source signal and evidence tier</div></div></div></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">05 · Evals · what gates each output</div><div class=""><p class="text-sm mb-3" style="color: var(--ink);">Two-layer eval. Layer 1 — 18 post-build automated checks gate the
+build (image ratios, banned strings, section ordering, evidence
+legend, file size, etc.). Layer 2 — an independent fashion-report
+reviewer agent scores each report against a 5-dimension rubric
+(evidence rigour, content quality, visual completeness, structural
+compliance, editorial quality), 0-100 each.
+</p><p class="text-sm mb-1" style="color: var(--ink);"><strong>Gates and thresholds.</strong></p><ul class="list-disc pl-5 text-sm" style="color: var(--ink);"><li>All 18 post-build checks pass · zero regressions</li><li>Reviewer score ≥ 75 / 100 across each of 5 dimensions</li><li>Every trend call carries an evidence tag</li></ul></div></div></section><section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">06 · Linked platforms</div><div class=""><div class="grid grid-cols-1 md:grid-cols-3 gap-3"><a href="/impetus/category-intel/" class="linked-platform-card"><div class="lp-name">Category Intel</div><div class="lp-role">Live storefront · published reports for the India market</div><div class="lp-arrow">View platform →</div></a><a href="/agents/trend-to-design/" class="linked-platform-card"><div class="lp-name">Trend-to-Design Agent</div><div class="lp-role">Downstream agent · capsule designs feed the design pipeline</div><div class="lp-arrow">View platform →</div></a><a href="/impetus/cortex/" class="linked-platform-card"><div class="lp-name">Cortex</div><div class="lp-role">Buying team uses outputs in OTB and assortment planning</div><div class="lp-arrow">View platform →</div></a></div></div></div></section>
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

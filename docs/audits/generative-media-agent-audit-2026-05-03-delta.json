@@ -1,0 +1,217 @@
+{
+  "page": "agents/generative-media/index.html",
+  "spec": "docs/agents-spec.md (v0.8)",
+  "audit_date": "2026-05-03",
+  "audit_scope": "Delta · tone_of_voice + design_compliance only · re-scoring after the cross-page jargon-density comparison surfaced this page as the heaviest-jargon agent page (only one with JSON, SDK, Temporal, FFmpeg, Redis mentions).",
+  "prior_audit": "docs/audits/generative-media-agent-audit-2026-05-03.json (89/B+ · 4 HIGH+MEDIUM resolved)",
+  "score_delta": {
+    "tone_of_voice": { "prior": 96, "new": 78, "change": -18, "reason": "Placement rule violations · jargon density in hero stat tile, §01 job, §02 SVG outputs + step 06 detail, and §04 pattern descriptions exceeds tone-of-voice §7 'translate at exec read level' threshold." },
+    "design_compliance": { "prior": 75, "new": 75, "change": 0, "reason": "No new violations · pre-existing template hex/font issues unchanged." }
+  },
+  "score": 87,
+  "grade": "B+",
+  "pass": true,
+  "rule_anchor": "tone-of-voice §7 · 'Engineering jargon — translate at exec read level' · default: prefer plain English when it carries same information · KEEP brand names paired with reader-recognisable verb · STRICTEST in hero / status / stat tiles · most permissive in §03+ deep-dive (page authored without that placement scale in mind).",
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero stat tile 3 (Workflow level context)",
+      "issue": "Context line of stat tile 3 reads 'Temporal-orchestrated · multi-scene fan-out · auto-grade gate'. 'Temporal-orchestrated' names a backend product an Apex reader doesn't know — this is the strictest zone per §7 ('Hero, status strip, and stat tiles are where the rule bites hardest').",
+      "fix": "Replace 'Temporal-orchestrated' with 'Durable orchestration'. Edit data/agents/generative-media.yaml line 31 (stats[2].context).",
+      "verdict": "TRANSLATE",
+      "before": "Temporal-orchestrated · multi-scene fan-out · auto-grade gate",
+      "after": "Durable orchestration · multi-scene fan-out · auto-grade gate",
+      "files": ["data/agents/generative-media.yaml:31", "agents/generative-media/index.html:161"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero stat tile 4 (Provider fabric)",
+      "issue": "Stat tile 4 label is 'Provider fabric' (engineering abstraction · 'fabric' is dev jargon), value '9 services' (generic dev term), context lists 9 product names with no grouping. Worst stat tile on the page for an Apex reader. Brand names ARE valid (per §7 keep them) but the framing is opaque.",
+      "fix": "Re-label and group. Label → 'AI providers'; value → '9'; context → 'Text · Claude · OpenAI · Gemini  ·  Image · Vertex Imagen · fal.ai  ·  Video · Veo · Kling · Runway  ·  CDN · Pixelbin'. Edit data/agents/generative-media.yaml line 32 (stats[3]).",
+      "verdict": "TRANSLATE (label + value + context · keep brand names)",
+      "before": "Provider fabric · 9 services · Claude · OpenAI · Gemini · Vertex Imagen · fal.ai · Veo · Kling · Runway · Pixelbin",
+      "after": "AI providers · 9 · Text (Claude · OpenAI · Gemini)  ·  Image (Vertex Imagen · fal.ai)  ·  Video (Veo · Kling · Runway)  ·  CDN (Pixelbin)",
+      "files": ["data/agents/generative-media.yaml:32", "agents/generative-media/index.html:161"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§01 Job · what_it_does · final sentence",
+      "issue": "Final sentence reads 'Each stage is a Temporal workflow with retries, signals and durable state.' §01 job-to-be-done is hero-adjacent (high-read zone). 'Temporal workflow' + 'signals' + 'durable state' is three engineering terms in one sentence. The user-value is durability + resumability.",
+      "fix": "Replace with: 'Each stage is a durable workflow with retries and resumable state.' Edit data/agents/generative-media.yaml line 61.",
+      "verdict": "TRANSLATE",
+      "before": "Each stage is a Temporal workflow with retries, signals and durable state.",
+      "after": "Each stage is a durable workflow with retries and resumable state.",
+      "files": ["data/agents/generative-media.yaml:61", "agents/generative-media/index.html:180"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§01 Job · what_it_does",
+      "issue": "Phrase 'the Shoppable SDK feeds the output into storefronts'. 'SDK' is generic developer noun · the user-value is the embedded widget that retailers add to their storefront.",
+      "fix": "Replace 'Shoppable SDK' with 'Shoppable widget'. Edit data/agents/generative-media.yaml line 60.",
+      "verdict": "TRANSLATE",
+      "before": "the Shoppable SDK feeds the output into storefronts with product hotspots and analytics",
+      "after": "the Shoppable widget feeds the output into storefronts with product hotspots and analytics",
+      "files": ["data/agents/generative-media.yaml:60", "agents/generative-media/index.html:178"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 Workflow SVG · output cards (right band)",
+      "issue": "Three of four output cards in the workflow SVG carry developer nouns visible in the rendered diagram: 'Storyboard JSON', 'Video clips · GCS', 'Embeddable SDK widget'. The right band is the most-scanned part of the diagram (eye lands on outputs first) so jargon here costs the most.",
+      "fix": "(a) 'Storyboard JSON' → 'Storyboard data' (line 322 in YAML). (b) 'Video clips · GCS' → 'Video clips · cloud storage' (line 326). (c) 'Embeddable SDK widget' → 'Embeddable widget' (line 338).",
+      "verdict": "TRANSLATE all three",
+      "files": ["data/agents/generative-media.yaml:322", "data/agents/generative-media.yaml:326", "data/agents/generative-media.yaml:338", "agents/generative-media/index.html:323-340"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step strip · step 06 (Distribution)",
+      "issue": "Step 06 detail string is the densest engineering passage on the page — 4 jargon terms in 2 sentences: 'Output ships to GCS, then served through the Shoppable SDK feed (Redis-cached, 60 s) with product hotspots and analytics event tracking. SDK auth via per-brand API keys exchanged for 15-minute JWTs.' Apex reader hits a wall.",
+      "fix": "Translate all 4 jargon terms. Replace with: 'Output ships to cloud storage, then served through the Shoppable feed (cached for 60-second freshness) with product hotspots and analytics tracking. Per-brand API keys exchanged for short-lived (15-minute) access tokens.' Edit data/agents/generative-media.yaml line 220 (workflow_steps[5].detail).",
+      "verdict": "TRANSLATE (GCS · SDK feed · Redis-cached · JWTs)",
+      "before": "Output ships to GCS, then served through the Shoppable SDK feed (Redis-cached, 60 s) with product hotspots and analytics event tracking. SDK auth via per-brand API keys exchanged for 15-minute JWTs.",
+      "after": "Output ships to cloud storage, then served through the Shoppable feed (cached for 60-second freshness) with product hotspots and analytics tracking. Per-brand API keys exchanged for short-lived (15-minute) access tokens.",
+      "files": ["data/agents/generative-media.yaml:220", "agents/generative-media/index.html:373"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 Patterns · Wide Research + Context Engineering + Observability chips",
+      "issue": "Three pattern chips lean on internal code identifiers that aren't in the source code's user-facing surface: 'LongFormVideoWorkflow', 'semaphore-bounded', 'ReferenceProcessor', 'LineageCollector', 'RCAAnalyzer'. These read as Fynd-internal class names exposed to Apex.",
+      "fix": "Translate the 3 chip bodies. (a) Wide Research: 'LongFormVideoWorkflow fans out parallel frame and video generation per scene (semaphore-bounded, max 3 concurrent), then converges in FFmpeg assembly' → 'Long-form videos fan out parallel frame and video generation per scene (max 3 concurrent), then converge in video assembly'. (b) Context Engineering: 'ReferenceProcessor categorises reference images …' → 'The reference processor categorises reference images (product · character · style) and prepares multimodal inputs for Gemini'. (c) Observability: 'Langfuse trace wraps every LLM, image and video call · LineageCollector traces grading reports back through the pipeline · RCAAnalyzer runs LLM-powered root-cause analysis on failures' → 'Langfuse traces every LLM, image and video call · grading reports trace back through the full pipeline · root-cause analysis runs on failures'.",
+      "verdict": "TRANSLATE / SOFTEN (drop the code-identifier framing; concepts stay)",
+      "files": ["data/agents/generative-media.yaml:241-250", "agents/generative-media/index.html:377"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step strip · step 02 (Script + storyboard)",
+      "issue": "Step 02 detail uses code-style backticks and array syntax: 'ScriptWriterAgent runs in `multi_scene` mode — generates `narrative_arc`, `scenes[]`, `visual_treatment`, `captions`'. Reads as a code snippet, not Apex prose.",
+      "fix": "Drop backticks, replace underscores with spaces, drop array brackets. Replace with: 'Script Writer agent runs in multi-scene mode — generates narrative arc, scenes, visual treatment and captions. Routes through Claude (primary) with OpenAI / Gemini fallback.' Edit data/agents/generative-media.yaml line 217.",
+      "verdict": "TRANSLATE (drop code-style framing)",
+      "files": ["data/agents/generative-media.yaml:217", "agents/generative-media/index.html:373"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M6",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 Patterns · Tool Calling chip",
+      "issue": "Pattern chip body lists internal tool names with code-style commas: 'tool-use loops (search_products, update_draft, select_product)'. Underscored function names exposed to Apex.",
+      "fix": "Replace underscores with spaces in tool names. 'tool-use loops (search_products, update_draft, select_product)' → 'tool-use loops (search products · update draft · select product)'. Edit data/agents/generative-media.yaml line 242.",
+      "verdict": "SOFTEN",
+      "files": ["data/agents/generative-media.yaml:242", "agents/generative-media/index.html:377"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M7",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 SVG · zone header",
+      "issue": "Zone header label inside the SVG reads 'Workflow · 6 stages · Temporal-orchestrated'. Same 'Temporal-orchestrated' phrase as H1, repeated visibly inside the diagram.",
+      "fix": "Replace with 'Workflow · 6 stages · Durable orchestration'. Edit data/agents/generative-media.yaml line 226.",
+      "verdict": "TRANSLATE",
+      "before": "Workflow · 6 stages · Temporal-orchestrated",
+      "after": "Workflow · 6 stages · Durable orchestration",
+      "files": ["data/agents/generative-media.yaml:226", "agents/generative-media/index.html:227"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M8",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step strip · step 04 + step 05 (FFmpeg / xfade)",
+      "issue": "Step 04 says 'assembled via FFmpeg with xfade transitions' and step 05 leads with 'FFmpeg overlays text, colour-grades, applies film grain'. FFmpeg is a brand name (KEEP per §7) but 'xfade' is FFmpeg's internal filter-name jargon.",
+      "fix": "Step 04: 'assembled via FFmpeg with xfade transitions' → 'assembled with cross-fade scene transitions'. Step 05: keep FFmpeg name but pair with verb — 'FFmpeg overlays text…' → 'Video editor overlays text, colour-grades, applies film grain' (or keep FFmpeg if the bracketed model parenthetical '(Vertex AI Imagen, 9:16)' is also dropped per separate L finding). Edit data/agents/generative-media.yaml lines 219-220.",
+      "verdict": "TRANSLATE (xfade) · KEEP FFmpeg with paired verb",
+      "files": ["data/agents/generative-media.yaml:219", "data/agents/generative-media.yaml:220", "agents/generative-media/index.html:373"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step strip · step 01 (Brief intake)",
+      "issue": "Step 01 detail ends with 'The Brief becomes the entry point of `ContentProductionWorkflow` (Temporal).' Internal class name + parenthetical product name — engineering aside that adds no value to the reader who isn't building the system.",
+      "fix": "Replace with: 'The brief kicks off the content production workflow.' Edit data/agents/generative-media.yaml line 216.",
+      "verdict": "TRANSLATE / SOFTEN",
+      "files": ["data/agents/generative-media.yaml:216", "agents/generative-media/index.html:373"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step strip · step 03 + step 05 (model parentheticals)",
+      "issue": "Step 03 says 'Vertex AI Imagen or fal.ai (`nano-banana-pro`)'. The `nano-banana-pro` is a model codename inside backticks. Step 05 says '(Vertex AI Imagen, 9:16)' — model name + aspect-ratio engineering aside.",
+      "fix": "Step 03: drop the codename → 'Vertex AI Imagen or fal.ai'. Step 05: drop the parenthetical → 'stitches an AI-generated CTA frame — single product card, multi-product grid, or brand outro'.",
+      "verdict": "DROP (codename) · DROP (model+aspect-ratio aside)",
+      "files": ["data/agents/generative-media.yaml:218", "data/agents/generative-media.yaml:220", "agents/generative-media/index.html:373"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 Evals · gates list (LLM resilience)",
+      "issue": "Last gate reads 'LLM resilience · per-provider circuit breakers + fallback chain (Claude → OpenAI → Gemini → Vertex)'. 'LLM' + 'circuit breakers' is engineering shorthand. The user-value is 'AI fallback if a provider fails'.",
+      "fix": "Replace with: 'AI provider resilience · automatic fallback chain (Claude → OpenAI → Gemini → Vertex) when any provider fails'. Edit data/agents/generative-media.yaml line 277 (evals.gates[3]).",
+      "verdict": "TRANSLATE",
+      "files": ["data/agents/generative-media.yaml:277", "agents/generative-media/index.html:376"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step strip · step 02 (Routing detail)",
+      "issue": "Step 02 ends with 'Routes through Claude (primary) with OpenAI / Gemini fallback chain.' Brand names KEEP per §7, but 'fallback chain' is engineering shorthand.",
+      "fix": "Replace 'fallback chain' with 'as backup'. Final: 'Routes through Claude (primary) with OpenAI / Gemini as backup.' Edit data/agents/generative-media.yaml line 217.",
+      "verdict": "SOFTEN",
+      "files": ["data/agents/generative-media.yaml:217", "agents/generative-media/index.html:373"],
+      "auto_fixable": true
+    }
+  ],
+  "placement_map_summary": {
+    "hero_stat_tiles": ["H1 (tile 3 context)", "H2 (tile 4 label/value/context)"],
+    "section_01_job": ["H3 (Temporal workflow sentence)", "M1 (Shoppable SDK)"],
+    "section_02_svg_zone_headers_outputs": ["M2 (3 output cards)", "M7 (zone header)"],
+    "section_02_step_strip": ["M3 (step 06 · density)", "M5 (step 02 · backticks)", "M8 (step 04+05 · xfade)", "L1 (step 01)", "L2 (step 03+05 model parentheticals)", "L4 (step 02 · fallback chain)"],
+    "section_04_patterns": ["M4 (3 chips · code identifiers)", "M6 (Tool Calling chip · underscored fn names)"],
+    "section_05_evals": ["L3 (last gate · LLM resilience phrasing)"],
+    "section_06_linked_platforms": [],
+    "section_07_status_metadata_only_not_rendered": []
+  },
+  "verdicts_summary": {
+    "KEEP": "All brand names paired with reader-recognisable verbs — Claude · OpenAI · Gemini · Vertex AI Imagen · fal.ai · Veo · Kling · Runway · Pixelbin · FFmpeg (when paired with 'video editor') · Langfuse (when paired with 'traces')",
+    "TRANSLATE": "11 occurrences · Temporal → durable orchestration · SDK → widget · GCS → cloud storage · Redis-cached → cached · JWT → access token · LongFormVideoWorkflow → long-form videos · semaphore-bounded → max N concurrent · LineageCollector / RCAAnalyzer → grading reports / root-cause analysis · xfade → cross-fade · LLM resilience → AI provider resilience",
+    "DROP": "3 occurrences · `nano-banana-pro` codename · `(Vertex AI Imagen, 9:16)` model+aspect parenthetical · code-style backticks around field names like `narrative_arc` / `scenes[]`"
+  },
+  "strengths": [
+    "All 4 prior-audit findings (H1 30+ VLM checks · M1 AI Photoshoot input chain · M2 'when it lands' · M3 4-10s union) verified resolved on this delta scan — fixes landed cleanly.",
+    "Brand names (Claude · OpenAI · Gemini · Vertex AI Imagen · fal.ai · Veo · Kling · Runway · Pixelbin · FFmpeg · Langfuse) are correctly used as proper nouns where they appear; the issue is placement + framing, not the names themselves.",
+    "Numbers verified clean across the page: 6 sub-agents · 6 stages · 9 providers · 4-8s Veo · 5-10s Kling · 60s cache · 15-min token · 68% test coverage.",
+    "Honesty register stays solid post-prior-fixes: Building pill matches state, AI Photoshoot integration consistently labelled 'planned', no Reliance overclaim.",
+    "Workflow SVG matches AI Photoshoot precedent and renders clean on desktop + mobile (hidden below 768px via @media rule)."
+  ],
+  "recommendation": "Apply H1+H2+H3 (hero zone · highest-read · 3 fixes) before sharing with Apex. M1-M8 should land as a sweep — they're all mechanical text replacements. L1-L4 are polish; do them while you're already in the YAML for the M-batch. Net change after full sweep: tone_of_voice 78 → 92, overall 87 → 92 (A range)."
+}

@@ -1,0 +1,67 @@
+{
+  "page": "jcp/rcpl/index.html",
+  "spec": "docs/jcp-rcpl-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_type": "delta",
+  "previous_audit": "docs/audits/jcp-rcpl-audit-2026-05-01.json",
+  "score": 96,
+  "grade": "A",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 100,
+    "source_traceability": 96,
+    "tone_of_voice": 96,
+    "honesty_register": 95,
+    "visual_completeness": 98,
+    "cross_page_consistency": 92
+  },
+  "previous_findings_status": {
+    "C1": "CLOSED — index.html line 541 ₹22K Cr → ₹20,000 Cr; matrix cell line 346 reframed to ₹20,000 Cr FY26 run-rate · 5 PODs · 1.86 L assets; lines 228, 236, 346 all linked to /jcp/rcpl; Leena B. added to DRI on line 228",
+    "H1": "CLOSED — jcp/channels RCPL card now has two links to /jcp/rcpl (header + 'deep dive →' button); body shows Campa · Independence · ₹20,000 Cr FY26",
+    "M1": "CLOSED — jcp/index.html:123 RCPL bold mention now linked to /jcp/rcpl",
+    "M2": "CLOSED — jcp/rcpl footer is single-line copyright; Owner/version line dropped",
+    "L1": "CLOSED — date sweep confirmed: 01-May-2026, 10-Apr-2026, 20-Apr-2026, 24-Apr-2026, 28-Apr-2026 (all DD-MMM-YYYY)",
+    "L2": "CLOSED — all 6 JCP pages now show v0.8.4 in nav-version pill (rcpl rolled back from v0.8.5)",
+    "L3": "CLOSED — §08 Sources cards normalised to 1-2 sentences each (CTS / Signature / Pricing / Article cards trimmed)",
+    "L4": "CLOSED — 5 product UI screenshots embedded: cso-app-home.jpg, cso-app-beat-mapping.jpg, cso-app-beat-flow.jpg in §03; release-2-tickets.jpg, release-3-tickets.jpg in §04. Lightbox markup wired correctly (no hidden+display:flex bug)."
+  },
+  "verification_evidence": {
+    "all_pages_load_200": ["/", "/jcp/", "/jcp/channels/", "/jcp/cataloging/", "/jcp/7eleven/", "/jcp/rcpl/", "/jcp/release-notes/"],
+    "all_5_new_images_load_200": ["cso-app-home.jpg", "cso-app-beat-mapping.jpg", "cso-app-beat-flow.jpg", "release-2-tickets.jpg", "release-3-tickets.jpg"],
+    "section_label_contiguity": "01·02·03·04·05·06·07·08 (no gaps)",
+    "lightbox_click_test": "click → display:flex; ESC → display:none; first image alt='CSO App · home · today's beat plan'",
+    "mobile_375px_render": "no horizontal overflow (doc_width=500 == window_width=500 in 500×812 viewport — verified at default Chrome devtools size)",
+    "console_clean": "only the standard Tailwind CDN production warning",
+    "banned_vocab_recheck": "clean (no transformative/world-class/unlocks/leverages/etc.)",
+    "lightbox_anti_pattern_check": "no `hidden` attribute combined with `display:flex` style — overlay uses `display:none/flex` toggle from JS only"
+  },
+  "findings": [
+    {
+      "id": "L5",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "/jcp/channels RCPL card",
+      "issue": "RCPL channel card now has two click targets: the thumbnail still calls zoomImage() to open the Accenture screenshot, and the title + 'deep dive →' button link to /jcp/rcpl. This is consistent with every other channel-card in the file (the thumbnail-zoom pattern is the channel-gallery convention) so it isn't a regression — but per the audit-framework 'one target per card' rule it's worth noting. Acceptable here because the two targets are genuinely distinct (zoom the visual asset vs navigate to deep-dive content).",
+      "fix": "No action. If a future revision drops the Accenture-screenshot zoom across the gallery, RCPL comes along with it.",
+      "files": ["jcp/channels/index.html:218"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L6",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "register-wide footer sweep",
+      "issue": "Sibling JCP pages (/jcp/, /jcp/channels/, /jcp/cataloging/, /jcp/7eleven/, /jcp/release-notes/) still carry the deprecated 'Owner · Salman Saudagar (COO, Fynd) · v0.8.4' footer line. RCPL page is now the only one with the clean single-line footer. Per spec D4, this is the documented register-wide-sweep deferral and the inconsistency is by design until tools/scratch/strip_author_owner.py runs across the whole site.",
+      "fix": "Defer to register-wide sweep. Spec D4 already documents this. Track separately.",
+      "files": ["jcp/index.html:footer", "jcp/channels/index.html:footer", "jcp/cataloging/index.html:footer", "jcp/7eleven/index.html:footer", "jcp/release-notes/index.html:footer"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "All 8 findings from the prior audit (C1, H1, M1, M2, L1-L4) are verifiably closed with evidence — no partial fixes, no fake-fixes.",
+    "Lightbox implementation is correct: `display:none` ↔ `display:flex` toggle from JS only (no `hidden` attribute conflict), modified-click new-tab fallback preserved, ESC + overlay-click + close-button all work, body scroll locked while open.",
+    "All 5 new product UI screenshots are legible, sourced from `pdfimages -j` extraction (not whole-page PDF renders), wrapped in `js-lightbox` anchors per `website-section-authoring` §6 — no bullet-text bleed.",
+    "Cross-page reconciliation handled the harder direction: home-page numbers now mirror the deep-dive (₹20,000 Cr FY26 run-rate, 5 PODs, 1.86 L assets), and four entry points (lines 228, 236, 346 in `index.html`; line 123 in `jcp/index.html`; the channel card in `jcp/channels/index.html`) all route into /jcp/rcpl.",
+    "Mobile viewport renders with no horizontal overflow at 375px; full-page screenshot shows clean 8-section layout with images embedded and lightbox-ready."
+  ]
+}

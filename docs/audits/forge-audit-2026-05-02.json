@@ -1,0 +1,137 @@
+{
+  "page": "forge/index.html",
+  "spec": null,
+  "spec_note": "No /forge spec file exists; audit run against website-tone-of-voice.md + audit-framework.md defaults. Source compilation: docs/forge-notes-compilation/ (43-page PDF + production-readiness XLSX).",
+  "audit_date": "2026-05-02",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 95,
+    "tone_of_voice": 90,
+    "honesty_register": 85,
+    "visual_completeness": 95,
+    "cross_page_consistency": 55
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "catalog · Forge section",
+      "issue": "catalog/index.html still lists '12 IPs in Forge MES' with the old fabricated specifics (Bluebank STB pivot 22-Apr-2026, FATP push 27-Apr-2026, PBG Mono Brand Catalog, Jiomart ASP/B2B/StoreSell/COFO, named sponsors Lava Kumar Yadati / Pritam Jamsandekar / Nitin Modani / Ramesh) — none of which appear in the source compilation folder. The /forge page just removed these claims; catalog now contradicts /forge.",
+      "fix": "Trim /catalog Forge section to mirror /forge. Replace 12 IPs table with the four AI-native stages (Plan / Buy/Source / Assemble / Move) or the eight system modules. Drop named DRIs and date-specific pivots.",
+      "files": ["catalog/index.html:277", "catalog/index.html:311-340"],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "home · Electronics row",
+      "issue": "index.html line 384 still carries the same Bluebank STB → Luxshare IDU pivot 22-Apr-2026 and FATP push 27-Apr-2026 specifics now removed from /forge. These dates and the SKU pivot are not present in either source artefact.",
+      "fix": "Replace the Electronics row's Forge sub-line with verifiable copy: 'NeoLync EMS pilot · MES + P2P + BOM on a single fabric · Phase 1 covers planning, traceability, quality, scan-pack, ASN, predictive maintenance.'",
+      "files": ["index.html:384"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "mega-menu · register-wide",
+      "issue": "Mega-menu still labels the link 'Forge MES' across ~25 pages while the page itself is now branded 'Forge'. Inconsistent register.",
+      "fix": "Either keep mega-menu as 'Forge MES' (the product name in the source PDF title page) and revert page H1 to match, OR sweep mega-menu to 'Forge'. Recommend keeping 'Forge' on the page (cleaner Apex register) and updating mega-menu to match. Use grep -rl 'mega-link\">Forge MES' --include='*.html' to find all instances.",
+      "files": ["index.html:66", "all sibling pages with mega-menu"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§02 The four AI-native stages",
+      "issue": "All four stage cards carry a 'Live' pill. Source documents are clearer: only Phase 1 is in-pilot at NeoLync, with most checklist items showing 'Developed' on Fynd side and 'Pending' on NeoLync side per the Excel. Calling all four stages 'Live' overclaims the actual pilot state.",
+      "fix": "Retag the four stage pills as 'Pilot' (not 'Live') to match the hero pill, OR add a sub-caption clarifying that the stages are platform-Live but in NeoLync rollout per the §05 readiness checklist.",
+      "files": ["forge/index.html:139", "forge/index.html:148", "forge/index.html:157", "forge/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§04 Agentic use cases",
+      "issue": "Use cases 01-03 carry 'Live' pills, but the target KPIs are stated in the source as 'Target KPIs', not measured outcomes. PDF page 29 explicitly labels them 'Target KPIs' for each use case. Calling these Live + showing target numbers in a single card reads as a measured-outcome claim.",
+      "fix": "Either change pills from 'Live' to 'Pilot' to match NeoLync state, or add a 'Target' / 'Measured at NeoLync' qualifier next to each KPI block.",
+      "files": ["forge/index.html:197", "forge/index.html:208", "forge/index.html:219"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§01 Today's EMS challenges",
+      "issue": "The 'With Forge' column carries '+2pp FPY · asset life extended' on the predictive maintenance bullet. Source confirms +2pp FPY (PDF p.31) and 30-50% downtime (p.32) but 'asset life extended' is paraphrased. Acceptable but flag as restatement.",
+      "fix": "Either drop 'asset life extended' or re-anchor to the source phrasing 'Asset life' (PDF p.28).",
+      "files": ["forge/index.html:128"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§0 Hero pill",
+      "issue": "Roadmap pill reads 'second-site clone · Industry 5.0 agentic stack'. 'Industry 5.0' is in source (PDF p.3) but 'second-site clone' is not — the source doesn't specify a roadmap to a second site.",
+      "fix": "Either drop 'second-site clone' (no source), or change to 'Roadmap · Industry 5.0 agentic stack' only.",
+      "files": ["forge/index.html:97"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 Architecture · BOM card",
+      "issue": "BOM & Version Control card body is 'Change management with approvals.' — too thin, doesn't carry information density of sibling cards.",
+      "fix": "Expand to 'Multi-rev BOM · component substitution · ECO traceability · approvals.' (sourced from §05 readiness checklist row 03).",
+      "files": ["forge/index.html:185"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§07 Differentiators",
+      "issue": "Section header 'Differentiators vs legacy MES' uses comparison framing but no specific competitor (Workday-style competitive table) — generic.",
+      "fix": "Acceptable as-is (PDF p.35 source uses same framing). No action required unless adding a vs-named-vendor block.",
+      "files": ["forge/index.html:332"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§09 Connections card",
+      "issue": "Connections card mentions 'Apparel-side MES (IntelliMake)' but IntelliMake is not on the page reader's path — they may not know what it is.",
+      "fix": "Acceptable; it cross-links to /impetus where IntelliMake is documented.",
+      "files": ["forge/index.html:401"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§10 Sources",
+      "issue": "Sources section is justified here per ToV §3 carve-out (deep-dive combining 2 distinct artefacts: deck + Excel checklist). Both files are non-trivial and the reader may want to navigate to them. Sources block is appropriate.",
+      "fix": "No action — keep.",
+      "files": ["forge/index.html:406"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Full 220-line production readiness checklist surfaced as a 15-row scannable table (§05) — Apex-readable summary of what 'go-live validation' actually means.",
+    "Every section carries an inline source citation in cap-num style pointing to specific PDF page ranges — traceability rigor matches /granary benchmark.",
+    "Removed all unverifiable specifics from prior version (Bluebank STB pivot, FATP push 27-Apr-2026, 12 IPs, PBG Mono Brand Catalog, ASP/B2B/StoreSell/COFO, Q2/Q3/Q4 roadmap, named sponsors not in source) — register honesty restored.",
+    "Section structure follows website-section-authoring canonical ordering (Hero → Problem/Solution → Architecture → Deep dive → Pilot → Sources) without overrides.",
+    "No banned vocabulary, no banned constructions, no emojis, no exclamation marks, dates in DD-MMM-YYYY, contiguous §01-§10 section labels, footer is the standard one-line copyright."
+  ],
+  "summary_note": "Page itself scores B (84). The drag is cross-page consistency (55) — /catalog and /index.html home Electronics row still carry the old fabricated Forge specifics. Fixing C1 + C2 lifts the overall to A range. The page is publishable in isolation; the cross-page sweep is the next operation."
+}

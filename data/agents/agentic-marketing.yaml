@@ -1,0 +1,289 @@
+# Agentic Marketing Agent
+# Sources:
+#  · Autonomous_Marketing_Platform_Multi_Agent_Framework.docx · 11-agent topology
+#  · Agentisation §3.6 · Outcome / Workflow / Platform Capabilities
+#  · Accenture s12 (canonical 6 agents) · s20 (8 specialised agents framing)
+#  · /ucp/ · platform home
+#
+# Per docs/agents-spec.md v0.8
+
+slug: agentic-marketing
+name: Marketing Agent
+sub_title: "Goal in plain English → audience, creative, channel mix, send time, measurement — autonomously, with humans only on guardrails."
+status: build
+status_label: Building
+track: sell
+autonomy_level: L4
+primary_workflow: "Marketing Campaigns"
+date: 2026-04-15
+source_folder: docs/agent-catalog-notes-compilation/
+source_citations:
+  - "Autonomous_Marketing_Platform_Multi_Agent_Framework.docx"
+  - "Agentisation of an Organization · §3.6 Agentic Marketing"
+
+stats:
+  - { label: "Agent topology",   value: "11 agents",  context: "Meta-Orchestrator + 9 Domain + Compliance" }
+  - { label: "Cycle target",      value: "Hours",     context: "in-development · vs weeks today (11 teams · 6 handoffs)" }
+  - { label: "Decisioning",      value: "1:1",        context: "real-time per-customer · not batch segments" }
+  - { label: "Compliance gate",  value: "Always-on",  context: "consent · frequency · sensitive-category" }
+
+primary_platform:
+  name: "UCP"
+  route: "/ucp/"
+
+job:
+  pain: |
+    Today: 11 teams, 6 manual handoffs per campaign, weeks-long cycles.
+    Marketing intelligence lives in PowerPoints, not systems. Each new
+    campaign starts from scratch — no compounding learning. By the time
+    performance data lands, the moment to course-correct has passed.
+  what_it_does: |
+    A marketing leader states intent + budget + dates + objective. The
+    Meta-Orchestrator decomposes into sub-tasks. 9 Domain Agents
+    collaborate on research, audience intelligence, planning, content,
+    channel orchestration, experimentation, measurement, opportunity
+    detection, and dashboard intelligence. A Compliance Agent enforces
+    governance at every step. Outcome signals from each campaign feed
+    back into the signal layer — knowledge compounds across runs.
+  human_role: |
+    Marketing leadership defines brand objectives, budget, brand rules,
+    sensitive-category policy, approval thresholds. The agent runs the
+    campaign loop. Humans intervene on guardrail violations and on
+    strategic intent.
+
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+workflow_svg: |
+  <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>Marketing Agent · 11-agent topology</title>
+    <desc>Marketing intent flows into the Meta-Orchestrator, which fans out to 9 Domain Agents (Research, Audience, Planning, Content, Channel, Experimentation, Measurement, Opportunity, Dashboard). A Compliance Agent gates every action. Outcome signals close the loop.</desc>
+    <defs>
+      <marker id="am-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="am-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+        .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+        .ag-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 11.5px; font-weight: 600; fill: #0A0A0A; text-anchor: middle; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-loop { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+        .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+      </style>
+    </defs>
+
+    <!-- Inputs -->
+    <g>
+      <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE"/>
+      <text x="36" y="46" class="zh">Inputs</text>
+
+      <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+      <text x="50" y="86" class="h-ttl">Marketer intent</text>
+      <text x="50" y="102" class="h-sub">goal · budget · dates</text>
+      <text x="50" y="116" class="h-sub">brand rules · objectives</text>
+
+      <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="168" class="src-ttl">UCP signals</text>
+      <text x="50" y="186" class="src-sub">identity · behavioural · CLV · cohorts</text>
+
+      <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="242" class="src-ttl">Channel inventory</text>
+      <text x="50" y="260" class="src-sub">SMS · WhatsApp · RCS · email · push</text>
+
+      <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="316" class="src-ttl">Real-time context</text>
+      <text x="50" y="334" class="src-sub">store proximity · inventory · festival</text>
+
+      <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="390" class="src-ttl">Outcome history</text>
+      <text x="50" y="408" class="src-sub">prior campaign signals · A/B + bandits</text>
+
+      <text x="36" y="490" class="gl">Substrate</text>
+      <text x="36" y="506" class="src-sub">UCP · Databricks · Vertex AI · Claude</text>
+    </g>
+
+    <!-- Workflow zone · 11-agent topology rendered as Meta + 9 specialists + Compliance -->
+    <g>
+      <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB"/>
+      <text x="306" y="46" class="zh">11-agent topology</text>
+
+      <!-- Meta-Orchestrator (top, full width inside zone) ·
+           sub-text was missing text-anchor:middle so it rendered LTR from
+           the card center, spilling past the right edge into outputs zone. -->
+      <rect x="320" y="64" width="540" height="50" rx="8" fill="#1F2937" stroke="#1F2937"/>
+      <text x="590" y="84" class="ag-ttl" style="fill:#FAFAFA;">Meta-Orchestrator · decomposes intent into a workflow DAG</text>
+      <text x="590" y="102" class="stp-sub" style="fill:#CBD5E1; text-anchor:middle;">parses goal · plans tasks in parallel · routes to specialists</text>
+
+      <!-- 9 Domain Agents in 3x3 grid -->
+      <rect x="320" y="134" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="405" y="156" class="ag-ttl">Research</text>
+      <text x="405" y="172" class="stp-sub" style="text-anchor:middle;">prior campaigns · trends</text>
+
+      <rect x="505" y="134" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="590" y="156" class="ag-ttl">Audience</text>
+      <text x="590" y="172" class="stp-sub" style="text-anchor:middle;">segments · lookalikes</text>
+
+      <rect x="690" y="134" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="775" y="156" class="ag-ttl">Planning</text>
+      <text x="775" y="172" class="stp-sub" style="text-anchor:middle;">campaign brief · DAG</text>
+
+      <rect x="320" y="200" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="405" y="222" class="ag-ttl">Content</text>
+      <text x="405" y="238" class="stp-sub" style="text-anchor:middle;">creative · offer · copy</text>
+
+      <rect x="505" y="200" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="590" y="222" class="ag-ttl">Channel</text>
+      <text x="590" y="238" class="stp-sub" style="text-anchor:middle;">mix · send-time · fatigue</text>
+
+      <rect x="690" y="200" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="775" y="222" class="ag-ttl">Experimentation</text>
+      <text x="775" y="238" class="stp-sub" style="text-anchor:middle;">A/B · holdouts · bandits</text>
+
+      <rect x="320" y="266" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="405" y="288" class="ag-ttl">Measurement</text>
+      <text x="405" y="304" class="stp-sub" style="text-anchor:middle;">attribution · incrementality</text>
+
+      <rect x="505" y="266" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="590" y="288" class="ag-ttl">Opportunity Detect</text>
+      <text x="590" y="304" class="stp-sub" style="text-anchor:middle;">anomalies · proactive nudges</text>
+
+      <rect x="690" y="266" width="170" height="56" rx="8" fill="#EEF2FF" stroke="#C7D2FE"/>
+      <text x="775" y="288" class="ag-ttl">Dashboard</text>
+      <text x="775" y="304" class="stp-sub" style="text-anchor:middle;">dynamic widgets · summaries</text>
+
+      <!-- Compliance Agent · cross-cutting yellow band -->
+      <rect x="320" y="340" width="540" height="50" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+      <text x="590" y="360" class="ag-ttl" style="fill:#7C2D12;">Compliance &amp; Brand Safety · cross-cuts every action</text>
+      <text x="590" y="378" class="stp-sub" style="text-anchor:middle; fill:#92400E;">consent · frequency caps · sensitive-category rules · brand voice</text>
+
+      <!-- Approval Gate -->
+      <rect x="320" y="400" width="540" height="50" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+      <text x="590" y="422" class="ag-ttl" style="fill:#7C2D12;">Approval gate · marketer reviews before activation</text>
+      <text x="590" y="440" class="stp-sub" style="text-anchor:middle; fill:#92400E;">audience · creative · channel plan · spend</text>
+
+      <!-- Outcome loop annotation ·
+           text shortened (89 → 65 chars uppercase mono) per spec §5.1 ·
+           pre-fix bled past both card edges into adjacent zone backgrounds. -->
+      <rect x="320" y="460" width="540" height="44" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="590" y="482" class="gl" style="text-anchor:middle;">Outcome signals → Audience · Content · Planning · compounding loop</text>
+    </g>
+
+    <!-- Outputs -->
+    <g>
+      <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0"/>
+      <text x="936" y="46" class="zh">Outputs</text>
+
+      <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="86" class="out-ttl">Activated campaigns</text>
+      <text x="950" y="104" class="out-sub">SMS · WhatsApp · RCS · push</text>
+      <text x="950" y="120" class="out-sub">email · paid · in-app</text>
+
+      <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="180" class="out-ttl">Personalised journeys</text>
+      <text x="950" y="198" class="out-sub">household + person level</text>
+      <text x="950" y="214" class="out-sub">lifecycle + lifestyle</text>
+
+      <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="274" class="out-ttl">Outcome dashboard</text>
+      <text x="950" y="292" class="out-sub">spend · revenue · NPS</text>
+      <text x="950" y="308" class="out-sub">guardrail-breach alerts</text>
+
+      <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="368" class="gl" style="fill:#15803D;">Compounding</text>
+      <text x="950" y="388" class="out-sub">outcomes write back as signals</text>
+
+      <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+      <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+      <text x="950" y="482" class="out-sub">human approves the brief</text>
+      <text x="950" y="498" class="out-sub">system runs the loop</text>
+    </g>
+
+    <!-- Connectors · trunk for inputs into Meta-Orchestrator -->
+    <path d="M244 95 H275" class="conn"/>
+    <path d="M244 175 H275" class="conn"/>
+    <path d="M244 249 H275" class="conn"/>
+    <path d="M244 323 H275" class="conn"/>
+    <path d="M244 397 H275" class="conn"/>
+    <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+    <path d="M275 88 H320" class="conn" marker-end="url(#am-arr)"/>
+
+    <!-- Meta → 9 specialists (3 fan-out arrows to top row, others cascade visually via positioning) -->
+    <path d="M405 114 V134" class="conn" marker-end="url(#am-arr)"/>
+    <path d="M590 114 V134" class="conn" marker-end="url(#am-arr)"/>
+    <path d="M775 114 V134" class="conn" marker-end="url(#am-arr)"/>
+
+    <!-- Specialists → Approval gate (collected) -->
+    <path d="M590 322 V340" class="conn" marker-end="url(#am-arr)"/>
+    <path d="M590 390 V400" class="conn" marker-end="url(#am-arr)"/>
+
+    <!-- Approval gate → Outputs -->
+    <path d="M860 425 H905 V100 H920" class="conn" marker-end="url(#am-arr)"/>
+
+    <!-- Outcome loop · Outputs back to Audience/Content (orange dashed) -->
+    <path d="M920 290 H905 V470 H320" class="conn-loop" marker-end="url(#am-loop)"/>
+    <text x="892" y="380" class="lbl" transform="rotate(90 892 380)">outcome → signals</text>
+  </svg>
+workflow_diagram_caption: "Inputs (blue) feed Meta-Orchestrator, which fans out to 9 Domain Agents. Compliance + Approval gates (yellow) sit before activation. Outcome signals close the loop back to the agents."
+
+workflow_steps:
+  - { num: "01", title: "Marketer states intent",       detail: "Goal in plain English (\"Diwali sale for fashion · 30-50yr customers in Mumbai\"), budget, dates, objective. No segmentation, no creative briefs." }
+  - { num: "02", title: "Meta-Orchestrator decomposes", detail: "Parses intent · creates a workflow DAG · routes parallelisable tasks (Research, Audience) to specialists, sequencing dependents." }
+  - { num: "03", title: "9 Domain Agents collaborate",  detail: "Research mines prior campaigns. Audience builds segments + lookalikes. Planning drafts the brief. Content generates creatives. Channel selects mix + send-time. Experimentation wires A/B + holdouts. Measurement attributes outcomes. Opportunity detects anomalies. Dashboard surfaces summaries." }
+  - { num: "04", title: "Compliance Agent gates",       detail: "Cross-cuts every action — consent enforcement, frequency caps, sensitive-category rules, brand-voice guardrails. Blocks any action that violates policy." }
+  - { num: "05", title: "Approval gate",                detail: "Marketer reviews audience, creative, channel plan, spend forecast. Approves; activation proceeds. Rejects with notes; agents iterate." }
+  - { num: "06", title: "Activation",                   detail: "Campaign launches across channels — SMS, WhatsApp, RCS, push, email, paid, in-app. Each personalised to person + household + context." }
+  - { num: "07", title: "Outcome → signals",            detail: "Performance signals (clicks, conversions, lift, churn saves, revenue) write back into the signal layer. Next campaign starts from a smarter base — knowledge compounds." }
+
+data:
+  sources:
+    - { name: "UCP signals",         classification: "Mixed",            entities: "Identity · behavioural · transactional · contextual · household · preferences · AI-derived traits" }
+    - { name: "Channel platforms",   classification: "Machine-Readable", entities: "CleverTap · Google Ads · Meta · WhatsApp Business · RCS gateway" }
+    - { name: "Databricks",          classification: "Machine-Created",  entities: "Customer transaction tables · computed CLV · segment definitions" }
+    - { name: "Real-time context",   classification: "Machine-Created",  entities: "Store proximity · inventory availability · festival windows · device" }
+    - { name: "Outcome history",     classification: "Machine-Created",  entities: "Prior campaign signals · A/B · holdouts · bandit arms" }
+  refresh_cadence: "Identity stitching real-time; signals continuous; outcome attribution near-real-time post-send."
+  kpis_moved:
+    - "Cycle time (weeks → hours)"
+    - "Campaign ROI / lift on holdouts"
+    - "Suppression and frequency-cap compliance"
+    - "Compounding selection accuracy across runs"
+
+patterns:
+  - { name: "Multi-Agent Orchestration", usage: "Meta-Orchestrator coordinates 9 Domain Agents + 1 Compliance Agent · peer collaboration with explicit handoffs" }
+  - { name: "Tool Calling",              usage: "Channel APIs (CleverTap, Google, Meta, WhatsApp, RCS), UCP signal queries, content generation, outcome attribution — all tool-mediated" }
+  - { name: "Agent Memory",              usage: "Per-agent Firestore memory · prior campaign decisions feed next run; episodic + procedural" }
+  - { name: "Wide Research",             usage: "Research + Audience agents explore many segment / lookalike candidates before Planning narrows" }
+  - { name: "Observability",             usage: "Every agent decision traced · token-economical artefact-passing keeps context lean" }
+  - { name: "Evals",                     usage: "Holdouts and A/B + bandit experiments built into every campaign by default" }
+
+evals:
+  status: "in-development · framework defined"
+  approach: |
+    Per-campaign holdouts and A/B suites will measure incrementality at
+    run time. Cross-campaign: backtest agent-decided audiences and
+    creatives against historical campaign outcomes; compare lift versus
+    the manual baseline. Compliance Agent's gate-pass rate is its own
+    audit metric. **Current state: framework documented; first end-to-end
+    pilot campaign in setup. No measured numbers yet.**
+  gates:
+    - "Lift on holdouts ≥ baseline manual campaign lift"
+    - "Compliance violations: zero pre-activation; flagged within 1 hr post-send"
+    - "Frequency-cap and consent enforcement: 100% adherence"
+
+linked_platforms:
+  - { name: "UCP",   route: "/ucp/", role: "Primary surface · agents run inside the marketing OS" }
+  - { name: "JCP",   route: "/jcp/", role: "Channel activation across the commerce platform" }

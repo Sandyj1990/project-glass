@@ -1,0 +1,105 @@
+# PulsePoint · Store Operations App
+# Sourced verbatim from Q1 2026 Release Compendium pp. 71–77
+# Per docs/impetus-restructure-spec.md
+
+slug: pulsepoint
+title: PulsePoint
+sub_title: "(Store Operations App)"
+aliases: []
+tagline: One mobile app for store managers — planogram compliance, daily tasks, sales KPIs and shift schedules. Replaces fragmented email + WhatsApp task management.
+category: Sell · Store ops
+status: live
+status_label: Live
+
+audience:
+  - Store Managers
+  - Department Managers
+  - Sales Associates
+  - Cluster Managers
+  - Central Operations Teams
+
+what_it_does: |
+  **Store managers** get one mobile app for everything operational: checking
+  whether products are placed correctly on shelves (planogram compliance),
+  assigning and tracking daily tasks, viewing sales data, ROS (Rate of Sale),
+  revenue and conversion, across today, this month and this year, running digital
+  checklists (store opening, closing, visual merchandising walk) and managing
+  staff schedules with shift-swap requests.
+
+  **Cluster managers** see a summary across all their stores with the ability to
+  drill into any individual store. **Central operations team** act as gatekeepers,
+  creating tasks that need approval before reaching stores.
+
+  Replaces fragmented email and WhatsApp-based task management.
+
+scale_label: How Many Stores Use It
+scale:
+  - "1,605 of 1,926 stores (83%)"
+  - "Rollout temporarily blocked by an app-naming issue"
+  - "Multi-tenant setup live for Fashion Factory"
+  - "Onboarded in 1 day per format"
+scale_caption: |
+  Next: push notifications for tasks, business-head dashboards, escalation rules.
+
+what_improved:
+  body: |
+    **Store managers** see shelf compliance, tasks and sales in one app instead of
+    switching between tools. **Cluster managers** get bird's-eye views with drill-
+    down. **Store staff** pick available tasks instead of waiting for assignment.
+    Paper-based opening/closing checklists replaced with digital versions. Fashion
+    Factory stores onboarded in 1 day using the multi-tenant setup.
+  expected_metric_impact: |
+    improved task completion rates (currently unmeasured, moving from WhatsApp to
+    tracked tasks), better planogram compliance (currently ~70% across stores),
+    reduced HQ-to-store communication gaps. **Every task now has a digital trail.**
+
+updates_shipped:
+  - date: "Date TBC (v3.1.0)"
+    heading: "Shelf Compliance in App + Cluster Manager View + Sales Data + Digital Checklists"
+    bullets:
+      - "**For store managers:** Access shelf layout compliance checks directly in the app. View sales data (today, this month, this year, custom range). Manage multiple stores from one login."
+      - "**For cluster managers:** Summary view of all stores in the cluster with ability to view individual store pages."
+      - "**For admin teams:** Add/manage/deactivate users. Add new stores. Create tasks assigned to stores (staff pick based on availability)."
+      - "**For store staff:** Digital checklists for Store Opening, Store Closing and Visual Merchandising Floor Walk."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/pulsepoint/screenshot-073.jpg"
+    caption: "**Mobile task detail + Task management dashboard** · Store-manager survey assignment with pending status &amp; due date · Surveys + pending operational tasks requiring approval."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/pulsepoint/screenshot-074.jpg"
+    caption: "**Sales KPI dashboard (mobile)** · AOP-vs-actual, Conversion %, ATS, Gross Margin, IPCM, ASP, SPSF — by segment / brand / brick / fashion grade."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/pulsepoint/screenshot-075.jpg"
+    caption: "**Mobile shift start + Quick actions** · Daily task count and check-in interface for store staff · Tasks · Inventory · Sales KPI · Planogram · Registers."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/pulsepoint/screenshot-076.jpg"
+    caption: "**Mobile task list + Surveys management** · My / Assigned / Store tasks with surveys, status and dates · Survey codes, names and task counts by status."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/pulsepoint/screenshot-077.jpg"
+    caption: "**Task lifecycle** · Published / Draft / Expired tasks with task code, group, type, priority, frequency and store count."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 71–77"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 2
+  current_summary: |
+    PulsePoint sits at **L2 · Augmented**: store managers see same-day KPI
+    deviations, surveys auto-trigger, tasks have a digital trail. L3 is the app
+    that **briefs** the store manager every morning with the 3 things to do today
+    based on yesterday's data — store as a continuously-tuned market of one.
+  workflows:
+    - name: "Store Operations"
+      number: "4.1"
+      current: 2
+      target: 3
+      plan: "Today: same-day KPI deviations, manual response. Target: every store a market of one — daily briefs from real-time sell-through + competitive signals."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Store Operations · L2 → L3"
+      body: "Push notifications + business-head dashboards + escalation rules — the L3 trio."
+    - eyebrow: "Risk reduction milestone"
+      title: "1,605 of 1,926 stores (83%) live"
+      body: "Replaces fragmented WhatsApp + email task management with a tracked surface."
+    - eyebrow: "Identity shift indicator"
+      title: "Cluster managers manage by exception"
+      body: "Bird's-eye view across all stores; drill into deviations only."

@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: photoshoots_shipped
+    label: Photoshoots shipped on Tira
+    value: 25K+
+    definition: Cumulative since live
+    source: Fynd Snap ops
+    confidence: live
+  - id: cost_reduction
+    label: Cost reduction vs physical
+    value: 90%
+    definition: Tira baseline
+    source: Fynd Snap economics
+    confidence: live
+  - id: external_contract_inr_lakh
+    label: Saudi German Hospitals contract
+    value: ₹30L
+    definition: Signed 14 - Apr - 2026
+    source: Commerce Global
+    confidence: audited

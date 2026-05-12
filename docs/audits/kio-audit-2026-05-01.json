@@ -1,0 +1,65 @@
+{
+  "page": "kio/index.html",
+  "spec": "docs/kio-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 92,
+  "grade": "A-",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 92,
+    "tone_of_voice": 92,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 92
+  },
+  "findings": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "global nav",
+      "issue": "RESOLVED 2026-05-01 same-day: Mega-menu sweep applied across all 57 sibling pages. Kio link now lives in Recent Innovations on every page (Autri count 57 = Kio count 57 verified).",
+      "fix": "Done.",
+      "files": ["57 *.html files updated"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§06",
+      "issue": "FIXED in audit pass: H2 originally read 'Tested in our own pantry first.' — 'our' is banned in user-facing copy (tone-of-voice §2 Person rule). Rewritten to 'Tested in the Fynd office first.'",
+      "fix": "Already applied during audit.",
+      "files": ["kio/index.html:272"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "hero",
+      "issue": "Hero subhead claim '3× faster than manned POS' is sourced from the home register (index.html:312) and matches the catalog SwiftScan row, but the underlying measurement methodology is not in the Kio.pptx slide deck.",
+      "fix": "Acceptable for v0.1 — claim is consistent across the register and not invented here. If the methodology becomes available (timing study), cite it in v0.2.",
+      "files": ["kio/index.html:80"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§01 / hero",
+      "issue": "'168 units locked Fashion Factory' carries Building pill in hero AND appears as 'Running today · production-hardware Kio Series running at Reliance store' in §01 Live column. The 168 units are not yet shipped — they are locked. Status is correctly Building. Live column does not claim 168 units, only the Malad pilot. No overclaim.",
+      "fix": "No change required. Pill discipline is correct.",
+      "files": [],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero is clean: Number + scope + differentiator. 'Pilot Malad live · 168 units locked Fashion Factory · ~₹18 Cr FY26-27' opens the lead with the most credible verifiable facts.",
+    "Hardware specs (§07) are verbatim from the source datasheet (slides 10 + 12). FKAP1/FKAP2 SoC, NPU TOPS, RAM, OS versions all preserved without editorialising — Apex-grade datasheet.",
+    "Honesty contract holds: Live (Malad pilot + SnacAdda + Swift Module) is distinct from Building (Fashion Factory rollout) is distinct from Roadmap (Beauty + Grocery pilots). No tier mixing.",
+    "SnacAdda case study (§06) names the team, the venue (WeWork Andheri Mumbai), and the metric (50+ items/min) — three Reliance-style identifiable signals.",
+    "Section ordering follows the canonical 0→07 register, with documented overrides (no §08 Sources block per the website-tone-of-voice default-no rule, recorded as D4 in spec)."
+  ]
+}

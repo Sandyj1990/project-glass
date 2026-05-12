@@ -1,0 +1,119 @@
+{
+  "page": "impetus/analytics/index.html",
+  "spec": "docs/impetus-restructure-spec.md (§6.3)",
+  "source_compilation": "docs/Impetus notes compilation/Impetus Release Notes.pdf (p. 58 SuperSet/Analytics · 1 paragraph; pp. 97-100 Ask Impetus context)",
+  "audit_date": "2026-05-02",
+  "auditor": "website-page-reviewer · Group E · v3",
+  "score": 78,
+  "grade": "C+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 80,
+    "source_traceability": 82,
+    "tone_of_voice": 70,
+    "honesty_register": 85,
+    "visual_completeness": 90,
+    "cross_page_consistency": 75
+  },
+  "section_inventory": [
+    "Hero (IMPETUS · ANALYTICS · LIVE · 'Impetus Command Center.')",
+    "§02 What it does for you",
+    "§03 Status"
+  ],
+  "section_label_contiguity": "OK · §02 · §03 · the page is intentionally thin per spec (only 1 paragraph in source PDF + cross-cutting role).",
+  "findings": [
+    {
+      "id": "A1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "hero audience pills",
+      "issue": "Audience pills contain double-encoded HTML entities: 'All Leaders &amp;amp; Business Users', 'Data &amp;amp; analytics teams'. Renders as visible 'Leaders &amp; Business Users' in browser, not 'Leaders & Business Users'. Apex-visible character glitch.",
+      "fix": "Replace '&amp;amp;' with '&amp;' (single-encoded) so it renders as '&'. In source YAML the entity may be stored '&amp;' and the renderer is double-escaping. e.g. 'All Leaders & Business Users', 'Data & analytics teams'.",
+      "files": ["impetus/analytics/index.html:157", "data/impetus/analytics.yaml:16-19"],
+      "auto_fixable": true
+    },
+    {
+      "id": "A2",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "page title vs hero vs data slug",
+      "issue": "Three different module names co-exist: <title>Impetus Command Center</title>, hero H1 'Impetus Command Center.', eyebrow 'IMPETUS · ANALYTICS · LIVE', sub_title '(Analytics · Real-Time Dashboards · powers Ask Impetus)', PDF section header 'SuperSet / Analytics'. The /impetus/index.html card is also 'Impetus Command Center'. Per recent change note, this is intentional ('analytics is Impetus Command Center'). But the eyebrow still says 'INSTADESK'-style 'ANALYTICS' caps which is the slug, not the brand. Reader sees three labels.",
+      "fix": "Pick one. Recommended: keep '<title>Impetus Command Center · Impetus</title>' + H1 'Impetus Command Center.' + eyebrow 'IMPETUS · COMMAND CENTER · LIVE' (drop 'ANALYTICS' from eyebrow because the slug ≠ brand). Update breadcrumb crumb to 'Impetus Command Center'.",
+      "files": ["impetus/analytics/index.html:6", "impetus/analytics/index.html:152-155"],
+      "auto_fixable": true
+    },
+    {
+      "id": "A3",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "naming collision · /impetus/cortex",
+      "issue": "Cortex page is also titled 'Command Center / Cortex' per spec §2 row 1. Now the /analytics page is also called 'Impetus Command Center'. Two different platforms branded as 'Command Center' creates Apex confusion.",
+      "fix": "Either (a) rename this page H1 back to a distinct brand — 'SuperSet.' (the actual PDF brand) with sub_title '(Impetus Command Center · Analytics layer)', or (b) explicitly disambiguate in copy: 'The Impetus Command Center analytics layer · sits below Cortex'. Recent change note says hero is 'Impetus Command Center' — flagging because the cross-page conflict is real.",
+      "files": ["impetus/analytics/index.html:152-156", "impetus/cortex/index.html"],
+      "auto_fixable": false
+    },
+    {
+      "id": "A4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 Status chips",
+      "issue": "Chip 'No standalone update this quarter' is an absence-claim packaged as a stat chip. Reads negative; chips are signal-bearing. The other two chips are scope claims, not stats.",
+      "fix": "Drop the 'No standalone update' chip. Move that line to §03's caption text. Keep two real chips: 'Powers Ask Impetus across the platform' + 'Substrate for every Cortex / Command Center dashboard'. Caption can carry: 'Data-plane infrastructure — no standalone Q1 release; updates ship under Cortex.'",
+      "files": ["impetus/analytics/index.html:174"],
+      "auto_fixable": true
+    },
+    {
+      "id": "A5",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 caption",
+      "issue": "Caption '₹22.2 Cr/day, ₹1,442 Cr inventory, vendor OTIF 70.6%' borrows Cortex hero numbers without citation source line on this page. Apex reader cannot verify whether the number lives on this page or upstream.",
+      "fix": "Add an inline anchor: 'The Cortex hero numbers (₹22.2 Cr/day, ₹1,442 Cr inventory, vendor OTIF 70.6% · <a href=\"/impetus/cortex/\">see Cortex →</a>) all originate here.' Also acceptable: drop the parenthesised numbers and just say 'Every dashboard surfaced in Cortex traces to here.'",
+      "files": ["impetus/analytics/index.html:175-177"],
+      "auto_fixable": true
+    },
+    {
+      "id": "A6",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "hero subhead",
+      "issue": "Sub-line '(Analytics · Real-Time Dashboards · powers Ask Impetus)' uses a parenthetical aside that duplicates the eyebrow-slug 'ANALYTICS'. Redundant.",
+      "fix": "Sub-line: '(Real-time dashboards · powers Ask Impetus)' — drop 'Analytics' since eyebrow already carries it.",
+      "files": ["impetus/analytics/index.html:155"],
+      "auto_fixable": true
+    },
+    {
+      "id": "A7",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "page chrome",
+      "issue": "<title> is bare 'Impetus Command Center' with no '· Impetus' suffix. Other Impetus subpages use '<Platform> · Impetus' format (e.g., instadesk = 'Support Platform · Impetus', recollect = 'Reconciliation Platform · Impetus').",
+      "fix": "Change to '<title>Impetus Command Center · Impetus</title>' for consistency.",
+      "files": ["impetus/analytics/index.html:6"],
+      "auto_fixable": true
+    },
+    {
+      "id": "A8",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "hero",
+      "issue": "Per audit framework §2 honesty: page is so thin (only §02 + §03) that an Apex reviewer may read 'Live' as overclaiming for a track that has 'no standalone update this quarter'. The PDF source is 1 paragraph + a forward statement.",
+      "fix": "Acceptable per recent change note (analytics page is intentionally thin). Suggestion: add an inline sub-pill on hero: 'Live · data-plane substrate' to qualify what 'Live' means here. Avoids the optics of a Live tag with no shipped updates.",
+      "files": ["impetus/analytics/index.html:168"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Source-honest framing — page openly says 'No standalone update this quarter' which is rare and credible.",
+    "Cross-reference to Cortex is explicit ('substrate for every dashboard surfaced in Cortex / Command Center').",
+    "Source claims trace cleanly — PDF p. 58 paragraph reproduced verbatim ('Real-time dashboards covering the full journey... powers the AI assistant's data layer').",
+    "Console clean (Tailwind dev warning only); page loads with 0 broken images (no images, by design)."
+  ],
+  "verification_notes": {
+    "image_loads_200": "n/a · 0 images on page (intentional per source PDF lacking screenshots for SuperSet section)",
+    "lightbox_works": "n/a · no lightbox markup on page (intentional)",
+    "console_clean": "only standard Tailwind CDN dev warning",
+    "section_label_run": "§02 · §03 contiguous · §04 What improved + §05 Screenshots intentionally absent (no source content)",
+    "page_thin_flag": "spec §6.3 explicitly carves out this page as the analytics/SuperSet layer with minimal content; thinness is by design"
+  }
+}

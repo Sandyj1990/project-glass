@@ -1,0 +1,22 @@
+{
+  "slug": "nps-intelligence",
+  "name": "NPS Intelligence Dashboard",
+  "tagline": "3-layer NPS quality stack \u00b7 live \u00b7 7-Eleven wedge.",
+  "track": "retail-jarvis",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/retail-jarvis#nps-intelligence",
+  "external_url": "https://nps.jioimpetus.com/",
+  "stake_inr_cr": null,
+  "tags": []
+}

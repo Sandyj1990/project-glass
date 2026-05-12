@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: data_categories
+    label: Data categories integrated
+    value: 22
+    definition: UCP · POS · Telco · Government · 3rd-party POI
+    source: Vista platform
+    confidence: live
+  - id: buildings_indexed
+    label: Buildings indexed
+    value: 10.5 Cr
+    definition: Across 36 states
+    source: Vista platform
+    confidence: live
+  - id: stores_indexed
+    label: Retail stores indexed
+    value: 21,911
+    definition: Reliance footprint
+    source: Vista platform
+    confidence: live

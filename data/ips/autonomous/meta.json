@@ -1,0 +1,27 @@
+{
+  "slug": "autonomous",
+  "name": "Autonomous",
+  "tagline": "Capability layer \u00b7 11 sub-IPs shipping AI-native autonomy into Reliance Retail.",
+  "track": "autonomous",
+  "track_role": "track-headline",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics",
+    "beauty"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "capability-layer",
+    "ai"
+  ]
+}

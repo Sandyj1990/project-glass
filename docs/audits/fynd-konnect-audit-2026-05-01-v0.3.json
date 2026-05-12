@@ -1,0 +1,81 @@
+{
+  "page": "fynd-konnect/index.html",
+  "spec": "docs/fynd-konnect-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_round": "v0.3 delta",
+  "previous_audit": "docs/audits/fynd-konnect-audit-2026-05-01.json",
+  "previous_score": 92,
+  "score": 89,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 80,
+    "source_traceability": 95,
+    "tone_of_voice": 95,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 65
+  },
+  "delta_summary": "v0.3 dropped Pillar 3 Sephora and Storefronts, added release-notes log, consolidated marketplace tables. New v0.3 score is 3 points lower than v0.1 because the restructure left 5 stale internal references — the §01 Status block still names a Pillar 3 (Sephora) and Pillar 4 that no longer exist, the hero subhead still names Sephora as a connected system, and the home-page card still lists Sephora Engage as a pillar. All five fixes are mechanical.",
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "structural_compliance",
+      "section": "§01 · Status · Running today",
+      "issue": "Bullet still lists 'Pillar 3 · Fynd Engage for Sephora India' as Live — but §03 now declares only three pillars and §06 redefines Pillar 3 as 'Global Marketplace Reach'. The Status block contradicts the Pillar summary block on the same page.",
+      "fix": "Remove the 'Pillar 3 · Fynd Engage for Sephora India' bullet (Sephora Beauty Pass is still recorded as capability 10 inside Pillar 2's loyalty theme); renumber the marketplace bullet from 'Pillar 4' to 'Pillar 3'.",
+      "files": ["fynd-konnect/index.html:144", "fynd-konnect/index.html:145"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "Home page card · index.html",
+      "issue": "Home page card body says 'Pillars: JioMart 3P · RBL/RRVL ops · Sephora Engage · Global marketplaces' — Sephora Engage is no longer a standalone pillar. Also says '50+ marketplaces across 9+ countries' but page hero now says '50+ pre-built integrations · 25+ live · 12+ countries'.",
+      "fix": "Update home card to: 'Pillars: JioMart 3P · RBL/RRVL ops · Global marketplaces' + change '9+ countries' to '12+ countries'.",
+      "files": ["index.html:667"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "§0 · Hero subhead",
+      "issue": "Subhead reads 'connecting JioMart, RBL and RRVL brand operations, Sephora India loyalty, and 50+ marketplaces' — listing four things, mapping to the old four pillars. With Pillar 3 removed, listing 'Sephora India loyalty' as a separate connected system overclaims (Sephora is one brand inside Pillar 2's portfolio, not a separate pillar).",
+      "fix": "Rewrite to three things matching the three pillars: 'connecting JioMart, RBL and RRVL brand operations, and 50+ marketplaces.' Sephora-as-brand still appears in the §05 brand portfolio table and capability 10.",
+      "files": ["fynd-konnect/index.html:115"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§01 · Status · Running today · last bullet",
+      "issue": "Last bullet says 'Pillar 4 · Marketplace gateway · 50+ channels · 9+ countries' — Pillar 4 was renumbered to Pillar 3 and stats updated to 12+ countries / 25+ live marketplaces.",
+      "fix": "Renumber to 'Pillar 3 · Marketplace gateway · 50+ pre-built integrations · 25+ live · 12+ countries · India, Middle East, SEA, UK'.",
+      "files": ["fynd-konnect/index.html:145"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Spec doc · docs/fynd-konnect-spec.md",
+      "issue": "Spec describes a 4-pillar / 8-section structure (§04 Pillar 1 → §07 Pillar 4 → §08 Sources) that no longer matches the v0.3 page (3 pillars, no Sources). The spec is now an out-of-date authoring artefact.",
+      "fix": "Update spec §3 Page Structure to reflect v0.3, OR add a 'v0.3 restructure' section noting the 4→3 pillar consolidation, release-notes format, and Sources removal. Acceptable for v0.3 — flag for next session.",
+      "files": ["docs/fynd-konnect-spec.md"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Page slimmed from 753 lines to 385 lines (49% reduction) without losing source-cited content — release-notes log and consolidated marketplace table compress the dense source PDF into Apex-readable surface",
+    "Zero banned vocabulary on the page; zero banned constructions; no exclamation marks or emojis",
+    "Section labels run §01 → §06 contiguously after the restructure; no orphaned numbers, no gaps",
+    "Pillar 2 stat strip (13 · 20+ · 12 · 2) is sourced verbatim from the new Partnership Review PDF p.9 — a stat the v0.1 audit flagged as missing",
+    "Marketplace table now distinguishes Live (green pill) from In dev (amber 'In dev' pill) at a per-channel level — much higher honesty register than v0.2 which only had a separate 'Channels in development' subsection",
+    "All 4 page resources return 200/304; only console message is the standard Tailwind CDN dev warning",
+    "Quick Commerce row (Blinkit · Instamart · Zepto · Tata 1mg) placed inline in the India sub-table with a 'Live · QC' pill — efficient compression of source §6.3"
+  ]
+}

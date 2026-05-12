@@ -1,0 +1,43 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2026-04-21
+    title: Campaign Coupon Codes
+    summary: Shared and personalised coupons in Campaign Manager. CSV / ZIP customer-to-coupon mapping at delivery time.
+    next: JCP Coupons + Central Promotion Engine integration
+  - date: 2026-04-03
+    title: RPOS Real-Time · 15K+ stores
+    summary: Every in-store transaction streams into UCP within minutes. 1.5M orders/day · 75+ formats · RRL + RBL. Replaces day-old batch data.
+  - date: 2026-04-02
+    title: Fayda Meter on JioMart
+    summary: Lifetime savings + neighbourhood savings (pincode aggregation on Databricks). Featured in JioMart's IPL season ads.
+  - date: 2026-04-01
+    title: NPS at scale · 79 formats
+    summary: SMS triggered 1-2 hours after every in-store POS purchase. 7.2M orders processed · 500K daily surveys · ~7K daily responses.
+  - date: 2026-03-24
+    title: API-First Retail Account + Unified Address Book
+    summary: Native login/signup UI without SDKs or redirections. Cross-platform address reuse for frictionless checkout.
+  - date: 2026-01-30
+    title: Multi-feature rollout · RPOS, RCS, Analytics
+    summary: RPOS bringing ~2L daily transaction events · NPS expansion · native RCS campaigns · device fingerprinting · audiences pushed to Meta and Google Ads. 46 campaigns run · 7 format adoptions.
+  - date: 2025-12-15
+    title: AI-Powered UCP Documentation
+    summary: Step-by-step business-user guide built with Cursor + Docusaurus + Scribe. Live at docs.sit.ccpz0.de.
+  - date: 2025-09-19
+    title: SizeSense · live in AJIO
+    summary: Reads brand, fit type, size to suggest the right option on AJIO product pages. Reduces returns.
+  - date: 2025-05-02
+    title: More For Me · personalised recommendations on JioMart
+    summary: Homepage product suggestions powered by order history and localised preferences. Backend · RRA → Kafka → MongoDB → real-time API.
+  - date: 2025-04-10
+    title: Reliance Retail Account v2 · the unified login
+    summary: Eleven months in development. DPDP-compliant consent, centralised account management, Retail SSO, JioSwift email integration, JCP Beta whitelisting.
+  - date: 2025-02-03
+    title: Platform Foundation + Personalisation
+    summary: 360° Single Customer View · Audience Builder v2 · Complete Your Basket AI/ML widget on JioMart · RBAC · OTP service rehauled.
+  - date: 2024-02-23
+    title: Reliance Retail Authentication + Address Optimisation
+    summary: In-house OTP for JioMart. Address Optimisation pilot · 69,318 addresses optimised across 76 pincodes via Jio ACL. MilkBasket integration goes live.
+  - date: 2024-01-11
+    title: First UCP launch · Reliance Retail Identity
+    summary: 310M customers unified across online + offline RR. Live with JioMart, AJIO, Netmeds, Tira, FreshPik. TOPs-managed. InfoSec vetted.

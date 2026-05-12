@@ -1,0 +1,34 @@
+{
+  "slug": "jcp",
+  "name": "Jio Commerce Platform",
+  "tagline": "The single Sell + Support layer underneath every B2C and B2B Reliance Retail brand. 79 channels.",
+  "track": "jcp",
+  "track_role": "track-headline",
+  "status": "Live",
+  "since": "2023-07-31",
+  "last_release": "2026-04-21",
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics",
+    "beauty",
+    "pharma",
+    "home",
+    "jewellery"
+  ],
+  "value_chain": [
+    "plan",
+    "buy-make",
+    "move",
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/jcp",
+  "external_url": "https://www.jiomart.com",
+  "stake_inr_cr": null,
+  "tags": [
+    "platform",
+    "commerce",
+    "microservices"
+  ]
+}

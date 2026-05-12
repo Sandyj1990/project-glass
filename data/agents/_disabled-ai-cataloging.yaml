@@ -1,0 +1,271 @@
+# AI Cataloging Agent
+# Sources:
+#  · ai-catalog-enrichment-workflow.png · workflow diagram (Tier A reference)
+#  · TIRA Catalog Enrichment Evals · 12pp eval methodology
+#  · Evals for AI catalog · 4pp internal eval framework
+#  · Accenture s19 · 15 days → 5 hours framing
+#  · Farooq §4.5 (AI Cataloguing and Photoshoots)
+#
+# Per docs/agents-spec.md v0.8
+
+slug: ai-cataloging
+name: AI Cataloging Agent
+sub_title: "Mannequin or product image → enriched catalog page with model-on photo, attribute set, and motion video. 5 hours, not 15 days."
+status: live
+status_label: Live
+track: sell
+autonomy_level: L4
+primary_workflow: "Online platform customer journey · Product Listing Creation"
+date: 2026-04-15
+source_folder: docs/agent-catalog-notes-compilation/
+source_citations:
+  - "ai-catalog-enrichment-workflow.png"
+  - "TIRA Catalog Enrichment Evals · 12pp"
+  - "Evals for AI catalog · 4pp"
+  - "Live: TIRA · external eval published · 12pp methodology"
+
+stats:
+  - { label: "Cycle compression", value: "15 days → 5 hr",  context: "per shoot · same SKU set" }
+  - { label: "Model library",     value: "AI-generated",    context: "ethnicity · age · size · gender · consistent face" }
+  - { label: "Outputs per SKU",   value: "Photo + page + video", context: "model-on shot · enriched attributes · motion video" }
+  - { label: "Eval framework",    value: "External + internal", context: "TIRA + Reliance reviewer audits" }
+
+primary_platform:
+  name: "JCP Cataloging"
+  route: "/jcp/cataloging/"
+
+job:
+  pain: |
+    Catalog production = 15 days per shoot. Doesn't scale across SKUs,
+    seasons or brands. Output inconsistent — different studios, different
+    models, different lighting. Attribute enrichment is manual and lossy.
+    Motion video requires a separate production pass.
+  what_it_does: |
+    Takes a mannequin photo or product image. Generates a model-on shoot
+    with consistent face from a brand-controlled model library
+    (ethnicity, age, size, gender). Enriches the catalog page with
+    structured attributes via VLM extraction. Produces a motion video
+    of the same SKU. Runs in 5 hours per shoot at scale.
+  human_role: |
+    Brand sets the model library, attribute taxonomy, channel catalog
+    spec, brand-tone rules. Catalog ops reviews flagged outputs (face
+    drift, attribute confidence below threshold). Agent does the
+    production; humans QA the exceptions.
+
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+workflow_svg: |
+  <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>AI Cataloging · enrichment pipeline · mannequin to live catalog page</title>
+    <desc>Mannequin or product image flows through Garment Understanding, Model Selection, Photoshoot Generation, Catalog Enrichment, Video Generation and QA — producing a complete catalog page in hours.</desc>
+    <defs>
+      <marker id="ac-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="ac-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+        .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-loop { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+        .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+      </style>
+    </defs>
+
+    <!-- Inputs -->
+    <g>
+      <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE"/>
+      <text x="36" y="46" class="zh">Inputs</text>
+
+      <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+      <text x="50" y="86" class="h-ttl">Brand setup</text>
+      <text x="50" y="102" class="h-sub">model library · attribute</text>
+      <text x="50" y="116" class="h-sub">taxonomy · channel spec</text>
+
+      <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="168" class="src-ttl">Mannequin / product photo</text>
+      <text x="50" y="186" class="src-sub">studio shot or vendor image</text>
+
+      <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="242" class="src-ttl">Model library</text>
+      <text x="50" y="260" class="src-sub">consistent faces · brand-controlled</text>
+
+      <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="316" class="src-ttl">Attribute taxonomy</text>
+      <text x="50" y="334" class="src-sub">colour · fabric · neckline · sleeve...</text>
+
+      <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="390" class="src-ttl">Channel catalog spec</text>
+      <text x="50" y="408" class="src-sub">TIRA · JioMart · AJIO field schemas</text>
+
+      <text x="36" y="490" class="gl">Status</text>
+      <text x="36" y="506" class="src-sub">Live · TIRA &nbsp;·&nbsp; Building · others</text>
+    </g>
+
+    <!-- Workflow -->
+    <g>
+      <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB"/>
+      <text x="306" y="46" class="zh">Pipeline · 6 steps · live</text>
+
+      <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="86" class="stp-num">01</text>
+      <text x="354" y="86" class="stp-ttl">Garment understanding</text>
+      <text x="324" y="106" class="stp-sub">VLM extracts category · cut · drape</text>
+      <text x="324" y="120" class="stp-sub">colour · print · construction</text>
+
+      <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="86" class="stp-num">02</text>
+      <text x="644" y="86" class="stp-ttl">Model selection</text>
+      <text x="614" y="106" class="stp-sub">brand-controlled library</text>
+      <text x="614" y="120" class="stp-sub">ethnicity · age · size · pose</text>
+
+      <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="182" class="stp-num">03</text>
+      <text x="354" y="182" class="stp-ttl">Photoshoot generation</text>
+      <text x="324" y="202" class="stp-sub">model-on shot · consistent face</text>
+      <text x="324" y="216" class="stp-sub">scene · lighting · multi-angle</text>
+
+      <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="182" class="stp-num">04</text>
+      <text x="644" y="182" class="stp-ttl">Catalog enrichment</text>
+      <text x="614" y="202" class="stp-sub">structured attributes</text>
+      <text x="614" y="216" class="stp-sub">channel-specific field mapping</text>
+
+      <rect x="310" y="256" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="278" class="stp-num">05</text>
+      <text x="354" y="278" class="stp-ttl">Video generation</text>
+      <text x="324" y="298" class="stp-sub">motion video · 4-6 sec</text>
+      <text x="324" y="312" class="stp-sub">model walks / spins / detail close-ups</text>
+
+      <rect x="600" y="256" width="270" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+      <text x="614" y="278" class="stp-num" style="fill:#B45309;">06</text>
+      <text x="644" y="278" class="stp-ttl">QA gate · auto + human</text>
+      <text x="614" y="298" class="stp-sub">face-consistency check · attribute</text>
+      <text x="614" y="312" class="stp-sub">confidence · channel-spec validation</text>
+
+      <rect x="310" y="356" width="560" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="378" class="stp-num">07</text>
+      <text x="354" y="378" class="stp-ttl">Publish to channels</text>
+      <text x="324" y="398" class="stp-sub">Live · TIRA &nbsp;·&nbsp; Targeted · JioMart, AJIO, Reliance Trends, Reliance Digital</text>
+      <text x="324" y="412" class="stp-sub">channel-native field formatting · CDN delivery</text>
+
+      <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="324" y="468" class="gl">Cycle</text>
+      <text x="324" y="492" class="stp-sub">15 days → 5 hours per shoot · same SKU set, same brand quality bar</text>
+    </g>
+
+    <!-- Outputs -->
+    <g>
+      <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0"/>
+      <text x="936" y="46" class="zh">Outputs</text>
+
+      <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="86" class="out-ttl">Model-on photo set</text>
+      <text x="950" y="104" class="out-sub">multi-angle · consistent face</text>
+      <text x="950" y="120" class="out-sub">brand-library model</text>
+
+      <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="180" class="out-ttl">Enriched catalog page</text>
+      <text x="950" y="198" class="out-sub">structured attributes</text>
+      <text x="950" y="214" class="out-sub">channel-mapped fields</text>
+
+      <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="274" class="out-ttl">Motion video</text>
+      <text x="950" y="292" class="out-sub">4-6 sec PDP video</text>
+      <text x="950" y="308" class="out-sub">scene + spin + detail</text>
+
+      <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="368" class="gl" style="fill:#15803D;">Eval coverage</text>
+      <text x="950" y="388" class="out-sub">External (TIRA) + internal reviewers</text>
+
+      <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+      <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+      <text x="950" y="482" class="out-sub">human reviews exceptions</text>
+      <text x="950" y="498" class="out-sub">system runs the pipeline</text>
+    </g>
+
+    <!-- Connectors · trunk for inputs -->
+    <path d="M244 95 H275" class="conn"/>
+    <path d="M244 175 H275" class="conn"/>
+    <path d="M244 249 H275" class="conn"/>
+    <path d="M244 323 H275" class="conn"/>
+    <path d="M244 397 H275" class="conn"/>
+    <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+    <path d="M275 98 H310" class="conn" marker-end="url(#ac-arr)"/>
+
+    <!-- Pipeline flow snake -->
+    <path d="M580 98 H600" class="conn" marker-end="url(#ac-arr)"/>
+    <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#ac-arr)"/>
+    <path d="M580 194 H600" class="conn" marker-end="url(#ac-arr)"/>
+    <path d="M735 228 V242 H445 V256" class="conn" marker-end="url(#ac-arr)"/>
+    <path d="M580 290 H600" class="conn" marker-end="url(#ac-arr)"/>
+    <path d="M735 324 V340 H590 V356" class="conn" marker-end="url(#ac-arr)"/>
+
+    <!-- QA fail loop · S6 → back to S3 (regen photoshoot) -->
+    <path d="M870 290 H905 V194 H870" class="conn-loop" marker-end="url(#ac-loop)"/>
+    <text x="912" y="245" class="lbl" transform="rotate(90 912 245)">QA fail · regen</text>
+
+    <!-- Publish → Outputs (single arrow from S7) -->
+    <path d="M870 390 H905 V100 H920" class="conn" marker-end="url(#ac-arr)"/>
+  </svg>
+workflow_diagram_caption: "Inputs (blue) → 7-step pipeline (grey) with QA gate (yellow, auto-retry on fail) → channel-published outputs (green)."
+
+workflow_steps:
+  - { num: "01", title: "Garment understanding",   detail: "VLM extracts category, cut, drape, colour, print and construction from the input mannequin / product photo." }
+  - { num: "02", title: "Model selection",         detail: "Picks a model from the brand-controlled library — ethnicity, age, size, pose constrained by brand spec." }
+  - { num: "03", title: "Photoshoot generation",   detail: "Generates the model-on shot with consistent face. Multi-angle, scene-aware lighting, brand-styled background." }
+  - { num: "04", title: "Catalog enrichment",      detail: "Structured attribute extraction mapped to channel-specific field schemas (TIRA, JioMart, AJIO each have their own taxonomy)." }
+  - { num: "05", title: "Video generation",        detail: "4-6 second motion video — model walks / spins, with detail close-ups on construction features. PDP-ready." }
+  - { num: "06", title: "QA gate · auto + human",  detail: "Automated checks — face-consistency, attribute confidence threshold, channel-spec compliance. Auto-retry to step 03 on failure. Human QA reviews flagged exceptions only." }
+  - { num: "07", title: "Publish to channels",     detail: "Channel-native formatting and delivery: TIRA, JioMart, AJIO, Reliance Trends, Reliance Digital. CDN delivery for image + video assets." }
+
+data:
+  sources:
+    - { name: "Mannequin / product images", classification: "Mixed",            entities: "Studio shots · vendor catalogue images" }
+    - { name: "Brand model library",        classification: "Human-Created",    entities: "Approved model identities · ethnicity · age · size · pose" }
+    - { name: "Attribute taxonomy",         classification: "Machine-Readable", entities: "Colour · fabric · neckline · sleeve · pattern · construction" }
+    - { name: "Channel catalog spec",       classification: "Machine-Readable", entities: "TIRA / JioMart / AJIO / Reliance Trends field schemas" }
+  refresh_cadence: "Per-SKU run · brand library and taxonomy refreshed seasonally."
+  kpis_moved:
+    - "Time-to-catalog (15 days → 5 hours)"
+    - "Attribute fill rate"
+    - "Face-consistency score"
+    - "PDP conversion lift (with video vs without)"
+
+patterns:
+  - { name: "Tool Calling",         usage: "VLM, image gen, video gen, channel-publish APIs, CDN — all tool-mediated" }
+  - { name: "Multi-Agent Orchestration", usage: "Garment-understanding agent + Model-selection + Generation + Enrichment + QA agents collaborate" }
+  - { name: "Wide Research",        usage: "Multiple model + scene candidates explored before QA-gate narrows to publish set" }
+  - { name: "Evals",                usage: "External TIRA reviewer audit + internal eval framework + per-output QA checks · 3 layers" }
+  - { name: "Observability",        usage: "Per-SKU trace · model used · QA score · channel publish status · regen attempts logged" }
+
+evals:
+  status: "live · 3-layer eval"
+  approach: |
+    Layer 1 — automated per-output QA: face-consistency score, attribute
+    confidence, channel-spec validation; auto-retry on fail. Layer 2 —
+    external TIRA Catalog Enrichment Evals: independent reviewer scores
+    accuracy, completeness and brand alignment on a sample. Layer 3 —
+    internal Reliance reviewer rubric for ongoing regression detection.
+  gates:
+    - "Face-consistency score above brand threshold per SKU"
+    - "Attribute fill rate ≥ 90% per channel-spec mandatory fields"
+    - "External reviewer accuracy ≥ baseline manual catalog quality"
+
+linked_platforms:
+  - { name: "JCP Cataloging",  route: "/jcp/cataloging/",  role: "Primary surface · agent runs the cataloging pipeline" }
+  - { name: "PixelBin",        route: "/pixelbin/",        role: "Image + video transforms infrastructure" }

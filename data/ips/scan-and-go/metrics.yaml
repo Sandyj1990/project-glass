@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: brands_live
+    label: Brands live
+    value: 8
+    definition: Trends, Yousta, Azorte, GAP, FreshPik, RIL Jewels, JioGames, Fashion Factory
+    source: Scan & Go ops
+    confidence: live
+  - id: invoice_savings_inr_cr
+    label: Invoice savings · annual
+    value: ₹2.5 Cr
+    definition: Across rolled-out brands
+    source: Finance
+    confidence: audited
+  - id: time_saved_per_customer_min
+    label: Time saved per customer per visit
+    value: 5 min
+    definition: vs traditional checkout
+    source: Scan & Go ops
+    confidence: live

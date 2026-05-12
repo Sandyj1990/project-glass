@@ -1,0 +1,95 @@
+{
+  "page": "jcp/channels/index.html",
+  "spec": "docs/jcp-update-spec.md (covers framework) + docs/jcp-notes-compilation/RRL Website Screenshots/RRL Website Modifications.pdf (note for this delta)",
+  "source_compilation": "docs/jcp-notes-compilation/RRL Website Screenshots/",
+  "audit_scope": "delta · RRL note changes only (not full page)",
+  "audit_date": "2026-05-01",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 100,
+    "tone_of_voice": 90,
+    "honesty_register": 95,
+    "visual_completeness": 95,
+    "cross_page_consistency": 50
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "site-wide · channel count drift",
+      "issue": "Canonical channel count drifted from 78 → 79 after this commit (−Mard + Molton Brown + Facegym). The mega-menu suffix still shows '78 channels' on every page (~25 files). The /jcp/ hero stat tile still says '78 channels · 68 live · 5 in-progress · 5 planned'. The /jcp/channels/ section label still says '78 channels'. Home page /index.html mentions '78 channels' in 4 places. Apex reader will see two different numbers depending on which page they land on.",
+      "fix": "Update tools/site_chrome.py PLATFORMS suffix '78 channels' → '79 channels' and rerun tools/inject_chrome.py to propagate. Manually update jcp/index.html hero stat tile + intro paragraph + Ecosystem section blurb (3 places) and home /index.html (4 places). Recompute the live/in-progress/planned breakdown — new totals are 68 Live / 5 In-Progress / 6 Planned (Mard −1 live, LensCrafters +1 live, Coach +1 live, La Martina −1 live +1 in-progress, Facegym +1 in-progress, Molton Brown +1 planned).",
+      "files": [
+        "tools/site_chrome.py:27",
+        "jcp/index.html:32 (mega-menu)",
+        "jcp/index.html:79 (intro)",
+        "jcp/index.html:91 (stat tile)",
+        "jcp/index.html:133 (Ecosystem blurb)",
+        "jcp/channels/index.html:section-label",
+        "index.html (4 occurrences)"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "channel card · CoverStory",
+      "issue": "Brand name rendered as 'Coverstory' (lowercase 's') on /jcp/channels/. Source RRL note + brand identity uses 'CoverStory' (camelCase). PDF directory tools/build_jcp_channels_md.py also uses 'Coverstory'. Brand site is coverstory.co.in (lowercase, but site domains are case-insensitive).",
+      "fix": "Update PDF_CHANNELS row 58 in tools/build_jcp_channels_md.py from 'Coverstory' → 'CoverStory'. Rebuild — channel card label updates automatically.",
+      "files": ["tools/build_jcp_channels_md.py:95"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "channel card · WestElm",
+      "issue": "Brand name rendered as 'WestElm' (PascalCase) on /jcp/channels/. RBL synthetic data has 'West Elm' (with space). Wikipedia + brand identity use 'West Elm' (with space). RBL data set canonically has the space.",
+      "fix": "Update tools/scratch/rbl_synthetic.json westelm.brand from 'West Elm' to be reflected on the page — but the page renders from PDF_CHANNELS which has 'WestElm'. Decide one canonical: 'West Elm' (matches brand) is recommended. Update PDF_CHANNELS row 47 'WestElm' → 'West Elm'.",
+      "files": ["tools/build_jcp_channels_md.py:84"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "Coach + LensCrafters status",
+      "issue": "RRL note says Coach and LensCrafters are 'live'. Site flips both from 'In-Progress' → 'Live' in PDF_CHANNELS — correct per note. BUT the Channel Coverage PDF (Feb 2026, the canonical source) lists them as 'In-Progress'. The RRL note (newer, dated 2026-04-30 by inference) overrides. No issue with the change itself, but no source citation on the page explains why these went Live since the Feb 2026 PDF.",
+      "fix": "Either accept the change silently (the note IS the latest source) OR add a tiny 'updated 2026-04-30 per RRL note' line on the channel cards for these two. Recommend silent — apex doesn't need every change-log; the PDF directory verbatim says 21-Feb-2026 already.",
+      "files": [],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "channel card · 7-Eleven",
+      "issue": "Card alt text and title attribute show '7Eleven' (no hyphen) but rest of site (subnav chip, /jcp/7eleven/ page title) uses '7-Eleven'. Source PDF uses '7Eleven'. Pick one.",
+      "fix": "Change tools/scratch/non_rbl_channels.json 7eleven.name from '7-Eleven' (already done) to ensure card label renders '7-Eleven'. Also update the lightbox caption helper in tools/build_jcp_channels_page.py if it hardcodes the brand spelling.",
+      "files": ["tools/scratch/non_rbl_channels.json"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "web-wrapped app cards",
+      "issue": "The 3 web-wrapped app cards (Superdry · Hamleys · Sephora) link their ↗ icon to play.google.com/store/search?q=... rather than a specific app. Apex reader who clicks discovers the search-results page, not the canonical listing. Source RRL note ships only the screenshot; doesn't name the package ID, so the search fallback is the only viable link. Acceptable but worth noting.",
+      "fix": "Manually find each app's package id (`com.superdry.india`-style) once and pin in non_rbl_play.json/EXTRA_APPS. Or accept the search-link as good enough.",
+      "files": ["tools/build_jcp_channels_page.py:230-256"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source traceability is perfect on this delta: every one of the 10 RRL note items implemented exactly as specified (Mard removal, 3 URL fixes, 4 channel additions, 3 web-wrapped apps, WestElm category fix). No drift from the note.",
+    "Asset pipeline is clean: 10 new images copied, normalised, pushed to GCS, all serving 200 from CDN. Per-slug folder convention preserved. The 3 web-wrapped apps got their own slug-folders (superdry-app/, hamleys-app/, sephora-app/) so they don't collide with the storefront cards of the same brand.",
+    "The web-wrapped app card pattern (separate cards with 'web-wrapped app' / 'consumer app' badges and no Play Store icon overlay) is a clean visual treatment that distinguishes them from native consumer apps without misleading.",
+    "Honesty register is tight: status pill changes (Coach Live, LensCrafters Live, La Martina In-Progress, Molton Brown Planned, Facegym In-Progress) all map exactly to what the note says. No overclaims.",
+    "Visual completeness: the gallery now shows 34 storefronts + 18 apps + 30 skipped = 82 cards. All images load from CDN; layout flows; filter chips still work."
+  ]
+}

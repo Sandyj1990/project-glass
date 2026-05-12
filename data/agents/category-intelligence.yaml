@@ -1,0 +1,274 @@
+# Category Intelligence Agent
+# Sources:
+#  · ~/Documents/work/trend-engine repo · 7-step pipeline + 18 quality checks
+#  · midi-dress-ss27-india · worked example shipped
+#  · category-intelligence-workflow-diagram.png
+#  · 8 reports authored across mens / womens · multiple geos
+#
+# Per docs/agents-spec.md v0.8 (D14)
+
+slug: category-intelligence
+name: Category Intelligence Agent
+sub_title: "Category × season × geography → 40-50pp evidence-tagged trend report. Built for buying teams, not for press."
+status: build
+status_label: Building
+track: plan
+autonomy_level: L4
+primary_workflow: "Category Strategy"
+date: 2026-04-15
+source_folder: ~/Documents/work/trend-engine/
+source_citations:
+  - "Trend Engine repo · ~/Documents/work/trend-engine"
+  - "category-intelligence-workflow-diagram.png"
+  - "Worked example: Women's Midi Dresses · SS27 · India"
+
+stats:
+  - { label: "Pipeline",         value: "7 steps",      context: "Brief → Research → Images → Build → Polish → Verify → Audit → Ship" }
+  - { label: "Output depth",     value: "40-50 pp",     context: "evidence-tagged · A4 PDF" }
+  - { label: "Quality checks",   value: "18 automated", context: "post-build · regression-gated" }
+
+primary_platform: ~   # No standalone platform page · agent surface is the catalog itself
+
+job:
+  pain: |
+    Trend research today = ad-hoc Pinterest scrolls + WGSN extracts + a
+    designer's gut. Inputs are unstitched to brand DNA, evidence rarely
+    survives the handoff to buying, and trend calls land as opinions, not
+    signals you can audit.
+  what_it_does: |
+    Takes a category × season × geography brief and produces a 40-50 page
+    PDF report: evidence-tagged trend analysis across silhouette, fabric,
+    colour, print and detail; 5 capsule design concepts with evidence
+    panels and AI-generated line sheets; competitive benchmarking with
+    retailer evidence grid; risk classification (safe bet / calculated
+    risk / test &amp; react); and a print design brief for textile teams.
+  human_role: |
+    Buying lead approves the brief and the four review checkpoints.
+    Designer takes the capsules into pattern-making. Agent does the
+    research, structuring, image generation, and writing — humans
+    decide what to act on.
+
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+workflow_svg: |
+  <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>Category Intelligence · 7-step pipeline with 4 review checkpoints</title>
+    <desc>Brief flows through Research, Images, Build, Polish, Verify, Audit and Ship — with 4 human review pauses to prevent wasted work.</desc>
+    <defs>
+      <marker id="ci-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="ci-pause" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+        .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-pause { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+        .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+      </style>
+    </defs>
+
+    <!-- Inputs -->
+    <g>
+      <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE"/>
+      <text x="36" y="46" class="zh">Inputs</text>
+
+      <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D"/>
+      <text x="50" y="86" class="h-ttl">Buying lead brief</text>
+      <text x="50" y="102" class="h-sub">category · season · geo</text>
+      <text x="50" y="116" class="h-sub">brand DNA · price tier</text>
+
+      <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="168" class="src-ttl">Runway shows</text>
+      <text x="50" y="186" class="src-sub">Vogue Runway · Tagwalk</text>
+
+      <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="242" class="src-ttl">Retail crawlers</text>
+      <text x="50" y="260" class="src-sub">Myntra · AJIO · Nykaa · Net-a-Porter</text>
+
+      <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="316" class="src-ttl">Search + social</text>
+      <text x="50" y="334" class="src-sub">Pinterest · Google Trends · TikTok</text>
+
+      <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="390" class="src-ttl">Trade press + forecasts</text>
+      <text x="50" y="408" class="src-sub">WGSN · EDITED · Heuritech</text>
+
+      <text x="36" y="490" class="gl">Evidence rule</text>
+      <text x="36" y="506" class="src-sub">no claim ships without a tag</text>
+    </g>
+
+    <!-- Workflow -->
+    <g>
+      <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB"/>
+      <text x="306" y="46" class="zh">Pipeline · 7 steps · 4 review pauses</text>
+
+      <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="86" class="stp-num">01</text>
+      <text x="354" y="86" class="stp-ttl">Brief ingestion</text>
+      <text x="324" y="106" class="stp-sub">category · season · geography</text>
+      <text x="324" y="120" class="stp-sub">brand DNA · price tier · occasion</text>
+
+      <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="86" class="stp-num">02</text>
+      <text x="644" y="86" class="stp-ttl">Research · 3 tiers</text>
+      <text x="614" y="106" class="stp-sub">runway / forecast · retail · consumer</text>
+      <text x="614" y="120" class="stp-sub">every signal evidence-tagged</text>
+
+      <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="182" class="stp-num">03</text>
+      <text x="354" y="182" class="stp-ttl">Image generation</text>
+      <text x="324" y="202" class="stp-sub">line sheets · capsules · cover</text>
+      <text x="324" y="216" class="stp-sub">GPT Image 2 + Vertex</text>
+
+      <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="182" class="stp-num">04</text>
+      <text x="644" y="182" class="stp-ttl">Build PDF</text>
+      <text x="614" y="202" class="stp-sub">react-pdf · page-by-page</text>
+      <text x="614" y="216" class="stp-sub">structured data + editorial prose</text>
+
+      <rect x="310" y="256" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="278" class="stp-num">05</text>
+      <text x="354" y="278" class="stp-ttl">Polish</text>
+      <text x="324" y="298" class="stp-sub">layout · typography · visual hierarchy</text>
+      <text x="324" y="312" class="stp-sub">market-specific framing</text>
+
+      <rect x="600" y="256" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="278" class="stp-num">06</text>
+      <text x="644" y="278" class="stp-ttl">Verify · 18 auto-checks</text>
+      <text x="614" y="298" class="stp-sub">image ratios · banned strings</text>
+      <text x="614" y="312" class="stp-sub">section ordering · evidence legend</text>
+
+      <rect x="310" y="356" width="560" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D"/>
+      <text x="324" y="378" class="stp-num" style="fill:#B45309;">07</text>
+      <text x="354" y="378" class="stp-ttl">Audit + Ship</text>
+      <text x="324" y="398" class="stp-sub">independent review against 5-dim rubric</text>
+      <text x="324" y="412" class="stp-sub">evidence rigour · content · visual · structure · editorial</text>
+
+      <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="324" y="468" class="gl">Human pauses · 4 review checkpoints</text>
+      <text x="324" y="492" class="stp-sub">after Research · after Images · after Build · after Audit · prevents wasted work</text>
+    </g>
+
+    <!-- Outputs -->
+    <g>
+      <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0"/>
+      <text x="936" y="46" class="zh">Outputs</text>
+
+      <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="86" class="out-ttl">40-50pp PDF report</text>
+      <text x="950" y="104" class="out-sub">runway-to-market translation</text>
+      <text x="950" y="120" class="out-sub">market-specific framing</text>
+
+      <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="180" class="out-ttl">5 capsule designs</text>
+      <text x="950" y="198" class="out-sub">evidence panels · line sheets</text>
+      <text x="950" y="214" class="out-sub">handed to Trend-to-Design</text>
+
+      <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="274" class="out-ttl">Risk classification</text>
+      <text x="950" y="292" class="out-sub">safe bet · calculated risk</text>
+      <text x="950" y="308" class="out-sub">test &amp; react</text>
+
+      <!-- Evidence Tags · h 62 → 78 to hold 2 sub-text lines per spec §5.1
+           (52 chars in 228px card overflowed by ~86px · "FORECAST" was
+           clipped to "F"). Tag list split across 2 lines. -->
+      <rect x="936" y="346" width="228" height="78" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="368" class="gl" style="fill:#15803D;">Evidence tags</text>
+      <text x="950" y="388" class="out-sub">RUNWAY · RETAIL · SEARCH</text>
+      <text x="950" y="404" class="out-sub">SOCIAL · TRADE · FORECAST</text>
+
+      <!-- Autonomy · shifted down 16px (y=424 → 440) to make room for the
+           expanded Evidence Tags card. h=80 unchanged · ends y=520 at zone bottom. -->
+      <rect x="936" y="440" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="460" class="gl" style="fill:#15803D;">Autonomy</text>
+      <text x="950" y="480" class="out-ttl">L4 Agentic</text>
+      <text x="950" y="498" class="out-sub">human reviews 4 checkpoints</text>
+      <text x="950" y="514" class="out-sub">system runs the pipeline</text>
+    </g>
+
+    <!-- Connectors · trunk for inputs -->
+    <path d="M244 95 H275" class="conn"/>
+    <path d="M244 175 H275" class="conn"/>
+    <path d="M244 249 H275" class="conn"/>
+    <path d="M244 323 H275" class="conn"/>
+    <path d="M244 397 H275" class="conn"/>
+    <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+    <path d="M275 98 H310" class="conn" marker-end="url(#ci-arr)"/>
+
+    <!-- Pipeline flow -->
+    <path d="M580 98 H600" class="conn" marker-end="url(#ci-arr)"/>
+    <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#ci-arr)"/>
+    <path d="M580 194 H600" class="conn" marker-end="url(#ci-arr)"/>
+    <path d="M735 228 V242 H445 V256" class="conn" marker-end="url(#ci-arr)"/>
+    <path d="M580 290 H600" class="conn" marker-end="url(#ci-arr)"/>
+    <path d="M735 324 V340 H590 V356" class="conn" marker-end="url(#ci-arr)"/>
+
+    <!-- Step 07 → Outputs -->
+    <path d="M870 390 H905 V100 H920" class="conn" marker-end="url(#ci-arr)"/>
+    <text x="892" y="240" class="lbl" transform="rotate(90 892 240)">delivers</text>
+  </svg>
+workflow_diagram_caption: "Inputs (blue) → 7-step pipeline with 4 human review checkpoints (yellow) → 40-50pp evidence-tagged report."
+
+workflow_steps:
+  - { num: "01", title: "Brief ingestion",        detail: "Buying lead supplies category · season · geography. Plus brand DNA, price tier, target consumer, occasion calendar (festive / wedding / monsoon)." }
+  - { num: "02", title: "Research · 3 tiers",     detail: "Tier 1 runway + forecast (Vogue Runway, Tagwalk, WGSN, EDITED, Heuritech). Tier 2 retail (Myntra, AJIO, Nykaa, Net-a-Porter, Reliance Trends). Tier 3 consumer (Pinterest, Google Trends, TikTok). Every signal carries an evidence tag — RUNWAY, RETAIL, SEARCH, SOCIAL, TRADE, FORECAST." }
+  - { num: "03", title: "Image generation",       detail: "Line sheets, capsule illustrations, fabric textures, print swatches, cover images. GPT Image 2 + Vertex Imagen, with Fynd logo as reference for brand-mark fidelity." }
+  - { num: "04", title: "Build PDF",              detail: "react-pdf renders A4 portrait pages (landscape for line sheets). Structured data (palettes, capsules, ratings) + editorial prose, page-by-page designed — not HTML-to-PDF conversion." }
+  - { num: "05", title: "Polish",                 detail: "Layout, typography, visual hierarchy. Market-specific framing — Indian climate, occasion mapping, fusion sensibility, price tier nuance." }
+  - { num: "06", title: "Verify · 18 auto-checks", detail: "Image aspect ratios, banned strings, section ordering, evidence legend presence, Fynd Create branding, file size, swatch visibility, radar-chart label positioning. Regression-gated — fail one, the build doesn't ship." }
+  - { num: "07", title: "Audit + Ship",           detail: "Independent fashion-report-reviewer agent scores against a 5-dimension rubric (evidence rigour, content quality, visual completeness, structural compliance, editorial quality). Buying lead signs off; report ships to design team." }
+
+data:
+  sources:
+    - { name: "Vogue Runway / Tagwalk", classification: "Machine-Readable", entities: "Runway looks · designer attribution · season · category" }
+    - { name: "Retail crawlers",        classification: "Machine-Created",  entities: "SKU listings · price · attributes · brand · stock signals" }
+    - { name: "Pinterest / Google Trends / TikTok", classification: "Machine-Created", entities: "Search velocity · pin counts · hashtag engagement" }
+    - { name: "WGSN · EDITED · Heuritech", classification: "Mixed",         entities: "Forecast reports · trend velocity · colour confidence" }
+    - { name: "Brand DNA brief",        classification: "Human-Created",    entities: "Target consumer · price tier · occasion · construction guardrails" }
+  refresh_cadence: "Per-report run · research is fresh-pulled at brief time. Reports versioned with date stamp."
+  kpis_moved:
+    - "Time-to-trend-call (weeks → days)"
+    - "Evidence coverage (% claims with source tag)"
+    - "Capsule selection rate by buying team"
+    - "Reduction in trend miss-fire (in-season markdown rate on agent-recommended SKUs)"
+
+patterns:
+  - { name: "Wide Research",        usage: "3-tier research generates many candidate trend signals before scoring narrows to a shortlist" }
+  - { name: "Tool Calling",         usage: "Crawlers, image generation APIs, PDF rendering, post-build check runners — all tool-mediated" }
+  - { name: "Deep / Hierarchical",  usage: "Slash-command orchestrator (/trend-report) routes to specialist sub-pipelines per report stage" }
+  - { name: "Context Engineering",  usage: "Brief + brand DNA + market frame compressed into per-section context; report-config layer enforces consistency" }
+  - { name: "Evals",                usage: "18 post-build auto-checks + independent fashion-report-reviewer 5-dim audit; both gate ship" }
+  - { name: "Observability",        usage: "Every trend call traces back to its source signal and evidence tier" }
+
+evals:
+  status: "live · 18-check regression suite + independent reviewer"
+  approach: |
+    Two-layer eval. Layer 1 — 18 post-build automated checks gate the
+    build (image ratios, banned strings, section ordering, evidence
+    legend, file size, etc.). Layer 2 — an independent fashion-report
+    reviewer agent scores each report against a 5-dimension rubric
+    (evidence rigour, content quality, visual completeness, structural
+    compliance, editorial quality), 0-100 each.
+  gates:
+    - "All 18 post-build checks pass · zero regressions"
+    - "Reviewer score ≥ 75 / 100 across each of 5 dimensions"
+    - "Every trend call carries an evidence tag"
+
+linked_platforms:
+  - { name: "Category Intel",      route: "/impetus/category-intel/",     role: "Live storefront · published reports for the India market" }
+  - { name: "Trend-to-Design Agent", route: "/agents/trend-to-design/",   role: "Downstream agent · capsule designs feed the design pipeline" }
+  - { name: "Cortex",              route: "/impetus/cortex/",             role: "Buying team uses outputs in OTB and assortment planning" }

@@ -1,0 +1,24 @@
+{
+  "slug": "print-designer",
+  "name": "Print Designer",
+  "tagline": "15-day turnaround compressed to 3 minutes.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-06-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#print-designer",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "design",
+    "ai-generation"
+  ]
+}

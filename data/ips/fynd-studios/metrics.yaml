@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: q1_target_inr_cr
+    label: Q1 ambition
+    value: ₹10 Cr
+    definition: Locked 25 - Apr - 2026
+    source: Farooq directive
+    confidence: live
+  - id: fy_target_inr_cr
+    label: FY ambition
+    value: ₹100 Cr
+    definition: Locked 25 - Apr - 2026
+    source: Farooq directive
+    confidence: live
+  - id: ai_ads_shipped
+    label: AI ads shipped
+    value: 50+
+    definition: Cumulative
+    source: Studio ops
+    confidence: live

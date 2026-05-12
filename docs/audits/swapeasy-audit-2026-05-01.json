@@ -1,0 +1,105 @@
+{
+  "page": "swapeasy/index.html",
+  "spec": "docs/swapeasy-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 90,
+  "grade": "A",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 95,
+    "tone_of_voice": 85,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 70
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "home scoreboard table (sibling page)",
+      "issue": "Pre-existing SwapEasy entry on the home page scoreboard table reads `₹1.5 Cr Month-1 · ~₹14K AOV` — the launch-month numbers — while the new /swapeasy/ page everywhere uses Oct '25 numbers (`₹3.75 Cr · ~₹14,000 AOV`). Reader switching from home → page sees the headline revenue number jump 2.5×.",
+      "fix": "Update index.html:388 to `Reliance Digital + MJS · 625 + 854 stores live · ₹3.75 Cr Oct '25 · ~₹14K AOV` and link the cell to `/swapeasy`. Drop the `Month-1` qualifier (it's stale) or keep it explicitly as `Month-1 → Oct '25 · ₹1.5 Cr → ₹3.75 Cr` if you want to show the trajectory.",
+      "files": ["index.html:388"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "<title>",
+      "issue": "Page <title> reads `SwapEasy · Re-Commerce OS · Reliance Retail × Fynd`. The `Re-Commerce OS` framing pre-claims the horizontal-platform mandate that spec D1 explicitly defers — the board note is *asking* the Apex board to endorse SwapEasy as 'a horizontal platform commitment across formats'. Until that endorsement lands, page voice should match D1's more conservative framing (Special Project, in-store re-commerce platform). Title contradicts D1.",
+      "fix": "Change <title> to `SwapEasy · In-Store Re-Commerce Platform · Reliance Retail × Fynd` (matches the hero subhead's `Reliance's in-store re-commerce platform`).",
+      "files": ["swapeasy/index.html:6"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero pill + stat tile + §01",
+      "issue": "Reliance entity abbreviations (RD, MJS, BISMI) used throughout without first-use expansion. RD is widely recognised, but MJS = My Jio Store and BISMI (a Reliance-acquired electronics retailer in Kerala / South India) need a one-time spell-out for an Apex reader who isn't deep in the format names. Tone-of-voice §7 (Use) says 'Reliance entity names exactly' — implying the full name on first surface.",
+      "fix": "First mention should be `625 Reliance Digital (RD) stores · 854 My Jio Store (MJS)` or similar. Easiest landing: §01 first row (line 139–140) — change to `625 Reliance Digital (RD) stores live · ~90% of network` and `854 My Jio Store (MJS) stores active · second format on platform`. Keep abbreviations everywhere downstream.",
+      "files": ["swapeasy/index.html:109", "swapeasy/index.html:115", "swapeasy/index.html:122", "swapeasy/index.html:139-141"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "home grid card #13",
+      "issue": "Home card `13 · Platform` ends with `DRI: Ashish Chandorkar · Varun Dhanuka (RIL)`. Card-level DRI is a recognised convention (tone-of-voice §5), but naming Ashish Chandorkar (Fynd CPO) on the *home grid* sits between page-level DRI (allowed) and section-subhead Fynd-IC attribution (discouraged per §6). Other home cards use `Lead: <name>` for the same convention; this card uses `DRI:` — minor inconsistency.",
+      "fix": "Either keep as-is (card-DRI is documented convention) and accept the inconsistency with sibling cards using `Lead:`, or harmonise to `Lead: Ashish Chandorkar · RIL: Varun Dhanuka`. Recommend the latter for consistency.",
+      "files": ["index.html:655"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "hero section-label",
+      "issue": "Hero section-label reads `Special Project · SwapEasy · ...` (singular). Mega-menu column label is `Special Projects` (plural). Minor inconsistency.",
+      "fix": "Change line 109 to `Special Projects · SwapEasy · Live across 625 RD + 854 MJS stores`.",
+      "files": ["swapeasy/index.html:109"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§03 closer + §04 caption",
+      "issue": "Inline cross-reference `(§06 roadmap)` (line 226) and `(operator surface in §04 below)` (line 261) reference section anchors that don't exist (no `id=\"section-06\"` or similar). Anchors would let readers jump; without them the references are decorative but harmless.",
+      "fix": "Either add `id=\"section-06\"` etc. on each <section> tag and update inline references to anchor links, OR drop the parenthetical numbering and rely on the natural section ordering.",
+      "files": ["swapeasy/index.html:226", "swapeasy/index.html:261"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "footer convention",
+      "issue": "Footer is the single © line, no `Built by Fynd. Owned and run by Reliance.` line. Matches sibling pages (ratl, granary, hirefirst all do the same), and is consistent with website-section-authoring §4 (footer = copyright only). But tone-of-voice §6 prescribes `Standard footer line: Built by Fynd. Owned and run by Reliance.` This is a register-wide drift, not a SwapEasy-specific issue — flagging for visibility, not for SwapEasy-only fix.",
+      "fix": "No fix at SwapEasy level — the convention has converged on copyright-only across the register. If the rule should hold, it's a register-wide cleanup separate from this audit.",
+      "files": ["swapeasy/index.html:418"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "nav version pill",
+      "issue": "Nav version pill reads `v0.9.7`. Spec status header reads `v0.1`. Pages on the register conventionally use the page's own version (granary `v0.9.6`, ratl `v0.9.6`); SwapEasy at v0.1 should probably show `v0.1.0` here. v0.9.7 was a guess to match siblings and is misleading.",
+      "fix": "Change line 102 to `v0.1.0`. Each page tracks its own version independently.",
+      "files": ["swapeasy/index.html:102"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Source rigour is excellent. Every numerical claim, named person (Seawoods, 8D RCP, BISMI, Ashish Chandorkar, Varun Dhanuka), and status statement traces to either the May 2026 APEX board note or the 5 source screenshots — spot-checked 16 claims, all confirmed.",
+    "§03 'How it works' override (D2) is well-executed. Replacing the canonical Architecture section with a 5-step counter-to-cash flow puts the 3 mobile screenshots in their strongest narrative position and gives an Apex reader a complete customer-journey understanding in one section.",
+    "Honesty register holds throughout. Apple 16+ bump-up correctly tagged `Live · Apple 16+` (not `Live` outright); the 1.6% network attach is openly stated next to the 10.5% transacting-store attach; the 26-of-41 stuck LPs and 333-unit pickup pendency are surfaced as building work, not hidden.",
+    "Visual flow is clean. Phone-frame cards make the in-store mobile shots read as in-store, not as random screenshots; the 5-step grid + back-of-house 2-card pair maps cleanly to the customer journey; admin shots fill width without over-scaling.",
+    "Hero subhead is 27 words, opens with the lead frame (in-store re-commerce platform), pivots to the three lead numbers (625 stores · 4,189 exchanges · ₹3.75 Cr), closes with the standard ownership line. Textbook tone-of-voice §5 hero subhead pattern."
+  ]
+}

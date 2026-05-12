@@ -1,0 +1,146 @@
+{
+  "page": "fynd-horizon/index.html",
+  "spec": "docs/fynd-horizon-spec.md",
+  "audit_date": "2026-05-01",
+  "score": 86,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 90,
+    "tone_of_voice": 82,
+    "honesty_register": 88,
+    "visual_completeness": 95,
+    "cross_page_consistency": 60
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "—",
+      "issue": "Home page recent-shipped card and catalog row both still link at /autonomous#fynd-horizon — the now-real /fynd-horizon page is bypassed.",
+      "fix": "Repoint both anchors to /fynd-horizon. Keep the /autonomous#fynd-horizon section (it's a different artefact — the autonomy-framework anchor) but the discovery cards should land on the new hub.",
+      "files": ["index.html:179", "catalog/index.html:294"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§03 · Step 3 · Buy",
+      "issue": "Banned vocabulary: 'Seamless purchase of items just tried on virtually'. tone-of-voice §7 banned-words list (filler verbs / inflators).",
+      "fix": "Replace with a plainer verb: 'One-tap purchase of items just tried on virtually · instant confirmation · live track from \"Order Placed\" → \"Cutting Fabric\".' Drop 'Seamless' and 'in real time' (already implied by 'live track').",
+      "files": ["fynd-horizon/index.html:198"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§0 · Hero pills",
+      "issue": "Third hero pill text reads 'Live · Tirupur MTO factory · cycle running since 25-Mar-2026' but uses .pill-build (yellow/Building colour). Colour/text mismatch.",
+      "fix": "Switch class from `pill pill-build` to `pill pill-live` to match the 'Live' text. (The Tirupur cycle is live per D02 slide 3 — 'Tirupur partner factory live Mar 25'.)",
+      "files": ["fynd-horizon/index.html:84"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§01 · Roadmap column",
+      "issue": "User-visible date written in ISO format: 'the 2026-04-30 letter to MM Sir'. tone-of-voice §4 requires DD-MMM-YYYY for visible dates.",
+      "fix": "Rewrite to '30-Apr-2026 letter to MM Sir'.",
+      "files": ["fynd-horizon/index.html:136"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "§01 · Roadmap column",
+      "issue": "Home page card surfaces 'Q2 public launch on Nexus Seawoods 15 - Jul - 2026' but page Roadmap doesn't carry the milestone. Apex reading the home card and clicking through expects to see it.",
+      "fix": "Add a Roadmap bullet: 'Public launch · Nexus Seawoods · 15-Jul-2026' (per home card). Verify date with Yash Singh.",
+      "files": ["fynd-horizon/index.html:128-137", "index.html:182"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§0 hero / §03 Step 0 / §08 research",
+      "issue": "Page uses 'vs Bodygram, n=200' as the accuracy comparator (sourced verbatim from D02 slide 3, dated 27-Apr-2026). However, catalog row mentions a 'Bodygram pivot 27 - Apr - 2026 to 29 - Apr - 2026' — a known event possibly making the comparator stale.",
+      "fix": "Confirm with Yash Singh whether Bodygram is still the right comparator post-pivot. Either keep with a date-stamped citation ('98.3% vs Bodygram, n=200 · Ratl study 18-Apr-2026') or restate the comparator if it has changed.",
+      "files": ["fynd-horizon/index.html:96", "fynd-horizon/index.html:178", "fynd-horizon/index.html:402", "catalog/index.html:294"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§0 · Hero subhead",
+      "issue": "Hero subhead is 41 words across two sentences. tone-of-voice §5 caps the hero subhead at ~30 words.",
+      "fix": "Tighten to a single sentence under 30 words. Suggested: 'The same Trends store, 25× the SKUs, made-to-measure in 24 hours — body scan in three clicks, virtual try-on in under two seconds, doorstep in 30 minutes or 24-48 hours.'",
+      "files": ["fynd-horizon/index.html:78"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§03 · Step 5 · Deliver",
+      "issue": "'Perfect Fit Guarantee — remake free if it doesn't fit' is attached to Step 5 (Deliver) for both fit paths. Source (D02 slide 15) restricts the remake-free guarantee to the Measure-Perfect path only ('owner: factory DRI'); standard fit gets 'Free returns within 7 days'.",
+      "fix": "Narrow the Step 5 line: '30 min (dark store) for standard, 24-48 hr (factory) for made-to-order · standard returns OK in 7 days · MTO carries a remake-free guarantee.' Or move the guarantee mention to the §06 Path B card only.",
+      "files": ["fynd-horizon/index.html:212"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "§01 · Live column",
+      "issue": "Page omits two events the home card highlights: '14-Apr-2026 MDA + MM Sir unveil at RCP · 30-min deep engagement' and 'Mirror broke night before, team rebuilt overnight'. Both belong on the page if they belong on the home card.",
+      "fix": "Add an 'Apex engagement' bullet to §01 Live: '14-Apr-2026 · MDA + MM Sir unveil at RCP · 30-min engagement.' Drop the 'mirror broke / rebuilt overnight' anecdote (war-story register, not Apex-page register).",
+      "files": ["fynd-horizon/index.html:107-115", "index.html:182"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§01 · Roadmap, §07 Sources",
+      "issue": "Inline mention of 'autonomy framework that anchors the 2026-04-30 letter' is not hyperlinked to /autonomous, and Ratl mention in §07 provenance correctly hyperlinks to /ratl. Inconsistent linking discipline.",
+      "fix": "Add `<a href=\"/autonomous\">` around 'autonomy framework' on line 136. Sweep for other proper-noun mentions of sibling pages and link them.",
+      "files": ["fynd-horizon/index.html:136"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§08 · Research",
+      "issue": "PDF iframe fixed at height='900' — works on desktop, may be excessively tall on mobile.",
+      "fix": "Add a class or inline media query to set height responsively (e.g., 600 on viewports <768px). Optional — the download-PDF button gives mobile users a way out.",
+      "files": ["fynd-horizon/index.html:413"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 · Live column",
+      "issue": "Bullet 4 reads '178 try-ons in week of 24-Apr → 1-May, 103 looks generated, 25% engagement' — 1-May is not in DD-MMM-YYYY form. Use full short-form throughout.",
+      "fix": "Rewrite '24-Apr → 1-May' as '24-Apr-2026 → 01-May-2026'. (And the §05 caption should match.)",
+      "files": ["fynd-horizon/index.html:113", "fynd-horizon/index.html:310"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Every numeric claim traces back to a named source — D02 deck slide numbers, math PDF, admin screenshot, in-store photo — and the §09 Sources block lists 7 distinct artefacts (justifying the carve-out for default-no Sources blocks).",
+    "Honesty register is rigorous — Live / Building / Roadmap pills tagged at every level (hero, status strip, journey steps, AI agents, fit paths). The §07 benchmark table cites Ratl-verified provenance with named owner (Pratiksha Kasbe) and dashboard URL.",
+    "Section ordering follows the canonical §0-§09 with documented overrides in spec D2/D3 (strategic-shift table replacing canonical module table; benchmarks-vs-competitor replacing canonical vision scorecard).",
+    "Admin dashboard screenshot in §05 proves the 'Token economics' claim isn't aspirational — the operator surface is live with verifiable numbers (178 try-ons, ₹1,358 estimated profit).",
+    "No author/version/owner metadata on the page (per the skill's honesty rule). Nav v0.9.0 pill kept as developer-facing tracking only. Footer is the single copyright line.",
+    "Math CEO Brief embedded inline as a PDF (matching Granary research-section precedent), with a clear download button. The page itself is the artefact; the supporting PDF is one click away."
+  ]
+}

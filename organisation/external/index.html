@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>External Commercialization · Organisation · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* Sub-track card grid */
+  .pcard { display: flex; flex-direction: column; padding: 18px; background: white; border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.18s; }
+  .pcard:hover { border-color: var(--ink); }
+  .pcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .pcard-name { font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.2; }
+  .pcard-name a { color: var(--ink); text-decoration: none; }
+  .pcard-name a:hover { color: var(--accent); }
+  .pcard-count { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink); font-weight: 600; }
+  .pcard-bar { height: 4px; background: var(--bg-soft); border-radius: 2px; overflow: hidden; margin-bottom: 12px; }
+  .pcard-bar-fill { height: 100%; background: var(--ink); border-radius: 2px; }
+  .pcard-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-soft); }
+  .pcard-meta a { color: var(--accent); text-decoration: none; }
+  .pcard-meta a:hover { text-decoration: underline; }
+
+  /* Track-row table for full breakdown */
+  .trk-row { display: grid; grid-template-columns: 1fr 80px 200px 120px; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--border-soft); align-items: baseline; font-size: 13px; }
+  .trk-head { display: grid; grid-template-columns: 1fr 80px 200px 120px; gap: 16px; padding: 12px 14px; background: var(--ink); color: white; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; border-radius: 12px 12px 0 0; }
+  .trk-row { padding-left: 14px; padding-right: 14px; }
+  .trk-row:last-child { border-bottom: none; }
+  .trk-name { font-weight: 500; color: var(--ink); }
+  .trk-name a { color: var(--accent); text-decoration: none; }
+  .trk-name a:hover { text-decoration: underline; }
+  .trk-count { font-family: 'JetBrains Mono', monospace; color: var(--ink); font-weight: 600; }
+  .trk-bar { height: 6px; background: var(--bg-soft); border-radius: 3px; overflow: hidden; }
+  .trk-bar-fill { height: 100%; background: var(--accent); border-radius: 3px; }
+  .trk-link { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: none; }
+  .trk-link:hover { text-decoration: underline; }
+
+  @media (max-width: 768px) {
+    .trk-row, .trk-head { grid-template-columns: 1fr 60px; }
+    .trk-row > :nth-child(3), .trk-row > :nth-child(4),
+    .trk-head > :nth-child(3), .trk-head > :nth-child(4) { display: none; }
+  }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="pt-16 pb-10" style="background: white;"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><a href="/organisation">Organisation</a><span class="sep">/</span><span style="color: var(--ink);">External Commercialization</span></div>
+<div class="flex flex-wrap gap-2 mb-8">
+  <a href="/organisation" class="subnav-link">Overview</a>
+  <a href="/organisation/organogram" class="subnav-link">Reporting Tree</a>
+  <a href="/organisation/directory" class="subnav-link">People Directory</a>
+  <a href="/organisation/external" class="subnav-link active">External Commercialization</a>
+</div>
+<div class="section-label mb-3">Self-sustaining · commercializes Fynd IP to external customers</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">External Commercialization.</h1>
+<p class="text-lg max-w-3xl mb-2" style="color: var(--ink-muted);">The commercial engine. Same platforms shipped to Reliance Retail, commercialized externally to paying customers.</p>
+</div></section>
+
+<!-- §01 SUB-PRODUCT TRACKS · TABLE BREAKDOWN -->
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Sub-tracks · who builds what</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Where the 310 sit.</h2>
+<p class="text-sm mb-6 max-w-2xl" style="color: var(--ink-muted);">Every sub-track of External Commercialization, ranked by headcount. Each row links to the platform page where one exists, and to the directory pre-filtered to that track.</p>
+<div class="card overflow-hidden">
+  <div class="trk-head">
+    <div>SUB-TRACK</div>
+    <div>PEOPLE</div>
+    <div>SHARE</div>
+    <div>DRILL-DOWN</div>
+  </div>
+  <div id="ext-track-body"></div>
+</div>
+</div></section>
+
+<!-- §02 LEAD + LINKS -->
+<section class="py-10 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Leadership</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Who runs External Commercialization.</h2>
+<div id="ext-lead-block"></div>
+</div></section>
+
+<!-- §03 CUSTOMERS · INDIA -->
+<section class="py-10 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · India customers</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-2" style="color: var(--ink);">Brands building on the Fynd stack · India.</h2>
+<p class="text-sm mb-6 max-w-2xl" style="color: var(--ink-muted);">A sample of brands and businesses using Fynd platforms commercially across India. All numbers annualised based on 9 months YTD FY 25-26 performance.</p>
+<div class="card overflow-hidden p-4" style="background: white;">
+  <img src="/assets/organisation/external-customers-india.png" alt="Fynd India customer logos · The Sleep Company · Nexus 247 · Customer Capital · Guess · COS · Ultrahuman · Healofy · Klydo · Muditam · Florsheim · Lakshita · Stories · Salty · Wellington · TQN Studio · Forever · IGP · Regalo · Cookd · Uni Seoul · Shipyaagri · Qurbat · Bellagio · Ruosh · House of Parv · Imperial Diamonds · Mustard · Jayashree · BM Express · Affordplan · Wild Stone · Stylox · Mink · Sachal" loading="lazy" style="display: block; width: 100%; height: auto;" />
+</div>
+</div></section>
+
+<!-- §04 CUSTOMERS · GLOBAL -->
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Global customers</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-2" style="color: var(--ink);">Brands building on the Fynd stack · Global.</h2>
+<p class="text-sm mb-6 max-w-2xl" style="color: var(--ink-muted);">A sample of brands and businesses using Fynd platforms commercially worldwide.</p>
+<div class="card overflow-hidden p-4" style="background: var(--bg-soft);">
+  <img src="/assets/organisation/external-customers-global.png" alt="Fynd global customer logos · Hugo Boss · Choithrams · Reebok · Vividflair · August Society · Pizza Hut · Lacoste · Splash · Eyewa · Oakley · Asters · Saturdays · Abuissa · Coach · FaC · Femi9 · Mothercare · MAP · Beyond the Beach · Al Boom Marine · Surtee Group · Nice" loading="lazy" style="display: block; width: 100%; height: auto;" />
+</div>
+</div></section>
+
+<!-- §05 LEARN MORE -->
+<section class="py-10 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Learn more</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-2" style="color: var(--ink);">Browse the commercial book.</h2>
+<p class="text-base mb-6 max-w-2xl" style="color: var(--ink-muted);">Customer wins, case studies, product pages, pricing, and the public commerce platform · all live on the Fynd public site.</p>
+<a href="https://www.fynd.com" target="_blank" rel="noopener" class="ext-cta" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; background: var(--ink); color: white; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 14px;">Open fynd.com →</a>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+}
+
+let DATA = null;
+
+function renderTracks() {
+  const ext = (DATA.pivot || []).filter(p => p.tier === "external");
+  const allTracks = ext.flatMap(p => p.tracks).sort((a, b) => b.count - a.count);
+  const max = allTracks.reduce((m, t) => Math.max(m, t.count), 0);
+  const total = allTracks.reduce((s, t) => s + t.count, 0);
+  const body = document.getElementById("ext-track-body");
+  body.innerHTML = allTracks.map(t => {
+    const widthPct = max > 0 ? Math.round(t.count / max * 100) : 0;
+    const sharePct = total > 0 ? (t.count / total * 100).toFixed(1) : "0";
+    const isExternal = t.trackRoute && /^https?:\/\//i.test(t.trackRoute);
+    const linkAttrs = isExternal ? ` target="_blank" rel="noopener"` : "";
+    const nameHtml = t.trackRoute
+      ? `<a href="${t.trackRoute}"${linkAttrs}>${escapeHtml(t.track)}${isExternal ? " ↗" : ""}</a>`
+      : escapeHtml(t.track);
+    const drillHref = `/organisation/directory?track=${encodeURIComponent(t.track)}`;
+    return `<div class="trk-row">
+      <div class="trk-name">${nameHtml}</div>
+      <div class="trk-count">${t.count}</div>
+      <div><div class="trk-bar"><div class="trk-bar-fill" style="width: ${widthPct}%"></div></div><div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); margin-top: 2px;">${sharePct} %</div></div>
+      <div><a class="trk-link" href="${drillHref}">→ directory</a></div>
+    </div>`;
+  }).join("");
+}
+
+function renderLeadBlock() {
+  const root = document.getElementById("ext-lead-block");
+  // projectLeads["External Commercialization"] may be a single object (legacy
+  // shape) or an array of co-leads (round 3 follow-up · founder + 2 CBOs).
+  const raw = DATA.leaders && DATA.leaders.projectLeads
+    ? DATA.leaders.projectLeads["External Commercialization"]
+    : null;
+  const leads = Array.isArray(raw) ? raw : (raw ? [raw] : []);
+  if (!leads.length) {
+    root.innerHTML = `<div class="card p-5" style="color: var(--ink-muted); font-style: italic;">Leadership pending confirmation.</div>`;
+    return;
+  }
+  const cards = leads.map(lead => {
+    const display = lead.displayName || lead.name;
+    return `<div class="card p-5">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 6px;">LEAD${lead._uncertain ? " · pending confirmation" : ""}</div>
+      <div style="font-weight: 600; font-size: 18px; color: var(--ink);">${escapeHtml(display)}</div>
+      <div style="font-size: 13px; color: var(--ink-muted); margin-top: 2px;">${escapeHtml(lead.title || "")}</div>
+      ${lead.scope ? `<div style="font-size: 13px; color: var(--ink); margin-top: 8px; line-height: 1.5;">${escapeHtml(lead.scope)}</div>` : ""}
+    </div>`;
+  }).join("");
+  // Inline grid style · dynamic column counts that don't rely on Tailwind JIT.
+  root.innerHTML = `<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">${cards}</div>`;
+}
+
+async function boot() {
+  const r = await fetch("/organisation/data.json");
+  DATA = await r.json();
+  renderTracks();
+  renderLeadBlock();
+}
+
+boot().catch(err => {
+  console.error(err);
+  document.getElementById("ext-track-body").innerHTML = `<div style="padding: 24px; color: #b91c1c;">Failed to load data.json · ${escapeHtml(err.message)}</div>`;
+});
+</script>
+
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

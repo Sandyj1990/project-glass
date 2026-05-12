@@ -1,0 +1,21 @@
+{
+  "slug": "swap-easy",
+  "name": "SwapEasy",
+  "tagline": "Reliance Digital trade-in \u00b7 625 stores live \u00b7 \u20b91.5 Cr Month-1 \u00b7 ~\u20b914K AOV.",
+  "track": "jcp",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "electronics"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/jcp#swap-easy",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

@@ -1,0 +1,81 @@
+{
+  "audit_subject": "v0.9.3 Google Cloud Next '26 keynote additions across two pages",
+  "pages": ["kaily/index.html (v0.9.3)", "jcp/cataloging/index.html (v0.9.0)"],
+  "spec": "docs/kaily-spec.md (D6 added) · /jcp/cataloging has no formal spec",
+  "source_compilation": "User-supplied Slack/announcement post (primary) · Google Cloud Next '26 opening keynote video (https://www.youtube.com/live/11PBno-cJ1g?t=4843) · existing Kaily Master Deck + Accenture deck (background)",
+  "audit_date": "2026-05-01",
+  "audit_type": "post-feature audit · scoped to v0.9.3 deltas in commit ec8ce87",
+  "score": 90,
+  "grade": "A-",
+  "weighted_pass": true,
+  "dimensional_pass": true,
+  "verdict": "PASS — ready to share with Apex. The keynote-recognition content faithfully reflects the source post (birthday-party intent, Gemini multimodal, 40M+ images, structured attributes, customer-deployment showcase framing). All 16 Fynd ICs named in the source post correctly excluded from page bodies per the no-Fynd-IC-in-subheads rule (D5). Cross-page consistency holds — home, catalog, and autonomous all carry consistent JIIA / Google Cloud Next refs. CDN images return HTTP 200. Two minor findings: 'unlocks' filler verb in cataloging §03 (HIGH per banned-vocab §7) and a slight Reach-scope overclaim in the cataloging cross-channel card (MEDIUM).",
+  "dimensions": {
+    "source_traceability":   {"score": 92, "threshold": 75, "pass": true, "note": "Birthday-party intent example, Gemini multimodal pipeline, 40M+ images, attributes (colour, aroma, net quantity, occasion/intent fit on /kaily; colour, style, material, usage context on /jcp/cataloging), customer-deployment showcase logos (Vodafone, CME, Macquarie Bank, Colgate-Palmolive, Citi) — all faithful to the source Slack post and visible in the keynote screenshot. YouTube timestamp t=4843 verified. Two CDN images verified HTTP 200."},
+    "tone_of_voice":         {"score": 82, "threshold": 80, "pass": true, "note": "Passes by 2 points. New §03 cataloging carries 'What this unlocks' header — 'unlocks' is in tone-of-voice §7 banned filler verbs (HIGH · F1). Pre-existing line 351 cataloging carries 'today' (LOW · F4 · not introduced by this commit). All other banned vocab clean. Date format DD-MMM-YYYY consistent. Reliance/Fynd entity casing correct. No emojis, no exclamation marks. All 16 Fynd ICs from the source post correctly excluded from page bodies — verified via grep."},
+    "honesty_register":      {"score": 88, "threshold": 80, "pass": true, "note": "JIIA pill 'Live · JPL · JioMart' verified. Cataloging pill 'Live · keynote 29-Apr-2026' is honest — qualifies the Live state to the keynote moment, not the cross-channel rollout. One MEDIUM finding (F2): the Reach card claims 'One enriched catalog layer feeds Reliance Digital · JioMart · Tira · AJIO · Netmeds' — the source post phrases this as 'across channels (RD, JioMart, Tira, Ajio, Netmeds, etc.)' which reads more aspirational than current. The page's own §02 confirms only Tira × Akind as Live; the broader 5-channel rollout is the destination, not today's state. Worth softening."},
+    "structural_compliance": {"score": 95, "threshold": 85, "pass": true, "note": "/kaily section labels contiguous §01 → §07. /jcp/cataloging contiguous §01 → §04 after Methodology renumber. Standard chrome present on both (nav, crumb, version pills v0.9.3 + v0.9.0, footer, auth.js, Tailwind, style.css). 4-card 'What's on this page' nav added on cataloging matches new section. /jcp/cataloging has no formal spec — minor LOW (F5)."},
+    "visual_completeness":   {"score": 92, "threshold": 85, "pass": true, "note": "Both CDN images return HTTP 200 (verified via curl). Image alt-text descriptive and matches captions. No new images on /jcp/cataloging (intentional — the section is text-only; the visual evidence lives on /kaily §05). Live dev-server render check still skipped pending verify run; default cap of 92."},
+    "cross_page_consistency":{"score": 94, "threshold": 70, "pass": true, "note": "Verified consistent across surfaces: index.html:356 (JIIA · Google Cloud Next '26 keynote · Gemini · 40M+ images), catalog/index.html:147 (JIIA · Gemini multimodal · 40M+ catalog images indexed · Live · JioMart app · Google Cloud Next '26 keynote 29 - Apr - 2026 · full team list), autonomous/index.html:355 (JIIA Gemini multimodal · 40M+ catalog images indexed · Google Cloud Next '26 keynote 29 - Apr - 2026). The Lead-Ashish-Chandorkar + 8-name JIIA team correctly lives on the catalog row only — that's the canonical register-wide DRI surface per D5. New /kaily ↔ /jcp/cataloging cross-link works in both directions."}
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "/jcp/cataloging §03 line 435",
+      "issue": "'What this unlocks' header uses 'unlocks' — listed in tone-of-voice §7 banned filler verbs ('empowers, enables, unlocks, drives, facilitates, leverages, harnesses'). Replace with the actual outcome verb.",
+      "fix": "Change 'What this unlocks' → 'What this changes' or 'What this delivers'. Mechanical one-string replacement.",
+      "files": ["jcp/cataloging/index.html:435"],
+      "auto_fixable": true
+    },
+    {
+      "id": "F2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "/jcp/cataloging §03 Reach card line 431",
+      "issue": "'One enriched catalog layer feeds Reliance Digital · JioMart · Tira · AJIO · Netmeds — same attributes, same vocabulary, same channel-agnostic API.' implies all 5 channels are live on the same enriched layer. The page's own §01-§02 only confirms Tira × Akind as Live + Netmeds and Reliance Digital as measured (not yet live on the new pipeline). The source post phrases this as scope/destination ('across channels … etc.') not present-tense reality across all 5.",
+      "fix": "Soften to 'Designed to feed Reliance Digital · JioMart · Tira · AJIO · Netmeds — Tira × Akind live; broader rollout in flight.' OR add a status line under the card: 'Live · Tira × Akind. Measured · Netmeds, Reliance Digital. Roadmap · JioMart, AJIO at-scale.'",
+      "files": ["jcp/cataloging/index.html:431"],
+      "auto_fixable": false
+    },
+    {
+      "id": "F3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "/jcp/cataloging §02 line 351",
+      "issue": "'The Tira team consumes the enriched attributes in production today' — 'today' is in tone-of-voice §7 banned marketing closers ('the future is now, ready for what's next, tomorrow, today'). Pre-existing prose, not introduced by this commit, but flagged for register hygiene.",
+      "fix": "Replace 'in production today' → 'in production' (drop 'today') OR 'in production · live since release-noted milestone'.",
+      "files": ["jcp/cataloging/index.html:351"],
+      "auto_fixable": true
+    },
+    {
+      "id": "F4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "/jcp/cataloging — no formal spec",
+      "issue": "Page now carries 4 sections + new Showcased section but has no docs/jcp-cataloging-spec.md to record §3 page structure or §9 Decisions for future audits to check against.",
+      "fix": "Optional: write a brief docs/jcp-cataloging-spec.md capturing the 4-section structure and noting D1: §03 Showcased added 2026-05-01 from Google Cloud Next '26 keynote source post.",
+      "files": ["docs/ (new spec file)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "X1",
+      "severity": "INFO",
+      "dimension": "visual_completeness",
+      "section": "page-wide",
+      "issue": "Visual phase not run against a live dev server (no Chrome DevTools render check on either page).",
+      "fix": "Optional follow-up: spin dev server, bypass auth via sessionStorage, take desktop + mobile screenshots of /kaily §05 (with two embedded keynote shots) and /jcp/cataloging §03.",
+      "files": ["kaily/index.html", "jcp/cataloging/index.html"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Birthday-party intent example renders the keynote moment legibly — 'help me plan a birthday party' → category quick-picks → ready-to-buy bundle is exactly what the screenshot shows; copy and image reinforce each other.",
+    "All 16 Fynd ICs named in the source Slack post (Sumit Dafda, Chandrachud Ingale, Punit Kalro, Shreyash, Abhay, Sukhpreet, Raj Pratap, Kapil, Manish Kumar, Bijan Kundu, Abhishek Gupta, Shubham Negi, Abhishek Jain, Shriyash, Ashish Chandorkar, plus Farooq/SMG/Jigar/Advait) correctly excluded from page bodies — verified via grep — fully compliant with D5 and tone-of-voice §6.",
+    "Two CDN-hosted screenshots (gs://impetus-socialpilot/rrl-portfolio/assets/kaily/google-cloud-next-26/) follow the established socialassets convention; both return HTTP 200 with descriptive alt-text and captions.",
+    "Cross-link between /kaily §05 and /jcp/cataloging §03 wired in both directions — the 'foundation enables product' narrative (catalog enrichment → JIIA) is navigable both ways without duplication.",
+    "Customer-deployment-logos screenshot anchors the 'one of a handful' showcase claim concretely — Apex sees Reliance Retail next to Vodafone, CME, Macquarie Bank, Colgate-Palmolive, Citi rather than taking it on faith.",
+    "Cross-page numbers consistent: 40M+ images, Google Cloud Next '26 keynote 29-Apr-2026, JIIA team on catalog row — verified across home, catalog, autonomous, kaily."
+  ]
+}

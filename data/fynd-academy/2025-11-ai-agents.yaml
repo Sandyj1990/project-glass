@@ -1,0 +1,24 @@
+# Path: data/fynd-academy/2025-11-ai-agents.yaml
+# Source: docs/fynd-academy-compilation/oct-nov-2025/session-description
+
+slug: 2025-11-ai-agents
+title: AI Agents & Agentic AI
+date: 2025-11-12
+status: delivered
+
+source_folder: docs/fynd-academy-compilation/oct-nov-2025/
+source_citation: "session-description (md) — second session"
+
+audience: RIL Industries L&D
+venue: Online
+format: online
+headcount: "250+"
+ratings:
+  overall_satisfaction: 4.4
+
+summary: |
+  Follow-up to the October session. Covered the evolution from traditional AI
+  agents to agentic workflows, with live retail-focused demonstrations of
+  enterprise automation and decision-making.
+
+photos: []

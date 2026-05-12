@@ -1,0 +1,9 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: channels
+    label: Marketplace channels
+    value: 50+
+    definition: Amazon · Flipkart · Myntra · Tata CLiQ · etc.
+    source: Konnect ops
+    confidence: live

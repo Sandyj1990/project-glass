@@ -1,0 +1,11 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+production_urls:
+  - url: "https://www.jiomart.com"
+    label: JioMart
+  - url: "https://www.ajio.com"
+    label: AJIO
+  - url: "https://www.tirabeauty.com"
+    label: Tira
+  - url: "https://www.netmeds.com"
+    label: Netmeds

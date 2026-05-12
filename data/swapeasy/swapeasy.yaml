@@ -1,0 +1,133 @@
+# SwapEasy · single-page section data
+# Body content is verbatim from docs/swapeasy-notes-compilation/SwapEasy_APEX_Board_Note.docx (May 2026).
+# Metrics refreshed from docs/swapeasy-notes-compilation/Re-Commerce MBR-Feb'26.pptx + Feb '26 business update screenshots.
+# No paraphrasing. No marketing voice. See docs/swapeasy-spec.md.
+
+slug: swapeasy
+title: SwapEasy
+status: live
+date: 2026-05-01
+source_folder: docs/swapeasy-notes-compilation/
+source_citation: "Re-Commerce MBR · Feb 2026 · Ashish Chandorkar (Fynd · CPO JCP) → Reliance APEX Board"
+ril_counterpart: Varun Dhanuka
+
+hero:
+  section_label: "SPECIAL PROJECT · SWAPEASY · LIVE"
+  h1: "SwapEasy."
+  cap_num: "Live · Feb 2026 monthly business review"
+  pills:
+    - {kind: live,   text: "Live · 625 Reliance Digital + 983 My Jio Store outlets · ₹3.23 Cr Feb '26"}
+    - {kind: build,  text: "Building · network attach 1.4% → 5%+ · Liquidation Partner rebalance · live dashboards"}
+    - {kind: phase2, text: "Roadmap · laptops · tablets · TVs · home & living · omnichannel"}
+  stats:
+    - {label: "Network coverage",     number: "625 Reliance Digital + 983 My Jio Store",  context: "90%+ of Reliance Digital network"}
+    - {label: "Feb '26 exchanges",    number: "2,881",              context: "Jan '26 peak 4,681 · 6-month run rate"}
+    - {label: "Avg exchange value",   number: "~₹11,197",           context: "Apple ₹18,495 · stable across cohorts"}
+    - {label: "Liquidation partners", number: "41 onboarded",       context: "15 actively rotating · ~₹85 L wallet"}
+
+status_strip:
+  date_eyebrow: "Feb 2026"
+  live:
+    - "625 Reliance Digital stores live (90%+ of network)"
+    - "983 My Jio Store outlets active"
+    - "₹3.23 Cr exchange value Feb '26 · ₹4.69 Cr Jan '26 peak (SAP-traceable)"
+    - "41 Liquidation Partners · ~₹85 L wallet · 15 rotating"
+    - "Apple 16+ Oct '25 attach 10.5% (top stores 15–20%)"
+  building:
+    - "Activate 179 Reliance Digital + 884 My Jio Store non-transacting outlets (Feb '26)"
+    - "Network attach 1.4% → 5%+"
+    - "Liquidation Partner rebalance · 26 of 41 stuck"
+    - "Brand bump-up · Samsung, OnePlus, Xiaomi"
+    - "Live format/store/brand dashboards"
+    - "Pilot 50 stores · new electronics"
+  roadmap:
+    - "Phase 1: laptops, tablets, smartwatches, TVs"
+    - "Phase 2: home & living, kitchenware, online omnichannel"
+    - "Multi-Liquidation Partner bidding engine"
+    - "Auto reconciliation + Liquidation Partner ledger"
+    - "ML fraud + tampering detection"
+    - "Brand-funded bump-up engine (programmable)"
+  readout: "Stores that adopt SwapEasy sell more. Feb '26 data: stores with >5% exchange attach show 23–37% higher ASP across 5 months · February platform uplift strengthened to 41%, the highest signal across all 5 months. The constraint is adoption discipline, not platform capability."
+
+modules:
+  source: "Source · Re-Commerce MBR · Feb 2026"
+  rows:
+    - {module: "Mobile exchange (customer)",   status: live,       scope: "Reliance Digital + My Jio Store in-store counters",      outcome: "2,881 exchanges Feb '26 · 4,681 Jan '26 peak"}
+    - {module: "POS-applied exchange credit",  status: live,       scope: "All transacting stores",          outcome: "₹3.23 Cr SAP-traceable revenue Feb '26"}
+    - {module: "Liquidation Partner orchestration & wallet",    status: live,       scope: "41 partners across zones",        outcome: "~₹85 L wallet under management"}
+    - {module: "Brand-funded bump-up",         status: live_pilot, scope: "Apple 16+ on transacting Reliance Digital",     outcome: "10.5% attach (top stores 15–20%)"}
+
+how_it_works:
+  closer: "One spine — diagnostic → quote → POS → Liquidation Partner — reused for every category the platform expands into (§06 roadmap)."
+  steps:
+    - n: 1
+      h: "Counter sign-in"
+      body: "Customer enters in-store; SwapEasy auto-binds the My Jio Store address. Promo banner offers up to ₹8,000 bonus on the day's bump-up SKU."
+      asset: "/assets/swapeasy/01-counter-signin.jpg"
+    - n: 2
+      h: "Pick brand and model"
+      body: "8 OEMs visible by default (Vivo, Tecno, Samsung, Realme, POCO, OPPO, Nothing, Nokia); search for any other model."
+      asset: "/assets/swapeasy/02-brand-select.jpg"
+    - n: 3
+      h: "Get a quote"
+      body: "Standardised diagnostic returns a fair-market quote — example: Apple iPhone 17 Pro Max (12 GB / 512 GB) → ₹1,05,500. Get Exact Value runs the full diagnostic; otherwise the quoted ceiling stands."
+      asset: "/assets/swapeasy/03-quote.jpg"
+    - n: 4
+      h: "POS credit applied"
+      body: "Approved exchange value is applied as credit at the SAP point-of-sale terminal; new device walks out the same visit. SAP captures the uplift as incremental revenue."
+      asset: null
+    - n: 5
+      h: "Liquidation Partner routing & reconcile"
+      body: "Old device is routed to the highest-bidding liquidation partner active in that zone, with a 3-day pickup SLA, full ledger entry, and audit trail (operator surface in §04)."
+      asset: null
+
+console:
+  source: "Source · operator screenshots · 01-May-2026"
+  shots:
+    - h: "Exchanges queue"
+      body: "List of Exchange Orders · 10-status pipeline from Confirmed through RVP Delivered. Sales channels include Reliance Digital and Digital Mobile Stores. Bump Up On / Off filters scope to brand-funded campaigns."
+      asset: "/assets/swapeasy/04-admin-exchanges.jpg"
+    - h: "Transactions ledger"
+      body: "Per-Liquidation Partner closing balance reconciled on every confirmed exchange. Bulk upload + bulk bump-up upload for catalogue refresh. Manually Debit-Credit Amount for ad-hoc adjustments. Order status closes the loop back to the Exchanges queue."
+      asset: "/assets/swapeasy/05-admin-transactions.jpg"
+
+in_flight:
+  source: "Source · Re-Commerce MBR · Feb 2026"
+  cards:
+    - {h: "Network-wide adoption",     body: "Activate the 179 Reliance Digital + 884 My Jio Store outlets that have not yet transacted (Feb '26). SAP-MIS daily flow into store dashboards. Field engagement by store.",        outcome: "Network attach rate from ~1.4% → 5%+."}
+    - {h: "Liquidation Partner ecosystem health",       body: "Rebalance device flow to under-utilised Liquidation Partners (26 of 41 stuck). Enforce 3-day pickup SLA. Clear state-wise pickup pendency (currently 333 units).", outcome: "100% of Liquidation Partners actively rotating capital."}
+    - {h: "Brand bump-up programs",    body: "Replicate the Apple 16+ playbook with Samsung, OnePlus, Xiaomi for festive / Q4. Brand-funded top-ups directly on platform.",                      outcome: "3 brand programs live · double-digit attach on focus SKUs."}
+    - {h: "Live dashboards",           body: "Replace manual weekly emails with real-time format-, store-, and brand-level dashboards for leadership.",                                          outcome: "Single source of truth · dashboards live."}
+    - {h: "New-electronics expansion", body: "Begin diagnostic & grading framework for laptops, tablets, smartwatches and TVs. Identify pilot stores and first Liquidation Partner cohort.",                      outcome: "Pilot category live in 50 stores."}
+
+roadmap:
+  phase_1:
+    title: "Phase 1 · Beyond Mobiles, Within Electronics (Months 1–4)"
+    rows:
+      - {h: "Laptops & tablets",              body: "Highest near-term revenue lever after mobiles. Component-level diagnostics (battery health, screen, keyboard, ports) and zone-specific grading. Refurbisher Liquidation Partners onboarded with category capability."}
+      - {h: "Smartwatches & wearables",       body: "Lower-ticket but high-volume. Bundle exchange offers with new device sales."}
+      - {h: "TVs & large appliances",         body: "Reuse the Delivery-Partner doorstep QC flow already designed for online exchanges. Integrate with existing Reliance Digital home-delivery network."}
+  phase_2:
+    title: "Phase 2 · Beyond Electronics (Months 4–6+)"
+    rows:
+      - {h: "Home & living",                  body: "Furniture, décor and kitchenware exchange. Buy-back partners differ (re-furnishers, charities, secondary marketplaces); the quote-grade-orchestrate spine holds."}
+      - {h: "Kitchenware & small appliances", body: "High-attach categories at JioMart, Reliance Smart and Trends Home — opens a re-commerce flywheel across formats."}
+      - {h: "Online + omnichannel exchange",  body: "Doorstep diagnostics and re-quote logic to bring exchange to AJIO, JioMart and Reliance Digital online journeys. Completes the omnichannel loop."}
+  platform_investments:
+    title: "Platform & capability investments (parallel)"
+    bullets:
+      - "Multi-Liquidation Partner bidding engine — competitive quotes per device, per zone, in real time."
+      - "Automated reconciliation, Liquidation Partner ledger and accounting (replacing manual settlement)."
+      - "ML-based fraud and tampering detection at pickup and Liquidation Partner receipt."
+      - "Brand-funded bump-up engine, programmable per SKU, region and season."
+
+vision:
+  paragraphs:
+    - "SwapEasy's destination is not a feature, nor a category vertical. It is the re-commerce operating system that sits underneath every Reliance retail format — wherever a customer has something old to trade, and wherever a partner has the appetite to buy it back."
+    - "At scale: any customer, in any Reliance store or app, across any category, can scan, get a fair quote, see brand-funded top-ups, and walk out with a new product — with the old item routed to the highest-bidding partner in their zone, fully reconciled and audited."
+    - "Strategic value to the group:"
+    - "  - ~5% format-revenue uplift at maturity"
+    - "  - 8–10% margin on resale vs ~5% on new"
+    - "  - Richer first-party data on upgrade cycles, brand affinity and price sensitivity"
+    - "  - Defensible moat as India's organised re-commerce category formalises"
+    - "  - B2B platform asset JCP can extend to non-Reliance retailers in time"

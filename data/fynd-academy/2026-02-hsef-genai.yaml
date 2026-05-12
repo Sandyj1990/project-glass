@@ -1,0 +1,30 @@
+# Path: data/fynd-academy/2026-02-hsef-genai.yaml
+# Source: docs/fynd-academy-compilation/feb-2026/description
+
+slug: 2026-02-hsef-genai
+title: GenAI Series · Session 1 of 3 · HSEF
+date: 2026-02-16
+status: delivered
+
+source_folder: docs/fynd-academy-compilation/feb-2026/
+source_citation: "description (md) + 2 session photos"
+
+audience: HSEF
+venue: RCP
+format: in-person
+headcount: "~50"
+ratings: null
+series: "1 of 3"
+
+summary: |
+  First session of a three-part GenAI series with the HSEF team. Covered AI
+  fundamentals, agentic AI concepts, structured prompting, and responsible AI
+  usage. Hands-on demos across Gemini, Claude, ChatGPT, and Microsoft Copilot.
+  Deep-dive on Microsoft Copilot for productivity and workflow acceleration,
+  given HSEF's existing Copilot licences.
+
+photos:
+  - src: /assets/fynd-academy/2026-02-hsef-genai/01-session.jpg
+    caption: Session at RCP
+  - src: /assets/fynd-academy/2026-02-hsef-genai/02-session.jpg
+    caption: Hands-on segment

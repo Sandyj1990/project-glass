@@ -1,0 +1,51 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: channels_total
+    label: Channels on JCP
+    value: 78
+    definition: B2C and B2B channels migrated or migrating
+    source: JCP Migration Tracker · 21 - Feb - 2026
+    confidence: audited
+  - id: channels_live
+    label: Channels Live
+    value: 68
+    definition: Customer using it today
+    source: JCP Migration Tracker
+    confidence: audited
+  - id: channels_pilot
+    label: Channels Pilot
+    value: 5
+    definition: UAT or single-store live
+    source: JCP Migration Tracker
+    confidence: audited
+  - id: channels_build
+    label: Channels Build
+    value: 5
+    definition: In active engineering
+    source: JCP Migration Tracker
+    confidence: audited
+  - id: peak_orders_per_hour
+    label: Peak orders / hour
+    value: 350K
+    definition: Architecture-tested through flash sale, IPL, EOSS
+    source: JCP load testing
+    confidence: tested
+  - id: orders_per_min_peak
+    label: Orders / min · peak
+    value: 50K+
+    definition: Sustained peak
+    source: JCP ops
+    confidence: audited
+  - id: customers_served
+    label: Customers served
+    value: 300M+
+    definition: Active customers on JCP-routed flows
+    source: UCP analytics
+    confidence: live
+  - id: uptime_fy26
+    label: Uptime FY26
+    value: 99.9%
+    definition: JioMart at 1.6M daily orders
+    source: JCP SRE
+    confidence: audited

@@ -1,0 +1,77 @@
+slug: kio
+title: Kio
+status: live
+date: 2026-05-01
+source_folder: docs/kio-notes-compilation/
+source_citation: "Fynd Kio.pptx · 16 slides · extracted 01-May-2026"
+
+hero:
+  eyebrow: "Track · Physical AI · Self-checkout hardware"
+  h1: "Kio."
+  subhead: |
+    Self-checkout kiosk hardware for retail. Pilot live at Malad; 168 units locked
+    for Reliance Retail Fashion Factory rollout (FY26-27).
+    3× faster than manned POS. Built on Fynd Swift Module for OTA fleet management.
+  pills:
+    - { kind: live, text: "Live · Pilot Malad · production hardware" }
+    - { kind: build, text: "Building · Fashion Factory rollout · 168 units · FY26-27" }
+    - { kind: roadmap, text: "Roadmap · Beauty + Grocery vertical pilots" }
+
+stats:
+  - { label: "Pilot stores", value: "Malad", context: "live · production hardware" }
+  - { label: "Locked units", value: "168", context: "Fashion Factory · FY26-27" }
+  - { label: "Verticals", value: "3", context: "Fashion · Beauty · Grocery" }
+
+modules:
+  - name: "Kio Series hardware"
+    status: live
+    dri: "Salman Saudagar · Naveen"
+    outcome: "FKAP1 + FKAP2 platforms · 4 model variants · 21.5″ FHD touch · 3× faster checkout vs manned POS"
+  - name: "Fynd Swift Module"
+    status: live
+    dri: "Robotics team"
+    outcome: "OTA fleet management · firmware push · diagnostics · running across deployed fleet"
+  - name: "SnacAdda · internal lab"
+    status: live
+    dri: "Bharat K · Aarav · Lalit · Smit · Adnan"
+    outcome: "WeWork Andheri Mumbai · 50+ items/min · FSM diagnostics + OTA validated · live shopping rig"
+
+variants:
+  - { name: "Wall Mounted", img: "/assets/kio/03-variant-wall.jpg", note: "Wall-fixed · space-efficient · queue-busting" }
+  - { name: "Standing", img: "/assets/kio/04-variant-standing.jpg", note: "Floor-standing · printer + scanner integrated" }
+  - { name: "Tabletop", img: "/assets/kio/05-variant-tabletop.jpg", note: "Counter-mounted · tilt-adjustable · compact" }
+  - { name: "Bin Kiosk", img: "/assets/kio/06-variant-bin.jpg", note: "Volumetric RFID bin variant · 40-100L · for fashion bulk drop-off checkout" }
+
+architecture:
+  - { layer: "Layer 01 · Edge compute", status: live, h: "FKAP1 + FKAP2 SoC", body: "Cortex-A55 / A76 cores · NPU 1-6 TOPS · Android 13/14 + Linux. On-device barcode + RFID processing." }
+  - { layer: "Layer 02 · Display", status: live, h: "21.5″ FHD touch", body: "Capacitive touch · 1920×1080 · IPS LCD · 500 nits · 178°/178° viewing · 20° tilt." }
+  - { layer: "Layer 03 · Peripherals", status: live, h: "Modular per-store", body: "2D CMOS barcode (EAN/UPC/Code128/PDF417/QR) · 80mm thermal printer · multi-colour status LED · camera module · POS-terminal mount · RFID hard-tag remover (EAS) + pin collector + 40-100L RFID bin." }
+  - { layer: "Layer 04 · Software", status: live, h: "StoreOS + Swift Module + FSM", body: "StoreOS sync (real inventory + pricing) · Fynd Swift Module for OTA firmware + remote diagnostics · FSM (Field Service Management) for service cycles." }
+
+specs_compute:
+  - [Component, FKAP1, FKAP2]
+  - [CPU, "Quad-core 64-bit Cortex-A55 @ 2.0 GHz · NPU 1 TOPS", "Octa-core (4× Cortex-A76 @ 2.4 GHz + 4× Cortex-A55 @ 1.8 GHz) · NPU 6 TOPS"]
+  - [GPU, "Mali-G52 2EE", "Mali-G610 MC4"]
+  - [RAM, "8 GB LPDDR4", "8 GB LPDDR4/4x"]
+  - [Storage, "64 GB eMMC", "64 / 128 GB eMMC"]
+  - [OS, "Android 14 · Linux", "Android 13 · Linux"]
+  - [Connectivity, "1× 1000M Ethernet · 2.4 GHz Wi-Fi · BT 5.2 · mini-PCIe (4G)", "1× 1000M + 1× 100M Ethernet · 5G via M.2 · 2.4 GHz Wi-Fi · BT"]
+
+specs_display:
+  - [Spec, Value]
+  - [Display, "21.5″ diagonal · capacitive touch"]
+  - [Resolution, "1920 × 1080 (FHD)"]
+  - [Display type, "IPS LCD"]
+  - [Brightness, "500 nits"]
+  - [Contrast, "1000 : 1"]
+  - [Tilt, "20° adjustable"]
+  - [Viewing angle, "178° / 178°"]
+  - [Power input, "100 - 240V AC · 50/60 Hz"]
+  - [Power draw, "50 W"]
+  - [Operating temperature, "10°C - 65°C"]
+
+specs_peripherals:
+  - [Component, Spec]
+  - [Barcode scanner, "2D CMOS imager · 60° FOV · 250 mm ±10% working range · EAN/UPC/Code128/PDF417/DataMatrix/QR"]
+  - [Status LED, "Multi-colour (Red · Green · Blue · Yellow)"]
+  - [Printer, "80 mm thermal · auto-cutter · 1.5-2.0 m print length"]

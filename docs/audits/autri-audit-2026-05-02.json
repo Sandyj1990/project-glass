@@ -1,0 +1,48 @@
+{
+  "page": "autri/index.html",
+  "spec": "docs/autri-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_round": 2,
+  "score": 95,
+  "grade": "A",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 98,
+    "source_traceability": 92,
+    "tone_of_voice": 94,
+    "honesty_register": 95,
+    "visual_completeness": 95,
+    "cross_page_consistency": 95
+  },
+  "findings_resolved": [
+    {"id": "C1", "fix": "Autri → AutRi (~30 occurrences) replaced via Edit replace_all"},
+    {"id": "C2", "fix": "Gmetri → GMetri (14 occurrences) replaced via Edit replace_all"},
+    {"id": "H1", "fix": "Hero subhead trimmed from 49 → 27 words (under 30-word cap per tone §5)"},
+    {"id": "H2", "fix": "Command Center → Command Centre (12 text occurrences); architecture-diagram JPEG left intact"},
+    {"id": "H3", "fix": "Necleus typo fixed at line 479 → Nucleus"},
+    {"id": "H4", "fix": "§10 Sources trimmed from 4 cards to 2 (Primary brief + Narrative anchor); operator-surface and diagram-restate cards merged into the Primary brief body copy"},
+    {"id": "M1", "fix": "Mega-menu link text 'Autri' → 'AutRi' swept across 60 sibling HTML files; register-wide consistency restored. Final tally: 95 AutRi / 0 Autri / 17 GMetri / 0 Gmetri."},
+    {"id": "M2", "fix": "Hero eyebrow trimmed: 'Recent Innovations · Agentic Planogram Compliance · Grocery' (Fynd Nucleus moved to status pill, not lost)"},
+    {"id": "M3", "fix": "§01 'tells someone to fix what's off' → 'manually raises the fix request'"},
+    {"id": "L1", "fix": "Resolved transitively by C1"},
+    {"id": "L3", "fix": "Spec §3 page-structure table updated to reflect trimmed §10 with audit reference"}
+  ],
+  "findings_remaining": [
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "issue": "§02 image captions slightly chatty ('useful, but the human still has to read it')",
+      "fix": "Optional polish; leaving as-is — register voice still intact",
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Honesty contract — Pilot/Building/Roadmap pills mirror the source's §3.1-vs-§3.2 split",
+    "Source traceability — every number traces to the 21-Apr-2026 brief or the home-grid card",
+    "Section ordering canonical and contiguous; deviations documented in spec §9",
+    "Visual completeness — all 8 diagrams + screenshots 200, lightbox works, only Tailwind dev warning",
+    "No emojis, no exclamations, no Fynd self-praise, no first-person",
+    "Brand-name canonicalisation now consistent across the entire register (60 sibling pages updated)"
+  ]
+}

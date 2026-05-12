@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SwapEasy · In-Store Re-Commerce Platform · Reliance Retail × Fynd</title>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+/* In-page section nav */
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.image-lightbox-frame { max-width: 95vw; max-height: 92vh; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 40px rgba(0,0,0,0.4); }
+.image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
+img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
+img.zoomable:hover { opacity: 0.92; }
+
+/* phone-frame card for portrait in-store screenshots */
+.phone-frame {
+  background: #111; border-radius: 28px; padding: 8px; max-width: 280px; margin: 0 auto;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+}
+.phone-frame img { display: block; width: 100%; height: auto; border-radius: 22px; }
+
+/* numbered step dot */
+.step-dot {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 999px;
+  background: var(--accent); color: white; font-weight: 700; font-size: 14px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Hero -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">SwapEasy</span></div>
+<div class="section-label mb-3">Special Projects · SwapEasy · Live across 625 Reliance Digital + 983 My Jio Store outlets</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">SwapEasy.</h1>
+<p class="text-lg max-w-3xl mb-6" style="color: var(--ink-muted);">Reliance's re-commerce operating system. Live across 625 Reliance Digital + 983 My Jio Store outlets · 2,881 exchanges in Feb '26 · ~₹11,197 average exchange value · 41 liquidation partners.</p>
+
+<div class="flex flex-wrap gap-2 mb-8">
+  <span class="pill pill-live">Live · 625 Reliance Digital + 983 My Jio Store outlets · ₹3.23 Cr Feb '26</span>
+  <span class="pill pill-build">Building · network attach 1.4% → 5%+ · Liquidation Partner rebalance · live dashboards</span>
+  <span class="pill pill-phase2">Roadmap · laptops · tablets · TVs · home & living · omnichannel</span>
+</div>
+
+<div class="cap-num mb-3">Live · Feb 2026 reporting period</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+<div class="card p-4"><div class="cap-num mb-1">Network coverage</div><div class="display-2 text-3xl accent">625 Reliance Digital + 983 My Jio Store</div><div class="text-xs mt-1" style="color: var(--ink-muted);">90%+ of Reliance Digital network</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Feb '26 exchanges</div><div class="display-2 text-3xl accent">2,881</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Jan '26 peak 4,681 · 6-month run rate</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Avg exchange value</div><div class="display-2 text-3xl accent">~₹11,197</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Apple ₹18,495 · stable across cohorts</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Liquidation partners</div><div class="display-2 text-3xl accent">41 onboarded</div><div class="text-xs mt-1" style="color: var(--ink-muted);">15 actively rotating · ~₹85 L wallet</div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+  <div class="story-toc-inner" id="story-toc">
+    <a href="#status">01 · Status</a>
+    <a href="#live">02 · What's live</a>
+    <a href="#how">03 · How it works</a>
+    <a href="#console">04 · Operator console</a>
+    <a href="#in-flight">05 · In flight</a>
+    <a href="#roadmap">06 · Roadmap</a>
+  </div>
+</div>
+
+<!-- §01 · STATUS -->
+<section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Status · Feb 2026</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Running today</div><span class="pill pill-live">Live</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>625 Reliance Digital stores live</strong> · ~90% of network</li>
+<li><strong>983 My Jio Store outlets active</strong> · second format on platform</li>
+<li><strong>₹3.23 Cr exchange value · Feb '26</strong> · SAP-traceable · Reliance Digital ₹2.90 Cr · My Jio Store ₹0.27 Cr · BISMI ₹0.03 Cr · Jan '26 peak ₹4.69 Cr</li>
+<li><strong>41 Liquidation Partners onboarded</strong> · ~₹85 L wallet under management · 15 actively rotating capital</li>
+<li><strong>Apple 16+ pilot · Oct '25</strong> · 10.5% attach on transacting stores · top stores (Seawoods, 8D RCP) 15–20%</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Building · next 60 days</div><span class="pill pill-build">Building</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Network adoption push</strong> · activate 179 Reliance Digital + 884 My Jio Store non-transacting stores (Feb '26) · attach 1.4% → 5%+</li>
+<li><strong>Liquidation Partner rebalance</strong> · 26 of 41 stuck · 3-day pickup SLA · clear 333-unit pickup pendency</li>
+<li><strong>Brand bump-up replication</strong> · Samsung · OnePlus · Xiaomi for festive / Q4</li>
+<li><strong>Live dashboards</strong> · real-time format / store / brand · replaces weekly emails</li>
+<li><strong>New-electronics pilot</strong> · 50 stores · diagnostic + grading framework for laptops, tablets, smartwatches, TVs</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Roadmap · 6 months</div><span class="pill pill-phase2">Roadmap</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Phase 1 · within electronics</strong> · laptops · tablets · smartwatches · TVs & large appliances</li>
+<li><strong>Phase 2 · beyond electronics</strong> · home & living · kitchenware · online + omnichannel exchange</li>
+<li><strong>Multi-Liquidation Partner bidding engine</strong> · competitive quotes per device · per zone · real time</li>
+<li><strong>Auto reconciliation + Liquidation Partner ledger</strong> · replaces manual settlement</li>
+<li><strong>ML fraud + tampering detection</strong> at pickup and Liquidation Partner receipt</li>
+<li><strong>Brand-funded bump-up engine</strong> · programmable per SKU · region · season</li>
+</ul>
+</div>
+
+</div>
+
+<div class="mt-8 card p-5" style="background: var(--bg-soft);">
+<div class="cap-num mb-2">Read-out · Feb '26 data</div>
+<p class="text-base" style="color: var(--ink);"><strong>Stores that adopt SwapEasy sell more.</strong> Stores with &gt;5% exchange attach show 23–37% higher ASP across 5 months · February platform uplift strengthened to 41%, the strongest signal across all 5 months. The constraint is adoption discipline, not platform capability.</p>
+</div>
+</div></section>
+
+<!-- §02 · WHAT'S LIVE -->
+<section id="live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · What's live for Reliance today</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four modules. One transactional spine.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Each module ships as a live surface across the Reliance Digital and My Jio Store in-store estate. Used together as one stack on every transacting counter.</p>
+
+<table class="grid-table">
+<thead>
+<tr><th>Module</th><th>Status</th><th>Live for</th><th>Anchor outcome · Feb '26</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="font-medium">Mobile exchange (customer)</td>
+<td><span class="pill pill-live">Live</span></td>
+<td>Reliance Digital + My Jio Store in-store counters</td>
+<td><span class="mono text-xs">2,881 exchanges Feb '26 · 4,681 Jan '26 peak</span></td>
+</tr>
+<tr>
+<td class="font-medium">POS-applied exchange credit</td>
+<td><span class="pill pill-live">Live</span></td>
+<td>All transacting stores</td>
+<td><span class="mono text-xs">₹3.23 Cr SAP-traceable revenue Feb '26</span></td>
+</tr>
+<tr>
+<td class="font-medium">Liquidation Partner orchestration & wallet</td>
+<td><span class="pill pill-live">Live</span></td>
+<td>41 partners across zones</td>
+<td><span class="mono text-xs">~₹85 L wallet under management</span></td>
+</tr>
+<tr>
+<td class="font-medium">Brand-funded bump-up</td>
+<td><span class="pill pill-live">Live · Apple 16+</span></td>
+<td>Transacting Reliance Digital stores</td>
+<td><span class="mono text-xs">10.5% attach (top stores 15–20%)</span></td>
+</tr>
+</tbody>
+</table>
+</div></section>
+
+<!-- §03 · HOW IT WORKS -->
+<section id="how" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · How it works · 5 steps from counter to cash</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">One spine. Diagnostic → quote → POS → Liquidation Partner.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The same flow used for every mobile exchange today is the flow every category (laptops, TVs, home & living) will reuse as the platform expands (§06 roadmap).</p>
+
+<!-- Steps 1-3 with mobile screenshots -->
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+
+<div class="card p-6">
+<div class="flex items-center gap-3 mb-3"><span class="step-dot">1</span><div class="cap-num">Counter sign-in</div></div>
+<div class="phone-frame mb-4"><img src="/assets/swapeasy/01-counter-signin.jpg" alt="In-store SwapEasy landing · auto-bound to My Jio Store address with Bonus up to ₹8000 promo banner and Mobile category card" class="zoomable" /></div>
+<p class="text-sm" style="color: var(--ink);">Customer enters in-store; SwapEasy auto-binds the My Jio Store address. Promo banner offers up to <strong>₹8,000 bonus</strong> on the day's bump-up SKU.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center gap-3 mb-3"><span class="step-dot">2</span><div class="cap-num">Pick brand and model</div></div>
+<div class="phone-frame mb-4"><img src="/assets/swapeasy/02-brand-select.jpg" alt="Step 1/2 of Exchange Your Mobile · brand picker showing Vivo, Tecno, Samsung, Realme, POCO, OPPO, Nothing, Nokia" class="zoomable" /></div>
+<p class="text-sm" style="color: var(--ink);"><strong>8 OEMs visible by default</strong> (Vivo, Tecno, Samsung, Realme, POCO, OPPO, Nothing, Nokia); search-for-models field for any other brand.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center gap-3 mb-3"><span class="step-dot">3</span><div class="cap-num">Get a quote</div></div>
+<div class="phone-frame mb-4"><img src="/assets/swapeasy/03-quote.jpg" alt="Quote screen · Apple iPhone 17 Pro Max 12 GB / 512 GB returning Get up to ₹1,05,500 with Get Exact Value CTA" class="zoomable" /></div>
+<p class="text-sm" style="color: var(--ink);">Standardised diagnostic returns a fair-market quote. Example: <strong>iPhone 17 Pro Max (12 GB / 512 GB) → ₹1,05,500.</strong> <em>Get Exact Value</em> runs the full diagnostic; otherwise the quoted ceiling stands.</p>
+</div>
+
+</div>
+
+<!-- Steps 4-5 (back-of-house) -->
+<div class="grid md:grid-cols-2 gap-6">
+
+<div class="card p-6">
+<div class="flex items-center gap-3 mb-3"><span class="step-dot">4</span><div class="cap-num">POS credit applied</div></div>
+<p class="text-base" style="color: var(--ink);">Approved exchange value is applied as <strong>credit at the SAP point-of-sale terminal</strong>; new device walks out with the customer the same visit. SAP captures the uplift as incremental revenue (the ₹3.23 Cr Feb '26 figure is the sum of these SAP entries).</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center gap-3 mb-3"><span class="step-dot">5</span><div class="cap-num">Liquidation Partner routing & reconcile</div></div>
+<p class="text-base" style="color: var(--ink);">Old device is routed to the <strong>highest-bidding liquidation partner</strong> active in that zone, with a <strong>3-day pickup SLA</strong>, full ledger entry, and audit trail. The operator surface for this loop ships in §04 below.</p>
+</div>
+
+</div>
+</div></section>
+
+<!-- §04 · DEEP DIVE · OPERATOR CONSOLE -->
+<section id="console" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Deep dive · operator console</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two surfaces from the running platform.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Screenshots from the live SwapEasy operator console. The Exchanges queue closes the customer flow above; the Transactions ledger reconciles every confirmed exchange against the Liquidation Partner wallet. Click any image to enlarge.</p>
+
+<div class="grid md:grid-cols-2 gap-6">
+
+<div class="card overflow-hidden">
+<img src="/assets/swapeasy/04-admin-exchanges.jpg" alt="Operator console · Exchanges queue · 10-status pipeline from Confirmed through RVP Delivered with sales channels filter" class="w-full zoomable" />
+<div class="p-5"><div class="cap-num mb-1">01 · Exchanges queue</div><p class="text-sm" style="color: var(--ink);"><strong>List of Exchange Orders.</strong> 10-status pipeline from Confirmed through RVP Delivered. Sales channels include Reliance Digital and Digital Mobile Stores. <em>Bump Up On / Off</em> filters scope to brand-funded campaigns.</p></div>
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/swapeasy/05-admin-transactions.jpg" alt="Operator console · Transactions ledger · per-Liquidation Partner closing balance with bulk upload and manually debit-credit controls" class="w-full zoomable" />
+<div class="p-5"><div class="cap-num mb-1">02 · Transactions ledger</div><p class="text-sm" style="color: var(--ink);"><strong>List Of Transactions.</strong> Per-Liquidation Partner closing balance reconciled on every confirmed exchange. Bulk upload + bulk bump-up upload for catalogue refresh. <em>Manually Debit-Credit Amount</em> for ad-hoc adjustments. Order status closes the loop back to the Exchanges queue.</p></div>
+</div>
+
+</div>
+</div></section>
+
+<!-- §05 · IN FLIGHT -->
+<section id="in-flight" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · In flight · next 60 days</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Five workstreams. Named outcomes by Day 60.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">From a deployed platform to a default counter behaviour across every Reliance Digital and My Jio Store outlet, while seeding the next category.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">01</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Network-wide adoption</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Activate the 179 Reliance Digital + 884 My Jio Store outlets that have not yet transacted (Feb '26). SAP-MIS daily flow into store dashboards. Field engagement by store.</p>
+<div class="cap-num" style="color: var(--accent);">Outcome by Day 60 · attach 1.4% → 5%+</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">02</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Liquidation Partner ecosystem health</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Rebalance device flow to under-utilised Liquidation Partners (26 of 41 stuck). Enforce 3-day pickup SLA. Clear state-wise pickup pendency (currently 333 units).</p>
+<div class="cap-num" style="color: var(--accent);">Outcome by Day 60 · 100% Liquidation Partners rotating capital</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">03</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Brand bump-up programs</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Replicate the Apple 16+ playbook with Samsung, OnePlus, Xiaomi for festive / Q4. Brand-funded top-ups directly on platform.</p>
+<div class="cap-num" style="color: var(--accent);">Outcome by Day 60 · 3 brand programs live · double-digit attach</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">04</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Live dashboards</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Replace manual weekly emails with real-time format-, store-, and brand-level dashboards for leadership.</p>
+<div class="cap-num" style="color: var(--accent);">Outcome by Day 60 · single source of truth · live</div>
+</div>
+
+<div class="card p-6 lg:col-span-2" style="background: var(--accent-soft); border-color: #DDD6FE;">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num" style="color: var(--accent);">05</span><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--accent);">New-electronics expansion · kick-off</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Begin diagnostic & grading framework for <strong>laptops, tablets, smartwatches and TVs</strong>. Identify pilot stores and first Liquidation Partner cohort. Sets up the Phase 1 roadmap below.</p>
+<div class="cap-num" style="color: var(--accent);">Outcome by Day 60 · pilot category live in 50 stores</div>
+</div>
+
+</div>
+</div></section>
+
+<!-- §06 · ROADMAP + VISION -->
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · 6-month roadmap + vision</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two axes. Same spine.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Deeper categories within electronics, then beyond electronics into broader lifestyle goods. Each expansion reuses the same diagnostic-quote-Liquidation Partner-POS spine that is live for mobiles today.</p>
+
+<div class="grid lg:grid-cols-3 gap-6">
+
+<!-- Phase 1 -->
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-4"><div class="cap-num">Phase 1 · Months 1–4</div><span class="pill pill-phase2">Roadmap</span></div>
+<h3 class="font-semibold text-base mb-3" style="color: var(--ink);">Beyond Mobiles, Within Electronics</h3>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Laptops & tablets.</strong> Highest near-term revenue lever after mobiles. Component-level diagnostics (battery health, screen, keyboard, ports) and zone-specific grading. Refurbisher Liquidation Partners onboarded with category capability.</li>
+<li><strong>Smartwatches & wearables.</strong> Lower-ticket but high-volume. Bundle exchange offers with new device sales.</li>
+<li><strong>TVs & large appliances.</strong> Reuse the Delivery-Partner doorstep QC flow already designed for online exchanges. Integrate with the existing Reliance Digital home-delivery network.</li>
+</ul>
+</div>
+
+<!-- Phase 2 -->
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-4"><div class="cap-num">Phase 2 · Months 4–6+</div><span class="pill pill-phase2">Roadmap</span></div>
+<h3 class="font-semibold text-base mb-3" style="color: var(--ink);">Beyond Electronics</h3>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Home & living.</strong> Furniture, décor and kitchenware exchange. Buy-back partners differ (re-furnishers, charities, secondary marketplaces); the quote-grade-orchestrate spine holds.</li>
+<li><strong>Kitchenware & small appliances.</strong> High-attach categories at JioMart, Reliance Smart and Trends Home. Opens a re-commerce flywheel across formats.</li>
+<li><strong>Online + omnichannel exchange.</strong> Doorstep diagnostics and re-quote logic to bring exchange to AJIO, JioMart and Reliance Digital online journeys. Completes the omnichannel loop.</li>
+</ul>
+</div>
+
+<!-- Parallel platform investments -->
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-4"><div class="cap-num">Parallel · platform</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold text-base mb-3" style="color: var(--ink);">Capability investments</h3>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Multi-Liquidation Partner bidding engine.</strong> Competitive quotes per device, per zone, in real time.</li>
+<li><strong>Auto reconciliation + Liquidation Partner ledger.</strong> Replaces manual settlement.</li>
+<li><strong>ML fraud + tampering detection</strong> at pickup and Liquidation Partner receipt.</li>
+<li><strong>Brand-funded bump-up engine.</strong> Programmable per SKU, region and season.</li>
+</ul>
+</div>
+
+</div>
+
+<!-- Vision -->
+<div class="mt-10 card p-8" style="background: white;">
+<div class="cap-num mb-3" style="color: var(--accent);">Vision · re-commerce OS for Reliance</div>
+<h3 class="display-2 text-2xl md:text-3xl mb-5" style="color: var(--ink);">The re-commerce spine for Reliance. Wherever exchange applies.</h3>
+<div class="grid md:grid-cols-3 gap-6 text-sm" style="color: var(--ink);">
+<p>SwapEasy is the re-commerce operating system underneath every Reliance retail format. Wherever a customer has something old to trade, and wherever a partner has the appetite to buy it back.</p>
+<p>At scale: any customer, in any Reliance store or app, across any category, can scan, get a fair quote, see brand-funded top-ups, and walk out with a new product. With the old item routed to the highest-bidding partner in their zone, fully reconciled and audited.</p>
+<div>
+<div class="cap-num mb-3" style="color: var(--accent);">Strategic value to the group</div>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li><strong>~5% format-revenue uplift</strong> at maturity</li>
+<li><strong>8–10% margin on resale</strong> vs ~5% on new</li>
+<li><strong>Richer first-party data</strong> on upgrade cycles, brand affinity and price sensitivity</li>
+<li><strong>Defensible moat</strong> as India's organised re-commerce category formalises</li>
+<li><strong>B2B platform asset</strong> JCP can extend to non-Reliance retailers in time</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div></section>
+
+<!-- LIGHTBOX -->
+<div id="image-lightbox" class="lightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <span class="close" onclick="closeImageLightbox()">×</span>
+  <div id="image-lightbox-frame" class="image-lightbox-frame"></div>
+</div>
+
+<script>
+function openImageLightbox(imgEl) {
+  const frame = document.getElementById('image-lightbox-frame');
+  frame.innerHTML = `<img src="${imgEl.src}" alt="${imgEl.alt || ''}" />`;
+  document.getElementById('image-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImageLightbox() {
+  document.getElementById('image-lightbox-frame').innerHTML = '';
+  document.getElementById('image-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImageLightbox(); });
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img.zoomable').forEach(img => {
+    img.addEventListener('click', () => openImageLightbox(img));
+  });
+});
+</script>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

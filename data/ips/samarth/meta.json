@@ -1,0 +1,28 @@
+{
+  "slug": "samarth",
+  "name": "Samarth",
+  "tagline": "Workforce + in-store ops \u00b7 Store OS \u00b7 POS \u00b7 Companion App.",
+  "track": "samarth",
+  "track_role": "track-headline",
+  "status": "Live",
+  "since": "2024-04-01",
+  "last_release": "2026-04-29",
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics",
+    "beauty"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/samarth",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "workforce",
+    "store-os",
+    "pos"
+  ]
+}

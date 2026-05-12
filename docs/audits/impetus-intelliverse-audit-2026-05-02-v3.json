@@ -1,0 +1,86 @@
+{
+  "page": "impetus/intelliverse/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_version": "v3",
+  "score": 82,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 95,
+    "tone_of_voice": 70,
+    "honesty_register": 90,
+    "visual_completeness": 80,
+    "cross_page_consistency": 90
+  },
+  "findings": [
+    {
+      "id": "I1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "§02 What it does for you opens with the bold phrase 'Revolutionising apparel manufacturing.' — direct hit on the website-tone-of-voice §7 banned-vocabulary list (revolutionary / revolutionising / transformative are all banned).",
+      "fix": "Replace with a factual lead, e.g. 'IntelliVerse IS the Manufacturing Execution System (MES) — a unified AI-native vendor OS that connects every stage of the factory.' (drop the 'Revolutionising apparel manufacturing.' opener entirely; the next sentence already carries the meaning.)",
+      "files": ["impetus/intelliverse/index.html:174"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I2",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "Hero · §02",
+      "issue": "Double-encoded ampersands render as the literal string '&amp;' on three places: the audience pill 'Commercial &amp;amp; Audit Teams' and §02 prose 'scattered tools &amp;amp; manual reports' / 'data duplication &amp;amp; loss'. Caused by HTML-encoding being applied twice in the renderer.",
+      "fix": "In the YAML data file (data/impetus/intelliverse.yaml) replace '&amp;' with '&' for the For-list and What-it-does entries, OR fix the renderer in tools/build_impetus.py to not double-escape ampersands. Then re-render.",
+      "files": ["impetus/intelliverse/index.html:166", "impetus/intelliverse/index.html:177", "impetus/intelliverse/index.html:177"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I3",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§02",
+      "issue": "§02 What it does renders a Markdown-style bullet list ('- The challenges (before): … - Key benefits: … - System modules: …') as inline prose within a single <p> tag. The hyphen-bullets render as literal '- ' characters at the start of pseudo-lines but without list semantics — reads as broken Markdown.",
+      "fix": "Change the YAML to use a real <ul>/<li> list for the three sub-items (challenges, key benefits, system modules) so they render as a list, not a hyphen-prefixed paragraph. Or rewrite the paragraph as flowing prose without the leading hyphens.",
+      "files": ["impetus/intelliverse/index.html:176-181"],
+      "auto_fixable": false
+    },
+    {
+      "id": "I4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "Verbatim list 'Unified Vendor OS · Smarter Pre-Production · Seamless Daily Reporting · Proactive in Quality · Faster to Packing · End-to-End Traceability' carries 'Seamless' (banned per tone-of-voice §7) — sourced from PDF p.31 product-feature framing. Marketing register; would be flagged on a fresh page.",
+      "fix": "Either keep as quoted PDF text (acceptable if explicitly attributed) or rewrite to neutral verbs ('Daily reporting · Pre-production planning · Quality checks at 10% · Packing acceleration · End-to-end traceability').",
+      "files": ["impetus/intelliverse/index.html:178-180"],
+      "auto_fixable": true
+    },
+    {
+      "id": "I5",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "page chrome",
+      "issue": "Page section numbering jumps from hero eyebrow (no §01) directly to §02. Spec §3 calls §01 the 'For:' line; here it is folded into hero audience pills. Convention is consistent across all 15 generated platform pages but is an undocumented override.",
+      "fix": "Either add a single 'D{N} · Section ordering — fold §01 For-list into hero pills' decision in the spec §9 Decisions block, OR re-add a small §01 label in the hero. Currently the deviation is implicit and consistent — low priority.",
+      "files": ["impetus/intelliverse/index.html:160-170"],
+      "auto_fixable": false
+    },
+    {
+      "id": "I6",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04",
+      "issue": "Bold phrase 'PO-to-Shipping cycle: 55 → 30 days (45% faster).' already appears in the hero subhead. Repeating it bolded inside §04 What improved is mild redundancy; not wrong but reads as filler at exec scan.",
+      "fix": "Drop the bold from the §04 mention OR change it to a different facet (e.g. 'Repeated below for emphasis: …' is wrong) — simply un-bold the §04 instance and let the hero do the work.",
+      "files": ["impetus/intelliverse/index.html:208-209"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Source traceability is exhaustive — every numerical claim (15.84L POs, 11.85 Cr garments, 372 active suppliers, 506/1245 factories, 461/1377 vendors, 3.8Cr/13.7Cr units, 375/1245, 55→30 days, 10% vs 70%) maps directly to the Q1 2026 Release Compendium (PDF pp.31, p.40 IntelliMake Adoption Stats) — verified word-for-word.",
+    "The 22 screenshot cards (034-v2 through 049-v2-b) all return 200 with sensible dimensions; the 4 IntelliQC mobile portrait captures (041, 042, 043, 044 at ~750×1600) and the IntelliPack mobile multi-tenant login (047-v2 at 1169×1600) render properly post-smask compositing — formerly broken white frames are now actual UI.",
+    "Lightbox is wired correctly — openImpetusLightbox flips display from 'none' to 'flex' on click and Escape closes, no [hidden]+inline-display:flex collision.",
+    "Section numbering (02 → 03 → 04 → 05) is contiguous post Updates-Shipped and Progress deletion — renumbering applied cleanly.",
+    "Cross-page references match: home /impetus/ index card 07 reads 'Vendor Management Platform' / 'IntelliVerse (Procuro · IntelliMake · IntelliQC · IntelliPack) — PO to shipping. PO→Ship 55→30 days.' which matches hero verbatim."
+  ]
+}

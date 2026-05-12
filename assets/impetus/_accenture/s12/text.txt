@@ -1,0 +1,61 @@
+Impetus: AI Agents
+
+---
+
+Trend-to-Design Agent
+
+---
+
+Transforms trend + brand context into manufacturable design options and auto-generates complete tech packs (specs, BOM, trims, artwork) for vendor-ready handoff.
+
+---
+
+Operations
+
+---
+
+Back-office
+
+---
+
+Planning Agent — Impetus Cortex
+
+---
+
+Builds a store-realistic Plan of Record and converts it into fixture/slot-level VM layouts, with exception-led replans to keep execution on track.
+
+---
+
+Agentic Marketing
+
+---
+
+Autonomously builds and optimizes campaigns—audiences, creatives, timing, and measurement—using customer signals.
+
+---
+
+Retail Vista
+
+---
+
+All-India spatial intelligence backbone enabling geo-led expansion, routing, personalization, and SLA optimisation across retail operations
+
+---
+
+Retail Jarvis
+
+---
+
+Customer listening and store health engine that detects experience gaps and drives closed-loop corrective execution via Pulse Point.
+
+---
+
+Ask Impetus - AI Business Analyst
+
+---
+
+Turns cross-system retail data into executive-ready answers—explains “why,” quantifies impact, and recommends the next best fix.
+
+---
+
+Sell

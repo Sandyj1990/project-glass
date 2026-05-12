@@ -1,0 +1,149 @@
+{
+  "page": "dark-factory/index.html",
+  "spec": "docs/dark-factory-spec.md",
+  "source_compilation": "docs/mtm-notes-compilation/",
+  "audit_date": "2026-05-03",
+  "auditor": "website-page-reviewer skill",
+  "score": 83,
+  "grade": "B",
+  "pass": true,
+  "summary": "Strong post-update build. PDF consumption is clean — 8-step revised diagram, 4 customisation levers, paired Customer/Business Wins all land correctly. Capex was correctly held off this page. Cross-page consistency is the main drag: home-page card still carries '₹8.27 Cr capex' and names PDF authors, both of which contradict the user's no-capex / no-author directives. Within the page, partial naming drift between 'Mobile Tailor' and 'Mobile Neo Tailor' needs a clean sweep.",
+  "dimensions": {
+    "structural_compliance": 88,
+    "source_traceability": 90,
+    "tone_of_voice": 82,
+    "honesty_register": 80,
+    "visual_completeness": 92,
+    "cross_page_consistency": 60,
+    "design_compliance": 84
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "index.html (home) registry data + cards + intro paragraph",
+      "issue": "Home page card carries '₹8.27 Cr capex · 7-day MTM · alpha pending' as the metric and the description ends 'awaiting capex + alpha sign-off' — same phrase repeated in the home intro paragraph. Contradicts the user's directive (this session) that capex stays off the register entirely.",
+      "fix": "Strip 'capex' from index.html:596, :627, and :782. Replace the registry metric with an operational alternative: '7-day MTM · 200 pieces / day · alpha pending'. Spec D4 in docs/dark-factory-spec.md is now stale and must also be updated.",
+      "files": ["index.html:596", "index.html:622", "index.html:627", "index.html:782", "docs/dark-factory-spec.md:72"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "index.html (home) registry data",
+      "issue": "Home registry desc names PDF authors: '...Concept note 30 - Apr - 2026 (Farooq Adam · Vipin Tyagi)...'. Per CLAUDE.md NEVER-do list — no Author / inline attribution lines. The dark-factory page itself correctly omits authors; the home page violates the rule.",
+      "fix": "Drop the parenthetical author block from index.html:782. Date can stay if it's the only thing in the parenthesis, but better to drop both and let the page-itself-as-artefact rule hold.",
+      "files": ["index.html:782"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§02 Status, §03 Strategic shift, §11 Phase-gate",
+      "issue": "Naming drift between 'Mobile Tailor' (5 instances, residue from pre-PDF version) and 'Mobile Neo Tailor' (5 instances, new content). The PDF formalises the brand as 'Mobile Neo Tailor'; the page should land on one canonical name. M-Tailor short form is fine inside the app context.",
+      "fix": "Replace 'Mobile Tailor' → 'Mobile Neo Tailor' at lines 249, 269, 281, 285, 946. Keep 'M-Tailor' short form at lines 197, 332, 350, 375, 417, 425, 496 (in-app abbreviation).",
+      "files": ["dark-factory/index.html:249", "dark-factory/index.html:269", "dark-factory/index.html:281", "dark-factory/index.html:285", "dark-factory/index.html:946"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§05 Customisation levers · footer card",
+      "issue": "Currency uses 'Rs. 499' / 'Rs. 243' (PDF style). Site convention per tone-of-voice §4 is the '₹' prefix (e.g., '₹3.30L Cr'). The PDF used 'Rs.' but the site convention is the rupee glyph.",
+      "fix": "Change 'Rs. 499' → '₹499' and 'Rs. 243' → '₹243'.",
+      "files": ["dark-factory/index.html:478"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§05 Customisation levers · footer card",
+      "issue": "The footer card 'How the levers price' quotes the explicit selling prices ('₹499 for shirt, ₹243 for T-shirt'). Per spec D6 ('No §Unit Economics on page') and per the user's broader 'showcase, not proposal' directive saved this session, explicit price-points are proposal-document content. Borderline because Trends shirt price is publicly known, but quoting it on this page tilts toward unit-economics framing.",
+      "fix": "Drop the rupee figures and keep the framing only: 'Standard fit at the standard Trends price · each lever shows a delta in the basket as it is opted in. Final price and the guaranteed delivery date confirmed before UPI checkout.'",
+      "files": ["dark-factory/index.html:478"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§05 Customisation levers · §10 Outcomes",
+      "issue": "Two new sections (§05 customisation, §10 outcomes-recast) have no status pill at the section header. Every other operational section on the page carries a 'Proposal' pill since nothing is built yet (see §02, §05 cards, §06 layout, §08 loops, §11 alpha card). New sections describe future-state behaviour and should match.",
+      "fix": "Add 'Proposal' pill (pill-build) at §05 H2 header and at §10 H2 header, matching the convention used in §06 line 638.",
+      "files": ["dark-factory/index.html:441", "dark-factory/index.html:837"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "§04 YouTube card",
+      "issue": "New YouTube demo card uses padding 'p-7' (28px). Design.md §1 paddings must be on the 4/8 rhythm: p-4 / p-5 / p-6 / p-8. (Pre-existing on lines 490, 808, 819 too — three other p-7 instances point to a system-wide drift, but this audit flags only the new one.)",
+      "fix": "Change 'p-7' → 'p-6' on line 422. Optionally sweep the other p-7 instances at lines 490, 808, 819 in a separate fix-pass.",
+      "files": ["dark-factory/index.html:422"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "docs/dark-factory-spec.md",
+      "issue": "Spec is stale. (a) §3 lists 10 sections — page now has 11. (b) D4 says headline ₹8.27 Cr stays in hero / §02 — superseded by user's new no-capex-anywhere directive. (c) §10 Out-of-scope lists 'Personalization options... defer until Apex feedback' — but §05 Customisation Levers is now on the page. (d) No mention of the YouTube embed or the Mobile Neo Tailor naming. (e) Audit history §11 has no v4 entry.",
+      "fix": "Update spec §3 to reflect 11 sections (insert §05 customisation and renumber §06-§11). Revise D4 to say 'no capex anywhere on the page'. Move 'Personalization options' from §10 out-of-scope to §3 active sections. Add a D14 for the YouTube embed. Add a v4 audit-history entry pointing to this audit JSON.",
+      "files": ["docs/dark-factory-spec.md"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§0 Hero",
+      "issue": "Hero now has both a deck line (14 words: 'A tailor inside the AJIO app. Designed in 2 minutes. Delivered in 7 days.') and a longer body paragraph (49 words: 'The customer-facing surface is Mobile Neo Tailor — ...'). Spec D12 says 'Hero subhead at 29 words'. The deck line passes; the body paragraph is intro prose. Document the two-line treatment in the spec so future reviewers know which is the subhead.",
+      "fix": "Add a D15 to docs/dark-factory-spec.md noting: 'Hero deck line is the canonical subhead (≤30 words); body paragraph below H1 is unconstrained intro prose used to introduce the Mobile Neo Tailor / Dark Factory naming pair.'",
+      "files": ["dark-factory/index.html:96", "dark-factory/index.html:98", "docs/dark-factory-spec.md"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 YouTube demo card",
+      "issue": "Card H3 is 'Watch the journey end-to-end.' — a verb-command form that addresses the reader directly. Tone-of-voice §2 says 'You is rarely used. The reader is not addressed directly.' Borderline because video labels typically use this form, but a more declarative variant fits the register better.",
+      "fix": "Rephrase to 'Customer journey · end-to-end demo.' or 'The 8-step flow on a phone.'",
+      "files": ["dark-factory/index.html:424"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "design_compliance",
+      "section": "§04 YouTube card · fallback link disclaimer",
+      "issue": "The line 'If the embed does not load, watch on YouTube' is mildly defensive. The iframe loads successfully on local; the disclaimer adds noise without resolving a real problem.",
+      "fix": "Drop the fallback line (or shorten to 'Open on YouTube ↗' as a discreet link with no apologetic preamble).",
+      "files": ["dark-factory/index.html:426"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "Mega-menu suffix · all sibling pages",
+      "issue": "Mega-menu suffix is 'made-to-measure' across all 22 sibling pages. PDF formalises the brand as 'Mobile Neo Tailor'. Suffix could be tightened to 'Mobile Neo Tailor' to match the new naming.",
+      "fix": "If the naming change to Mobile Neo Tailor is canonical, edit tools/site_chrome.py RECENT_INNOVATIONS / AI_NATIVE entry for /dark-factory and run python tools/inject_chrome.py to sweep all sibling pages. Direct page edits will be silently reverted (per CLAUDE.md canonical-source rule).",
+      "files": ["tools/site_chrome.py"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero deck line lands the PDF tagline cleanly: 'A tailor inside the AJIO app. Designed in 2 minutes. Delivered in 7 days.' — 14 words, three short declaratives, exactly the register voice.",
+    "§04 8-step diagram now matches the PDF revision precisely: Discover / Companion / M-Tailor tab / Pick garment / Scan body / Adjust fit / Customise + pay / Track + receive — with PDF's metric tags carried through ('30 sec · 14 measures · ±1 cm', '3D self · 6 sliders · 3 presets').",
+    "§05 customisation levers consume all four PDF dimensions (Design / Fabric / Trims / Embroidery) with concrete material choices in each card footer — adds depth the prior page lacked without bloat.",
+    "§10 outcomes recast as paired Customer Wins / Business Wins is materially more Apex-readable than the prior 10-row table — same data, faster scan, clearer narrative.",
+    "Capex was correctly held off the page entirely per the user's new directive — even when the source PDF leads with 'Rs. 8.27 Cr' as a headline number, this page surfaces only the operational facts (200 pieces/day, 15,326 sq ft, alpha/beta/gamma capacity ramp)."
+  ]
+}

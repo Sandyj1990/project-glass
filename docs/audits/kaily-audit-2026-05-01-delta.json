@@ -1,0 +1,65 @@
+{
+  "page": "kaily/index.html",
+  "spec": "docs/kaily-spec.md (newly written)",
+  "source_compilation": "docs/kaily-notes-compilation/ + docs/accenture-2026-04-16-compilation/ + autonomous/index.html (cross-reference)",
+  "audit_date": "2026-05-01",
+  "audit_type": "delta — post fix-pass",
+  "previous_audits": ["docs/audits/kaily-audit-2026-05-01.json"],
+  "previous_score": 68,
+  "score": 90,
+  "grade": "A-",
+  "weighted_pass": true,
+  "dimensional_pass": true,
+  "verdict": "PASS — ready to share with Apex. v0.9.1 fixes both non-negotiables (Source Traceability and Honesty Register) by (a) replacing the §06 brand-portfolio overclaim with the canonical Live RR Netmeds Assistant section, (b) bumping the hero count from two to three production agents and naming Sreeraman MG as Kaily-on-RR DRI, (c) replacing the §07 pillar-06 Boltic-backbone overclaim with a sourced 'Reliance vertical fluency' pillar, (d) syncing ZIP stats across home/catalog/autonomous to the slide-26 set, (e) adding the §08 Sources block, and (f) writing docs/kaily-spec.md with §9 Decisions documenting the brand-portfolio exclusion (D2) and Boltic-pillar removal (D3) so future audits have a paper trail.",
+  "fixes_applied": [
+    {"id": "C1", "status": "fixed", "what": "Replaced §06 brand-portfolio overclaim (Being Human, GUESS, Cole Haan) with §06 Netmeds Assistant — Live RR Kaily story sourced from /autonomous register §08."},
+    {"id": "C2", "status": "fixed", "what": "Added Netmeds Assistant section, updated hero count from 'two' to 'three production Kaily agents', named Sreeraman MG as Kaily-on-RR DRI in hero subhead. §01 Impact card now spans all three agents (88% ZIP, 96% Netmeds, 40M+ JIIA)."},
+    {"id": "H1", "status": "fixed", "what": "Replaced §07 pillar 06 'Wired to Boltic for live actions' with 'Reliance vertical fluency · LLM grounded on Reliance vertical knowledge' — sourced to slide 36 + /autonomous §08. Removed unsourced 'order lookups' example."},
+    {"id": "H2", "status": "fixed", "what": "ZIP stats synced across all surfaces to canonical slide-26 set (88% +ve CX · 100% catalog (2.6M+ SKUs) · 90% chats helped discovery). Updated: index.html:314, catalog/index.html:146, catalog/index.html:298, autonomous/index.html:221, autonomous/index.html:335."},
+    {"id": "H3", "status": "fixed", "what": "Hero subhead now says 'Three production Kaily agents in Reliance' and names all three (ZIP, JIIA, Netmeds Assistant). Hero stat card 1 updated from 2 to 3."},
+    {"id": "M1", "status": "fixed", "what": "JIIA team list reconciled. catalog/index.html:147 now shows 'Lead · Ashish Chandorkar · Punit Kalro · Shreyash · Abhay · Sukhpreet · Raj Pratap · Kapil · Manish Kumar · Bijan Kundu' matching the page."},
+    {"id": "M2", "status": "fixed", "what": "Added §08 Sources block with 4 source cards (Kaily Master Deck, Accenture slide 37, Farooq letter, /autonomous register cross-reference)."},
+    {"id": "M3", "status": "fixed", "what": "Footnote 'India distribution by Reliance Brands; Kaily is supplied by Fynd' removed (entire §06 brand-portfolio section was replaced)."},
+    {"id": "L1", "status": "fixed", "what": "Section §06 H2 'today' verb removed (entire section was replaced; new §06 H2 is 'Netmeds Assistant · 850K Kaily messages · 96% favourable.')."},
+    {"id": "L2", "status": "fixed", "what": "'premium and lifestyle' lede removed (entire §06 section replaced)."},
+    {"id": "L3", "status": "fixed", "what": "Wrote docs/kaily-spec.md with §3 page structure, §9 Decisions block (D1 capability framework at §02; D2 brand-customer references excluded; D3 no Boltic-as-backbone pillar; D4 Netmeds numbers cite /autonomous)."}
+  ],
+  "dimensions": {
+    "source_traceability":   {"score": 92, "threshold": 75, "pass": true, "delta": 27, "note": "Hero stats trace to slide 26 + /autonomous §08. §01-§07 every section now has an inline Source line. §08 Sources block lists all four sources with paths and citations-to. Netmeds figures explicitly attributed to /autonomous register, not invented."},
+    "tone_of_voice":         {"score": 92, "threshold": 80, "pass": true, "delta": 2,  "note": "Banned-word grep clean (no 'transformative', 'world-class', 'cutting-edge', 'next-generation', 'empowers', 'unlocks', 'seamlessly', 'today' as time-now, 'premium'). Date format DD-MMM-YYYY consistent. Reliance/Fynd entity names cased correctly throughout."},
+    "honesty_register":      {"score": 92, "threshold": 80, "pass": true, "delta": 32, "note": "Brand-portfolio overclaim removed. Every Live claim carries a pill ('Live · RR · AJIO', 'Live · JPL · JioMart', 'Live · RR · Netmeds'). Hero count matches the rest-of-register's count of three. Sreeraman MG named as DRI. No mixed-tier sentences. No forward-looking phases without dates."},
+    "structural_compliance": {"score": 92, "threshold": 85, "pass": true, "delta": 10, "note": "Section labels now contiguous §01 → §08 with §08 Sources block (canonical ordering compliant). All page chrome present (nav v0.9.1, crumb, H1, footer, auth.js, Tailwind, style.css). Spec written with §9 Decisions documenting non-canonical §02 framework choice."},
+    "visual_completeness":   {"score": 85, "threshold": 85, "pass": true, "delta": 5,  "note": "HTML structurally balanced (verified via parser). Single embedded image (slide_37 ZIP screenshot via socialassets CDN) unchanged from prior verified state. Visual phase still skipped pending dev-server verify; default cap of 85 (one notch above prior because section additions are text-only and use existing card components)."},
+    "cross_page_consistency":{"score": 88, "threshold": 70, "pass": true, "delta": 43, "note": "ZIP stats now identical across kaily/index.html §04, index.html:314, catalog/index.html:146 + 298, autonomous/index.html:221 + 335. JIIA team list synced kaily/§05 ↔ catalog row 147. Netmeds Assistant numbers consistent with /autonomous §08 + per-IP card. Sreeraman MG named on /kaily, /catalog, and /autonomous identically."}
+  },
+  "remaining_findings": [
+    {
+      "id": "X1",
+      "severity": "INFO",
+      "dimension": "visual_completeness",
+      "section": "page chrome",
+      "issue": "Visual phase not run against a live dev server. HTML balance verified via parser but no Chrome DevTools render check.",
+      "fix": "Optional follow-up: run `npm run dev` (or repo equivalent), bypass auth via sessionStorage, take desktop + mobile screenshots, confirm slide_37 image still 200s and section flow is clean.",
+      "files": ["kaily/index.html"],
+      "auto_fixable": false
+    },
+    {
+      "id": "X2",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "/autonomous per-IP card line 322",
+      "issue": "Per-IP card 'AI-led Customer Service agent' on /autonomous omits the AJIO ZIP and JIIA Kaily peers — those have their own per-IP cards under different labels (AI Search relevance, Conversational Studio). Inconsistent grouping but not load-bearing.",
+      "fix": "Out of scope for this audit. Worth noting if /autonomous gets a future restructure.",
+      "files": ["autonomous/index.html:322"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero now correctly names three production RR Kaily agents with DRI Sreeraman MG — matches the rest-of-register's count and removes the silent omission of Netmeds.",
+    "§06 Netmeds section anchors the page to a verifiable Live RR proof with the canonical 850K msgs / 96% favourable numbers and Sreeraman MG attribution.",
+    "§07 pillar 06 now reflects what the source actually supports ('Reliance vertical fluency · same fabric powers Netmeds, AJIO, JioMart') instead of overstating Boltic involvement.",
+    "§08 Sources block lists every cited file with paths and which sections cite it — gives Apex one place to verify.",
+    "ZIP stats now read identically on /kaily, /, /catalog, /autonomous — register-wide consistency restored.",
+    "docs/kaily-spec.md captures the four key decisions (D1-D4) including why brand-customer references and Boltic-as-backbone framing were excluded — paper trail for future audits."
+  ]
+}

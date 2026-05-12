@@ -1,0 +1,39 @@
+# AI Agents Catalog · index-page header config
+# Per docs/agents-spec.md v0.4 · §3 §A index page
+#
+# Hero stat tiles + value-chain band ordering.
+# Status counts populated automatically by tools/build_agents.py
+# from each agent yaml's `status:` field. The numbers below are
+# placeholders + sanity-check anchors only.
+
+hero:
+  total_agents: 7
+  workflows_at_l4: 7
+  total_workflows: 21
+  data_sources: 35
+  activities: 67
+  sops: 120
+
+  # Subhead — single sentence, apex-readable
+  subhead: |
+    7 agents shipping in v1, executing across Plan, Buy and Sell. Each maps to one or more Reliance platforms. Each carries data, design patterns, and evals. More agents to follow.
+
+# Section §02 grouping order — v1 ship list (D24 reduction · ai-photoshoot added 03-May-2026 · generative-media added 03-May-2026 · ai-cataloging disabled 03-May-2026 pending rebuild)
+order:
+  plan:     [cortex-planning, retail-vista, category-intelligence]
+  buy:      [trend-to-design]
+  sell:     [agentic-marketing, ai-photoshoot, generative-media]
+
+# Track display labels + 1-line framings (used as band headers on the index)
+track_labels:
+  plan:     { label: "Plan",   framing: "Demand sensing, planning, range and assortment intelligence." }
+  buy:      { label: "Buy",    framing: "Design-to-buy pipeline." }
+  sell:     { label: "Sell",   framing: "Marketing and cataloging." }
+
+# Footer of the index page — reused on detail pages
+footer:
+  cover_letter_quote: |
+    Cortex, Retail Vista, Retail Jarvis, Trend-to-Design, Agentic Marketing,
+    Ask Impetus — these are the AI agents executing across the Reliance retail
+    value chain at L3-L4 autonomy levels today.
+  cover_letter_source: "Farooq Adam · Operationalizing Autonomous Commerce for Retail · 15-Apr-2026 · §4"

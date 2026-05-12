@@ -1,0 +1,22 @@
+{
+  "slug": "silent-nps",
+  "name": "Silent NPS (SNPS)",
+  "tagline": "Inferred customer satisfaction from behavioural signals \u00b7 without explicit survey.",
+  "track": "autonomous",
+  "track_role": "sub-ip",
+  "status": "Build",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/autonomous#silent-nps",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

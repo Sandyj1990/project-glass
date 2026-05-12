@@ -1,0 +1,119 @@
+# IntelliMAF / IntelliLoom (Fabric Platform)
+# Sourced verbatim from Impetus Release Notes PDF · pp. 12–13
+# Per docs/impetus-restructure-spec.md · §3 page template
+
+slug: intelliloom
+title: IntelliLoom
+sub_title: "(Fabric Platform)"
+aliases: [IntelliMAF, Fabric Platform]
+tagline: Unified fabric ordering & inventory management.
+category: Buy
+status: live
+status_label: Live
+
+# § 01 · For
+audience:
+  - Buyers
+  - Planners
+  - FCoE (Fabric Centre of Excellence)
+  - Format Heads
+  - Sourcing Managers
+  - Mill Vendors
+
+# § 02 · What It Does for You
+what_it_does: |
+  Buyers and planners raise fabric requests through structured forms instead of
+  ad-hoc emails and WhatsApp messages, with mandatory fields and audit trails.
+  Format heads approve fabric budgets in a step-by-step workflow (planner submits
+  → format head reviews → finance approves) with the option to approve fully,
+  partially, or send back for revision. Mill suppliers receive orders based on
+  intelligent recommendations considering their production capacity, capabilities
+  and past performance and can accept or reject with real-time tracking.
+
+# § 03 · How Many People Use It / How Much Is Being Managed / Scale
+scale_label: How Much Is Being Managed
+scale:
+  - "₹420 crore+ in fabric orders on platform"
+  - "₹258 crore (~67%) assigned to suppliers"
+  - "₹127 crore in active buyer decisions"
+  - "₹34.6 crore in early-stage pipeline"
+  - "~3,650 metric tonnes of weft knit fabric"
+  - "~3.08 crore metres of woven/warp/denim fabric"
+  - "38 improvements shipped in March alone"
+scale_caption: |
+  Meaningful adoption across the full fabric ordering workflow, most value already
+  in advanced stages (supplier assignment and buyer decisions).
+
+# § 04 · What Improved
+what_improved:
+  body: |
+    Buyer can no longer accidentally over-order fabric, the system enforces AOP
+    (Annual Operating Plan) limits. Planners have clear visibility into how much
+    OTB budget is available at each level. Format heads maintain control over
+    procurement decisions with approve/reject/revise workflows. Mill suppliers
+    get allocated work based on their actual track record, not just whether they
+    have capacity. 38 improvements shipped in one month (March).
+  expected_metric_impact: |
+    over-ordering reduced (every rupee of fabric over-purchase ties up working
+    capital), budget compliance improved, format-level accountability established.
+    ₹420Cr+ now governed on-platform, compared to zero 6 months ago.
+
+# § 05 · Updates Shipped (Latest First)
+updates_shipped:
+  - date: "2 Apr"
+    heading: "March Improvements, 38 Updates in 11 Releases"
+    bullets:
+      - "**For buyers/planners, easier data entry:** Visual indicators on required fields, locked columns to prevent accidental edits, frozen header rows for reference, dropdown selections for common fields (reducing typing errors)."
+      - "**For buyers, faster decisions:** Fabric requests automatically advance when all required fields are filled. Support for products with multiple styles. History tracking for reviewed requests. Colour tracking added."
+      - "**For sourcing teams, better supplier management:** Batch tracking and request IDs added to supplier views. Quick filters in download reports. Product codes and supplier codes now editable during upload. Search and filter by batch, request, or colour."
+      - "**For data quality:** Stronger upload checks (preventing wrong file types, invalid numbers, wrong batch assignments). Fashion grade now mandatory. Supplier type restricted to valid values only."
+  - date: "19 Feb"
+    heading: "Fabric Budget Controls + Supplier Assignment + Format Head Approval"
+    bullets:
+      - "**Fabric OTB (Open-to-Buy) controls:** Fabric purchasing now aligned with garment AOP (Annual Operating Plan) targets. No more buying fabric without a corresponding garment plan. **Directly reduces excess fabric inventory risk.**"
+      - "**Supplier assignment:** After fabric requests are approved, they're assigned to specific suppliers with controlled limits. Real-time tracking of how much each supplier has consumed."
+      - "**Format head approval:** Step-by-step: planner submits → format head reviews → finance approves. Can approve fully, partially (must explain why), or send back. **Creates accountability at every level.**"
+  - date: "5 Feb"
+    heading: "Structured Fabric Requests, Replacing Emails and WhatsApp"
+    bullets:
+      - "Buyers, product managers and fabric specialists now capture fabric needs through a structured form. Template-driven with mandatory fields. Searchable views with filters and audit history. Automatic tagging as 'Urgent' or 'Hybrid' based on lead times. Single or bulk conversion from request to confirmed order. Full audit trail of who did what and when. **Standardises how fabric demand is communicated, reduces errors and improves traceability.**"
+
+# § 06 · Screenshots (TBD — sweep PDF p.12–13 for any embedded UI shots)
+screenshots: []
+
+# § 07 · Sources
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 12–13"
+    href: ""  # to be filled when PDF mirror is uploaded to GCS
+  - label: "Spec · docs/impetus-restructure-spec.md · §A.2"
+    href: "/docs/impetus-restructure-spec.md"
+
+# § 06 · Progress · path to L3 / L4 (per spec §9)
+progress:
+  current_level: 2
+  current_summary: |
+    IntelliLoom sits at **L2 · Augmented** today: the system enforces AOP limits,
+    proposes supplier allocations and runs the approval workflow; humans (planners,
+    format heads) own the decisions. L3 looks like real-time supplier-graph routing
+    with auto-reallocation when a mill misses lead time.
+  workflows:
+    - name: "Sourcing"
+      number: "2.1"
+      current: 2
+      target: 3
+      plan: "Mill recommendations live based on capacity + past performance; next is real-time supplier graph that re-routes on missed lead times."
+    - name: "Order Placement"
+      number: "2.4"
+      current: 2
+      target: 3
+      plan: "Form-based requests with AOP enforcement; moving to rolling fabric orders that adjust weekly to garment demand signals."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Sourcing · L2 → L3"
+      body: "Mill assignment becomes a real-time supplier graph; auto-reallocation when capacity slips."
+    - eyebrow: "Risk reduction milestone"
+      title: "₹420Cr+ governed on-platform"
+      body: "From zero 6 months ago. Every rupee of fabric over-purchase ties up working capital — now bounded by AOP."
+    - eyebrow: "Identity shift indicator"
+      title: "Format-head approval is the new gate"
+      body: "Decisions move from email + WhatsApp to a structured workflow with audit trail."

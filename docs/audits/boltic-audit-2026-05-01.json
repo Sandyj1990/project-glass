@@ -1,0 +1,170 @@
+{
+  "page": "boltic/index.html",
+  "spec": "docs/boltic-spec.md",
+  "source_compilation": "docs/boltic-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "auditor_skills": ["website-tone-of-voice", "website-page-reviewer"],
+  "score": 77,
+  "grade": "C",
+  "weighted_pass": true,
+  "dimensional_pass": false,
+  "blocking_dimensions": ["tone_of_voice", "cross_page_consistency"],
+  "verdict": "DO NOT SHARE WITH APEX until tone-of-voice (T1, T2, T3) and cross-page consistency (C1) blockers are resolved. Weighted score passes 75-threshold, but tone_of_voice (70 < 80) and cross_page_consistency (60 < 70) dimensions fail their thresholds. The page is structurally and visually clean but is overly conservative — the home page and catalog already document Live RR Boltic deployments (AJIO×JCP test automation, 463M+ runs) that the page omits.",
+  "dimensions": {
+    "source_traceability":   {"score": 75, "threshold": 75, "pass": true},
+    "tone_of_voice":         {"score": 70, "threshold": 80, "pass": false},
+    "honesty_register":      {"score": 75, "threshold": 80, "pass": false},
+    "structural_compliance": {"score": 92, "threshold": 85, "pass": true},
+    "visual_completeness":   {"score": 95, "threshold": 85, "pass": true},
+    "cross_page_consistency":{"score": 60, "threshold": 70, "pass": false}
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "cross_page_consistency",
+      "section": "§02 / §05",
+      "issue": "The page paints every Reliance-Retail use case with a `Building · For RIL` pill. But the home page (index.html:769) already documents a Live RR-side Boltic deployment: 'Boltic + Ratl. AI-first testing · 1,300 test cases on AJIO×JCP · vibe-coded prototypes in JCP.' AJIO is a Reliance Retail Ventures brand; this is Live RR usage. Catalog (catalog/index.html:244, 363) goes further and shows Boltic as `Live` with stat '463M+ runs · 500+ integrations'. The Boltic page is the most conservative of the three about Boltic's actual RR footprint — that's the wrong direction for the register page that owns the topic.",
+      "fix": "Add a §02-or-§05 card titled 'AI-first testing · AJIO × JCP' with `Live · RR` pill and the verifiable line '1,300 test cases on AJIO×JCP · vibe-coded prototypes in JCP · powered by Boltic + Ratl' (cited from index.html). Consider also adding '463M+ workflow runs' to a hero stat tile if traceable to the catalog's source — otherwise drop the catalog claim or get a citation for it before publish.",
+      "files": ["boltic/index.html:170-184", "boltic/index.html:245-267", "index.html:769", "catalog/index.html:244", "catalog/index.html:363"],
+      "auto_fixable": false
+    },
+    {
+      "id": "T1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero, §02 intro, §04 intro",
+      "issue": "The word 'today' appears 3× in user-facing copy (lines 79, 133, 213). Tone-of-voice §2 (Voice & stance · Stance) explicitly bans it: 'No urgency, no hype. No exclamation marks. No \"now\". No \"today\". Use specific dates instead.'",
+      "fix": "Drop the trailing 'today' on each line, OR replace with a specific date / time-window. Examples: line 79 'Live and running Fynd's own production operations today.' → 'Live · running Fynd's own operations.'; line 133 'running today on Fynd's own production instance' → 'running on Fynd's own instance'; line 213 'as it runs Fynd's own production operations today' → 'as it runs Fynd's own operations'.",
+      "files": ["boltic/index.html:79", "boltic/index.html:133", "boltic/index.html:213"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero, §02 intro, §04 intro, §06 card-02",
+      "issue": "The word 'production' / 'production operations' appears 4× as engineering jargon. Tone-of-voice §7 jargon table explicitly maps 'in production · prod deploys · production-grade' → 'live · running · daily updates · battle-tested'. Apex hears 'production' as 'something engineers say', not as a Live-status claim.",
+      "fix": "Replace 'production operations' → 'operations' (the Live framing already comes from the `live` pill and the 'running' verb). Line 282 'Iterate on them in production.' → 'Iterate on them live.'",
+      "files": ["boltic/index.html:79", "boltic/index.html:133", "boltic/index.html:213", "boltic/index.html:282"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05 H2",
+      "issue": "Section 05 H2 reads: 'What's being built right now.' (line 246). 'Right now' is the same urgency pattern as the banned 'now' / 'today' construction in §2.",
+      "fix": "Replace with one of: 'What's being built.', 'In flight.', or a specific date-window: 'What ships in the next 4-6 weeks.' (only if a date is sourceable).",
+      "files": ["boltic/index.html:246"],
+      "auto_fixable": true
+    },
+    {
+      "id": "T4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "Hero H1",
+      "issue": "Hero H1 ends 'AI workflow automation, ready for Reliance Retail.' Tone-of-voice §7 lists 'ready for what's next' under banned marketing closers. 'Ready for Reliance Retail' is structurally the same shape — a future-facing tagline, not a factual claim.",
+      "fix": "Replace with a fact-shaped subhead. Options: 'AI workflow automation. The agentic-automation OS for Reliance Retail.' or 'AI workflow automation · live on Fynd · scoped for Reliance Retail.'",
+      "files": ["boltic/index.html:78"],
+      "auto_fixable": true
+    },
+    {
+      "id": "S1",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§04 caption · Workflow Analytics",
+      "issue": "Caption claims '1.79M total executions across 198 workflows in a single month.' The numbers (1.79M, 198) are read off the screenshot (slide 27 of the deck), but 'in a single month' is inferred from the chart's date range (03/09/2025 → 30/09/2025 visible in the screenshot) — which is also the source of the claim that this is one month of telemetry. The screenshot is dated Sep 2025; the caption doesn't surface this, so reader has no time-anchor.",
+      "fix": "Either (a) add the date range to the caption: '1.79M executions across 198 workflows · Sep-2025 single-month sample (deck slide 27)' or (b) drop the 'single month' framing and just say 'a snapshot of live execution telemetry · 1.79M executions across 198 workflows.'",
+      "files": ["boltic/index.html:225-227"],
+      "auto_fixable": true
+    },
+    {
+      "id": "S2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "Throughout",
+      "issue": "No inline `cap-num` source citations on the page. Tone-of-voice §3 signature pattern 5 says: 'Source citation in cap-num style — for any non-obvious claim.' Several non-obvious claims (500+ integrations, SOC 2 + GDPR, 8 modules, 6 Boltic Edge solutions) lack a 'Source · Boltic Retail Deck · slide N' line. The §07 Sources block cites the deck globally but doesn't anchor specific claims.",
+      "fix": "Add inline source lines below 2-3 high-stakes claims: hero stat tiles (slides 8 + 9), §02 module list (slide 8), §06 SOC 2/GDPR card (slide 18). Pattern: '<div class=\"cap-num\">Source · Boltic Retail Deck · slide 8</div>'.",
+      "files": ["boltic/index.html:88-92", "boltic/index.html:140-180", "boltic/index.html:289-292"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§03 Boltic for Retail & Ecommerce, §05 In flight",
+      "issue": "All three §03 capability-pillar cards carry `Building · For RIL` pills, and all three §05 in-flight cards carry generic `Building` pills. None are date-bound or owner-bound. Tone-of-voice §3 last bullet: 'Forward-looking phases without dates. … If a section makes time-promises, every promise carries a date or a named DRI. Otherwise cut the section — the credible roadmap is the in-dev list with named owners.' The §05 cards make time-promises ('What's being built right now') without any DRI or date.",
+      "fix": "Either (a) name the DRI on each card (e.g., 'DRI · TBD' is acceptable as a placeholder, but mark it explicitly), (b) add a date window when known, or (c) collapse the §05 strip if no concrete owners/dates can be cited. Cross-reference D3 in the spec which acknowledges this gap ('Owners and timelines firm up in the next status update').",
+      "files": ["boltic/index.html:188-208", "boltic/index.html:245-267"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "Hero subhead",
+      "issue": "Hero subhead 1 says Boltic is 'Live and running Fynd's own production operations today.' The page is positioned as the Reliance Retail register; framing primary live evidence as 'Fynd's own' (then immediately pivoting to 'positioned for Reliance Retail') signals to Apex that there is no Live RR evidence — which (per C1) is wrong: AJIO×JCP test automation already exists.",
+      "fix": "After resolving C1, rewrite hero subhead to lead with the Live RR signal: 'Boltic powers AI-first testing across AJIO × JCP today · 1,300 test cases automated. Same platform, same control plane, scoped for the next Reliance Retail beachhead.'",
+      "files": ["boltic/index.html:79-80"],
+      "auto_fixable": false
+    },
+    {
+      "id": "ST1",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "Section labels",
+      "issue": "Section-label numbering is contiguous (§0 hero eyebrow + §01-§07). Spec §3 page structure is honored 1:1. No structural drift.",
+      "fix": "No change needed — included as a clean-pass acknowledgement.",
+      "files": [],
+      "auto_fixable": false
+    },
+    {
+      "id": "C2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog Boltic row",
+      "issue": "Catalog (catalog/index.html:363) cites Boltic as 'Live · 463M+ runs · 500+ integrations.' The 463M+ runs figure is not in the source compilation folder (the deck) and doesn't appear on the Boltic page. Either the catalog has an unsourced number, or the Boltic page should surface it with a citation.",
+      "fix": "Verify the 463M+ figure with the Boltic team. If real and cite-able, add it to a hero stat tile on /boltic with a Source line. If unverified, file a separate finding against the catalog row to soften its stat.",
+      "files": ["boltic/index.html:88-92", "catalog/index.html:244", "catalog/index.html:363"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 H2",
+      "issue": "§03 H2 reads 'Where Boltic earns its rent at Reliance Retail.' Conversational idiom; mild tone drift from the data-sheet register. Acceptable but flag-worthy.",
+      "fix": "Replace with factual: 'Three operational pillars at Reliance Retail.' or keep — judgement call.",
+      "files": ["boltic/index.html:188"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 Solution card",
+      "issue": "'SOC 2 + GDPR governance built in from day one' — 'from day one' is a soft marketing stock phrase.",
+      "fix": "Replace with 'SOC 2 + GDPR governance · default-on.' or 'SOC 2 + GDPR governance · enabled by default.'",
+      "files": ["boltic/index.html:117"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "All",
+      "issue": "All 6 product screenshots load (200), no broken images. Console clean except the standard Tailwind CDN warning (present site-wide, expected). Mobile viewport (375×812) renders without horizontal overflow. Hero, stat tiles, module grid, and screenshot grid all collapse cleanly on mobile.",
+      "fix": "No change needed — included as a clean-pass acknowledgement.",
+      "files": [],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Reliance-only filter explicitly applied and documented in a §07 callout — third-party customer logos, brand testimonials, and brand-named workflow screenshots all skipped per spec D4.",
+    "Honesty pill convention introduced (`Live · Platform` for shipped modules vs `Building · For RIL` for retail use cases) and applied consistently across all module + pillar cards.",
+    "All 6 product UI screenshots are real, descriptive alt text included, and crop cleanly. Workflow Analytics screenshot in particular surfaces real telemetry that earns the §04 'show, don't tell' beat.",
+    "Section-label numbering is contiguous (§01 → §07) and matches the spec §3 page-structure 1:1.",
+    "Page chrome (nav mega-menu, crumb, footer, version pill v0.9.3) matches sibling pages exactly; mega-menu Boltic suffix `agentic auto` is consistent with the home + catalog wiring."
+  ]
+}

@@ -1,0 +1,15 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+dri:
+  - Shyam Dixit · architecture
+
+commercial:
+  - Yash Singh · Farhan Mirza
+
+team:
+  - Salman Saudagar
+  - Gaurav
+  - Shubham Salunkhe
+  - Rajesh Bagul
+  - Sanket Pisat
+  - Rachit Shah

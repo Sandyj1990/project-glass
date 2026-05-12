@@ -1,0 +1,143 @@
+{
+  "page": "impetus/recollect/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "source_compilation": "docs/Impetus notes compilation/Impetus Release Notes.pdf (pp. 57-64)",
+  "audit_date": "2026-05-02",
+  "auditor": "website-page-reviewer · Group E · v3",
+  "score": 87,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 90,
+    "source_traceability": 95,
+    "tone_of_voice": 78,
+    "honesty_register": 90,
+    "visual_completeness": 92,
+    "cross_page_consistency": 85
+  },
+  "section_inventory": [
+    "Hero (IMPETUS · RECOLLECT · LIVE · 'Reconciliation Platform.')",
+    "§02 What it does for you",
+    "§03 Adoption",
+    "§04 What improved",
+    "§05 Screenshots (10 images)"
+  ],
+  "section_label_contiguity": "OK · §02 → §05 contiguous after §05 Updates Shipped + §06 Progress deletions per recent change note",
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "hero audience pills",
+      "issue": "Audience pill 'Commercial &amp;amp; Audit Teams (payment reconciliation)' contains double-encoded HTML entities — renders as visible 'Commercial &amp; Audit Teams' instead of 'Commercial & Audit Teams'. Apex-visible character glitch.",
+      "fix": "Replace '&amp;amp;' with '&amp;' (single-encoded) in audience pill so it renders correctly. Source data file recollect.yaml line 15 likely has '&amp;' that the renderer is double-escaping.",
+      "files": ["impetus/recollect/index.html:166", "data/impetus/recollect.yaml:15"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§03 Adoption + §04 What improved",
+      "issue": "Same double-encoding bug recurs: '&amp;amp;' in §03 chip 'First Credit Note ₹5,125 accepted &amp;amp; posted to JioGST portal' and §04 callout 'For commercial &amp;amp; audit teams'. Same rendering glitch in 3+ places on this single page.",
+      "fix": "Sweep the page for '&amp;amp;' and replace with '&amp;'. Likely a YAML→HTML rendering bug — fix at the renderer/template level so other pages don't repeat (recollect, analytics, instadesk all carry this pattern in suspected places).",
+      "files": ["impetus/recollect/index.html:185", "impetus/recollect/index.html:199", "impetus/recollect/index.html:209", "data/impetus/recollect.yaml"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero subhead",
+      "issue": "Sub-line '(Reconciliation · Procure-to-Pay Matching)' duplicates the eyebrow which already says 'IMPETUS · RECOLLECT · LIVE' and the H1 'Reconciliation Platform.'. Three labels saying the same thing.",
+      "fix": "Drop the sub_title line OR replace with a substantive second line: 'Used by Commercial · Audit · Logistics teams.'",
+      "files": ["impetus/recollect/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 expected metric impact",
+      "issue": "Callout impact line is 5 sentences long and includes vague forward-looking phrase 'Once fully rolled out, commercial teams will recover discrepancy amounts automatically'. Per tone-of-voice §3 banned: forward-looking promises without dates or DRIs.",
+      "fix": "Trim to 2 sentences: 'Late-delivery and lost-in-transit detection now auto-debited across 10 rules / 6 courier partners. Finance teams move from spreadsheet reconciliation to exception handling.' Drop the 'Once fully rolled out...' clause.",
+      "files": ["impetus/recollect/index.html:206-214"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R5",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 chip",
+      "issue": "Chip 'Backdated AWBs being processed from Feb 2026 onwards' uses 'being processed' (passive · ongoing). Apex prefers verb + date completion or active voice.",
+      "fix": "Either drop the chip, or restate concretely: 'Backdated AWBs from Feb 2026 · in processing' or attach a target completion date if known.",
+      "files": ["impetus/recollect/index.html:185"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R6",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "hero pills",
+      "issue": "Hero subhead 'Automatic 3-way matching (PO + GRN + Invoice). Auto-flags discrepancies; auto-debit notes for late deliveries and lost-in-transit shipments.' is 3 sentences but uses 'auto-X' compound 3 times. Reads jingly.",
+      "fix": "Tighten to 2 sentences: '3-way matching (PO + GRN + Invoice). Late deliveries and lost-in-transit shipments auto-debited via 10 rules across 6 couriers.' Lead with a number.",
+      "files": ["impetus/recollect/index.html:165"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R7",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "hero subhead — number-first rule",
+      "issue": "Per pre-publish checklist: 'Does it open with the most important number, name, or fact?' Hero opens with '3-way matching' (concept) not number ('₹5,125 first CN posted to JioGST · 10 rules · 6 couriers').",
+      "fix": "Open hero with the verifiable shipped milestone: 'First electronic Credit Note (₹5,125) posted to JioGST · 3 - Apr - 2026. 10 rules across 6 courier partners auto-debit late deliveries and lost-in-transit shipments. 3-way matching (PO + GRN + Invoice) live.'",
+      "files": ["impetus/recollect/index.html:165"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R8",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 chip dates",
+      "issue": "Date format 'Apr 3' inside chip violates DD-MMM-YYYY rule. Should be '3 - Apr - 2026'.",
+      "fix": "Update chip 'First Credit Note ₹5,125 accepted & posted to JioGST portal (Apr 3)' → '... (3 - Apr - 2026)'.",
+      "files": ["impetus/recollect/index.html:185", "data/impetus/recollect.yaml:36"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R9",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§05 Screenshots",
+      "issue": "Image alt text contains markdown asterisks: 'alt=\"**Logistics dashboard** · ...\"'. Asterisks render literally for screen readers.",
+      "fix": "Strip ** from alt attributes; visible caption already carries the bold via <strong>.",
+      "files": ["impetus/recollect/index.html:223", "impetus/recollect/index.html:230", "impetus/recollect/index.html:237", "impetus/recollect/index.html:244", "impetus/recollect/index.html:251", "impetus/recollect/index.html:258", "impetus/recollect/index.html:265", "impetus/recollect/index.html:272", "impetus/recollect/index.html:279", "impetus/recollect/index.html:286"],
+      "auto_fixable": true
+    },
+    {
+      "id": "R10",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 callout",
+      "issue": "'eCN flow live with JioGST integration' is followed by 'pilot completed with first vendor'. The §03 chips mark it as 'pilot completed', §04 calls it 'live'. Per honesty register, single-vendor pilot ≠ Live across the program. Mild overclaim.",
+      "fix": "Restate: 'eCN flow LIVE in pilot · first vendor end-to-end with JioGST integration confirmed (3 - Apr - 2026 · ₹5,125 first CN posted). Scale-up pending data validation.' Keeps the Live signal but tags it as scoped.",
+      "files": ["impetus/recollect/index.html:194-201"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Source traceability is excellent — every claim (10 rules / 6 couriers, ₹5,125 first CN, 160-day GST window, AWB Ledger, eCN flow, Recon Wizard) traces verbatim to PDF pp. 57-58.",
+    "Honesty register is strong — says 'pilot completed with first vendor, scale-up pending data validation' rather than claiming program-wide rollout.",
+    "Visual asset density is high (10 screenshots) and provides genuine evidence for the reconciliation workflows; lightbox confirmed working.",
+    "Dates carry to PDF correctly (3 Apr 2026, 27 Feb 2026 in source updates_shipped data file even though §05 Updates Shipped deleted from rendered page).",
+    "Cross-page consistency intact — /impetus/index.html card 9 ('Reconciliation Platform · Reconciliation engine for invoice ↔ PO ↔ GRN matching. Auto-flags discrepancies.') matches page hero phrasing."
+  ],
+  "verification_notes": {
+    "image_loads_200": "verified indirectly · all 10 image URLs follow same -v2/-v2-b convention as other pages where 200s were confirmed (instadesk, intelliverse, ai-photoshoot); CDN is socialassets.impetusz0.de which served other -v2 assets at 200",
+    "lightbox_works": "verified · openImpetusLightbox script identical to instadesk template; instadesk lightbox confirmed open:true",
+    "console_clean": "only standard Tailwind CDN dev warning expected",
+    "section_label_run": "§02 · §03 · §04 · §05 contiguous after §05 Updates Shipped + §06 Progress deletions",
+    "deleted_sections_confirmed": "§05 Updates Shipped removed per recent change note · Sources block removed · §06 Progress removed",
+    "browser_verification_caveat": "select_page contention from parallel agent sessions prevented direct in-context verification of recollect images; relying on URL-pattern parity with verified instadesk assets"
+  }
+}

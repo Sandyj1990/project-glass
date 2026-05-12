@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Boltic · AI Workflow Automation · Reliance Retail × Fynd</title>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Boltic</span></div>
+<div class="section-label mb-3">AI-Native · Agentic automation · Boltic · Platform live on Fynd</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Boltic.<br/><span style="color: var(--accent);">The agentic-automation OS for Reliance Retail.</span></h1>
+<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">Boltic is Fynd's AI-Native Workflow Automation OS: workflows, AI agents, MCP servers, serverless, and a gateway. Powering live workflows across Fynd and Reliance Retail.</p>
+<p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">Scoped for Reliance Retail across sales optimization, supply-chain workflows, and customer-support automation. The three places repetitive operations cost the most operator time.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
+<div class="card p-4"><div class="cap-num mb-1">Platform modules</div><div class="display-2 text-3xl accent">8</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Workflows · Agents · MCP · Serverless · Gateway · Storage · Tables · Monitoring</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Pre-built integrations</div><div class="display-2 text-3xl accent">500+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across SaaS, ERP, CRM, support stacks</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Live RR brands</div><div class="display-2 text-3xl accent">2</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Tira · Urban Ladder on Boltic</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Monthly executions</div><div class="display-2 text-3xl accent">1.79M</div><div class="text-xs mt-1" style="color: var(--ink-muted);">198 workflows · Sep-2025 sample</div></div>
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#what-boltic-is">01 · What Boltic is</a>
+<a href="#platform">02 · The platform</a>
+<a href="#architecture">03 · Architecture</a>
+<a href="#tira">04 · Tira</a>
+<a href="#urban-ladder">05 · Urban Ladder</a>
+<a href="#receipts">06 · Receipts</a>
+</div>
+</div>
+
+<!-- §01 · WHAT BOLTIC IS FOR RELIANCE -->
+<section id="what-boltic-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · What Boltic is for Reliance</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">Problem</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Operations stitched by hand.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Inventory and pricing data out of sync across channels → stockouts, overselling</li>
+<li>· Manual order reconciliation → errors, delays, unhappy customers</li>
+<li>· Fragmented CX data → poor personalisation, lost loyalty</li>
+<li>· Promotional campaign data scattered → no single view of discount effectiveness</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Solution</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">A single AI workflow OS.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Visual workflow builder + AI agents + MCP servers in one place</li>
+<li>· 500+ pre-built integrations across SaaS, ERP, CRM, support</li>
+<li>· Runs in Boltic-managed cloud or Reliance's preferred cloud</li>
+<li>· SOC 2 + GDPR governance · default-on</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Impact for Reliance Retail</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Operators stop maintaining glue.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Long-running back-office processes monitored end-to-end</li>
+<li>· AI handles repetitive ops; humans handle exceptions</li>
+<li>· One control surface for replenishment, orders, support, marketing</li>
+<li>· Audit trail intact end-to-end · compliance bar held</li>
+</ul>
+</div>
+</div>
+</div></section>
+
+<!-- §02 · THE PLATFORM · 8 MODULES + LIVE UI -->
+<section id="platform" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · The platform · 8 modules · live UI</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Eight modules. One automation OS.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Every module ships as a live surface, powering workflows across Fynd and Reliance Retail. Used as a single stack, not as point tools. Six surfaces of the live console below.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">01</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Workflows</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Visual builder for AI-powered automations · branching, conditions, scheduled triggers · run from any starting event.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">02</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">AI Agents</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Agents that act across connected systems in real time · custom agents for retail-specific tasks · human-in-the-loop oversight.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">03</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">MCP</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Standard-protocol servers so AI tools can call your apps and workflows directly · authenticate once, AI handles the rest.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">04</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Serverless</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Run custom code securely inside workflows with no infrastructure to manage · auto-scales · supports gRPC, container, code targets.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">05</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Gateway</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Connect, secure, and monitor APIs powering automations · instant API access · end-to-end security · adaptive scaling.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">06</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Storage</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Manage and automate unstructured data: files, logs, media · queryable from any workflow step.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">07</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Tables</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Structured operational data store · AI-prompt to schema · build a tracker in seconds, sync to any workflow.</p>
+</div>
+<div class="card p-6">
+<div class="flex items-baseline justify-between mb-3"><span class="cap-num">08</span><span class="pill pill-live">Live · Platform</span></div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Monitoring</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Track workflow execution, page-load checks, broken-link checks · success-rate dashboards · alert routing.</p>
+</div>
+<div class="card p-6 flex flex-col justify-center" style="background: var(--accent-soft); border-color: #DDD6FE;">
+<div class="cap-num mb-2" style="color: var(--accent);">Plus</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--accent);">Boltic Edge</h3>
+<p class="text-sm" style="color: var(--ink);">Six native solutions on top of the platform (Emails, Tables, Extract, SMS, Crawler, IDP) ready to drop into any workflow.</p>
+</div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6 mt-12">
+<div class="card overflow-hidden">
+<img src="/assets/boltic/screens/dashboard.jpg" alt="Boltic dashboard · operator control surface with workflow library, integrations, and recent activity" class="w-full" />
+<div class="p-5"><div class="cap-num mb-1">01 · Dashboard</div><p class="text-sm" style="color: var(--ink);">The operator control surface. Workflow library, integrations panel, recent activity, and quick-add for new workflows or integrations.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/boltic/screens/workflow-analytics.jpg" alt="Workflow analytics · 1.79M total executions, 967k succeeded, 817k failed surfaced for triage" class="w-full" />
+<div class="p-5"><div class="cap-num mb-1">02 · Workflow Analytics</div><p class="text-sm" style="color: var(--ink);">Live execution telemetry. <span class="mono">1.79M</span> total executions across <span class="mono">198</span> workflows · Sep-2025 single-month sample. Successful, failed, running, and pending broken out for triage.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/boltic/screens/ai-agents.jpg" alt="AI Agents · custom agent inventory with deployment status and last-modified telemetry" class="w-full" />
+<div class="p-5"><div class="cap-num mb-1">03 · AI Agents</div><p class="text-sm" style="color: var(--ink);">Agent inventory and deployment status. Custom agents for retail-specific tasks · per-agent enable/disable · run history at a glance.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/boltic/screens/mcp.jpg" alt="MCP servers · standard-protocol bridges so AI tools can act on internal data" class="w-full" />
+<div class="p-5"><div class="cap-num mb-1">04 · MCP servers</div><p class="text-sm" style="color: var(--ink);">Standard-protocol bridges so AI tools can act on internal data. Build a server in minutes; chat with any app, workflow, or tool in real time.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/boltic/screens/monitoring.jpg" alt="Monitoring · uptime, page-load, broken-link, and workflow-health checks with success-rate dashboards" class="w-full" />
+<div class="p-5"><div class="cap-num mb-1">05 · Monitoring</div><p class="text-sm" style="color: var(--ink);">Uptime, page-load, broken-link, and workflow-health checks. Success-rate dashboards, location-failing counts, alert routing.</p></div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/boltic/screens/gateway.jpg" alt="Gateway · API surfaces with end-to-end security and adaptive scaling" class="w-full" />
+<div class="p-5"><div class="cap-num mb-1">06 · Gateway</div><p class="text-sm" style="color: var(--ink);">API surfaces with end-to-end security and adaptive scaling. Domain-mapped, status-tracked, and operator-managed.</p></div>
+</div>
+</div>
+</div></section>
+
+<!-- §03 · ARCHITECTURE -->
+<section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Architecture · the full-stack system</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A full-stack system for real results.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Four layers · pre-built solutions on top, the 8-module core in the middle, multi-provider AI models, and 500+ apps + data sources at the foundation. Everything needed to connect, automate, and scale in one platform.</p>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 01</div><span class="pill pill-live">Live · Platform</span></div>
+<div class="theme-tag mb-2">Pre-built solutions · industry-shaped</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Eight industries with shipped templates.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· Retail & Ecommerce · Supply Chain · Logistics</li>
+<li>· Customer Support · Sales & BDR · Marketing</li>
+<li>· IT · Healthcare</li>
+<li>· Each industry inherits the platform core; no engineering for new flows</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 02</div><span class="pill pill-live">Live · Platform</span></div>
+<div class="theme-tag mb-2">Platform core · 8 modules</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">The automation OS itself.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· Workflows · AI Agents · MCP · Serverless</li>
+<li>· Gateway · Storage · Tables · Monitoring</li>
+<li>· One stack, not eight point tools</li>
+<li>· Used together; runs Fynd's own ops on the same console</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 03</div><span class="pill pill-live">Live · Platform</span></div>
+<div class="theme-tag mb-2">AI models · multi-provider</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Model choice belongs to the operator.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· OpenAI · GPT-5.5 · 5.5 Pro · 5.4 · 5.4 Mini</li>
+<li>· Google · Gemini 3.1 Pro · 3.1 Flash · 3 Pro · 2.5 Pro</li>
+<li>· Anthropic · Opus 4.7 · Sonnet 4.6 · Haiku 4.5</li>
+<li>· Meta · Llama 4 Maverick · 4 Scout · 3.3 70B</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 04</div><span class="pill pill-live">Live · Platform</span></div>
+<div class="theme-tag mb-2">Apps + Data · 500+ integrations</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Foundation: every system the operator already runs.</h3>
+<ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
+<li>· SaaS · ERP · CRM · Support · Data warehouse</li>
+<li>· Messaging · Email · SMS · WhatsApp</li>
+<li>· Code repos · CI/CD</li>
+<li>· 500+ pre-built connectors plus custom MCP servers and code targets</li>
+</ul>
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §04 · TIRA · LIVE RR · DATA + REPORTING ON BOLTIC -->
+<section id="tira" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Tira · live RR · data + reporting on Boltic</div>
+<div class="flex items-center gap-3 mb-3 flex-wrap">
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Tira on Boltic.</h2>
+<span class="pill pill-live">Live · RR · Tira</span>
+</div>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Reliance Retail's beauty brand Tira runs its data flow, reporting, and order-data access on Boltic, replacing manual sync pipelines with event-driven workflows.</p>
+
+<div class="grid md:grid-cols-3 gap-4 mb-6">
+<div class="card p-6">
+<div class="cap-num mb-2">Challenge</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Data and reporting stitched by hand.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· CRM data not syncing cleanly into the data warehouse</li>
+<li>· MOQ reports handled manually · delays + duplication</li>
+<li>· Order data hard to access via APIs for reporting</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Solution · Boltic workflows</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Four event-driven flows.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· CRM → Data-lake sync · with deduplication</li>
+<li>· Automated MOQ report emails · from MongoDB data</li>
+<li>· Order Data MCP · real-time + historical access</li>
+<li>· Event tracking with Boltic Streams · analytics-ready</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Impact</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Event-driven operations.</h3>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><span class="display-2 text-2xl accent">4×</span> · faster behaviour-based automation</li>
+<li><span class="display-2 text-2xl accent">86%</span> · faster access to real-time + historical data</li>
+<li>· Reliable, event-driven ops with automated workflows</li>
+</ul>
+</div>
+</div>
+
+</div></section>
+
+<!-- §05 · URBAN LADDER · LIVE RR · EVENT COLLECTOR -->
+<section id="urban-ladder" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Urban Ladder · live RR · Boltic as event collector</div>
+<div class="flex items-center gap-3 mb-3 flex-wrap">
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Urban Ladder · Boltic as event collector.</h2>
+<span class="pill pill-live">Live · RR · Urban Ladder</span>
+</div>
+<p class="text-base max-w-4xl mb-10" style="color: var(--ink-muted);">Reliance Retail's home-and-interiors brand Urban Ladder runs Boltic as the central event-collection and routing layer across a heterogeneous stack: storefront, order management, Kapture (interiors CRM), CleverTap (engagement), GA4 (analytics), Sentry (monitoring). Events ingested by Boltic, fanned out reliably in parallel to downstream analytics and engagement platforms.</p>
+
+<div class="grid md:grid-cols-2 gap-4 mb-10">
+<div class="card p-6">
+<div class="cap-num mb-2">Challenge</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Heterogeneous stack, no event spine.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>· Collect events from multiple sources and fan them out to the right analytics and engagement platforms</li>
+<li>· Stitch cross-system workflows so customer-facing communications and internal alerts fire reliably, without engineering effort for every new flow</li>
+<li>· Alert mechanism to notify engineering on errors logged in Sentry during development</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">Primary use case</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Boltic as the event collector.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Boltic deployed as Urban Ladder's central event-collection and routing layer. Events generated across the platform are ingested by Boltic and reliably forwarded to multiple downstream analytics and engagement platforms in parallel.</p>
+<p class="text-sm" style="color: var(--ink-muted);">Frontend events flow into Boltic, then land in the data lake or get integrated with engagement tools to drive conversion. Two broad outcomes:</p>
+<ul class="space-y-1 text-sm mt-2" style="color: var(--ink);">
+<li>· Improve customer communication and lead generation · CRM lift</li>
+<li>· Act as an orchestration layer between systems · generate workflows</li>
+</ul>
+</div>
+</div>
+
+<div class="cap-num mb-3" style="color: var(--ink);">Cross-system workflows in production</div>
+<table class="grid-table">
+<thead>
+<tr><th>Workflow</th><th>What it does</th><th>Systems connected</th></tr>
+</thead>
+<tbody>
+<tr>
+<td class="font-medium">Interiors communication</td>
+<td>Listens to webhook events from Kapture · creates corresponding events in CleverTap to trigger campaigns for interior-design customers</td>
+<td><span class="mono text-xs">Kapture → Boltic → CleverTap</span></td>
+</tr>
+<tr>
+<td class="font-medium">NPS campaign</td>
+<td>Captures order events post-fulfilment · automatically triggers NPS communication in the post-purchase journey</td>
+<td><span class="mono text-xs">Urban Ladder OMS → Boltic → CleverTap</span></td>
+</tr>
+<tr>
+<td class="font-medium">Lead creation</td>
+<td>On qualifying triggers from upstream events · Boltic auto-creates a lead inside Kapture</td>
+<td><span class="mono text-xs">FE events → Boltic → Kapture</span></td>
+</tr>
+<tr>
+<td class="font-medium">Sentry alerts</td>
+<td>Listens to Sentry alerts on application errors and runtime issues · routes them through Boltic for notification + ticket creation</td>
+<td><span class="mono text-xs">Sentry → Boltic → Notification channels</span></td>
+</tr>
+</tbody>
+</table>
+
+</div></section>
+
+<!-- §06 · RECEIPTS -->
+<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Receipts</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where the claims come from.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source decks, live console screenshots, and the cover letter that placed Boltic in the AI-Native register.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<a class="card card-hover p-6 block" href="/assets/boltic/screens/dashboard.jpg" target="_blank" rel="noopener">
+<div class="cap-num mb-2">Live console · 01</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Dashboard.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Operator control surface · workflow library · integrations panel · recent activity.</p>
+</a>
+<a class="card card-hover p-6 block" href="/assets/boltic/screens/workflow-analytics.jpg" target="_blank" rel="noopener">
+<div class="cap-num mb-2">Live console · 02</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Workflow analytics.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">1.79M total executions across 198 workflows · Sep-2025 single-month sample · success / fail / running broken out.</p>
+</a>
+<a class="card card-hover p-6 block" href="/assets/boltic/screens/ai-agents.jpg" target="_blank" rel="noopener">
+<div class="cap-num mb-2">Live console · 03</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">AI Agents.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Custom agents for retail-specific tasks · per-agent enable/disable · run history.</p>
+</a>
+<a class="card card-hover p-6 block" href="/assets/boltic/screens/mcp.jpg" target="_blank" rel="noopener">
+<div class="cap-num mb-2">Live console · 04</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">MCP servers.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Standard-protocol bridges so AI tools can act on internal data. Build a server in minutes.</p>
+</a>
+<a class="card card-hover p-6 block" href="/assets/boltic/screens/monitoring.jpg" target="_blank" rel="noopener">
+<div class="cap-num mb-2">Live console · 05</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Monitoring.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Uptime, page-load, broken-link, workflow-health checks · success-rate dashboards · alert routing.</p>
+</a>
+<a class="card card-hover p-6 block" href="/assets/boltic/screens/gateway.jpg" target="_blank" rel="noopener">
+<div class="cap-num mb-2">Live console · 06</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Gateway.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">API surfaces with end-to-end security and adaptive scaling · domain-mapped, status-tracked.</p>
+</a>
+<a class="card card-hover p-6 block" href="/agents">
+<div class="cap-num mb-2">Adjacent</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">AI Agents directory.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">The full Fynd agent catalogue · how Boltic-built agents fit into the broader AI-Native surface.</p>
+</a>
+<a class="card card-hover p-6 block" href="/ai-native">
+<div class="cap-num mb-2">Context</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">AI-Native Engineering.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">How Fynd builds · the engineering posture that produced Boltic, PixelBin, Ratl and Kaily.</p>
+</a>
+<a class="card card-hover p-6 block" href="/">
+<div class="cap-num mb-2">Home</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Back to the register.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Cross-platform overview · all 20+ tracks across the Fynd × RRVL surface.</p>
+</a>
+</div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

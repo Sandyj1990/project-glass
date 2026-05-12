@@ -1,0 +1,76 @@
+{
+  "page": "impetus/pulsepoint/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_version": "v3",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 92,
+    "tone_of_voice": 88,
+    "honesty_register": 85,
+    "visual_completeness": 78,
+    "cross_page_consistency": 95
+  },
+  "findings": [
+    {
+      "id": "P1",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "§05 Screenshots (cards 1, 2)",
+      "issue": "Three card captions render the literal string '&amp;amp;' instead of '&' — caused by HTML double-encoding. Visible on the page as 'pending status &amp;amp; due date'. Affects 073-v2 alt+caption and 073-v2-b caption.",
+      "fix": "In data/impetus/pulsepoint.yaml change the screenshot captions from '&amp;' to '&' for entries 073-v2 and 073-v2-b. Or fix the renderer in tools/build_impetus.py to skip the second escape pass on caption strings. Re-render.",
+      "files": ["impetus/pulsepoint/index.html:212", "impetus/pulsepoint/index.html:214", "impetus/pulsepoint/index.html:219"],
+      "auto_fixable": true
+    },
+    {
+      "id": "P2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§03",
+      "issue": "Stat chip 'Rollout temporarily blocked by an app-naming issue' is honest reporting (good!) but sits adjacent to the headline '1,605 of 1,926 stores (83%)' chip with no qualifier — Apex reading the 83% may not know rollout has stopped at that count. Subordinate note below ('Next: push notifications…') doesn't address the block.",
+      "fix": "Tie the two chips together — reword the third chip to 'Rollout paused at 83% pending app-naming resolution' so the stop-condition is on the same level as the count. Or add a short caption under the chip strip explaining the gap between current 83% and the 100% target.",
+      "files": ["impetus/pulsepoint/index.html:187"],
+      "auto_fixable": true
+    },
+    {
+      "id": "P3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§04 What improved · impact",
+      "issue": "Phrase 'better planogram compliance (currently ~70% across stores)' presents 70% as the current baseline, but no source tells us whether the platform has measurably moved the number — the source PDF p.72 says 'currently ~70% across stores' too, framing it as the starting condition without a delta. Reads as if the platform is delivering improvement, but only the baseline is sourced.",
+      "fix": "Either retain as baseline framing ('today's baseline is ~70% across stores; PulsePoint is the surface that will measure movement') or add 'Δ to be reported in next compendium' to flag the absence of post-deployment delta.",
+      "files": ["impetus/pulsepoint/index.html:200-202"],
+      "auto_fixable": true
+    },
+    {
+      "id": "P4",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "Sentence 'Replaces fragmented email and WhatsApp-based task management.' is the third paragraph but stands alone as a single short sentence — formatting-wise it reads as a stub. The same fact is also asserted in the hero strap ('Replaces fragmented email + WhatsApp task management.'). Mild duplication.",
+      "fix": "Either merge into the previous paragraph (after the Central operations team sentence) or drop the third paragraph since the hero already carries the line.",
+      "files": ["impetus/pulsepoint/index.html:181"],
+      "auto_fixable": true
+    },
+    {
+      "id": "P5",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§03",
+      "issue": "Chip 'Multi-tenant setup live for Fashion Factory' and chip 'Onboarded in 1 day per format' are facts that PDF p.72 lists in §What Improved (not §How Many Use It). Page hoists them into §03 — minor drift between source-section taxonomy and page-section placement.",
+      "fix": "Either move these two chips into §04 What improved (where the PDF places them) or accept the cross-section pull as editorial choice. Functionally fine.",
+      "files": ["impetus/pulsepoint/index.html:187"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source traceability strong — '1,605 of 1,926 stores (83%)' verified verbatim against PDF p.72; the 'rollout temporarily blocked by app-naming issue' detail is faithfully carried; What-improved bullets and Expected-impact callout map directly to source.",
+    "All 8 screenshot URLs (073-v2 through 077-v2) return 200 with correct dimensions; the 4 mobile screens (073, 074, 075, 075-b, 076 at ~720-744 × 1600) display real Android UI captures, not the broken white frames from earlier extraction passes.",
+    "Tone register is solid — no banned vocabulary, no exclamation marks, no engineering jargon in hero or chip positions. Audience pills enumerate roles cleanly (Store Managers · Department Managers · Sales Associates · Cluster Managers · Central Operations Teams).",
+    "Section numbering (02 → 03 → 04 → 05) is contiguous post-deletions; lightbox wired correctly with css-class toggle (no [hidden]/inline-display collision).",
+    "Cross-page consistency excellent — /impetus/ index card 11 stat 'Store Ops Platform · 1,605 of 1,926 stores (83%)' matches the page §03 chip exactly. Title 'Store Ops Platform' matches hero, breadcrumb and impetus index tile."
+  ]
+}

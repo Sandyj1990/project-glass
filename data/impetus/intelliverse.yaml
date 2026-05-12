@@ -1,0 +1,190 @@
+# IntelliVerse · Procuro · IntelliMake · IntelliQC · IntelliPack
+# Sourced verbatim from Q1 2026 Release Compendium pp. 31–49
+# Per docs/impetus-restructure-spec.md
+
+slug: intelliverse
+title: IntelliVerse
+sub_title: "(Procuro · IntelliMake · IntelliQC · IntelliPack)"
+aliases: [Procuro, IntelliMake, IntelliQC, IntelliPack]
+tagline: The backbone of how goods move from suppliers to stores. PO → Make → QC → Pack → Ship. PO-to-Shipping cut from 55 → 30 days (45% faster).
+category: Make / Move
+status: live
+status_label: Live
+
+audience:
+  - "3,867 Vendors"
+  - Sourcing Managers
+  - QFEs (Quality Field Engineers)
+  - Logistics Managers
+  - Commercial &amp; Audit Teams
+
+what_it_does: |
+  **Revolutionising apparel manufacturing.** Per Accenture s23, IntelliVerse IS
+  the Manufacturing Execution System (MES) — a unified AI-native vendor OS that
+  connects every stage of the factory.
+
+  - **The challenges (before):** scattered tools &amp; manual reports · WhatsApp /
+    email coordination · data duplication &amp; loss.
+  - **Key benefits:** Unified Vendor OS · Smarter Pre-Production · Seamless Daily
+    Reporting · Proactive in Quality · Faster to Packing · End-to-End Traceability.
+  - **System modules:** Pre-Production Order Summary · Daily Production Reporting
+    (DPR) · Quality Audit Module · Full QC Visibility · IntelliPack Integration ·
+    Capacity Declaration · Integrations &amp; Webhooks · AI Orchestration.
+
+  This is the backbone of how goods move from suppliers to stores. Suppliers use it
+  to scan, pack and ship products and can access the mobile shipping app by scanning
+  a QR code (no URLs to remember). Quality inspectors check goods at the factory and
+  now catch problems at **10% completion instead of waiting until 70%**, saving huge
+  re-manufacturing costs. Sourcing teams manage purchase orders, new partners can be
+  added through settings instead of needing custom engineering work. Operations teams
+  get real-time system health monitoring, problems are diagnosed in minutes, not hours.
+
+scale_label: How Many People Use It
+scale:
+  - "15.84L POs created"
+  - "11.85 Cr garments processed"
+  - "372 active suppliers"
+  - "3.5 Cr direct-to-store shipments"
+  - "AJIO · LivSmart · Fynd Create now live"
+  - "IntelliMake: 506 of 1,245 factories (41%) active across 6 clusters"
+  - "Vendor capacity: 461 of 1,377 vendors reporting · 3.8Cr units occupied of 13.7Cr declared"
+  - "Factory capacity: 375 of 1,245 factories reporting · 2.1Cr units occupied of 6.2Cr declared"
+scale_caption: |
+  Adoption snapshot as of 15 Apr 2026. Data from IntelliMake adoption statistics and
+  Q1 release notes. The 11.85 Cr garments figure is the cumulative volume processed
+  through the IntelliVerse pipe.
+
+what_improved:
+  body: |
+    **Quality inspectors catch defects at 10% order completion (vs 70%), saving 2-3
+    weeks rework.** Suppliers see one consolidated timeline per product per month
+    (vs 3 separate timelines). Format heads can delay delivery dates and the system
+    recalculates penalties automatically. New partners (AJIO, LivSmart, Fynd Create)
+    added via configuration, not custom code. **PO-to-Shipping cycle: 55 → 30 days
+    (45% faster).**
+  expected_metric_impact: |
+    catching defects at 10% instead of 70% saves the cost of re-manufacturing 60%
+    more of an order. The 55 → 30 day PO-to-ship compression is the headline supply
+    chain win of the quarter — every additional day of pipeline cycle ties up
+    working capital and pushes back markdowns.
+
+updates_shipped:
+  - date: "1 Apr 2026"
+    heading: "Easier Partner Onboarding + Smarter Purchase Orders"
+    bullets:
+      - "Adding new partners is now self-serve (AJIO, LivSmart, Fynd Create live with own rules)."
+      - "Buyers can delay specific items instead of cancelling entire orders; real-time notifications."
+      - "Stability fixes for supplier and order data pushed to production."
+  - date: "1 Apr 2026"
+    heading: "System Health Monitoring Live"
+    bullets:
+      - "Live dashboards for packing speed, error rates, bottlenecks."
+      - "Automatic error detection, **diagnosis in minutes, not hours**."
+  - date: "31 Mar 2026"
+    heading: "Better Quality Checks + Mobile QR Access for Suppliers"
+    bullets:
+      - "**For quality inspectors:** Filter inspection records by supplier, factory and inspection type. Bulk import/export of inspector-to-factory assignments (previously done one at a time). **Sampling capacity increased from 32,000 to 1 crore items for high-volume orders.**"
+      - "**For suppliers:** QR code on the desktop app opens the mobile shipping app instantly, added because factory workers didn't know the mobile version existed. **Reduces time spent finding the right tool.**"
+      - "**For everyone:** New financial year invoice series (FY 2026-27) active from 1st April."
+  - date: "27 Mar 2026"
+    heading: "Shein-Specific Settings"
+    bullets:
+      - "Shein has different operational needs: higher tolerance for extra scanning (raised from 5% to 10%), multi-barcode scanning for warehouse boxes, automatic blocking of shipments past delivery date and a separate penalty toggle (Shein suppliers aren't charged late-delivery penalties). **These are all configurable per partner, no impact on other partners' workflows.**"
+  - date: "21 Mar 2026"
+    heading: "Early Defect Detection · Catch Problems at 10%, Not 70%"
+    bullets:
+      - "Previously, the first hard quality check happened when 70% of an order was finished. If defects were found that late, re-manufacturing was expensive and time-consuming. **This new checkpoint at 10% lets teams course-correct early and cheaply.**"
+      - "Automatically triggered when 10% of finishing is complete. Supplier picks date/time/location. If it passes → the 70% final check is unlocked. If it fails → the defective portion is removed, supplier re-manufactures and a new inspection is automatically scheduled."
+      - "**Business outcome:** fewer rejected batches at final inspection, lower re-manufacturing costs, shorter delivery delays. If even 10% of defective batches are caught early, this can save weeks of delays per batch and lakhs in re-manufacturing cost."
+  - date: "21 Mar 2026"
+    heading: "One Timeline Per Product · No More Juggling 3 Schedules"
+    bullets:
+      - "When a product appeared in 3 purchase orders with 3 different delivery dates in the same month, the system created 3 separate production timelines, confusing suppliers and making it harder to spot delays."
+      - "Now: one consolidated TnA (Time &amp; Action, production timeline) per product per month. Starts from the earliest delivery date. Full visibility from fabric arriving at the factory through to the finished shipment. **Business outcome:** suppliers can plan production more efficiently, spot bottlenecks earlier and reduce missed delivery dates, **directly improving OTIF (On-Time In-Full) scores**."
+  - date: "20 Jan 2026"
+    heading: "Automatic Late-Delivery Penalties for Suppliers"
+    bullets:
+      - "Structured penalty: 0.5% per day for first 7 days late, then 1% per day for the next 8 days. After 15 days late, the order is automatically closed. Updated on all purchase order documents. **Business outcome: creates clear accountability.** Suppliers know exactly what happens if they're late. Finance teams have standardised deductions. Expected improvement: faster supplier compliance, fewer delivery escalations."
+  - date: "Earlier Releases (Posted Later)"
+    heading: "Delivery Date Delays, Fair for Both Sides + Full Penalty Audit Trail"
+    bullets:
+      - "**For format heads:** Can now push delivery dates when a store isn't ready to receive goods (demand shifted, space constraints). System immediately blocks shipments for unshipped quantities and recalculates all supplier timelines."
+      - "**For suppliers:** Late-delivery penalties only apply after the new (delayed) date, not the original. Existing penalties aren't automatically erased, suppliers can request a review. Original dates are kept for audit purposes."
+      - "**Full Penalty Audit Trail for Finance Teams:** Downloadable penalty reports. Complete history of every delay and penalty per product. Automatic debit notes synced to the SAP. Better filtering and batch review for waiver requests. **Reduces manual reconciliation work for finance teams.**"
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-034.jpg"
+    caption: "**Procuro · Purchase orders + OTB budget** · Reviewed/accepted/fulfilled orders with supplier info · OTB consumed/available with linked distribution plans."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-035.jpg"
+    caption: "**Procuro · Open to Buy + Distribution plan summary** · OTB items with budget allocation and status · Order OTBs and fulfillment metrics with linked options."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-036.jpg"
+    caption: "**IntelliMake · Vendor team management** · Active users, team members and pending invites for the factory team."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-037.jpg"
+    caption: "**IntelliMake · Welcome + Capacity planning** · Option-wise production progress and order quantity metrics · Monthly capacity declaration view."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-038.jpg"
+    caption: "**IntelliMake · Capacity detail (May 2026) + Account role selection** · Brick-level capacity with holiday calendar · Vendor / Vendor-Accountant / Intelli-Admin / Factory-Manager / Sourcing-Merchant role pickers."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-039.jpg"
+    caption: "**IntelliMake · Supplier code selection** · Vendor options with category filters (A1 · Mid Economy · Trends) for onboarding."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-041.jpg"
+    caption: "**IntelliQC mobile · Upcoming inspections** · Pre-Scan Inspection list with vendor lots, style code, lot number and quantity."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-042.jpg"
+    caption: "**IntelliQC mobile · History** · Completed and transferred inspections with pass/fail status."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-043.jpg"
+    caption: "**IntelliQC · QC Certificate** · Pre-Final Inspection Report (FAILED case) with AQL master, defect summary, measurement audit and packaging audit."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-044.jpg"
+    caption: "**IntelliQC mobile · Lot detail** · Order breakdown with AQL Snapshot (defects ≥1 major / ≥2 minor / ≥5 measurement) and inspection workflow."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-045.jpg"
+    caption: "**IntelliPack · PO Short-close** · Order summary with shipping status, manifested quantities and full PO timeline."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-046.jpg"
+    caption: "**IntelliPack · E-Credit note** · ASN details, item breakdown, e-invoice + lorry receipt + addresses for vendor reconciliation."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-047.jpg"
+    caption: "**IntelliPack · Multi-tenant login + Mobile manifest** · Account selection across vendor configurations · Manifest QR for scan-and-pack at vendor factory."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-048.jpg"
+    caption: "**IntelliPack · ASN listing + Order summary** · Shipment tracking with status filtering · Order-level shipment management with delivery dates."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/intelliverse/screenshot-049.jpg"
+    caption: "**IntelliPack · Order details + Scan and pack** · Shipment dates and tracking timeline · Product details with color, size, style code for packing accuracy."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 31–49"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+  - label: "Accenture · Updated Retail Platforms+Agents · slide s23 · MES Manufacturing Execution System"
+    href: ""
+
+progress:
+  current_level: 3
+  current_summary: |
+    IntelliVerse is the most operationally mature platform in the stack and sits at
+    **L3 · Intelligent** today across multiple workflows. Early defect detection
+    at 10% (vs. 70%), one-timeline-per-product, automatic late-delivery penalties,
+    and real-time partner onboarding all describe a system that **predicts and
+    self-corrects** within guardrails. L4 is where the system reroutes orders and
+    re-allocates capacity across the supplier network without a sourcing manager
+    intervening.
+  workflows:
+    - name: "Production Tracking"
+      number: "3.1"
+      current: 3
+      target: 4
+      plan: "Predictive completion modelling live; next is delay-predicted-and-auto-mitigated — 3PL notified, alternate factory engaged, human reviews daily brief."
+    - name: "Quality Assurance"
+      number: "3.2"
+      current: 3
+      target: 4
+      plan: "Selective QC + pre-production confidence scoring live; next is quality-built-in (zero-defect pre-production via supplier scorecards)."
+    - name: "Logistics"
+      number: "3.5"
+      current: 2
+      target: 3
+      plan: "TAT tracked; ship-from-store routing live; next is cross-network path optimisation (every disruption auto-reroutes)."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Production Tracking · L3 → L4"
+      body: "Delay predicted, mitigation auto-identified — sourcing manager reviews the daily brief, doesn't drive the response."
+    - eyebrow: "Risk reduction milestone"
+      title: "PO-to-shipping 55 → 30 days (45% faster)"
+      body: "Every additional day of pipeline cycle ties up working capital and pushes back markdowns."
+    - eyebrow: "Identity shift indicator"
+      title: "Sourcing managers handle exceptions, not orders"
+      body: "Auto-onboarding (AJIO, LivSmart, Fynd Create); auto-penalties; auto-recalculated timelines."

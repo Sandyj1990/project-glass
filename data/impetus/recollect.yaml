@@ -1,0 +1,127 @@
+# Recollect · Reconciliation (Procure-to-Pay Matching)
+# Sourced verbatim from Q1 2026 Release Compendium pp. 57–64
+# Per docs/impetus-restructure-spec.md
+
+slug: recollect
+title: Recollect
+sub_title: "(Reconciliation · Procure-to-Pay Matching)"
+aliases: [Reconciliation Engine, Reco]
+tagline: Automatic 3-way matching (PO + GRN + Invoice). Auto-flags discrepancies; auto-debit notes for late deliveries and lost-in-transit shipments.
+category: Sell · Reconciliation
+status: live
+status_label: Live
+
+audience:
+  - "Commercial &amp; Audit Teams (payment reconciliation)"
+  - "Logistics Teams (courier invoice validation)"
+  - "Vendors (receivables visibility)"
+
+what_it_does: |
+  **Finance and audit teams** get automatic 3-way matching (PO + GRN + Invoice) —
+  the system checks whether the Purchase Order, Goods Receipt Note and supplier
+  invoice all agree. When they don't, the discrepancy is flagged and routed to the
+  right person.
+
+  **Logistics teams** now have a dedicated module for checking courier invoices
+  against actual shipment data, replacing manual spreadsheet reconciliation. Rules
+  can be configured per courier partner based on contract terms.
+
+  **Suppliers** get clearer visibility into their payments.
+
+scale_label: Adoption
+scale:
+  - "10 rules configured across 6 courier partners"
+  - "Rule types: Late Delivery · Auto Lost in Transit (+2 existing Lost in Transit rules)"
+  - "eCN flow deployed · pilot completed with first vendor"
+  - "First Credit Note ₹5,125 accepted &amp; posted to JioGST portal (Apr 3)"
+  - "Backdated AWBs being processed from Feb 2026 onwards"
+scale_caption: |
+  Roadmap: payment dashboard, SAP integration for debit/credit notes, auto-ticketing
+  for vendor CN non-acceptance.
+
+what_improved:
+  body: |
+    **eCN (Electronic Credit Note) flow live with JioGST integration.** When goods
+    received at the warehouse don't match what the supplier invoiced (short
+    shipments, wrong items, returns), the commercial team previously handled credit
+    notes manually via offline coordination. **This new flow automates the entire
+    lifecycle, from discrepancy detection to vendor acceptance to GST portal posting.**
+    For commercial &amp; audit teams: system auto-identifies invoice discrepancies and
+    generates eCNs. Vendors accept or reject on-platform. On acceptance, the Credit
+    Note is posted directly to the JioGST portal, confirmed working in production.
+    GST compliance window enforced: eCN auto-disabled after 160 days from invoice date.
+
+    **Courier Invoice Reconciliation live.** Logistics teams previously reconciled
+    courier invoices against shipment data using spreadsheets — manual, slow, error-
+    prone. This brings the full workflow onto the platform: AWB Ledger, configurable
+    rules, automatic debit notes, insurance tracking, guided invoice checker.
+  expected_metric_impact: |
+    faster courier invoice processing, fewer overpayments (every incorrectly paid
+    courier invoice is a direct cost leak). 10 rules now live across 6 courier
+    partners means automatic detection of late deliveries and lost-in-transit
+    shipments — debit notes generated without manual intervention. Finance teams
+    spend less time on spreadsheet reconciliation, more time on exception handling.
+    Once fully rolled out, commercial teams will recover discrepancy amounts
+    automatically instead of manual offline follow-ups, **directly improving working
+    capital recovery speed and reducing revenue leakage from unreconciled invoices.**
+
+updates_shipped:
+  - date: "3 Apr 2026"
+    heading: "eCN (Electronic Credit Note) Flow, Pilot Live with JioGST Integration"
+    bullets:
+      - "**For Commercial &amp; Audit teams:** System auto-identifies invoice discrepancies (article mismatches, returns to seller, partial shipments) and generates eCNs. Vendors accept or reject on-platform. On acceptance, the Credit Note is posted directly to the JioGST portal, confirmed working in production (first CN of ₹5,125 accepted and posted successfully on Apr 3). GST compliance window enforced: eCN auto-disabled after 160 days from invoice date."
+      - "**For Vendors:** Visibility into pending credit notes on the Reco platform. Accept or reject with clear timelines. No more offline back-and-forth with commercial teams."
+      - "**Status &amp; business outcome:** Pilot completed with first vendor, end-to-end flow confirmed working including JioGST posting. Scale-up pending data validation."
+  - date: "27 Feb 2026"
+    heading: "Courier Invoice Reconciliation Goes Live"
+    bullets:
+      - "**AWB Ledger:** Complete record of all AWB records for matching against invoices."
+      - "**Configurable rules:** Finance teams set matching rules per courier partner based on contract terms, no engineering help needed."
+      - "**Automatic Debit Notes:** When discrepancies are found, debit notes are generated automatically."
+      - "**Insurance tracking:** Courier insurance limits now visible and configurable."
+      - "**Guided invoice checker:** Step-by-step wizard for validating courier invoices, replaces manual spreadsheet work."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/recollect/screenshot-059.jpg"
+    caption: "**Logistics dashboard** · 24,48,019 total shipments · ₹65.76 Cr pending reconciliation · exception types with AWB counts and amounts."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/recollect/screenshot-060.jpg"
+    caption: "**Exceptions detail + AWB ledger** · Invoice/delivery issues requiring business action · Packed and delivery-pending shipments with tracking."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/recollect/screenshot-061.jpg"
+    caption: "**AWB details + Recon wizard** · Per-AWB shipment info with delivery partner and order timeline · 3-step bulk upload reconciliation."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/recollect/screenshot-062.jpg"
+    caption: "**Recon upload status + Rule library** · Reconciliation data with completion tracking · Late-delivery rules with stakeholder info and validity periods."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/recollect/screenshot-063.jpg"
+    caption: "**Rule details + Credit/Debit notes** · Late-delivery rule logic with penalty slabs · Approved/rejected notes with delivery partner details."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/recollect/screenshot-064.jpg"
+    caption: "**DP Insurance** · Coverage amounts, loss amount and insurance limit per AWB for logistics-risk linked insurance."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 57–64"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 3
+  current_summary: |
+    Recollect sits at **L3 · Intelligent** today: 3-way matching is automatic,
+    courier invoice rules detect late-delivery and lost-in-transit anomalies, eCN
+    flow posts directly to JioGST. L4 is the system that closes discrepancies
+    end-to-end without a finance human in the loop — vendor accepts/rejects on
+    platform, debit notes settle automatically.
+  workflows:
+    - name: "Vendor Management"
+      number: "2.5"
+      current: 3
+      target: 3
+      plan: "Reconciliation feeds vendor risk scoring — late or short-shipping vendors surface in IntelliMake scorecards within the day."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "eCN flow scale-up"
+      body: "Pilot completed with first vendor (₹5,125 CN posted to JioGST 3 Apr). Next: scale across all suppliers; recover discrepancy amounts automatically."
+    - eyebrow: "Risk reduction milestone"
+      title: "10 rules across 6 courier partners"
+      body: "Every incorrectly paid courier invoice was a direct cost leak. Now: late deliveries and lost-in-transit auto-debited."
+    - eyebrow: "Identity shift indicator"
+      title: "Finance teams move from spreadsheets to exceptions"
+      body: "Manual reconciliation work replaced by exception handling on the platform."

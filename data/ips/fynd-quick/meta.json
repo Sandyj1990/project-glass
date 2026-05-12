@@ -1,0 +1,22 @@
+{
+  "slug": "fynd-quick",
+  "name": "Fynd Quick \u00b7 Q-commerce OS",
+  "tagline": "700+ orders/min \u00b7 90% on-time \u00b7 sub-30-min from dark stores.",
+  "track": "granary",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "grocery"
+  ],
+  "value_chain": [
+    "move",
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/granary#fynd-quick",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

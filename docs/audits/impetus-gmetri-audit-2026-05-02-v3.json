@@ -1,0 +1,154 @@
+{
+  "page": "impetus/gmetri/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_round": "v3",
+  "score": 60,
+  "grade": "D",
+  "pass": false,
+  "dimensions": {
+    "structural_compliance": 55,
+    "source_traceability": 88,
+    "tone_of_voice": 50,
+    "honesty_register": 80,
+    "visual_completeness": 70,
+    "cross_page_consistency": 80
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "tone_of_voice",
+      "section": "Hero subhead + §02 body",
+      "issue": "Page contains literal HTML-entity-double-escape strings rendered as visible text. Hero subhead at line 164 displays '(Store-to-Shelf · Digital Twin &amp;amp; Planogram Compliance)' — the user sees literal '&amp;amp;'. §02 body at lines 175-176 contains 'simulate drape, texture &amp;amp; colour in 3D' (visible '&amp;amp;'). Multiple §05 lightbox onclick captions and figcaption strings have '&amp;amp;' (lines 231-232, 234). This is page-credibility-breaking — Apex sees raw HTML escape artifacts in the hero. Root cause: the source pipeline appears to escape `&` once into `&amp;` in YAML, then HTML-escape again at render time.",
+      "fix": "Replace every '&amp;amp;' on the page with '&amp;' (or just '&'). Sweep: lines 164, 175, 176, 178, 192, 231, 234, 256 (check captions). For long-term: fix the build pipeline so YAML strings are not double-escaped.",
+      "files": [
+        "impetus/gmetri/index.html:164",
+        "impetus/gmetri/index.html:175",
+        "impetus/gmetri/index.html:176",
+        "impetus/gmetri/index.html:231",
+        "impetus/gmetri/index.html:233",
+        "impetus/gmetri/index.html:234"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "structural_compliance",
+      "section": "Section labels",
+      "issue": "Section numbering starts at §02 — there is NO §01 on the page. The labels run: hero → '02 · WHAT IT DOES FOR YOU' → '03 · How Many Stores Use It' → '04 · What improved' → '05 · Screenshots'. Per audit-framework §1 section-label contiguity, numbers must be a contiguous run starting at 01. Apex reads the missing §01 as a deletion mid-edit. Root cause likely the §05 'Updates Shipped' delete caused a renumber cascade that started at the wrong base.",
+      "fix": "Renumber section labels: 02 → 01, 03 → 02, 04 → 03, 05 → 04. Files: index.html:173, 191, 198, 214.",
+      "files": [
+        "impetus/gmetri/index.html:173",
+        "impetus/gmetri/index.html:191",
+        "impetus/gmetri/index.html:198",
+        "impetus/gmetri/index.html:214"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "C3",
+      "severity": "CRITICAL",
+      "dimension": "tone_of_voice",
+      "section": "§02 body",
+      "issue": "§02 body (lines 174-186) renders literal markdown — list items begin with '- <strong>Fabric</strong> — simulate...' visible as a hyphen prefix instead of a rendered bullet. The 4 list items (Fabric / Garment / Garment Supply Chain / Store) are jammed inside <p> tags so they appear as run-on prose with hyphens. Apex sees broken markdown bleeding through.",
+      "fix": "Convert the '- Fabric ... - Garment ... - Garment Supply Chain ... - Store ...' block to an actual <ul><li>...</li></ul> structure, or render each as its own paragraph with the hyphen replaced by a bullet (·). Same root cause as C1 — the pipeline isn't markdown-rendering YAML body strings.",
+      "files": ["impetus/gmetri/index.html:174-186"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05 Screenshots captions and alt text",
+      "issue": "Every §05 screenshot caption and alt attribute contains literal '**bold**' markdown asterisks. The visible <div class='cap-num'> already uses real <strong>...</strong>, so figcaptions render fine — but the alt='**3D store layout** · ...' (line 217) and the lightbox onclick meta arg show the raw asterisks. Screen readers read '**3D store layout**' literally, and any future a11y review flags the issue. 8 images affected.",
+      "fix": "Strip leading/trailing '**' markdown from the alt attribute and onclick meta arg on every image at lines 217, 224, 231, 238, 245, 252, 259, 266.",
+      "files": [
+        "impetus/gmetri/index.html:217",
+        "impetus/gmetri/index.html:224",
+        "impetus/gmetri/index.html:231",
+        "impetus/gmetri/index.html:238",
+        "impetus/gmetri/index.html:245",
+        "impetus/gmetri/index.html:252",
+        "impetus/gmetri/index.html:259",
+        "impetus/gmetri/index.html:266"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05 lightbox meta strings",
+      "issue": "Lightbox onclick meta arguments at lines 224, 231, 245, 252, 259, 266 are missing a space after the headline noun and before the '·' delimiter. E.g., line 224 onclick meta = 'VM product catalog· Apparel items by brand/sizes/pricing for fixture assignment.' (note 'catalog· Apparel' — no space between 'catalog' and '·'). Compare to caption line 217 which IS spaced correctly. Auto-generation bug from the source compilation.",
+      "fix": "Add a space before each '·' in the onclick meta string at lines 224, 231, 245, 252, 259, 266.",
+      "files": [
+        "impetus/gmetri/index.html:224",
+        "impetus/gmetri/index.html:231",
+        "impetus/gmetri/index.html:245",
+        "impetus/gmetri/index.html:252",
+        "impetus/gmetri/index.html:259",
+        "impetus/gmetri/index.html:266"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Hero subhead",
+      "issue": "Hero subhead at line 164 reads '(Store-to-Shelf · Digital Twin &amp;amp; Planogram Compliance)' — the parenthetical is a duplicate of the H1 idea ('Store Digital Twin') and does not earn a separate line. Tone-of-voice §3 rhythm rules say subheads should carry one verifiable claim, not a parenthetical synonym. Combined with the &amp;amp; bug (C1) the line reads as a markdown paste artefact.",
+      "fix": "Replace the parenthetical with a content subhead. E.g., '3D digital replica of every store · planogram compliance, fixture configuration, AI-driven VM.' (already present below as the bold lede — promote it). Then drop the parenthetical at 164.",
+      "files": ["impetus/gmetri/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "Page chrome / spec",
+      "issue": "Per the user's audit brief: '§05 Updates Shipped DELETED, sections renumbered. §06 Progress · path to L3/L4 DELETED earlier. Sources block DELETED.' The deletes happened, but the renumber didn't (see C2). Also the spec at docs/impetus-restructure-spec.md §3 mandates the homogenous 6-section template (§01 For → §06 Screenshots → §07 Sources). The page now runs only 4 sections (02→05) without a §01 'For' / audience callout block — the audience pills in the hero substitute, which is acceptable, but no explicit §01 'For' label means Apex has to infer.",
+      "fix": "Either (a) renumber labels per C2 so the run is §01 What it does → §02 How Many Stores Use It → §03 What improved → §04 Screenshots; OR (b) add a §01 'For' eyebrow citing the audience list (Store Managers, VM teams, Regional Heads) — currently only present as hero pills.",
+      "files": ["impetus/gmetri/index.html:172-272"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 stat chip",
+      "issue": "Stat chip at line 192 reads 'Stock data mismatch reduced to 10% via RFID search integration' — fine claim, but the trailing footnote at line 193-194 says 'Onboarded on jioimpetus.com; infrastructure ready to scale across all stores.' That sentence carries 'infrastructure ready to scale' — a forward-looking claim with no date, no DRI, no quantified plan. Per tone-of-voice §3 'Forward-looking phases without dates' rule, either anchor it ('infrastructure live since 10-Apr-2026; rollout to remaining 2,020 stores in flight, no committed date') or drop it.",
+      "fix": "Replace 'infrastructure ready to scale across all stores' with 'GMetri infrastructure went live on jioimpetus.com on 10-Apr-2026 (PDF p65); rollout to remaining stores ungated.' Or drop the second clause entirely.",
+      "files": ["impetus/gmetri/index.html:193"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 What improved callout",
+      "issue": "§04 callout at lines 203-208 contains 'every percentage point of planogram compliance is sales recovered from missing placements' — unverifiable assertion presented as fact (no source, no number, no even directional study cited). Also 'the prerequisite for autonomous Visual Merchandising at L4' refers to the autonomy ladder which the spec says was DELETED from this page (per user note). Stale forward-link.",
+      "fix": "Replace the 'every percentage point of planogram compliance is sales recovered' assertion with a sourced claim or drop. Drop the 'prerequisite for autonomous VM at L4' clause since the §06 Progress / autonomy section is gone.",
+      "files": ["impetus/gmetri/index.html:203-208"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 body",
+      "issue": "§02 includes 'Today's GMetri implementation focuses on the Store pillar at scale.' followed by a long flow paragraph. The 4-pillar list (Fabric / Garment / Supply Chain / Store) preceding it overclaims scope — only the Store pillar is actually in production today. The flow reads like aspirational scope-laying ahead of fact (per tone-of-voice §3 'Cross-channel scope claims rendered as Live across all channels' rule).",
+      "fix": "Add an inline status row to each pillar in the list: 'Fabric · Roadmap', 'Garment · Roadmap', 'Garment Supply Chain · Roadmap', 'Store · Live'. Or drop the 4-pillar list entirely and lead with the Store implementation.",
+      "files": ["impetus/gmetri/index.html:174-186"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "All 8 §05 screenshots load HTTP 200 (verified via Chrome DevTools network audit) and the lightbox open/close behaviour works end-to-end with Esc dismiss.",
+    "§03 stat chips are correctly sourced from PDF p65 (109 stores, ~70% target across 2,129 stores, 74 additional, RFID 10%) — every claim traceable.",
+    "The §05 captions, once the markdown asterisks are stripped, name the actual UI element shown (3D store layout, VM product catalog, CAD-to-3D pipeline, etc.) — Apex can map each screenshot to the platform feature without context.",
+    "Hero pills (Store Managers / VM Teams / Regional Heads) match the PDF p65 'For:' line verbatim.",
+    "Cross-page consistency with impetus/index.html grid (line 192-197) is clean: name 'Store Digital Twin', metric '109 stores · ~70% target', Live pill — all match."
+  ]
+}

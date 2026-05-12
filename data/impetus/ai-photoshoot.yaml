@@ -1,0 +1,142 @@
+# SNAP / AI Photoshoot
+# Sourced verbatim from Q1 2026 Release Compendium pp. 93–96
+# Per docs/impetus-restructure-spec.md · §6.2
+
+slug: ai-photoshoot
+title: SNAP
+sub_title: "(AI Photoshoot · AI Video · AI Print Designer)"
+aliases: [AI Photoshoot, SNAP, Design Studio, AI Native Cataloging]
+tagline: Studio-quality on-model imagery + video from flat-lay garment photos. 15 days → 5 hours · 90% cost reduction · 88% first-pass acceptance.
+category: Sell · Catalog
+status: live
+status_label: Live
+
+audience:
+  - Design Teams
+  - Catalogue Teams
+  - Brand Partners
+  - "Anyone who needs studio-quality images without a physical shoot"
+
+what_it_does: |
+  **AI-powered catalog creation for faster, scalable, and consistent commerce.**
+  Per Accenture s19, SNAP / AI Photoshoot delivers an AI-enriched catalog with
+  studio-quality on-model imagery, consistent face library across ethnicities,
+  ages, sizes and genders, and AI-generated video for higher conversion.
+
+  **Generative Media · full spectrum** (Accenture s21–s22): product videos · video
+  ads · music videos · short film. Same engine, different output.
+
+  Design teams get studio-quality product images and videos without organising
+  physical photoshoots, the AI generates professional on-model visuals from flat-lay
+  garment photos. **Turnaround: 15 days reduced to 5 hours. Cost: 90% lower than
+  physical shoots.** Catalogue teams process thousands of products with **88% of
+  images accepted on the first pass**, minimal back-and-forth. Brand partners get
+  complete catalogues in days instead of weeks of scheduling, booking models and
+  post-production.
+
+  SNAP is the platform; the brand-design portfolio, AI photoshoots and AI videos
+  surfaced under /impetus/ are the **OUTPUT** of this platform.
+
+scale_label: How Many People Use It
+scale:
+  - "~4,000 videos produced (March)"
+  - "2,806 products / 26,381 images"
+  - "88% first-pass acceptance rate"
+  - "90% cost reduction vs physical shoots"
+  - "Turnaround: 15 days → 5 hours"
+scale_caption: |
+  International brand video delivery to RedTag, Noxtra, Namshi, Yousta in March.
+  Label Aeris brand end-to-end live (26 Mar 2026).
+
+what_improved:
+  body: |
+    Images delivered in hours, not weeks, at **90% lower cost**. Brand partners
+    (Ed-a-Mamma, The Pant Project, Label Aeris) received full catalogues in days.
+    ~4,000 videos delivered for international brands (RedTag, Noxtra, Namshi,
+    Yousta) in March. **Catalogue production time: 15 days → 5 hours (99% reduction).**
+    88% first-pass acceptance, minimal rework needed.
+  expected_metric_impact: |
+    every product launch is decoupled from photoshoot calendars and budget. The
+    Buda Jeans / Superdry SDX case study (120 designs in 5 days, live on AJIO product
+    link) is the canonical proof that this is L4-Agentic catalog production at
+    operating scale, not a demo.
+
+updates_shipped:
+  - date: "30 Mar 2026"
+    heading: "International Brand Video Delivery"
+    bullets:
+      - "~4,000 videos delivered for RedTag, Noxtra, Namshi, Yousta."
+  - date: "26 Mar 2026"
+    heading: "Label Aeris Brand Goes Live"
+    bullets:
+      - "End-to-end AI catalogue for Label Aeris brand."
+  - date: "4 Feb 2026"
+    heading: "Spring-Summer 2026 Analysis Complete"
+    bullets:
+      - "2,806 products, 26,381 images processed; 88% first-pass acceptance."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/ai-photoshoot/screenshot-094.jpg"
+    caption: "**AI Design Studio** · Photoshoot · Bulk · Video Generator · Print Designer · Playground · Fashion Trends &amp; Suggestions gallery."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/ai-photoshoot/screenshot-095.jpg"
+    caption: "**QC Dashboards** · Approver view (3 new requests · 63 in-progress) + Bulk reviewer view (2,900 new · 10,811 in-progress · 326 completed · 1,063 failed) with priority + assignment."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/ai-photoshoot/screenshot-096.jpg"
+    caption: "**Avatar &amp; Pose Management** · Character profile builder for AI photoshoots — name, character description, gender, age, ethnicity, body size."
+
+output_gallery:
+  section_num: "08"
+  label: "Output gallery · what this platform shipped"
+  intro: |
+    The brand portfolio, AI photoshoots and AI videos under /impetus/ are the
+    **direct output** of SNAP / AI Photoshoot. Same engine, three surfaces.
+  links:
+    - eyebrow: "A · BRANDS"
+      title: "Brand designs · PLP"
+      subtitle: "876 unique designs across gender × category × brand. Output of Impetus PLM + Trend-to-Design."
+      href: "/impetus/brands"
+    - eyebrow: "B · PHOTOSHOOTS"
+      title: "AI on-model shoots"
+      subtitle: "4 representative shoots — marketplace listings, showcases, brand campaigns."
+      href: "/impetus/photoshoots"
+    - eyebrow: "C · VIDEOS"
+      title: "AI-generated motion"
+      subtitle: "28 videos · 9 brands · 11 long-form + 17 vertical. Generative Media full spectrum."
+      href: "/pixelbin/videos"
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 93–96"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md · §6.2"
+    href: "/docs/impetus-restructure-spec.md"
+  - label: "Accenture · Updated Retail Platforms+Agents · slides s17–s22 · Superdry SDX, Generative Media, Cataloging"
+    href: ""
+
+progress:
+  current_level: 3
+  current_summary: |
+    SNAP / AI Photoshoot sits at **L3 · Intelligent** today and is the closest
+    Impetus platform to L4: the system generates studio-quality on-model imagery
+    from flat-lays at **88% first-pass acceptance**. Catalog teams curate, not
+    create. The L4 jump happens when generation feeds back from sell-through —
+    auto-regenerating creative that's not converting without a human asking.
+  workflows:
+    - name: "Product Development"
+      number: "2.3"
+      current: 3
+      target: 4
+      plan: "Catalog production at L3 today (15 days → 5 hours, 99% reduction); next is generative-design-direct-to-AJIO-product-page for international brands at scale."
+    - name: "Marketing"
+      number: "4.6"
+      current: 2
+      target: 3
+      plan: "AI writes copy + generates creative for international brands (RedTag, Noxtra, Namshi, Yousta). Target: micro-campaigns triggered by real-time sell-through signals."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Product Development · L3 → L4"
+      body: "Spec-to-order in days; generative design direct-to-production for standard products."
+    - eyebrow: "Risk reduction milestone"
+      title: "90% cost reduction · 88% first-pass"
+      body: "Every product launch decoupled from photoshoot calendars and per-shoot budget."
+    - eyebrow: "Identity shift indicator"
+      title: "Catalog team is QC, not production"
+      body: "26,381 SS26 images processed in one analysis cycle; 4,000 videos shipped in March."

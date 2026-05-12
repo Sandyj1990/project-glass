@@ -1,0 +1,105 @@
+{
+  "page": "impetus/uvp/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 71,
+  "grade": "C",
+  "pass": false,
+  "dimensions": {
+    "structural_compliance": 70,
+    "source_traceability": 70,
+    "tone_of_voice": 80,
+    "honesty_register": 78,
+    "visual_completeness": 80,
+    "cross_page_consistency": 75
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "structural_compliance",
+      "section": "§06",
+      "issue": "Section labels are non-contiguous — labels run hero / 02 / 03 / 04 / 06 (Screenshots). The §05 Updates Shipped removal was not followed by the renumber. Apex skim will read this as a missing section.",
+      "fix": "Change line 208 from '06 · Screenshots' to '05 · Screenshots'.",
+      "files": ["impetus/uvp/index.html:208"],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "source_traceability",
+      "section": "§03",
+      "issue": "§03 caption claims 'same surface now hosts Trends, Azorte, Yousta and Fashion Factory vendor relationships' — source PDF p.50 only attests UVP being 'live for Shein'; the multi-format hosting claim is unsourced and reads as cross-format Live overclaim.",
+      "fix": "Either drop the multi-format clause and keep only 'The vendor co-creation platform Shein uses' (source-supported), OR add per-format status tags ('Live · Shein &nbsp;·&nbsp; Build · Trends/Azorte/Yousta/Fashion Factory') with citation. See tone-of-voice §3 cross-channel-overclaim rule.",
+      "files": ["impetus/uvp/index.html:187"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "hero",
+      "issue": "Audience pill 'Audit &amp;amp; Compliance Teams' is double-encoded — renders in browser as the literal string 'Audit &amp; Compliance Teams' instead of 'Audit & Compliance Teams'. Visible bug in the hero pill row.",
+      "fix": "Change line 166 from 'Audit &amp;amp; Compliance Teams' to 'Audit &amp; Compliance Teams'.",
+      "files": ["impetus/uvp/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§04",
+      "issue": "§04 impact claim 'now extending across formats' has no source — the source PDF only attests Shein DSD launch, not active extension to other formats.",
+      "fix": "Drop 'now extending across formats' or replace with a dated milestone.",
+      "files": ["impetus/uvp/index.html:202"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 / hero",
+      "issue": "§02 second paragraph repeats the hero subhead nearly verbatim ('DSD turnaround down to 5 days (industry first); negotiation cycles from 2 weeks to 4 days') — reads as filler at apex level.",
+      "fix": "Drop the bolded sentence in §02 (line 179-180); the hero already asserts these numbers and §03 chips reinforce them.",
+      "files": ["impetus/uvp/index.html:179"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02",
+      "issue": "Section label '02 · What it does for you' uses second-person 'you' against tone-of-voice §2 institutional-voice default.",
+      "fix": "Rename to '02 · What it does'.",
+      "files": ["impetus/uvp/index.html:173"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§06",
+      "issue": "Screenshot alt and lightbox-meta strings missing a space before trailing '·' separator (e.g., 'Live shipment review· Live cross-team review').",
+      "fix": "Insert space before '·' in alt and openImpetusLightbox meta args across the 8 cards.",
+      "files": ["impetus/uvp/index.html:225", "impetus/uvp/index.html:232", "impetus/uvp/index.html:239", "impetus/uvp/index.html:246", "impetus/uvp/index.html:253", "impetus/uvp/index.html:260"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "page chrome (mega-menu)",
+      "issue": "Mega-menu omits 'SwapEasy' and 'TMS' entries that the home page mega-menu carries.",
+      "fix": "Resync mega-menu block on next chrome sweep.",
+      "files": ["impetus/uvp/index.html:115"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Hero positions the lead numbers up front in tone-of-voice register: '5-day turnaround (industry first); negotiation cycles 2 weeks → 4 days' — verifiable, scannable, no inflation.",
+    "8 screenshots all return HTTP 200, lightbox open + Esc-close works, captions verbatim from source PDF p.51-56.",
+    "§04 What Improved callout faithful to source p.50; bullets unchanged.",
+    "Module title 'Design Co-Creation Platform' (with parenthetical 'Unified Vendor Platform') aligns with the simplified naming convention from the brief; reads cleaner than UVP alone for an Apex audience.",
+    "Sources block correctly absent (per recent edit); Accenture deck attributions cleanly stripped from prose."
+  ]
+}

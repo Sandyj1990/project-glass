@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kio · Self-checkout hardware</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- §0 · Hero -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Kio</span></div>
+<div class="section-label mb-3">Track · Physical AI · Self-checkout hardware</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Kio.</h1>
+
+<p class="text-lg max-w-3xl mb-6" style="color: var(--ink-muted);">Self-checkout kiosk hardware for retail. Pilot live at <strong>Malad</strong>. 3× faster than manned POS. Built on Fynd Swift Module for OTA fleet management.</p>
+
+<div class="flex flex-wrap gap-2 mb-8">
+  <span class="pill pill-live">Live · Pilot Malad · production hardware</span>
+  <span class="pill pill-build">Building · Fashion Factory rollout · 168 units · FY26-27</span>
+
+  <span class="pill pill-phase2">Roadmap · Beauty + Grocery vertical pilots</span>
+</div>
+
+<div class="cap-num mb-3">v0.1 · 01 - May - 2026</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-3xl">
+<div class="card p-4"><div class="cap-num mb-1">Pilot stores</div><div class="display-2 text-3xl" style="color: var(--ink);">Malad</div><div class="text-xs mt-1" style="color: var(--ink-muted);">live · production hardware</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Locked units</div><div class="display-2 text-3xl" style="color: var(--ink);">168</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Fashion Factory · FY26-27</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Verticals</div><div class="display-2 text-3xl" style="color: var(--ink);">3</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Fashion · Beauty · Grocery</div></div>
+</div>
+
+<div class="mt-10">
+<img src="/assets/kio/cover.jpg" alt="Kio Series self-checkout kiosk · product hero" class="w-full max-w-3xl rounded-lg" style="border: 1px solid var(--border);" />
+</div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#status">01 · Status</a>
+<a href="#whats-live">02 · What is live</a>
+<a href="#hardware">03 · Hardware</a>
+<a href="#variants">04 · Variants</a>
+<a href="#in-flight">05 · In flight</a>
+<a href="#snacadda">06 · SnacAdda</a>
+<a href="#specs">07 · Specifications</a>
+</div>
+</div>
+
+<!-- §01 · Status today -->
+<section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Status (01 - May - 2026)</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Running today</div><span class="pill pill-live">Live</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Malad pilot</strong> · production-hardware Kio Series running at Reliance store · 3× faster than manned POS</li>
+<li><strong>SnacAdda internal lab</strong> · WeWork Andheri · Stand-mounted Kio (SPG Series) · scan + pay + receipt + StoreOS sync</li>
+<li><strong>Fynd Swift Module</strong> · OTA firmware push + remote diagnostics across deployed fleet</li>
+<li><strong>4 model variants shipping</strong> · Wall-mounted · Standing · Tabletop · Bin (RFID)</li>
+<li><strong>Two compute platforms</strong> · FKAP1 (1 TOPS NPU) · FKAP2 (6 TOPS NPU)</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Building this quarter</div><span class="pill pill-build">Building</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Fashion Factory rollout</strong> · 168 units locked for FY26-27 · staged install</li>
+<li><strong>RFID-bin checkout flow</strong> · 40-100L volumetric bin variant for fashion bulk drop-off · paired with hard-tag remover (EAS) and pin collector</li>
+<li><strong>Virtual Try-On camera module</strong> · slotting into Fashion & Apparel deployments alongside scan + pay</li>
+<li><strong>FSM service-cycle automation</strong> · diagnostic alerts trigger proactive field service</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Next horizon</div><span class="pill pill-phase2">Roadmap</span></div>
+<ul class="space-y-3 text-sm" style="color: var(--ink);">
+<li><strong>Beauty &amp; Cosmetics pilot</strong> · virtual try-on for cosmetics + quick payment</li>
+<li><strong>Supermarket &amp; Grocery pilot</strong> · queue-busting at high-footfall formats</li>
+<li><strong>Higher-tier compute (FKAP2)</strong> · expanded deployment for on-device CV workloads</li>
+<li><strong>Companion App handoff</strong> · staff-assist surfaces docked into the kiosk for assisted checkout</li>
+</ul>
+</div>
+
+</div>
+</div></section>
+
+<!-- §02 · What is live -->
+<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · What is live</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three modules running today.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Kio is hardware (the kiosk), software (Swift Module for OTA), and a live lab (SnacAdda). Each runs today; all three feed the Fashion Factory rollout.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Module</th><th>Status</th><th>Anchor outcome</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Kio Series hardware</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm" style="color: var(--ink-muted);">FKAP1 + FKAP2 platforms · 4 model variants · 21.5″ FHD touch · 3× faster checkout vs manned POS</td></tr>
+<tr><td class="font-medium">Fynd Swift Module</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm" style="color: var(--ink-muted);">OTA fleet management · firmware push · remote diagnostics across deployed fleet</td></tr>
+<tr><td class="font-medium">SnacAdda · internal lab</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm" style="color: var(--ink-muted);">WeWork Andheri Mumbai · 50+ items/min · FSM diagnostics + OTA validated · live shopping rig</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6 mt-10">
+<div class="card overflow-hidden">
+<img src="/assets/kio/01-fashion-store.jpg" alt="Kio kiosk in use inside a fashion retail store" class="w-full block" style="border-bottom: 1px solid var(--border);" />
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Built for modern retail</div><span class="pill pill-live">Live</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Fashion &amp; Apparel · Beauty &amp; Cosmetics · Supermarkets &amp; Grocery. Modular hardware adapts to store layout. Fashion deployments pair with the RFID bin variant + hard-tag remover for bulk drop-off checkout.</p>
+</div>
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/kio/02-peripherals.jpg" alt="Kio peripherals · camera module · LED indicator · barcode scanner · POS terminal mount · printer" class="w-full block" style="border-bottom: 1px solid var(--border);" />
+<div class="p-5">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Modular peripherals</div><span class="pill pill-live">Live</span></div>
+<p class="text-sm" style="color: var(--ink-muted);">Camera module · multi-colour status LED · 2D CMOS barcode scanner · POS-terminal mount · 80 mm thermal printer with auto-cutter. Per-store configuration without redesigning the chassis.</p>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- §03 · Hardware architecture · 4 layers -->
+<section id="hardware" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Hardware architecture · 4 layers</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From silicon to store.</h2>
+
+<div class="grid md:grid-cols-4 gap-4">
+<div class="card p-6"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 01 · Edge compute</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">FKAP1 + FKAP2 SoC.</h3><p class="text-sm" style="color: var(--ink-muted);">Cortex-A55 / A76 cores · NPU 1-6 TOPS · Android 13/14 + Linux. On-device barcode + RFID processing.</p></div>
+<div class="card p-6"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 02 · Display</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">21.5″ FHD touch.</h3><p class="text-sm" style="color: var(--ink-muted);">Capacitive touch · 1920×1080 IPS · 500 nits · 178°/178° viewing · 20° tilt adjustable.</p></div>
+<div class="card p-6"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 03 · Peripherals</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Modular per-store.</h3><p class="text-sm" style="color: var(--ink-muted);">2D CMOS barcode (EAN/UPC/Code128/PDF417/QR) · 80 mm thermal printer · status LED · camera · POS mount · RFID hard-tag remover + pin collector + 40-100L bin.</p></div>
+<div class="card p-6"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 04 · Software</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">StoreOS + Swift + FSM.</h3><p class="text-sm" style="color: var(--ink-muted);">StoreOS sync (real inventory + pricing) · Fynd Swift Module for OTA firmware + remote diagnostics · FSM (Field Service Management) for service cycles.</p></div>
+</div>
+</div></section>
+
+<!-- §04 · Deep dive · Model variants -->
+<section id="variants" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Deep dive · Model variants</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four Form Factors. One Platform.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Same compute, same software, four physical formats. Convert between tabletop, wall, or standing in minutes via the modular mounting system. Bin variant pairs with RFID accessories for fashion bulk-drop checkout.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="card overflow-hidden">
+<img src="/assets/kio/03-variant-wall.jpg" alt="Kio · Wall-mounted variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<div class="p-4">
+<div class="cap-num mb-1">Variant 01</div>
+<h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Wall-mounted</h3>
+<p class="text-xs" style="color: var(--ink-muted);">Wall-fixed · space-efficient · queue-busting on shop floor.</p>
+</div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/kio/04-variant-standing.jpg" alt="Kio · Standing variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<div class="p-4">
+<div class="cap-num mb-1">Variant 02</div>
+<h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Standing</h3>
+<p class="text-xs" style="color: var(--ink-muted);">Floor-standing · printer + scanner integrated in pedestal.</p>
+</div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/kio/05-variant-tabletop.jpg" alt="Kio · Tabletop variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<div class="p-4">
+<div class="cap-num mb-1">Variant 03</div>
+<h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Tabletop</h3>
+<p class="text-xs" style="color: var(--ink-muted);">Counter-mounted · 20° tilt-adjustable · compact.</p>
+</div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/kio/06-variant-bin.jpg" alt="Kio · Bin RFID variant for fashion bulk-drop checkout" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<div class="p-4">
+<div class="cap-num mb-1">Variant 04</div>
+<h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Bin · RFID</h3>
+<p class="text-xs" style="color: var(--ink-muted);">Volumetric RFID bin · 40-100L · fashion bulk drop-off.</p>
+</div>
+</div>
+</div>
+</div></section>
+
+<!-- §05 · In flight · this quarter -->
+<section id="in-flight" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · In flight · this quarter</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What you'll hear about next.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Threads in active execution as of 01 - May - 2026. Each carries a Building pill: work is well-defined, owner is named, gating step is in motion.</p>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Fashion Factory · 168-unit rollout</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Staged install across FY26-27.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">168 production units locked for Reliance Retail Fashion Factory format. Hardware build + Swift Module preconfiguration in parallel; staged store-by-store install across FY26-27.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">RFID-bin checkout flow</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Bulk drop-off for fashion stores.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">40-100L volumetric RFID bin · paired with EAS hard-tag remover and pin collector. Customer drops a basket of tagged garments; bin reads the lot, kiosk surfaces totals for pay-and-go. Anchor format: Fashion &amp; Apparel.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">Virtual Try-On camera module</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Camera slot for VTO + on-kiosk preview.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Camera module slotting into Fashion &amp; Apparel deployments. Pairs with Fynd Horizon for fit preview at the same surface where the customer pays. Adds <a href="/fynd-horizon" style="color: var(--accent); text-decoration: underline;">Horizon</a> as the upstream try-on surface.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-2"><div class="cap-num">FSM service-cycle automation</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Diagnostic alerts → proactive field service.</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Swift Module emits diagnostics; FSM (Field Service Management) routes service tickets before downtime. Validated in SnacAdda; hardening for Fashion Factory scale. Diagnostic uptime is a tracked metric.</p>
+</div>
+
+</div>
+</div></section>
+
+<!-- §06 · SnacAdda case study -->
+<section id="snacadda" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · SnacAdda · internal lab case study</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Tested in the Fynd office first.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">SnacAdda is a full-stack self-checkout kiosk Fynd deployed in its own WeWork Andheri office. Stand-mounted Kio (SPG Series) with StoreOS + FSM integration. Office pantries lack automated checkout, so Fynd built one to refine the technology in live use before customer-site deployment.</p>
+
+<div class="grid md:grid-cols-5 gap-6 items-start">
+<div class="md:col-span-2">
+<img src="/assets/kio/07-snacadda.jpg" alt="SnacAdda · Fynd-internal self-checkout pantry at WeWork Andheri Mumbai" class="w-full rounded-lg" style="border: 1px solid var(--border);" />
+<div class="cap-num mt-3">WeWork Andheri · Mumbai</div>
+</div>
+
+<div class="md:col-span-3 space-y-4">
+<div class="card p-5">
+<div class="cap-num mb-1">The deployment</div>
+<p class="text-sm" style="color: var(--ink);">Stand-mounted Kio (SPG Series) · StoreOS + FSM integration. Real shopping experience: barcode scan → payment → receipt print → real inventory sync.</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-3">
+<div class="card p-4">
+<div class="cap-num mb-1">01 · Scan speed</div>
+<div class="display-2 text-2xl" style="color: var(--ink);">50+ /min</div>
+<div class="text-xs mt-1" style="color: var(--ink-muted);">items, consistently</div>
+</div>
+<div class="card p-4">
+<div class="cap-num mb-1">02 · Inventory sync</div>
+<div class="font-semibold text-sm" style="color: var(--ink);">SKU mapping refined</div>
+<div class="text-xs mt-1" style="color: var(--ink-muted);">live use feedback loop</div>
+</div>
+<div class="card p-4">
+<div class="cap-num mb-1">03 · Diagnostic uptime</div>
+<div class="font-semibold text-sm" style="color: var(--ink);">FSM proactive cycles</div>
+<div class="text-xs mt-1" style="color: var(--ink-muted);">alerts before downtime</div>
+</div>
+</div>
+
+</div>
+</div>
+</div></section>
+
+<!-- §07 · Specifications -->
+<section id="specs" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 · Specifications</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Hardware sheet.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Verbatim from the Kio Series datasheet. Two compute platforms, one display platform, one peripherals stack.</p>
+
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Compute platforms</h3>
+<div class="card overflow-hidden mb-10">
+<table class="grid-table">
+<thead><tr><th>Component</th><th>FKAP1</th><th>FKAP2</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">CPU</td><td class="text-sm">Quad-core 64-bit Cortex-A55 @ 2.0 GHz · NPU 1 TOPS</td><td class="text-sm">Octa-core (4× Cortex-A76 @ 2.4 GHz + 4× Cortex-A55 @ 1.8 GHz) · NPU 6 TOPS</td></tr>
+<tr><td class="font-medium">GPU</td><td class="text-sm">Mali-G52 2EE</td><td class="text-sm">Mali-G610 MC4</td></tr>
+<tr><td class="font-medium">RAM</td><td class="text-sm">8 GB LPDDR4</td><td class="text-sm">8 GB LPDDR4/4x</td></tr>
+<tr><td class="font-medium">Storage</td><td class="text-sm">64 GB eMMC</td><td class="text-sm">64 / 128 GB eMMC</td></tr>
+<tr><td class="font-medium">OS</td><td class="text-sm">Android 14 · Linux</td><td class="text-sm">Android 13 · Linux</td></tr>
+<tr><td class="font-medium">Connectivity</td><td class="text-sm">1× 1000M Ethernet · 2.4 GHz Wi-Fi · BT 5.2 · mini-PCIe (4G)</td><td class="text-sm">1× 1000M + 1× 100M Ethernet · 5G via M.2 · 2.4 GHz Wi-Fi · BT</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Display + power</h3>
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Spec</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Display</td><td class="text-sm">21.5″ diagonal · capacitive touch</td></tr>
+<tr><td class="font-medium">Resolution</td><td class="text-sm">1920 × 1080 (FHD)</td></tr>
+<tr><td class="font-medium">Display type</td><td class="text-sm">IPS LCD</td></tr>
+<tr><td class="font-medium">Brightness</td><td class="text-sm">500 nits</td></tr>
+<tr><td class="font-medium">Contrast</td><td class="text-sm">1000 : 1</td></tr>
+<tr><td class="font-medium">Tilt</td><td class="text-sm">20° adjustable</td></tr>
+<tr><td class="font-medium">Viewing angle</td><td class="text-sm">178° / 178°</td></tr>
+<tr><td class="font-medium">Power input</td><td class="text-sm">100 - 240V AC · 50/60 Hz</td></tr>
+<tr><td class="font-medium">Power draw</td><td class="text-sm">50 W</td></tr>
+<tr><td class="font-medium">Operating temp</td><td class="text-sm">10 °C - 65 °C</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Peripherals</h3>
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Component</th><th>Spec</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Barcode scanner</td><td class="text-sm">2D CMOS imager · 60° FOV · 250 mm ±10% working range · EAN/UPC/Code128/PDF417/DataMatrix/QR</td></tr>
+<tr><td class="font-medium">Status LED</td><td class="text-sm">Multi-colour (Red · Green · Blue · Yellow)</td></tr>
+<tr><td class="font-medium">Printer</td><td class="text-sm">80 mm thermal · auto-cutter · 1.5-2.0 m print length</td></tr>
+<tr><td class="font-medium">RFID accessories</td><td class="text-sm">EAS hard-tag remover · pin collector bucket · 40-100L volumetric bin</td></tr>
+<tr><td class="font-medium">Camera module</td><td class="text-sm">Optional · for Virtual Try-On + on-kiosk preview</td></tr>
+<tr><td class="font-medium">POS terminal mount</td><td class="text-sm">Integrated payment-terminal docking</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></section>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

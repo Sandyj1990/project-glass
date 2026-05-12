@@ -1,0 +1,28 @@
+{
+  "slug": "retail-vista",
+  "name": "Retail Vista",
+  "tagline": "Geospatial intelligence \u00b7 H3 hex \u00b7 22 data categories \u00b7 21,911 retail stores.",
+  "track": "retail-vista",
+  "track_role": "track-headline",
+  "status": "Pilot",
+  "since": "2025-11-19",
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "grocery",
+    "electronics"
+  ],
+  "value_chain": [
+    "plan",
+    "move"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/retail-vista",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "geospatial",
+    "h3",
+    "google-cloud"
+  ]
+}

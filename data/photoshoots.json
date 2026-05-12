@@ -1,0 +1,234 @@
+{
+  "generatedAt": "2026-04-30T00:00:00Z",
+  "note": "All entries below are LIVE / delivered work. The 4 entries are a curated representative sample of the broader AI-photoshoot delivery — not the full inventory. The page should surface that framing (e.g. 'A selection from the Fynd Create AI photoshoot pipeline · all live').",
+  "totals": {
+    "shoots": 4,
+    "isRepresentativeSample": true,
+    "skusLive": 6,
+    "skusInPipeline": 65,
+    "pilotStylesGenerated": 100,
+    "imagesCollected": 14
+  },
+  "shoots": [
+    {
+      "slug": "ajio-asos-plus-size-launch",
+      "title": "AI Photoshoots live on AJIO × ASOS",
+      "type": "marketplace-listing",
+      "status": "live",
+      "brand": "asos",
+      "marketplace": "ajio",
+      "publishedAt": "2026-04-30",
+      "summary": "First fully automated AI photoshoot with a consistent plus-size model face across all SKUs. Zero manual retouching. 1 day to process, 2 days to go live on the marketplace.",
+      "model": {
+        "type": "plus-size",
+        "consistentFace": true
+      },
+      "stats": {
+        "skusLive": 6,
+        "skusInPipeline": 65,
+        "processingDays": 1,
+        "timeToLiveDays": 2,
+        "manualRetouching": false
+      },
+      "team": [
+        { "name": "Arnab Mishra", "role": "ML" },
+        { "name": "Jitesh Rajpal", "role": "ML" },
+        { "name": "Utsav Parekh", "role": "QC" }
+      ],
+      "skus": [
+        {
+          "sku": "469644260_white",
+          "color": "white",
+          "url": "https://www.ajio.com/p/469644260_white",
+          "image": null
+        },
+        {
+          "sku": "469632947_greystripe",
+          "color": "grey-stripe",
+          "url": "https://www.ajio.com/p/469632947_greystripe",
+          "image": null
+        },
+        {
+          "sku": "469632830_black",
+          "color": "black",
+          "url": "https://www.ajio.com/p/469632830_black",
+          "image": {
+            "path": "photoshoots/ajio-asos-plus-size-launch/469632830-black-model.jpg",
+            "width": 1117,
+            "height": 1400,
+            "bytes": 228432,
+            "kind": "model"
+          }
+        },
+        {
+          "sku": "469632742_black",
+          "color": "black",
+          "url": "https://www.ajio.com/p/469632742_black",
+          "image": {
+            "path": "photoshoots/ajio-asos-plus-size-launch/469632742-black-model.jpg",
+            "width": 473,
+            "height": 593,
+            "bytes": 54929,
+            "kind": "model",
+            "note": "low-res placeholder; replace when hi-res available"
+          }
+        },
+        {
+          "sku": "469632704_black",
+          "color": "black",
+          "url": "https://www.ajio.com/p/469632704_black",
+          "image": {
+            "path": "photoshoots/ajio-asos-plus-size-launch/469632704-black-model.jpg",
+            "width": 1117,
+            "height": 1400,
+            "bytes": 240111,
+            "kind": "model"
+          }
+        },
+        {
+          "sku": "469629326_multi",
+          "color": "multi",
+          "url": "https://www.ajio.com/p/469629326_multi",
+          "image": null
+        }
+      ],
+      "narrative": "Our AI-generated photoshoot SKUs are now LIVE on AJIO × ASOS. We achieved another milestone — processing and generating high-quality images with a consistent plus-size model in just 1 day, fully automated with zero manual retouching. The products went live on the platform in just 2 days. Consistent model face across all photos — a major breakthrough. 6 SKUs are live, with 65+ more in the pipeline."
+    },
+    {
+      "slug": "ss26-plm-ai-photoshoot-pilot",
+      "title": "SS26 PLM → AI On-Model Photoshoots (Trends)",
+      "type": "showcase",
+      "status": "live",
+      "brand": "trends",
+      "marketplace": "ajio",
+      "publishedAt": "2026-04-30",
+      "summary": "End-to-end AI on-model photoshoot delivery against the SS26 PLM image set. The full Trends SS26 catalog (2,806 styles · 26,381 images) was processed for AI input criteria; 88% of styles passed. 100-style sample render (1 Studio + 1 Lifestyle each) shipped live across kidswear, womenswear, and menswear.",
+      "useCases": [
+        "Early design and buying feedback",
+        "Demand signal testing on AJIO",
+        "Cataloguing and listing enablement"
+      ],
+      "dataset": {
+        "season": "SS26 (Trends shortlist)",
+        "stylesAnalysed": 2806,
+        "imagesAnalysed": 26381
+      },
+      "stats": {
+        "imagesAccepted": 17035,
+        "imagesRejected": 9346,
+        "imageRejectionRate": 0.354,
+        "stylesAccepted": 2467,
+        "stylesRejected": 339,
+        "styleAcceptanceRate": 0.879
+      },
+      "pilot": {
+        "stylesGenerated": 100,
+        "imagesPerStyle": 2,
+        "imageTypes": ["Studio", "Lifestyle"]
+      },
+      "examples": [
+        {
+          "styleCode": "C20039181",
+          "category": "kidswear",
+          "input": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/inputs/C20039181-front.png",
+            "width": 443, "height": 376, "kind": "flat-lay"
+          },
+          "output": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/outputs/C20039181-studio.png",
+            "width": 1024, "height": 1024, "kind": "studio"
+          }
+        },
+        {
+          "styleCode": "C19820892",
+          "category": "kidswear-girls",
+          "note": "KG Frendz AW25 HIT-2 reference",
+          "input": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/inputs/C19820892-front.jpg",
+            "width": 3508, "height": 2480, "kind": "design-sketch"
+          },
+          "output": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/outputs/C19820892-lifestyle.png",
+            "width": 1024, "height": 1024, "kind": "lifestyle"
+          }
+        },
+        {
+          "styleCode": "C26482942",
+          "category": "menswear",
+          "note": "Reliance Trends MSH AW25 — Full sleeve checks shirt",
+          "input": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/inputs/C26482942-front.png",
+            "width": 1653, "height": 2338, "kind": "tech-pack"
+          },
+          "output": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/outputs/C26482942-lifestyle.png",
+            "width": 1024, "height": 1024, "kind": "lifestyle"
+          }
+        },
+        {
+          "styleCode": null,
+          "category": "womenswear",
+          "note": "Standalone lifestyle output (input not shared in this batch)",
+          "input": null,
+          "output": {
+            "path": "photoshoots/ss26-plm-ai-photoshoot-pilot/outputs/womens-kurta-lifestyle.png",
+            "width": 1024, "height": 1024, "kind": "lifestyle"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "buda-jeans-harry-potter",
+      "title": "Buda Jeans × Harry Potter Collection",
+      "type": "campaign",
+      "status": "live",
+      "brand": "buda-jeans",
+      "marketplace": "ajio",
+      "collection": "Harry Potter",
+      "gender": "mens",
+      "publishedAt": "2026-04-30",
+      "summary": "Licensed Harry Potter graphic-tee capsule for Buda Jeans on AJIO. AI-rendered male model on a deep-blue studio backdrop showcasing two graphics: Herbology / Mandrake and Hogwarts School of Witchcraft & Wizardry.",
+      "images": [
+        {
+          "path": "photoshoots/buda-jeans-harry-potter/herbology-mandrake-tee.png",
+          "graphic": "Herbology — Mandrake",
+          "colorway": "green",
+          "width": 1856, "height": 2304, "bytes": 4117363, "kind": "model"
+        },
+        {
+          "path": "photoshoots/buda-jeans-harry-potter/hogwarts-tee.png",
+          "graphic": "Hogwarts — School of Witchcraft & Wizardry",
+          "colorway": "washed-black",
+          "width": 1856, "height": 2304, "bytes": 3869308, "kind": "model"
+        }
+      ]
+    },
+    {
+      "slug": "buda-jeans-valentines",
+      "title": "Buda Jeans × Valentine's Day Collection",
+      "type": "campaign",
+      "status": "live",
+      "brand": "buda-jeans",
+      "marketplace": "ajio",
+      "collection": "Valentine's Day",
+      "gender": "womens",
+      "publishedAt": "2026-04-30",
+      "summary": "Valentine's Day capsule for Buda Jeans on AJIO. AI-rendered female model on dark studio backdrops showcasing two graphics: a Disney-licensed Olaf 'Be Flurry for you' tee paired with a denim mini, and a 'Be Mine' heart-graphic pink tee styled with a black cap.",
+      "images": [
+        {
+          "path": "photoshoots/buda-jeans-valentines/be-flurry-olaf-tee.png",
+          "graphic": "Be Flurry for You — Disney Olaf",
+          "colorway": "graphite",
+          "licensed": "Disney",
+          "width": 4096, "height": 4096, "bytes": 18093729, "kind": "model"
+        },
+        {
+          "path": "photoshoots/buda-jeans-valentines/be-mine-heart-tee.png",
+          "graphic": "Be Mine — Heart Collage",
+          "colorway": "pink",
+          "width": 1249, "height": 1249, "bytes": 2764253, "kind": "model"
+        }
+      ]
+    }
+  ]
+}

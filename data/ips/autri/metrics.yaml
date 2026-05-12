@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: shelf_compliance_accuracy
+    label: Shelf compliance accuracy
+    value: 95%+
+    definition: vs 60% industry average for manual audits
+    source: AutRi pilot
+    confidence: live
+  - id: sku_recognition
+    label: SKU recognition · real-time
+    value: 98%+
+    definition: Across pilot deployments
+    source: AutRi pilot
+    confidence: live
+  - id: coverage_per_run_sqft
+    label: Coverage per robot run
+    value: 20-30K sq.ft
+    definition: Single deployment
+    source: AutRi pilot
+    confidence: live

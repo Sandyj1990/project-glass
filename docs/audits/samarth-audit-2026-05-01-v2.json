@@ -1,0 +1,144 @@
+{
+  "page": "samarth/index.html",
+  "spec": "docs/samarth-plus-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_revision": "v2 · adversarial re-audit after fix pass",
+  "score": 72,
+  "grade": "C",
+  "pass": false,
+  "dimensions": {
+    "structural_compliance": 80,
+    "source_traceability": 65,
+    "tone_of_voice": 78,
+    "honesty_register": 70,
+    "visual_completeness": 95,
+    "cross_page_consistency": 80
+  },
+  "findings": [
+    {
+      "id": "V2-CRIT1",
+      "severity": "CRITICAL",
+      "dimension": "honesty_register",
+      "section": "§0 Hero · subhead",
+      "issue": "Career ladder misrepresented. Hero says 'every transition (TA → CSA → DM and adjacent moves)' — but the HRBP deck (Step 1: Pick Your Path) shows the actual ladder is TA (Level 0) → K1 Junior CSA → K2 CSA → K3 Senior CSA → DM (5 levels, not 3). The page even gets this right in §02 Step 1 ('TA / K1 / K2 / K3 / DM'). The hero collapses three K-levels into one and misnames the ladder. Apex catches this on first scroll; the §02 contradiction undermines credibility.",
+      "fix": "Rewrite as: 'every transition across the TA → K1 → K2 → K3 → DM ladder and adjacent moves'.",
+      "files": ["samarth/index.html:82"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V2-CRIT2",
+      "severity": "CRITICAL",
+      "dimension": "honesty_register",
+      "section": "§0 Hero · 'How Fynd transforms' line",
+      "issue": "Overclaim: 'Reliance HRBPs now run live associate journeys against the platform.' Module Work Breakdown Phase 6 says 'Build went to Prod this phase, with a limited set of pilot users' — pilot users, not HRBP-led rollout. The hero pill correctly says 'Live · limited pilot · Apr 2026'; the prose contradicts that pill in the same hero block.",
+      "fix": "Rewrite as: 'A limited set of pilot users now runs real associate journeys on prod; Reliance owns the rollout calendar.' Keeps the agency on the Reliance side without overclaiming HRBP-wide rollout.",
+      "files": ["samarth/index.html:83"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V2-H1",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "§0 Hero · eyebrow",
+      "issue": "Eyebrow drops the track number. All five sibling Special Projects use 'Track NN · ...' pattern (Track 05 ALP, Track 08 Vista, Track 09 Forge, Track 10 Jarvis, Track 12 HireFirst). My eyebrow reads 'Special Project · Workforce · Live · limited pilot · Apr 2026'. The prior page had 'Track 04 · Workforce' — the track number was deliberate and consistent.",
+      "fix": "Restore: 'Track 04 · Workforce · Live · limited pilot · Apr 2026'.",
+      "files": ["samarth/index.html:79"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V2-H2",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "Hero subhead + Hero stat tile + §03 Admin Tower + §05 implicit",
+      "issue": "'~160 role-transition journeys' / '~160 transitions' / '~160 transition rules' — appears in 4 places. Not present in either compilation source PDF (HRBP deck doesn't quantify; Module Work Breakdown doesn't either). The number is inherited from the prior page version. At Apex level, an unsourced lead number is the most damaging traceability gap.",
+      "fix": "Either: (a) source the ~160 number from the comm where it originated (likely an internal Samarth scoping doc) and add an inline cap-num citation, OR (b) drop the precise number and say 'every role transition across the TA → DM ladder' until sourced. Don't leave it as fact without a citation.",
+      "files": ["samarth/index.html:82", "samarth/index.html:88", "samarth/index.html:206"],
+      "auto_fixable": false
+    },
+    {
+      "id": "V2-H3",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "Hero stat tile · 'Form factor: App-in-App'",
+      "issue": "'App-in-App' appears in hero subhead, hero stat tile ('Form factor · App-in-App · Inside People First'), §01 Live card, §03 subtitle. Not in either compilation source PDF. HRBP deck says 'The entry point is the PeopleFirst app … Tapping the notification opens the Samarth Plus interface' — this describes UX behaviour, not a form-factor architecture term. 'App-in-App' is likely a Reliance internal term but not source-verified here.",
+      "fix": "Either source the term from a Samarth architecture doc, OR rephrase to source-grounded language: 'Form factor: served inside People First · launched from a notification on the PeopleFirst home'. Same idea, no unsourced jargon.",
+      "files": ["samarth/index.html:82", "samarth/index.html:89", "samarth/index.html:120", "samarth/index.html:198"],
+      "auto_fixable": false
+    },
+    {
+      "id": "V2-M1",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§06 Squad",
+      "issue": "Squad section names 11 individuals. Module Work Breakdown only sources 3 by name (Raunak Sharma, Vikas Singh, Yash). The remaining 8 (Nishant, Sai, Manasa, Karan, Ashish, Pranav, Jay, Bobby, Sanket) are inherited from the prior /samarth page with no new-source verification. Not a fabrication risk — prior page presumably had a source — but the spec's §3 source inventory should reference where that prior source lives.",
+      "fix": "Add a one-line eyebrow under the §06 H2: 'Source · prior /samarth squad list (verified Apr 2026 against Module Work Breakdown for engineering role attribution).' Closes the traceability gap without re-litigating the names.",
+      "files": ["samarth/index.html:274"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V2-M2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§06 Squad · QA",
+      "issue": "Last fix pass changed 'Naveent (RIL)' → 'Naveen (RIL)' on the assumption it was a typo. No source confirmed either spelling. The prior /samarth page had 'Naveent' deliberately (it appeared on the original page with no challenge). Guessing at name spellings violates tone-of-voice §1 rule 5 ('names where they matter — anonymous claims read as evasive') AND introduces a fabrication risk.",
+      "fix": "Revert to 'Naveent' pending verification with Nishant Amin or Ashish Agrawal. If 'Naveen' is correct, confirm and re-apply with a note.",
+      "files": ["samarth/index.html:281"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V2-M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§07 Roadmap",
+      "issue": "Roadmap reads 'Q1 / Q2 / Q3 / Q4' without anchoring to a calendar (Q1 FY27? Q1 calendar?) and without named DRI per quarter. This is exactly the construction tone-of-voice §3 bans: 'Forward-looking phases without dates … if a section makes time-promises, every promise carries a date or a named DRI. Otherwise cut the section.' Worked example cited there: /hirefirst dropped its 4-phase strip for the same reason.",
+      "fix": "Either (a) anchor each quarter ('Q1 FY27 · DRI Nishant Amin', etc.) — preferably with the source of the roadmap commitment, or (b) drop §07 entirely and let §01 Roadmap card carry the forward-looking signal (already does in 5 bullets).",
+      "files": ["samarth/index.html:286-294"],
+      "auto_fixable": false
+    },
+    {
+      "id": "V2-M4",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "Hero stat tile · 'Formats covered: 3'",
+      "issue": "Stat tile claims '3 formats covered: Grocery · F&L · Electronics'. Source check: HRBP deck slide 5 shows three format tabs (Fashion & Lifestyle / Grocery / Consumer Electronics) on the Career Road Map screen — but that's the format selector, not a confirmation of live coverage. Module Work Breakdown Phase 6 mentions 'OJT applicability matrix · 20260415_seed_ojt_grocery_fl' — only Grocery + F&L are explicitly named in the seed migration filename; Electronics is implied but not sourced as Live.",
+      "fix": "Either confirm Electronics is Live in pilot (then keep '3') OR downgrade to '2 live + 1 ready' with a context line. Don't assert Live coverage that the seed-migration filename doesn't support.",
+      "files": ["samarth/index.html:90"],
+      "auto_fixable": false
+    },
+    {
+      "id": "V2-L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 Pillar 03 OJT",
+      "issue": "'OJT is journey-scoped (a user mid-journey-A doesn't see journey-B's OJT pending)' — 'journey-scoped' is engineering jargon at exec level. The parenthetical translation helps but the lead term still lands cold.",
+      "fix": "Rewrite as: 'OJT activities are scoped to the active journey · a user enrolled in two journeys sees only the current one's pending tasks'.",
+      "files": ["samarth/index.html:202"],
+      "auto_fixable": true
+    },
+    {
+      "id": "V2-L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 Step 02 constraint",
+      "issue": "Constraint reads 'screening must be cleared before the Learning Journey opens'. The previous-pass fix replaced 'unlocks' with 'opens' — accurate but less crisp. Source HRBP deck Step 3 explicitly says 'Once associates clear screening, the Learning Journey unlocks' — the source uses 'unlocks'. Tone-of-voice bans 'unlocks' as filler. The two-step rewrite to 'opens' is correct.",
+      "fix": "No change. Keep 'opens'. Flag for awareness only — source language is 'unlocks' but tone-of-voice supersedes.",
+      "files": ["samarth/index.html:160"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "§04 7-month delivery table remains the page's strongest section — phase × window × environment × headline reads cleanly at Apex grain, every row sourceable to Module Work Breakdown.",
+    "§05 cross-cutting challenges section honestly surfaces 'what was hard' — six cards, every one sourced. This is the section Apex actually wants from a delivery page.",
+    "Honesty pill on hero ('Live · limited pilot · Apr 2026') is correctly calibrated — but undercut by the 'HRBPs now run live associate journeys' overclaim two lines below it (V2-CRIT2).",
+    "§02 candidate journey faithfully renders the HRBP deck's 6 steps with constraint lines per card — the structure is right even where two child claims overreach.",
+    "Section-label run is contiguous (01 → 08), no renumber drift after the prior cut of the Sub-IPs grid."
+  ],
+  "delta_from_v1": {
+    "v1_score": 87,
+    "v2_score": 72,
+    "drop_reason": "v1 audit was non-adversarial — focused on banned-word grep, format compliance, and cross-page references. v2 read every claim against the source PDFs end-to-end and found four claims (career ladder, HRBPs running journeys, ~160 transitions, App-in-App) that were inherited from the prior page version without new-source verification. Source-traceability dimension dropped 92 → 65; honesty register dropped 90 → 70.",
+    "audit_methodology_lesson": "First-pass audit relied on the spec's claim that the page faithfully extracted both new sources. It did not verify that inherited claims (carried over from the prior /samarth page) were also re-sourceable. For restructure-mode pages, the audit must re-source EVERY claim, not just the newly-added sections.",
+    "fixes_applied_in_v1_resolved": ["T1 unlocks→opens", "C1 home/catalog date alignment", "T2 Phase 1 jargon expansion", "H1 Step 06 pill"],
+    "fixes_applied_in_v1_now_re_flagged": ["S1 Naveent→Naveen reverted as V2-M2 because the change was unverified"]
+  }
+}

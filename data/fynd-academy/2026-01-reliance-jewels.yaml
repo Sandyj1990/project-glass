@@ -1,0 +1,32 @@
+# Path: data/fynd-academy/2026-01-reliance-jewels.yaml
+# Source: docs/fynd-academy-compilation/jan-2026/description
+
+slug: 2026-01-reliance-jewels
+title: Full-day AI Workshop · Reliance Jewels
+date: 2026-01-16
+status: delivered
+
+source_folder: docs/fynd-academy-compilation/jan-2026/
+source_citation: "description (md) + 3 session photos"
+
+audience: Reliance Jewels
+venue: Reliance Jewels (full-day workshop, 09:30 – 18:00)
+format: in-person
+headcount: "~100"
+requested_by:
+  name: Vincent Braganza
+  role: COO, Reliance Jewels
+ratings: null
+
+summary: |
+  Full-day immersive workshop on leveraging AI for day-to-day business use
+  cases. Deep-dive on Fynd AI tools — PixelBin (image optimisation), Boltic
+  (workflow automation) — applied to retail and enterprise workflows.
+
+photos:
+  - src: /assets/fynd-academy/2026-01-reliance-jewels/01-session.jpg
+    caption: Workshop session · Reliance Jewels team
+  - src: /assets/fynd-academy/2026-01-reliance-jewels/02-session.jpg
+    caption: Hands-on segment
+  - src: /assets/fynd-academy/2026-01-reliance-jewels/03-session.jpg
+    caption: Q&A

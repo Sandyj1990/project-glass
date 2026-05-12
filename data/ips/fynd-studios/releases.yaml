@@ -1,0 +1,9 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+releases:
+  - date: 2026-04-28
+    title: Lacoste / Aldo / Footlocker / Guess Malaysia · POC approved
+    summary: External global brand POCs greenlit
+  - date: 2026-04-25
+    title: Fynd Studio Q1 ₹10 Cr · FY ₹100 Cr · targets locked
+    summary: By Farooq

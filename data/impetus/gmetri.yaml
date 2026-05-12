@@ -1,0 +1,120 @@
+# GMetri · Store-to-Shelf · Digital Twin &amp; Planogram Compliance
+# Sourced verbatim from Q1 2026 Release Compendium pp. 65–70
+# Per docs/impetus-restructure-spec.md
+
+slug: gmetri
+title: GMetri
+sub_title: "(Store-to-Shelf · Digital Twin &amp; Planogram Compliance)"
+aliases: [Digital Twin, AI Visual Merchandising Lab, Store-to-Shelf]
+tagline: 3D digital replica of every store — planogram compliance, fixture configuration and AI-driven VM, all on the same surface.
+category: Sell · Store ops
+status: live
+status_label: Live
+
+audience:
+  - Store Managers
+  - Visual Merchandising Teams
+  - Regional Heads
+
+what_it_does: |
+  **From fabric to store, digitally mirrored.** Per Accenture s11, GMetri sits at
+  the centre of a 3-pillar Digital Twin framing:
+
+  - **Fabric** — simulate drape, texture &amp; colour in 3D to eliminate physical
+    swatches and accelerate design alignment.
+  - **Garment** — visualise fit, print placement and construction in real-time,
+    reducing sampling cycles and costs.
+  - **Garment Supply Chain** — track capacity, lead times and daily production rate
+    digitally, enabling smarter sourcing decisions and faster negotiations.
+  - **Store** — plan planograms, inventory and shelf layouts virtually, improving
+    space utilisation and store-readiness before delivery of goods.
+
+  Today's GMetri implementation focuses on the Store pillar at scale.
+
+  Store managers use a digital replica of their store to check whether the right
+  products are on the right shelves in the right quantities. Visual merchandising
+  teams create shelf layout plans centrally and push them to all stores. Regional
+  heads see compliance scores across their entire store network on a real-time
+  dashboard.
+
+scale_label: How Many Stores Use It
+scale:
+  - "109 stores actively using (as of Apr 9)"
+  - "All Trends stores onboarded"
+  - "~70% compliance target across 2,129 stores"
+  - "74 additional stores brought online this quarter"
+  - "Stock data mismatch reduced to 10% via RFID search integration"
+scale_caption: |
+  Onboarded on jioimpetus.com; infrastructure ready to scale across all stores.
+
+what_improved:
+  body: |
+    New fixture types supported: Trends 3.0, Junior, Fashion Factory. 74 additional
+    stores brought online this quarter. Analytics dashboards load faster after
+    backend upgrade. **Stock mismatch reduced to 10% via RFID search integration.**
+  expected_metric_impact: |
+    every percentage point of planogram compliance is sales recovered from missing
+    placements. The Trends 3.0 / Junior / Fashion Factory fixture support unblocks
+    the next wave of stores. RFID search bringing stock mismatch to 10% closes the
+    gap between digital twin and physical reality — the prerequisite for autonomous
+    Visual Merchandising at L4.
+
+updates_shipped:
+  - date: "10 Apr 2026"
+    heading: "GMetri Infrastructure on Impetus Platform + RFID Integration"
+    bullets:
+      - "Onboarded on jioimpetus.com, infrastructure ready to scale across all stores."
+      - "Stock data mismatch reduced to 10% via RFID search integration."
+  - date: "9 Apr 2026"
+    heading: "Adoption Confirmed at 109 Stores"
+    bullets:
+      - "GMetri adoption confirmed via PulsePoint; WiFi bandwidth optimisation in progress."
+  - date: "9–13 Mar 2026"
+    heading: "New Fixture Types + 74 Extension Stores + Backend Upgrade"
+    bullets:
+      - "New fixture types: Trends 3.0, Junior, Fashion Factory; 74 stores added."
+      - "Analytics backend upgraded for faster loads; 9 UI improvements; 6 bug fixes."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/gmetri/screenshot-066.jpg"
+    caption: "**3D store layout** · Isometric view of a store with merchandise fixtures for planogram visualisation."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/gmetri/screenshot-067.jpg"
+    caption: "**VM product catalog + CAD-to-3D pipeline** · Apparel items by brand/sizes/pricing for fixture assignment · Store DWG file upload &amp; intelligent 3D model processing."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/gmetri/screenshot-068.jpg"
+    caption: "**AI VM attribute libraries** · Color palette + key-attribute analysis (SAP color, fashion grade, bricks, pattern, class, MRP) for trend-based planning."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/gmetri/screenshot-069.jpg"
+    caption: "**VM pool fixture assignment + Wall fixture configuration** · Virtual fixture editor with table display options · 3D wall setup with attribute constraints and rhyme schemes."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/gmetri/screenshot-070.jpg"
+    caption: "**Store fixture capture + Solver playground** · Avaasa brand fixture screenshot pipeline · Solver inventory-source selector for fixture configuration."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 65–70"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+  - label: "Accenture · Updated Retail Platforms+Agents · slide s11 · Digital Twin · Fabric / Garment / Store"
+    href: ""
+
+progress:
+  current_level: 2
+  current_summary: |
+    GMetri sits at **L2 · Augmented**: VM team curates display rules and pushes
+    planograms; stores execute and report compliance. Stock mismatch reduced to
+    10% via RFID is the prerequisite for the L3 jump — daily store-specific
+    planograms generated from actual sell-through and competitive activity.
+  workflows:
+    - name: "Visual Merchandising"
+      number: "4.2"
+      current: 2
+      target: 3
+      plan: "Today: data-driven display rules, VM team curates. Target: daily recommendation per store based on velocity, weather, events, competitive activity."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Visual Merchandising · L2 → L3"
+      body: "Daily per-store recommendations replace centrally-pushed planograms."
+    - eyebrow: "Risk reduction milestone"
+      title: "Stock mismatch 10% via RFID"
+      body: "Closes the gap between digital twin and physical reality — prerequisite for autonomous VM."
+    - eyebrow: "Identity shift indicator"
+      title: "Compliance is measurable, not anecdotal"
+      body: "109 stores live + 74 added this quarter; ~70% target across 2,129 stores."

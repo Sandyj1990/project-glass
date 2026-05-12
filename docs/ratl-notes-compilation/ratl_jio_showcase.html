@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ratl.ai × Reliance Retail — Shipping with Confidence at Reliance Scale</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --bg: #0A0A0B;
+    --bg-2: #111113;
+    --fg: #EDE9DF;
+    --fg-dim: #A29C8E;
+    --muted: #57544D;
+    --line: #1F1F22;
+    --accent: #FF5722;
+    --accent-soft: #FF7A4D;
+    --gold: #C8A24B;
+
+    --serif: 'Instrument Serif', 'Times New Roman', serif;
+    --sans: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-weight: 400;
+    line-height: 1.55;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* Grain texture overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/><feColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.6;
+  }
+
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+
+  /* ─── TOP BAR ────────────────────────────── */
+  .topbar {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(10,10,11,0.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .topbar-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 40px;
+    max-width: 1280px; margin: 0 auto;
+  }
+  .brand {
+    font-family: var(--serif); font-size: 22px; letter-spacing: 0.5px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .brand .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+  }
+  .brand em { font-style: italic; color: var(--fg-dim); font-size: 15px; }
+  .nav { display: flex; gap: 28px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; }
+  .nav a { color: var(--fg-dim); text-decoration: none; transition: color 0.2s; }
+  .nav a:hover { color: var(--accent); }
+  @media (max-width: 760px) { .nav { display: none; } }
+
+  /* ─── HERO ───────────────────────────────── */
+  .hero { padding: 100px 0 80px; position: relative; }
+  .hero-eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 2.4px;
+    text-transform: uppercase; color: var(--accent);
+    display: inline-flex; align-items: center; gap: 12px;
+    margin-bottom: 36px;
+  }
+  .hero-eyebrow::before {
+    content: ""; width: 32px; height: 1px; background: var(--accent);
+  }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(48px, 7.5vw, 110px);
+    line-height: 0.96; letter-spacing: -0.02em;
+    margin-bottom: 32px;
+    max-width: 14ch;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-lead {
+    max-width: 620px; font-size: 19px; color: var(--fg-dim);
+    line-height: 1.55;
+  }
+  .hero-lead strong { color: var(--fg); font-weight: 500; }
+
+  .hero-meta {
+    margin-top: 56px; display: flex; gap: 60px; flex-wrap: wrap;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--fg-dim); text-transform: uppercase; letter-spacing: 1.4px;
+  }
+  .hero-meta div span { color: var(--accent); display: block; margin-bottom: 4px; }
+
+  /* ─── SCALE STRIP ────────────────────────── */
+  .scale {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 44px 0;
+    background: var(--bg-2);
+  }
+  .scale-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0;
+  }
+  .scale-grid > div {
+    padding: 0 24px;
+    border-right: 1px solid var(--line);
+  }
+  .scale-grid > div:last-child { border-right: none; }
+  .scale-num {
+    font-family: var(--serif); font-size: 44px; line-height: 1;
+    color: var(--fg); margin-bottom: 8px;
+  }
+  .scale-label {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1.3px;
+    color: var(--fg-dim);
+  }
+  @media (max-width: 980px) {
+    .scale-grid { grid-template-columns: repeat(3, 1fr); row-gap: 32px; }
+    .scale-grid > div:nth-child(3) { border-right: none; }
+  }
+  @media (max-width: 600px) {
+    .scale-grid { grid-template-columns: repeat(2, 1fr); }
+    .scale-grid > div { border-right: 1px solid var(--line); }
+    .scale-grid > div:nth-child(2n) { border-right: none; }
+  }
+
+  /* ─── SECTION COMMON ─────────────────────── */
+  section.block { padding: 120px 0; border-bottom: 1px solid var(--line); }
+  .section-head { margin-bottom: 64px; }
+  .section-eyebrow {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 2.2px;
+    color: var(--accent); margin-bottom: 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-eyebrow::before {
+    content: ""; width: 24px; height: 1px; background: var(--accent);
+  }
+  .section-title {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(36px, 4.6vw, 64px); line-height: 1.04;
+    letter-spacing: -0.015em; max-width: 20ch;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+  .section-sub {
+    font-size: 18px; color: var(--fg-dim); max-width: 640px;
+    margin-top: 24px; line-height: 1.6;
+  }
+
+  /* ─── THE SHIFT ──────────────────────────── */
+  .shift-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: start;
+  }
+  .shift-text p { color: var(--fg-dim); font-size: 17px; margin-bottom: 18px; line-height: 1.7; }
+  .shift-text p strong { color: var(--fg); font-weight: 500; }
+  .shift-card {
+    border: 1px solid var(--line);
+    padding: 36px;
+    background: var(--bg-2);
+    position: relative;
+  }
+  .shift-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+  }
+  .shift-card h3 {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--fg-dim); margin-bottom: 24px;
+  }
+  .shift-pair {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 14px 0; border-bottom: 1px dashed var(--line);
+  }
+  .shift-pair:last-child { border-bottom: none; }
+  .shift-pair .from { color: var(--muted); text-decoration: line-through; flex: 1; font-size: 15px; }
+  .shift-pair .to { color: var(--fg); font-family: var(--serif); font-style: italic; font-size: 20px; flex: 1; }
+  .shift-pair .arrow { font-family: var(--mono); color: var(--accent); }
+  @media (max-width: 860px) { .shift-grid { grid-template-columns: 1fr; gap: 48px; } }
+
+  /* ─── CAPABILITIES LIST ──────────────────── */
+  .cap-list { display: flex; flex-direction: column; }
+  .cap {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 48px;
+    padding: 52px 0;
+    border-top: 1px solid var(--line);
+    align-items: start;
+  }
+  .cap:last-child { border-bottom: 1px solid var(--line); }
+  .cap-num {
+    font-family: var(--mono); font-size: 13px;
+    color: var(--accent); padding-top: 6px;
+    letter-spacing: 1.5px;
+  }
+  .cap-head h3 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 32px; line-height: 1.1;
+    margin-bottom: 14px; letter-spacing: -0.01em;
+  }
+  .cap-head h3 em { font-style: italic; color: var(--accent); }
+  .cap-tag {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1.6px;
+    color: var(--fg-dim);
+  }
+  .cap-body p { color: var(--fg-dim); font-size: 16px; line-height: 1.65; margin-bottom: 14px; }
+  .cap-body p strong { color: var(--fg); font-weight: 500; }
+  .cap-out {
+    margin-top: 18px;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--accent); text-transform: uppercase; letter-spacing: 1.4px;
+    border-left: 2px solid var(--accent); padding-left: 14px;
+    line-height: 1.6;
+  }
+  @media (max-width: 860px) {
+    .cap { grid-template-columns: 1fr; gap: 18px; padding: 40px 0; }
+    .cap-num { padding-top: 0; }
+  }
+
+  /* ─── INCIDENT QUOTE ─────────────────────── */
+  .incident {
+    margin: 80px 0;
+    padding: 56px 64px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+  .incident-label {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 2px;
+    color: var(--accent); margin-bottom: 20px;
+  }
+  .incident-quote {
+    font-family: var(--serif); font-size: 28px; line-height: 1.35;
+    font-style: italic; color: var(--fg);
+    max-width: 800px;
+  }
+  .incident-source {
+    margin-top: 24px;
+    font-family: var(--mono); font-size: 12px;
+    color: var(--fg-dim); text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  @media (max-width: 700px) { .incident { padding: 40px 28px; } .incident-quote { font-size: 22px; } }
+
+  /* ─── CATALOG INTELLIGENCE (FEATURE) ─────── */
+  .feature {
+    background:
+      radial-gradient(ellipse at top right, rgba(255, 87, 34, 0.08), transparent 60%),
+      var(--bg);
+  }
+  .feature-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px;
+    align-items: center;
+  }
+  .feature-text h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(40px, 5vw, 72px); line-height: 1.02;
+    letter-spacing: -0.015em; margin-bottom: 28px;
+  }
+  .feature-text h2 em { font-style: italic; color: var(--accent); }
+  .feature-text > p {
+    font-size: 18px; color: var(--fg-dim); line-height: 1.7; margin-bottom: 20px;
+  }
+  .feature-text > p strong { color: var(--fg); font-weight: 500; }
+
+  .signal-list {
+    margin-top: 36px; display: flex; flex-direction: column; gap: 0;
+  }
+  .signal {
+    display: grid; grid-template-columns: 28px 1fr;
+    gap: 18px; padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+  .signal:last-child { border-bottom: 1px solid var(--line); }
+  .signal-icon {
+    font-family: var(--mono); font-size: 12px;
+    color: var(--accent); padding-top: 3px;
+  }
+  .signal-text { font-size: 15px; color: var(--fg); line-height: 1.5; }
+  .signal-text span { display: block; color: var(--fg-dim); font-size: 13px; margin-top: 4px; }
+
+  /* Pipeline diagram */
+  .pipeline {
+    border: 1px solid var(--line);
+    background: var(--bg-2);
+    padding: 32px 28px;
+    position: relative;
+  }
+  .pipeline-title {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1.8px;
+    color: var(--fg-dim); margin-bottom: 28px;
+  }
+  .pipe-stage {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 14px 16px;
+    border: 1px solid var(--line);
+    margin-bottom: 8px;
+    position: relative;
+    background: var(--bg);
+  }
+  .pipe-stage:not(:last-child)::after {
+    content: "↓";
+    position: absolute;
+    left: 50%; bottom: -14px;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 14px;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .pipe-stage-name { font-family: var(--mono); font-size: 13px; color: var(--fg); }
+  .pipe-stage-meta { font-family: var(--mono); font-size: 10px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 1.2px; }
+  .pipe-stage.consumer {
+    background: rgba(255, 87, 34, 0.08);
+    border-color: var(--accent);
+  }
+  .pipe-stage.consumer .pipe-stage-name { color: var(--accent); }
+  .pipe-watcher {
+    margin-top: 28px;
+    padding: 16px;
+    border: 1px dashed var(--accent);
+    text-align: center;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent);
+    text-transform: uppercase; letter-spacing: 1.5px;
+  }
+  @media (max-width: 980px) { .feature-grid { grid-template-columns: 1fr; gap: 56px; } }
+
+  /* ─── JIOMART OS ─────────────────────────── */
+  .os {
+    background:
+      linear-gradient(180deg, var(--bg) 0%, #050505 100%);
+  }
+  .os-hero { text-align: center; max-width: 900px; margin: 0 auto 72px; }
+  .os-hero .section-eyebrow { justify-content: center; }
+  .os-hero h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(48px, 6.5vw, 96px); line-height: 1; letter-spacing: -0.02em;
+    margin-bottom: 28px;
+  }
+  .os-hero h2 em { font-style: italic; color: var(--accent); }
+  .os-hero p { color: var(--fg-dim); font-size: 19px; line-height: 1.65; max-width: 680px; margin: 0 auto; }
+  .os-hero p strong { color: var(--fg); }
+
+  .agents {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    margin-top: 64px;
+  }
+  .agent {
+    border: 1px solid var(--line);
+    padding: 28px 22px;
+    background: var(--bg-2);
+    transition: all 0.3s ease;
+  }
+  .agent:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .agent-num {
+    font-family: var(--mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 1.5px; margin-bottom: 18px;
+  }
+  .agent h4 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: 22px; margin-bottom: 10px;
+    line-height: 1.15;
+  }
+  .agent p { font-size: 13px; color: var(--fg-dim); line-height: 1.55; }
+  @media (max-width: 880px) { .agents { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 480px) { .agents { grid-template-columns: 1fr; } }
+
+  /* ─── IMPACT MATRIX ──────────────────────── */
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+  }
+  .impact-cell {
+    padding: 36px 28px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .impact-num {
+    font-family: var(--serif); font-size: 56px; line-height: 1;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  .impact-label {
+    font-size: 14px; color: var(--fg); line-height: 1.45;
+  }
+  .impact-tag {
+    font-family: var(--mono); font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1.4px;
+    color: var(--fg-dim); margin-top: 12px; display: block;
+  }
+  @media (max-width: 800px) { .impact-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .impact-grid { grid-template-columns: 1fr; } }
+
+  /* ─── TEAM CALLOUT ───────────────────────── */
+  .team {
+    text-align: center; padding: 140px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .team h2 {
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(36px, 5vw, 64px); line-height: 1.05;
+    margin-bottom: 24px; letter-spacing: -0.015em;
+  }
+  .team h2 em { font-style: italic; color: var(--accent); }
+  .team p {
+    color: var(--fg-dim); max-width: 580px; margin: 0 auto;
+    font-size: 17px; line-height: 1.65;
+  }
+  .team-stats {
+    display: flex; justify-content: center; gap: 64px; margin-top: 48px;
+    flex-wrap: wrap;
+  }
+  .team-stats div { text-align: center; }
+  .team-stats .n {
+    font-family: var(--serif); font-size: 48px; line-height: 1; color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .team-stats .l {
+    font-family: var(--mono); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1.5px; color: var(--fg-dim);
+  }
+
+  /* ─── FOOTER ─────────────────────────────── */
+  footer {
+    padding: 60px 0 40px;
+  }
+  .foot-grid { display: flex; justify-content: space-between; align-items: end; flex-wrap: wrap; gap: 32px; }
+  .foot-brand { font-family: var(--serif); font-size: 32px; }
+  .foot-brand em { color: var(--accent); font-style: italic; }
+  .foot-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; line-height: 1.8; }
+
+  /* ─── ANIMATIONS ─────────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero h1, .hero-eyebrow, .hero-lead, .hero-meta {
+    animation: fadeUp 1s ease forwards;
+    opacity: 0;
+  }
+  .hero-eyebrow { animation-delay: 0.05s; }
+  .hero h1 { animation-delay: 0.2s; }
+  .hero-lead { animation-delay: 0.45s; }
+  .hero-meta { animation-delay: 0.6s; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>ratl<em>.ai</em></span>
+    </div>
+    <nav class="nav">
+      <a href="#shift">The Shift</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#catalog">Catalog Intelligence</a>
+      <a href="#os">Jiomart OS</a>
+      <a href="#impact">Impact</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">A Quality Engineering partnership · Reliance Retail</div>
+    <h1>Shipping with confidence at <em>Reliance scale.</em></h1>
+    <p class="hero-lead">
+      ratl.ai is the AI-first quality engineering platform powering release certification, monitoring,
+      and catalog integrity across <strong>JCP, AJIO, JioMart, Tira, Netmeds</strong> and 35+ Reliance Retail storefronts —
+      built for a world where developers ship in hours, not weeks.
+    </p>
+
+    <div class="hero-meta">
+      <div><span>SCOPE</span>JCP · AJIO · JioMart · Tira</div>
+      <div><span>MODE</span>Agentic · Autonomous · Continuous</div>
+      <div><span>OUTCOME</span>Release confidence, on demand</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SCALE STRIP ═══════════ -->
+<div class="scale">
+  <div class="wrap">
+    <div class="scale-grid">
+      <div>
+        <div class="scale-num">35<span style="color:var(--accent);">+</span></div>
+        <div class="scale-label">Storefronts under coverage</div>
+      </div>
+      <div>
+        <div class="scale-num">100<span style="color:var(--accent);">+</span></div>
+        <div class="scale-label">Releases certified / month</div>
+      </div>
+      <div>
+        <div class="scale-num">10K<span style="color:var(--accent);">+</span></div>
+        <div class="scale-label">API validations / day</div>
+      </div>
+      <div>
+        <div class="scale-num">80K<span style="color:var(--accent);">+</span></div>
+        <div class="scale-label">URLs under compliance gating</div>
+      </div>
+      <div>
+        <div class="scale-num">3.3K<span style="color:var(--accent);">+</span></div>
+        <div class="scale-label">Tests / release · all systems</div>
+      </div>
+      <div>
+        <div class="scale-num">85<span style="color:var(--accent);">+</span></div>
+        <div class="scale-label">Storefronts on synthetic monitoring</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ THE SHIFT ═══════════ -->
+<section class="block" id="shift">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">01 · The Premise</div>
+      <h2 class="section-title">The world moved from <em>co-pilot</em> to <em>autopilot.</em><br />We moved with it.</h2>
+    </div>
+
+    <div class="shift-grid">
+      <div class="shift-text">
+        <p>
+          The industry-standard AI-assisted testing model put a human in the loop at every step —
+          configure manually, click through setup, let AI generate a few assertions, execute, review.
+          Useful, but fundamentally still human-driven.
+        </p>
+        <p>
+          ratl.ai made the deliberate decision to get ahead of the shift to <strong>agentic AI</strong> —
+          where you describe the goal in natural language and autonomous agents figure out how to get there:
+          navigate the codebase, generate tests, execute, analyze failures, raise PRs.
+        </p>
+        <p>
+          We ran rigorous POCs across multiple agentic frameworks, worked directly with the OpenAI team
+          on agent orchestration, and built on LangGraph with multi-agent orchestration —
+          <strong>six agent types</strong> spanning web, API, mobile, compliance, load, and security.
+        </p>
+        <p>
+          The result for Reliance: manual test authoring down ~80%. Testing expanded from QA specialists
+          to every developer in the org.
+        </p>
+      </div>
+
+      <div class="shift-card">
+        <h3>// What changed</h3>
+        <div class="shift-pair"><span class="from">Human-in-loop at every step</span><span class="arrow">→</span><span class="to">Goal in natural language</span></div>
+        <div class="shift-pair"><span class="from">QA-only authoring</span><span class="arrow">→</span><span class="to">Every developer ships tests</span></div>
+        <div class="shift-pair"><span class="from">Days to weeks per release</span><span class="arrow">→</span><span class="to">Hours, end-to-end</span></div>
+        <div class="shift-pair"><span class="from">Subjective go/no-go</span><span class="arrow">→</span><span class="to">Confidence, scored</span></div>
+        <div class="shift-pair"><span class="from">Tool you go to</span><span class="arrow">→</span><span class="to">Tool already where you work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CAPABILITIES ═══════════ -->
+<section class="block" id="capabilities">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">02 · The Stack</div>
+      <h2 class="section-title">Ten capabilities. <em>One operating model.</em></h2>
+      <p class="section-sub">
+        Every module below is in production for Reliance Retail today — composing into a single release certification,
+        monitoring, and quality intelligence layer across JCP and the broader RBL ecosystem.
+      </p>
+    </div>
+
+    <div class="cap-list">
+
+      <div class="cap">
+        <div class="cap-num">/01</div>
+        <div class="cap-head">
+          <div class="cap-tag">// RELEASE INTELLIGENCE</div>
+          <h3>Go/no-go is no longer a <em>gut call.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            Release Intelligence connects to every ratl module — web, API, mobile, compliance, load, security —
+            aggregates results across an entire vertical, runs AI quality analysis with pass-rate signals,
+            failure clustering, root cause and risk scoring, and delivers a <strong>confidence score with go/no-go recommendations.</strong>
+          </p>
+          <p>
+            JCP EMs across <strong>Tira, AJIO, JioMart, SnG and Swadesh</strong> use it for release decisions —
+            running 3,300+ tests per release, with each system classified CRITICAL / MEDIUM / LOW.
+            Engineers converse with the agentic chat to debug failures and ask <em>"what's blocking this release?"</em> —
+            fixes are raised as PRs directly from the dashboard.
+          </p>
+          <p class="cap-out">→ Release validation cycle reduced 70–80%. Output equivalent to 4–5 engineers, every release.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/02</div>
+        <div class="cap-head">
+          <div class="cap-tag">// AGENTIC TESTING STACK</div>
+          <h3>Six agents. <em>One conversation.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            Six purpose-built agents — web, API, mobile, compliance, load, security — orchestrated through
+            LangGraph multi-agent topology. The agentic chat UX was designed once and adopted across all five modules.
+            Same engineers, dramatically larger surface area covered.
+          </p>
+          <p class="cap-out">→ Manual test authoring down ~80%. 11 engineers operating at the scale of 50+.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/03</div>
+        <div class="cap-head">
+          <div class="cap-tag">// MCP · CONVERSATIONAL TESTING</div>
+          <h3>Testing inside the <em>developer workflow.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            ratl ships <strong>40+ MCP (Model Context Protocol) tools</strong> — any engineer can run web, API, mobile,
+            load, or security tests via natural language directly from ChatGPT, Cursor, or any MCP client.
+            No framework knowledge. No scripts.
+          </p>
+          <p>
+            JCP QA uses MCP for web testing directly from their code repos — the MCP config sits inside the repo,
+            so testing is part of the developer workflow, not a context switch.
+          </p>
+          <p class="cap-out">→ ratl isn't a tool you go to. It's a tool already where you work.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/04</div>
+        <div class="cap-head">
+          <div class="cap-tag">// API VALIDATION · CONTRACT-AWARE</div>
+          <h3>10K+ validations a day. <em>Every day.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            A scalable API validation pipeline executes 10,000+ validations daily across Platform, SDK, Admin and Extensions.
+            OpenAPI-driven, contract-aware — the system continuously scans RC versions (50+ spec commits per release),
+            detects breaking schema changes, and auto-maps them to impacted services and scenarios.
+          </p>
+          <p class="cap-out">→ 3–5x productivity uplift in test design. Days reduced to hours.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/05</div>
+        <div class="cap-head">
+          <div class="cap-tag">// SITEOPS · JIOMART AGENTIC MONITORING</div>
+          <h3>Trace any product through the <em>pipeline,</em> end to end.</h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            JioMart runs on multiple systems, multiple teams, multiple databases — and frequent mismatches in catalog,
+            price and inventory were affecting the business. Tracking these issues meant manual querying across DBs
+            owned by different teams.
+          </p>
+          <p>
+            <strong>SiteOps</strong> traces JioMart's data pipeline end-to-end, identifying exactly where products stall and why.
+            Stale active products, unservable listings, pending sync, per-category breakdown across 10+ verticals,
+            1P/3P seller bifurcation, and webhook delivery health (3.7M events, 100% success).
+            Engineers ask in natural language — <em>"trace product 7700746 through the pipeline"</em> —
+            and the agent runs autonomous multi-step investigation across live databases.
+          </p>
+          <p class="cap-out">→ Hours of cross-team coordination compressed to one prompt.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/06</div>
+        <div class="cap-head">
+          <div class="cap-tag">// SYNTHETIC MONITORING</div>
+          <h3>The failure no monitor was <em>watching for.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            Vision agents perform periodic synthetic checks — capture screenshots, analyze page health with AI,
+            send alerts via email or Slack on failure. Deployed across <strong>85+ storefronts</strong> under JCP and RBL
+            (Sephora, Hamleys, Coach, Tumi, MUJI, Reliance Jewels, UrbanLadder, Steve Madden and more)
+            with aggregate uptime scoring and accessibility analysis.
+          </p>
+          <p class="cap-out">→ Catches purely synthetic failures invisible to infra and backend monitoring.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/07</div>
+        <div class="cap-head">
+          <div class="cap-tag">// COMPLIANCE AT SCALE · BIS IS 19598:2026</div>
+          <h3>From weeks of audit work to <em>continuous gating.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            Reliance's compliance and legal team was working with an external vendor for compliance audit reports —
+            cost-heavy, weeks-long, entirely manual. ratl built an agentic compliance validation module that evaluates
+            compliance rules across <strong>80,000+ URLs in parallel</strong>, now rolled out to six verticals
+            (Clovia, Tira, RD, JioMart, AJIO, UrbanLadder).
+          </p>
+          <p>
+            Built and fine-tuned in collaboration with the RIL legal team to interpret policies and produce
+            audit-ready artifacts. What used to take weeks and external vendor cost is now continuous,
+            automated gating that runs before deployment.
+          </p>
+          <p class="cap-out">→ External audit cost &amp; cycle time eliminated. Audit-ready, continuously.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/08</div>
+        <div class="cap-head">
+          <div class="cap-tag">// MOBILE · ANDROID + iOS</div>
+          <h3>Agents that <em>see, navigate, and self-heal.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            When JioMart rolled out their app to 10% of users, mobile testing became a top priority.
+            ratl built a fully agentic mobile testing solution — engineers describe app tests in natural language,
+            agents generate, execute and report. Vision-based interaction. Fully autonomous navigation.
+          </p>
+          <p>
+            A cloud device infrastructure lets any agent register a connected device with the platform.
+            Beyond testing: periodic JioMart P0 journey runs, JioMart vs Blinkit comparative benchmarking,
+            and a <strong>crash loop system</strong> — agent ingests Crashlytics data, understands the issue,
+            generates a fix, raises a PR. Automatically.
+          </p>
+          <p class="cap-out">→ Mobile module shipped in 22 PRs across 10 days. iOS doubled the device market in March 2026.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/09</div>
+        <div class="cap-head">
+          <div class="cap-tag">// AUTONOMOUS PEN TESTING</div>
+          <h3>Security as <em>first-pass,</em> not bottleneck.</h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            One Fynd security team serves many products and platforms — running pen tests across everything is a hard bottleneck.
+            ratl built an autonomous pen testing module so any developer or QA can run a first-pass scan,
+            understand risk, fix vulnerabilities, then escalate to security for sign-off.
+          </p>
+          <p>
+            AI-powered with 20+ security tools (nmap, sqlmap, metasploit), K8s workspace isolation,
+            and a verifier agent that independently reproduces each finding to reduce false positives.
+            Production assessments already run on tirabeauty.com and JioMart.
+          </p>
+          <p class="cap-out">→ First release shipped in 1 week. Real findings, not proof-of-concept.</p>
+        </div>
+      </div>
+
+      <div class="cap">
+        <div class="cap-num">/10</div>
+        <div class="cap-head">
+          <div class="cap-tag">// AGENTIC LOAD TESTING</div>
+          <h3>157M requests. <em>Natural language.</em></h3>
+        </div>
+        <div class="cap-body">
+          <p>
+            ratl's agentic load testing system (Automex 2.0 + Burst + Gatling) lets engineers describe load scenarios
+            in natural language — agents generate scripts, execute, analyze and report.
+            For TFC's CMS migration GameDay, ratl ran <strong>113 test runs · 157M+ requests · peak 7,582 TPS</strong>
+            across GraphQL, playback, watchlist, heartbeat and entitlement layers.
+          </p>
+          <p class="cap-out">→ Reusable infra: InfluxDB + Grafana, dynamic Gatling injection, distributed K8s execution.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Incident pull-quote -->
+    <div class="incident">
+      <div class="incident-label">// Field log · Tira</div>
+      <div class="incident-quote">
+        Tira's production site suddenly started showing a blank screen — "Something went wrong." No alerts, no infra issues, no backend failures. A pure synthetic failure, invisible to every existing monitor. Shortly after Synthetic Monitoring went live, the system caught Ritukumar's homepage going completely blank — before any customer or internal team noticed.
+      </div>
+      <div class="incident-source">— exactly the failure mode that triggered us to build the module</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ CATALOG INTELLIGENCE ═══════════ -->
+<section class="block feature" id="catalog">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">03 · The New Pillar</div>
+      <h2 class="section-title">Catalog Intelligence — <em>where conversion is won or lost.</em></h2>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-text">
+        <p>
+          Every drop in conversion on a JioMart, AJIO or Tira product page can be traced to a signal that broke
+          somewhere upstream — a price update that didn't propagate, a serviceability change that never reached the storefront,
+          a stock-out that the consumer app is still surfacing as <em>add-to-cart</em>.
+        </p>
+        <p>
+          <strong>Catalog Intelligence</strong> is the AI-driven platform that watches the catalog pipeline end-to-end —
+          from source systems all the way to what a customer sees on Android, iOS and web —
+          and surfaces every gap that erodes conversion before the GMV impact lands.
+        </p>
+
+        <div class="signal-list">
+          <div class="signal">
+            <div class="signal-icon">→</div>
+            <div class="signal-text">
+              Out-of-stock surfacing on consumer apps
+              <span>Live SKUs flagged stockable that aren't actually in fulfillable inventory</span>
+            </div>
+          </div>
+          <div class="signal">
+            <div class="signal-icon">→</div>
+            <div class="signal-text">
+              Add-to-cart failures
+              <span>Where a tap fails because price, zone or assortment data hasn't synced</span>
+            </div>
+          </div>
+          <div class="signal">
+            <div class="signal-icon">→</div>
+            <div class="signal-text">
+              Serviceability mismatches
+              <span>Products visible in a pincode where delivery zone data has gone stale</span>
+            </div>
+          </div>
+          <div class="signal">
+            <div class="signal-icon">→</div>
+            <div class="signal-text">
+              Pricing &amp; promo drift
+              <span>Offers configured upstream but missing in the buybox/PDP at the consumer surface</span>
+            </div>
+          </div>
+          <div class="signal">
+            <div class="signal-icon">→</div>
+            <div class="signal-text">
+              Search &amp; PDP integrity
+              <span>Indexing, image quality, broken links and PDP compliance — the silent conversion killers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline diagram -->
+      <div class="pipeline">
+        <div class="pipeline-title">// catalog pipeline · watched, end-to-end</div>
+
+        <div class="pipe-stage">
+          <div class="pipe-stage-name">Source Systems · ERP / Vendor Feeds</div>
+          <div class="pipe-stage-meta">SOR</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-stage-name">Master Catalog · Normalization</div>
+          <div class="pipe-stage-meta">Pricing · Assortment</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-stage-name">Vertex · JCP Storefront Extension</div>
+          <div class="pipe-stage-meta">Sync · Buybox</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-stage-name">Serviceability · Delivery Zones</div>
+          <div class="pipe-stage-meta">Pincode · Hub</div>
+        </div>
+        <div class="pipe-stage consumer">
+          <div class="pipe-stage-name">Consumer Apps · Android · iOS · Web</div>
+          <div class="pipe-stage-meta">PDP · Cart · Checkout</div>
+        </div>
+
+        <div class="pipe-watcher">
+          ↑ Catalog Intelligence agent watches every hop ↑
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; padding: 32px 36px; border: 1px solid var(--line); background: var(--bg-2);">
+      <div style="font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 1.8px; text-transform: uppercase; margin-bottom: 14px;">// outcome</div>
+      <p style="font-family: var(--serif); font-size: 26px; font-style: italic; line-height: 1.35; color: var(--fg);">
+        Every closed gap is recovered GMV. Catalog Intelligence turns the pipeline from a black box into a
+        <em style="color: var(--accent); font-style: italic;">conversion-rate instrument.</em>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ JIOMART OS ═══════════ -->
+<section class="block os" id="os">
+  <div class="wrap">
+    <div class="os-hero">
+      <div class="section-eyebrow" style="justify-content:center;">04 · The Next Frontier</div>
+      <h2>Catalog Intelligence is the foundation for <em>Jiomart OS.</em></h2>
+      <p>
+        Layered on JCP, <strong>Jiomart OS</strong> is the AI-native operating system for autonomous quick-commerce operations —
+        where the same pipeline observability that drives Catalog Intelligence becomes the substrate for a fleet of
+        decision-making agents running closed-loop on availability, pricing, serviceability and search.
+      </p>
+    </div>
+
+    <div class="agents">
+      <div class="agent">
+        <div class="agent-num">// AGENT 01</div>
+        <h4>Availability</h4>
+        <p>Replays OOS events end-to-end and projects GMV recovery for each catalog gap closed.</p>
+      </div>
+      <div class="agent">
+        <div class="agent-num">// AGENT 02</div>
+        <h4>Pricing</h4>
+        <p>Detects buybox drift, missing promos, and competitive deltas across verticals — recommends corrective sync.</p>
+      </div>
+      <div class="agent">
+        <div class="agent-num">// AGENT 03</div>
+        <h4>Serviceability</h4>
+        <p>Continuously validates pincode × hub × SKU coverage; flags stale zones before they reach the customer.</p>
+      </div>
+      <div class="agent">
+        <div class="agent-num">// AGENT 04</div>
+        <h4>Search Quality</h4>
+        <p>Indexing health, PDP integrity, image &amp; metadata quality — the discoverability surface, watched live.</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 80px; text-align: center; max-width: 720px; margin-left: auto; margin-right: auto;">
+      <p style="font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.4; color: var(--fg-dim);">
+        From release certification, to monitoring, to catalog integrity, to autonomous commerce operations —
+        <span style="color: var(--accent);">one continuous loop.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ IMPACT ═══════════ -->
+<section class="block" id="impact">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">05 · The Numbers</div>
+      <h2 class="section-title">Delivery impact, <em>measured.</em></h2>
+      <p class="section-sub">Outcomes from JCP, AJIO, JioMart and the wider RBL portfolio — across release velocity, defect reduction, and operational efficiency.</p>
+    </div>
+
+    <div class="impact-grid">
+      <div class="impact-cell">
+        <div class="impact-num">3–5×</div>
+        <div class="impact-label">Productivity uplift in test design</div>
+        <span class="impact-tag">Days → hours</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">70–80%</div>
+        <div class="impact-label">Faster release validation cycle</div>
+        <span class="impact-tag">JCP releases</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">~80%</div>
+        <div class="impact-label">Reduction in manual test authoring</div>
+        <span class="impact-tag">Agentic adoption</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">40–50%</div>
+        <div class="impact-label">UI defect reduction</div>
+        <span class="impact-tag">Visual + bugbash</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">35–45%</div>
+        <div class="impact-label">Regression &amp; performance issue reduction</div>
+        <span class="impact-tag">Static + pre-validation</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">~90%</div>
+        <div class="impact-label">Reduction in broken links across storefronts</div>
+        <span class="impact-tag">Link integrity utility</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">60–70%</div>
+        <div class="impact-label">Manual operational effort eliminated</div>
+        <span class="impact-tag">15+ utilities</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">9+</div>
+        <div class="impact-label">Clusters automated end-to-end</div>
+        <span class="impact-tag">JCP 1.9.x → 1.10.x</span>
+      </div>
+      <div class="impact-cell">
+        <div class="impact-num">33+</div>
+        <div class="impact-label">Backend services under continuous validation</div>
+        <span class="impact-tag">All JCP verticals</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TEAM ═══════════ -->
+<section class="team">
+  <div class="wrap">
+    <div class="section-eyebrow" style="justify-content:center; margin-bottom: 24px;">06 · The Team</div>
+    <h2>Eleven engineers. <em>Eleven products.</em></h2>
+    <p>Every module powering Reliance Retail's quality engineering — Release Intelligence, MCP, SiteOps, Synthetic Monitoring, Compliance, Mobile, Pen Testing, Catalog Intelligence — was built by the same team. No senior hires. No external contractors.</p>
+
+    <div class="team-stats">
+      <div>
+        <div class="n">11</div>
+        <div class="l">Engineers</div>
+      </div>
+      <div>
+        <div class="n">7</div>
+        <div class="l">Intern → Graduate SDE</div>
+      </div>
+      <div>
+        <div class="n">4</div>
+        <div class="l">SDET → SDE bootstrap</div>
+      </div>
+      <div>
+        <div class="n">11</div>
+        <div class="l">Products shipped</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">ratl<em>.ai</em></div>
+      <div class="foot-meta">
+        AI-first Quality Engineering · Release Intelligence Platform<br />
+        Powering JCP · AJIO · JioMart · Tira · Netmeds · 35+ Reliance Retail storefronts
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

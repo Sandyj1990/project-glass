@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Master Data Platform · Impetus</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.audience-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.stat-chip {
+  display: inline-flex; align-items: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500;
+  padding: 6px 12px; border-radius: 999px;
+  background: #EEF2FF; color: #3730A3; border: 1px solid #C7D2FE;
+}
+.improved-callout {
+  background: #ECFDF5; border-left: 4px solid #16A34A;
+  padding: 18px 22px; border-radius: 8px;
+  color: var(--ink); font-size: 15px; line-height: 1.55;
+}
+.improved-callout p { margin: 0 0 12px; }
+.improved-callout p:last-child { margin: 0; }
+.improved-callout .impact { background: white; padding: 14px 18px; border-radius: 6px; border: 1px solid #BBF7D0; margin-top: 14px; font-size: 14px; }
+.improved-callout .impact-label { display: block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: #047857; margin-bottom: 6px; }
+.timeline-entry { display: flex; gap: 18px; align-items: flex-start; margin-bottom: 18px; }
+.timeline-date {
+  flex: 0 0 90px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  background: var(--ink); color: white;
+  padding: 6px 10px; border-radius: 4px; text-align: center;
+}
+.timeline-body { flex: 1; }
+.timeline-body h3 { font-weight: 600; margin-bottom: 8px; color: var(--ink); }
+.timeline-body ul { list-style: none; padding: 0; }
+.timeline-body li { position: relative; padding-left: 16px; margin-bottom: 8px; font-size: 14px; line-height: 1.5; color: var(--ink); }
+.timeline-body li::before { content: "·"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+.scs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+
+/* §06 Progress · autonomy bar + workflow rows */
+.autonomy-bar { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; max-width: 540px; margin: 14px 0 18px; }
+.autonomy-cell { padding: 10px 8px; border-radius: 6px; text-align: center; font-family: 'JetBrains Mono', monospace; font-size: 11px; line-height: 1.2; color: white; opacity: 0.32; transition: opacity 0.15s; }
+.autonomy-cell.current { opacity: 1; box-shadow: 0 0 0 2px var(--ink); }
+.autonomy-cell .lvl { font-weight: 700; font-size: 14px; display: block; }
+.autonomy-cell .tag { font-size: 9px; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.85; }
+.alvl-0 { background: #BFD0E5; color: #1E3A5F; }
+.alvl-1 { background: #8FAACD; }
+.alvl-2 { background: #5E83B5; }
+.alvl-3 { background: #2E5D9D; }
+.alvl-4 { background: #16407C; }
+.alvl-5 { background: #0A2454; }
+
+.lvl-pill { display: inline-flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; font-weight: 600; letter-spacing: 0.04em; color: white; }
+.lvl-pill .arrow { color: var(--ink-muted); font-weight: 400; padding: 0 4px; }
+
+.workflow-row { display: grid; grid-template-columns: 240px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--border); align-items: start; }
+.workflow-row:first-child { border-top: none; }
+.workflow-row .wf-head { font-size: 13px; }
+.workflow-row .wf-name { font-weight: 600; color: var(--ink); margin-bottom: 6px; font-size: 14px; }
+.workflow-row .wf-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); margin-bottom: 6px; }
+.workflow-row .wf-pills { display: flex; gap: 4px; align-items: center; margin-bottom: 6px; }
+.workflow-row .wf-link { font-size: 11px; color: var(--accent); text-decoration: underline; }
+.workflow-row .wf-plan { font-size: 13px; color: var(--ink); line-height: 1.5; padding-top: 2px; }
+
+.quarter-card { padding: 16px 18px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.quarter-card .qc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.quarter-card .qc-title { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+.quarter-card .qc-body { font-size: 13px; color: var(--ink); line-height: 1.5; }
+
+/* Sub-sections (Cortex AI features etc.) + sidebar callouts */
+.subsection { padding: 24px 0; border-top: 1px solid var(--border); }
+.subsection:first-child { border-top: none; padding-top: 0; }
+.subsection-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+@media (max-width: 768px) { .subsection-grid { grid-template-columns: 1fr; } }
+.subsection h3 { font-weight: 700; font-size: 22px; color: var(--ink); margin-bottom: 4px; letter-spacing: -0.01em; }
+.subsection .ss-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.subsection .ss-body { font-size: 15px; color: var(--ink); line-height: 1.6; }
+.subsection .ss-body p { margin: 0 0 12px; }
+.subsection .ss-body p:last-child { margin: 0; }
+.subsection .ss-img { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.subsection .ss-img img { width: 100%; height: auto; display: block; }
+.subsection .ss-img figcaption { padding: 8px 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); border-top: 1px solid var(--border); background: var(--bg-soft); }
+
+.sidebar-callout { background: var(--bg-soft); border-left: 3px solid var(--accent); padding: 14px 18px; border-radius: 0 8px 8px 0; margin-top: 16px; max-width: 720px; }
+.sidebar-callout .sc-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.sidebar-callout .sc-title { font-weight: 600; font-size: 14px; color: var(--ink); margin-bottom: 4px; }
+.sidebar-callout .sc-body { font-size: 13px; color: var(--ink); line-height: 1.55; }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+<style>
+.impetus-lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100; display: none; align-items: center; justify-content: center; padding: 4vh 4vw; }
+.impetus-lightbox.open { display: flex; }
+.impetus-lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.impetus-lightbox .close { position: absolute; top: 18px; right: 22px; color: white; font-size: 32px; line-height: 1; cursor: pointer; opacity: 0.7; }
+.impetus-lightbox .close:hover { opacity: 1; }
+.impetus-lightbox .meta { position: absolute; bottom: 14px; left: 22px; right: 22px; color: white; opacity: 0.85; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; }
+.impetus-zoom { cursor: zoom-in; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><a href="/impetus">Impetus</a><span class="sep">/</span><span style="color: var(--ink);">Master Data Platform</span></div>
+  <div class="section-label mb-3">IMPETUS · MASTER DATA PLATFORM · LIVE</div>
+  <h1 class="display text-5xl md:text-7xl mb-4" style="color: var(--ink);">Master Data Platform.</h1>
+  <p class="text-xl mb-6" style="color: var(--ink-muted);">(CMT · Central Master Table)</p>
+  <p class="text-lg max-w-3xl mb-6" style="color: var(--ink);"><strong>Single source of truth for product and supplier data — every partner&#x27;s data validated at the gate before it reaches anything downstream.</strong></p>
+  <div class="audience-pills mb-4"><span class="pill">Buyers</span><span class="pill">Product Managers</span><span class="pill">Sourcing Teams</span><span class="pill">Anyone whose downstream work breaks when master data is wrong</span></div>
+  <div class="flex items-center gap-2">
+    <span class="pill pill-live">Live</span>
+  </div>
+</div></section>
+
+<section class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">02 · What it does for you</div>
+  <div class="max-w-3xl"><p class="text-base mb-4" style="color: var(--ink); line-height: 1.6;">Think of this as the &quot;single source of truth&quot; for all product and supplier
+information. When this data is wrong, everything downstream breaks — purchase
+orders fail to process, shipments get rejected at the warehouse, accounting
+reports don&#x27;t match.</p><p class="text-base mb-4" style="color: var(--ink); line-height: 1.6;">This quarter, <strong>partner data is validated at the gate</strong> using
+the same set of rules, so errors are caught before they reach any other system.
+13 PLM masters and 5 mapping tables from PLM (Product Lifecycle
+Management) are now connected, so information is richer and more complete at the source.</p></div>
+  
+</div></section>
+
+<section class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">03 · Coverage</div>
+  <div class="scs-grid"><span class="stat-chip">3 partners live (AJIO, LivSmart, Fynd Create)</span><span class="stat-chip">13 PLM masters + 5 mapping tables connected</span><span class="stat-chip">3 company divisions tracked</span><span class="stat-chip">Trends · Azorte · Yousta · Shein · AJIO</span></div>
+  <p class="text-sm mt-4 max-w-3xl" style="color: var(--ink-muted);">Validation runs at every ingestion point; downstream systems only receive data
+that has passed the gate.
+</p>
+</div></section>
+
+<section class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">04 · What improved</div>
+  <div class="improved-callout max-w-4xl">
+    <p><strong>Buyers and product managers</strong> no longer face random Procuro ingestion failures
+caused by bad product data. <strong>Suppliers</strong> no longer see IntelliPack rejections
+caused by missing size information. <strong>Specialist buyers (ODM)</strong> now have proper
+access controls, can work across brands with the right permissions. <strong>Format
+teams</strong> only see suppliers relevant to their division — no more confusion from
+seeing another division&#x27;s supplier list.</p>
+    <div class="impact"><span class="impact-label">Expected metric impact</span>fewer PO processing failures, fewer warehouse rejections, faster partner
+onboarding. <strong>Every data error caught at the gate is one less fire to fight
+downstream.</strong>
+</div>
+  </div>
+</div></section>
+
+
+<section class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">05 · Screenshots</div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+<div class="card overflow-hidden">
+  <img onclick="openImpetusLightbox('https://socialassets.impetusz0.de/rrl-portfolio/images/impetus/master-hub/screenshot-030-v2.jpg', 'Supplier master· 3,334 suppliers with locations, statuses and account groups.')" class="impetus-zoom" src="https://socialassets.impetusz0.de/rrl-portfolio/images/impetus/master-hub/screenshot-030-v2.jpg" alt="Supplier master · 3,334 suppliers with locations, statuses and account groups." style="width:100%;display:block;border-bottom:1px solid var(--border);" />
+  <div class="p-3">
+    <div class="cap-num"><strong>Supplier master</strong> · 3,334 suppliers with locations, statuses and account groups.</div>
+  </div>
+</div>
+
+<div class="card overflow-hidden">
+  <img onclick="openImpetusLightbox('https://socialassets.impetusz0.de/rrl-portfolio/images/impetus/master-hub/screenshot-030-v2-b.jpg', 'Upload history· Site Master upload tracking with dates, status and pass/fail indicators.')" class="impetus-zoom" src="https://socialassets.impetusz0.de/rrl-portfolio/images/impetus/master-hub/screenshot-030-v2-b.jpg" alt="Upload history · Site Master upload tracking with dates, status and pass/fail indicators." style="width:100%;display:block;border-bottom:1px solid var(--border);" />
+  <div class="p-3">
+    <div class="cap-num"><strong>Upload history</strong> · Site Master upload tracking with dates, status and pass/fail indicators.</div>
+  </div>
+</div>
+</div>
+</div></section>
+
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<div id="impetus-lightbox" class="impetus-lightbox" onclick="if(event.target===this)closeImpetusLightbox()">
+  <span class="close" onclick="closeImpetusLightbox()">&times;</span>
+  <img id="impetus-lb-img" alt="" />
+  <div id="impetus-lb-meta" class="meta"></div>
+</div>
+<script>
+function openImpetusLightbox(src, meta) {
+  document.getElementById('impetus-lb-img').src = src;
+  document.getElementById('impetus-lb-meta').textContent = meta || '';
+  document.getElementById('impetus-lightbox').classList.add('open');
+}
+function closeImpetusLightbox() {
+  document.getElementById('impetus-lightbox').classList.remove('open');
+  document.getElementById('impetus-lb-img').src = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeImpetusLightbox(); });
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "page": "impetus/ai-photoshoot/index.html",
+  "spec": "docs/ai-photoshoot-update-spec.md",
+  "audit_date": "2026-05-02",
+  "audit_round": "v3",
+  "predecessor": "docs/audits/impetus-ai-photoshoot-audit-2026-05-02-v2.json",
+  "score": 88,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 92,
+    "tone_of_voice": 86,
+    "honesty_register": 90,
+    "visual_completeness": 95,
+    "cross_page_consistency": 75
+  },
+  "findings": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "impetus/index.html grid card",
+      "issue": "The Impetus index card for AI Photoshoot (impetus/index.html line 216) reads '~4,000 videos · 88% first-pass · 90% cost reduction', but the page hero now leads with '2,806 products · 88% first-pass · −90% cost · 15d→5h turnaround'. The headline number on the card (~4,000 videos, March-only) and the headline number on the page (2,806 products, FY26 verified) point to different facets of the same source line in PDF p93 ('~4,000 videos produced (March) | 2,806 products / 26,381 images') — both true, but the index card and the page lead with different anchors. Pick one anchor for both surfaces or align the card to mirror the hero tile values.",
+      "fix": "Update impetus/index.html:216 metric to match the hero ordering, e.g. '2,806 products · 88% first-pass · 15d→5h · ~4,000 videos/month'. Or rewrite the hero to lead with the bigger '26,381 catalogue images' figure (PDF p93 explicitly anchors that number).",
+      "files": ["impetus/index.html:216", "impetus/ai-photoshoot/index.html:172-177"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "Hero stat tiles",
+      "issue": "Hero shows 'Products processed · 2,806' as the headline volume tile. PDF p93 'How Many People Use It' chip pairs this with '26,381 images', and the page never surfaces the larger 26,381 figure. For an Apex reader, '2,806 products' undersells the actual catalogue volume the platform shipped (each product fans out to ~9 images). Either add an 'Images shipped · 26,381' tile or restate the volume tile as 'Catalogue images · 26,381'.",
+      "fix": "Add a fifth hero tile or relabel the first tile: 'Catalogue images · 26,381' (FY Q1 source-line, PDF p93). Keep '2,806 products' as a sub-line context to that number.",
+      "files": ["impetus/ai-photoshoot/index.html:173"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 traditional vs AI comparison card",
+      "issue": "The right-hand AI Photoshoot column at line 226-229 reads 'Send the shoot brief and garment images. The AI handles the rest — model generation, styling, background, lighting, post-production. Catalogue-scale output in hours rather than weeks.' 'The AI handles the rest' is exactly the kind of marketing-deck filler the website-tone-of-voice §3 banned constructions list flags ('handles the rest' = hand-wavy, no actor named, not a verb register). Restate the operations as a bulleted enumeration — or just an em-dash list — instead.",
+      "fix": "Rewrite as: 'Send the brief and garment images. AI generates the model, styling, background, lighting and post-production. Catalogue-scale output in hours rather than weeks.'",
+      "files": ["impetus/ai-photoshoot/index.html:228"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 sidebar callout",
+      "issue": "Sidebar callout at line 198 contains 'No studio, location, photographer, model or editing required.' followed by 'AI-generated models across ethnicities, ages and body types. Catalogues processed at scale into on-model shoots.' Two stylistic nits: (a) the comma series 'studio, location, photographer, model or editing' should be Oxford-styled or pluralised ('studios, locations, photographers, models or editing') — current form reads as a typo on first scan; (b) 'Catalogues processed at scale into on-model shoots' is grammar-awkward (you don't process a catalogue 'into' shoots).",
+      "fix": "Rewrite second sentence cluster: 'Removes the studio booking, location scout, photographer, model and post-production line items. Generates models across ethnicities, ages and body types. Processes full catalogues into on-model shoots at SKU-batch scale.'",
+      "files": ["impetus/ai-photoshoot/index.html:198"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§04 Platform screenshots caption",
+      "issue": "§04 platform card captions at lines 338, 342, 346 use 'cap-num' style ('Upload + brief — input garment image, model preferences, background') but the en-dash construction reads as a fragment without a full stop. Sibling pages (e.g., gmetri §05) bold the headline noun phrase in the caption ('<strong>3D store layout</strong> · ...'). Convention drift — choose one.",
+      "fix": "Apply the bolded-noun caption convention: '<strong>Upload + brief</strong> · input garment image, model preferences, background.' Period at end.",
+      "files": ["impetus/ai-photoshoot/index.html:338", "impetus/ai-photoshoot/index.html:342", "impetus/ai-photoshoot/index.html:346"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "Hero subhead",
+      "issue": "Hero subhead 'High-quality model photography & videography for fashion and lifestyle catalogues.' uses 'High-quality' which is a soft-sell adjective the tone-of-voice §7 'Use' / 'Do not use' table rules out (it's an inflator with no verifiable comparator). Spec D2 accepts the rebuild but the inherited adjective should still be tightened.",
+      "fix": "'On-model photography and videography for fashion and lifestyle catalogues — generated per SKU, accepted at 88% first-pass.' (number + verifiable claim instead of softclaim).",
+      "files": ["impetus/ai-photoshoot/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§06 caption block",
+      "issue": "§06 sub-lede at line 365 contains 'Buda Jeans for Valentine's Day and Harry Potter, AJIO × ASOS plus-size launch, the SS26 PLM × AI Photoshoot pilot, and more.' The 'and more' tail is the kind of trailing fluff the tone-of-voice §3 'No marketing voice' rule discourages. Either name the additional shoots or drop 'and more'.",
+      "fix": "'Buda Jeans for Valentine's Day and Harry Potter, AJIO × ASOS plus-size launch, the SS26 PLM × AI Photoshoot pilot.' (drop ' and more.')",
+      "files": ["impetus/ai-photoshoot/index.html:365"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Hero stat tiles are clean, sourced (PDF p93), and read in plain English (no engineering jargon).",
+    "§03 Examples · 10 input/output pairs render correctly with input on the left and output on the right (audit v2 fix verified) — every image loads HTTP 200 and lightbox open/close + Esc dismiss work end-to-end.",
+    "Section numbering 01 → 06 is contiguous, matching the spec §3 page-structure exactly.",
+    "Capability cards in §01 use consistent cap-num eyebrows (FLATLAY → AI MODEL etc.) and short factual descriptions — no banned vocab.",
+    "§05 Collaboration 5-step flow tells the brand-onboarding story without inventing capabilities; '88% first-pass' anchor cites back to the verified hero number."
+  ]
+}

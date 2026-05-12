@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GlamAR · PixelBin · Fynd × RRVL · JPL</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.cap-pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 4px; background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--border-soft); }
+.pill-live { background: #ECFDF5; color: #047857; border-color: #BBF7D0; }
+.module-card { padding: 0; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+.module-card .mc-shot { display: block; background: var(--bg-soft); border-bottom: 1px solid var(--border); aspect-ratio: 16/10; overflow: hidden; cursor: zoom-in; }
+.module-card .mc-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.3s; }
+.module-card .mc-shot:hover img { transform: scale(1.02); }
+.module-card .mc-shot.mc-shot-fit { background: #fff; }
+.module-card .mc-shot.mc-shot-fit img { object-fit: contain; padding: 10px; }
+.module-card .mc-shot.mc-shot-fit:hover img { transform: none; }
+.module-card .mc-body { padding: 22px; }
+.module-card .mc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; }
+.module-card h3 { font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 6px; letter-spacing: -0.01em; }
+.module-card .mc-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.55; margin-bottom: 12px; }
+.module-card ul { list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--ink); line-height: 1.55; }
+.module-card li { position: relative; padding-left: 14px; margin-bottom: 6px; }
+.module-card li::before { content: "·"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
+.case-card { padding: 24px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
+.case-card .cc-num { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--accent); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+.case-card .cc-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 14px; }
+.case-card h3 { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+.case-card p { font-size: 13px; color: var(--ink); line-height: 1.55; margin: 0 0 10px; }
+.case-card .src { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); }
+.industry-pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); margin: 4px 4px 0 0; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <a href="/pixelbin">PixelBin</a> <span class="sep">/</span> <span style="color: var(--ink);">GlamAR</span></div>
+  <div class="section-label mb-3">GlamAR · Immersive commerce · Live</div>
+  <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">GlamAR.</h1>
+  <p class="text-lg max-w-3xl mb-6" style="color: var(--ink-muted);">AI-first 3D, AR, VR commerce surface inside PixelBin. 200+ experiences live across Reliance brands. Surfaces: VTO, AI Skin Analysis, AI Style Studio, virtual store, 3D AR ad banners.</p>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/pixelbin" class="subnav-link">Overview</a><a href="/pixelbin/glamar" class="subnav-link active">GlamAR</a><a href="/pixelbin/videos" class="subnav-link">Videos</a></div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-3xl">
+    <div class="card p-5"><div class="cap-num mb-2">Return reduction</div><div class="display-2 text-3xl accent">40%</div></div>
+    <div class="card p-5"><div class="cap-num mb-2">Revenue / visit</div><div class="display-2 text-3xl accent">+106%</div></div>
+    <div class="card p-5"><div class="cap-num mb-2">Engagement lift</div><div class="display-2 text-3xl accent">+90%</div></div>
+  </div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#in-motion">00 · In motion</a>
+<a href="#what-glamar-is">01 · What GlamAR is</a>
+<a href="#skin-deep-dive">02 · Skin Analysis</a>
+<a href="#modules">03 · Modules</a>
+<a href="#additional">04 · Additional use-cases</a>
+</div>
+</div>
+
+<section id="in-motion" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">In motion · what GlamAR looks like</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">See it.</h2>
+
+<figure class="m-0 max-w-4xl">
+  <div style="position: relative; aspect-ratio: 16/9; background: var(--ink); border-radius: 8px; overflow: hidden; border: 1px solid var(--border);">
+    <iframe src="https://www.youtube-nocookie.com/embed/DNOzOvE1uO8?rel=0&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1"
+      title="What's GlamAR?"
+      loading="lazy"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      style="position: absolute; inset: 0; width: 100%; height: 100%;"></iframe>
+  </div>
+  <figcaption class="cap-num mt-2" style="color: var(--ink-muted);">Platform overview · <span class="mono">What's GlamAR?</span> · Fynd GlamAR channel · YouTube</figcaption>
+</figure>
+</div></section>
+
+<section id="what-glamar-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · What GlamAR is</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">200+ AR / VR experiences in production.</h2>
+<p class="text-base max-w-3xl mb-4" style="color: var(--ink);">GlamAR is the immersive-commerce surface inside PixelBin. Reliance brands use it for virtual try-on, AI skin analysis, product configurators, virtual stores, and AR ad units. The platform ships seven distinct modules; what runs on a given brand depends on category fit.</p>
+<p class="text-base max-w-3xl mb-4" style="color: var(--ink);">Module mix changes by category. Eyewear and jewellery lean on VTO. Skincare runs Skin Analysis + SkinGPT. Furniture and home decor use true-to-scale AR placement and virtual stores.</p>
+<p class="text-base max-w-3xl mb-4" style="color: var(--ink);"><strong>Other Reliance Brands deployments</strong> · Sephora · Vision Express · West Elm. All RBL-franchise storefronts in India running GlamAR surfaces.</p>
+<div class="cap-num mb-3 mt-6" style="color: var(--ink-muted);">Coverage · eight categories</div>
+<div>
+  <span class="industry-pill">Home Decor &amp; Furniture</span>
+  <span class="industry-pill">Eyewear</span>
+  <span class="industry-pill">Jewellery</span>
+  <span class="industry-pill">Luggage</span>
+  <span class="industry-pill">Skincare</span>
+  <span class="industry-pill">Hair Salon</span>
+  <span class="industry-pill">Makeup</span>
+  <span class="industry-pill">Accessories</span>
+</div>
+</div></section>
+
+<section class="py-16 border-b" id="skin-deep-dive" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · Deep dive · AI Facial Skin Analysis</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Your skin, decoded by AI.</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-5 gap-8 items-start mb-12">
+  <figure class="m-0 md:col-span-3">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-skin-decoder.png" alt="GlamAR AI Skin Analysis · face with annotated skin metrics" class="w-full block rounded-md border" style="border-color: var(--border); background: #000;" loading="lazy" />
+  </figure>
+  <div class="md:col-span-2">
+    <div class="cap-num mb-3">14 metrics · single scan</div>
+    <div>
+      <span class="industry-pill">Skin type</span>
+      <span class="industry-pill">Skin tone</span>
+      <span class="industry-pill">Face age</span>
+      <span class="industry-pill">Total skin score</span>
+      <span class="industry-pill">Acne</span>
+      <span class="industry-pill">Whiteheads</span>
+      <span class="industry-pill">Pores</span>
+      <span class="industry-pill">Pigmentation</span>
+      <span class="industry-pill">Wrinkles</span>
+      <span class="industry-pill">Dark circles</span>
+      <span class="industry-pill">Eyebags</span>
+      <span class="industry-pill">Redness</span>
+      <span class="industry-pill">Dehydration</span>
+      <span class="industry-pill">Scars</span>
+    </div>
+  </div>
+</div>
+
+<div class="cap-num mb-4">How it works · four steps</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <figure class="m-0">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-skin-step1-scan.png" alt="Step 1 · Position and scan your face" class="w-full block rounded-lg" loading="lazy" style="background: #000;" />
+    <figcaption class="cap-num mt-3" style="color: var(--ink-muted);"><span class="accent">Step 1</span> · Position &amp; scan your face</figcaption>
+  </figure>
+  <figure class="m-0">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-skin-step2-report.png" alt="Step 2 · Skin report with overall score 75 of 100" class="w-full block rounded-lg" loading="lazy" style="background: #000;" />
+    <figcaption class="cap-num mt-3" style="color: var(--ink-muted);"><span class="accent">Step 2</span> · Instant skin report · 14 metrics</figcaption>
+  </figure>
+  <figure class="m-0">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-skin-step3-routine.png" alt="Step 3 · Personalised product routine recommended from brand catalog" class="w-full block rounded-lg" loading="lazy" style="background: #000;" />
+    <figcaption class="cap-num mt-3" style="color: var(--ink-muted);"><span class="accent">Step 3</span> · Personalised routine from catalog</figcaption>
+  </figure>
+  <figure class="m-0">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-skin-step4-checkout.png" alt="Step 4 · Checkout from inside the GlamAR experience" class="w-full block rounded-lg" loading="lazy" style="background: #000;" />
+    <figcaption class="cap-num mt-3" style="color: var(--ink-muted);"><span class="accent">Step 4</span> · Checkout in-experience</figcaption>
+  </figure>
+</div>
+</div></section>
+
+<section id="modules" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Modules · six · all shipping</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What GlamAR ships.</h2>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+  <div class="module-card">
+    <a class="mc-shot js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/01-3d-model.jpg" target="_blank" rel="noopener" title="Open full-size"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/01-3d-model.jpg" alt="3D model render · diamond earrings · two metal finishes" loading="lazy" /></a>
+    <div class="mc-body">
+      <div class="mc-eyebrow">A · 3D Model Development</div>
+      <h3>2D images and CAD → 3D models</h3>
+      <p class="mc-desc">In-house pipeline converts 2D images or CAD files into detailed 3D models. Optimised polycount for fast load.</p>
+      <ul>
+        <li>Output formats · GLB, USDZ, PLY, STL, FBX, OBJ, X3D, GLTF</li>
+        <li>Targets · Web, AR, VR, Meta Ads</li>
+        <li>Storage · 100 GB cloud with version control</li>
+        <li>Virtual studio shots replace photoshoots for catalog silos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card">
+    <a class="mc-shot js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/02-360-viewer.jpg" target="_blank" rel="noopener" title="Open full-size"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/02-360-viewer.jpg" alt="Three eyewear frames in the 360° product viewer" loading="lazy" /></a>
+    <div class="mc-body">
+      <div class="mc-eyebrow">B · 360° Product Viewer</div>
+      <h3>Full rotation · embedded on PDP</h3>
+      <p class="mc-desc">Rotate, zoom, interact with the product directly on the product page. Built-in QR launches AR try-on on mobile.</p>
+      <ul>
+        <li>True-to-scale dimensions shown in-viewer</li>
+        <li>Adjustable rotation speed, lighting, shadows, background</li>
+        <li>Embeds on the storefront PDP · framework-agnostic</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card">
+    <a class="mc-shot mc-shot-fit js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/03-vto-eyewear.jpg" target="_blank" rel="noopener" title="Open full-size"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/03-vto-eyewear.jpg" alt="Face-tracked AR try-on for eyewear" loading="lazy" /></a>
+    <div class="mc-body">
+      <div class="mc-eyebrow">C · AR Try-On (VTO)</div>
+      <h3>Face-tracked virtual try-on</h3>
+      <p class="mc-desc">Real-time AR try-on for eyewear, jewellery, makeup, accessories. Optimised assets &lt;300 KB; minimal site impact.</p>
+      <ul>
+        <li>Add-to-cart inside the AR view</li>
+        <li>Built-in analytics on try-on time, sessions, conversions</li>
+        <li>Cross-device · mobile, tablet, desktop webcam</li>
+        <li>AI Style Studio · assisted-selling overlay on top of VTO</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card">
+    <a class="mc-shot mc-shot-fit js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/04-configurator-bag.jpg" target="_blank" rel="noopener" title="Open full-size"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/04-configurator-bag.jpg" alt="Real-time variant preview · split-colour bag" loading="lazy" /></a>
+    <div class="mc-body">
+      <div class="mc-eyebrow">D · Product Configurator</div>
+      <h3>Real-time variant preview</h3>
+      <p class="mc-desc">Customers preview colours, materials, engravings live. Smart variant logic only shows compatible combinations.</p>
+      <ul>
+        <li>3D catalog generation for unlimited variants · no inventory</li>
+        <li>Price, stock, shipping recalculate per change</li>
+        <li>Made-to-order display without physical samples</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card">
+    <a class="mc-shot js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/06-virtual-store.jpg" target="_blank" rel="noopener" title="Open full-size"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/06-virtual-store.jpg" alt="Virtual store on VR" loading="lazy" /></a>
+    <div class="mc-body">
+      <div class="mc-eyebrow">E · Virtual Store</div>
+      <h3>Immersive digital storefront</h3>
+      <p class="mc-desc">Shoppers walk a 3D space, click products for specs / 360° / AR. Direct checkout from inside the virtual store.</p>
+      <ul>
+        <li>Side-by-side multi-product comparison</li>
+        <li>Real-time material, finish, size swap</li>
+        <li>Engagement heatmaps for visitor flow</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="module-card">
+    <a class="mc-shot js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/07-ar-billboard.jpg" target="_blank" rel="noopener" title="Open full-size"><img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/07-ar-billboard.jpg" alt="3D ring on a billboard · AR Discovery Ad" loading="lazy" /></a>
+    <div class="mc-body">
+      <div class="mc-eyebrow">F · AR Discovery Ads</div>
+      <h3>3D banners · CGI ads · geo-triggered</h3>
+      <p class="mc-desc">Banner ads become interactive AR. CGI product motion. Geo-triggered AR campaigns near stores. Direct add-to-cart from the ad.</p>
+      <ul>
+        <li>Performance analytics · try-on time, shares, conversions</li>
+        <li>Try-on triggers user-generated social content</li>
+        <li>Three formats · 3D banner, CGI motion, virtual store</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div></section>
+
+<section id="additional" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · Additional use-cases</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two more deployments in production.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Two more GlamAR formats, captured from the pitch deck. Rivaah runs the virtual store; the VINT campaign uses the geo-triggered 3D banner.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+  <figure>
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-rivaah-virtual-store.gif" alt="Rivaah · virtual store · animated walkthrough" class="rounded-md border w-full" style="border-color: var(--border); background: #fff; object-fit: contain; max-height: 540px;" loading="lazy" />
+    <figcaption class="cap-num mt-2" style="color: var(--ink-muted);">Rivaah · virtual store · animated</figcaption>
+  </figure>
+  <figure>
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/pixelbin/glamar/deck-vint-jio-billboard.gif" alt="VINT AR billboard campaign · animated walkthrough" class="rounded-md border w-full" style="border-color: var(--border); background: #fff; object-fit: contain; max-height: 540px;" loading="lazy" />
+    <figcaption class="cap-num mt-2" style="color: var(--ink-muted);">VINT · geo-triggered 3D banner · animated</figcaption>
+  </figure>
+</div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
+  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+</div>
+<script>
+(function(){
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightbox-img');
+  var closeBtn = document.getElementById('lightbox-close');
+  function open(src, alt){ img.src = src; img.alt = alt || ''; box.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+  function close(){ box.style.display = 'none'; img.removeAttribute('src'); document.body.style.overflow = ''; }
+  document.querySelectorAll('a.js-lightbox').forEach(function(a){
+    a.addEventListener('click', function(e){
+      if(e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+      e.preventDefault();
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  });
+  box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
+  closeBtn.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
+})();
+</script>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

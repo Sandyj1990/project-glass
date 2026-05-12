@@ -1,0 +1,163 @@
+{
+  "pages": [
+    "agents/retail-vista/index.html",
+    "agents/category-intelligence/index.html",
+    "agents/trend-to-design/index.html",
+    "agents/agentic-marketing/index.html",
+    "agents/ai-cataloging/index.html"
+  ],
+  "spec": "docs/agents-spec.md (v0.8)",
+  "audit_date": "2026-05-02",
+  "audit_scope": "5 newly authored agent pages · template-mass-produced · template-level findings prioritised",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "pass_threshold": 75,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 80,
+    "tone_of_voice": 95,
+    "honesty_register": 75,
+    "visual_completeness": 90,
+    "cross_page_consistency": 65
+  },
+  "dimensions_note": "Tone-of-voice climbed from 80 (last audit) to 95 — banned-vocab sweep clean across all 5; source-doc refs sweep clean across all 5; no §Sources blocks on any page. Honesty register held back by ai-cataloging live-deployment overclaim (H1) and trend-to-design status calibration (M1). Cross-page held back by P7 nav-wiring partial state (mega-menu added but home-page card unchanged from 'AI Agents · catalog' generic strapline).",
+  "template_level_findings": [
+    "All 5 pages share the same 6-section structure (Hero · Job · Workflow SVG · Data · Patterns · Evals · Linked Platforms) — uniform shape across the catalog ✓",
+    "All 5 SVG diagrams use the cortex-planning template (Inputs blue / Workflow grey / Outputs green, trunk fan-in for inputs) — visual consistency ✓",
+    "All 5 pages source-doc-ref clean — zero Accenture / Farooq / Agentisation mentions in body copy ✓",
+    "All 5 pages banned-vocab clean — zero leverages / unlocks / empowers / transformative / etc ✓"
+  ],
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "ai-cataloging · §03 Inputs zone + §07 Publish to channels + Status pill",
+      "issue": "ai-cataloging.yaml claims 'Live deployments: TIRA · JioMart · AJIO · Reliance Trends' on the page (input zone caption + step 07 detail). Source compilation backs only TIRA (external eval PDF cites TIRA explicitly; internal Eval PDF is methodology). JioMart, AJIO, Reliance Trends are *channel surfaces the agent can publish to*, not confirmed live deployments. Page reads as 4 live deployments; source supports 1.",
+      "fix": "Edit data/agents/ai-cataloging.yaml — change the 'Live deployments' caption to 'Live: TIRA. Building: JioMart, AJIO, Reliance Trends.' Or drop the channel list entirely and let the §07 Publish step list channels as targets without implying live status.",
+      "files": ["data/agents/ai-cataloging.yaml:107", "data/agents/ai-cataloging.yaml:189"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "category-intelligence · §06 Linked Platforms",
+      "issue": "category-intelligence.yaml linked_platforms includes a card pointing to /agents/trend-to-design/ (another agent), not a platform. The §06 contract is 'platforms the agent runs on / depends on' — agent-to-agent navigation has no surface in the current template. Reader clicking 'Trend-to-Design' lands on another agent detail page expecting a platform.",
+      "fix": "Drop the Trend-to-Design entry from category-intelligence linked_platforms. The downstream relationship can be expressed inline in §02 Workflow steps ('outputs feed Trend-to-Design') without a card. Same applies in reverse for any future agent.",
+      "files": ["data/agents/category-intelligence.yaml:266"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "trend-to-design · status pill + hero stats",
+      "issue": "trend-to-design status pill is 'Building' but hero stats announce '718 designs in <2 days' and '~60% selection rate' — past-tense outcomes that read as live, not building. Mixed signal: pill says we haven't shipped, body says we shipped 718 and got 60% selection.",
+      "fix": "Either flip status to 'Live' (the Trend business run is a real shipped deployment) or qualify the hero stat with 'Pilot run · trend business · Apr 2026' to clarify that's a single run, not a steady-state production. User judgement call — recommend Live since the run was production-equivalent.",
+      "files": ["data/agents/trend-to-design.yaml:13", "data/agents/trend-to-design.yaml:34"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "agentic-marketing · hero stat tile",
+      "issue": "Hero tile 'Cycle compression: Hours · context: vs weeks today · 11 teams · 6 manual handoffs' reads as a marketing-deck before/after rather than a verifiable number. Tone-of-voice §5 stat tile formula expects a number that proves it works. 'Hours' is an aspiration, not a measured outcome.",
+      "fix": "Replace 'Hours' with a verifiable number once the first end-to-end campaign runs (e.g., '4 hr · pilot Diwali campaign'). For now, drop the tile or replace with 'Cycle target: hours · in-development' to make the aspirational nature explicit.",
+      "files": ["data/agents/agentic-marketing.yaml:28"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "retail-vista · §06 Linked Platforms",
+      "issue": "retail-vista has only 1 linked_platforms card (just /retail-vista/ itself · 'Platform home'). This reads as the §08 section being incomplete since other agents have 2-3 cards. Per spec §3 §08 the section is 'card grid · 1-3 cards per agent' — 1 is allowed but feels sparse. Retail Vista's outputs feed Cortex (network expansion plans) and JCP (delivery-route optimisation in some framings); both could be card targets.",
+      "fix": "Add downstream platform consumers — at minimum '/impetus/cortex/' (consumes spatial context for store-level planning). Optional '/jcp/' (delivery routing / catchment). Source: Retail Vista feeds spatial context to multiple downstream platforms per the writeup.",
+      "files": ["data/agents/retail-vista.yaml:243-244"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "agentic-marketing · §05 Evals",
+      "issue": "Evals status field reads 'in-development · framework defined' but the page renders this as 'GATES AND THRESHOLDS' followed by 3 forward-looking gates with no current measurement. No baseline number; no current pass rate. Reader can't tell if anything is being measured today.",
+      "fix": "Add a one-line current-state qualifier under the gates list: 'Current: framework documented; first end-to-end campaign in setup' or similar. Same recommendation applies anywhere evals.status is 'in-development'.",
+      "files": ["data/agents/agentic-marketing.yaml:268-275"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Home page card · /agents/",
+      "issue": "Home page (index.html) /agents/ card metric reads '17 agents · Customer/Plan/Buy/Move/Sell/HR' — stale. Catalog now has 6 agents in 3 tracks (Plan/Buy/Sell). Apex reader on home page sees 17, lands on /agents/ and sees 6.",
+      "fix": "Edit index.html line ~194 — change metric to '6 agents · Plan/Buy/Sell' and desc to drop the 17-agent enumeration. Match the live catalog state.",
+      "files": ["index.html:194"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M6",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Home page card · /agents/ · subhead",
+      "issue": "/agents/ index page hero subhead reads 'Six agents shipping in v1' — uses spelled-out 'Six' while the rest of the register uses Arabic numerals consistently (per tone-of-voice §4: 'Percentage as 83% not eighty-three percent' — same principle for counts).",
+      "fix": "Edit data/agents/_catalog.yaml subhead — 'Six agents' → '6 agents'.",
+      "files": ["data/agents/_catalog.yaml:13"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "trend-to-design · Hero stats context",
+      "issue": "Hero stat 'Live trend run · 718 designs · context: 10 brands · under 2 days · autonomous'. Word 'autonomous' is fine but 'under 2 days' uses prose where '<2 days' or '~2 days' would match the register's mono-stat brevity.",
+      "fix": "Edit data/agents/trend-to-design.yaml stats[0].context — '10 brands · under 2 days · autonomous' → '10 brands · ~2 days · autonomous'.",
+      "files": ["data/agents/trend-to-design.yaml:30"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "All 5 pages · workflow SVG arrow snake",
+      "issue": "The trunk-pattern arrow into S1 (5 inputs converging) renders cleanly on cortex-planning but on the new pages where the inputs zone has 4 sources + 1 human gate, the trunk vertical bar at x=275 is correctly drawn but very short trunk segments (just 31px from input box to bar) read as 'connector stubs' rather than a clear collection bus.",
+      "fix": "Visually OK at desktop; revisit if mobile rendering shows clipping. No change for now.",
+      "files": ["data/agents/*.yaml workflow_svg field"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "Site footer · all 5 pages",
+      "issue": "Footer line reads 'Owner · Salman Saudagar (COO, Fynd) · v0.8.4' — site-wide pre-existing per v1 audit M1. New pages inherit. Per canonical convention should be copyright-only.",
+      "fix": "Out of scope (separate site-wide cleanup task).",
+      "files": ["tools/site_chrome.py:footer"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Banned-vocab and source-doc-ref sweep clean across all 5 pages — zero hits on transformative / leverages / Accenture / Farooq / etc. The new tone-of-voice §3 rules are landing.",
+    "All 5 pages render the identical 6-section template (§01 Job · §02 Workflow · §03 Data · §04 Patterns · §05 Evals · §06 Linked Platforms) — Apex reader can compare across the catalog without per-page surprises.",
+    "All 5 SVG diagrams follow the same Inputs (blue) → Workflow (grey) → Outputs (green) zone pattern with the trunk-fan-in convention. Visual consistency across the catalog is the load-bearing differentiator.",
+    "All 5 hero stat tiles trace to source artefacts in the compilation folder — '718 designs' (AI Design Agent Note), '11 agents' (Marketing Multi-Agent Framework), '15 days → 5 hr' (Cataloging Eval PDF), '8 categories' (trend-engine repo), '61 datasets' (RetailVista Business Overview).",
+    "The 'Detail expanding · ETA' pattern from cortex-planning's note_pending was not copy-pasted into the new pages — no thin-source agent got authored here. Discipline held."
+  ],
+  "blockers_to_ship": [
+    "H1 · ai-cataloging live-deployment overclaim (TIRA only sourced)",
+    "H2 · category-intelligence agent-to-agent linked_platforms entry",
+    "M1 · trend-to-design status vs hero stats mismatch (user judgement)",
+    "M2 · agentic-marketing 'Hours' deck-style stat",
+    "M5 · home-page /agents/ card stale metric (17 → 6)"
+  ],
+  "non_blockers": [
+    "M3 · retail-vista sparse linked_platforms (1 card)",
+    "M4 · agentic-marketing evals current-state qualifier",
+    "M6 · 'Six agents' → '6 agents' in subhead",
+    "L1, L2, L3 · polish items"
+  ]
+}

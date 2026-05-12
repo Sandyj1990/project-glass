@@ -1,0 +1,321 @@
+# Cortex Planning Agent
+# Sourced verbatim from:
+#  · Farooq · Operationalizing Autonomous Commerce for Retail · §4.2 Plan · p. 30
+#  · Agentisation of an Organization · §3.2 Planning Agent — Impetus Cortex
+#  · Accenture deck · 16-Apr-2026 · slide 12 · canonical 6-agent grid
+#
+# Per docs/agents-spec.md v0.4
+
+slug: cortex-planning
+name: Cortex Planning Agent
+sub_title: "Store-realistic Plan of Record + continuous, exception-led replanning."
+status: build           # live | build | scoping
+status_label: Building
+track: plan             # customer | plan | buy | move | sell | hr
+autonomy_level: L4
+primary_workflow: "Space Planning"     # name from Farooq §1.4 matrix
+date: 2026-04-15
+source_folder: docs/agent-catalog-notes-compilation/
+source_citations:
+  - "Farooq · Operationalizing Autonomous Commerce · §4.2 Plan · p. 30"
+  - "Agentisation of an Organization · §3.2 Planning Agent — Impetus Cortex · pp. 5-7"
+  - "Accenture deck · 16-Apr-2026 · slide 12 · 6 AI Agents grid"
+
+# § 0 · Hero stat tiles (3-5)
+stats:
+  - { label: "Workflow level",       value: "L4 Agentic",     context: "Space Planning workflow" }
+  - { label: "Replanning cadence",   value: "Continuous",     context: "vs monthly today" }
+  - { label: "Output granularity",   value: "Fixture · slot", context: "store-specific VM layouts" }
+  - { label: "Planning surface",     value: "Every store",    context: "store-first Plan of Record" }
+
+# Primary platform shown on the catalog card (per D11)
+primary_platform:
+  name: "Cortex"
+  route: "/impetus/cortex/"
+
+# § 01 · Job to be done
+job:
+  pain: |
+    Today, planning is monthly, spreadsheet-driven, store-agnostic. Plans
+    land in stores with assumptions baked in that no longer match real
+    space, real inventory, or real demand.
+  what_it_does: |
+    Builds a store-realistic Plan of Record. Converts top-down financial
+    targets into store-level plans that reflect real space, inventory and
+    demand constraints. Translates assortment + inventory into fixture-
+    level and slot-level VM layouts. When conditions change — a delayed
+    shipment, an underperforming category, a competitive signal — the
+    agent generates an exception-led replan.
+  human_role: |
+    Planner sets targets and reviews replans. Agent does not replace
+    planning. It makes planning continuous.
+
+# § 02 · Workflow steps · the closed loop
+workflow_image: ~
+workflow_image_kind: ~
+workflow_image_caption: ~
+
+# Inline SVG flowchart · D20 · matches JCP §01 / dark-factory convention
+# Three zones: human + data sources (left) → workflow steps (centre) → outputs (right) + monitor loop
+workflow_svg: |
+  <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid meet" style="width:100%;height:auto;display:block;">
+    <title>Cortex Planning Agent · closed-loop workflow</title>
+    <desc>Inputs from R-POS, Databricks, Impetus, and Catalog Engine flow through 6 workflow steps to produce a Plan of Record. Monitor step loops exceptions back into Build.</desc>
+    <defs>
+      <marker id="cp-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6B7280"/>
+      </marker>
+      <marker id="cp-arr-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#B45309"/>
+      </marker>
+      <style>
+        .zh { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: #0A0A0A; }
+        .gl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; fill: #6B7280; }
+        .stp-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 700; fill: #6B5BD6; letter-spacing: 0.04em; }
+        .stp-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12.5px; font-weight: 600; fill: #0A0A0A; }
+        .stp-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 11px; fill: #6B7280; }
+        .src-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 600; fill: #1E40AF; }
+        .src-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #475569; }
+        .out-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #14532D; }
+        .out-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #166534; }
+        .h-ttl { font-family: 'Inter', system-ui, sans-serif; font-size: 12px; font-weight: 700; fill: #7C2D12; }
+        .h-sub { font-family: 'Inter', system-ui, sans-serif; font-size: 10.5px; fill: #92400E; }
+        .conn { stroke: #6B7280; stroke-width: 1.4; fill: none; }
+        .conn-loop { stroke: #B45309; stroke-width: 1.5; fill: none; stroke-dasharray: 5 4; }
+        .lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; font-weight: 500; fill: #B45309; letter-spacing: 0.04em; }
+      </style>
+    </defs>
+
+    <!-- ╭─ ZONE · Inputs (left column) ─╮ -->
+    <g>
+      <rect x="20" y="20" width="240" height="500" rx="14" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="1"/>
+      <text x="36" y="46" class="zh">Inputs</text>
+
+      <!-- Human gate -->
+      <rect x="36" y="64" width="208" height="62" rx="8" fill="#FEF3C7" stroke="#FCD34D" stroke-width="1"/>
+      <text x="50" y="86" class="h-ttl">Planner</text>
+      <text x="50" y="102" class="h-sub">sets targets · reviews</text>
+      <text x="50" y="116" class="h-sub">replans</text>
+
+      <!-- Data sources -->
+      <rect x="36" y="146" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="168" class="src-ttl">R-POS</text>
+      <text x="50" y="186" class="src-sub">Sell-through · ROS</text>
+
+      <rect x="36" y="220" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="242" class="src-ttl">Databricks</text>
+      <text x="50" y="260" class="src-sub">Stock · Margin · Cost</text>
+
+      <rect x="36" y="294" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="316" class="src-ttl">Impetus</text>
+      <text x="50" y="334" class="src-sub">OTB · WSSI · Plan</text>
+
+      <rect x="36" y="368" width="208" height="58" rx="8" fill="#FFFFFF" stroke="#DBEAFE"/>
+      <text x="50" y="390" class="src-ttl">Catalog Engine</text>
+      <text x="50" y="408" class="src-sub">SKUs · Tech-Pack</text>
+
+      <text x="36" y="490" class="gl">Refresh</text>
+      <text x="36" y="506" class="src-sub">daily · real-time exceptions</text>
+    </g>
+
+    <!-- ╭─ ZONE · Workflow steps (centre) ─╮ -->
+    <g>
+      <rect x="290" y="20" width="600" height="500" rx="14" fill="#FAFAF9" stroke="#E5E7EB" stroke-width="1"/>
+      <text x="306" y="46" class="zh">Workflow · 6 steps</text>
+
+      <!-- Row 1 · S1 S2 -->
+      <rect x="310" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="86" class="stp-num">01</text>
+      <text x="354" y="86" class="stp-ttl">Ingest unified inputs</text>
+      <text x="324" y="106" class="stp-sub">Sales · returns · inventory · margin</text>
+      <text x="324" y="120" class="stp-sub">targets · space · VM rules</text>
+
+      <rect x="600" y="64" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="86" class="stp-num">02</text>
+      <text x="644" y="86" class="stp-ttl">Build store-first Plan of Record</text>
+      <text x="614" y="106" class="stp-sub">WSSI · OTB · assortment · scenario</text>
+      <text x="614" y="120" class="stp-sub">simulation · margin × risk × feasibility</text>
+
+      <!-- Row 2 · S3 S4 -->
+      <rect x="310" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="182" class="stp-num">03</text>
+      <text x="354" y="182" class="stp-ttl">Control OTB actions</text>
+      <text x="324" y="202" class="stp-sub">commit · chase · hold · cancel</text>
+      <text x="324" y="216" class="stp-sub">under risk guardrails</text>
+
+      <rect x="600" y="160" width="270" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="614" y="182" class="stp-num">04</text>
+      <text x="644" y="182" class="stp-ttl">Autonomous VM planning</text>
+      <text x="614" y="202" class="stp-sub">fixture + slot layouts · per store</text>
+      <text x="614" y="216" class="stp-sub">brand VM rules · constraints</text>
+
+      <!-- Row 3 · S5 -->
+      <rect x="310" y="256" width="560" height="68" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="324" y="278" class="stp-num">05</text>
+      <text x="354" y="278" class="stp-ttl">Deliver execution outputs</text>
+      <text x="324" y="298" class="stp-sub">Plan of Record + WSSI · OTB recs · planograms · slot placements</text>
+      <text x="324" y="312" class="stp-sub">fill / degradation indicators · exception alerts</text>
+
+      <!-- Row 4 · S6 monitor (bottom) -->
+      <rect x="310" y="356" width="560" height="68" rx="8" fill="#FFF7ED" stroke="#FCD34D" stroke-width="1"/>
+      <text x="324" y="378" class="stp-num" style="fill:#B45309;">06</text>
+      <text x="354" y="378" class="stp-ttl">Monitor and replan</text>
+      <text x="324" y="398" class="stp-sub">continuous performance monitoring</text>
+      <text x="324" y="412" class="stp-sub">exception detection triggers replans · no calendar wait</text>
+
+      <!-- Row 5 · KPIs band -->
+      <rect x="310" y="448" width="560" height="56" rx="8" fill="#F8FAFC" stroke="#E2E8F0"/>
+      <text x="324" y="468" class="gl">KPIs moved</text>
+      <text x="324" y="492" class="stp-sub">Forecast accuracy · GMROF · Aged inventory % · SPSF (sales / sq ft)</text>
+    </g>
+
+    <!-- ╭─ ZONE · Outputs (right) ─╮ -->
+    <g>
+      <rect x="920" y="20" width="260" height="500" rx="14" fill="#ECFDF5" stroke="#A7F3D0" stroke-width="1"/>
+      <text x="936" y="46" class="zh">Outputs</text>
+
+      <rect x="936" y="64" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="86" class="out-ttl">Plan of Record</text>
+      <text x="950" y="104" class="out-sub">store-realistic · rolling WSSI</text>
+      <text x="950" y="120" class="out-sub">demand-led OTB</text>
+
+      <rect x="936" y="158" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="180" class="out-ttl">Planograms</text>
+      <text x="950" y="198" class="out-sub">store-specific · fixture-level</text>
+      <text x="950" y="214" class="out-sub">slot placements</text>
+
+      <rect x="936" y="252" width="228" height="74" rx="8" fill="#FFFFFF" stroke="#A7F3D0"/>
+      <text x="950" y="274" class="out-ttl">Exception alerts</text>
+      <text x="950" y="292" class="out-sub">corrective-action drafts</text>
+      <text x="950" y="308" class="out-sub">routed to planner</text>
+
+      <rect x="936" y="346" width="228" height="62" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="368" class="gl" style="fill:#15803D;">Guardrails</text>
+      <text x="950" y="388" class="out-sub">risk-respect · 99% constraint pass</text>
+
+      <rect x="936" y="424" width="228" height="80" rx="8" fill="#F0FDF4" stroke="#A7F3D0" stroke-dasharray="4 3"/>
+      <text x="950" y="444" class="gl" style="fill:#15803D;">Autonomy</text>
+      <text x="950" y="464" class="out-ttl">L4 Agentic</text>
+      <text x="950" y="482" class="out-sub">human sets intent</text>
+      <text x="950" y="498" class="out-sub">system replans</text>
+    </g>
+
+    <!-- ╭─ Connectors ─╮ -->
+    <!-- Inputs → S1 trunk pattern: 5 stubs → vertical bar at x=275 → single arrow into S1 -->
+    <path d="M244 95 H275"  class="conn"/>
+    <path d="M244 175 H275" class="conn"/>
+    <path d="M244 249 H275" class="conn"/>
+    <path d="M244 323 H275" class="conn"/>
+    <path d="M244 397 H275" class="conn"/>
+    <line x1="275" y1="95" x2="275" y2="397" class="conn"/>
+    <path d="M275 98 H310" class="conn" marker-end="url(#cp-arr)"/>
+
+    <!-- S1 → S2 (horizontal) -->
+    <path d="M580 98 H600" class="conn" marker-end="url(#cp-arr)"/>
+
+    <!-- S2 → S3 · right-angle snake via row gap (y=146) -->
+    <path d="M735 132 V146 H445 V160" class="conn" marker-end="url(#cp-arr)"/>
+
+    <!-- S3 → S4 (horizontal) -->
+    <path d="M580 194 H600" class="conn" marker-end="url(#cp-arr)"/>
+
+    <!-- S4 → S5 · right-angle snake via row gap (y=242) into S5 centre-top -->
+    <path d="M735 228 V242 H590 V256" class="conn" marker-end="url(#cp-arr)"/>
+
+    <!-- S5 → S6 (vertical down · centre) -->
+    <path d="M590 324 V356" class="conn" marker-end="url(#cp-arr)"/>
+
+    <!-- S5 → Outputs · single labelled delivery arrow into Outputs zone -->
+    <path d="M870 290 H920" class="conn" marker-end="url(#cp-arr)"/>
+    <text x="892" y="284" class="lbl" style="fill:#6B7280;">delivers</text>
+
+    <!-- S6 monitor → S2 loop · orange dashed · per spec §5.3 vertical
+         segment moved x=905 → x=885 (was in inter-zone gap competing with
+         outputs zone, now just inside workflow zone right edge x=890).
+         Label x=912 → x=895 (still in inter-zone gap for readability,
+         adjacent to the now-interior arrow). -->
+    <path d="M870 388 H885 V98 H870" class="conn-loop" marker-end="url(#cp-arr-loop)"/>
+    <text x="895" y="245" class="lbl" transform="rotate(90 895 245)">exception → replan</text>
+  </svg>
+workflow_diagram_caption: "Inputs (blue) → Workflow (grey, steps 01-06) → Outputs (green). Step 06 loops exceptions back to Build."
+
+workflow_steps:
+  - { num: "01", title: "Ingest unified inputs",            detail: "Sales · returns · inventory · margin · targets (Sales · GM% · Markdown) · store space and fixture capacities · real-time inventory · VM guidelines and grouping rules." }
+  - { num: "02", title: "Build store-first Plan of Record", detail: "Converts targets + demand signals + store constraints into store-level plans (WSSI · OTB · assortment · financial planning). Runs scenario simulations across assortment × intake × price. Selects optimal plan by margin, risk, feasibility." }
+  - { num: "03", title: "Control OTB actions",              detail: "Orchestrates commit / chase / hold / cancel decisions under defined risk guardrails." }
+  - { num: "04", title: "Autonomous VM planning",           detail: "Translates assortment + inventory into visually optimised layouts at fixture and slot level. Balances aesthetics, inventory availability and feasibility against brand VM guidelines (palette, arrangement styles)." }
+  - { num: "05", title: "Deliver execution outputs",        detail: "Store Plan of Record + rolling WSSI · OTB recommendations · assortment depth/option plans · store-specific planograms/elevations · fill/degradation indicators + exception alerts with corrective actions." }
+  - { num: "06", title: "Monitor and replan",               detail: "Continuous performance monitoring; exception-detection triggers replans rather than waiting for the next planning cycle." }
+
+# § 03 · Underlying data
+data:
+  sources:
+    - { name: "Impetus",  classification: "Mixed",            entities: "OTB · Plan of Record · WSSI · assortment plan" }
+    - { name: "R-POS",      classification: "Machine-Created",  entities: "Sell-through % · ROS · revenue by store" }
+    - { name: "Databricks", classification: "Mixed",            entities: "Stock Positions · Margin · Cost Price · Landed Cost" }
+    - { name: "Catalog Engine", classification: "Machine-Readable", entities: "SKUs · Style Codes · Size-Colour Matrix · Tech-Pack" }
+  refresh_cadence: "Daily for plan; real-time for exception triggers."
+  kpis_moved:
+    - "Forecast accuracy"
+    - "GMROF"
+    - "Aged inventory %"
+    - "SPSF (Sales per Square Foot)"
+
+# § 04 · Architecture · how it's built
+
+# architecture_svg: ~  # SVG to be authored once user approves the workflow style
+architecture:
+  topology: "Hierarchical — Planner → 4 specialist sub-agents (assortment · OTB · VM · simulation) → integrator"
+  models:
+    - "Gemini 2.5 Pro"
+    - "Claude Opus 4.X"
+  tools:
+    - "WSSI calculator"
+    - "Scenario simulator"
+    - "VM constraint solver"
+    - "OTB decision orchestrator"
+  memory:
+    - "Semantic · store traits, brand VM rules"
+    - "Episodic · prior replans and outcomes"
+    - "Procedural · fallback logic for constraint violations"
+  runtime: "Cortex platform · GCP Vertex AI"
+
+# § 05 · Design patterns used (cross-link anchors to /agents/#building-blocks)
+patterns:
+  - { name: "Tool Calling",         usage: "Pulls live OTB · WSSI · stock from Impetus + Databricks" }
+  - { name: "Context Engineering",  usage: "Compresses store traits + active VM rules into per-replan context" }
+  - { name: "Agent Memory",         usage: "Episodic memory of prior replans avoids re-asking solved questions" }
+  - { name: "Wide Research",        usage: "Generates N candidate plans, scores on margin × risk × feasibility, picks one" }
+  - { name: "Deep / Hierarchical",  usage: "Planner delegates to specialist sub-agents per planning dimension" }
+  - { name: "Observability",        usage: "Every replan trace records inputs, scenarios scored, decision rationale" }
+
+# § 06 · Evals · how we know it works
+evals:
+  status: "in-development"
+  approach: |
+    Replay historical seasons; score plan-vs-actual sell-through and margin
+    against the best-case manual plan as the holdout benchmark.
+  gates:
+    - "Margin within 2% of best-case manual plan on holdout season"
+    - "Replan latency < 4 hours from exception trigger"
+    - "Constraint-respect rate > 99% (no plans violate VM rules or OTB ceiling)"
+
+# § 07 · Status · Live today / In flight / Roadmap
+live_today: |
+  Internal pilot on Yousta. Plan of Record generation working end-to-end.
+  Not yet production for any RIL brand.
+
+in_flight:
+  - { date: "2026-01-15", milestone: "Cortex Allocation & Redistribution module + Merchandise Financial Planning + OTB modules rollout" }
+  - { date: "2026-03-06", milestone: "Range Plan + Buy Plan + Distribution Plan modules · Pre-Season and In-Season forecasting models" }
+  - { date: "2026-04-06", milestone: "Agentic forecasting engine + autonomous workflow execution for planning + Rules Engine" }
+
+roadmap:
+  - "Cross-format cannibalisation detection"
+  - "Unified demand sensing across formats"
+
+# § 08 · Linked platforms (D21 · drop "Impetus " prefix; bare names match the convention)
+linked_platforms:
+  - { name: "Cortex",        route: "/impetus/cortex/",       role: "Primary execution surface" }
+  - { name: "PLM",           route: "/impetus/plm/",          role: "Reads tech pack + BOM data" }
+  - { name: "Retail Vista",  route: "/retail-vista/",         role: "Reads spatial / catchment context" }

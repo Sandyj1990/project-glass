@@ -1,0 +1,117 @@
+{
+  "page": "agents/ai-photoshoot/index.html",
+  "spec": "docs/impetus-l4-buildplan-spec.md (§3 A) · inherits docs/agents-spec.md v0.8",
+  "source_compilation": "docs/agent-catalog-notes-compilation/AI_Photoshoot_Note_v1.docx + F&L AI Projects.xlsx Project 2",
+  "audit_date": "2026-05-03",
+  "score": 87,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 96,
+    "source_traceability": 95,
+    "tone_of_voice": 78,
+    "honesty_register": 92,
+    "visual_completeness": 85,
+    "cross_page_consistency": 80,
+    "design_compliance": 70
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§05",
+      "issue": "Section heading 'Evals · how we know it works' uses 'we' — banned per tone-of-voice §2 (no first-person plural in user-facing copy).",
+      "fix": "Rename to 'Evals · what gates each output' or 'Evals · what stops a bad image shipping'. Renderer-level fix in tools/build_agents.py:475 — affects all 7 agent pages.",
+      "files": ["tools/build_agents.py:475", "agents/ai-photoshoot/index.html:389"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "Deployed-in block (auto-injected)",
+      "issue": "Table header 'What this agent unlocks for that platform' uses 'unlocks' — banned filler verb per tone-of-voice §7 (jargon-translation table). Also 'unlocks' appears inside multiple deployment row strings on this and sibling agent pages.",
+      "fix": "Change column header to 'What this agent delivers for that platform' OR 'What this agent changes for that platform'. Renderer-level fix in tools/inject_path_to_l4.py:364 (header) and review individual unlocks: strings in data/agents-x-platforms.yaml. Affects all 7 agent pages + all platform §03 tables.",
+      "files": ["tools/inject_path_to_l4.py:364", "agents/ai-photoshoot/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§01 'What the agent does'",
+      "issue": "Body copy uses 'production-ready on-model catalogue images' — 'production-ready' is engineering jargon per tone-of-voice §7 (translate to 'live' / 'running' / 'battle-tested').",
+      "fix": "Edit data/agents/ai-photoshoot.yaml job.what_it_does: change 'production-ready on-model catalogue images' → 'live-ready on-model catalogue images' OR drop the qualifier (the GCS-delivery clause already implies it).",
+      "files": ["data/agents/ai-photoshoot.yaml:34", "agents/ai-photoshoot/index.html:179"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "§06 Linked platforms / impetus/ai-photoshoot/",
+      "issue": "Bidirectional link broken — agent page §06 cards link out to /impetus/ai-photoshoot/ but the platform page does not link back to /agents/ai-photoshoot/. Apex reader on the platform page cannot navigate to the agent detail without going through /agents/.",
+      "fix": "Add a 'Powered by AI Agent → AI Photoshoot Agent' pill or callout near the hero of impetus/ai-photoshoot/index.html, linking to /agents/ai-photoshoot/. One-line addition adjacent to the existing 'IMPETUS · AI PHOTOSHOOT · LIVE' eyebrow.",
+      "files": ["impetus/ai-photoshoot/index.html:175"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "visual_completeness",
+      "section": "§02 workflow SVG (mobile)",
+      "issue": "Workflow SVG (1240×620 viewBox) scales down to ~426px on a 500px viewport, making the inline 10-12px text effectively unreadable on mobile. The 10-step strip below the diagram is the legible fallback, so the page is not broken — but the diagram is decorative-only on phones.",
+      "fix": "Two acceptable paths: (a) Add `@media (max-width: 768px) { .diagram-wrap svg { display: none; } }` so the step strip carries the load on mobile (less ambitious, less risk), OR (b) restructure the SVG into a vertical stack on mobile via two viewBox variants (more work). v1 ship: option (a).",
+      "files": ["tools/build_agents.py:90 (LOCAL_STYLES)", "agents/ai-photoshoot/index.html:72-74"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "Page-level <style> block",
+      "issue": "21 ad-hoc hex literals introduced in the page-level <style> block (e.g. #DCFCE7, #FEF3C7, #166534, #92400E, #BBF7D0). These are inline-redefined pill colours that duplicate style.css .pill-live / .pill-build (which are #ECFDF5 / #FFFBEB in style.css :root). Per design.md §1.1 Color rules: 'Never introduce a new hex value. Use a token from :root.' Pre-existing template issue (affects all 7 agent detail pages built via tools/build_agents.py) — not introduced by this change, but flagged because the agent template is sweepable.",
+      "fix": "Refactor tools/build_agents.py LOCAL_STYLES — drop the .pill-live/.pill-build/.pill-scoping redefinitions (style.css already owns them with the canonical token-based palette), and migrate .agent-stat / .pill-track / .pill-l / .pill-platform / .agent-card / .tech-chip / .note-pending / .pattern-chip / .linked-platform-card colors to var(--*) tokens or document the exceptions in design.md §2 as Catalog-page variants.",
+      "files": ["tools/build_agents.py:41-104", "agents/ai-photoshoot/index.html:13-74"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "design_compliance",
+      "section": "Page-level <style> block",
+      "issue": "Off-scale font sizes in the agent template — .agent-stat .a-value 22px (target 24), .pill 10.5px (target 11), .agent-card .ac-name 17px (target 18), .workflow-step .ws-detail 13.5px (target 14), .data-table th 10.5px (target 11), .data-table .ent 12.5px (target 13), .workflow-ascii 11.5px. Per design.md §1.2 the documented scale is 10/11/12/13/14/15/16/18/24/32/36/48/64/72.",
+      "fix": "Round to documented scale in tools/build_agents.py LOCAL_STYLES. Same template-wide fix as M4. Cosmetic — does not break a11y.",
+      "files": ["tools/build_agents.py:42-103"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 workflow step 04 detail",
+      "issue": "Step 04 detail uses 'extracted for seamless model blending' — 'seamless' is borderline marketing register though not in the explicit ban-list.",
+      "fix": "Change to 'extracted for natural model blending' or drop the qualifier ('extracted to blend the model into the scene'). Edit workflow_steps[3].detail in data/agents/ai-photoshoot.yaml.",
+      "files": ["data/agents/ai-photoshoot.yaml:248", "agents/ai-photoshoot/index.html:389"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§01 'What the agent does'",
+      "issue": "Phrase 'Fully agentic from accessory placement and lighting extraction through to autonomous issue detection' is verbatim from source Note v1 §1 — source-supported, but a strong claim for an Apex reader. The eval gate (§05) and the manual-QC routing in the SVG provide qualifying detail downstream.",
+      "fix": "Acceptable as-is given the source backing. Optionally soften to 'Agentic across the full pipeline — accessory placement, lighting extraction, autonomous issue detection and surgical Auto-Edit' if a leadership reviewer flags it.",
+      "files": ["data/agents/ai-photoshoot.yaml:33", "agents/ai-photoshoot/index.html:179"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source traceability is exemplary — every number on the page (47,473 images · 2,975 styles · 3,957 products · 12 shots/product · 8.06/10 Auto QC · −4.0/−3.0/−2.0 identity penalties · 55%/30%/15% realism weights · 10-base scoring) traces verbatim to AI_Photoshoot_Note_v1.docx with zero fabrication.",
+    "Workflow SVG is hand-authored in the JCP / Cortex 3-zone convention with the Detect → Edit → Check loop and Manual QC routing drawn explicitly — visually self-explanatory at desktop width.",
+    "Date format consistent throughout (DD-MMM-YYYY); zero exclamation marks, zero emojis, no §Sources block, no Author/Date/Version line.",
+    "All required page chrome present (nav, footer single-line, auth.js, style.css, Tailwind), section labels contiguous 01-06, status pills semantically correct (Live + L4 supported by the 47,473 delivered-to-Ajio anchor stat).",
+    "Numbers cross-check identically across three surfaces: agent page hero stat (47,473), agent page SVG eval gate footer (47,473), Impetus §04 Card 2 execution-track row (47,473), and agents/ index card anchor stat (47,473)."
+  ]
+}

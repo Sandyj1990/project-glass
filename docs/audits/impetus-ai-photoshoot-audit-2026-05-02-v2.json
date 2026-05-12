@@ -1,0 +1,193 @@
+{
+  "page": "impetus/ai-photoshoot/index.html",
+  "spec": "docs/ai-photoshoot-update-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 70,
+  "grade": "C",
+  "pass": false,
+  "dimensions": {
+    "structural_compliance": 60,
+    "source_traceability": 88,
+    "tone_of_voice": 78,
+    "honesty_register": 80,
+    "visual_completeness": 88,
+    "cross_page_consistency": 55
+  },
+  "findings": [
+    {
+      "id": "C1",
+      "severity": "CRITICAL",
+      "dimension": "visual_completeness",
+      "section": "§03",
+      "issue": "Five of the eleven example cards display the AI OUTPUT in the left (input) slot and either the input or a second output in the right (output) slot — the source/target pairing is reversed and the page is showing model photographs as 'inputs'.",
+      "fix": "Swap the left/right images for: mannequin-western, mannequin-formal, mannequin-kidswear, product-shoes, product-handbag (each is a clean swap of the two file references in the card). For pdp-flatlay and mannequin-video, both displayed images are AI outputs — replace the 'input' with the actual flatlay (s21-img08.png for puffer; no extracted mannequin image exists for the video pair so re-curate from a different source slide or label both as 'output variants').",
+      "files": [
+        "impetus/ai-photoshoot/index.html:244-245",
+        "impetus/ai-photoshoot/index.html:253-254",
+        "impetus/ai-photoshoot/index.html:288-289",
+        "impetus/ai-photoshoot/index.html:297-298",
+        "impetus/ai-photoshoot/index.html:306-307",
+        "impetus/ai-photoshoot/index.html:324-325",
+        "impetus/ai-photoshoot/index.html:333-334"
+      ],
+      "auto_fixable": true
+    },
+    {
+      "id": "C2",
+      "severity": "CRITICAL",
+      "dimension": "structural_compliance",
+      "section": "§06 / §07",
+      "issue": "Spec §3 mandates §06 'Reliance adoption · today' (status strip + collapsed timeline) AND §07 'Output gallery → /impetus/photoshoots' as two separate sections. Current page collapses these — §06 is mislabeled '06 · Output gallery · what this platform shipped' and the entire 'Reliance adoption today' content (Brand portfolios, ~4,000 international videos, Buda Jeans/SDX line, the Updates Shipped <details> with the 30-Mar/26-Mar/04-Feb timeline entries) is missing from the page.",
+      "fix": "Re-insert the §06 Reliance adoption section between §05 and the gallery card, then renumber the gallery to §07. Restore the prose strip ('Live across Reliance brand teams... ~4,000 videos to RedTag, Noxtra, Namshi, Yousta in March...') and the <details> Updates Shipped block.",
+      "files": ["impetus/ai-photoshoot/index.html:373-381"],
+      "auto_fixable": false
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "home page",
+      "issue": "Home page index.html line 416 lists 'Fynd Snap (AI Photography) · 25K+ photoshoots · 90% cost saving' as a SEPARATE row right next to the 'AI Photoshoot' row on line 415 — duplicating the same product under its old codename. Per spec Decision D2, 'Fynd Snap' is internal-only and should appear at most once (in the page hero subhead). And line 764 'Image stack · PixelBin + Fynd Snap' should be 'PixelBin + AI Photoshoot'.",
+      "fix": "Delete line 416 (the duplicate Fynd Snap row) and rename line 764 'PixelBin + Fynd Snap' → 'PixelBin + AI Photoshoot'.",
+      "files": ["index.html:416", "index.html:764"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "stat tiles",
+      "issue": "Home page line 415 says '25K+ photoshoots shipped on Tira', but the AI Photoshoot page hero says '26,381 catalogue images shipped' (and the Release Compendium p.93 confirms 26,381 images). The 25K+ number on the home card is stale — round-down approximation predates the verified Q1 2026 number.",
+      "fix": "Update home card line 415 from '25K+ photoshoots shipped on Tira' to '26,381 images · 88% first-pass · ~4,000 videos/mo' to match the verified hero stat.",
+      "files": ["index.html:415"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§01 sidebar callout",
+      "issue": "Sidebar callout at line 199 contains banned vocabulary: 'Eliminates studio, location, photographer, model and editing costs' uses 'eliminates' as a marketing verb; 'Quickly converts massive catalogues' uses 'massive' (inflator); 'Transforms non-raw PDP images into high-quality content' uses 'Transforms' which is the cousin of banned 'transformative' and reads marketing. Also 'high-quality content without losing garment detail' is filler.",
+      "fix": "Rewrite as: 'A model is trained uniquely per SKU so the AI learns fabric behaviour, garment fit, fall and texture. Outputs stay SKU-faithful. Removes the studio, location, photographer, model and editing line items. Generates models across ethnicities, ages and body types. Converts catalogues at SKU-batch scale. Brand-controlled styling for model archetype, studio or lifestyle background.'",
+      "files": ["impetus/ai-photoshoot/index.html:199"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§01 capability cards",
+      "issue": "Two cap-num labels at lines 187, 188 use the verbs 'Transform' and 'Swap' in body copy — fine — but the FACE SWAP card at line 193 contains the banned construction 'Refresh existing catalogues by swapping model faces — preserve garment, lighting and expression. Cuts reshoot cost ~70%.' The ~70% cost-cut figure is sourced from slide 27 ('Reduce shoot production expenses by up to 70%') which is a deck marketing claim with no internal traceability — flag per tone-of-voice §1 (cite source or remove).",
+      "fix": "Either drop the '~70%' or attach a source caption — slide 27 is a forward-looking marketing slide, not a measured outcome. Recommend dropping the percentage: 'Refresh existing catalogues by swapping model faces. Preserves garment, lighting and expression.'",
+      "files": ["impetus/ai-photoshoot/index.html:193"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H5",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§02 traditional vs AI block",
+      "issue": "Line 229 callout uses banned verb 'handles' is fine but 'The AI handles the rest — model generation, styling, background, lighting, post-production' is mild filler; bigger issue is 'Catalogue-scale output in hours, not weeks. Cost reduction ~90%, turnaround 15 days → 5 hours.' Repeats hero numbers. The repetition reads as filler at exec level (tone-of-voice §5: 'Drop the platform claim with verifiable numbers opener if those numbers already appear in the section's stat tiles').",
+      "fix": "Trim the second sentence: 'Send the shoot brief and garment images. The AI does the rest — model, styling, background, lighting, post-production.' (Drop the duplicate ~90% / 15 days → 5 hours.)",
+      "files": ["impetus/ai-photoshoot/index.html:229"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§03 plus-size card",
+      "issue": "Plus-size card (line 264) labels capability as 'INCLUSIVITY' which is not a capability listed in the source deck slide 4-5 (the 8 capabilities are Flatlay/Mannequin/Model-Swap/3D-Render/Video/Face-Consistency/Ensemble/Face-Swap). Inclusivity is a differentiator framed in slide 3, not a capability. Slight mismatch with §01 capability list.",
+      "fix": "Relabel the cap-num to 'CAPABILITY · MANNEQUIN → MODEL' (the actual capability behind the image) and keep the 'Plus-size representation across body types' as the descriptor.",
+      "files": ["impetus/ai-photoshoot/index.html:264"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 lede",
+      "issue": "Lede line 237: '11 examples shown — full library available on request.' The 'available on request' is marketing-deck phrasing. Also 'Click any image to expand' is a UX hint; better as a UI affordance than a sentence in the body.",
+      "fix": "Replace with: '11 input → output pairs across 7 capability categories. Drawn from the May 2026 product compilation deck.' Drop the 'click any image to expand' — the cursor zoom-in already signals it.",
+      "files": ["impetus/ai-photoshoot/index.html:237"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§01 section label",
+      "issue": "Spec calls §01 'What it does for you' (verbatim from Release Compendium p.93 row label). Page matches. But the introductory prose at line 183 'AI Photoshoot turns a single garment image — flatlay, mannequin, model, or 3D render — into a complete on-model shoot in studio or lifestyle settings. Eight capabilities, one platform.' uses 'AI Photoshoot turns' which reads OK, but the closer 'Eight capabilities, one platform.' is marketing-tagline cadence.",
+      "fix": "Trim to: 'AI Photoshoot turns a single garment image — flatlay, mannequin, model or 3D render — into a complete on-model shoot in studio or lifestyle settings.' (Drop the closer.)",
+      "files": ["impetus/ai-photoshoot/index.html:183"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero",
+      "issue": "Hero subhead line 164 contains an em-dash followed by an em-marketed phrase: 'High-quality model photography & videography — at scale, speed, and affordability.' is taken verbatim from slide 1 of the source deck — which is the marketing tagline. 'at scale, speed, and affordability' is exactly the kind of three-word inflator pattern tone-of-voice §3 banishes.",
+      "fix": "Replace subhead with a numbers-first reading: 'Studio-quality on-model imagery and video from a flatlay, mannequin, model or 3D render. Per-SKU AI training preserves fabric behaviour, garment fit and texture. Internally codenamed Fynd Snap.' (Move the tagline-esque line out, fold the codename into the same paragraph.)",
+      "files": ["impetus/ai-photoshoot/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§06 (was §07)",
+      "issue": "Line 375 prose names 'Buda Jeans for Valentine's Day and Harry Potter, AJIO × ASOS plus-size launch, the SS26 PLM × AI Photoshoot pilot' as live brand campaigns shipped — these are taken from the photoshoots gallery sub-pages. Spec §6 mentions 'Buda Jeans / Superdry SDX (120 designs in 5 days, live on AJIO)' as the canonical proof — that line is now LOST because the §06 Reliance adoption section was deleted (see C2). The §06 (renamed Output gallery) is now the only place these brands appear, but without the SDX 120 designs / 5 days proof point.",
+      "fix": "Linked to C2 fix — when restoring §06, include the Buda Jeans / Superdry SDX line as the canonical proof of L4-Agentic catalogue production.",
+      "files": ["impetus/ai-photoshoot/index.html:375"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 problem cards",
+      "issue": "Card 'PROBLEM 04 · Video is growing' uses the present-continuous 'Marketplaces increasingly use video for interactivity.' — fine, but 'Professional videography is even more expensive than photography.' is a comparison without a citation. Mild.",
+      "fix": "Either add a 'Source · WIP Snap deck May 2026' eyebrow or trim to 'Professional videography costs exceed photography.' (drop the 'even more').",
+      "files": ["impetus/ai-photoshoot/index.html:210"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "audience pills",
+      "issue": "Hero audience pills at line 166 use 'Design Teams', 'Catalogue Teams', 'Brand Partners', 'Marketing'. Source p.93 says 'Design teams, Catalogue teams, Brand partners, studio-quality images without physical shoots' — 'Marketing' is added but is not in the source compendium for AI Photoshoot specifically.",
+      "fix": "Drop 'Marketing' or replace with the deck-supported 'Studios' (collateral S33-S37 names brand operators). Otherwise aligns with source.",
+      "files": ["impetus/ai-photoshoot/index.html:166"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "visual_completeness",
+      "section": "§03 plus-size card",
+      "issue": "The plus-size card uses a single image with max-height:340px object-fit:cover (line 262) — crops the model's face and feet. Per the spec note 'only 1 image on that source slide', a single image is intentional, but the cover-crop discards the body-type framing the card is trying to communicate.",
+      "fix": "Switch to object-fit:contain with a fixed aspect-ratio (1/1 or 3/4) so the full model body shows.",
+      "files": ["impetus/ai-photoshoot/index.html:262"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "section labels",
+      "issue": "§01 section-label uses 'mb-6' while §02-§06 use 'mb-3'. Inconsistent spacing.",
+      "fix": "Change line 182 'mb-6' → 'mb-3'.",
+      "files": ["impetus/ai-photoshoot/index.html:182"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Hero stat tiles are factual, sourced (verified against Release Compendium p.93: ~4,000 videos/month, 2,806 products, 88% first-pass, −90% cost, 26,381 images, 15 days → 5 hours, RedTag/Noxtra/Namshi/Yousta) — zero fabricated numbers in the hero.",
+    "All 24 CDN images return 200 from socialassets.impetusz0.de — no broken image icons; lightbox open/close + Esc handler verified working programmatically; mobile renders at 375px without horizontal overflow.",
+    "Console is clean save the standard Tailwind CDN dev warning; auth bypass via sessionStorage works as documented.",
+    "§02 problem grid + traditional vs AI comparison correctly traces to deck slides 2 and 6 — five problems, language tightened from the source's 'incorporate videos for a more interactive customer experience' marketing line.",
+    "Spec Decision D2 (codename Fynd Snap → mention once in hero) is correctly applied on this page — only one occurrence in the hero subhead, otherwise the page uses 'AI Photoshoot' throughout."
+  ]
+}

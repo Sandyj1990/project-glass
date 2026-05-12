@@ -1,0 +1,113 @@
+{
+  "page": "alp/index.html",
+  "spec": "docs/alp-spec.md",
+  "source_compilation": "docs/alp-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_mode": "delta",
+  "previous_audit": "docs/audits/alp-audit-2026-05-01.json",
+  "previous_score": 86,
+  "previous_grade": "B+",
+  "score": 95,
+  "grade": "A",
+  "pass": true,
+  "commit": "a6de893",
+  "dimensions": {
+    "structural_compliance": 98,
+    "source_traceability": 95,
+    "tone_of_voice": 96,
+    "honesty_register": 96,
+    "visual_completeness": 95,
+    "cross_page_consistency": 95
+  },
+  "findings_resolved": [
+    {
+      "id": "C1",
+      "previous_severity": "CRITICAL",
+      "status": "resolved",
+      "verified_at": "index.html:611-613",
+      "evidence": "Home card now reads pill 'LIVE · MVP' + title 'ALP · Asset Lifecycle Platform' + body 'NSO platform for Reliance Retail · MVP live for GJ-cluster pilot, Apr-2026. Phase 2 plan: AI feasibility + 5 integrations.' Karan Muley DRI removed. Screenshot-confirmed via Chrome DevTools."
+    },
+    {
+      "id": "C2",
+      "previous_severity": "CRITICAL",
+      "status": "resolved",
+      "verified_at": "catalog/index.html:273",
+      "evidence": "Catalog row renamed to 'ALP · Asset Lifecycle Platform'. Status text updated to 'MVP live · Apr-2026 · GJ-cluster pilot · 7 of 9 Phase 1 Done · Phase 2 plan: AI feasibility + 5 integrations'. Owner cell set to '—'."
+    },
+    {
+      "id": "H1",
+      "previous_severity": "HIGH",
+      "status": "resolved",
+      "verified_at": "alp/index.html:147",
+      "evidence": "'Drives the funnel cards' rewritten to 'Powers the funnel cards'. Banned-verb grep across alp/, index.html, catalog/index.html returns clean."
+    },
+    {
+      "id": "H2",
+      "previous_severity": "HIGH",
+      "status": "resolved",
+      "verified_at": "alp/index.html:122",
+      "evidence": "'5 leads in GJ cluster on the dashboard at launch' rewritten to 'Live data captured for the GJ-cluster pilot · including TEST leads from UAT'. No longer overclaims pilot density."
+    },
+    {
+      "id": "H3",
+      "previous_severity": "HIGH",
+      "status": "resolved",
+      "verified_at": "alp/index.html:97-103",
+      "evidence": "Problem-card bullet 1 now cites '(PRD §Lead Creation)' and rewords to mirror source phrasing 'document exchange ran over email'. Bullet 2 changed from 'Approvals chased over email' to 'Approvals tracked manually' (less colourful, more sourceable)."
+    },
+    {
+      "id": "M2",
+      "previous_severity": "MEDIUM",
+      "status": "resolved",
+      "verified_at": "alp/index.html:367-412",
+      "evidence": "All 10 §06A Phase 2 items recoloured from 'Build' (amber) to 'Planned' (grey pill-phase2). Section intro reworded to 'scoped, sequenced, not yet started (per plan Sheet 2)'. Hero stat tile updated 'Phase 2 build' → 'Phase 2 plan'."
+    },
+    {
+      "id": "L1",
+      "previous_severity": "LOW",
+      "status": "resolved",
+      "verified_at": "alp/index.html:82-83",
+      "evidence": "Hero subhead tightened from 41 → 27 words. Phase 2 paragraph also restructured for scannability."
+    }
+  ],
+  "findings_remaining": [
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "status": "accepted",
+      "issue": "§07 Sources block exists. Per tone-of-voice §3 carve-out, justified because page combines 3 distinct artefacts (PRD + project plan + screenshots PDF).",
+      "fix": "None — accepted."
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "status": "accepted",
+      "issue": "§03 Lead lifecycle deviates from canonical §03 = Architecture. Documented as override D7 in spec §9.",
+      "fix": "None — documented."
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "status": "accepted",
+      "issue": "Tailwind CDN dev warning in console.",
+      "fix": "None — register-wide pattern."
+    }
+  ],
+  "delta_summary": {
+    "criticals_resolved": 2,
+    "highs_resolved": 3,
+    "mediums_resolved": 1,
+    "lows_resolved": 1,
+    "open": 0,
+    "score_delta": "+9 (86 → 95)",
+    "grade_delta": "B+ → A"
+  },
+  "strengths": [
+    "Cross-page consistency now closed end-to-end: home card, IP catalog row, and the page itself all carry the same MVP-live framing with the corrected 'Asset Lifecycle Platform' name.",
+    "Phase 2 pill recolour (Build → Planned, amber → grey) is a small honesty-register win — visible now the page does not overclaim active development on items the plan says are Not Started.",
+    "Source-citation in §01 Problem card ('PRD §Lead Creation') sets a precedent worth porting back to other pages — inline source cites at the bullet level beat aggregated §08 Sources blocks.",
+    "All 7 fixes mechanical and reversible; no structural rework required between v0.9.0 audit pass 1 and pass 2."
+  ],
+  "ship_readiness": "Page is publishable. No CRITICAL or HIGH findings remain. Three MEDIUM/LOW items are accepted exceptions. Recommend marking spec status to 'shipped'."
+}

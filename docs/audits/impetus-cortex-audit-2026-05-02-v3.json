@@ -1,0 +1,96 @@
+{
+  "page": "impetus/cortex/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 78,
+  "grade": "C+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 82,
+    "tone_of_voice": 75,
+    "honesty_register": 72,
+    "visual_completeness": 78,
+    "cross_page_consistency": 85
+  },
+  "notes": "Visual phase partially run: dev server unreachable (net::ERR_EMPTY_RESPONSE for every localhost:8765 GET during the audit window). CDN screenshot URLs spot-checked directly via socialassets.impetusz0.de — all returned 200. Lightbox script present in HTML; runtime click behaviour not verifiable without dev server. Disk-full condition on /tmp also blocked grep across the tree, so cross-page sweep limited to direct file reads of /index.html, /impetus/index.html, and the YAML data files.",
+  "findings": [
+    {
+      "id": "CTX-1",
+      "severity": "HIGH",
+      "dimension": "honesty_register",
+      "section": "§02 vs §03 Sub-section Command Center",
+      "issue": "Two different '6 modules live' lists on the same page contradict each other. §02 paragraph (line 181-182) lists 'Portfolio Health, Margin Analysis, Store Intelligence, Inventory Health, Vendor Performance and AOP Tracking' (matches PDF p. 5–11). §03 Command Center sub-section body (line 195-200) lists 'Store Operations · Inventory Intelligence · Workforce Management · Campaign Control · Customer 360° · Alerts & Escalations' (Accenture-deck wording). An Apex reader sees a contradiction between hero §02 and the deep-dive §03.",
+      "fix": "Pick one canonical list (PDF p. 5–11 wording is the verifiable source-of-truth) and delete the second from the §03 Command Center sub-section, OR explicitly tag the §03 list as 'feature framing' vs the §02 list as 'modules in production'.",
+      "files": ["impetus/cortex/index.html:181", "impetus/cortex/index.html:195"],
+      "auto_fixable": false
+    },
+    {
+      "id": "CTX-2",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "§03 Sub-section Command Center body",
+      "issue": "Double-encoded HTML entity '&amp;amp;' appears in body prose (line 200: 'Alerts &amp;amp; Escalations'). Will render visibly as 'Alerts &amp; Escalations' (the literal entity reference) instead of 'Alerts & Escalations'. Same bug also present on the nextwave page §03 label.",
+      "fix": "Strip the redundant 'amp;' so the entity reads '&amp;'. Likely the renderer is escaping '&' twice when the source YAML already has '&amp;'. Sweep build_impetus.py for double-escape on subsection bodies.",
+      "files": ["impetus/cortex/index.html:200"],
+      "auto_fixable": true
+    },
+    {
+      "id": "CTX-3",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§03 Command Center sub-section body",
+      "issue": "Banned filler verb 'monitor, plan, and act' triplet is repeated in §02 lead paragraph (line 174) and §03 sub-section body (line 195). Also the §03 sub-section body uses 'Transforms' as the lead verb in the AI Agents block (line 201) — verb is fine; surrounding language has marketing-deck cadence ('manufacturable design options', 'vendor-ready handoff').",
+      "fix": "Drop the duplicate triplet from §03 (it's already in §02). Keep §03 prose to module-level facts (what each module does, what shipped).",
+      "files": ["impetus/cortex/index.html:195", "impetus/cortex/index.html:174"],
+      "auto_fixable": false
+    },
+    {
+      "id": "CTX-4",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§05 Screenshots captions",
+      "issue": "Several caption alt-texts (e.g., line 247 'Range architecture· Segment metrics by category', line 254 'Buy plans· Buy plans by category...', line 268 'Style drill-down (Ruffle Sleeve)· Color-wise units...') have no space before the '·' separator and the captions repeat their own subject (e.g., 'Buy plans · Buy plans by category and brand'). Likely a renderer artefact when a composite caption ('A · X + B · Y') was split into two cards — each child caption keeps both halves.",
+      "fix": "Fix the renderer's caption-split logic to drop the redundant first phrase on the second-half card and to insert a space around '·'. Manual sweep of cap-num strings on lines 240-291.",
+      "files": ["impetus/cortex/index.html:247", "impetus/cortex/index.html:254", "impetus/cortex/index.html:268", "impetus/cortex/index.html:275", "impetus/cortex/index.html:282", "impetus/cortex/index.html:289"],
+      "auto_fixable": true
+    },
+    {
+      "id": "CTX-5",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§04 What improved",
+      "issue": "§04 carries a hard number ('₹85.1 Cr >180 days', '805 stores running out', '3,492 styles flowing straight to the Costing Engine') without any inline source eyebrow. The numbers do match the YAML data but the page itself shows no provenance.",
+      "fix": "Add a small mono eyebrow above or below the callout: 'Source · Q1 2026 Release Compendium · pp. 5–11'. Matches the convention used elsewhere on the register.",
+      "files": ["impetus/cortex/index.html:218"],
+      "auto_fixable": true
+    },
+    {
+      "id": "CTX-6",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "Hero",
+      "issue": "Hero secondary line '(Command Center)' (line 164) is parenthetical sub-line; H1 is 'Cortex (Planning Engine).' which already names the role. The parenthetical sub-line then names the *Accenture-deck* alias. Acceptable since both names appear in source, but reads as two parentheticals stacked.",
+      "fix": "Either drop the secondary '(Command Center)' line or fold it into the breadcrumb / eyebrow row.",
+      "files": ["impetus/cortex/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "CTX-7",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§03 AI Agents sub-section body",
+      "issue": "AI Agents sub-section body (line 207) uses lower-case smart-quote 'why,' inside double-quotes — '... explains \"why,\" quantifies impact, ...'. Comma inside the quote per US convention; site is British English elsewhere. Minor consistency drift.",
+      "fix": "Move the comma outside the quote: '... explains \"why\", quantifies impact, ...'.",
+      "files": ["impetus/cortex/index.html:207"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Section labels are now contiguous (hero · 02 · 03 · 04 · 05) after the deletion of §05 Updates Shipped and Sources — renumbering was applied cleanly.",
+    "The Cortex Command Center sub-section embeds the demo video as a YouTube iframe (id ifeRKDrCHic) with proper allowfullscreen and 16:9 aspect-ratio container — replaces the prior QR-to-scan pattern and is exec-friendly.",
+    "All Accenture deck attributions have been stripped from the rendered prose, sub-section tags, sidebar callouts, and figcaptions — only the underlying YAML still carries them (provenance lives in source-of-truth file).",
+    "Screenshot URLs are all on the -v2/-v2-b versioned pattern; CDN spot-check (cortex/screenshot-011-v2-b.jpg) returns 200; lightbox markup + script present at the bottom of the page.",
+    "Page H1 'Cortex (Planning Engine).' matches the impetus index card name; mega-menu and breadcrumb stay consistent."
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "slug": "rbl",
+  "name": "RBL \u00b7 Reliance Brands Limited",
+  "tagline": "Premium & lifestyle brand portfolio \u00b7 35 brands.",
+  "track": "rbl",
+  "track_role": "track-headline",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "beauty"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/rbl",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

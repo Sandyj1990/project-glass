@@ -1,0 +1,116 @@
+{
+  "page": "retail-vista/index.html",
+  "spec": "docs/retailvista-spec.md",
+  "audit_date": "2026-05-01",
+  "audit_version": "v3 (post-fix re-audit)",
+  "score": 93,
+  "grade": "A−",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 92,
+    "tone_of_voice": 90,
+    "honesty_register": 95,
+    "visual_completeness": 95,
+    "cross_page_consistency": 92
+  },
+  "score_delta_from_v2": "+15 (78 → 93). All HIGH and CRITICAL findings resolved.",
+  "fixes_applied": [
+    {
+      "id": "S1",
+      "severity": "CRITICAL",
+      "fix": "Added §07 'MDA direction · 01 - May - 2026' with 7 cards capturing all MDA-issued direction: 1000-city scale, all-in-Google, 12-layer foundation, dedicated org with KT/Shyam/GV, Customer Digital Twin via Alex CDAP, 5G/4G + dark store + RIL neighbourhood plot, 100M HH identification target. §08 Built-by RIL counterparts now lists the MDA-named cluster (KT, Shyam, A Tiwari, G Verma, Raghu V) and Google integration cluster (Jey, Anish).",
+      "files": ["retail-vista/index.html:360-409", "retail-vista/index.html:451-453"]
+    },
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "fix": "Layer 04 Agentic orchestration card rewritten — pill changed Live → Mixed (build-orange), description now reads '6 skills mapped — 3 Live · 1 Building · 2 Roadmap. See §08 for per-skill status.' Removes §03↔§07 contradiction.",
+      "files": ["retail-vista/index.html:169"]
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "fix": "Hero pill (line 87) and §01 Google Track card pill (line 123) both changed Live → Pilot. Hero text now reads 'Pilot · Google Track · MVP demoed end-to-end on Mumbai catchments'.",
+      "files": ["retail-vista/index.html:87", "retail-vista/index.html:123"]
+    },
+    {
+      "id": "H3",
+      "severity": "MEDIUM",
+      "fix": "Layer 03 GIS visualisation card (line 168) pill changed Live → Pilot. Description clarifies 'Per-hex score colouring on Mumbai catchments today; pan-India per-hex Attractability heat is in build.'",
+      "files": ["retail-vista/index.html:168"]
+    },
+    {
+      "id": "S2",
+      "severity": "MEDIUM",
+      "fix": "Three instances of 'JioMart NSO leads' replaced with 'grocery NSO leads on JioMart data' (hero pill, §04 intro, §08 New Store Opening row).",
+      "files": ["retail-vista/index.html:86", "retail-vista/index.html:187", "retail-vista/index.html:418"]
+    },
+    {
+      "id": "T1",
+      "severity": "LOW",
+      "fix": "Sed-swept all 4 'Jio GIS' → 'JioGIS' on the page. Now 17 consistent JioGIS instances, 0 'Jio GIS'.",
+      "files": ["retail-vista/index.html (4 lines)"]
+    },
+    {
+      "id": "C1",
+      "severity": "HIGH",
+      "fix": "Home page card (index.html:630-634) rewritten. Pill: pill-build Pilot → pill-live 'Live · 3 tracks'. Title: 'Retail Vista' → 'RetailVista'. Body: stale 21,911-stores claim removed, replaced with current numbers (3 tracks · 24 data categories · grocery NSO leads · Google Pilot · Ved/JioGIS Building · 1000-city scale per MDA). Lead now names Alex Thomas (RIL Steering).",
+      "files": ["index.html:630-634"]
+    },
+    {
+      "id": "C2",
+      "severity": "HIGH",
+      "fix": "Catalog row (catalog/index.html:275) rewritten with current numbers. Title 'Retail Vista (geospatial)' → 'RetailVista (agentic geospatial)'. Body now reads 'Live · 3 tracks · 24 data categories · 10 LI dimensions · 68 live opportunities · Mumbai NSO MVP · 1000-city scale per MDA'.",
+      "files": ["catalog/index.html:275"]
+    },
+    {
+      "id": "C3",
+      "severity": "MEDIUM",
+      "fix": "Sed-swept 'mega-link\">Retail Vista' → 'mega-link\">RetailVista' across 60 sibling .html files via grep + xargs. The 2 remaining instances are intentionally preserved scratch/backup files (tools/scratch/jcp_extracts/_original.html, docs/impetus-index-backup-2026-04-30.html).",
+      "files": ["60 .html files swept"]
+    }
+  ],
+  "remaining_findings": [
+    {
+      "id": "T2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 numbers in Western format",
+      "issue": "§05 data table uses Western format (105M / 137M / 21.7M / 500M+ / 0.6M / 25.6K / 3.8M) for Indian-context numbers. Per tone-of-voice §4 Indian-context numbers should be in L Cr format. Cornerstone source uses Western verbatim, so this is a 'preserve from source' tradeoff. Conscious decision documented in spec; deferring conversion.",
+      "fix": "Optional. Acceptable as-is preserving source fidelity.",
+      "auto_fixable": false
+    },
+    {
+      "id": "T3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§08 hero subhead",
+      "issue": "§08 (was §07) subhead opens 'Every business question becomes an agent skill.' Acceptable — table immediately below provides per-skill evidence with status pills.",
+      "fix": "No change needed.",
+      "auto_fixable": false
+    }
+  ],
+  "verification": {
+    "section_labels_contiguous": "01 → 09, no gaps",
+    "pill_counts": {"live": 18, "pilot": 4, "build": 11, "phase2": 11},
+    "JioMart_NSO_leads_count": 0,
+    "grocery_NSO_count": 3,
+    "JioGIS_count": 17,
+    "Jio_GIS_with_space_count": 0,
+    "MDA_section_present": true,
+    "all_assets_200": true,
+    "console_messages": "1 (standard Tailwind CDN dev warning only)",
+    "home_page_card_updated": true,
+    "catalog_row_updated": true,
+    "sibling_nav_blocks_swept": "60 of 62 (2 intentionally skipped: scratch + backup)"
+  },
+  "strengths": [
+    "S1 critical gap resolved — MDA direction is now a first-class section with 7 quoted-and-actioned cards, named cluster (KT / Shyam / GV / Raghu V / Jey / Anish) added to §09 Built-by",
+    "Same-page contradiction (§03 Layer 04 vs §08 Roadmap) eliminated by using a 'Mixed' pill with explicit per-skill counts",
+    "Honesty register tightened — Google Track demoted from Live to Pilot in hero, §01 card, and home card; Layer 03 GIS visualisation honestly scoped to Mumbai-today + pan-India-in-build",
+    "All sibling references (home card, catalog row, 60 nav blocks) now consistent with the new RetailVista brand and current numbers",
+    "Source-faithful — every claim mapped to a named source (Status PDF / cornerstone deck / live-app screenshot / MDA notes screenshot)",
+    "All visual + structural tests pass — 14 network requests 200, single console msg (Tailwind CDN dev warning), section labels contiguous 01→09, mobile clean"
+  ]
+}

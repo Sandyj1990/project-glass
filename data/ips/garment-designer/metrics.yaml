@@ -1,0 +1,15 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: cycle_time_before
+    label: Cycle time before
+    value: 24 days
+    definition: Manual garment designer turnaround
+    source: Impetus baseline
+    confidence: audited
+  - id: cycle_time_after
+    label: Cycle time after
+    value: 30 min
+    definition: AI-assisted
+    source: Impetus production
+    confidence: live

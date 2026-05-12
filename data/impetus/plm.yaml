@@ -1,0 +1,117 @@
+# Impetus PLM (Product Lifecycle Management)
+# Sourced verbatim from Q1 2026 Release Compendium pp. 14–20
+# Per docs/impetus-restructure-spec.md · §A.3
+
+slug: plm
+title: Impetus PLM
+sub_title: "(Product Lifecycle Management)"
+aliases: [Yousta PLM, Centric replacement]
+tagline: End-to-end product lifecycle — Design → Tech Pack → Sourcing → Production. Replaces Centric PLM. One login, no separate credentials.
+category: Buy / Make
+status: live
+status_label: Live
+
+audience:
+  - Fashion Designers
+  - Technical Designers
+  - Buyers
+  - Product Managers
+  - Sourcing Teams
+
+what_it_does: |
+  Impetus PLM replaces Centric PLM for design, tech pack and product development.
+  Designers create and manage styles, tech packs and material lists (Bill of Materials)
+  with clear high-quality images and simpler navigation. Technical designers generate
+  detailed specs that flow automatically into costing and production systems. Buyers
+  manage fabric libraries and vendor allocations.
+
+  Everything connects end-to-end, to Costing Engine for pricing, to EAN (product
+  barcodes) and to NextWave/FTF for trend data. One login (SSO, Single Sign-On) via
+  Impetus Platform — no separate credentials.
+
+scale_label: Rollout Status
+scale:
+  - "Rolled out: Yousta Mens Wear (14 Apr 2026)"
+  - "All Centric styles migrated"
+  - "Upcoming: Yousta All Segments & Azorte & Fashion Factory (20 Apr)"
+  - "Upcoming: Trends (23 Apr)"
+scale_caption: |
+  Phased migration off Centric, format-by-format. Dedicated ticket-based support channel
+  live for post-rollout issues.
+
+what_improved:
+  body: |
+    Design documentation time reduced **80%** via auto-generated tech specs. Full
+    Centric PLM migration completed — single platform for all product data. One-login
+    access (SSO) via Impetus Platform, no separate credentials needed. High-quality
+    tech pack images with simplified, intuitive UI. Full style lifecycle: moodboard →
+    design → tech pack → costing → production. Connected to CMT for consistent master
+    data and to Costing Engine, barcodes and FTF. AI-generated walkthrough videos +
+    open house sessions for rapid onboarding.
+  expected_metric_impact: |
+    80% less design documentation time means designers ship more styles per person per
+    season. Replacing Centric eliminates a per-seat licence cost and the hand-off lag
+    between Design and Costing. Format-by-format rollout (Yousta Mens → Yousta All →
+    Azorte → Fashion Factory → Trends) means migration risk is bounded per format.
+
+updates_shipped:
+  - date: "Case study"
+    heading: "Superdry SDX · Impetus AI Native Design (Accenture s17–s18)"
+    bullets:
+      - "**120 designs generated in 5 days with just 2 designers.**"
+      - "**90% reduction in design time.**"
+      - "Rapid Design Creation, Options Explosion and Digital Prototyping in minutes. **Moodboard → Artwork → Production.** Moodboard generated using Gen AI; 2D Linesheet auto-generated."
+      - "Live on AJIO product page: [superdry-sdx-keys-t-shirt](https://www.ajio.com/superdry-sdx-keys-t-shirt/p/410539961_nmr)."
+  - date: "14 Apr 2026"
+    heading: "PLM Rolled Out for Yousta Mens Wear"
+    bullets:
+      - "All Centric styles, materials and libraries migrated; further Centric updates restricted."
+      - "Dedicated ticket-based support channel live for post-rollout issues."
+  - date: "Apr 2026 (Upcoming)"
+    heading: "Phased Format Rollout"
+    bullets:
+      - "**20 Apr:** Yousta All Segments, Azorte, Fashion Factory go live."
+      - "**23 Apr:** Trends rollout planned."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/plm/screenshot-015.jpg"
+    caption: "**Designer · Create new style** · Modal with season, brand, segment, family, class, brick selections plus auto-generated Style ID."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/plm/screenshot-016.jpg"
+    caption: "**Designer · Material code search + Technical Designer · Size chart / POM** · Drag-and-drop image upload · Points-of-measurement table with measurements and fit parameters."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/plm/screenshot-017.jpg"
+    caption: "**Technical Designer · Styles grid + Buyer · Style overview** · Product codes, brands and seasonal status · Workflow stages (Dev / Buying / TD / Sourcing / Costing / Buy)."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/plm/screenshot-018.jpg"
+    caption: "**Buyer · Sourcing details + Product Manager · Style hierarchy + Tech Pack** · Supplier info, costs, MRP, HSN, fit process · Tech pack with full property table."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/plm/screenshot-019.jpg"
+    caption: "**Product Manager · Bill of Materials editor + Style images upload** · Component-level BOM with pricing and UoM · Drag-and-drop multi-image upload."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/plm/screenshot-020.jpg"
+    caption: "**Product Manager · Styles dashboard** · Style codes, hierarchy and workflow status across the full pipeline."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 14–20"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md · §A.3"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 2
+  current_summary: |
+    PLM sits at **L2 · Augmented**: AI auto-generates tech specs from style images,
+    designers approve. The 80% docs-time reduction is the L1 → L2 jump in motion.
+    L3 is digital prototyping that replaces physical samples for a majority of styles.
+  workflows:
+    - name: "Product Development"
+      number: "2.3"
+      current: 2
+      target: 3
+      plan: "Digital prototyping replaces physical samples; design documentation 80% faster via AI tech specs; cycle compressing from multi-month to weeks."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Product Development · L2 → L3"
+      body: "Tech-pack-to-sample cycle compresses; digital approvals replace round-trip physical samples for core styles."
+    - eyebrow: "Risk reduction milestone"
+      title: "Centric retired across all formats"
+      body: "Yousta Mens live; All Segments + Azorte + Fashion Factory (20 Apr); Trends (23 Apr) — single platform, no per-seat licence."
+    - eyebrow: "Identity shift indicator"
+      title: "One PLM for all of F&amp;L"
+      body: "Tech designers, buyers, sourcing teams operate on the same surface — Costing Engine, FTF, EAN all hooked in."

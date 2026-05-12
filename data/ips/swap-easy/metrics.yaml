@@ -1,0 +1,21 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: stores_live
+    label: Stores live
+    value: 625
+    definition: Reliance Digital footprint
+    source: RD ops
+    confidence: live
+  - id: month_1_revenue_inr_cr
+    label: Month-1 revenue
+    value: ₹1.5 Cr
+    definition: Live launch month
+    source: RD finance
+    confidence: audited
+  - id: aov_inr
+    label: AOV
+    value: ~₹14,000
+    definition: Per swap transaction
+    source: SwapEasy ops
+    confidence: live

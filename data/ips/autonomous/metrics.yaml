@@ -1,0 +1,27 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: sub_tracks
+    label: Sub-tracks
+    value: 11
+    definition: Total in Autonomous capability layer
+    source: Autonomous canvas
+    confidence: live
+  - id: live_production
+    label: Live · production
+    value: 7
+    definition: Out of 11
+    source: Autonomous canvas
+    confidence: live
+  - id: pilot
+    label: Pilot
+    value: 2
+    definition: Out of 11
+    source: Autonomous canvas
+    confidence: live
+  - id: in_development
+    label: In development
+    value: 2
+    definition: Out of 11
+    source: Autonomous canvas
+    confidence: live

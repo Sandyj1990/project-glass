@@ -1,0 +1,15 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+metrics:
+  - id: orders_per_min
+    label: Orders per minute
+    value: 700+
+    definition: Sustained peak
+    source: Quick ops
+    confidence: live
+  - id: on_time_rate
+    label: On-time rate
+    value: 90%
+    definition: Sub-30-min delivery target
+    source: Quick ops
+    confidence: live

@@ -1,0 +1,96 @@
+{
+  "page": "impetus/nextwave/index.html",
+  "spec": "docs/impetus-restructure-spec.md",
+  "audit_date": "2026-05-02",
+  "score": 75,
+  "grade": "C",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 88,
+    "source_traceability": 85,
+    "tone_of_voice": 70,
+    "honesty_register": 70,
+    "visual_completeness": 72,
+    "cross_page_consistency": 80
+  },
+  "notes": "Visual phase partially run: dev server unreachable (net::ERR_EMPTY_RESPONSE) for every localhost:8765 GET during the audit. CDN spot-check for nextwave/screenshot-024-v2-b.jpg returned 200. Lightbox markup + script present. Section-label contiguity verified by file read.",
+  "findings": [
+    {
+      "id": "NW-1",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "§03 Reach & Adoption · section label",
+      "issue": "Line 188: <div class=\"section-label mb-4\">03 · Reach &amp;amp; Adoption</div> — double-encoded HTML entity (&amp; escaped twice) will render visibly as 'Reach &amp; Adoption' on the page, not 'Reach & Adoption'. Same bug also present in cortex/index.html:200 (Alerts &amp;amp; Escalations) — strongly suggests the renderer is escaping '&' a second time after the YAML already passed it as '&amp;'.",
+      "fix": "Strip the redundant 'amp;' in the rendered HTML and audit build_impetus.py's escape logic. The YAML at data/impetus/nextwave.yaml line 34 has 'scale_label: Reach &amp; Adoption' — renderer is double-encoding it on output.",
+      "files": ["impetus/nextwave/index.html:188", "data/impetus/nextwave.yaml:34"],
+      "auto_fixable": true
+    },
+    {
+      "id": "NW-2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§02 What it does for you",
+      "issue": "Paragraph 2 (lines 178-183) repeats 'leadership direction' twice in three sentences: 'Low active usage reflects the leadership direction: moving from 400 human designers manually browsing trends to AI-native flows...' followed by 'Leadership direction: move toward AI-generated designs where human designers curate rather than create from scratch.' The second sentence near-duplicates the first.",
+      "fix": "Drop the repeating second sentence (line 182-183). The first sentence already states the direction; the duplication reads as filler. Trim the section to a single 3-sentence paragraph.",
+      "files": ["impetus/nextwave/index.html:178", "impetus/nextwave/index.html:182"],
+      "auto_fixable": true
+    },
+    {
+      "id": "NW-3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "Hero status pill",
+      "issue": "Hero pill = 'Live' but the page itself reports active usage at ~19% (~81 of ~424). The page handles this honestly in §03 caption ('Active usage low and falling on purpose...'), but a Live pill on a tool with 19% active engagement is a borderline overclaim. The mitigation in prose is good; consider tagging the pill itself.",
+      "fix": "Either keep 'Live' (defensible — the platform is in production) or qualify with 'Live · low daily-use by design'. The prose explanation must stay regardless.",
+      "files": ["impetus/nextwave/index.html:168"],
+      "auto_fixable": false
+    },
+    {
+      "id": "NW-4",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "Hero · sub-line redundancy",
+      "issue": "Hero H1 (line 163) reads 'NextWave (Fashion Trends Forecasting).' and the sub-line directly below (line 164) reads '(Trends Analysis · Fashion Trends Forecasting)'. 'Fashion Trends Forecasting' appears twice in two adjacent lines.",
+      "fix": "Drop 'Fashion Trends Forecasting' from the sub-line; leave just '(Trends Analysis)' or drop the sub-line entirely since the H1 already says the long form.",
+      "files": ["impetus/nextwave/index.html:164"],
+      "auto_fixable": true
+    },
+    {
+      "id": "NW-5",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 Screenshots · last caption",
+      "issue": "Line 244 caption alt-text starts with lowercase 'attributes' — 'attributes· Body type, brand, color and fit distribution charts.' Alongside the missing-space-before-'·' renderer artefact present elsewhere.",
+      "fix": "Capitalise to 'Attributes' and apply the same caption-split-renderer fix used for cortex (CTX-4).",
+      "files": ["impetus/nextwave/index.html:244"],
+      "auto_fixable": true
+    },
+    {
+      "id": "NW-6",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 Screenshots · caption format",
+      "issue": "Caption alt-texts on lines 223, 230, 237, 244 all carry the 'Title· Description' artefact (no space before the '·'). Identical pattern to cortex CTX-4 and master-hub MH-7 — same root cause.",
+      "fix": "One-pass renderer fix in build_impetus.py: insert a space around the '·' separator when splitting composite captions.",
+      "files": ["impetus/nextwave/index.html:223", "impetus/nextwave/index.html:230", "impetus/nextwave/index.html:237", "impetus/nextwave/index.html:244"],
+      "auto_fixable": true
+    },
+    {
+      "id": "NW-7",
+      "severity": "LOW",
+      "dimension": "cross_page_consistency",
+      "section": "Cross-page · impetus index value-chain band",
+      "issue": "impetus/index.html line 248 'Plan' band names this surface 'NextWave (trends)' — lower-case 'trends' parenthetical. The page itself uses '(Trends Analysis · Fashion Trends Forecasting)' as the H1 sub-line. Convention drift but not a name change.",
+      "fix": "Pick one and apply consistently — either '(trends)' across all references or the longer parenthetical. Recommend keeping the value-chain band tight ('NextWave') and dropping the parenthetical there.",
+      "files": ["impetus/index.html:248"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Section labels are contiguous (hero · 02 · 03 · 04 · 05); no gap from the deleted §05 Updates Shipped + Sources sections.",
+    "Honesty about ~19% active usage is preserved in the §02 prose and §03 caption — the page does not hide the low engagement, it explains why ('AI-native flows where fewer designers curate AI-generated outputs').",
+    "Screenshot URLs use the -v2/-v2-b versioned pattern; CDN spot-check returns 200; lightbox markup + script present at the bottom of the page.",
+    "§03 chip strip names the actual sub-products (Fashion Eye · Celebrity Corner · Regional Trends · Ajio trending queries) — gives an Apex reader a navigable mental model of what's inside the platform.",
+    "Page title and breadcrumb both carry the renamed 'NextWave (Fashion Trends Forecasting)' form, matching the impetus/index.html card title."
+  ]
+}

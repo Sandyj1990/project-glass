@@ -1,0 +1,25 @@
+{
+  "slug": "ask-impetus",
+  "name": "Ask Impetus \u00b7 AI Business Analyst",
+  "tagline": "CXO + brand-head facing \u00b7 NL Q&A across all retail systems.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-12-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#ask-impetus",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "ai-agent",
+    "analyst",
+    "natural-language"
+  ]
+}

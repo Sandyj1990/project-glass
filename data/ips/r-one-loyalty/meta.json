@@ -1,0 +1,22 @@
+{
+  "slug": "r-one-loyalty",
+  "name": "Club R-One Loyalty",
+  "tagline": "Tiered loyalty \u00b7 standardised across Sephora, Hamleys, Kiko, Trends, Azorte, Yousta.",
+  "track": "samarth",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": null,
+  "last_release": null,
+  "verticals": [
+    "fashion",
+    "beauty"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/samarth#r-one-loyalty",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": []
+}

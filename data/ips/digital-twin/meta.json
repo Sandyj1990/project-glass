@@ -1,0 +1,26 @@
+{
+  "slug": "digital-twin",
+  "name": "Digital Twin",
+  "tagline": "Fabric \u00b7 garment \u00b7 supply \u00b7 store \u00b7 4 layers digitally mirrored.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-08-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "plan",
+    "move"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#digital-twin",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "3d",
+    "supply-chain",
+    "simulation"
+  ]
+}

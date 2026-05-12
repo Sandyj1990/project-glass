@@ -1,0 +1,157 @@
+{
+  "page": "ucp/index.html",
+  "spec": "docs/ucp-marketing-os-spec.md",
+  "audit_date": "2026-05-01",
+  "page_version": "v0.9.1",
+  "score": 84,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 82,
+    "tone_of_voice": 86,
+    "honesty_register": 84,
+    "visual_completeness": 95,
+    "cross_page_consistency": 70
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "Home page · UCP cards",
+      "issue": "Home page UCP cards (lines 133, 138, 169, 189) link to /jcp#ucp legacy hash anchor instead of /ucp. UCP now has its own page; the JCP hash is stale.",
+      "fix": "Sweep index.html: replace href=\"/jcp#ucp\" with href=\"/ucp\" for all 4 UCP cards.",
+      "files": ["index.html:133", "index.html:138", "index.html:169", "index.html:189"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H2",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog · UCP IPs row",
+      "issue": "catalog/index.html:347 lists 'Reliance Retail Account v2' as Pilot, but per UCP release notes (Apr-10-2025 entry: 'v2 went live') it is Live. UCP page §02 correctly lists it as live foundation.",
+      "fix": "Update catalog row 347: change pill from pill-pilot to pill-live, status text from 'Pilot · v2 rolling FY26-27' to 'Live · DPDP-compliant · API-first · 12 channels'.",
+      "files": ["catalog/index.html:347"],
+      "auto_fixable": true
+    },
+    {
+      "id": "H3",
+      "severity": "HIGH",
+      "dimension": "structural_compliance",
+      "section": "§06 release timeline label",
+      "issue": "Section label reads '06 · Release timeline · 14 major shipments · Jan-2024 → Apr-2026' but the section contains 16 timeline cards (added MI + Brand Health rows in this commit). Number drift.",
+      "fix": "Update section label from '14 major shipments' to '16 major shipments'.",
+      "files": ["ucp/index.html:487"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog · UCP row",
+      "issue": "catalog/index.html:145 and :343 list UCP as '80+ formats · 15K+ stores'. UCP page (sourced from Apr-3-2026 release note) says '75+ formats / 15K+ stores'. Catalog overstates by 5+ formats.",
+      "fix": "Update catalog rows 145 and 343 to '75+ formats · 15K+ stores' to match the source.",
+      "files": ["catalog/index.html:145", "catalog/index.html:343"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§02 Performance · capability stack",
+      "issue": "Performance numbers (~19 ms p50 API latency · ~300 ms event processing · 500 events/sec sustained) do not appear in any file in docs/UCP Notes compilation/. Source pipeline broken for these specific claims — they were carried forward from the prior /ucp page without being added to the spec's source compilation.",
+      "fix": "Either (a) ask UCP team for the source doc and add to compilation folder, or (b) drop the specific numbers and replace with qualitative phrasing ('sub-second p50 API latency · sub-second event processing · 500-events/sec sustained').",
+      "files": ["ucp/index.html:202", "ucp/index.html:203", "ucp/index.html:204"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "Hero stat tile · Privacy-compliant 100%",
+      "issue": "'Privacy-compliant 100%' stat tile reads as a quantification of a binary state. Apex reviewer may parse '100%' as a comparable metric and ask 'what's the denominator?'",
+      "fix": "Replace with a non-percentage framing: 'Privacy-compliant · DPDP / Jio Cloud · TOPs-managed · InfoSec vetted' or replace with a different quantification (e.g., 'Channels InfoSec-vetted · 12 / 12').",
+      "files": ["ucp/index.html:121"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§04 Brand Health 'Live · L3 today → L4 target'",
+      "issue": "Source release notes describe Brand Health and Marketing Intelligence as cockpits but do not explicitly state production-live status. Pill 'Live · L3' may overclaim relative to source. Screenshots prove the cockpits exist; production-deployment status needs explicit source citation.",
+      "fix": "Either (a) add a one-line source note '(deployed: Apr-2026; source: UCP product team confirmation)' under each cockpit pill, or (b) downgrade to 'Building · L3' if cockpits are still in user-acceptance.",
+      "files": ["ucp/index.html:313", "ucp/index.html:364"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M5",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§01 footnote · L-rung definitions",
+      "issue": "Footnote claims '/autonomous' carries L0-L5 definitions. Earlier check showed /autonomous page does not actually carry explicit L0-L5 definitions — only the mega-menu pill says 'L0-L5'. The L3 / L4 paraphrase in the footnote ('operator-validated, automated execution' / 'system-driven decisions with operator oversight') is unsourced.",
+      "fix": "Either (a) add the L0-L5 definition table to /autonomous and link, or (b) drop the L3/L4 parenthetical paraphrase from this footnote and just say 'See /autonomous for the framework'.",
+      "files": ["ucp/index.html:169"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§05 case study sub-heading",
+      "issue": "'10 RCS campaigns · 11 to 19 - Apr - 2026' uses 'to' between dates. Register convention is en-dash or arrow.",
+      "fix": "Change '11 to 19 - Apr - 2026' to '11 - Apr - 2026 → 19 - Apr - 2026' or '11–19 - Apr - 2026'.",
+      "files": ["ucp/index.html:449"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§02 channels list · 'RBL retail-brand microsites'",
+      "issue": "'RBL retail-brand microsites · InfoSec-vetted' is vague — what are the microsites, how many, what does InfoSec-vetted unlock?",
+      "fix": "Either expand to 'RBL retail-brand microsites · InfoSec-vetted public-path connectivity for cross-format login' or move to a sub-bullet under a parent channel.",
+      "files": ["ucp/index.html:194"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 AI-Native UCP card · 'No SQL'",
+      "issue": "Card lede 'Query customer bases via natural language. No SQL.' uses engineering jargon (SQL) in user-facing copy. Apex doesn't write SQL.",
+      "fix": "Change 'No SQL' to 'No technical setup' or 'No dashboards or queries'.",
+      "files": ["ucp/index.html:431"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L4",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§03 architecture · video card label",
+      "issue": "Video pill says 'YouTube' (platform name) — register style elsewhere uses content-type pills.",
+      "fix": "Change pill text from 'YouTube' to 'Video' for consistency with the lightbox approach.",
+      "files": ["ucp/index.html:239"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L5",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§04 Brand Health Card B intro paragraph",
+      "issue": "Em-dash usage in 'do consumers know us, prefer us, use us, trust us — and how do we compare to the competition?' is slightly conversational. Apex register prefers shorter declarative sentences.",
+      "fix": "Optional polish: split into 'Brand Health answers two questions: do consumers know us, prefer us, use us, trust us — and how do we compare to the competition?'",
+      "files": ["ucp/index.html:366"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Source-traceability rigorous for §05 RD DDD case study — every number (1.25M recipients, ₹20.39 Cr, 5,693 buyers, lift table) verifiable against Analysis_Dashboard.html.",
+    "L-rung pills (L3 today → L4 target) explicitly tied to /autonomous reference and MDA letter framing — defensible per-claim for each Marketing OS module.",
+    "§04 Marketing OS cockpits now carry visual evidence (10 screenshots) — was zero in v0.9.0; closes the credibility gap on the section that defines the page.",
+    "Architecture section (§03) pairs the conceptual 4-layer card grid with the actual UCP architecture diagram and a walkthrough video — gives Apex both the abstract and the concrete answer to 'how is this built'.",
+    "§07 Built by table now matches /hirefirst pattern (3-col Role / Person / Owns) and adds RIL Counterparts row — improves register-wide consistency.",
+    "Single-paragraph spec at docs/ucp-marketing-os-spec.md with 4 locked decisions makes the page's choices defensible and reproducible."
+  ]
+}

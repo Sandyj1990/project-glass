@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Channels · JCP · Fynd × RRVL · JPL</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+
+.filter-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted);
+  padding: 6px 12px; border-radius: 999px; border: 1px solid var(--border);
+  background: white; cursor: pointer; user-select: none; transition: all 0.15s;
+}
+.filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.filter-chip.active { background: var(--ink); color: white; border-color: var(--ink); }
+.filter-chip .count { color: inherit; opacity: 0.55; }
+
+.status-pill {
+  display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 2px 7px; border-radius: 3px;
+}
+.status-live { background: #ECFDF5; color: #047857; border: 1px solid #BBF7D0; }
+.status-progress { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+.status-planned { background: #F3F4F6; color: #4B5563; border: 1px solid #D1D5DB; }
+
+/* Storefront card · 16:9 desktop screenshot */
+.shot-card {
+  background: white; border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; transition: all 0.15s;
+}
+.shot-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.shot-thumb {
+  position: relative; aspect-ratio: 16/9; background: var(--bg-soft);
+  border-bottom: 1px solid var(--border); cursor: zoom-in;
+  overflow: hidden;
+}
+.shot-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+.shot-thumb .meta-badge {
+  position: absolute; top: 6px; right: 6px;
+  font-family: 'JetBrains Mono', monospace; font-size: 9.5px;
+  background: rgba(0,0,0,0.6); color: white; padding: 2px 6px; border-radius: 3px;
+}
+
+/* App card · phone-shaped 9:16 screenshot with icon overlay */
+.app-card {
+  background: white; border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; transition: all 0.15s;
+}
+.app-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.app-thumb {
+  position: relative; aspect-ratio: 9/16; background: var(--bg-soft);
+  border-bottom: 1px solid var(--border); cursor: zoom-in;
+  overflow: hidden;
+}
+.app-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.app-thumb .icon-overlay {
+  position: absolute; top: 8px; left: 8px;
+  width: 40px; height: 40px; border-radius: 8px;
+  border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  background: white;
+}
+.app-thumb .icon-overlay img { width: 100%; height: 100%; object-fit: cover; }
+
+/* Skipped card · text-only minimal */
+.skip-card {
+  background: var(--bg-soft); border: 1px dashed var(--border);
+  border-radius: 8px; padding: 14px 16px;
+}
+.skip-card .reason {
+  font-size: 12px; color: var(--ink-muted); line-height: 1.4; margin-top: 6px;
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.lightbox .meta {
+  position: absolute; bottom: 14px; left: 22px; color: white; opacity: 0.85;
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em;
+}
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <a href="/jcp">JCP</a> <span class="sep">/</span> <span style="color: var(--ink);">Channels</span></div>
+  <div class="section-label mb-3">JCP · Channel Coverage · 78 channels</div>
+  <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Channels.</h1>
+  <p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">
+    Every storefront and mobile app the JioCommerce Platform powers across Reliance Retail — websites, in-store kiosks, marketplaces and OMS.
+  </p>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/jcp" class="subnav-link">Overview</a><a href="/jcp/channels" class="subnav-link active">Channels</a><a href="/jcp/cataloging" class="subnav-link">AI Cataloging</a><a href="/jcp/7eleven" class="subnav-link">7-Eleven</a><a href="/rcpl" class="subnav-link">RCPL</a><a href="/jcp/release-notes" class="subnav-link">Release Notes</a></div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+    <div class="card p-4"><div class="cap-num mb-1">Total channels</div><div class="display-2 text-3xl" style="color: var(--ink);">78</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Storefronts captured</div><div class="display-2 text-3xl accent">34</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">Mobile apps captured</div><div class="display-2 text-3xl accent">18</div></div>
+    <div class="card p-4"><div class="cap-num mb-1">In-store / B2B / planned</div><div class="display-2 text-3xl" style="color: var(--ink-muted);">30</div></div>
+  </div>
+</div></section>
+
+<section class="py-8 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">Filter by surface</div>
+  <div class="flex flex-wrap gap-2" id="surface-filters">
+    <button class="filter-chip active" data-filter="surface" data-value="all">All <span class="count">· 78</span></button>
+    <button class="filter-chip" data-filter="surface" data-value="mobile-app">Mobile apps <span class="count">· 18</span></button>
+    <button class="filter-chip" data-filter="surface" data-value="storefront">Storefronts <span class="count">· 34</span></button>
+    <button class="filter-chip" data-filter="surface" data-value="other">In-store · B2B · planned <span class="count">· 30</span></button>
+  </div>
+</div></section>
+
+<section class="py-12 border-b" id="section-apps" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">Mobile apps · 18</div>
+  <h2 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">Consumer apps powered by JCP.</h2>
+  <p class="text-sm max-w-3xl mb-8" style="color: var(--ink-muted);">First phone screenshot from each app's Google Play Store listing. Click any tile to zoom; click ↗ to open the listing.</p>
+  <div id="grid-apps" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+    
+<article class="app-card channel-card"
+  data-slug="metro-kirana" data-cluster="JMP" data-status="Live" data-surface="mobile-app" data-vertical="Grocery">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/accenture-s34-img04.png', 'Metro Kirana')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/accenture-s34-img04.png" alt="Metro Kirana app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Metro Kirana</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Grocery</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="rcpl" data-cluster="JMP" data-status="Live" data-surface="mobile-app" data-vertical="Grocery">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/rcpl/accenture-s34-img01.png', 'RCPL')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/rcpl/accenture-s34-img01.png" alt="RCPL app" loading="lazy" />
+    
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">B2B · FMCG DMS</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);"><a href="/rcpl" style="color: var(--ink); text-decoration: underline;">RCPL</a></h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Campa · Independence · ₹20,000 Cr FY26 · <a href="/rcpl" style="color: var(--accent);">deep dive →</a></div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="jiomart-digital" data-cluster="JMD" data-status="Live" data-surface="mobile-app" data-vertical="Electronics">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart-digital/accenture-s34-img06.png', 'Jiomart Digital ASP, B2B, StoreSell, COFO')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart-digital/accenture-s34-img06.png" alt="Jiomart Digital ASP, B2B, StoreSell, COFO app" loading="lazy" />
+    
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">B2B · electronics ASP</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Jiomart Digital ASP, B2B, StoreSell, COFO</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Electronics · Website live for BPL, Kelvinator, MyLyf, Wyzr</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="reliance-digital" data-cluster="JMD" data-status="Live" data-surface="mobile-app" data-vertical="Electronics">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/accenture-s34-img03.png', 'Reliance Digital')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/accenture-s34-img03.png" alt="Reliance Digital app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Reliance Digital</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Electronics</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="tira" data-cluster="Tira" data-status="Live" data-surface="mobile-app" data-vertical="Beauty">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/accenture-s33-img04.png', 'Tira')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/accenture-s33-img04.png" alt="Tira app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Tira</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Beauty</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="jiomart" data-cluster="Jiomart-RHOS" data-status="Live" data-surface="mobile-app" data-vertical="Grocery, Electronics, F&amp;L">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/accenture-s33-img03.png', 'Jiomart')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/accenture-s33-img03.png" alt="Jiomart app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Jiomart</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Grocery, Electronics, F&amp;L · 30% rollout</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="ajio" data-cluster="Ajio" data-status="In-Progress" data-surface="mobile-app" data-vertical="F&amp;L">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png', 'Ajio')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png" alt="Ajio app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-progress">In-Progress</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Ajio</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="netmeds" data-cluster="Netmeds" data-status="Live" data-surface="mobile-app" data-vertical="Pharma">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png', 'Netmeds · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png" alt="Netmeds app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Netmeds</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Pharma</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="urban-ladder" data-cluster="Swadesh" data-status="Live" data-surface="mobile-app" data-vertical="Furniture">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/shot-2.png', 'Urban Ladder · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/shot-2.png" alt="Urban Ladder app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Urban Ladder</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Furniture · Phase 1 live, Phase 2 in-progress</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="reliance-jewels" data-cluster="SNG" data-status="Live" data-surface="mobile-app" data-vertical="Jewellery">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/shot-2.png', 'Reliance Jewels · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/shot-2.png" alt="Reliance Jewels app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Reliance Jewels</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Jewellery</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="jiogames" data-cluster="SNG" data-status="Live" data-surface="mobile-app" data-vertical="Digital Top-Up">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/shot-1.png', 'Jiogames · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/shot-1.png" alt="Jiogames app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Jiogames</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Digital Top-Up</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="7eleven" data-cluster="SNG" data-status="Live" data-surface="mobile-app" data-vertical="Fresh Food">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/shot-2.png', '7-Eleven · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/shot-2.png" alt="7-Eleven app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">detail page available</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">7-Eleven</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Fresh Food · Integration with Zomato &amp; Swiggy</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="freshpik" data-cluster="SNG" data-status="Live" data-surface="mobile-app" data-vertical="Grocery">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/shot-1.png', 'Freshpik · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/shot-1.png" alt="Freshpik app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Freshpik</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Grocery</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="milkbasket" data-cluster="Jiomart Headless" data-status="Live" data-surface="mobile-app" data-vertical="Grocery">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/shot-4.png', 'Milkbasket · Play Store')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/shot-4.png" alt="Milkbasket app" loading="lazy" />
+    <div class="icon-overlay"><img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/icon.png" alt="" loading="lazy" /></div>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Milkbasket</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Grocery · Live on JCP only for cataloguing</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="trends" data-cluster="SNG" data-status="Live" data-surface="mobile-app" data-vertical="F&amp;L">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/trends/accenture-s33-img01.png', 'Trends')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/trends/accenture-s33-img01.png" alt="Trends app" loading="lazy" />
+    
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">in-store companion · staff app</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Trends</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">F&amp;L · Non-Commerce Website. Live with Companion App in 2 stores. Kiosk deployment planned.</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="superdry-app" data-cluster="FP" data-status="Live" data-surface="mobile-app" data-vertical="F&amp;L">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry-app/shot-1.png', 'Superdry India · App')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry-app/shot-1.png" alt="Superdry India · App app" loading="lazy" />
+    
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">web-wrapped app</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Superdry India · App</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">F&amp;L · Web-wrapped storefront on Play Store</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="hamleys-app" data-cluster="FP" data-status="Live" data-surface="mobile-app" data-vertical="Toys &amp; Kids">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys-app/shot-1.png', 'Hamleys India · App')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys-app/shot-1.png" alt="Hamleys India · App app" loading="lazy" />
+    
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">web-wrapped app</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Hamleys India · App</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Toys &amp; Kids · Web-wrapped storefront on Play Store</div>
+  </div>
+</article>
+
+<article class="app-card channel-card"
+  data-slug="sephora-app" data-cluster="FP" data-status="Live" data-surface="mobile-app" data-vertical="Beauty">
+  <div class="app-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora-app/shot-1.png', 'Sephora India · App')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora-app/shot-1.png" alt="Sephora India · App app" loading="lazy" />
+    
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+      <span class="status-pill" style="background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;">consumer app</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Sephora India · App</h3>
+    <div class="text-xs" style="color: var(--ink-muted);">Beauty · Consumer app on Play Store</div>
+  </div>
+</article>
+
+  </div>
+</div></section>
+
+<section class="py-12 border-b" id="section-storefronts" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">Storefronts · 34</div>
+  <h2 class="display-2 text-2xl md:text-3xl mb-8" style="color: var(--ink);">Live websites powered by JCP.</h2>
+  <div id="grid-storefronts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    
+<article class="shot-card channel-card"
+  data-slug="centro" data-cluster="SNG" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/centro.png', 'Centro · centro.style')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/centro.png" alt="Centro storefront" loading="lazy" />
+    <span class="meta-badge">6.39s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Centro Shoes</h3>
+    <a href="https://centro.style" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">centro.style ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="superdry" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry.png', 'SuperDry · superdry.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry.png" alt="SuperDry storefront" loading="lazy" />
+    <span class="meta-badge">2.97s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">SuperDry</h3>
+    <a href="https://superdry.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">superdry.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="sunglasshut" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sunglasshut.png', 'Sunglasshut India · sunglasshut.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sunglasshut.png" alt="Sunglasshut India storefront" loading="lazy" />
+    <span class="meta-badge">13.61s · a11y 92</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Sunglasshut India</h3>
+    <a href="https://sunglasshut.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">sunglasshut.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="armani-exchange" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/armani-exchange.png', 'Armani Exchange · armaniexchange.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/armani-exchange.png" alt="Armani Exchange storefront" loading="lazy" />
+    <span class="meta-badge">13.79s · a11y 83</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Armani Exchange</h3>
+    <a href="https://armaniexchange.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">armaniexchange.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="muji" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L, Beauty, Home Decor, Electronics">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/muji.png', 'Muji · muji.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/muji.png" alt="Muji storefront" loading="lazy" />
+    <span class="meta-badge">12.77s · a11y 88</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Muji</h3>
+    <a href="https://muji.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">muji.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L, Beauty, Home Decor, Electronics</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="afew-rahul-mishra" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/afew-rahul-mishra.png', 'AFEW by Rahul Mishra · afew.rahulmishra.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/afew-rahul-mishra.png" alt="AFEW by Rahul Mishra storefront" loading="lazy" />
+    <span class="meta-badge">1.89s · a11y 81</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AFEW by Rahul Mishra</h3>
+    <a href="https://afew.rahulmishra.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">afew.rahulmishra.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="gulabo" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gulabo.png', 'Gulabo · gulabo.abusandeep.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gulabo.png" alt="Gulabo storefront" loading="lazy" />
+    <span class="meta-badge">4.38s · a11y 85</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Gulabo</h3>
+    <a href="https://gulabo.abusandeep.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">gulabo.abusandeep.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="akok" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/akok.png', 'AKOK · akok.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/akok.png" alt="AKOK storefront" loading="lazy" />
+    <span class="meta-badge">11.74s · a11y 80</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AKOK</h3>
+    <a href="https://akok.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">akok.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="vision-express" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/vision-express.png', 'Vision Express · visionexpress.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/vision-express.png" alt="Vision Express storefront" loading="lazy" />
+    <span class="meta-badge">3.11s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Vision Express</h3>
+    <a href="https://visionexpress.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">visionexpress.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L · Non-Commerce Website. Commerce Website development in-progress</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="steve-madden" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/steve-madden.png', 'Steve Madden · stevemadden.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/steve-madden.png" alt="Steve Madden storefront" loading="lazy" />
+    <span class="meta-badge">14.92s · a11y 90</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Steve Madden</h3>
+    <a href="https://stevemadden.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">stevemadden.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="pottery-barn-kids" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="Furniture">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn-kids.png', 'Pottery Barn Kids · potterybarnkids.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn-kids.png" alt="Pottery Barn Kids storefront" loading="lazy" />
+    <span class="meta-badge">14.29s · a11y 86</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Pottery Barn Kids</h3>
+    <a href="https://potterybarnkids.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">potterybarnkids.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">Furniture</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="charles-tyrwhitt" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/charles-tyrwhitt.png', 'Charles Tyrwhitt · charlestyrwhitt.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/charles-tyrwhitt.png" alt="Charles Tyrwhitt storefront" loading="lazy" />
+    <span class="meta-badge">5.88s · a11y 81</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Charles Tyrwhitt</h3>
+    <a href="https://charlestyrwhitt.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">charlestyrwhitt.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="sephora" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="Beauty">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora.png', 'Sephora · sephora.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora.png" alt="Sephora storefront" loading="lazy" />
+    <span class="meta-badge">20.16s · a11y 92</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Sephora</h3>
+    <a href="https://sephora.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">sephora.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">Beauty</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="pottery-barn" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="Furniture">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn.png', 'Pottery Barn · potterybarn.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn.png" alt="Pottery Barn storefront" loading="lazy" />
+    <span class="meta-badge">2.00s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Pottery Barn</h3>
+    <a href="https://potterybarn.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">potterybarn.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">Furniture</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="ed-a-mamma" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ed-a-mamma.png', 'Ed-A-Mamma · edamamma.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ed-a-mamma.png" alt="Ed-A-Mamma storefront" loading="lazy" />
+    <span class="meta-badge">7.62s · a11y 86</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Ed-A-Mamma</h3>
+    <a href="https://edamamma.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">edamamma.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="brooks-brothers" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/brooks-brothers.png', 'Brooks Brothers · brooksbrothers.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/brooks-brothers.png" alt="Brooks Brothers storefront" loading="lazy" />
+    <span class="meta-badge">3.86s · a11y 87</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Brooks Brothers</h3>
+    <a href="https://brooksbrothers.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">brooksbrothers.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="diesel" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/diesel.png', 'Diesel · dieselindia.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/diesel.png" alt="Diesel storefront" loading="lazy" />
+    <span class="meta-badge">15.72s · a11y 88</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Diesel</h3>
+    <a href="https://dieselindia.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">dieselindia.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="westelm" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="Furniture">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/westelm.png', 'West Elm · westelm.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/westelm.png" alt="West Elm storefront" loading="lazy" />
+    <span class="meta-badge">15.34s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">West Elm</h3>
+    <a href="https://westelm.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">westelm.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">Furniture</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="mothercare" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L, Beauty">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/mothercare.png', 'Mothercare · mothercare.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/mothercare.png" alt="Mothercare storefront" loading="lazy" />
+    <span class="meta-badge">15.64s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Mothercare</h3>
+    <a href="https://mothercare.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">mothercare.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L, Beauty</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="gas-jeans" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gas-jeans.png', 'Gas Jeans · gasjeans.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gas-jeans.png" alt="Gas Jeans storefront" loading="lazy" />
+    <span class="meta-badge">0.77s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Gas Jeans</h3>
+    <a href="https://gasjeans.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">gasjeans.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="tiffany" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tiffany-v2.png', 'Tiffany · tiffany.co.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tiffany-v2.png" alt="Tiffany storefront" loading="lazy" />
+    <span class="meta-badge">25.62s · a11y 90</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Tiffany</h3>
+    <a href="https://tiffany.co.in/" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">tiffany.co.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="bally" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/bally.png', 'Bally · bally.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/bally.png" alt="Bally storefront" loading="lazy" />
+    <span class="meta-badge">3.87s · a11y 83</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Bally</h3>
+    <a href="https://bally.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">bally.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="hamleys" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys.png', 'Hamleys · hamleys.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys.png" alt="Hamleys storefront" loading="lazy" />
+    <span class="meta-badge">11.78s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Hamleys</h3>
+    <a href="https://hamleys.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">hamleys.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="tumi" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tumi.png', 'Tumi · tumi.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tumi.png" alt="Tumi storefront" loading="lazy" />
+    <span class="meta-badge">19.29s · a11y 81</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Tumi</h3>
+    <a href="https://tumi.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">tumi.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="ritu-kumar" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ritu-kumar.png', 'Ritu Kumar · ritukumar.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ritu-kumar.png" alt="Ritu Kumar storefront" loading="lazy" />
+    <span class="meta-badge">12.18s · a11y 86</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Ritu Kumar</h3>
+    <a href="https://ritukumar.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">ritukumar.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="satya-paul" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/satya-paul.png', 'Satya Paul · satyapaul.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/satya-paul.png" alt="Satya Paul storefront" loading="lazy" />
+    <span class="meta-badge">17.32s · a11y 92</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Satya Paul</h3>
+    <a href="https://satyapaul.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">satyapaul.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="hunkemoller" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hunkemoller.png', 'Hunkemoller · hunkemoller.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hunkemoller.png" alt="Hunkemoller storefront" loading="lazy" />
+    <span class="meta-badge">7.92s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Hunkemoller</h3>
+    <a href="https://hunkemoller.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">hunkemoller.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="coverstory" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coverstory.png', 'CoverStory · coverstory.co.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coverstory.png" alt="CoverStory storefront" loading="lazy" />
+    <span class="meta-badge">— · a11y None</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">CoverStory</h3>
+    <a href="https://coverstory.co.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">coverstory.co.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="la-martina" data-cluster="FP" data-status="In-Progress" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/la-martina.png', 'La Martina · lamartina.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/la-martina.png" alt="La Martina storefront" loading="lazy" />
+    <span class="meta-badge">— · a11y None</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-progress">In-Progress</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">La Martina</h3>
+    <a href="https://lamartina.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">lamartina.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L · International site live; India website going live next week (2026-05)</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="lenscrafters" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/lenscrafters.png', 'LensCrafters · lenscrafters.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/lenscrafters.png" alt="LensCrafters storefront" loading="lazy" />
+    <span class="meta-badge">30.55s · a11y 75</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">LensCrafters</h3>
+    <a href="https://lenscrafters.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">lenscrafters.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="coach" data-cluster="FP" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coach.png', 'Coach · coach.in')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/coach.png" alt="Coach storefront" loading="lazy" />
+    <span class="meta-badge">5.42s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-live">Live</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Coach</h3>
+    <a href="https://coach.in" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">coach.in ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="gap" data-cluster="FP" data-status="In-Progress" data-surface="storefront" data-vertical="F&amp;L">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gap.png', 'GAP · gap.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/gap.png" alt="GAP storefront" loading="lazy" />
+    <span class="meta-badge">7.72s · a11y 100</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-progress">In-Progress</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">GAP</h3>
+    <a href="https://gap.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">gap.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">F&amp;L</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="molton-brown" data-cluster="FP" data-status="Planned" data-surface="storefront" data-vertical="Beauty">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/molton-brown.png', 'Molton Brown · moltonbrown.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/molton-brown.png" alt="Molton Brown storefront" loading="lazy" />
+    <span class="meta-badge">— · a11y None</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-planned">Planned</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Molton Brown</h3>
+    <a href="https://moltonbrown.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">moltonbrown.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">Beauty · D2C site planned; international live</div>
+  </div>
+</article>
+
+<article class="shot-card channel-card"
+  data-slug="facegym" data-cluster="FP" data-status="In-Progress" data-surface="storefront" data-vertical="Beauty">
+  <div class="shot-thumb" onclick="zoomImage('https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/facegym.png', 'Facegym · facegym.com')">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/facegym.png" alt="Facegym storefront" loading="lazy" />
+    <span class="meta-badge">— · a11y None</span>
+  </div>
+  <div class="p-4">
+    <div class="flex items-center gap-2 mb-2 flex-wrap">
+      <span class="status-pill status-progress">In-Progress</span>
+    </div>
+    <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Facegym</h3>
+    <a href="https://facegym.com" target="_blank" rel="noopener" class="text-xs mono accent" style="text-decoration: underline; word-break: break-all;">facegym.com ↗</a>
+    <div class="text-xs mt-2" style="color: var(--ink-muted);">Beauty · Non-commerce site in progress; international live</div>
+  </div>
+</article>
+
+  </div>
+</div></section>
+
+<section class="py-12 border-b" id="section-other" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-3">In-store · B2B · planned · 30</div>
+  <h2 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">No public consumer surface.</h2>
+  <p class="text-sm max-w-3xl mb-8" style="color: var(--ink-muted);">Channels powered by JCP that don't have a separate consumer storefront or app — surfaced via the Companion App, StoreOS, kiosks, partner apps, B2B portals or sites under construction.</p>
+  <div id="grid-other" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+    
+<article class="skip-card channel-card"
+  data-slug="ajio-dms" data-cluster="JMP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Ajio DMS</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">B2B distribution platform · no consumer surface</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="farmer" data-cluster="JMP" data-status="To Be Planned" data-surface="other" data-vertical="Agriculture">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-planned">To Be Planned</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Farmer</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">Agriculture</div>
+  <div class="reason">Channel in planning stage · no live surface</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="pbg-websites" data-cluster="JMD" data-status="Live" data-surface="other" data-vertical="Electronics">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">PBG Websites</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">Electronics</div>
+  <div class="reason">Premium Business Group website portfolio · no single consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="swadesh" data-cluster="Swadesh" data-status="Live" data-surface="other" data-vertical="Furniture">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Swadesh</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">Furniture · India website live, International in-progress</div>
+  <div class="reason">Website-only craft commerce channel · no consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="amante" data-cluster="SNG" data-status="To Be Planned" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-planned">To Be Planned</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website, Marketplace</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Amante</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">JCP onboarding planned</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="zivame" data-cluster="SNG" data-status="To Be Planned" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-planned">To Be Planned</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website, Marketplace</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Zivame</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">JCP onboarding planned</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="clovia" data-cluster="SNG" data-status="To Be Planned" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-planned">To Be Planned</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website, Marketplace</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Clovia</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">JCP onboarding planned</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="yousta" data-cluster="SNG" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Yousta</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Website in-progress</div>
+  <div class="reason">In-Store today · website in-progress</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="azorte" data-cluster="SNG" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Azorte</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Website in-progress</div>
+  <div class="reason">In-Store today · website in-progress</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="fashion-factory" data-cluster="SNG" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Fashion Factory</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Live with Kiosk</div>
+  <div class="reason">In-Store + Kiosk · no consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="trends-footwear" data-cluster="SNG" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Trends Footwear</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">Web-only sub-brand of Trends · no standalone app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="performax" data-cluster="SNG" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Performax</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Non-Commerce Website</div>
+  <div class="reason">Non-commerce site · no consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="pret" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="Fresh Food">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">PRET</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">Fresh Food · Non-Commerce Website</div>
+  <div class="reason">Non-commerce site · no consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="adidas-kids" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">ADIDAS Kids</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="kate-spade" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Kate Spade</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Website development planned</div>
+  <div class="reason">In-Store / OMS only · website development planned</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="versace" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">VERSACE</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="tory-burch" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Tory Burch</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Website development planned</div>
+  <div class="reason">In-Store / OMS only · website development planned</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="scotch-soda" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Scotch &amp; Soda</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="paul-smith" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Paul Smith</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="paul-shark" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Paul &amp; Shark</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="michael-kors" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Michael Kors</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="emporio-armani" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Emporio Armani</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="ea7-emporio-armani" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">EA7 Emporio Armani</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="dune-london" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Dune London</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="boss" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">In-Store, OMS</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">BOSS</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">In-Store / OMS only · powered via Companion App + StoreOS</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="catwalk" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Catwalk</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Non-Commerce Website</div>
+  <div class="reason">Non-commerce site · no consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="avantra" data-cluster="FP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-live">Live</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Avantra</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Non-Commerce Website</div>
+  <div class="reason">Non-commerce site · no consumer app</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="kiko-milano" data-cluster="FP" data-status="Planned" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-planned">Planned</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">Kiko Milano</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L</div>
+  <div class="reason">Channel onboarding planned</div>
+</article>
+
+<article class="skip-card channel-card"
+  data-slug="ajsk" data-cluster="FP" data-status="In-Progress" data-surface="other" data-vertical="F&amp;L">
+  <div class="flex items-center gap-2 flex-wrap mb-1">
+    <span class="status-pill status-progress">In-Progress</span>
+    <span class="text-xs mono" style="color: var(--ink-muted);">Website</span>
+  </div>
+  <h3 class="font-semibold text-sm" style="color: var(--ink);">AJSK</h3>
+  <div class="text-xs mt-1" style="color: var(--ink-muted);">F&amp;L · Non-Commerce Website</div>
+  <div class="reason">Non-commerce site under construction</div>
+</article>
+
+  </div>
+</div></section>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+  <span class="close" onclick="closeLightbox(event)">×</span>
+  <img id="lightbox-img" src="" alt="" />
+  <div id="lightbox-meta" class="meta"></div>
+</div>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+const surfaceFilters = document.querySelectorAll('#surface-filters .filter-chip');
+const cards = document.querySelectorAll('.channel-card');
+const sectionAnchors = {
+  'storefront': document.getElementById('section-storefronts'),
+  'mobile-app': document.getElementById('section-apps'),
+  'other':      document.getElementById('section-other'),
+};
+let activeSurface = 'all';
+
+function applyFilters() {
+  cards.forEach(c => {
+    const ms = activeSurface === 'all' || c.dataset.surface === activeSurface;
+    c.style.display = ms ? '' : 'none';
+  });
+  // Hide entire sections if they have zero visible cards.
+  Object.entries(sectionAnchors).forEach(([surface, el]) => {
+    if (!el) return;
+    const anyVisible = el.querySelectorAll('.channel-card:not([style*="display: none"])').length > 0;
+    el.style.display = anyVisible ? '' : 'none';
+  });
+}
+
+surfaceFilters.forEach(b => b.addEventListener('click', () => {
+  surfaceFilters.forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  activeSurface = b.dataset.value;
+  applyFilters();
+}));
+
+function zoomImage(src, meta) {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-meta').textContent = meta || '';
+  lb.classList.add('open');
+}
+function closeLightbox(e) {
+  if (e && e.target.tagName === 'IMG') return;
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

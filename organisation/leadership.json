@@ -1,0 +1,139 @@
+{
+  "_comment": "Authoritative leadership stack for /organisation. Build script (tools/build_org_data.py) reads this and emits it under data.leaders. Names + scopes here are the single source of truth — they override anything derivable from the roster manager column. Source: keka_roster_full.csv at engineering-os/docs/onboarding/, joined on the 'CXO's' column (the people who appear there are the authoritative C-suite).",
+  "_history": "2026-05-03 round 3: refreshed from keka_roster_full.csv. Founders are self-reporting nodes (Farooq + SMG = Sreeraman); C-suite is everyone whose Reporting To is a founder. Roles like CTPO / COO / CBO derived from Job Title.",
+  "founders": [
+    {
+      "name": "Farooq Adam",
+      "title": "Founder",
+      "since": "2013-05-01",
+      "scope": "Sets product direction across the Fynd platform stack"
+    },
+    {
+      "name": "SMG",
+      "displayName": "Sreeraman Mohan Girija",
+      "title": "Founder",
+      "since": "2013-05-01",
+      "scope": "Drives commercial and partnership strategy"
+    }
+  ],
+  "cSuite": [
+    {
+      "name": "Jigar Dafda",
+      "title": "Chief Technology and Product Officer",
+      "_role": "CTPO",
+      "scope": "Engineering + Product across the platform stack",
+      "directReports": 265
+    },
+    {
+      "name": "Kushan Shah",
+      "title": "Chief Technology and Product Officer",
+      "_role": "CTPO",
+      "scope": "Engineering + Product across the platform stack",
+      "directReports": 101
+    },
+    {
+      "name": "Salman Saudagar",
+      "title": "Chief Operating Officer",
+      "_role": "COO",
+      "scope": "Operations across Impetus + Monobrands + Samarth",
+      "directReports": 14
+    }
+  ],
+  "projectLeads": {
+    "JCP": {
+      "name": "Jigar Dafda",
+      "title": "Chief Technology and Product Officer",
+      "scope": "JCP — the commerce spine across every Reliance Retail brand"
+    },
+    "Impetus": {
+      "name": "Khaarthigha Subramanian",
+      "title": "Head of Delivery",
+      "scope": "Impetus F&L AI platform · Plan · Buy · Make · Sell"
+    },
+    "Granary": {
+      "name": "Shahid Kazi",
+      "title": "Engineering Manager",
+      "scope": "Granary Grocery AI platform · Mumbai pilot",
+      "_uncertain": true,
+      "_note": "Engineering lead; product lead may be different. Confirm."
+    },
+    "UCP & Marketing OS": {
+      "name": "Saumil Hemant Dalal",
+      "title": "UCP & Marketing OS",
+      "scope": "Unified customer profile + marketing cockpits across RR formats",
+      "_uncertain": true
+    },
+    "ALP": {
+      "name": "Karan Muley",
+      "title": "Product Growth Manager",
+      "scope": "ALP · NSO platform for Reliance Retail",
+      "_uncertain": true
+    },
+    "RCPL": {
+      "name": "Ashish Vinayak Chandorkar",
+      "title": "RCPL lead",
+      "scope": "RCPL commerce stack",
+      "_uncertain": true
+    },
+    "HireFirst": {
+      "name": "Jigarkumar Ashokbhai Dafda",
+      "title": "Engineering Lead",
+      "scope": "Reliance HR Tech · AI-Native Hiring OS",
+      "_uncertain": true
+    },
+    "Samarth": {
+      "name": "Salman Saudagar",
+      "title": "Chief Operating Officer",
+      "scope": "Samarth Plus · Career platform for the RR frontline"
+    },
+    "Monobrands": {
+      "name": "Salman Saudagar",
+      "title": "Chief Operating Officer",
+      "scope": "Storefront builds across the Monobrand stack"
+    },
+    "External Commercialization": [
+      {
+        "name": "SMG",
+        "displayName": "Sreeraman Mohan Girija",
+        "title": "Co-founder",
+        "scope": "Drives commercial and partnership strategy across the external book"
+      },
+      {
+        "name": "Ragini Varma",
+        "title": "Chief Business Officer · India",
+        "scope": "India commercial · External Commercialization engine"
+      },
+      {
+        "name": "Ronak Modi",
+        "title": "Chief Business Officer · Global",
+        "scope": "Global commercial · External Commercialization engine"
+      }
+    ],
+    "Infrastructure": {
+      "name": "Amboj Goyal",
+      "title": "Director of Engineering",
+      "scope": "DevOps · Reliability · SRE · Security across all platforms",
+      "directReports": 37
+    },
+    "Central Support": {
+      "name": "Rahul Mandowara",
+      "title": "Director of Business Finance",
+      "scope": "HR · Admin · Finance · IT · Legal · People Success",
+      "_uncertain": true,
+      "_note": "Finance head; org-wide Central Support may have a different leader."
+    },
+    "JioGames": {
+      "name": "Prashasy Ashok",
+      "title": "Software Development Engineer",
+      "scope": "JioGames",
+      "_uncertain": true,
+      "_note": "Most senior engineer on the team but not a lead by title. Confirm."
+    },
+    "Neolync": {
+      "name": "Sameer Manish Dev",
+      "title": "Neolync lead",
+      "scope": "Neolync · Forge MES",
+      "_uncertain": true
+    }
+  }
+}

@@ -1,0 +1,110 @@
+# Costing Engine
+# Sourced verbatim from Q1 2026 Release Compendium pp. 25–28
+# Per docs/impetus-restructure-spec.md
+
+slug: costing-engine
+title: Costing Engine
+sub_title: ""
+aliases: []
+tagline: Automated material-level (BOM) costing with vendor pricing, approval workflows and auto-generated cost sheets — design to final price, end-to-end.
+category: Buy
+status: live
+status_label: Live
+
+audience:
+  - Sourcing Teams
+  - Costing Managers
+  - Commercial Teams
+  - Buyers
+
+what_it_does: |
+  The Costing Engine automates material-level costing (Bill of Materials) with vendor
+  pricing, approval workflows and auto-generated cost sheets. Buyers submit styles
+  from the Buy Plan and get the full cost breakdown back — no manual spreadsheets.
+
+  Connected to Cortex (for style sync) and to PLM (for product data), so the pipeline
+  from design to final price runs end-to-end. Cost sheets route to the right approvers
+  automatically.
+
+scale_label: Buy Plan Pipeline
+scale:
+  - "Buy Plan: 3,492 shortlisted-to-buy options"
+  - "Trends: 1,598 options costed (46%)"
+  - "Yousta: 836 options costed (85%)"
+  - "Azorte: 385 options costed (43%)"
+  - "Integrated with Cortex + PLM"
+scale_caption: |
+  Costing pipeline live for the three highest-velocity formats (Trends, Yousta, Azorte);
+  data flows in from the Buy Plan in Cortex without re-entry.
+
+what_improved:
+  body: |
+    **Automated style-to-cost flow** — no manual data entry from Buy Plan. Every
+    option submitted from Cortex now shows up in Costing (older gap closed too).
+    Clear on-screen validation when product details are missing (colour, season).
+    **Approved costs sync back to Cortex automatically — one source of truth for
+    pricing.**
+  expected_metric_impact: |
+    every option that used to take a buyer ~30-60 minutes of spreadsheet wrangling
+    now takes a click, with vendor pricing and approval routing baked in. The
+    Cortex ↔ Costing ↔ PLM closed loop is the substrate for the L2 → L3 jump on
+    Costing in the autonomy framework.
+
+updates_shipped:
+  - date: "15 Apr 2026"
+    heading: "Missing Options Recovery + Decimal Quantity Fix"
+    bullets:
+      - "Decimal quantity issue fixed in testing and pushed to production."
+      - "Every option from Cortex now visible in Costing, including previously missing ones."
+      - "Smarter retry logic, only failed styles are reprocessed, not the whole batch."
+  - date: "14 Apr 2026"
+    heading: "Faster, Bundled Style Sync"
+    bullets:
+      - "All options of a style now sync together in one go, much faster data transfer."
+      - "Cortex → Costing pipeline: **95% of reported issues resolved**, per field team."
+  - date: "11 Apr 2026"
+    heading: "Submit-to-Costing Workflow Live"
+    bullets:
+      - "Buy Plan → Costing Engine pipeline activated end-to-end."
+  - date: "10 Apr 2026"
+    heading: "Costing Buy Plan Sync Deployed to Production"
+    bullets:
+      - "Costing buy plan and approved cost sync with Cortex deployed to production."
+      - "All pending styles pushed; failures limited to missing primary attributes."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/costing-engine/screenshot-026.jpg"
+    caption: "**Costing details** · Item categories (Fabric · Trim Functional) with BOM cost, BOM qty and vendor pricing per line item · approve action."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/costing-engine/screenshot-027.jpg"
+    caption: "**Costing review and approval dashboard** · Cost breakdowns by style with brick, season, fashion grade, option, hit, issue date, assigned PM and stage."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/costing-engine/screenshot-028.jpg"
+    caption: "**Costing activity log + Detailed BOM cost breakdown** · System tasks and cost-modification history with audit trail · Vendor pricing, labor, material costs."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 25–28"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 2
+  current_summary: |
+    Costing Engine sits at **L2 · Augmented**: target cost generated for every SKU
+    pre-negotiation; buyer reviews and approves. L3 is **predicted landed cost**
+    before specs are finalised — margin-unviable products flagged before development.
+  workflows:
+    - name: "Costing"
+      number: "2.2"
+      current: 2
+      target: 3
+      plan: "Today: target cost per SKU pre-negotiation. Target: predicted landed cost before spec is finalised; margin-unviable products flagged at design."
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Costing · L2 → L3"
+      body: "Predictive landed cost shifts the costing decision left — to before product development."
+    - eyebrow: "Risk reduction milestone"
+      title: "85% of Yousta options costed; pipeline 95% issue-free"
+      body: "Cortex ↔ Costing ↔ PLM closed loop is the substrate for the L2 → L3 jump."
+    - eyebrow: "Identity shift indicator"
+      title: "Buyers stop maintaining cost spreadsheets"
+      body: "Approved costs sync back to Cortex automatically — one source of truth for pricing."

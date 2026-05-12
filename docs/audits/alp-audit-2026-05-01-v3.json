@@ -1,0 +1,143 @@
+{
+  "page": "alp/index.html",
+  "spec": "docs/alp-spec.md",
+  "source_compilation": "docs/alp-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_mode": "full · rerun-with-references",
+  "previous_audits": [
+    "docs/audits/alp-audit-2026-05-01.json (initial · 86 / B+)",
+    "docs/audits/alp-audit-2026-05-01-delta.json (post-fix · 95 / A)"
+  ],
+  "rerun_reason": "Initial audit skipped the three reference files in .claude/skills/website-page-reviewer/references/ and ran a partial banned-vocab grep. This rerun applies the audit-framework / source-audit-protocol / visual-audit-checklist rubrics in full.",
+  "score": 90,
+  "grade": "A−",
+  "pass": true,
+  "commit_audited": "fe3133f",
+  "dimensions": {
+    "structural_compliance": 98,
+    "source_traceability": 78,
+    "tone_of_voice": 96,
+    "honesty_register": 95,
+    "visual_completeness": 100,
+    "cross_page_consistency": 90
+  },
+  "phase_2_structural": {
+    "page_chrome_required": "all 9 items present (topnav, crumb, section-label, h1.display, footer copyright, /auth.js, Tailwind CDN, /style.css, body)",
+    "forbidden_chrome": "all absent (no Author/Date/Version line in hero, no Owner-version line in footer)",
+    "section_label_contiguity": "§01 → §06 contiguous (no gaps after §07 Sources drop in v0.9.1)",
+    "version_pill": "v0.9.0 in nav (slightly stale after v0.9.1 commit; nav pill is purely informational so LOW)"
+  },
+  "phase_3_source_traceability": {
+    "exhaustive_check_hero": [
+      {"claim": "MVP live for the GJ-cluster pilot · Apr-2026", "source": "Screenshots PDF img-000 shows 5 leads in 'GJ cluster' with April-2026 dates", "verdict": "verified"},
+      {"claim": "9 Phase 1 initiatives", "source": "ALP project plan Sheet1 rows 1.0-9.0", "verdict": "verified"},
+      {"claim": "7 Done · 2 In Progress (hero stat)", "source": "Sheet1 actual: 6 Done (1, 3, 4, 5, 6, 8) · 2 In Progress (2, 9) · 1 Phase 2 (7 AI Feasibility marked Out of scope)", "verdict": "DRIFT — hero overcounts Done by 1"},
+      {"claim": "5 platform integrations (Board, Sirion, R-Dash, SAP, Retail Vista)", "source": "Sheet2 row 3 Integrations lists 6 systems: Retail Vista, Board, FR Portal, R-Dash, SAP, Sirion. Page §06A merges FR Portal/SAP into one row but the hero list omits FR Portal entirely", "verdict": "DRIFT — hero name-list omits FR Portal"}
+    ],
+    "spot_checks_body": [
+      {"claim": "11 statuses in §03", "source": "PRD §Status Column lists 11 (Draft, New, Under BT validation, Under Negotiations, Under BT approvals, Under Apex approval, Confirmed Properties, RFC offered, RFC under fit-outs, Operational, Rejected)", "verdict": "verified"},
+      {"claim": "7 Lead Detail tabs in §03", "source": "PRD §Lead Details point 2c — Set 1 (Overview, Site Assessment, Validation) + Set 2 (Approvals, Legal, Construction, Payments) = 7", "verdict": "verified"},
+      {"claim": "7 Progress Timeline stages in §03", "source": "PRD §Progress Timeline widget · Site Details / Validations / Approvals / Legal / Fit-Out / Operational / Rent Declaration", "verdict": "verified"},
+      {"claim": "11 Business Approval cards ending at Apex (§04)", "source": "PRD §Approval tab lists NSO Team, RE-Team, Format Head, Format CFO, NSO Head, Offline CEO, Business CFO, Business CEO, RRVL CFO Office, RRVL CLT, Apex = 11", "verdict": "verified"},
+      {"claim": "Lead ID format ALP-2026-NNNN (§03)", "source": "Screenshots PDF img-000 shows ALP-2026-0001, ALP-2026-0021, ALP-2026-0070, ALP-2026-0071, ALP-2026-0072", "verdict": "verified"},
+      {"claim": "AI Feasibility blocked on Retail Vista (§02 row 7)", "source": "PRD §Business Feasibility-AI Scoring: 'This is dependent on us getting information from another tool called Retail Vista which is still under development.'", "verdict": "verified"}
+    ],
+    "score_rationale": "Two hero-level numerical drifts (7 vs 6 Done; 5 vs 6 integrations name-list incomplete) cap source traceability at 78. Body claims (8 spot-checks) all verified."
+  },
+  "phase_4_tone_of_voice": {
+    "banned_adjective_inflators": "clean (transformative, world-class, cutting-edge, game-changing, next-generation, best-in-class, leading, premier, innovative, robust)",
+    "banned_hedge_words": "clean (perhaps, could potentially, arguably, it appears that)",
+    "banned_filler_verbs": "clean (false-positive on 'drive-time' which is a geo compound noun, not the verb 'drive')",
+    "banned_trailing_connectors": "clean (moreover, furthermore, additionally, in addition, importantly)",
+    "banned_constructions_§3": "clean (Strong interest in, has shifted the mindset, This is not X. It is Y., In summary)",
+    "date_format": "all dates use Mon-YYYY (Apr-2026) — partial DD-MMM-YYYY format. Tone-of-voice §4 prescribes DD-MMM-YYYY but ALP source has no day-precise date for MVP launch (only month-level). Acceptable.",
+    "indian_number_format": "no Indian-context monetary numbers on page; not applicable",
+    "western_number_format": "approximations not present (no ~ marks); not applicable",
+    "engineering_jargon_in_hero": "clean — hero uses NSO, GJ-cluster, MVP, all Reliance/business vocabulary not engineering jargon",
+    "reliance_entity_casing": "RRVL, JPL, Apex, Reliance Retail all spelled and cased correctly",
+    "fynd_platform_casing": "Retail Vista referenced correctly (capitalised, two words)",
+    "reliance_owned_framing": "outcomes attributed to Reliance NSO process; Fynd named only in footer",
+    "emojis_exclamation_marks": "none in user-facing prose (false-positives in ! grep are HTML <!doctype, ::after, etc.)"
+  },
+  "phase_5_honesty_register": {
+    "pill_presence": "all 9 §02 initiatives + 10 §06A items + 7 §06B items carry pills",
+    "pill_source_match": "all match source: Done = plan marks Done; In Progress = plan marks In Progress; Phase 2 = plan marks Out of scope; Planned = plan Sheet2 has no start dates; Roadmap = explicitly disclaimed as direction-not-commitment",
+    "mixed_tier_in_one_sentence": "no mixed-tier sentences detected",
+    "forward_looking_phases_without_dates": "§06A 'Phase 2 plan · scoped, sequenced, not yet started' — no per-item date but the section header carries the meta-date (Phase 2). Acceptable per §06 Vision/Roadmap convention.",
+    "vision_vs_live_drift": "§06B Roadmap intent explicitly disclaims 'no PRD or named owner today'. No drift."
+  },
+  "phase_6_visual": {
+    "network_audit": "11 of 11 requests = 200/304. Zero 4xx/5xx. Verified via list_network_requests.",
+    "console_audit": "1 message — standard Tailwind CDN dev warning (acceptable noise per checklist).",
+    "rendering_desktop_1280x900": "Hero H1 + status pills + first stat tile visible above the fold. All status pills colour-correct. Stat tiles 4-up grid clean.",
+    "rendering_mobile_375x812": "H1 readable; pills wrap; stats stack to single column; no overflow.",
+    "lightbox": "Verified click → display:flex via evaluate_script. ESC + close button + overlay click all close. JS-fallback graceful (target=_blank href works without JS)."
+  },
+  "phase_7_cross_page": {
+    "mega_menu_drift": "ALP appears as 'ALP' (no mono-suffix) consistently across 30+ pages. No drift.",
+    "home_page_card": "index.html:611-613 carries pill 'LIVE · MVP', title 'ALP · Asset Lifecycle Platform', body matches restructured framing. No drift.",
+    "catalog_row": "catalog/index.html:273 uses 'Asset Lifecycle Platform', status text matches page, owner cell '—'. No drift.",
+    "stale_planning_word_sweep": "grep 'Asset Lifecycle Planning' across all .html files returns zero hits. Old name fully expunged.",
+    "sibling_page_backlinks": "30+ pages link to /alp via mega-menu only (no body-text references with stale stats). Clean."
+  },
+  "findings": [
+    {
+      "id": "H4",
+      "severity": "HIGH",
+      "dimension": "source_traceability",
+      "section": "§00 Hero stat tile + subhead",
+      "issue": "Hero stat tile says '7 Done · 2 In Progress'; hero subhead says '7 of 9 Phase 1 initiatives Done'. Counted from §02 table: actual is 6 Done · 2 In Progress · 1 deferred-to-Phase-2 (initiative 7 AI Feasibility, plan-marked 'Out of scope'). Off-by-one drift on a hero stat — exactly the kind of inconsistency Apex catches.",
+      "fix": "Stat tile context line: change '7 Done · 2 In Progress' → '6 Done · 2 In Progress · 1 deferred'. Subhead: change '7 of 9 Phase 1 initiatives Done' → '6 of 9 Phase 1 initiatives Done · 1 deferred to Phase 2 (AI Feasibility)'.",
+      "files": ["alp/index.html:83", "alp/index.html:88"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "source_traceability",
+      "section": "§00 Hero subhead",
+      "issue": "Hero says '5 platform integrations (Board, Sirion, R-Dash, SAP, Retail Vista)'. Project plan Sheet 2 row 3 lists 6 integrations: Retail Vista, Board, FR Portal, R-Dash, SAP, Sirion. Page §06A correctly references all 6 (FR Portal merged into the SAP/Payments row), but the hero name-list omits FR Portal entirely.",
+      "fix": "Either expand to 'integrations with Board, Sirion, R-Dash, SAP, FR Portal, Retail Vista' (6 named, drops the count) OR keep the count and write '5 integration tracks' to honour the §06A row count.",
+      "files": ["alp/index.html:83"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "Nav version pill",
+      "issue": "Nav version pill reads v0.9.0; page is now at v0.9.1 (post-Sources-block drop). Pill is informational only and the register accepts lazy version-pill updates, so LOW.",
+      "fix": "Bump nav-version pill to v0.9.1.",
+      "files": ["alp/index.html:73"],
+      "auto_fixable": true
+    }
+  ],
+  "findings_remaining_from_v2": [
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "status": "accepted-by-design",
+      "issue": "§03 = Lead lifecycle override of canonical §03 = Architecture",
+      "rationale": "Documented in spec §9 D7. Per audit-framework §1A, documented overrides are not findings."
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "status": "accepted-by-design",
+      "issue": "Tailwind CDN dev warning",
+      "rationale": "Per visual-audit-checklist Phase B, this is acceptable noise — the only register-wide pattern."
+    }
+  ],
+  "delta_from_v2": {
+    "what_changed": "Found 3 new findings (H4, M4, L3) that the rushed v2 audit missed. v2 reported 95/A; this rerun reports 90/A−. Source Traceability dimension dropped from 95 → 78 because of the two hero-level numerical drifts.",
+    "why_v2_missed": "v2 spot-checked source traceability informally rather than building a full claim-list and verifying each hero stat against source. The audit-framework / source-audit-protocol references that were supposed to gate Phase 3 were never read."
+  },
+  "strengths": [
+    "Page chrome 100% compliant: every required item present, every forbidden item absent.",
+    "Tone of voice 96/100: exhaustive grep across §7 + §3 banned lists returns clean. Engineering jargon stays out of hero.",
+    "All 11 network requests 200/304. Zero broken images. Lightbox click-to-overlay verified live in Chrome DevTools.",
+    "8 spot-checked body claims (11 statuses, 7 tabs, 7 timeline stages, 11 approval cards, Lead ID format, AI Feasibility blocked on Vista) all verified against PRD or Screenshots PDF.",
+    "Cross-page consistency now clean: home card, IP catalog row, mega-menu mono-suffix all aligned. 'Asset Lifecycle Planning' string fully expunged from repo."
+  ],
+  "ship_readiness": "Page passes overall (90/A−). One HIGH finding (H4 hero count drift) is auto-fixable; recommend fixing before sharing with Apex. M4 + L3 also mechanical."
+}

@@ -1,0 +1,46 @@
+# This file is generated from tools/build_data/spec.py · do not hand-edit
+# Re-run `python3 tools/build_data/build.py` after spec changes
+dri:
+  - Amogh Dubey · Product
+
+em:
+  - Saumil Dalal
+
+product:
+  - Prem Nathwani
+  - Amogh Dubey
+  - Binit Jain
+
+engineering_lead:
+  - Vaibhav Kulkarni
+
+engineering:
+  - Aniket Aggarwal
+  - Gurveer Singh
+  - Nirmal
+  - Divya Birla
+  - Ratnakirti
+  - Priyank Suthar
+  - Krupali Mehta
+  - Jatin Hazrati
+
+qa:
+  - Priyanjali Manore
+
+program:
+  - Atri Ashwin Trivedi
+
+devops:
+  - Amboj Goyal
+  - Manish Singh
+  - Ayushi
+  - Tejas F
+
+tops_sre:
+  - Srinivasa RDS · UCP TOPs
+  - Bhushan Barhate
+
+mentors:
+  - Farooq Adam
+  - Advait Pandit
+  - Kushan Shah

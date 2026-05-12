@@ -1,0 +1,72 @@
+# SuperSet · Analytics (Real-Time Dashboards)
+# Sourced verbatim from Q1 2026 Release Compendium · p. 58 (1 paragraph)
+# + Ask Impetus context · pp. 97–100
+# Per docs/impetus-restructure-spec.md · §6.3
+
+slug: analytics
+title: SuperSet
+sub_title: "(Analytics · Real-Time Dashboards · powers Ask Impetus)"
+aliases: [Impetus Command Center · Analytics, SuperSet, Ask Impetus host]
+tagline: Real-time dashboards across the full journey — planning, design, pricing, supply chain, payments. The data layer that powers Ask Impetus.
+category: Cross-cutting · Analytics
+status: live
+status_label: Live
+
+audience:
+  - All Leaders &amp; Business Users
+  - Suppliers (PO-to-delivery visibility)
+  - Ask Impetus consumers
+  - Data &amp; analytics teams
+
+what_it_does: |
+  Real-time dashboards covering the full journey: planning, product design lifecycle,
+  pricing, supplier productivity, supply chain movement and payment reconciliation.
+  **Powers the AI assistant's data layer**, so when you ask Ask Impetus a question,
+  the answer comes from these dashboards.
+
+  **Suppliers** get visibility from purchase order creation through to delivery.
+
+scale_label: Status
+scale:
+  - "No standalone update this quarter"
+  - "Powers Ask Impetus across the platform"
+  - "Substrate for every dashboard surfaced in Cortex / Command Center"
+scale_caption: |
+  SuperSet sits below Cortex as the data plane. The Cortex hero numbers
+  (₹22.2 Cr/day, ₹1,442 Cr inventory, vendor OTIF 70.6%) all originate here.
+
+what_improved:
+  body: ""
+  expected_metric_impact: ""
+
+updates_shipped: []
+
+screenshots: []
+
+sources:
+  - label: "Q1 2026 Release Compendium · p. 58 (SuperSet · 1 paragraph)"
+    href: ""
+  - label: "Q1 2026 Release Compendium · pp. 97–100 (Ask Impetus, the consumer)"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md · §6.3"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 2
+  current_summary: |
+    SuperSet is data-plane infrastructure — its autonomy story is downstream, on
+    Cortex (which it powers) and Ask Impetus (which it answers). Sits at **L2 ·
+    Augmented**: dashboards generated automatically, leaders read and decide. L3 is
+    when the data layer pushes proactive alerts that drive Cortex actions without
+    a human pull.
+  workflows: []
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "Push, not pull"
+      body: "Move from dashboards-on-request to proactive alerts that flow into Cortex's exception queue."
+    - eyebrow: "Risk reduction milestone"
+      title: "One data plane for all platforms"
+      body: "Every Cortex hero number (₹22.2 Cr/day, ₹1,442 Cr inventory, vendor OTIF 70.6%) traces to here."
+    - eyebrow: "Identity shift indicator"
+      title: "Analyst as data engineer, not report-runner"
+      body: "Ask Impetus retires the ad-hoc-report queue; analyst time shifts to data quality + new pipelines."

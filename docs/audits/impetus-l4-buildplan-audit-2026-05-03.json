@@ -1,0 +1,110 @@
+{
+  "page": "impetus/index.html",
+  "spec": "docs/impetus-l4-buildplan-spec.md (§3 C + D)",
+  "source_compilation": "docs/agent-catalog-notes-compilation/F&L AI Projects.xlsx (3 projects · ~80 deliverables)",
+  "audit_date": "2026-05-03",
+  "audit_scope": "Targeted: §03 PATH TO L4 (milestone column added) + new §04 PATH TO L4 · the build plan + §04→§05 Design Portfolio renumber. Pre-existing §00-§02 not audited; §05 verified for label-renumber only.",
+  "score": 87,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 95,
+    "source_traceability": 92,
+    "tone_of_voice": 79,
+    "honesty_register": 95,
+    "visual_completeness": 80,
+    "cross_page_consistency": 92,
+    "design_compliance": 70
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "tone_of_voice",
+      "section": "§03 PATH TO L4 column header",
+      "issue": "Table column header reads 'What it unlocks for this platform' — uses 'unlocks', a banned filler verb per tone-of-voice §7. The column appears in the §03 grid-table for every multi-agent platform page (Impetus most prominent).",
+      "fix": "Change column header to 'What it delivers for this platform' OR 'What it changes for this platform'. Edit tools/inject_path_to_l4.py:276 (header literal in render_platform_section), then re-run python tools/inject_path_to_l4.py to sweep.",
+      "files": ["tools/inject_path_to_l4.py:276", "impetus/index.html:292"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "§04 lead paragraph",
+      "issue": "Body copy reads 'Status against the chairman-facing build plan as of 03-May-2026'. The phrase 'chairman-facing build plan' names an internal-positioning artefact — borderline on the tone-of-voice §3 rule against 'internal source-document references in body copy'. While not as explicit as 'Accenture s37' or 'Farooq §1.4', it reveals the internal authoring context (a deck prepared for the Chairman) which is Fynd-internal framing.",
+      "fix": "Reword to 'Status against the active build plan as of 03-May-2026' or simply 'Status as of 03-May-2026' (the dates in the cards already imply the build plan).",
+      "files": ["impetus/index.html:365"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "visual_completeness",
+      "section": "§04 .bp-table mobile overflow",
+      "issue": "The deliverable tables in §04 (.bp-table) have no overflow-x-auto wrapper. At narrow viewports (~500px), the table extends beyond the viewport width, causing the page body to scroll horizontally by ~36px. The §03 grid-table is correctly wrapped — §04 tables are not.",
+      "fix": "Wrap each <table class=\"bp-table\"> in <div class=\"overflow-x-auto\"> · matches the §03 pattern. Alternatively add `.bp-card .bp-body { overflow-x: auto; }` in the inline <style> block as a single-rule fix that catches all current and future bp-tables.",
+      "files": ["impetus/index.html:345 (inline style for .bp-body)"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "§04 inline <style> block",
+      "issue": "Five ad-hoc hex literals introduced in the new <style> block: #FFF7ED, #FED7AA, #C2410C (defining .bp-pill-milestone) and #FAFAF9, #FAFAFA (background). The first three exactly duplicate the existing .pill-pilot variant in style.css §2.2 (#FFF7ED / #C2410C / #FED7AA). Per design.md §1.1: 'Never introduce a new hex value. Use a token from :root.' Per design.md §2.2: 'Don't add new pill variants without adding them here.'",
+      "fix": "Drop .bp-pill-milestone from the inline <style> block. Replace each <span class=\"bp-pill-milestone\">Milestone</span> on impetus/index.html:432 and the legend on line 660 with <span class=\"pill pill-pilot\">Milestone</span>. The pill-pilot variant already carries the orange colour scheme intended for the milestone callout.",
+      "files": ["impetus/index.html:354 (drop .bp-pill-milestone)", "impetus/index.html:432 (Go/No-Go pill)", "impetus/index.html:660 (legend pill)"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M4",
+      "severity": "MEDIUM",
+      "dimension": "design_compliance",
+      "section": "§04 inline <style> block",
+      "issue": "Off-scale font-size 12.5px on table.bp-table — design.md §1.2 documented scale is 10/11/12/13/14/15/16/18/24/32/36/48/64/72.",
+      "fix": "Round to 13px (the closest documented-scale value) on table.bp-table. One-line edit at impetus/index.html:348.",
+      "files": ["impetus/index.html:348"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§01 (pre-existing, out-of-scope for this PR)",
+      "issue": "Pre-existing label '01 · What we built · 15 sub-platforms in production' uses 'we' (banned) AND 'in production' (engineering jargon, translate to 'live' / 'running today' per §7). Out of scope for this PR but flagged for the next sweep.",
+      "fix": "Rename to '01 · 15 sub-platforms · live across F&L' or similar. Out of scope for this audit's PR — leave for the broader register sweep.",
+      "files": ["impetus/index.html:134"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "design_compliance",
+      "section": "§04 anchor link styling",
+      "issue": "Inline foot-link in §03 paragraph uses `font-size: 0.92em` (relative em rather than the documented px scale). Per design.md §1.2 the convention is px on the documented scale.",
+      "fix": "Change to `font-size: 13px` (matches the surrounding mono caption convention). Edit tools/inject_path_to_l4.py:225 (where the foot-link is appended).",
+      "files": ["tools/inject_path_to_l4.py:225"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "honesty_register",
+      "section": "§04 status pills mapping",
+      "issue": "Pre-req rows (Cortex Card 1) currently render as `pill-build` (amber). The xlsx legend lists 'Pre-req' as its own status. The pill works visually (amber = needs-attention) but conflates Pre-req with Building.",
+      "fix": "Acceptable as-is — the legend at the bottom of §04 explicitly labels both. Optionally introduce a `.pill-prereq` variant in style.css if Pre-req becomes a recurring status across the site.",
+      "files": ["impetus/index.html:386-387"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Honesty register is exemplary on §04 — the lead paragraph explicitly notes today (03-May-2026) vs Day-0 baseline (04-May-2026), so the all-Planned status pills under Cortex are correctly contextualised. No overclaim.",
+    "§03 milestone column wires per-deployment dates from the canonical agents-x-platforms.yaml registry — schema-extensible (Category Intelligence's '—' is honest blank not fabricated date), and re-running the injector will keep dates current.",
+    "Section-label contiguity preserved after the §04 → §05 renumber (verified: 01, 02, 03, 04, 05).",
+    "All ~80 deliverables in §04 trace verbatim to F&L AI Projects.xlsx by row — workstream names, dates, status mappings all match the source xlsx 1:1.",
+    "Bidirectional anchor links between §03 and §04 work correctly (verified via DevTools: §03 → §04 lands at scroll position matching the section top; §04 → §03 returns).",
+    "All required page chrome intact (nav, footer single-line, auth.js); the canonical-source rule for §03 is preserved (sweep-rendered, no hand-authoring).",
+    "Cross-page consistency strong: 47,473 / 2,975 / 3,957 numbers identical on §04 (Impetus), agent stat tile, agent SVG eval gate, and agents/ index card."
+  ]
+}

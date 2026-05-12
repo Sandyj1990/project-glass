@@ -1,0 +1,193 @@
+{
+  "generatedAt": "2026-04-30T00:00:00Z",
+  "note": "Content for /jcp/cataloging/. Collated from chat as the user shares each section. The page is built by hand-writing /jcp/cataloging/index.html (not the build_pages.py generator) so it matches the post-v0.8.0 mega-menu nav style of the rest of the register.",
+  "sections": [
+    {
+      "id": "web-grounding-netmeds",
+      "kind": "throughput-study",
+      "title": "Web Grounding \u00b7 Netmeds",
+      "brand": "netmeds",
+      "headline": "~95%+ enrichment-time reduction \u00b7 vendor dependency eliminated \u00b7 near-zero marginal cost",
+      "executiveSummary": [
+        "~95%+ reduction in enrichment time. As-is: ~40 hours to enrich 1,000 SKUs across 6 attributes, fully executed by 3rd-party vendors. With web grounding: ~2 minutes per 1,000 SKUs, automated.",
+        "Significant cost elimination. As-is cost: ~\u20b9100 per SKU via vendor-led enrichment. With web grounding: near-zero marginal cost per SKU."
+      ],
+      "comparisonTable": {
+        "title": "Current vs. With Web Grounding",
+        "footnote": "* Days to clear 1,000 SKUs assumes the prior vendor-led pace.",
+        "rows": [
+          {
+            "metric": "Time / SKU",
+            "asIs": "40 hours per 1,000 SKUs for 6 attributes \u00b7 \u20b9100 per SKU \u00b7 fully dependent on 3rd-party vendors",
+            "withWebGrounding": "~2 minutes per 1,000 SKUs",
+            "impact": "~95%+ time reduction per SKU \u00b7 near-zero marginal cost \u00b7 vendor dependency eliminated"
+          },
+          {
+            "metric": "Days to clear 1,000 SKUs*",
+            "asIs": "~5 days",
+            "withWebGrounding": "~2 minutes",
+            "impact": "Near-real-time catalog enrichment \u00b7 cycle time reduced from days \u2192 minutes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "web-grounding-reliance-digital",
+      "kind": "throughput-study",
+      "title": "Web Grounding \u00b7 Reliance Digital",
+      "brand": "reliance-digital",
+      "headline": "35\u201340% faster per SKU \u00b7 +50\u201364% throughput \u00b7 75% attribute auto-fill",
+      "executiveSummary": [
+        "35\u201340% faster per-SKU enrichment (manual 90 min \u2192 55\u201360 min with web grounding).",
+        "+50\u201364% additional throughput using the same team hours.",
+        "75% attribute auto-fill via web grounding (first-pass fill rate) \u2014 fewer manual touchpoints, lower rework."
+      ],
+      "comparisonTable": {
+        "title": "Current vs. With Web Grounding \u00b7 same team",
+        "footnote": "* Team throughput / day and Days to clear 100 SKUs assume current team strength.",
+        "rows": [
+          {
+            "metric": "Time / SKU",
+            "asIs": "90 min",
+            "withWebGrounding": "55\u201360 min",
+            "impact": "35% to 40% time saved"
+          },
+          {
+            "metric": "Team throughput / day*",
+            "asIs": "15\u201320 SKUs",
+            "withWebGrounding": "28.5\u201332.7 SKUs",
+            "impact": "+50% to +64% additional SKUs enriched"
+          },
+          {
+            "metric": "Days to clear 100 SKUs*",
+            "asIs": "5.0\u20136.5 days",
+            "withWebGrounding": "3.5\u20134 days",
+            "impact": "Faster cycle time"
+          },
+          {
+            "metric": "Attribute fill rate by web grounding",
+            "asIs": "\u2014",
+            "withWebGrounding": "75%",
+            "impact": "High first-pass coverage"
+          }
+        ]
+      },
+      "scenarios": [
+        {
+          "id": "A",
+          "label": "Capacity unlock",
+          "tagline": "Keep team constant. Team strength of 5 members.",
+          "metric": "Additional SKU enrichment / member",
+          "value": "+7.5 to +12.7 SKUs / day / member",
+          "subValue": "\u2248 +37 to +64 SKUs / week / member"
+        },
+        {
+          "id": "B",
+          "label": "Cost / time takeout",
+          "tagline": "Hold output at 15\u201320 SKUs / day.",
+          "metric": "Person-hours saved",
+          "value": "7.5\u201311.7 h / day",
+          "subValue": "Annualized (250 days): 1,875\u20132,917 h saved"
+        }
+      ]
+    },
+    {
+      "id": "tira-google-akind-pilot",
+      "kind": "release-milestone",
+      "status": "live-in-production",
+      "title": "Tira \u00d7 Catalog Cloud \u00d7 Google AI",
+      "subtitle": "Akind brand \u00b7 enriched attributes live in Tira production",
+      "brands": [
+        "tira",
+        "akind"
+      ],
+      "partners": [
+        "google"
+      ],
+      "phase": "POC live",
+      "nextPhase": "Expand AI enrichment to the entire Tira catalog.",
+      "overview": "Tira is the first proof of concept for AI-based catalog enrichment in collaboration with Google. Enriched attributes for the Akind brand are deployed in Tira's production environment, and the Tira team is consuming them live in coordination with Akind brand.",
+      "results": {
+        "time": {
+          "title": "Time taken for enrichment",
+          "tiraTeam": "10\u201315 minutes per SKU",
+          "googleAI": "~14 seconds for all SKUs"
+        },
+        "attributesFilled": {
+          "title": "Number of attributes filled (Akind brand)",
+          "totalAttributes": 382,
+          "manualByTiraTeam": 262,
+          "withGoogleAI": 332,
+          "overallFillRate": "87%",
+          "mandatoryFillRate": "100%",
+          "nonMandatoryFillRate": "~91%"
+        },
+        "accuracy": {
+          "title": "Accuracy vs. ground truth",
+          "googleAI": "89%",
+          "note": "Detailed explanation available in Section 04 \u00b7 Attribute Accuracy below."
+        }
+      },
+      "whyItMatters": "This milestone empowers Tira to maintain high-quality product data in production, reducing manual effort and unlocking operational efficiency. It also validates the AI enrichment pipeline's reliability and scalability, paving the way for full catalog enrichment in the next phase."
+    },
+    {
+      "id": "attribute-accuracy",
+      "kind": "methodology",
+      "title": "Attribute Accuracy",
+      "description": "Measures the correctness of GenAI-enriched attributes against ground truth. Bucketed into three verdicts.",
+      "categories": [
+        {
+          "label": "Exact match or similar",
+          "definition": "Ground truth and enriched value both have the same data."
+        },
+        {
+          "label": "Partial Match",
+          "definition": "AI response has correct values but is missing some values from ground truth. Specifically useful for multi-select attributes."
+        },
+        {
+          "label": "No Match",
+          "definition": "AI response is missing all values in ground truth."
+        }
+      ],
+      "findings": {
+        "title": "Sample analysis \u00b7 observations on the No Match bucket",
+        "items": [
+          "Among the No Match cases, the majority sits in preference, concern, safety precaution, color hex, and description sections.",
+          "For most safety-precaution / preference / concern mismatches the data is not present in the image \u2014 it's extracted from other sources.",
+          "In other cases the LLM compares paragraph-style descriptions (in ground truth) against dictionary / sectional descriptions (in the AI response). Similar text, different format \u2014 flagged as No Match. Fixable via prompt tuning + ground-truth format changes.",
+          "Color hex attributes are sometimes near the color shade but not an exact match. Improvable with a constrained list of values and prompt tuning.",
+          "Preference and concern sections are currently brand-driven; can be improved with brand-specific business rules and prompt tuning."
+        ]
+      },
+      "calculatorExamples": [
+        {
+          "groundTruthAttribute": "Primary_colour",
+          "groundTruthValue": "Gold",
+          "enrichedAttribute": "Primary_colour",
+          "enrichedValue": "Gold",
+          "verdict": "exact",
+          "verdictLabel": "Exact match or similar",
+          "explanation": "Ground truth and enriched value both have the same data, 'Gold'."
+        },
+        {
+          "groundTruthAttribute": "Concern",
+          "groundTruthValue": "Pores, Dullness, Blemishes",
+          "enrichedAttribute": "Concern",
+          "enrichedValue": "Dullness",
+          "verdict": "partial",
+          "verdictLabel": "Partial Match",
+          "explanation": "AI response only mentions Dullness, missing Pores and Blemishes."
+        },
+        {
+          "groundTruthAttribute": "Benefits",
+          "groundTruthValue": "Lightweight, Moisturising, Nourishing, Smoothening",
+          "enrichedAttribute": "Benefits",
+          "enrichedValue": "Sun Protection",
+          "verdict": "no-match",
+          "verdictLabel": "No Match",
+          "explanation": "AI response is missing all of the benefits."
+        }
+      ]
+    }
+  ]
+}

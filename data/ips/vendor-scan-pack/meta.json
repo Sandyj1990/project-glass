@@ -1,0 +1,24 @@
+{
+  "slug": "vendor-scan-pack",
+  "name": "Vendor Scan & Pack",
+  "tagline": "3.6 days vendor-to-store \u00b7 930 active manufacturers \u00b7 39.2K options/year.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2024-06-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "move"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#vendor-scan-pack",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "logistics",
+    "vendor"
+  ]
+}

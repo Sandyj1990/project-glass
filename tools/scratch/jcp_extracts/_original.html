@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JCP · Jio Commerce Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="/auth.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">78 channels</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">agentic auto</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">agentic auto</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic auto</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">AutRi</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">made-to-measure</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/organisation" class="mega-link">Organisation <span class="mono-suffix">~430 on RR</span></a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/catalog" class="mega-link">IP Catalog <span class="mono-suffix">all IPs</span></a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">JCP</span></div>
+  <div class="flex flex-wrap gap-2 mb-8"><a href="/jcp" class="subnav-link active">Overview</a><a href="/jcp/channels" class="subnav-link">Channels</a><a href="/jcp/cataloging" class="subnav-link">AI Cataloging</a><a href="/rbl" class="subnav-link">RBL</a><a href="/rcpl" class="subnav-link">RCPL</a></div>
+<div class="section-label mb-3">Track 01 · Commerce Platform · Live</div>
+<div class="mb-6"><div class="text-sm" style="color: var(--ink);"><strong>Author:</strong> Salman Saudagar (COO, Fynd) ·<strong>Date:</strong> 30 - Apr - 2026 ·<strong>Version:</strong> 0.8.4</div></div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Jio Commerce Platform.</h1>
+<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">Enterprise-grade commerce platform powering Reliance Retail's online and in-store businesses · modular, microservice-based, AI-native. The single Sell + Support layer underneath every B2C and B2B brand in the Reliance retail estate.</p>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink);"><strong>How Fynd transforms Reliance commerce</strong> · Fynd built one stack · 78 channels · 300M customers · 50K orders/min · that turns every Reliance brand into a single coherent shopping experience online, in-store, and inside chat. Built by Fynd. Owned and run by Reliance.</p>
+
+<div id="channels" class="cap-num mb-3">Channel coverage · verified 21 - Feb - 2026</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">Total channels</div><div class="display-2 text-3xl" style="color: var(--ink);">78</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Live</div><div class="display-2 text-3xl" style="color: var(--green);">68</div></div>
+<div class="card p-4"><div class="cap-num mb-1">In-progress</div><div class="display-2 text-3xl" style="color: var(--amber);">5</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Planned</div><div class="display-2 text-3xl" style="color: var(--ink-muted);">5</div></div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mt-3">
+<div class="card p-4"><div class="cap-num mb-1">B2B channels</div><div class="display-2 text-3xl accent">5</div></div>
+<div class="card p-4"><div class="cap-num mb-1">B2C channels</div><div class="display-2 text-3xl accent">73</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Verticals covered</div><div class="display-2 text-3xl" style="color: var(--ink);">10</div><div class="text-xs mt-1" style="color: var(--ink-muted);">F&L · Grocery · Electronics · Beauty · Furniture · Pharma · Jewellery · Home Decor · Fresh Food · Digital Top-Up · Agriculture</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Platform clusters</div><div class="display-2 text-3xl" style="color: var(--ink);">10</div><div class="text-xs mt-1" style="color: var(--ink-muted);">FP-50 · SNG-14 · JMP-4 · JMD-3 · Swadesh-2 · Tira · JM-RHOS · Ajio · Netmeds · JM-Headless</div></div>
+</div>
+
+<div id="scale" class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mt-3">
+<div class="card p-4"><div class="cap-num mb-1">Peak orders / hour</div><div class="display-2 text-3xl accent">350K+</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Orders / min · peak</div><div class="display-2 text-3xl accent">50K+</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Customers served</div><div class="display-2 text-3xl accent">300M+</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Retail extensions</div><div class="display-2 text-3xl accent">15+</div></div>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mt-3">
+<div class="card p-4"><div class="cap-num mb-1">CPO</div><div class="font-semibold" style="color: var(--ink);">Ashish Chandorkar</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Engineering lead</div><div class="font-semibold" style="color: var(--ink);">Pratik Patel · Jainish Jain</div></div>
+<div class="card p-4"><div class="cap-num mb-1">RIL counterpart</div><div class="font-semibold" style="color: var(--ink);">Jeyandran · Vineeth Nair</div></div>
+</div>
+</div></section>
+
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">B2C Snapshot</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Powering every customer-facing brand.</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="card p-6"><div class="cap-num mb-2">JioMart · Quick Commerce</div><h3 class="font-semibold mb-2" style="color: var(--ink);">1.6M daily orders.</h3><p class="text-sm" style="color: var(--ink-muted);">India's fastest grocery scale-up · 360% YoY · 99.9% uptime · sub-30-min delivery from dark stores · 18,000+ Reliance Retail outlets via inventory mesh.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">AJIO · Fashion Marketplace</div><h3 class="font-semibold mb-2" style="color: var(--ink);">India's #1 fashion marketplace.</h3><p class="text-sm" style="color: var(--ink-muted);">9% of India's digital fashion market · 12,400 active sellers · 99.2% SLA compliance · seller onboarding 2 weeks → 48 hrs · 25% cost reduction.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Tira · Beauty Platform</div><h3 class="font-semibold mb-2" style="color: var(--ink);">2.5× AOV lift.</h3><p class="text-sm" style="color: var(--ink-muted);">40% repeat purchase · 94% AI recommendation accuracy · 50+ physical stores · 2,000+ brands · 100% omnichannel sync.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">In-Store Companion · AJIO</div><h3 class="font-semibold mb-2" style="color: var(--ink);">In-store + digital fused.</h3><p class="text-sm" style="color: var(--ink-muted);">Companion app bridge between online and in-store discovery, scan-and-go, lookbook, wallet on JCP.</p></div>
+</div>
+</div></section>
+
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">B2B Snapshot</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Reliance B2B · single platform.</h2>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="card p-6"><div class="cap-num mb-2">RCPL</div><h3 class="font-semibold mb-2" style="color: var(--ink);">Reliance Consumer Products.</h3><p class="text-sm" style="color: var(--ink-muted);">Campa, Independence, FMCG. Direct partnership · 30 dedicated devs scoping. ₹1L Cr 2028 target.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Metro Kirana Platform</div><h3 class="font-semibold mb-2" style="color: var(--ink);">Wholesale + kirana.</h3><p class="text-sm" style="color: var(--ink-muted);">Shared cluster with RCPL. Scale-up underway.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">JioMart Digital B2B</div><h3 class="font-semibold mb-2" style="color: var(--ink);">B2B 1.0 module of JCP.</h3><p class="text-sm" style="color: var(--ink-muted);">Wholesale · SME enablement · multi-distributor.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">JioMart Digital ASP</div><h3 class="font-semibold mb-2" style="color: var(--ink);">Authorised Service Partner.</h3><p class="text-sm" style="color: var(--ink-muted);">B2B service-partner enablement on JCP rails.</p></div>
+</div>
+</div></section>
+
+<!-- FULL B2C ROSTER -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Full B2C roster · 105 businesses on JCP · verified subset</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every B2C business we have confirmed running on JCP today.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JCP is stated as powering 105 B2C businesses (16 - Apr - 2026 deck, Shyam Dixit). The list below enumerates the businesses Fynd has direct line-of-sight to · grouped by parent group. Where a business has a public footprint, the URL is linked; otherwise the deployment scope is named.</p>
+
+<!-- Reliance Retail flagship -->
+<div class="cap-num mb-3">Reliance Retail group · flagship D2C + marketplace</div>
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>#</th><th>Business</th><th>Format</th><th>JCP modules deployed</th><th>Anchor metric</th></tr></thead>
+<tbody>
+<tr><td class="mono text-xs">01</td><td class="font-medium">JioMart</td><td class="text-sm">Grocery · omni</td><td class="text-sm">Storefront · OMS · WMS · TMS · Quick · Endless Aisle · Konnect · UCP · Engage · MDH · Catalog Cloud · GlamAR · JIIA · AI PIM</td><td class="text-sm" style="color: var(--ink-muted);">1.6M daily orders · 360% YoY</td></tr>
+<tr><td class="mono text-xs">02</td><td class="font-medium">JioMart Quick Commerce</td><td class="text-sm">Q-commerce · dark stores</td><td class="text-sm">Quick · OMS · TMS · Vista (drive-time)</td><td class="text-sm" style="color: var(--ink-muted);">700+ orders/min · 90% on-time</td></tr>
+<tr><td class="mono text-xs">03</td><td class="font-medium">AJIO</td><td class="text-sm">Fashion · marketplace</td><td class="text-sm">Storefront · Konnect · OMS · UCP · Kaily/ZIP · Boltic</td><td class="text-sm" style="color: var(--ink-muted);">12,400 sellers · 99.2% SLA · 9% market share</td></tr>
+<tr><td class="mono text-xs">04</td><td class="font-medium">Tira</td><td class="text-sm">Beauty · D2C</td><td class="text-sm">Storefront · POS · OMS · UCP · GlamAR · Pixelbin · Fynd AI OS · Loyalty</td><td class="text-sm" style="color: var(--ink-muted);">2.5× AOV · 94% AI accuracy · 50+ stores</td></tr>
+<tr><td class="mono text-xs">05</td><td class="font-medium">In-Store Companion · AJIO</td><td class="text-sm">In-store + digital</td><td class="text-sm">Companion App · Storefront · Endless Aisle</td><td class="text-sm" style="color: var(--ink-muted);">Discovery + scan-and-go bridge</td></tr>
+<tr><td class="mono text-xs">06</td><td class="font-medium">Reliance Trends</td><td class="text-sm">Value fashion · stores</td><td class="text-sm">Store OS · Companion App · Scan & Go · AI Cataloging · R-One · Impetus · Coupons</td><td class="text-sm" style="color: var(--ink-muted);">2,171 stores · Trends 4.0 program</td></tr>
+<tr><td class="mono text-xs">07</td><td class="font-medium">Reliance Digital</td><td class="text-sm">Electronics</td><td class="text-sm">Store OS · POS · Endless Aisle · SwapEasy · UCP · OMS</td><td class="text-sm" style="color: var(--ink-muted);">650+ stores · SwapEasy at 625</td></tr>
+<tr><td class="mono text-xs">08</td><td class="font-medium">Reliance Smart / Smart Bazaar</td><td class="text-sm">Hyperlocal grocery</td><td class="text-sm">Store OS · POS · Granary · UCP</td><td class="text-sm" style="color: var(--ink-muted);">1,200+ stores (incl. JioGames integration)</td></tr>
+<tr><td class="mono text-xs">09</td><td class="font-medium">FreshPik</td><td class="text-sm">Premium grocery</td><td class="text-sm">Store OS · POS · Granary · proposed NextGen testbed</td><td class="text-sm" style="color: var(--ink-muted);">Pilot · Cortex Granary live</td></tr>
+<tr><td class="mono text-xs">10</td><td class="font-medium">7-Eleven</td><td class="text-sm">Convenience</td><td class="text-sm">POS · NPS Intelligence (wedge)</td><td class="text-sm" style="color: var(--ink-muted);">50% lower than restaurant target</td></tr>
+<tr><td class="mono text-xs">11</td><td class="font-medium">Reliance Jewels</td><td class="text-sm">Jewellery</td><td class="text-sm">JCP migrated Mar 2024 · Store OS · Storefront</td><td class="text-sm" style="color: var(--ink-muted);">Migrated</td></tr>
+<tr><td class="mono text-xs">12</td><td class="font-medium">Yousta</td><td class="text-sm">Gen-Z value fashion</td><td class="text-sm">Scan & Go (Fynd & Go) · POS · Storefront · Companion App</td><td class="text-sm" style="color: var(--ink-muted);">87 stores · 92.4K scans · ₹60M value</td></tr>
+<tr><td class="mono text-xs">13</td><td class="font-medium">Azorte</td><td class="text-sm">Premium fashion</td><td class="text-sm">Storefront · POS · Fynd Create (AI design) · Scan & Go</td><td class="text-sm" style="color: var(--ink-muted);">34 stores · "198 designs in 10 days"</td></tr>
+<tr><td class="mono text-xs">14</td><td class="font-medium">Centro</td><td class="text-sm">Multi-brand fashion</td><td class="text-sm">Storefront · POS · Trends 4.0 program</td><td class="text-sm" style="color: var(--ink-muted);">23 stores</td></tr>
+<tr><td class="mono text-xs">15</td><td class="font-medium">Avantra by Trends</td><td class="text-sm">Fashion</td><td class="text-sm">Storefront · POS · D2C 2024 onboard</td><td class="text-sm" style="color: var(--ink-muted);">42 stores</td></tr>
+<tr><td class="mono text-xs">16</td><td class="font-medium">GAP (RBL franchise)</td><td class="text-sm">Fashion</td><td class="text-sm">Storefront · Store OS · Loyalty migration in flight</td><td class="text-sm" style="color: var(--ink-muted);">51 stores</td></tr>
+<tr><td class="mono text-xs">17</td><td class="font-medium">Fashion Factory</td><td class="text-sm">Value fashion</td><td class="text-sm">Store OS · Scan & Go · Fynd Kio (168 units)</td><td class="text-sm" style="color: var(--ink-muted);">82 stores · Kio rollout FY26-27</td></tr>
+<tr><td class="mono text-xs">18</td><td class="font-medium">Project Eve</td><td class="text-sm">Womenswear</td><td class="text-sm">Storefront · POS</td><td class="text-sm" style="color: var(--ink-muted);">Format mention</td></tr>
+<tr><td class="mono text-xs">19</td><td class="font-medium">Performax</td><td class="text-sm">Athleisure</td><td class="text-sm">Storefront · D2C 2024</td><td class="text-sm" style="color: var(--ink-muted);">D2C onboarded</td></tr>
+<tr><td class="mono text-xs">20</td><td class="font-medium">Reliance Trends Footwear</td><td class="text-sm">Footwear</td><td class="text-sm">Storefront · Store OS</td><td class="text-sm" style="color: var(--ink-muted);">D2C 2024</td></tr>
+<tr><td class="mono text-xs">21</td><td class="font-medium">Amante</td><td class="text-sm">Lingerie</td><td class="text-sm">Storefront · Store OS</td><td class="text-sm" style="color: var(--ink-muted);">18 stores</td></tr>
+<tr><td class="mono text-xs">22</td><td class="font-medium">Netmeds</td><td class="text-sm">Pharma · D2C</td><td class="text-sm">Storefront · OMS · Kaily Assistant · UCP</td><td class="text-sm" style="color: var(--ink-muted);">24M users · 850+ cities · 96% favourable on Kaily</td></tr>
+<tr><td class="mono text-xs">23</td><td class="font-medium">JioGames Store</td><td class="text-sm">Gaming · vouchers</td><td class="text-sm">Storefront · RPOS integrations · JioOnePay · 1,200+ Smart Bazaar + 1,000+ RD stores</td><td class="text-sm" style="color: var(--ink-muted);">11× voucher sales · 9× orders · 60% repeat</td></tr>
+<tr><td class="mono text-xs">24</td><td class="font-medium">TheCloset</td><td class="text-sm">Lifestyle · D2C</td><td class="text-sm">Storefront</td><td class="text-sm" style="color: var(--ink-muted);">Active D2C</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- RBL portfolio on JCP -->
+<div class="cap-num mb-3">Reliance Brands Ltd portfolio on JCP · 25+ premium &amp; lifestyle brands</div>
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>#</th><th>Brand</th><th>Format</th><th>JCP modules</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td class="mono text-xs">25</td><td class="font-medium">Hamleys</td><td class="text-sm">Toys</td><td class="text-sm">Storefront · Store OS · Loyalty (Engage) · 50+ omni stores</td><td class="text-sm" style="color: var(--ink-muted);">160 stores globally · 74% omni fulfilment · 88.6% desktop user lift</td></tr>
+<tr><td class="mono text-xs">26</td><td class="font-medium">Sephora</td><td class="text-sm">Beauty</td><td class="text-sm">Storefront · iOS+Android app · Store OS · GlamAR VTO · R-One · JioOnePay</td><td class="text-sm" style="color: var(--ink-muted);">D2C apps onboarded 2024</td></tr>
+<tr><td class="mono text-xs">27</td><td class="font-medium">Kiko Milano</td><td class="text-sm">Beauty</td><td class="text-sm">Storefront · website upcoming · R-One target</td><td class="text-sm" style="color: var(--ink-muted);">Commercials in progress</td></tr>
+<tr><td class="mono text-xs">28</td><td class="font-medium">Sunglass Hut</td><td class="text-sm">Eyewear</td><td class="text-sm">Store OS · POS</td><td class="text-sm" style="color: var(--ink-muted);">Onboarded 2024</td></tr>
+<tr><td class="mono text-xs">29</td><td class="font-medium">Vision Express</td><td class="text-sm">Eyewear</td><td class="text-sm">Storefront · GlamAR (eyewear VTO) · Store OS · Migration to Fynd Commerce</td><td class="text-sm" style="color: var(--ink-muted);">New website 12 - Mar - 2026 · GlamAR 15 - Apr - 2026</td></tr>
+<tr><td class="mono text-xs">30</td><td class="font-medium">LensCrafters</td><td class="text-sm">Eyewear</td><td class="text-sm">Storefront · GlamAR (eyewear VTO) · website 11 - Mar - 2026</td><td class="text-sm" style="color: var(--ink-muted);">GlamAR live target 15 - Apr - 2026</td></tr>
+<tr><td class="mono text-xs">31</td><td class="font-medium">Charles Tyrwhitt</td><td class="text-sm">Apparel</td><td class="text-sm">Store OS · POS</td><td class="text-sm" style="color: var(--ink-muted);">Onboarded 2024</td></tr>
+<tr><td class="mono text-xs">32</td><td class="font-medium">Steve Madden</td><td class="text-sm">Footwear</td><td class="text-sm">Migrated to Fynd Commerce 2024</td><td class="text-sm" style="color: var(--ink-muted);">Migrated</td></tr>
+<tr><td class="mono text-xs">33</td><td class="font-medium">Superdry</td><td class="text-sm">Apparel</td><td class="text-sm">Storefront · Migration · SDX (AI design) on AJIO · Fynd Studios video · StoreOS PG mig</td><td class="text-sm" style="color: var(--ink-muted);">SDX live · AI design 120/5days</td></tr>
+<tr><td class="mono text-xs">34</td><td class="font-medium">Mothercare</td><td class="text-sm">Baby + maternity</td><td class="text-sm">Storefront · Marketplace (Myntra) · StoreOS PG mig · SS26 design · Centric PLM POC</td><td class="text-sm" style="color: var(--ink-muted);">Onboarded</td></tr>
+<tr><td class="mono text-xs">35</td><td class="font-medium">Hunkemoller</td><td class="text-sm">Lingerie</td><td class="text-sm">StoreOS PG mig (25 - Mar - 2026 target)</td><td class="text-sm" style="color: var(--ink-muted);">Migrating</td></tr>
+<tr><td class="mono text-xs">36</td><td class="font-medium">Pret</td><td class="text-sm">F&amp;B + apparel</td><td class="text-sm">Pret Application · awaiting commercial approval</td><td class="text-sm" style="color: var(--ink-muted);">Pending Maneesh sign-off</td></tr>
+<tr><td class="mono text-xs">37</td><td class="font-medium">Ed-A-Mamma</td><td class="text-sm">Kids fashion</td><td class="text-sm">Storefront · Marketplace</td><td class="text-sm" style="color: var(--ink-muted);">Status update sent to Farooq Feb '25</td></tr>
+<tr><td class="mono text-xs">38</td><td class="font-medium">Coverstory</td><td class="text-sm">Apparel</td><td class="text-sm">WMS · managed warehouse services</td><td class="text-sm" style="color: var(--ink-muted);">Commercials in progress</td></tr>
+<tr><td class="mono text-xs">39</td><td class="font-medium">Westelm</td><td class="text-sm">Home + furniture</td><td class="text-sm">Storefront · GlamAR 3D AR ad banners</td><td class="text-sm" style="color: var(--ink-muted);">Integration target 30 - Mar - 2026</td></tr>
+<tr><td class="mono text-xs">40</td><td class="font-medium">Ritu Kumar</td><td class="text-sm">Apparel · Indian wear</td><td class="text-sm">Storefront · Store OS · Marketplace + omni</td><td class="text-sm" style="color: var(--ink-muted);">D2C 2024 · Myntra omni</td></tr>
+<tr><td class="mono text-xs">41</td><td class="font-medium">Astra Bikes</td><td class="text-sm">Bicycles</td><td class="text-sm">Storefront</td><td class="text-sm" style="color: var(--ink-muted);">D2C 2024</td></tr>
+<tr><td class="mono text-xs">42</td><td class="font-medium">Muji</td><td class="text-sm">Lifestyle</td><td class="text-sm">Storefront · Store OS</td><td class="text-sm" style="color: var(--ink-muted);">D2C 2024</td></tr>
+<tr><td class="mono text-xs">43</td><td class="font-medium">Gulabo by Abu Sandeep</td><td class="text-sm">Couture</td><td class="text-sm">Storefront</td><td class="text-sm" style="color: var(--ink-muted);">D2C 2024</td></tr>
+<tr><td class="mono text-xs">44</td><td class="font-medium">Mard by Abu Sandeep</td><td class="text-sm">Couture</td><td class="text-sm">Storefront</td><td class="text-sm" style="color: var(--ink-muted);">D2C 2024</td></tr>
+<tr><td class="mono text-xs">45</td><td class="font-medium">Centro Shoes</td><td class="text-sm">Footwear</td><td class="text-sm">Storefront · website 18 - Mar - 2026</td><td class="text-sm" style="color: var(--ink-muted);">Launched</td></tr>
+<tr><td class="mono text-xs">46</td><td class="font-medium">Tumi</td><td class="text-sm">Travel</td><td class="text-sm">DP self-account migration · new design scoping</td><td class="text-sm" style="color: var(--ink-muted);">DRI Sujith Sajeev</td></tr>
+<tr><td class="mono text-xs">47</td><td class="font-medium">La Martina</td><td class="text-sm">Apparel</td><td class="text-sm">Storefront · website 15 - Apr - 2026</td><td class="text-sm" style="color: var(--ink-muted);">Launched</td></tr>
+<tr><td class="mono text-xs">48</td><td class="font-medium">Ancestry</td><td class="text-sm">Lifestyle</td><td class="text-sm">Storefront · website 15 - Apr - 2026</td><td class="text-sm" style="color: var(--ink-muted);">Launched</td></tr>
+<tr><td class="mono text-xs">49</td><td class="font-medium">Coach</td><td class="text-sm">Luxury</td><td class="text-sm">Storefront · website 30 - Mar - 2026</td><td class="text-sm" style="color: var(--ink-muted);">DRI Rohini</td></tr>
+<tr><td class="mono text-xs">50</td><td class="font-medium">Molton Brown</td><td class="text-sm">Beauty</td><td class="text-sm">UX study in progress</td><td class="text-sm" style="color: var(--ink-muted);">DRI tompathadan</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- JCP HEADCOUNT -->
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">JCP team · headcount snapshot</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">~140 in JCP business unit · Sep 2025 baseline.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">From Pratik's team roster (Aishwarya Pattanaik · Sep 2025), filtered to "Jio Commerce Platform" business unit. Org reports up through Jigarkumar Dafda (CTO). Project allocations below are from the same roster.</p>
+
+<div class="grid md:grid-cols-2 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-3">By project · top 12</div>
+<table class="w-full text-sm">
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Central / Central Services</td><td class="text-right mono">15</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">JioMart</td><td class="text-right mono">10</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Central OMS</td><td class="text-right mono">6</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Serviceability</td><td class="text-right mono">5</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Catalog Cloud</td><td class="text-right mono">5</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Theme Engine · Storefront</td><td class="text-right mono">4</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Platform Frontend</td><td class="text-right mono">4</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Metro</td><td class="text-right mono">4</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Payments</td><td class="text-right mono">3</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">Cart</td><td class="text-right mono">3</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">JioMart RhOS migration</td><td class="text-right mono">3</td></tr>
+<tr style="border-bottom: 1px solid var(--border-soft);"><td class="py-2">JCP Core</td><td class="text-right mono">2</td></tr>
+<tr><td class="py-2 font-semibold">+ many cross-cutting (SRE · DevEx · QA · Infra · Tira · Ajio · UrbanLadder · 7-Eleven · RBL · Scan&amp;Go)</td><td class="text-right mono font-semibold">~75</td></tr>
+</table>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3">Senior leadership</div>
+<ul class="text-sm space-y-2.5" style="color: var(--ink);">
+<li>·<strong>Jigarkumar Dafda</strong> · CTO · BU lead</li>
+<li>·<strong>Pratik Patel</strong> · Engineering lead</li>
+<li>·<strong>Kushan Shah</strong> · CPO · platform</li>
+<li>·<strong>Ashish Chandorkar</strong> · CPO · commerce</li>
+<li>·<strong>Anand Thakur</strong> · RIL · CPTO AJIO</li>
+<li>·<strong>Advait Pandit</strong> · JCP grocery</li>
+<li>·<strong>Arpan Mukherjee</strong> · JCP electronics</li>
+<li>·<strong>Anand Gopalan</strong> · JCP B2B</li>
+<li>·<strong>Vivek Perumal</strong> · JCP pharma</li>
+<li>·<strong>Farooq Adam</strong> · CEO · Multi-tenant + central</li>
+</ul>
+</div>
+</div>
+<p class="mt-4 mono text-xs" style="color: var(--ink-muted);">Source ·<a href="https://docs.google.com/spreadsheets/d/10-XswKjFfx9g2BnlANTQk4dcYhItJM4myjkTrASQV3Q" class="hover:underline" style="color: var(--accent);">JCP team roster Sep 2025 (Aishwarya Pattanaik)</a> · 140 rows in JCP BU · 202 rows total (incl. shared resource pool). Report-up: Jigarkumar Dafda.</p>
+</div></section>
+
+<!-- ADDITIONAL B2C from</div>
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>#</th><th>Business</th><th>Vertical</th><th>Status · target</th><th>Product Owner / Engineering</th></tr></thead>
+<tbody>
+<tr><td class="mono text-xs">51</td><td class="font-medium">Shein</td><td class="text-sm">Fashion · marketplace</td><td class="text-sm">Pipeline</td><td class="text-sm" style="color: var(--ink-muted);">Salman Saudagar · Eng: Nikhil Manapure · Mentor: Anand Thakur</td></tr>
+<tr><td class="mono text-xs">52</td><td class="font-medium">Urban Ladder</td><td class="text-sm">Home</td><td class="text-sm">29 - Sep - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Aushin Ganguli · Aayush Jain · Mentor: Advait Pandit</td></tr>
+<tr><td class="mono text-xs">53</td><td class="font-medium">Swadesh</td><td class="text-sm">Home</td><td class="text-sm">31 - Jul - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Aushin Ganguli · Anubhav Jain · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">54</td><td class="font-medium">Jio.com Shop</td><td class="text-sm">Electronics</td><td class="text-sm">31 - Aug - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Simran Dalvi · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="mono text-xs">55</td><td class="font-medium">Ajio Luxe</td><td class="text-sm">Fashion · luxury</td><td class="text-sm">30 - Aug - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Apoorva Singh + Priyanka Khera · Imran Khan</td></tr>
+<tr><td class="mono text-xs">56</td><td class="font-medium">Milk Basket</td><td class="text-sm">Grocery B2C</td><td class="text-sm">29 - Sep - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Chintan Saglani · Mentor: Advait Pandit</td></tr>
+<tr><td class="mono text-xs">57</td><td class="font-medium">PBG Mono Brands</td><td class="text-sm">Electronics</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Simran Dalvi · Eng: Darpan Pathak · Arpan Mukherjee</td></tr>
+<tr><td class="mono text-xs">58</td><td class="font-medium">Tira Mono Brands</td><td class="text-sm">Beauty</td><td class="text-sm">Hold</td><td class="text-sm" style="color: var(--ink-muted);">Daraksha Quraishi · Amber Jain · Anand Thakur</td></tr>
+<tr><td class="mono text-xs">59</td><td class="font-medium">JioMart Digital website</td><td class="text-sm">Electronics</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Bhaumik Shah · Darpan Pathak · Arpan Mukherjee</td></tr>
+<tr><td class="mono text-xs">60</td><td class="font-medium">Zivame</td><td class="text-sm">Lingerie</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">61</td><td class="font-medium">Amante</td><td class="text-sm">Lingerie</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">62</td><td class="font-medium">Clovia</td><td class="text-sm">Lingerie</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">63</td><td class="font-medium">Marks &amp; Spencer</td><td class="text-sm">Multi-tenant</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Nimit Shah · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">64</td><td class="font-medium">Xlerate</td><td class="text-sm">D2C</td><td class="text-sm">01 - Aug - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Daraksha Quraishi · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">65</td><td class="font-medium">V Retail</td><td class="text-sm">D2C</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Nimit Shah · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">66</td><td class="font-medium">Insight Cosmetics</td><td class="text-sm">Beauty</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Anuja Yadav · Mentor: Anand Thakur</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- DMS + B2B2C + Sales Agents -->
+<div class="cap-num mb-3">DMS · B2B2C · Sales-Agent channels (verified</div>
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>Type</th><th>Channel</th><th>Vertical</th><th>Status</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td class="text-sm" style="color: var(--ink-muted);">DMS</td><td class="font-medium">JioMart Partner</td><td class="text-sm">Grocery B2B</td><td class="text-sm">Live · 10 - Aug - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan + Vivek Perumal · Eng: Utkarsh Mankad + Suresha Mahohar · Mentor: Anand Gopalan</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">DMS</td><td class="font-medium">Ajio Business</td><td class="text-sm">B2B distribution</td><td class="text-sm">25 - Aug - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan · Anoop Nair · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">DMS</td><td class="font-medium">Netmeds Wholesale</td><td class="text-sm">Pharma B2B</td><td class="text-sm">Sept 10, 2023</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">DMS</td><td class="font-medium">PBG: Electronics Brands</td><td class="text-sm">Electronics B2B</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan · Eng: Minu V · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">DMS</td><td class="font-medium">RCPL: FMCG Brands</td><td class="text-sm">FMCG B2B</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan · Eng: Rushabh Tiwari + Rajesh Kumar · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">DMS</td><td class="font-medium">RBL: Fashion Brands</td><td class="text-sm">Fashion B2B</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">B2B2C</td><td class="font-medium">JioMart Digital · ASP</td><td class="text-sm">Authorised Service Partner</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Bhaumik Shah · Eng: Darpan Pathak · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Sales Agents</td><td class="font-medium">JioPartnerWorld · JioMart Digital</td><td class="text-sm">B2B sales agent</td><td class="text-sm">In flight</td><td class="text-sm" style="color: var(--ink-muted);">Bhaumik Shah · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Sales Agents</td><td class="font-medium">JioPartnerWorld · Grocery</td><td class="text-sm">B2B sales agent</td><td class="text-sm">In flight</td><td class="text-sm" style="color: var(--ink-muted);">Bhaumik Shah · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="text-sm" style="color: var(--ink-muted);">Sales Agents</td><td class="font-medium">JioPartnerWorld · Ajio</td><td class="text-sm">B2B sales agent</td><td class="text-sm">In flight</td><td class="text-sm" style="color: var(--ink-muted);">Bhaumik Shah · Mentor: Arpan Mukherjee</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- Offline / In-Store -->
+<div class="cap-num mb-3">In-store / Offline channels on JCP (Scan & Go · POS · Endless Aisle)</div>
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>#</th><th>Channel</th><th>Vertical</th><th>Status</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td class="mono text-xs">01</td><td class="font-medium">Reliance Smart (in-store)</td><td class="text-sm">Multi-tenant</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="mono text-xs">02</td><td class="font-medium">Netmeds Stores</td><td class="text-sm">Pharma</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Harshil Majithia · Sumit Rao · Mentor: Vivek Perumal</td></tr>
+<tr><td class="mono text-xs">03</td><td class="font-medium">Azorte · Scan &amp; Go</td><td class="text-sm">Fashion</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Kedar Kulkarni · Chalapathi Rao · Eng: Muralidhar Edam · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">04</td><td class="font-medium">GAP · Scan &amp; Go</td><td class="text-sm">Fashion (RBL franchise)</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Kedar Kulkarni · Chalapathi Rao · Eng: Muralidhar Edam · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">05</td><td class="font-medium">Tira Store</td><td class="text-sm">Beauty</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Anuja Yadav</td></tr>
+<tr><td class="mono text-xs">06</td><td class="font-medium">Swadesh Store</td><td class="text-sm">Home</td><td class="text-sm">15 - Sep - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Aushin Ganguli · Shelley Nanda · Anubhav Jain · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">07</td><td class="font-medium">Reliance Jewels (in-store)</td><td class="text-sm">Jewellery</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Megha Golecha · Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="mono text-xs">08</td><td class="font-medium">Metro</td><td class="text-sm">Wholesale</td><td class="text-sm">15 - Sep - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Farhan Khan · Vivek Perumal · Utkarsh Mankad · Suresha Mahohar · Mentor: Anand Gopalan</td></tr>
+<tr><td class="mono text-xs">09</td><td class="font-medium">Jio BP Fuel</td><td class="text-sm">Multi-tenant · fuel retail</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Nimit Shah · Eng: Sachin Agrawal · Mentor: Farooq Adam</td></tr>
+<tr><td class="mono text-xs">10</td><td class="font-medium">Centro (in-store)</td><td class="text-sm">Multi-brand fashion</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Chintan Saglani</td></tr>
+<tr><td class="mono text-xs">11</td><td class="font-medium">Trends (in-store)</td><td class="text-sm">Value fashion</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">2,171 stores · Devam Gosalia · Brijkishor</td></tr>
+<tr><td class="mono text-xs">12</td><td class="font-medium">Yousta (in-store)</td><td class="text-sm">Gen-Z fashion</td><td class="text-sm">Live · 09 - Aug - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Kedar Kulkarni · Chalapathi Rao · Muralidhar Edam · Mentor: Farooq Adam</td></tr>
+</tbody>
+</table>
+</div>
+
+<!-- Central services / runtime -->
+<div class="cap-num mb-3">Central services · the JCP backbone (verified</div>
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>Service</th><th>Status</th><th>Product owner</th><th>Engineering owner</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Unified Customer Profile (UCP)</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Prem Nathwani · Saumil Dalal</td><td class="text-sm" style="color: var(--ink-muted);">Mentor: Advait Pandit</td></tr>
+<tr><td class="font-medium">Commerce Control Tower</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Mehul Haria</td><td class="text-sm" style="color: var(--ink-muted);">Kapil Kapri · Mentor: Advait Pandit</td></tr>
+<tr><td class="font-medium">Master Data Hub (MDH)</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Mehul Haria · Swathi Kartha</td><td class="text-sm" style="color: var(--ink-muted);">Kapil Kapri · Sourabh Nilakhe · Jagadesh Sahadevan · Fahim Sakri</td></tr>
+<tr><td class="font-medium">Unified Seller Systems</td><td class="text-sm">15 - Sep - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Salman Saudagar</td><td class="text-sm" style="color: var(--ink-muted);">Kapil Kapri · Mentor: Farooq Adam</td></tr>
+<tr><td class="font-medium">Central OMS</td><td class="text-sm">In flight</td><td class="text-sm" style="color: var(--ink-muted);">Talha Khan · Kedar Aitawdekar</td><td class="text-sm" style="color: var(--ink-muted);">Avinash Ajith Kumar · Mentor: Farooq Adam</td></tr>
+<tr><td class="font-medium">Catalog Cloud</td><td class="text-sm">31 - Jul - 2023</td><td class="text-sm" style="color: var(--ink-muted);">Swathi Karta</td><td class="text-sm" style="color: var(--ink-muted);">Sourabh Nilakhe · Mentor: Farooq Adam</td></tr>
+<tr><td class="font-medium">Operations Control · ERP Deprecation</td><td class="text-sm">In flight</td><td class="text-sm" style="color: var(--ink-muted);">Aushin Ganguli</td><td class="text-sm" style="color: var(--ink-muted);">Mentor: Arpan Mukherjee</td></tr>
+<tr><td class="font-medium">Fynd Coupons (Web)</td><td class="text-sm">Live</td><td class="text-sm" style="color: var(--ink-muted);">Gurkanwal Singh</td><td class="text-sm" style="color: var(--ink-muted);">Ankur Chandra · Mentor: Farooq Adam</td></tr>
+</tbody>
+</table>
+</div>
+
+<p class="mono text-xs" style="color: var(--ink-muted);">Counts of "105 B2C" and "7 B2B" sourced from<a href="https://docs.google.com/presentation/d/14o88OzyHV7M63MB5vg0VUHtQxAXMP-Zb6FZisfCuKRs" class="hover:underline" style="color: var(--accent);">Retail Platforms &amp; Agents · 16 - Apr - 2026 deck (Shyam Dixit)</a> slide "Jio Commerce Platform: Scale". 66 distinct channels above are enumerated directly from<a href="https://docs.google.com/spreadsheets/d/1BYLfMPLLg8_G79kVP-OccUjRzv77H2WtUJoyAlE2HNk" class="hover:underline" style="color: var(--accent);">JCP</a> · the remaining ~39 to "105" are RBL retail-brand microsites (Hamleys, Sephora, Coach, etc., listed under<a href="/rbl" class="hover:underline" style="color: var(--accent);">RBL track</a>) plus tail tenants on shared clusters that don't have a dedicated tracker row.; background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Full B2B roster · 7 businesses on JCP</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Reliance B2B layer.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JCP powers 7 B2B businesses (16 - Apr - 2026 deck). The list below names each, scope, and Fynd module footprint.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>#</th><th>Business</th><th>Scope</th><th>JCP modules</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td class="mono text-xs">01</td><td class="font-medium">JioMart Digital B2B (1.0)</td><td class="text-sm">B2B · wholesale · SME enablement</td><td class="text-sm">B2B Storefront · OMS · Catalog · Konnect</td><td class="text-sm">Live</td></tr>
+<tr><td class="mono text-xs">02</td><td class="font-medium">JioMart Digital ASP</td><td class="text-sm">Authorised Service Partner enablement</td><td class="text-sm">B2B Storefront · supplier portal</td><td class="text-sm">Live</td></tr>
+<tr><td class="mono text-xs">03</td><td class="font-medium">JioMart Marketplace Extension</td><td class="text-sm">Onboarding gateway · Reliance Brands ↔ JioMart</td><td class="text-sm">Konnect · OMS · supplier rails</td><td class="text-sm">Live · Hamleys, Mothercare, Bewakoof, Raymonds, Trends, Urban Ladder onboarded</td></tr>
+<tr><td class="mono text-xs">04</td><td class="font-medium">RCPL · Reliance Consumer Products</td><td class="text-sm">FMCG · Campa · Independence · 1.3 Cr outlet target</td><td class="text-sm">Storefront · OMS · Konnect · Granary planning · Forge MES (planned)</td><td class="text-sm">Building · direct partnership · 30-dev ask</td></tr>
+<tr><td class="mono text-xs">05</td><td class="font-medium">Metro Kirana Platform</td><td class="text-sm">Wholesale + kirana network</td><td class="text-sm">Shared cluster with RCPL · OmniPOS · Konnect</td><td class="text-sm">Live · scale-up underway</td></tr>
+<tr><td class="mono text-xs">06</td><td class="font-medium">AJIO Distributor (DMS)</td><td class="text-sm">B2B distribution management</td><td class="text-sm">DMS module · Konnect</td><td class="text-sm">Live · part of DMS rollout (AJIO B2B + Distributor + Metro + JioMart Partner)</td></tr>
+<tr><td class="mono text-xs">07</td><td class="font-medium">Reliance Retail Enterprise (RRA)</td><td class="text-sm">Marketplace aggregator extension across all RR brands</td><td class="text-sm">RRA Extension · Konnect · cross-MP inventory + audit</td><td class="text-sm">Live</td></tr>
+</tbody>
+</table>
+</div>
+</div></section>
+
+<!-- SUB-IPs UNDER JCP -->
+<section id="sub-ips" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Sub-IPs · 19 modules under JCP</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every Fynd-built IP that runs JCP.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each card is a distinct Fynd IP plugged into the Jio Commerce Platform stack. UCP has its own dedicated section below · this grid covers every other module Fynd ships into Reliance commerce.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<a href="#storefront" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Storefront</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Storefront.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">JioMart · AJIO · Tira · Netmeds · Reliance Digital · Smart Bazaar · Hamleys · Sephora · 60+ brand sites on one Fynd-built rendering engine.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Pratik Patel · Jainish Jain</div></a>
+
+<a href="#konnect" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Marketplace OS</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Konnect.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">50+ channels · seller onboarding 2 weeks → 48 hrs · 25% cost reduction. Fynd's marketplace OS for AJIO + JioMart MP.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Salman Saudagar · Kapil Kapri</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Order OS</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">OMS.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Central OMS in flight · current OMS handles 50K+ orders/min peak. Fynd-built · single ledger across online + offline.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Talha Khan · Kedar Aitawdekar</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Warehouse OS</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">WMS.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">99.7% pick accuracy · powers JioMart at 1M+ orders/day at peak. Standardised across grocery + apparel DCs.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Pratik Patel</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Transport OS</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">TMS.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Apparel + grocery flows · vendor-to-store routing · garment-on-hanger native. Fynd's transport spine.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Pratik Patel · Kushan Shah</div></a>
+
+<a href="#fynd-quick" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Q-Commerce OS</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Fynd Quick.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">700+ orders/min · 90% on-time · sub-30-min. Fynd's purpose-built Q-Commerce OS powering JioMart Quick.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Pratik Patel · Jainish Jain</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">In-store</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Endless Aisle · Companion App.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">In-store + digital fused · scan-and-go · lookbook · wallet on JCP. Live across AJIO + Trends + Smart Bazaar.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Brijkishor Singh · Devam Gosalia</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">CRM · Loyalty</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Engage · Loyalty · R-One.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Fynd-built loyalty + engagement · R-One unified rewards across RR formats. Plugs into UCP for activation.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Prem Nathwani · Amogh Dubey</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Master Data</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">MDH (Master Data Hub).</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Single source of truth · brand · product · location · vendor. Fynd-built · feeds every JCP module.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Mehul Haria · Swathi Kartha</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Catalog</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Catalog Cloud.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Live since 31 - Jul - 2023. Multi-tenant catalog spine · powers AJIO, JioMart, Tira, Netmeds, RBL.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Swathi Karta · Sourabh Nilakhe</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">PIM AI</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">AI PIM.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Auto-attribute extraction · Tira live in production. Fynd-built · removes manual catalog enrichment.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Rajnandini Sharma</div></a>
+
+<a href="#glamar" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">VTO · 3D · AR</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">GlamAR.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Virtual Try-On · 3D · AR/VR. Live on Tira beauty · scaling to AJIO apparel + Reliance Digital eyewear.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Salman Saudagar · Shyam Dixit</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">DAM</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">PixelBin.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Fynd's Digital Asset Manager · powers every brand site image pipeline. Tira to JioMart same DAM.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Pixelbin team</div></a>
+
+<a href="#jiia" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Agentic Shopping</div><span class="pill pill-build">Build</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">JIIA.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Fynd's flagship agentic shopper · Google Cloud Next '26 keynote slot · Gemini · 40M+ images.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Shyam Dixit</div></a>
+
+<a href="#zip" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">AJIO Agent</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">ZIP · AJIO Agent.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">88% +ve CX · 86% catalog coverage · 2M+ chats. Fynd's production agent on AJIO.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Shyam Dixit</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Workflow</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Boltic.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Workflow automation · powers AJIO seller-side automations and 50+ JCP integration jobs.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Boltic team · Salman Saudagar</div></a>
+
+<a href="#sub-ips" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Pricing</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Pricing &amp; Markdowns.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Fynd-built pricing engine · markdown automation · tied to Cortex Buy-Plan and Granary.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Aushin Ganguli · Mayank Jain</div></a>
+
+<a href="/retail-vista" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Promise</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Vista.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Delivery promise · drive-time · spatial intelligence. Powers SLA promise on JioMart, AJIO, Tira.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Karan Muley</div></a>
+
+<a href="#swapeasy" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Trade-in</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">SwapEasy.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">Reliance Digital · 625 stores · ₹1.5 Cr Month-1. Fynd's electronics trade-in IP.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Salman Saudagar</div></a>
+
+<a href="#scan-and-go" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-2"><div class="cap-num">Self-checkout</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Scan &amp; Go.</h3><p class="text-sm mb-3" style="color: var(--ink-muted);">8 RIL brands live · ₹2.5 Cr/yr invoice savings · &lt;2 min checkout. Fynd-built self-checkout on JCP rails.</p><div class="text-xs mono" style="color: var(--ink-muted);">DRI · Shyam Dixit · Pritam Ghosh</div></a>
+
+</div>
+</div></section>
+
+<!-- DEEP CARDS UNDER JCP -->
+<section id="deep-cards-jcp" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Deep cards · the IPs that move the JCP P&amp;L</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Outcome · evidence · reach · next.</h2>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<a id="storefront" href="https://docs.google.com/spreadsheets/d/1BYLfMPLLg8_G79kVP-OccUjRzv77H2WtUJoyAlE2HNk" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">Storefront.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">One Fynd-built rendering engine across 60+ brand sites · 99.9% uptime</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">JioMart · AJIO · Tira · Netmeds · Reliance Digital · Smart Bazaar · Hamleys · Sephora · Bewakoof · Trends · Mothercare · Urban Ladder · Coach</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">300M+ customers served · 50K+ orders/min peak</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Headless commerce v2 · LCP &lt;1.8s on India networks · personalisation hooks per brand</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Pratik Patel · Jainish Jain</div></a>
+
+<a id="konnect" href="https://docs.google.com/spreadsheets/d/1BYLfMPLLg8_G79kVP-OccUjRzv77H2WtUJoyAlE2HNk" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">Konnect · Marketplace OS.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">Seller onboarding 2 weeks → 48 hrs · 25% cost reduction · 99.2% SLA compliance</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">12,400 active AJIO sellers · 50+ marketplace channels live</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">AJIO · JioMart MP · RRA · Metro · JioMart Digital B2B</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Auto-listing AI extension · cross-MP inventory + audit at single-tenant level</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Salman Saudagar · Kapil Kapri</div></a>
+
+<a id="fynd-quick" href="/granary#fynd-quick" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">Fynd Quick · Q-Commerce OS.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">700+ orders/min · 90% on-time · sub-30-min</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">JioMart Quick · 1.6M daily orders · 360% YoY · 99.9% uptime</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">800 dark stores · 18,000+ Reliance Retail outlets via inventory mesh</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">5M orders/day target · 7-Eleven format wedge · FreshPik premium hub</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Pratik Patel · Jainish Jain</div></a>
+
+<a id="jiia" href="https://drive.google.com/file/d/14o88OzyHV7M63MB5vg0VUHtQxAXMP-Zb6FZisfCuKRs" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">JIIA · Agentic Shopping.</h3><span class="pill pill-build">Build</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">Conversational shop · Hindi + English · cart from a recipe or a look</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">Google Cloud Next '26 keynote · Gemini · 40M+ image catalog</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">JioMart · AJIO · Smart Bazaar · FreshPik premium</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Voice commerce · agentic checkout · hand-off into ZIP CX loop</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Shyam Dixit</div></a>
+
+<a id="zip" href="/jcp#zip" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">ZIP · AJIO Agent.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">88% positive CX · 86% catalog coverage · 2M+ chats handled</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">Live on AJIO Slack channel · production telemetry</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">AJIO marketplace shoppers · expanding to Netmeds + JioMart</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Voice + multilingual · order-aware recovery · UCP-aware personalisation</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Shyam Dixit</div></a>
+
+<a id="glamar" href="/jcp#glamar" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">GlamAR · VTO · 3D.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">2.5× AOV lift on Tira · 94% AI rec accuracy</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">Tira live · Reliance Digital eyewear pilot · AJIO apparel build</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">2,000+ brands on Tira · scaling to AJIO 12,400 sellers</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Fynd Horizon body-measure integration · in-store mirror at 50K+ SKUs</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Salman Saudagar · Shyam Dixit</div></a>
+
+<a id="swapeasy" href="/jcp#swapeasy" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">SwapEasy.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">₹1.5 Cr Month-1 trade-in revenue · 625 stores live</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">Reliance Digital production Slack</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">650+ Reliance Digital stores fleet</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Apparel buy-back pilot · Fashion Factory tie-in</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Salman Saudagar</div></a>
+
+<a id="scan-and-go" href="/jcp#scan-and-go" class="card card-hover p-6 block"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-lg" style="color: var(--ink);">Scan &amp; Go.</h3><span class="pill pill-live">Live</span></div><div class="grid grid-cols-2 gap-3 text-sm">
+<div><div class="cap-num mb-1">Outcome</div><div style="color: var(--ink);">₹2.5 Cr/yr invoice savings · 5 min saved per visit · &lt;2 min checkout</div></div>
+<div><div class="cap-num mb-1">Evidence</div><div style="color: var(--ink);">Live on 8 RIL brand fleets</div></div>
+<div><div class="cap-num mb-1">Reach</div><div style="color: var(--ink);">Trends · Azorte · Yousta · DNMX · Fashion Factory · Centro · Avaasa · Performax</div></div>
+<div><div class="cap-num mb-1">Next</div><div style="color: var(--ink);">Smart Bazaar grocery rollout · self-checkout kiosk fusion (Fynd Kio)</div></div>
+</div><div class="mt-3 text-xs mono" style="color: var(--ink-muted);">DRI · Shyam Dixit · Pritam Ghosh</div></a>
+
+</div>
+</div></section>
+
+<section id="ucp" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Unified Customer Platform · UCP</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One identity across every Reliance retail business.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Privacy-compliant platform unifying customer identity, profile, and behaviour across all Reliance Retail and RBL formats · online and offline. Eliminates third-party customer-data tools. Powers one-click login, in-house OTP, in-house messaging (JioCX), personalisation, NPS, audience segmentation, and near-real-time campaign activation. Vetted by Jio InfoSec · TOPs-managed in production. EM:<strong>Saumil Dalal</strong> · PM:<strong>Prem Nathwani</strong>,<strong>Amogh Dubey</strong> · Eng lead:<strong>Vaibhav Kulkarni</strong>.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
+<div class="card p-5"><div class="cap-num mb-2">Identities unified</div><div class="display-2 text-3xl" style="color: var(--ink);">400M+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across RR online + offline</div></div>
+<div class="card p-5"><div class="cap-num mb-2">Profile attributes</div><div class="display-2 text-3xl" style="color: var(--ink);">200+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Identities · affinities · activities</div></div>
+<div class="card p-5"><div class="cap-num mb-2">RPOS daily orders</div><div class="display-2 text-3xl" style="color: var(--ink);">1.5M</div><div class="text-xs mt-1" style="color: var(--ink-muted);">80+ formats · 15K+ stores · streaming</div></div>
+<div class="card p-5"><div class="cap-num mb-2">Privacy-compliant</div><div class="display-2 text-3xl accent">100%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Jio Cloud · TOPs-managed · InfoSec vetted</div></div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-4 mb-10">
+<div class="card p-6">
+<div class="cap-num mb-3">Channels live on UCP</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Twelve channels integrated.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li class="flex justify-between"><span>JioMart</span><span class="mono" style="color: var(--ink-muted);">130M+ users</span></li>
+<li class="flex justify-between"><span>AJIO</span><span class="mono" style="color: var(--ink-muted);">80M+ users</span></li>
+<li class="flex justify-between"><span>Netmeds</span><span class="mono" style="color: var(--ink-muted);">35M+ users</span></li>
+<li class="flex justify-between"><span>MilkBasket</span><span class="mono" style="color: var(--ink-muted);">2M+ users</span></li>
+<li class="flex justify-between"><span>Tira</span><span class="mono" style="color: var(--ink-muted);">1.3M+ users</span></li>
+<li class="flex justify-between"><span>FreshPik</span><span class="mono" style="color: var(--ink-muted);">Live</span></li>
+<li class="flex justify-between"><span>Reliance Digital</span><span class="mono" style="color: var(--ink-muted);">Live</span></li>
+<li class="flex justify-between"><span>Reliance Jewels</span><span class="mono" style="color: var(--ink-muted);">Live</span></li>
+<li class="flex justify-between"><span>Swadesh · Urban Ladder</span><span class="mono" style="color: var(--ink-muted);">Live</span></li>
+<li class="flex justify-between"><span>RPOS · 80+ formats</span><span class="mono" style="color: var(--ink-muted);">15K+ stores · streaming</span></li>
+<li class="flex justify-between"><span>RBL retail-brand microsites</span><span class="mono" style="color: var(--ink-muted);">Public path · InfoSec-vetted</span></li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3">Performance · capability stack</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Sub-second at scale.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>·<strong>API latency</strong> · ~19 ms p50</li>
+<li>·<strong>Event processing</strong> · ~300 ms end-to-end</li>
+<li>·<strong>Throughput</strong> · 500 events/sec sustained</li>
+<li>·<strong>Reliance Retail Authentication</strong> · OTP for JioMart and AJIO · in-house Account Centre</li>
+<li>·<strong>Address Optimisation</strong> · 69,318+ addresses optimised across 76 pincodes (Jio ACL integration)</li>
+<li>·<strong>Sanctions Screening v2.0</strong> · cross-checks 25 lakh+ sanctioned names · powers JioMart UPI checkout block</li>
+<li>·<strong>Audience Builder + Activation</strong> · in-house · feeds SMS · RCS · CleverTap · Google · Meta Custom Audiences</li>
+<li>·<strong>RRA enrichment</strong> · pipeline live with Reliance Retail Analytics for profile depth</li>
+<li>·<strong>Boltic Clickstream SDK</strong> · clickstream + transactional capture for behavioural enrichment</li>
+</ul>
+</div>
+</div>
+
+<div class="cap-num mb-3">UCP release timeline · twelve major shipments · December 2023 → April 2026</div>
+<div class="space-y-1">
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">Apr 2026 · ongoing</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Self-Serve and Adoption scale-up.</div><div class="text-sm" style="color: var(--ink-muted);">Custom Audiences (Bring Your Own) · Campaign Governance with cooldowns and volume caps across 200+ formats · Real-time delivery tracking · End-to-end conversions tracking and ROAS · Documentation portal with RCS preview utilities and catalogue references.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">21 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Campaign Coupon Codes.</div><div class="text-sm" style="color: var(--ink-muted);">Shared (one code for all) and personalised (unique per customer) coupons inside Campaign Manager. CSV/ZIP customer-to-coupon mapping · matching and injection at delivery time. Next · JCP Coupons + Central Promotion Engine integration for real-time fetch.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">03 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">RPOS Real-Time · 15,000+ stores.</div><div class="text-sm" style="color: var(--ink-muted);">Every in-store transaction streams into UCP within minutes of checkout · 1.5M orders/day · 75+ formats · 15K+ stores under RRL and RBL. Powers near-real-time NPS, audience segments, post-purchase campaigns. Replaces day-old batch data.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">02 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Fayda Meter on JioMart.</div><div class="text-sm" style="color: var(--ink-muted);">Lifetime savings + neighbourhood savings (pincode aggregation on Databricks). Customer sees their savings vs their pincode in near-real-time. Featured in JioMart's IPL season ads · reaches millions.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">01 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">NPS at scale · 79 formats · ~7,000 stores.</div><div class="text-sm" style="color: var(--ink-muted);">SMS triggered 1-2 hours after every in-store POS purchase · unique one-time link · 0-10 rating + feedback. 7.2M orders processed · ~500K daily surveys sent · ~7K daily responses.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">24 - Mar - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">API-First Retail Account + Unified Address Book.</div><div class="text-sm" style="color: var(--ink-muted);">Any platform can integrate regardless of design system · native login/signup UI without SDKs or redirections. Platform-level consent with granular control. Cross-platform address reuse for frictionless checkout.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">30 - Jan - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Multi-feature rollout · RPOS, RCS, Analytics.</div><div class="text-sm" style="color: var(--ink-muted);">RPOS bringing ~2 lakh daily transaction events from 16+ formats · NPS expansion across Trends, Gap, Yousta, Avantra, Performax · native RCS campaigns (Android + iOS) · device fingerprinting for Retail Account · audiences pushed natively to Meta and Google Ads. 46 campaigns run · 7 format adoptions.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">15 - Dec - 2025</span><div><div class="font-semibold mb-1" style="color: var(--ink);">AI-Powered UCP Documentation.</div><div class="text-sm" style="color: var(--ink-muted);">Step-by-step business-user guide covering all filters, attributes, formats. Built with Cursor + Docusaurus + Scribe + product materials · entirely AI-generated. Live at docs.sit.ccpz0.de.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">19 - Sep - 2025</span><div><div class="font-semibold mb-1" style="color: var(--ink);">SizeSense · live in AJIO.</div><div class="text-sm" style="color: var(--ink-muted);">Built in-house. Reads brand, fit type, and size to suggest the right option on AJIO product pages. Stores preferences for return visits. Reduces size-related returns and exchanges, speeds up checkout. Men + Women Topwear and Bottomwear · more categories planned.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">02 - May - 2025</span><div><div class="font-semibold mb-1" style="color: var(--ink);">More For Me · personalised recommendations on JioMart.</div><div class="text-sm" style="color: var(--ink-muted);">Homepage product suggestions powered by order history and localised preferences. Falls back to time-of-day trends and pincode-level activity when history is insufficient. Backend · RRA → Kafka → MongoDB → real-time API.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">10 - Apr - 2025</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Reliance Retail Account v2 · the unified login.</div><div class="text-sm" style="color: var(--ink-muted);">Eleven months in development. DPDP-compliant consent capture · centralised account management connecting JioMart, AJIO, Tira, RD · Retail SSO (one tap, all platforms) · JioSwift email integration · JCP Beta whitelisting.</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 110px;">03 - Feb - 2025</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Platform Foundation + Personalisation.</div><div class="text-sm" style="color: var(--ink-muted);">First 2025 release · 360° Single Customer View spanning web to offline · Audience Builder v2 leveraging 170 retail formats via RRA · "Complete Your Basket" AI/ML widget on JioMart · RBAC · OTP service rehauled (used by MilkBasket to cut SMS abuse cost).</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--ink-muted); min-width: 110px;">23 - Feb - 2024</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Reliance Retail Authentication + Address Optimisation.</div><div class="text-sm" style="color: var(--ink-muted);">In-house OTP for JioMart (AJIO follows). Address Optimisation pilot · 69,318 addresses optimised across 76 pincodes via Jio ACL · drives down RTO and delivery failures. MilkBasket integration goes live (2M users).</div></div></div>
+<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--ink-muted); min-width: 110px;">11 - Jan - 2024</span><div><div class="font-semibold mb-1" style="color: var(--ink);">First UCP launch · Reliance Retail Identity.</div><div class="text-sm" style="color: var(--ink-muted);">310M customers unified across online + offline RR. Live with JioMart (130M), AJIO (80M), Netmeds (35M), Tira (1.3M), FreshPik. TOPs-managed. Public connectivity unlocked for RBL brand sites · InfoSec vetted. Sanctions Screening v2.0 with Dow Jones global list.</div></div></div>
+</div>
+
+<!-- CASE STUDY: RD Digital Discount Days -->
+<div class="mt-12 p-8 rounded-2xl" style="background: var(--ink); color: white;">
+<div class="cap-num mb-2" style="color: rgba(255,255,255,0.6);">Case study · UCP-powered campaign</div>
+<h3 class="display-2 text-2xl md:text-3xl mb-2" style="color: white;">Reliance Digital · Digital Discount Days.</h3>
+<p class="text-sm mb-6" style="color: rgba(255,255,255,0.7);">10 RCS campaigns · 11 to 19 - Apr - 2026 · UCP's first large-scale conversion-tracked campaign for RD. End-to-end · audience segmentation through RCS delivery to offline POS conversion tracking, all powered by UCP.</p>
+
+<div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
+<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Recipients</div><div class="display-2 text-2xl" style="color: white;">1.25M</div></div>
+<div class="p-4 rounded-xl" style="background: rgba(107,91,214,0.20);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.65);">Product revenue</div><div class="display-2 text-2xl accent">₹20.39 Cr</div></div>
+<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Transacting buyers</div><div class="display-2 text-2xl" style="color: white;">5,660</div></div>
+<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Open rate</div><div class="display-2 text-2xl" style="color: white;">30.68%</div></div>
+<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Avg ticket</div><div class="display-2 text-2xl" style="color: white;">₹34,145</div></div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-4 mb-6">
+<div class="p-5 rounded-xl" style="background: rgba(255,255,255,0.05);">
+<div class="text-xs mb-2" style="color: rgba(255,255,255,0.6);">Transactor segment lift</div>
+<ul class="text-sm space-y-1" style="color: rgba(255,255,255,0.85);">
+<li>· Open rate<strong style="color: white;">+25%</strong> · 30.68% → 38.23%</li>
+<li>· Click rate<strong style="color: white;">+314%</strong> · 0.56% → 2.32%</li>
+<li>· CTOR<strong style="color: white;">+234%</strong> · 1.82% → 6.07%</li>
+</ul>
+</div>
+<div class="p-5 rounded-xl" style="background: rgba(255,255,255,0.05);">
+<div class="text-xs mb-2" style="color: rgba(255,255,255,0.6);">Category mix</div>
+<ul class="text-sm space-y-1" style="color: rgba(255,255,255,0.85);">
+<li>· Large appliances · ₹8.11 Cr (39.8%)</li>
+<li>· Telecom · ₹6.90 Cr (33.8%)</li>
+<li>· Entertainment · ₹1.91 Cr (9.3%)</li>
+<li>· IT · ₹1.81 Cr (8.9%) · Small appliances · ₹1.37 Cr (6.7%)</li>
+</ul>
+</div>
+</div>
+
+<p class="text-sm" style="color: rgba(255,255,255,0.75);">Top brands · Samsung ₹3.98 Cr · Apple ₹3.19 Cr · LG ₹2.59 Cr. Top SKUs · Voltas + LG split ACs (seasonal) · iPhone 17 Pro Max. Geography · South 44.5% (₹9.07 Cr), West 20.3%, East 19.4%, North 15.9%.<strong style="color: white;">Saturday 19 - Apr alone generated ₹4.08 Cr</strong> · 20% of total revenue in one day. Replicable playbook for electronics-retail RCS campaigns now established.</p>
+</div>
+
+<!-- AI NATIVE UCP -->
+<div class="mt-8 p-8 rounded-2xl border-l-4" style="background: var(--bg-soft); border-left-color: var(--accent);">
+<div class="cap-num mb-2">What's next · AI Native UCP</div>
+<h3 class="display-2 text-2xl md:text-3xl mb-3" style="color: var(--ink);">A complete CDP in a single chat interface.</h3>
+<p class="text-base mb-4" style="color: var(--ink);">UCP is evolving into a fully AI-native Customer Data Platform. The entire marketing workflow · data exploration to campaign execution to retrospective analysis · happens conversationally with AI models powering every step. Demo ·<a href="https://youtu.be/9KCFnV6kXEU" class="hover:underline" style="color: var(--accent);">youtu.be/9KCFnV6kXEU</a>.</p>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-3">
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Speak to your data</div><div class="text-xs" style="color: var(--ink-muted);">Query customer bases via natural language. No SQL or dashboards.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">AI-built cohorts</div><div class="text-xs" style="color: var(--ink-muted);">AI suggests and builds segments based on goals.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Configure and execute</div><div class="text-xs" style="color: var(--ink-muted);">Multi-channel campaigns with AI-recommended targeting, timing, channel mix.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Generate creatives</div><div class="text-xs" style="color: var(--ink-muted);">AI produces channel-specific creatives per audience.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Retrospective analysis</div><div class="text-xs" style="color: var(--ink-muted);">Post-campaign learnings delivered conversationally.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Competitor intelligence</div><div class="text-xs" style="color: var(--ink-muted);">Data scraping + competitive analysis surfaced inline.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Next-best-action</div><div class="text-xs" style="color: var(--ink-muted);">AI recommends what to do next based on performance and signals.</div></div>
+<div class="card p-4"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Conversational ops</div><div class="text-xs" style="color: var(--ink-muted);">All of the above inside one chat surface · no dashboards.</div></div>
+</div>
+</div>
+
+<div class="mt-10 max-w-4xl p-6 rounded-2xl border-l-4" style="background: var(--bg-soft); border-left-color: var(--accent);">
+<div class="cap-num mb-2">Built by · UCP team</div>
+<p class="text-sm mb-2" style="color: var(--ink);"><strong>Engineering:</strong> Vaibhav Kulkarni · Aniket Aggarwal · Gurveer Singh · Nirmal · Divya Birla · Ratnakirti · Priyank Suthar · Krupali Mehta · Jatin Hazrati.<strong>QA:</strong> Priyanjali Manore.<strong>EM:</strong> Saumil Dalal.<strong>Product:</strong> Prem Nathwani · Amogh Dubey · Binit Jain.<strong>Program:</strong> Atri Ashwin Trivedi.<strong>DevOps:</strong> Amboj Goyal · Manish Singh · Ayushi · Tejas F.<strong>UCP TOPs + SRE:</strong> Srinivasa RDS · Bhushan Barhate and team.</p>
+<p class="text-sm" style="color: var(--ink);">Address Optimisation built with Jio ACL · Chirayu Kainya, Arjunsingh, Darpan Jain. Mentors · Farooq Adam, Advait Pandit, Kushan Shah.</p>
+<p class="text-xs mt-3" style="color: var(--ink-muted);">Source · Amogh Dubey · UCP Release Notes Timeline (HTML) shared 29 - Apr - 2026 in. Includes full RD Digital Discount Days dashboard and AI Native UCP demo (<a href="https://youtu.be/9KCFnV6kXEU" class="hover:underline" style="color: var(--accent);">youtu.be/9KCFnV6kXEU</a>).</p>
+</div>
+</div></section>
+
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Agentic Commerce</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three agents in production today.</h2>
+<p class="text-base max-w-3xl mb-12" style="color: var(--ink-muted);">JCP's agentic layer · natural-language commerce that replaces menu-driven navigation, immersive merchandising that brings products to life, and a multimodal shopping assistant on the JioMart app.</p>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-6">
+<div class="cap-num mb-2">ZIP · AJIO Commerce Agent</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Live on AJIO.com.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">Natural-language search and recommendation via chat &amp; voice. Replaces menu-driven navigation for vague-intent shoppers.</p>
+<div class="grid grid-cols-3 gap-2">
+<div><div class="display-2 text-2xl accent">88%</div><div class="text-xs" style="color: var(--ink-muted);">positive CX</div></div>
+<div><div class="display-2 text-2xl accent">86%</div><div class="text-xs" style="color: var(--ink-muted);">catalog covered</div></div>
+<div><div class="display-2 text-2xl accent">2M+</div><div class="text-xs" style="color: var(--ink-muted);">discovery chats</div></div>
+</div>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">GlamAR · Immersive Commerce</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Live · Sephora · Vision Express · LensCrafters · Westelm.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">AI-first 3D, AR, and VR commerce platform · VTO, AI Skin Analysis, AI Style Studio, virtual store, 3D AR ad banners.</p>
+<div class="grid grid-cols-3 gap-2">
+<div><div class="display-2 text-2xl accent">40%</div><div class="text-xs" style="color: var(--ink-muted);">return reduction</div></div>
+<div><div class="display-2 text-2xl accent">106%</div><div class="text-xs" style="color: var(--ink-muted);">revenue/visit</div></div>
+<div><div class="display-2 text-2xl accent">90%</div><div class="text-xs" style="color: var(--ink-muted);">engagement lift</div></div>
+</div>
+<p class="mt-3 text-xs" style="color: var(--ink-muted);">Saturdays: VTO converts at 32% vs 9% non-VTO. Foxtale: AI Skin Analysis 1.6× higher conversion.</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-2">JIIA · JioMart Agentic Shopping Assistant</div>
+<h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Google Cloud Next '26 keynote · 29 - Apr - 2026.</h3>
+<p class="text-sm mb-4" style="color: var(--ink-muted);">Agentic shopping assistant powered by Gemini multimodal pipeline reading 40M+ JioMart catalog images. Showcased on main stage.</p>
+<div class="grid grid-cols-3 gap-2">
+<div><div class="display-2 text-2xl" style="color: var(--ink);">40M+</div><div class="text-xs" style="color: var(--ink-muted);">images indexed</div></div>
+<div><div class="display-2 text-2xl" style="color: var(--ink);">Gemini</div><div class="text-xs" style="color: var(--ink-muted);">multimodal</div></div>
+<div><div class="display-2 text-2xl" style="color: var(--ink);">Live</div><div class="text-xs" style="color: var(--ink-muted);">JioMart app</div></div>
+</div>
+<p class="mt-3 text-xs" style="color: var(--ink-muted);">Team: Punit Kalro · Shreyash · Abhay · Sukhpreet · Raj Pratap · Kapil · Manish Kumar · Bijan Kundu · Lead: Ashish Chandorkar.</p>
+</div>
+</div>
+</div></section>
+
+<!-- VERTEX SEARCH · Google -->
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Search infrastructure · Google Vertex on JCP</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Vertex Search · production-proven uplift over Algolia.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Google Vertex Search is now live across 5 JCP channels · Tira · Netmeds · Reliance Digital · Swadesh · Urban Ladder. Across<strong>70+ days and 90M+ production searches</strong>, Vertex consistently outperformed Algolia on every search-funnel metric. Lead:<strong>Vidit Kumar Gupta</strong>. Source:<em>"Vertex Search · Proven Performance Uplift"</em> · 18 - Dec - 2025 · Internal.</p>
+
+<div class="card overflow-hidden mb-8">
+<table class="grid-table">
+<thead><tr><th>Metric</th><th>Tira · Beauty (71 days · 97.7M searches)</th><th>Netmeds · Healthcare (80 days · 3.8M searches)</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Revenue per search</td><td class="text-sm">₹92.13 → ₹98.77 ·<strong style="color: var(--green);">+7.39%</strong></td><td class="text-sm">₹2,979.70 → ₹3,301.91 ·<strong style="color: var(--green);">+10.70%</strong></td><td class="text-sm" style="color: var(--ink-muted);">+9% avg across verticals</td></tr>
+<tr><td class="font-medium">Zero-result reduction</td><td class="text-sm">71.14% → 33.37% ·<strong style="color: var(--green);">−53%</strong></td><td class="text-sm">15.81% → 3.89% ·<strong style="color: var(--green);">−75%</strong></td><td class="text-sm" style="color: var(--ink-muted);">Superior relevance</td></tr>
+<tr><td class="font-medium">Click-through rate</td><td class="text-sm">1.77% → 2.18% ·<strong style="color: var(--green);">+23.11%</strong></td><td class="text-sm">20.08% → 20.65% · +2.99%</td><td class="text-sm" style="color: var(--ink-muted);">Stronger engagement</td></tr>
+<tr><td class="font-medium">Add-to-cart rate</td><td class="text-sm">1.43% → 1.68% ·<strong style="color: var(--green);">+16.98%</strong></td><td class="text-sm">25.62% → 27.23% · +6.14%</td><td class="text-sm" style="color: var(--ink-muted);">Consistent funnel lift</td></tr>
+<tr><td class="font-medium">Purchase rate</td><td class="text-sm">0.17% → 0.18% · +2.76%</td><td class="text-sm">17.84% → 20.44% ·<strong style="color: var(--green);">+14.52%</strong></td><td class="text-sm" style="color: var(--ink-muted);">Vertical specialisation</td></tr>
+<tr><td class="font-medium">Average order value</td><td class="text-sm">₹53,495 → ₹56,075 ·<strong style="color: var(--green);">+4.96%</strong></td><td class="text-sm">₹16,698 → ₹16,150 · −3.33%</td><td class="text-sm" style="color: var(--ink-muted);">Cross-sell strength (Tira)</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="card p-5"><div class="cap-num mb-1">Channels live</div><div class="display-2 text-3xl" style="color: var(--ink);">5</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Tira · Netmeds · RD · Swadesh · Urban Ladder</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Production searches</div><div class="display-2 text-3xl" style="color: var(--ink);">90M+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across 70+ days of A/B</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Revenue uplift band</div><div class="display-2 text-3xl accent">+7.4–10.7%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Vs Algolia · per search</div></div>
+<div class="card p-5"><div class="cap-num mb-1">ROI payback</div><div class="display-2 text-3xl" style="color: var(--ink);">1-2 mo</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Implementation cost recovery</div></div>
+</div>
+
+</div></section>
+
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">AI Cataloging · catalog enrichment via Google AI + Web Grounding</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From manual enrichment to <span class="accent">~14 seconds</span> per brand.</h2>
+<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Production catalog enrichment running on the same channels Vertex Search lifts · <strong>Tira (live · Akind brand · 89% accuracy vs ground truth)</strong>, with throughput studies completed for <strong>Reliance Digital (35–40% faster · 75% auto-fill)</strong> and <strong>Netmeds (~95%+ time reduction · vendor dependency eliminated)</strong>.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mb-6">
+  <div class="card p-4"><div class="cap-num mb-1">Tira pilot · accuracy</div><div class="display-2 text-3xl accent">89%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">vs ground truth · Akind brand</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Netmeds · time reduction</div><div class="display-2 text-3xl accent">~95%+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">~5 days → ~2 minutes per 1k SKUs</div></div>
+  <div class="card p-4"><div class="cap-num mb-1">Reliance Digital · auto-fill</div><div class="display-2 text-3xl accent">75%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">First-pass attribute coverage</div></div>
+</div>
+
+<a href="/jcp/cataloging" class="btn-secondary text-sm">View AI Cataloging surface →</a>
+</div></section>
+
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">AJIO × JCP migration · Apex deadline met</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From 4 AI pods to 10 in 30 days.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">RRVL Apex committed 31 - Mar - 2026 deadline. Migration scaled from 4 → 10 AI pods. Three parallel tracks: PM/Engineering, Validation/QA, Supporting. 1,300 existing test cases. Forward happy flow tested. Lead:<strong>arunoday ray</strong>. Mentor:<strong>Kushan Shah</strong>. Reported up to<strong>Farooq Adam</strong> for Apex.</p>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-5"><div class="cap-num mb-1">UAT</div><div class="font-semibold" style="color: var(--ink);">02 - Apr - 2026 · cleared</div></div>
+<div class="card p-5"><div class="cap-num mb-1">PROD</div><div class="font-semibold" style="color: var(--ink);">08 - Apr - 2026 · cleared</div></div>
+<div class="card p-5"><div class="cap-num mb-1">Apex sign-off</div><div class="font-semibold" style="color: var(--ink);">31 - Mar - 2026 · met</div></div>
+</div>
+</div></section>
+
+<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Ecosystem &amp; differentiation</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Why this stack wins.</h2>
+
+<div class="grid md:grid-cols-3 gap-4">
+<div class="card p-6"><div class="cap-num mb-2">Channels live</div><div class="display-2 text-3xl mb-1" style="color: var(--ink);">68 / 78</div><p class="text-sm" style="color: var(--ink-muted);">In production today across every Reliance retail vertical.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Onboarding speed</div><div class="display-2 text-3xl mb-1" style="color: var(--ink);">2 wks → 48 hrs</div><p class="text-sm" style="color: var(--ink-muted);">AJIO seller onboarding. Pre-built Konnect orchestration.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Peak orders / hour</div><div class="display-2 text-3xl accent">350K</div><p class="text-sm" style="color: var(--ink-muted);">Architecture-tested through flash sale, IPL, EOSS spikes.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Uptime FY26</div><div class="display-2 text-3xl mb-1" style="color: var(--ink);">99.9%</div><p class="text-sm" style="color: var(--ink-muted);">JioMart at 1.6M daily orders. Zero major incidents in Q4.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">Identities unified</div><div class="display-2 text-3xl mb-1" style="color: var(--ink);">400M+</div><p class="text-sm" style="color: var(--ink-muted);">UCP · one customer view across every Reliance Retail format.</p></div>
+<div class="card p-6"><div class="cap-num mb-2">AJIO cost reduction</div><div class="display-2 text-3xl mb-1" style="color: var(--ink);">25%</div><p class="text-sm" style="color: var(--ink-muted);">Operating cost vs prior stack. One platform, fewer integrators, faster team.</p></div>
+</div>
+</div></section>
+
+
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+  <div>Owner · Salman Saudagar (COO, Fynd) · v0.8.4</div>
+</div></footer>
+</body>
+</html>

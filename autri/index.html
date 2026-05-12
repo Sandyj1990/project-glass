@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AutRi · Agentic Planogram Compliance for Grocery · Fynd × RRVL · JPL</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
+  display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
+}
+.lightbox.open { display: flex; }
+.lightbox .close {
+  position: absolute; top: 18px; right: 22px; color: white; font-size: 32px;
+  line-height: 1; cursor: pointer; opacity: 0.7;
+}
+.lightbox .close:hover { opacity: 1; }
+.image-lightbox-frame {
+  max-width: 95vw; max-height: 92vh;
+  border-radius: 8px; overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+}
+.image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
+img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
+img.zoomable:hover { opacity: 0.92; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- §0 · Hero -->
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">AutRi</span></div>
+<div class="section-label mb-3">Recent Innovations · Agentic Planogram Compliance · Grocery</div>
+<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">AutRi.</h1>
+
+<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">AutRi captures shelves; GMetri reads them against the planogram; the Agentic Command Centre routes the fix to PulsePoint. The <strong>next</strong> AutRi scan closes the ticket.</p>
+
+
+<div class="flex flex-wrap gap-2 mb-8">
+  <span class="pill pill-pilot">Pilot · Phase 1 · FreshPik Powai with Fynd Nucleus</span>
+  <span class="pill pill-build">Building · agentic loop end-to-end</span>
+  <span class="pill pill-phase2">Roadmap · grocery-estate rollout</span>
+</div>
+
+<div class="cap-num mb-3">Today · running at FreshPik Powai · &amp; the agentic-loop targets</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mb-10">
+<div class="card p-4"><div class="cap-num mb-1">Shelf compliance · today</div><div class="display-2 text-3xl" style="color: var(--ink);">95%+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">measured at FreshPik Powai pilot</div></div>
+<div class="card p-4"><div class="cap-num mb-1">SKU recognition · today</div><div class="display-2 text-3xl" style="color: var(--ink);">98%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">per-SKU bounding boxes</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Coverage per scan run</div><div class="display-2 text-3xl" style="color: var(--ink);">20–30K<span class="text-xl" style="color: var(--ink-muted);"> sqft</span></div><div class="text-xs mt-1" style="color: var(--ink-muted);">single-store sweep</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Verified-closure target</div><div class="display-2 text-3xl" style="color: var(--ink);">&lt; 24 hr</div><div class="text-xs mt-1" style="color: var(--ink-muted);">next scan confirms the fix held</div></div>
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/autri/00-robot-aisle.jpg" alt="AutRi autonomous shelf-scanning robot navigating a grocery aisle · per-fixture image capture with on-board AI bounding-box detection · light beams visualise the scan path" class="w-full block zoomable" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">AutRi · autonomous shelf-scanning robot · navigates the grocery aisle and captures every fixture per scheduled session. 20–30K sqft per run.</div>
+</div>
+
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#status">01 · Status</a>
+<a href="#dimensions">02 · Compliance dimensions</a>
+<a href="#architecture">03 · Architecture</a>
+<a href="#loop">04 · The 5-step loop</a>
+<a href="#per-dimension">05 · Per-dimension handling</a>
+<a href="#plan">06 · Plan</a>
+<a href="#design">07 · Design choices</a>
+<a href="#outcomes">08 · Outcome targets</a>
+<a href="#risks">09 · Risks</a>
+<a href="#receipts">10 · Receipts</a>
+</div>
+</div>
+
+<!-- §01 · Today vs the agentic flow -->
+<section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">01 · Status</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Today: a deployed scanner. Next: a closed loop.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Phase 1 with Fynd Nucleus is running at <strong>FreshPik Powai</strong>. AutRi executes scheduled scans, draws bounding boxes around recognised SKUs, and produces brand-occupancy and facing heatmaps. A human still has to log in, interpret the heatmap, and tell someone to fix what's off. The agentic flow removes the human from the middle of that loop.</p>
+
+<div class="grid md:grid-cols-2 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">Today · FreshPik Powai</div><span class="pill pill-pilot">Pilot</span></div>
+<h3 class="font-semibold mb-3" style="color: var(--ink);">Standalone analytics tool.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li>Scheduled scan sessions captured per zone and fixture · 20–30K sqft per run</li>
+<li>Internal CV models draw SKU bounding boxes against AutRi's own SKU master · 98% recognition</li>
+<li>Output: brand-by-shelf-level + facing-count heatmaps in AutRi's dashboard</li>
+<li><strong>Human loop:</strong> a Cluster Manager logs in, interprets the heatmap, manually raises the fix request</li>
+</ul>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-4"><div class="cap-num">In the agentic flow</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-3" style="color: var(--ink);">High-fidelity producer + loop closer.</h3>
+<ul class="space-y-2 text-sm" style="color: var(--ink);">
+<li><strong>No more human interpretation</strong> · tagged shelf captures flow directly into GMetri via API</li>
+<li><strong>Context-aware scanning</strong> · schedule dynamically tied to restocking windows + the promotion calendar</li>
+<li><strong>The closer of the loop</strong> · a PulsePoint ticket marked "Done" stays open until AutRi's next scan of that fixture confirms compliance</li>
+<li><strong>Trust comes from verification, not from the staff member's word</strong></li>
+</ul>
+</div>
+
+</div>
+
+<div class="grid md:grid-cols-3 gap-4 mt-6">
+<div class="card overflow-hidden">
+<img src="/assets/autri/01-sessions-dashboard-v2.jpg" alt="AutRi Sessions dashboard at FreshPik Powai · 42 total sessions, 11 active, 17 completed, 11 failed · scheduled scan list with per-session status" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">Sessions surface · scheduled scans across the store, with per-session status.</div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/autri/02-session-detail-v2.jpg" alt="AutRi session detail · scan tasks broken down by 50 grocery categories at a pilot store, 98 of 100 done with category-level status" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">Session-detail surface · 100 scan tasks broken down by 50 grocery categories.</div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/autri/05-brand-shelf-analytics.jpg" alt="AutRi analytics output · Brand by Shelf Level stacked bar + Product Distribution Across Shelf Levels facing-count heatmap with intensity legend" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">Analytics output · Brand-by-shelf-level + facing-count heatmap. Useful, but the human still has to read it and decide what to do.</div>
+</div>
+</div>
+
+</div></section>
+
+<!-- §02 · The 6 compliance dimensions -->
+<section id="dimensions" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">02 · The 6 compliance dimensions</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What "compliant" means on a grocery shelf.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Planogram compliance means the live shelf matches the plan in every store, all day, every day, across six dimensions. Each one is what the AutRi scan reads, what GMetri interprets, and what the Agentic Command Centre decides on.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="cap-num mb-2" style="color: var(--accent);">Dimension 01</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Product presence.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Is the SKU on the shelf at all. The most basic compliance question and the one that hits revenue first.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Non-compliance example:</strong> empty slot for a top-velocity SKU.</div>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2" style="color: var(--accent);">Dimension 02</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Product placement.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Is the right SKU on the right fixture and shelf level. Wrong brand on the premium shelf is wasted shelf-space and a confused customer.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Non-compliance example:</strong> wrong brand of cooking oil on the premium shelf.</div>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2" style="color: var(--accent);">Dimension 03</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Facing count.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Are the expected number of facings present. Under-faced promotional SKUs lose visibility and miss the demand spike.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Non-compliance example:</strong> 2 facings instead of the planned 4 for a promotional SKU.</div>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2" style="color: var(--accent);">Dimension 04</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Price tag accuracy.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Does the price tag match the current price master. Stale tags during a promo break customer trust at the till.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Non-compliance example:</strong> old price tag on a live promotional SKU.</div>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2" style="color: var(--accent);">Dimension 05</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Promotional execution.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Are promotional end caps and POS displays set up. Promotions drive a disproportionate share of grocery sales; a missing end cap is direct revenue loss.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Non-compliance example:</strong> missing end cap for the week's featured SKU.</div>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-2" style="color: var(--accent);">Dimension 06</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Shelf cleanliness &amp; order.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Is the shelf set up to the visual standard. Toppled, stacked, or damaged products signal a store that is not running its routine.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Non-compliance example:</strong> products toppled, stacked incorrectly, or damaged.</div>
+</div>
+
+</div>
+
+<div class="grid md:grid-cols-2 gap-4 mt-6">
+<div class="card overflow-hidden">
+<img src="/assets/autri/03-shelf-bounding-boxes.jpg" alt="AutRi high-density grocery shelf capture with AI bounding boxes detecting individual SKUs across the Global Flavours wall" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">Per-SKU detection on a high-density grocery wall. Every box is a candidate for one of the six checks above.</div>
+</div>
+<div class="card overflow-hidden">
+<img src="/assets/autri/04-shelf-bounding-boxes-2.jpg" alt="AutRi bounding-box detection across a cooking-sauces shelf · Sriracha, ketchup, sweet chilli, hot sauces with per-SKU labels and brand attribution" class="w-full block zoomable" style="border-bottom: 1px solid var(--border);" />
+<div class="p-4 text-xs" style="color: var(--ink-muted);">Per-brand attribution on a cooking-sauces fixture. Brand × shelf level × facing count are computed off the same capture.</div>
+</div>
+</div>
+
+</div></section>
+
+<!-- §03 · Architecture · 3 layers + master data -->
+<section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">03 · Architecture · 3 layers + 1 master data plane</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One shared master data plane. Three layers above it.</h2>
+<p class="text-base max-w-3xl mb-4" style="color: var(--ink-muted);">Every layer exists to serve the planogram-compliance use case. No more, no less. The Data layer sees the shelf, the Intelligence layer judges it, the Action layer fixes it, and the Data layer re-sees it to close the loop.</p>
+<p class="cap-num mb-10" style="color: var(--ink-soft);">Layer 1 · sensing → Layer 2 · decision → Layer 3 · action → Layer 1 · verification</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 1 · Data</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">AutRi robot · Image Repository</h3>
+<p class="text-sm" style="color: var(--ink);">Produces the ground truth of the shelf, tagged to fixture, zone, and timestamp. Per-scan-session uploads of high-resolution captures with bounding boxes.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 2 · Intelligence</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">GMetri · Agentic Command Centre</h3>
+<p class="text-sm" style="color: var(--ink);">Turns ground truth into a compliance judgement, dimension by dimension, then decides what to do about it (triaged by SKU velocity and severity).</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 3 · Action</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">PulsePoint Admin · PulsePoint App</h3>
+<p class="text-sm" style="color: var(--ink);">Turns the decision into the specific act that restores compliance, with the right person, the right SOP, and an evidence requirement.</p>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Master data plane</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">SKU · Planogram · Store · Roles</h3>
+<p class="text-sm" style="color: var(--ink);">The single source of truth for what compliance means on every fixture, in every store, for every role. Hourly sync; stale planograms block ticketing.</p>
+</div>
+
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/autri/07-architecture-diagram.jpg" alt="Architecture diagram · Master Data feeds Action and Intelligence; AutRi Robot + Image Repository under Data; GMetri + Agentic Command Centre under Intelligence; PulsePoint Admin + PulsePoint App under Action; verified-by-next-scan loop closes the cycle" class="w-full block zoomable" style="border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; background: #fff;" />
+<div class="p-5">
+<div class="cap-num mb-2">Source diagram · 21-Apr-2026 brief</div>
+<p class="text-sm" style="color: var(--ink-muted);">The dotted "verified by next scan" arrow from Action back to Data is the contract that makes this self-verifying. Without it, this is just another ticket queue.</p>
+</div>
+</div>
+
+</div></section>
+
+<!-- §04 · The 5-step loop -->
+<section id="loop" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">04 · The 5-step loop</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Scan. Read. Decide. Act. Verify.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">A ticket is closed only when the next AutRi scan confirms compliance on that fixture. Staff evidence alone is not closure. This is what makes the loop self-verifying and the compliance number trustworthy.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+
+<div class="card p-5">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 1 · Scan</div><span class="pill pill-live">Live</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">AutRi</h3>
+<p class="text-sm" style="color: var(--ink);">Robot runs scheduled sessions; captures shelf images per fixture and zone.</p>
+<div class="text-xs mt-3 pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Output:</strong> tagged shelf images in the image repository.</div>
+</div>
+
+<div class="card p-5">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 2 · Read</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">GMetri</h3>
+<p class="text-sm" style="color: var(--ink);">Reads the shelf against the active planogram version; detects presence, placement, facings, price, promotions.</p>
+<div class="text-xs mt-3 pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Output:</strong> discrepancy list per fixture with evidence + confidence.</div>
+</div>
+
+<div class="card p-5">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 3 · Decide</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Agentic Command Centre</h3>
+<p class="text-sm" style="color: var(--ink);">Triages each discrepancy by compliance dimension, severity, and SKU velocity; decides the action.</p>
+<div class="text-xs mt-3 pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Output:</strong> triaged compliance alert with SOP mapping and route.</div>
+</div>
+
+<div class="card p-5">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 4 · Act</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">PulsePoint</h3>
+<p class="text-sm" style="color: var(--ink);">Auto-creates a ticket with the shelf image, expected planogram view, and SOP; routes to the right role.</p>
+<div class="text-xs mt-3 pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Output:</strong> ticket on the right person's PulsePoint app.</div>
+</div>
+
+<div class="card p-5">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Step 5 · Verify</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">AutRi + PulsePoint</h3>
+<p class="text-sm" style="color: var(--ink);">Staff evidence moves the ticket to <em>pending verified</em>. The next AutRi scan closes the ticket, or escalates.</p>
+<div class="text-xs mt-3 pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Output:</strong> compliance confirmed, ticket closed, audit trail updated.</div>
+</div>
+
+</div>
+
+<div class="card overflow-hidden mb-6">
+<img src="/assets/autri/06-loop-diagram.jpg" alt="5-step loop diagram · SCAN → READ → DECIDE → ACT → VERIFY with a re-scan loop arc back to step 1" class="w-full block zoomable" style="background: #fff;" />
+</div>
+
+<div class="card overflow-hidden">
+<img src="/assets/autri/08-end-to-end-flow.jpg" alt="End-to-end sequence diagram · Store Ops scheduler triggers AutRi Robot; tagged images upload to Image Repository; GMetri reads against planogram; discrepancies flow to Agentic Command Centre; tickets created in PulsePoint; staff execute SOP and upload evidence; next AutRi scan re-reads the fixture and closes or escalates" class="w-full block zoomable" style="border-bottom: 1px solid var(--border); background: #fff;" />
+<div class="p-5">
+<div class="cap-num mb-2">End-to-end sequence · 17 numbered steps</div>
+<p class="text-sm" style="color: var(--ink-muted);">The exact sequence the system runs, from a scheduled scan to a verified closure. Every step has an owner and a handoff. No manual bridges.</p>
+</div>
+</div>
+
+</div></section>
+
+<!-- §05 · Per-dimension handling -->
+<section id="per-dimension" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">05 · Per-dimension handling</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six dimensions. Six routes. Six SOPs.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each compliance dimension has a specific detection path, a specific severity decision, and a specific role it routes to. Velocity weighting and the active-promotion window override the default severity.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th style="width:22%;">Dimension</th><th style="width:26%;">Detected by GMetri</th><th style="width:26%;">Decided by Command Centre</th><th style="width:26%;">Acted on in PulsePoint</th></tr></thead>
+<tbody>
+<tr>
+<td class="font-medium">Product presence</td>
+<td class="text-sm">Empty or non-matching slot</td>
+<td class="text-sm">Weights by SKU velocity · flags <strong>Critical</strong> for top-velocity SKUs</td>
+<td class="text-sm">Restock SOP → Department Manager</td>
+</tr>
+<tr>
+<td class="font-medium">Product placement</td>
+<td class="text-sm">Wrong SKU on fixture</td>
+<td class="text-sm">Flags <strong>High</strong></td>
+<td class="text-sm">Planogram reset SOP → Department Manager</td>
+</tr>
+<tr>
+<td class="font-medium">Facing count</td>
+<td class="text-sm">Facings counted vs planogram</td>
+<td class="text-sm">Flags <strong>Medium</strong> · <strong>High</strong> if SKU is promotional</td>
+<td class="text-sm">Facing correction SOP → CSA</td>
+</tr>
+<tr>
+<td class="font-medium">Price tag accuracy</td>
+<td class="text-sm">Reads tag text · compares to price master</td>
+<td class="text-sm">Flags <strong>Critical</strong> for live promotional SKUs · <strong>High</strong> otherwise</td>
+<td class="text-sm">Price correction SOP → Store Manager</td>
+</tr>
+<tr>
+<td class="font-medium">Promotional execution</td>
+<td class="text-sm">Missing or incomplete end cap vs planogram</td>
+<td class="text-sm">Flags <strong>Critical</strong> during the promotion window</td>
+<td class="text-sm">End cap setup SOP → Visual Merchandiser</td>
+</tr>
+<tr>
+<td class="font-medium">Shelf cleanliness &amp; order</td>
+<td class="text-sm">Toppled or out-of-order state</td>
+<td class="text-sm">Flags <strong>Medium</strong></td>
+<td class="text-sm">Shelf reset SOP → CSA</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div></section>
+
+<!-- §06 · Plan · 4 stages -->
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">06 · Plan · 4 stages</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four stages. Each stage is a standalone unlock.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Value starts flowing before the full loop is live. Stages run in sequence, with Stages 2 and 3 overlapping through the middle of the build.</p>
+
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Stage 1 · Foundation</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Shared data model.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Align fixture, zone, SKU, and store IDs across AutRi, GMetri, and PulsePoint. Load grocery SKU catalogue and planogram library into GMetri. Ingest the promotion calendar.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Exit:</strong> data model signed off by all three teams; planogram live in GMetri; promotion calendar ingested.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Stage 2 · Intelligence</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">GMetri tuned for grocery.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Tune GMetri across all six compliance dimensions. Write grocery triage rules in the Agentic Command Centre (dimension, severity, velocity, promotion-window) and the SOP mapping.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Exit:</strong> GMetri reliable at shelf level; triage rules approved by grocery ops leadership.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Stage 3 · Action in PulsePoint</div><span class="pill pill-build">Building</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Auto-ticketing end-to-end.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Build the intake from Command Centre into PulsePoint. Configure grocery SOPs, evidence requirements, and the escalation matrix from Store Manager → Cluster Manager → State Head.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Exit:</strong> auto-ticketing live end-to-end; SOPs configured; escalation matrix live; audit trail captured.</div>
+</div>
+
+<div class="card p-6">
+<div class="flex items-center justify-between mb-3"><div class="cap-num">Stage 4 · Pilot &amp; scale</div><span class="pill pill-phase2">Roadmap</span></div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Two pilot stores → chain.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Run the end-to-end loop in two pilot grocery stores. Measure loop health weekly. Scale to the rest of the grocery estate after four consecutive weeks of steady KPIs.</p>
+<div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Exit:</strong> pilot KPIs steady for four consecutive weeks · sign-off for chain-wide rollout.</div>
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §07 · Design choices for grocery -->
+<section id="design" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">07 · Design choices for grocery</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three choices that make this work for grocery.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Grocery is not fashion. The design choices below earn trust with store staff from day one and keep the inbox focused on what hits revenue.</p>
+
+<div class="grid md:grid-cols-3 gap-4">
+
+<div class="card p-6">
+<div class="cap-num mb-3">Choice 1</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Velocity-weighted severity.</h3>
+<p class="text-sm" style="color: var(--ink);">An empty slot for a top-velocity SKU is not the same as a facing drift on a slow mover. The Command Centre weights triage by SKU velocity, not raw count of violations. Keeps the Store Manager's PulsePoint inbox focused on what hits revenue and customer experience.</p>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-3">Choice 2</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Promotional execution is its own lane.</h3>
+<p class="text-sm" style="color: var(--ink);">Promotions drive a disproportionate share of grocery sales and customer trust. Price mismatches and missing end caps during an active promotion window are flagged <strong>Critical</strong> and go as push, regardless of the underlying compliance dimension. This lane has its own SLA.</p>
+</div>
+
+<div class="card p-6">
+<div class="cap-num mb-3">Choice 3</div>
+<h3 class="font-semibold mb-2" style="color: var(--ink);">Scans timed to restocking.</h3>
+<p class="text-sm" style="color: var(--ink);">Compliance signal is only meaningful after restocking has happened. AutRi scans are scheduled immediately after the primary restocking windows so alerts reflect post-restock reality. This single choice removes a large class of false alerts and earns trust with store staff from day one.</p>
+</div>
+
+</div>
+
+</div></section>
+
+<!-- §08 · Outcome targets -->
+<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">08 · Outcome targets</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Compliance rate is the headline. The loop is the product.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Nine targets, every one measurable. They are aspirational until the loop is live in pilot. Then they become the contract.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th style="width:42%;">Outcome</th><th style="width:24%;">Target</th><th style="width:34%;">Why it matters</th></tr></thead>
+<tbody>
+<tr><td class="text-sm">Planogram compliance rate · grocery estate · velocity-weighted · all 6 dimensions</td><td class="text-sm font-semibold" style="color: var(--ink);">≥ 95%</td><td class="text-sm">Direct measure of shelf health</td></tr>
+<tr><td class="text-sm">Time to ticket · scan → PulsePoint ticket created</td><td class="text-sm font-semibold" style="color: var(--ink);">&lt; 10 min</td><td class="text-sm">Signal that the intelligence layer is responsive</td></tr>
+<tr><td class="text-sm">Time to first action · ticket created → staff acknowledgement</td><td class="text-sm font-semibold" style="color: var(--ink);">&lt; 30 min<br><span class="text-xs" style="color: var(--ink-muted);">Critical &amp; High</span></td><td class="text-sm">Signal that the action layer is reaching the right person</td></tr>
+<tr><td class="text-sm">Time to verified closure · ticket created → next scan confirming compliance</td><td class="text-sm font-semibold" style="color: var(--ink);">&lt; 24 hr</td><td class="text-sm">Signal that the loop is actually closing, not just marked closed</td></tr>
+<tr><td class="text-sm">Share of tickets auto-created vs manually raised</td><td class="text-sm font-semibold" style="color: var(--ink);">≥ 90%</td><td class="text-sm">Signal that the system, not the human, is driving the loop</td></tr>
+<tr><td class="text-sm">Re-open rate after staff marked closed</td><td class="text-sm font-semibold" style="color: var(--ink);">&lt; 5%</td><td class="text-sm">Signal that evidence is not being gamed</td></tr>
+<tr><td class="text-sm">Manual shelf-audit effort · per store per week</td><td class="text-sm font-semibold" style="color: var(--ink);">−70%</td><td class="text-sm">Direct operational saving for Cluster Managers</td></tr>
+<tr><td class="text-sm">Out-of-stock rate · top-velocity SKUs</td><td class="text-sm font-semibold" style="color: var(--ink);">−40%</td><td class="text-sm">Business impact on revenue</td></tr>
+<tr><td class="text-sm">Promotional price &amp; end-cap errors caught inside the hour</td><td class="text-sm font-semibold" style="color: var(--ink);">≥ 95%</td><td class="text-sm">Customer experience and trust</td></tr>
+</tbody>
+</table>
+</div>
+
+</div></section>
+
+<!-- §09 · Risks -->
+<section id="risks" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">09 · Risks &amp; mitigations</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five named risks. Five named mitigations.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The loop only works if the staff trust it, the data stays fresh, and a robot outage doesn't stop the store.</p>
+
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th style="width:38%;">Risk</th><th style="width:62%;">Mitigation</th></tr></thead>
+<tbody>
+<tr><td class="font-medium text-sm">AI noise on dense shelves · visually similar SKUs</td><td class="text-sm">Confidence threshold inside the Agentic Command Centre. Low-confidence items queue for a quick review before becoming a ticket. Continuous calibration on misses.</td></tr>
+<tr><td class="font-medium text-sm">Staff alert fatigue</td><td class="text-sm">Strict severity tiers. Critical and High go as push. Medium and Low batch into one daily task per zone. One-pager per SOP, no ambiguity.</td></tr>
+<tr><td class="font-medium text-sm">Planogram or promotion-calendar drift</td><td class="text-sm">Hourly sync of planogram library and promotion calendar. Blocks ticketing on any fixture whose planogram version is stale.</td></tr>
+<tr><td class="font-medium text-sm">Scan-coverage gaps when the robot is offline</td><td class="text-sm">Graceful fallback to a manual audit checklist in PulsePoint for affected zones. Auto-resumes once the robot is back online.</td></tr>
+<tr><td class="font-medium text-sm">Role-mapping errors routing tickets to the wrong person</td><td class="text-sm">Master data plane owns the role map, with daily reconciliation against HRMS. Incorrect routes get flagged in the Command Centre.</td></tr>
+</tbody>
+</table>
+</div>
+
+</div></section>
+
+<!-- §10 · Receipts -->
+<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">10 · Receipts</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next.</h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every claim above has a deeper artefact behind it.</p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+<a class="card card-hover p-6 block" href="/docs/autri-spec.md">
+<div class="cap-num mb-2">Spec</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Page spec · 02-May-2026</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Section-by-section build spec, asset pipeline, decisions.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/docs/audits/autri-audit-2026-05-02.json">
+<div class="cap-num mb-2">Audit</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Apex audit JSON · 02-May-2026</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Independent review, dimension scores, follow-ups.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/assets/autri/autri-planogram-compliance.pdf">
+<div class="cap-num mb-2">Source</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Source PDF · 13 pages</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Saaket Chawali · 21-Apr-2026 · the original write-up.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/assets/autri/07-architecture-diagram.jpg">
+<div class="cap-num mb-2">Diagram</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Architecture diagram</h3>
+<p class="text-sm" style="color: var(--ink-muted);">3 layers + master data plane · the source artwork.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/assets/autri/06-loop-diagram.jpg">
+<div class="cap-num mb-2">Diagram</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">5-step loop diagram</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Scan → Read → Decide → Act → Verify · with re-scan loop.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/assets/autri/08-end-to-end-flow.jpg">
+<div class="cap-num mb-2">Diagram</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">End-to-end sequence · 17 steps</h3>
+<p class="text-sm" style="color: var(--ink-muted);">From scheduled scan to verified closure · per-role swimlane.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/granary">
+<div class="cap-num mb-2">Adjacent</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Granary · Grocery AI</h3>
+<p class="text-sm" style="color: var(--ink-muted);">The category-shaping layer above the shelf · sister surface to AutRi.</p>
+</a>
+
+<a class="card card-hover p-6 block" href="/">
+<div class="cap-num mb-2">Home</div>
+<h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Back to the register</h3>
+<p class="text-sm" style="color: var(--ink-muted);">Cross-platform overview · all tracks across the Fynd × RRVL surface.</p>
+</a>
+
+</div>
+</div></section>
+
+<div id="image-lightbox" class="lightbox" onclick="if(event.target===this)closeImageLightbox()">
+  <span class="close" onclick="closeImageLightbox()">×</span>
+  <div id="image-lightbox-frame" class="image-lightbox-frame"></div>
+</div>
+
+<script>
+function openImageLightbox(imgEl) {
+  const frame = document.getElementById('image-lightbox-frame');
+  frame.innerHTML = `<img src="${imgEl.src}" alt="${imgEl.alt || ''}" />`;
+  document.getElementById('image-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeImageLightbox() {
+  document.getElementById('image-lightbox-frame').innerHTML = '';
+  document.getElementById('image-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeImageLightbox();
+});
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('img.zoomable').forEach(img => {
+    img.addEventListener('click', () => openImageLightbox(img));
+  });
+});
+</script>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+{
+  "page": "jcp/7eleven/index.html",
+  "spec": null,
+  "spec_note": "No standalone spec authored — page built directly from docs/jcp-notes-compilation/RRL Website Screenshots/7 Eleven/7eleven_content_rrl.pdf",
+  "source_compilation": "docs/jcp-notes-compilation/RRL Website Screenshots/7 Eleven/",
+  "audit_date": "2026-05-01",
+  "score": 89,
+  "grade": "B+",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 92,
+    "source_traceability": 96,
+    "tone_of_voice": 86,
+    "honesty_register": 95,
+    "visual_completeness": 95,
+    "cross_page_consistency": 70
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "cross_page_consistency",
+      "section": "site-wide",
+      "issue": "Brand name inconsistent: page uses '7-Eleven' (with hyphen) but the channel card on /jcp/channels/ shows '7Eleven' (no hyphen). The source PDF uses '7Eleven'. The subnav chip uses '7-Eleven'.",
+      "fix": "Pick one canonical spelling. Recommend '7-Eleven' (Wikipedia + brand standard for India). Update tools/scratch/non_rbl_play.json 7eleven entry's name from '7-Eleven' (already done in nav) and confirm the alt text + caption on /jcp/channels/ card render '7-Eleven'.",
+      "files": ["jcp/channels/index.html", "tools/scratch/non_rbl_play.json"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero",
+      "issue": "Hero subhead is 35 words; tone-of-voice §5 caps hero subhead at 30 words.",
+      "fix": "Tighten to: '60+ stores on JCP. Three Fynd-built platforms · 7eleven.in micro-site · Restaurant Aggregator app (Zomato + Swiggy) · Operations & Analytics dashboard.' (29 words; counts the dashboard as the third platform rather than 'layered on top', resolving the count ambiguity below.)",
+      "files": ["jcp/7eleven/index.html:79"],
+      "auto_fixable": true
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "tone_of_voice",
+      "section": "hero",
+      "issue": "Hero says 'Two production platforms' then enumerates three things (micro-site, aggregator, dashboard). Source PDF lists 'two strategic digital platforms' with the dashboard 'layered on top of the aggregator application' — so 2 + 1 view layer. Current wording reads as undercounting.",
+      "fix": "Either say 'Three Fynd-built platforms' (dashboard counted) or 'Two platforms + analytics dashboard' (matches source framing exactly).",
+      "files": ["jcp/7eleven/index.html:79"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "hero stat tile",
+      "issue": "Stat tile labelled 'Aggregators' uses 'Zomato · Swiggy' as the value — uses display-2 text-3xl which is intended for numeric/short values. Reads as wide and slightly cramped.",
+      "fix": "Either shrink to display-2 text-2xl, or change to value '2' with context line 'Zomato · Swiggy'. Suggest the latter (cleaner stat tile pattern).",
+      "files": ["jcp/7eleven/index.html:83"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "Sources",
+      "issue": "The 'Sources' section label has no number prefix (other sections are 01, 02, 03). Section labels run: hero — 01 — 02 — 03 — Sources. Convention on sibling pages (e.g., /jcp/cataloging/, /jcp/channels/) uses unnumbered 'Sources' too, so this is consistent. Just flagging for awareness.",
+      "fix": "No action needed. Convention matches.",
+      "files": ["jcp/7eleven/index.html:210"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "hero stat tile",
+      "issue": "Stat tile 'SAP sync · Auto' is supported by source ('Automated SAP sales posting') but the tile alone reads ambiguously; an Apex reader may not know what 'Auto' refers to.",
+      "fix": "Add a one-line context under the value: 'order-level posting · cancellation logic'. Or change the tile entirely to highlight a different stat (e.g., 'Per-store overhead · removed').",
+      "files": ["jcp/7eleven/index.html:85"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Source traceability is excellent: every numerical claim, capability description, and product feature on the page maps directly to a verbatim line in 7eleven_content_rrl.pdf. No fabricated stats, no overclaims.",
+    "Tone discipline is strong: zero banned vocabulary (no 'transformative', 'leverages', 'empowers', 'seamless', 'cutting-edge'), zero Fynd self-praise boilerplate, no 'Built by Fynd' line. Reliance-owned framing preserved throughout ('Operated by the 7-Eleven team').",
+    "Honesty register is clean: every claim is in the present tense matching the source's 'Scope of Work Delivered' framing. No 'Live' pill on a not-yet-built capability. No undated forward-looking claims.",
+    "Visual completeness: 9/9 images load from CDN, contiguous section labels (hero · 01 · 02 · 03 · Sources), no mobile overflow at 375px viewport, only the standard Tailwind CDN dev warning in console.",
+    "The 'Sources' section explicitly names + links the canonical write-up PDF and the live micro-site URL — apex reader can verify in two clicks."
+  ]
+}

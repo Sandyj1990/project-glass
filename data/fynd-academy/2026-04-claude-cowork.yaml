@@ -1,0 +1,30 @@
+# Path: data/fynd-academy/2026-04-claude-cowork.yaml
+# Source: docs/fynd-academy-compilation/april-2026/description + trainer manual PDF
+
+slug: 2026-04-claude-cowork
+title: Claude Cowork Power User Training
+date: 2026-04-07
+status: delivered
+
+source_folder: docs/fynd-academy-compilation/april-2026/
+source_citation: "description (md) + Universal Edition trainer manual (PDF)"
+
+audience: Reliance Marketing
+venue: Makers Chamber, Nariman Point
+format: in-person
+headcount: "~40"
+ratings: null
+
+summary: |
+  Claude as agentic workspace. Marketing workflow automation, campaign asset
+  generation, competitive analysis, browser-based research. Trainer manual
+  covers the 5-Layer Architecture: Connectors → Instructions → Skills →
+  Multi-Agent → Automation.
+
+materials:
+  - label: Trainer manual (PDF)
+    href: /assets/fynd-academy/2026-04-claude-cowork/claude-cowork-power-user-training.pdf
+
+photos:
+  - src: /assets/fynd-academy/2026-04-claude-cowork/cover.jpg
+    caption: Trainer manual cover

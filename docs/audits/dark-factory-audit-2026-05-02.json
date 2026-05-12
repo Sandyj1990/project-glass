@@ -1,0 +1,105 @@
+{
+  "page": "dark-factory/index.html",
+  "spec": null,
+  "spec_note": "No spec file authored before page build. Concept-note → page was direct (raw → Stage 4). Recommend authoring docs/dark-factory-spec.md retroactively (Stage 1) so future revisions follow the website-section-authoring lifecycle.",
+  "source_compilation": "docs/mtm-notes-compilation/ + docs/2026-04-30-farooq-mda-update-letter.md",
+  "audit_date": "2026-05-02",
+  "audit_scope": "full",
+  "score": 86,
+  "grade": "B",
+  "pass": true,
+  "dimensions": {
+    "structural_compliance": 88,
+    "source_traceability": 95,
+    "tone_of_voice": 90,
+    "honesty_register": 92,
+    "visual_completeness": 70,
+    "cross_page_consistency": 75
+  },
+  "findings": [
+    {
+      "id": "H1",
+      "severity": "HIGH",
+      "dimension": "visual_completeness",
+      "section": "§04 · Live Kitchen, §05 · Operating model, §07 · Capex",
+      "issue": "Concept note carries 6 source images (image1: headline numbers viz; image2: 8-step journey diagram; image3: live-kitchen stage strip; image4: demand loop; image5: supply loop; image6: factory layout). Page renders zero images. The §04 'real photo at every stage' claim is text-only; the §05 'two loops' is text-only; the §07 factory layout is text-only. Reduces visual evidence below the sibling-page bar (fynd-horizon and autri both carry 1+ hero image and 4-9 in-section images).",
+      "fix": "Extract base64 images from docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md (or convert the .pptx decks via soffice → pdf → pdfimages). Place under assets/dark-factory/ as 01-headline-numbers.jpg through 06-factory-layout.jpg. Wire into §0 hero (image1), §03 journey (image2), §04 live kitchen (image3), §05 demand+supply loops (image4 + image5 side-by-side), §07 capex factory layout (image6). Include lightbox wrap pattern from sibling pages.",
+      "files": ["dark-factory/index.html:255-270", "dark-factory/index.html:283-303", "dark-factory/index.html:354-393"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M1",
+      "severity": "MEDIUM",
+      "dimension": "structural_compliance",
+      "section": "§3 page structure",
+      "issue": "Page deviates from the canonical default ordering (status → what's live → architecture → deep dive → in flight → vision → research → sources) without a documented spec entry. Deviations: no §03 Architecture (replaced with Customer journey), extra §04 Live Kitchen, extra §07 Capex line-item table, extra §10 Decision ask. The deviations are coherent for a proposal-stage page but not recorded.",
+      "fix": "Author docs/dark-factory-spec.md in update mode with §3 page-structure recording the four overrides as D1-D4 in §9 Decisions. The shipped page becomes the spec's reference implementation. Reference: docs/hirefirst-spec.md as the update-mode template.",
+      "files": ["dark-factory/index.html:127-491"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M2",
+      "severity": "MEDIUM",
+      "dimension": "honesty_register",
+      "section": "§09 · Phase-gate plan",
+      "issue": "Three phases (Alpha / Beta / Gamma) carry exit criteria but no DRI and no dates. Tone-of-voice §3 requires forward-looking phases to carry a date OR a named DRI. Page text in §01 acknowledges 'Single named DRI · Trends-side accountable owner · pending' which mitigates the rule strictly, but the §09 phase cards themselves still read as undated promises.",
+      "fix": "Either (a) once Trends-side DRI is named, drop into each phase card as 'DRI: <name>'; or (b) tighten the phase-card pill from 'Pending sign-off' to 'Pending · DRI + dates locked at sign-off' so the unbinding is visible on the card itself. Lower priority — proposal stage means dates are genuinely unknown; the page is honest about it.",
+      "files": ["dark-factory/index.html:432-453"],
+      "auto_fixable": false
+    },
+    {
+      "id": "M3",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog page",
+      "issue": "No /catalog/ sibling page exists in the repo. If/when the catalog is restored, dark-factory needs an entry. Documenting the absence so it isn't missed.",
+      "fix": "When /catalog/ ships, add a row: {name: 'Dark Factory · MTM', status: 'Build', layer: 'make', summary: 'Lights-out micro-factory + Mobile Tailor app. ₹8.27 Cr capex. Concept note 30-Apr-2026, awaiting alpha sign-off.', source: 'docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md'}.",
+      "files": ["catalog/index.html (does not exist)"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L1",
+      "severity": "LOW",
+      "dimension": "tone_of_voice",
+      "section": "§0 hero subhead",
+      "issue": "Hero subhead uses gendered 'her body... she sees' ('A Trends customer scans her body in 30 seconds... picks a garment she sees on a 3D model of herself'). Source uses 'she' throughout, which is OK to mirror; tone-of-voice §2 prefers 'impersonal/institutional voice' as default. Not a violation, but reads slightly informal vs sibling-page subheads which are typically subject-less ('Customer scans body in 30 sec; garment is stitched in Bangalore...').",
+      "fix": "Optional rewrite: 'A Trends customer takes a 30-second body scan on the Mobile Tailor tab in the AJIO app, picks a garment rendered on a 3D model of the body scan, and the garment is stitched in a Bangalore micro-factory and delivered home in 7 days.' Keeps the source's spirit without the gendered pronoun chain.",
+      "files": ["dark-factory/index.html:102"],
+      "auto_fixable": true
+    },
+    {
+      "id": "L2",
+      "severity": "LOW",
+      "dimension": "structural_compliance",
+      "section": "§11 · Sources",
+      "issue": "Sources block contains 4 cards. Per tone-of-voice §3 default-no-Sources-block rule, a Sources block earns its keep when the page combines multiple distinct artefacts AND/OR when the reader will reasonably want to navigate to the source files. Both carve-outs apply here (4 source artefacts: cover letter + concept note + 2 decks; reader benefit from dropping into the .md and .pptx). Block is justified — flagging only because the rule defaults to removal and this is one of the few cases where the block stays.",
+      "fix": "Keep the Sources block. No action.",
+      "files": ["dark-factory/index.html:488-518"],
+      "auto_fixable": false
+    },
+    {
+      "id": "L3",
+      "severity": "LOW",
+      "dimension": "source_traceability",
+      "section": "§07 · Capex table row 10 (Eton conveyor)",
+      "issue": "Row 10 'Eton conveyor system · $1,60,000 · INR column blank.' Source carries the same gap (price/unit listed in USD, INR column empty in the original concept note). Page faithfully reproduces; this is a source-side gap, not a page-side fabrication. Total ₹8,27,05,510 is correct because the source's total also excludes the Eton row (or absorbs it elsewhere — unverified).",
+      "fix": "Optional · note as a footnote on the table: 'Eton conveyor INR conversion pending; total of ₹8.27 Cr per concept-note line items.' Lower priority — Apex review of capex will surface this directly.",
+      "files": ["dark-factory/index.html:373"],
+      "auto_fixable": true
+    }
+  ],
+  "strengths": [
+    "Honesty register is calibrated. Page does not carry a single Live pill — every status is Proposed / Pending / Roadmap. The §10 Decision Ask block is direct (Approve ₹8.27 Cr · Approve alpha trial · Approve standard) without softening — exactly what an Apex reviewer needs.",
+    "Source traceability is high. The 30-Apr-2026 cover letter and the Farooq + Vipin concept note are cited inline in the hero; the §11 Sources block lists all four artefact paths (Mobile_Tailor_Concept_Note_Formatted.md, the cover letter, and both .pptx decks). Every number on the page (30 sec, 7 days, ₹8.27 Cr, 200 pieces / day, 15,326 sq ft, ₹499 / ₹243, all phase exit criteria) traces to a specific source line.",
+    "Sibling-page consistency is precise. Same nav, lightbox, footer, CSS variables, section-label format, status pills, stat-tile pattern, and grid-table styles as /fynd-horizon and /autri. New visitor cannot tell the page is freshly authored.",
+    "Tone-of-voice is clean. Zero banned vocab matches (transformative, world-class, cutting-edge, empowers, enables, etc.); zero 'we / our'; zero exclamations or emojis; dates in DD-MMM-YYYY; AJIO / RRVL / JPL casing matches the canonical entity-name list after the audit-time fix.",
+    "Hero earns its keep. Four headline numbers (30 sec / 7 days / ₹8.27 Cr / 0 days) translate the concept-note pitch into Apex-readable shape; the 'operating intent' card below the stats answers the 'what is this for' question in one sentence."
+  ],
+  "post_audit_fixes_applied": [
+    {
+      "id": "AUTO-1",
+      "description": "Replaced 8 occurrences of 'Ajio' with 'AJIO' across dark-factory/index.html to match site-wide entity-name convention (verified against index.html: 3/3 AJIO uppercase). Also updated the home-page card description in index.html to mention AJIO.",
+      "files": ["dark-factory/index.html", "index.html:188"]
+    }
+  ]
+}

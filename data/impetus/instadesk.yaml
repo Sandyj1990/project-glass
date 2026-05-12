@@ -1,0 +1,96 @@
+# InstaDesk · Unified Support Platform
+# Sourced verbatim from Q1 2026 Release Compendium pp. 101–103
+# Per docs/impetus-restructure-spec.md
+
+slug: instadesk
+title: InstaDesk
+sub_title: "(Unified Support Platform)"
+aliases: []
+tagline: One support tool for everyone — replaced Freshdesk, saved ~₹55L/year, 100% adoption in 2 weeks. AI suggests resolutions that update after every customer reply.
+category: Operate · Helpdesk
+status: live
+status_label: Live
+
+audience:
+  - "All 2,000+ Impetus platform users — buyers, operations staff, sourcing managers"
+  - Suppliers
+  - Store Teams
+  - "Anyone who needs to raise or manage support tickets"
+
+what_it_does: |
+  **Everyone** creates and manages support tickets directly from the Impetus platform,
+  no separate login or software needed. Covers all types of issues: shipping problems,
+  invoice questions, quality disputes, production delays, planogram issues (for store
+  users) and general requests. Supports file attachments (spreadsheets, PDFs,
+  documents, images), has role-based access (separate views for ticket handlers vs.
+  ticket raisers), full email integration and SLA tracking dashboards.
+
+  **AI suggests resolutions** that update after every new message, currently for ASN
+  (shipping), AWB (courier tracking), Fit/PP (quality sampling) and DPR (Daily
+  Production Report) issues.
+
+scale_label: How Many People Use It
+scale:
+  - "2,000+ users live"
+  - "100% adoption in 2 weeks"
+  - "~₹55 lakh annual cost saving"
+  - "Support TAT cut 40-60% (Q1)"
+scale_caption: |
+  Replaced Freshdesk; old tool licence not renewed. Historical ticket data being
+  migrated for continuity.
+
+what_improved:
+  body: |
+    **Everyone** has one place for support, no more switching to a separate tool.
+    **Support agents** get AI-suggested solutions that update with every message.
+    **The organisation** saves **~₹55 lakh per year** by retiring the old support
+    tool's license. **Key metrics:** support ticket resolution TAT (Turnaround Time)
+    reduced **40-60%**. ₹55L annual cost saved by retiring Freshdesk license.
+    **100% adoption in 2 weeks, zero users left behind.**
+  expected_metric_impact: |
+    direct ₹55L/year cost out + 40-60% TAT reduction means the support team's L1
+    capacity effectively expands ~2x without hiring. The AI resolution suggestion
+    is the L2 → L3 path for InstaDesk on the autonomy ladder — system recommends,
+    human accepts/overrides.
+
+updates_shipped:
+  - date: "2 Apr 2026"
+    heading: "100% Adoption, Old Support Tool Retired"
+    bullets:
+      - "All users and suppliers now on InstaDesk. Old tool (Freshdesk) license will not be renewed. **Saving ~₹55 lakh annually.** Historical ticket data being migrated for continuity."
+  - date: "19 Mar 2026"
+    heading: "Default Support Platform for Everyone"
+    bullets:
+      - "Support tickets created directly from the Impetus platform's Support tab, no separate login. AI suggests resolutions for ASN (shipping), AWB (courier), Fit/PP (sampling) and DPR (production) issues. Suggestions refresh after every customer reply."
+
+screenshots:
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/instadesk/screenshot-102.jpg"
+    caption: "**Support ticket detail + Task list** · Ticket history, status, contact info for issue tracking · Onboarding tickets with creation dates and response times for SLA monitoring."
+  - src: "https://socialassets.impetusz0.de/rrl-portfolio/assets/impetus/instadesk/screenshot-103.jpg"
+    caption: "**Ticket details (Vendor Onboarding) + Issues table** · Ticket body with auto-suggested resolution from Ask Impetus · Ticket queue with priority, product type, status and auto-resolution tracking."
+
+sources:
+  - label: "Q1 2026 Release Compendium · pp. 101–103"
+    href: ""
+  - label: "Spec · docs/impetus-restructure-spec.md"
+    href: "/docs/impetus-restructure-spec.md"
+
+progress:
+  current_level: 2
+  current_summary: |
+    InstaDesk sits at **L2 · Augmented**: AI suggests resolutions for ASN, AWB,
+    Fit/PP and DPR ticket types; agents accept or override. Suggestions refresh
+    after every customer reply. The L3 jump is **system-handled tier-1** —
+    AI closes routine tickets without an agent in the loop, surfaces only the
+    exceptions.
+  workflows: []
+  this_quarter:
+    - eyebrow: "Workflow we move next"
+      title: "AI auto-resolution · L2 → L3"
+      body: "From AI-suggests-agent-confirms to AI-resolves-agent-audits for the four high-volume ticket types."
+    - eyebrow: "Risk reduction milestone"
+      title: "₹55L/year cost out · 100% adoption in 2 weeks"
+      body: "Freshdesk retired; support TAT cut 40-60% in Q1."
+    - eyebrow: "Identity shift indicator"
+      title: "L1 capacity ~2x without hiring"
+      body: "Support team's first-touch capacity expands as AI absorbs tier-1; humans handle exceptions and tier-2+."

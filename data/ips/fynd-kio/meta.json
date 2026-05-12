@@ -1,0 +1,24 @@
+{
+  "slug": "fynd-kio",
+  "name": "Fynd Kio",
+  "tagline": "Self-checkout kiosk \u00b7 168 units locked for Fashion Factory \u00b7 FY26-27.",
+  "track": "samarth",
+  "track_role": "sub-ip",
+  "status": "Pilot",
+  "since": "2025-12-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/samarth#fynd-kio",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "self-checkout",
+    "hardware"
+  ]
+}

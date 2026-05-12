@@ -1,0 +1,24 @@
+{
+  "slug": "fynd-create",
+  "name": "Fynd Create",
+  "tagline": "Vendor-to-store loop \u00b7 600+ vendors \u00b7 10M+ pieces/month capacity.",
+  "track": "impetus",
+  "track_role": "sub-ip",
+  "status": "Live",
+  "since": "2025-04-01",
+  "last_release": null,
+  "verticals": [
+    "fashion"
+  ],
+  "value_chain": [
+    "buy-make"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/impetus#fynd-create",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "sourcing",
+    "vendor"
+  ]
+}

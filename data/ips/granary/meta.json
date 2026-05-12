@@ -1,0 +1,28 @@
+{
+  "slug": "granary",
+  "name": "Granary",
+  "tagline": "Grocery AI Platform \u00b7 Phase 1 live across Smart Bazaar + Smart Point \u00b7 11-store Mumbai pilot.",
+  "track": "granary",
+  "track_role": "track-headline",
+  "status": "Live",
+  "since": "2025-11-13",
+  "last_release": null,
+  "verticals": [
+    "grocery"
+  ],
+  "value_chain": [
+    "plan",
+    "buy-make",
+    "move",
+    "sell"
+  ],
+  "ownership": "reliance",
+  "web_anchor": "/granary",
+  "external_url": null,
+  "stake_inr_cr": null,
+  "tags": [
+    "grocery-ai",
+    "forecasting",
+    "assortment"
+  ]
+}

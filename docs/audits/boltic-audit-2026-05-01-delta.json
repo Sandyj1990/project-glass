@@ -1,0 +1,54 @@
+{
+  "page": "boltic/index.html",
+  "spec": "docs/boltic-spec.md",
+  "source_compilation": "docs/boltic-notes-compilation/",
+  "audit_date": "2026-05-01",
+  "audit_type": "delta",
+  "previous_audit": "docs/audits/boltic-audit-2026-05-01.json",
+  "previous_score": 77,
+  "score": 91,
+  "grade": "A-",
+  "weighted_pass": true,
+  "dimensional_pass": true,
+  "verdict": "PASS — ready to share with Apex. Page restructured from v0.9.3 → v0.9.4 to resolve all CRITICAL + HIGH findings from the v0.1 audit. Page now opens with the Live RR evidence (AJIO × JCP) before pivoting to platform + roadmap. Tone-of-voice register clean. One MEDIUM finding (C2 · 463M+ runs catalog claim still unverified) and one informational note remain — both are non-blocking.",
+  "dimensions": {
+    "source_traceability":   {"score": 90, "threshold": 75, "pass": true,  "delta": 15},
+    "tone_of_voice":         {"score": 92, "threshold": 80, "pass": true,  "delta": 22},
+    "honesty_register":      {"score": 90, "threshold": 80, "pass": true,  "delta": 15},
+    "structural_compliance": {"score": 92, "threshold": 85, "pass": true,  "delta": 0},
+    "visual_completeness":   {"score": 95, "threshold": 85, "pass": true,  "delta": 0},
+    "cross_page_consistency":{"score": 85, "threshold": 70, "pass": true,  "delta": 25}
+  },
+  "fixes_applied": [
+    {"id": "C1", "status": "FIXED", "summary": "Inserted new §03 'Live for Reliance Retail · what runs on AJIO × JCP' with two `Live · RR` cards: (1) AI-first testing · 1,300 cases · AJIO × JCP, (2) Vibe-coded prototypes inside JCP. Both cite `index.html § Vibe to Production` inline. Added 4th hero stat tile 'Live RR estate · AJIO × JCP · 1,300 test cases'. Hero section-label updated to 'Platform live · Live on AJIO × JCP · Next RR beachhead in build'."},
+    {"id": "T1", "status": "FIXED", "summary": "Removed all 3 instances of 'today' from user-facing copy (lines 79, 133, 213). Hero subhead 1 reframed; §02 intro reads 'running on Fynd's own instance and on the AJIO × JCP test estate'; §05 intro similar."},
+    {"id": "T2", "status": "FIXED", "summary": "Removed all 4 instances of 'production' from user-facing copy. Hero, §02, §05 use 'operations' / 'instance'. §07 card-02 'Iterate on them in production' → 'Iterate on them live.' Only remaining 'production' is inside the brand workflow name 'vibe-to-production' (slide 18 deck terminology) which is acceptable per tone-of-voice §7 ('Where the technical word is the brand, keep it')."},
+    {"id": "T3", "status": "FIXED", "summary": "§06 H2 'What's being built right now.' → 'In flight.'"},
+    {"id": "T4", "status": "FIXED", "summary": "Hero H1 'AI workflow automation, ready for Reliance Retail.' → 'The agentic-automation OS for Reliance Retail.'"},
+    {"id": "S1", "status": "FIXED", "summary": "§05 Workflow Analytics caption now surfaces the Sep-2025 single-month sample date range explicitly: '1.79M executions across 198 workflows · Sep-2025 single-month sample.'"},
+    {"id": "S2", "status": "FIXED", "summary": "Added inline `cap-num` source citations in 4 places: hero stat strip ('Source · Boltic Retail Deck · slides 4, 8, 18 · home register'); §02 module strip ('Source · Boltic Retail Deck · slide 8 · annexure slides 25-33'); §03 Live cards ('Source · home register · index.html § Vibe to Production' on each card); §04 retail-pillars ('Source · Boltic Retail Deck · slide 15'); §05 product-evidence ('Source · Boltic Retail Deck · annexure slides 25, 27, 28, 29, 32, 33'). Added Source 03 card in §08 for the home-register provenance."},
+    {"id": "H1", "status": "FIXED", "summary": "All three §06 in-flight cards now carry explicit `DRI · TBD · {scoping context}` lines: 'DRI · TBD · scoping in flight', 'DRI · TBD · pattern shared with HireFirst infra leads', 'DRI · TBD · template inventory open'. Honesty contract preserved — open gaps named as open."},
+    {"id": "H2", "status": "FIXED", "summary": "Hero subhead 1 rewritten to lead with the Live RR signal: 'Boltic powers AI-first testing across AJIO × JCP · 1,300 test cases automated · vibe-coded prototypes shipping inside JCP. Same platform, same control plane, scoped for the next Reliance Retail beachhead.'"},
+    {"id": "L1", "status": "FIXED", "summary": "§04 H2 (was §03) 'Where Boltic earns its rent at Reliance Retail.' → 'Three operational pillars at Reliance Retail.'"},
+    {"id": "L2", "status": "FIXED", "summary": "§01 Solution card 'SOC 2 + GDPR governance built in from day one' → 'SOC 2 + GDPR governance · default-on'."}
+  ],
+  "remaining_findings": [
+    {
+      "id": "C2",
+      "severity": "MEDIUM",
+      "dimension": "cross_page_consistency",
+      "section": "Catalog Boltic row vs /boltic hero",
+      "issue": "Catalog (catalog/index.html:244, 363) cites 'Live · 463M+ runs · 500+ integrations' for Boltic. The 463M+ runs figure is not in the source compilation folder (deck) and is not surfaced on the Boltic page. Either the catalog has an unsourced number, or the Boltic page should add it with a citation. Not blocking — but a register-wide consistency item.",
+      "fix": "Verify the 463M+ figure with the Boltic team. If real and citable, add it to a hero stat tile with a Source line. If unverified, file a separate finding against the catalog row to soften.",
+      "files": ["catalog/index.html:244", "catalog/index.html:363", "boltic/index.html:88"],
+      "auto_fixable": false
+    }
+  ],
+  "strengths": [
+    "Hero now leads with the Live RR signal (AJIO × JCP) instead of generic platform pitch — opens with verifiable evidence, not a positioning claim.",
+    "New §03 'Live for Reliance Retail' restores honesty register · Live · RR pills with inline citations to home page, then §04 pivots to scoped (Building) pillars cleanly.",
+    "All §06 in-flight cards carry explicit DRI · TBD lines — gap is named as a gap, not hidden.",
+    "Tone register completely clean of banned 'today', 'production operations', 'right now', 'from day one', 'ready for', 'earns its rent' constructions.",
+    "Five inline source citations (`cap-num` lines) anchor non-obvious claims to specific deck slides + home register, plus three full source cards in §08."
+  ]
+}

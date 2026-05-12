@@ -1,0 +1,358 @@
+:root {
+  --ink: #0A0A0A;
+  --ink-muted: #6B7280;
+  --ink-soft: #9CA3AF;
+  --bg: #FFFFFF;
+  --bg-soft: #FAFAFA;
+  --border: #D4D4D4;
+  --border-soft: #F0F0F0;
+  --caption: #4B5563;
+  --accent: #6B5BD6;
+  --accent-soft: #EDE9FE;
+  --green: #16A34A;
+  --amber: #D97706;
+  --red: #DC2626;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.prose { max-width: 70ch; }
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+.display { letter-spacing: -0.04em; line-height: 1.0; font-weight: 700; }
+.display-2 { letter-spacing: -0.03em; line-height: 1.05; font-weight: 700; }
+
+.section-label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--caption);
+}
+.section-label::before { content: "§ "; color: var(--ink-soft); }
+
+.accent { color: var(--accent); }
+.accent-bg { background: var(--accent); color: white; }
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: white;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.card-hover:hover {
+  border-color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: white;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.85; }
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  color: var(--ink);
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--border);
+  transition: border-color 0.15s;
+}
+.btn-secondary:hover { border-color: var(--ink); }
+
+table.grid-table { width: 100%; border-collapse: collapse; }
+table.grid-table th, table.grid-table td {
+  border-bottom: 1px solid var(--border);
+  padding: 18px 20px;
+  text-align: left;
+  vertical-align: top;
+}
+table.grid-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--caption);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--ink);
+  background: var(--bg-soft);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--bg-soft);
+  color: var(--ink-muted);
+  border: 1px solid var(--border);
+}
+.pill-live { background: #ECFDF5; color: #047857; border-color: #A7F3D0; }
+.pill-pilot { background: #FFF7ED; color: #C2410C; border-color: #FED7AA; }
+.pill-build { background: #FFFBEB; color: #B45309; border-color: #FDE68A; }
+.pill-phase2 { background: #F3F4F6; color: var(--ink-muted); border-color: #D1D5DB; }
+.pill-accent { background: var(--accent-soft); color: var(--accent); border-color: #DDD6FE; }
+.pill-red { background: #FEF2F2; color: #B91C1C; border-color: #FECACA; }
+
+.cap-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--caption);
+  letter-spacing: 0.02em;
+}
+
+nav.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-link {
+  font-size: 13px;
+  color: var(--ink);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-link:hover { background: var(--bg-soft); color: var(--accent); }
+.nav-link.active { color: var(--accent); }
+.nav-link.active::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 1px; height: 2px; background: var(--accent); border-radius: 1px; }
+.nav-link svg { width: 10px; height: 10px; opacity: 0.55; transition: transform 0.15s; }
+.nav-link:hover svg { opacity: 1; }
+
+/* mega-menu */
+.nav-mega { position: relative; }
+/* Invisible bridge in the 12px gap between the trigger button and the panel.
+   Keeps :hover alive while the cursor crosses the gap, so the menu doesn't
+   disappear when you scroll into it. */
+.nav-mega::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: transparent;
+  pointer-events: auto;
+}
+.nav-mega-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  min-width: 480px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 16px 48px rgba(10,10,10,0.08), 0 2px 8px rgba(10,10,10,0.04);
+  padding: 18px;
+  margin-top: 12px;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.18s, transform 0.18s, visibility 0s linear 0.18s;
+  z-index: 60;
+}
+.nav-mega:hover .nav-mega-panel,
+.nav-mega:focus-within .nav-mega-panel {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.18s, transform 0.18s, visibility 0s linear 0s;
+}
+.nav-mega:hover > .nav-link svg,
+.nav-mega:focus-within > .nav-link svg { transform: rotate(180deg); }
+
+.mega-col-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--caption);
+  margin-bottom: 8px;
+  padding: 0 10px;
+}
+.mega-link {
+  display: block;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background 0.12s, color 0.12s;
+}
+.mega-link:hover { background: var(--bg-soft); color: var(--accent); }
+.mega-link .mono-suffix { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-left: 8px; }
+
+.nav-version { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-muted); padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; }
+.nav-version-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--green); margin-right: 6px; vertical-align: 2px; }
+
+.status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+.dot-green { background: var(--green); }
+.dot-amber { background: var(--amber); }
+.dot-grey { background: var(--ink-soft); }
+.dot-red { background: var(--red); }
+
+.crumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--caption);
+}
+.crumb a { color: var(--caption); transition: color 0.15s; padding: 4px 6px; margin: 0 -6px; border-radius: 4px; }
+.crumb a:hover { color: var(--ink); }
+.crumb .sep { color: var(--ink-soft); }
+
+/* Per-track subnav chip strip (Overview / Channels / etc.). Rendered by
+   site_chrome.subnav_html() and injected by tools/inject_subnavs.py. */
+.subnav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: white;
+  transition: all 0.15s;
+}
+.subnav-link:hover { border-color: var(--ink); background: var(--bg-soft); }
+.subnav-link.active { background: var(--ink); color: white; border-color: var(--ink); }
+
+/* Display number for hero stat tiles. Promoted from index.html so other
+   pages can use it without redefining. */
+.num-display {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Tabular numerals utility for any number column / tile that benefits from
+   stable digit widths. */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Tier 3 a11y · keyboard focus ring. Renders only for keyboard nav, not for
+   mouse clicks. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Tier 3 a11y · respect prefers-reduced-motion. Zero all transitions and
+   animations site-wide. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================================
+   .platform-card · used by §03/§08 PATH TO L4 grids on platform pages
+   (jcp · granary · ucp · retail-vista) and the home-page platform grid.
+   Auto-rendered by tools/inject_path_to_l4.py for the platform-card pattern.
+   Promoted from inline <style> on index.html so all platform pages render
+   the cards properly (was rendering as plain text on jcp / granary / ucp
+   before this promotion · 2026-05-03).
+   ============================================================================ */
+.platform-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-decoration: none;
+  transition: border-color 0.18s, transform 0.18s;
+  height: 100%;
+}
+.platform-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.platform-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.platform-card-name {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.platform-card-desc {
+  font-size: 13px;
+  color: var(--ink-muted);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 12px;
+}
+.platform-card-foot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.platform-card-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-muted);
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border-soft);
+}
+.platform-card-metric {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+}

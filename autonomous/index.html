@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Autonomy framework · Reliance Retail × Fynd</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+  /* Pull-quote */
+  .pullquote {
+    border-left: 3px solid var(--accent);
+    padding: 18px 22px;
+    background: var(--accent-soft);
+    border-radius: 0 8px 8px 0;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .pullquote::before { content: "\201C"; color: var(--accent); font-size: 28px; font-weight: 700; line-height: 0; vertical-align: -8px; margin-right: 4px; }
+  .pullquote::after { content: "\201D"; color: var(--accent); font-size: 28px; font-weight: 700; line-height: 0; vertical-align: -14px; margin-left: 4px; }
+
+  /* Risk-gate cards */
+  .risk-card { padding: 20px; border: 1px solid var(--border); border-radius: 10px; }
+  .risk-card .gate-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+  .risk-card h3 { font-weight: 600; font-size: 16px; color: var(--ink); margin-bottom: 6px; }
+  .risk-card p { font-size: 13px; line-height: 1.55; color: var(--ink-muted); }
+
+  /* Autonomy ladder · 6 levels */
+  .ladder-card { display: grid; grid-template-columns: 92px 1fr; gap: 22px; align-items: stretch; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 12px; }
+  .ladder-band { display: flex; align-items: center; justify-content: center; flex-direction: column; padding: 22px 14px; color: white; font-weight: 700; }
+  .ladder-band .lvl-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; line-height: 1; }
+  .ladder-band .lvl-tag { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; opacity: 0.85; }
+  .ladder-body { padding: 18px 22px 18px 0; }
+  .ladder-body h3 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 4px; }
+  .ladder-body .ladder-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-bottom: 8px; }
+  .ladder-body p { font-size: 14px; line-height: 1.55; color: var(--ink); }
+  /* L0 → L5 ramp */
+  .lvl-0 { background: #BFD0E5; }
+  .lvl-1 { background: #8FAACD; }
+  .lvl-2 { background: #5E83B5; color: white; }
+  .lvl-3 { background: #2E5D9D; }
+  .lvl-4 { background: #16407C; }
+  .lvl-5 { background: #0A2454; }
+
+  /* Transition callouts */
+  .transition-row { display: grid; grid-template-columns: 80px 1fr; gap: 14px; align-items: start; padding: 12px 0; border-top: 1px dashed var(--border); }
+  .transition-row .arrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); font-weight: 600; padding-top: 2px; }
+  .transition-row .desc { font-size: 14px; color: var(--ink); line-height: 1.55; }
+  .transition-row .desc strong { color: var(--ink); }
+
+  /* Workflow table */
+  .matrix-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  .matrix-table thead th { background: #1E3A5F; color: white; font-weight: 600; padding: 8px 6px; text-align: left; vertical-align: top; font-size: 11px; letter-spacing: 0.02em; }
+  .matrix-table thead th .lvl { display: block; font-weight: 700; font-size: 11px; }
+  .matrix-table thead th .tag { display: block; font-size: 9.5px; font-weight: 400; opacity: 0.85; margin-top: 2px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .matrix-table tbody td { padding: 8px 6px; vertical-align: top; line-height: 1.4; border-bottom: 1px solid var(--border-soft); color: var(--ink); }
+  .matrix-table tbody td:first-child { color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; font-size: 11px; padding-top: 10px; }
+  .matrix-table tbody td:nth-child(2) { font-weight: 600; color: var(--ink); }
+  .matrix-table tbody tr.section-row td { background: #1E3A5F; color: white; padding: 6px 8px; font-weight: 700; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'JetBrains Mono', monospace; }
+  .matrix-table tbody td.cell-l { background: #DEE7F3; font-size: 11.5px; }
+  .matrix-table tbody td.cell-l-empty { background: #FFFFFF; font-size: 11.5px; }
+
+  /* Diagram frame */
+  .diagram-frame { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: white; }
+  .diagram-frame img { width: 100%; height: auto; display: block; }
+  .diagram-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg-soft); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+
+/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
+   Injected by patch_internal_pages.py · do not edit manually
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Platform cards */
+.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
+.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
+.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
+.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
+.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
+.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
+
+/* Section hero split */
+.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
+.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
+@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
+
+/* Impact tiles */
+.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
+.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
+
+/* Lens cards */
+.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
+.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
+.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+
+/* Scroll reveal */
+[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+[data-reveal].revealed { opacity: 1; transform: none; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+/* Utility */
+.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+/* ── end Open Design revamp layer ─────────────────────────────────────────── */
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd</span>
+    <span class="text-xs" style="color: var(--border);">×</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
+        <div>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP & Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- ===== HERO ===== -->
+<section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Autonomy framework</span></div>
+  <div class="section-label mb-3">AUTONOMY LADDER · 90-DAY PATH</div>
+  <h1 class="display text-5xl md:text-7xl mb-5" style="color: var(--ink);">From human-driven<br/>to autonomous.</h1>
+  <p class="text-lg max-w-3xl mb-6" style="color: var(--ink); line-height: 1.55;">
+    Retail is an inventory risk business. Profit is the 3-15% reward for getting the bet right. Autonomous Commerce decides, per workflow, the right level of autonomy.
+  </p>
+  <div class="flex flex-wrap items-center gap-3 mb-2">
+    <span class="pill pill-live">Framework · Live</span>
+    <span class="pill">Farooq Adam · 15 Apr 2026</span>
+  </div>
+</div></section>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#premise">01 · Premise</a>
+<a href="#risk-gates">02 · Risk gates</a>
+<a href="#ladder">03 · Ladder</a>
+<a href="#not-every-workflow">04 · Workflows</a>
+<a href="#matrix">05 · 90-day matrix</a>
+<a href="#workflow-table">06 · Workflow table</a>
+<a href="#measure">07 · Measure progress</a>
+</div>
+</div>
+
+<!-- ===== §01 THE PREMISE ===== -->
+<section id="premise" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">01 · The premise</div>
+  <div class="max-w-4xl space-y-5" style="color: var(--ink); line-height: 1.65;">
+    <p>Retail is an inventory risk business. 85-97% of every rupee a retailer earns goes toward acquiring, storing, moving, funding, and selling inventory. The remaining 3-15% is profit, the reward for getting the bet right. The arithmetic is direct, visible in every annual report from Inditex to DMart to Reliance Retail. Revenue is selling inventory. COGS is buying inventory. Rent is storing inventory. Employees manage inventory. Everything else is a derivative.</p>
+    <p>Today, humans place this bet. They forecast demand, select suppliers, set prices, plan promotions, allocate stock, and decide markdowns. AI has entered the conversation, but in most organisations it is still a surface-level addition. The spreadsheet is better-formatted. The PowerPoint is faster. The forecast has one more input. The bet itself has not changed.</p>
+    <p><strong>Autonomous Commerce</strong> changes this. Not incrementally. Structurally. It is a framework for deciding, per workflow, the right level of autonomy: what should be fully autonomous, what should be AI-assisted, and what should remain human. The question is not &ldquo;how is AI used in retail?&rdquo; The question is &ldquo;at what level of autonomy should each workflow operate, and what must be true to move it to the next level?&rdquo;</p>
+    <p>The approach covers both technology and organisation. On the technology side, the platform connects AI to every workflow and data stream (demand signals, inventory positions, supplier networks, pricing engines, and fulfilment nodes) so they become a single addressable surface. The data catalog (Paper 2) documents the 67 activities, 120 SOPs, and 35 data sources that power these workflows. On the organisation side, each function must make a deliberate choice about its target autonomy level, and the people freed by that transition are redirected into AI-native roles that did not exist before.</p>
+    <div class="pullquote my-7">AI has entered the conversation, but in most organisations it is still a surface-level addition. The bet itself has not changed.</div>
+  </div>
+</div></section>
+
+<!-- ===== §02 THE RISK GATES ===== -->
+<section id="risk-gates" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">02 · The risk gates &middot; guardrails</div>
+  <div class="max-w-4xl mb-8" style="color: var(--ink); line-height: 1.65;">
+    <p class="mb-4">Read each transition between autonomy levels as a risk-reduction proof, not a technology upgrade.</p>
+    <p>Every retail workflow sits at some level of autonomy today. Moving it to the next level requires answering one question: does this move demonstrably reduce risk? Not &ldquo;can AI do this?&rdquo; (a technology question). Not &ldquo;will this save headcount?&rdquo; (an efficiency question). The question is whether giving the machine more authority over this workflow produces measurably better outcomes with measurably lower risk. If you cannot prove it, you are not ready. If you can prove it but the organisation will not act on the proof, governance is the problem, not technology.</p>
+    <p class="mt-4">Risk manifests differently across the value chain. Four domains, four categories of risk, one standard: here is the data, here is the A/B test, here is the measurable outcome in rupees. This rule governs everything that follows.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 max-w-5xl">
+    <div class="risk-card">
+      <div class="gate-label">Plan</div>
+      <h3>Inventory holding risk</h3>
+      <p>The risk of building or holding stock the customer will not buy at full price.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">Buy</div>
+      <h3>Procurement risk</h3>
+      <p>The risk of paying the wrong price, picking the wrong supplier, or committing capital too early.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">Move</div>
+      <h3>Supply chain risk</h3>
+      <p>The risk of stock reaching the wrong store at the wrong time, or not at all.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">Sell</div>
+      <h3>Revenue risk</h3>
+      <p>The risk of leaving margin on the table (under-pricing, over-discounting, missing the moment).</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== §03 THE 6 LEVELS ===== -->
+<section id="ladder" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">03 · The autonomy ladder &middot; six levels</div>
+  <p class="max-w-3xl mb-8" style="color: var(--ink); line-height: 1.65;">Six levels of autonomy, adapted from the Autonomous Networks taxonomy standardised by TM Forum for telecommunications. The domains change (from network fault management to demand forecasting, from radio access to supply chain) but the architecture of autonomy is universal. Each level defines who decides, who executes, and who bears risk.</p>
+
+  <div class="max-w-5xl">
+    <div class="ladder-card">
+      <div class="ladder-band lvl-0"><span class="lvl-num">L0</span><span class="lvl-tag">Manual</span></div>
+      <div class="ladder-body">
+        <h3>Manual Commerce</h3>
+        <div class="ladder-tag">Humans decide &middot; humans execute &middot; humans bear risk</div>
+        <p>Humans execute all tasks. Systems are record-keeping tools. Monitoring and data capture only. All risk borne by human judgement and experience.</p>
+      </div>
+    </div>
+
+    <div class="ladder-card">
+      <div class="ladder-band lvl-1"><span class="lvl-num">L1</span><span class="lvl-tag">Assisted</span></div>
+      <div class="ladder-body">
+        <h3>Assisted Commerce</h3>
+        <div class="ladder-tag">Humans decide &middot; AI accelerates &middot; risk unchanged</div>
+        <p>Humans make all decisions. AI performs specific, repetitive subtasks on pre-configured rules: report generation, data formatting, alert triggering. Risk unchanged. Execution speed improved.</p>
+      </div>
+    </div>
+
+    <div class="ladder-card">
+      <div class="ladder-band lvl-2"><span class="lvl-num">L2</span><span class="lvl-tag">Augmented</span></div>
+      <div class="ladder-body">
+        <h3>Augmented Commerce</h3>
+        <div class="ladder-tag">Humans decide within AI recommendations &middot; risk reduced in narrow domains</div>
+        <p>Humans own decisions but operate within AI-generated recommendations. Closed-loop execution for narrow, well-defined units. Risk reduced in narrow domains with proven rule sets.</p>
+      </div>
+    </div>
+
+    <div class="ladder-card">
+      <div class="ladder-band lvl-3"><span class="lvl-num">L3</span><span class="lvl-tag">Intelligent</span></div>
+      <div class="ladder-body">
+        <h3>Intelligent Commerce</h3>
+        <div class="ladder-tag">Humans set policy &middot; system self-optimises within guardrails</div>
+        <p>Humans set policies and handle exceptions. The system senses real-time changes and self-optimises within defined boundaries, adjusting to demand shifts, competitive moves, and supply disruptions. Risk actively managed by the system within guardrails.</p>
+      </div>
+    </div>
+
+    <div class="ladder-card">
+      <div class="ladder-band lvl-4"><span class="lvl-num">L4</span><span class="lvl-tag">Agentic</span></div>
+      <div class="ladder-body">
+        <h3>Agentic Commerce</h3>
+        <div class="ladder-tag">Humans set intent &middot; system coordinates across Plan / Buy / Move / Sell &middot; risk pre-empted</div>
+        <p>Humans set strategic intent and review outcomes. The system makes cross-domain decisions via predictive analysis and continuous learning. Coordinates across Plan, Buy, Move, and Sell simultaneously. Risk predicted and pre-empted.</p>
+      </div>
+    </div>
+
+    <div class="ladder-card">
+      <div class="ladder-band lvl-5"><span class="lvl-num">L5</span><span class="lvl-tag">Autonomous</span></div>
+      <div class="ladder-body">
+        <h3>Autonomous Commerce</h3>
+        <div class="ladder-tag">Humans define purpose &middot; system runs the lifecycle &middot; risk structurally minimised</div>
+        <p>Humans define purpose, values, and constraints. The system operates the full lifecycle via cognitive self-adaptation: self-healing, self-optimising, continuously learning. Risk is structurally minimised.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mt-10">
+    <div class="section-label mb-3">The transitions &middot; what each jump actually is</div>
+    <div class="transition-row">
+      <div class="arrow">L1 → L2</div>
+      <div class="desc"><strong>Tool upgrade.</strong> The same people with better instruments.</div>
+    </div>
+    <div class="transition-row">
+      <div class="arrow">L2 → L3</div>
+      <div class="desc"><strong>Skill upgrade.</strong> The same people doing the same jobs faster and with higher reach per decision.</div>
+    </div>
+    <div class="transition-row">
+      <div class="arrow">L3 → L4</div>
+      <div class="desc"><strong>Identity shift.</strong> The roles themselves dissolve, and the organisation becomes a fundamentally different kind of entity.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== §04 NOT EVERY WORKFLOW ===== -->
+<section id="not-every-workflow" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">04 · Not every workflow should reach L5</div>
+  <div class="max-w-4xl mb-8" style="color: var(--ink); line-height: 1.65;">
+    <p>This is a design choice, not a failure of ambition. Workflows that are high-frequency, data-rich, and reversible (demand forecasting, pricing, replenishment, allocation) move toward L4-L5. Workflows that are low-frequency, judgement-intensive, and irreversible stay deliberately at lower levels. The right answer is a portfolio of autonomy levels, chosen deliberately per workflow, governed by provable risk reduction, not a uniform target.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-5xl">
+    <div class="risk-card">
+      <div class="gate-label">L1 – L2</div>
+      <h3>Strategy &amp; vision</h3>
+      <p>What categories to enter, what the brand stands for. AI-informed, human-decided.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">L3</div>
+      <h3>Brand &amp; creative direction</h3>
+      <p>AI-generated, human-curated.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">L2 – L3</div>
+      <h3>Compliance &amp; ethics</h3>
+      <p>Compliance and ethical judgements stay AI-monitored, human-accountable.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- ===== §05 90-DAY MATRIX (DIAGRAMS) ===== -->
+<section id="matrix" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">05 · The 90-day target matrix &middot; across the F&amp;L value chain</div>
+  <p class="max-w-3xl mb-8" style="color: var(--ink); line-height: 1.65;">The matrix maps retail workflows against the six autonomy levels. Read it left to right to see how a single workflow evolves from fully manual to fully autonomous. Read it top to bottom within a value-chain stage to see the breadth of autonomy decisions an organisation must make simultaneously. The shaded cells show the target autonomy state in the next 90 days.</p>
+
+  <div class="diagram-frame mb-5">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/autonomous/matrix-1.jpg" alt="Autonomy framework matrix · Plan and Buy" />
+    <div class="diagram-cap">[1/2] &middot; Plan (Demand Forecasting · OTB Budgeting · Range Architecture · Space Planning · Assortment Planning) &middot; Buy (Sourcing · Costing · Product Development · Order Placement · Vendor Management)</div>
+  </div>
+
+  <div class="diagram-frame mb-6">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/autonomous/matrix-2.jpg" alt="Autonomy framework matrix · Move and Sell" />
+    <div class="diagram-cap">[2/2] &middot; Move (Production Tracking · Quality Assurance · Allocation · Replenishment · Logistics) &middot; Sell (Store Operations · Visual Merchandising · Pricing &amp; Markdowns · Promotions · Omnichannel · Marketing)</div>
+  </div>
+
+  <p class="cap-num" style="color: var(--ink-muted);">Across 21 core retail workflows, L2 (Augmented) is the baseline; every workflow reaches at least this level. Of these, 43% move to L3 (Intelligent) where the system optimises within guardrails and humans handle exceptions. 29% reach L4 (Agentic) where the system makes cross-domain decisions and humans set intent. The remaining 24% operate at L2 where AI recommends and humans decide.</p>
+</div></section>
+
+<!-- ===== §06 THE FULL WORKFLOW TABLE ===== -->
+<section id="workflow-table" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">06 · The full workflow table &middot; per-cell capability descriptions</div>
+  <p class="max-w-3xl mb-6" style="color: var(--ink); line-height: 1.65;">Every cell describes what that workflow looks like at that level of autonomy. Verbatim from the paper. The shaded cells are L0–L3, the workflow's current state for most stages today; clear cells are L4–L5, the targets.</p>
+
+  <div class="overflow-x-auto">
+    <table class="matrix-table">
+      <thead>
+        <tr>
+          <th style="width:40px;">#</th>
+          <th style="width:130px;">Workflow</th>
+          <th><span class="lvl">L0</span><span class="tag">Manual</span></th>
+          <th><span class="lvl">L1</span><span class="tag">Assisted</span></th>
+          <th><span class="lvl">L2</span><span class="tag">Augmented</span></th>
+          <th><span class="lvl">L3</span><span class="tag">Intelligent</span></th>
+          <th><span class="lvl">L4</span><span class="tag">Agentic</span></th>
+          <th><span class="lvl">L5</span><span class="tag">Autonomous</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-row"><td colspan="8">Plan</td></tr>
+        <tr id="matrix-1-1"><td>1.1</td><td>Demand Forecasting</td><td class="cell-l">Spreadsheets and instinct</td><td class="cell-l">AI summarises trends</td><td class="cell-l">ML forecasts, human reviews</td><td class="cell-l">Continuous signal engine</td><td class="cell-l-empty">Forecast triggers actions</td><td class="cell-l-empty">Demand is sensed, not forecast</td></tr>
+        <tr id="matrix-1-2"><td>1.2</td><td>OTB Budgeting</td><td class="cell-l">Excel, quarterly cycle</td><td class="cell-l">AI formats the deck</td><td class="cell-l">AI proposes OTB based on sell-through, planner reviews</td><td class="cell-l-empty">Auto-reallocating constraint</td><td class="cell-l-empty">Cross-format OTB, human sets intent</td><td class="cell-l-empty">Real-time financial envelope</td></tr>
+        <tr id="matrix-1-3"><td>1.3</td><td>Range Architecture</td><td class="cell-l">Hand-built option plans</td><td class="cell-l">AI generates trend reports</td><td class="cell-l">AI-generated options, buyer chooses</td><td class="cell-l">System generates full range plans</td><td class="cell-l-empty">Human scans and asks &ldquo;what if?&rdquo;</td><td class="cell-l-empty">Signal to order in days</td></tr>
+        <tr id="matrix-1-4"><td>1.4</td><td>Space Planning</td><td class="cell-l">Fixed planograms, regional clusters</td><td class="cell-l">AI suggests layouts</td><td class="cell-l">Weekly GMROF optimisation</td><td class="cell-l">Continuously optimised per store</td><td class="cell-l">Daily VM briefs per store</td><td class="cell-l-empty">Every store is a market of one</td></tr>
+        <tr id="matrix-1-5"><td>1.5</td><td>Assortment Planning</td><td class="cell-l">Periodic, cluster-level</td><td class="cell-l">AI surfaces bestsellers</td><td class="cell-l">Store-cluster, AI recommends</td><td class="cell-l">Store-level, demand-driven</td><td class="cell-l-empty">Cross-format cannibalisation detection</td><td class="cell-l-empty">Unified demand sensing</td></tr>
+
+        <tr class="section-row"><td colspan="8">Buy</td></tr>
+        <tr id="matrix-2-1"><td>2.1</td><td>Sourcing</td><td class="cell-l">Personal network, trust-based</td><td class="cell-l">AI benchmarks prices</td><td class="cell-l">System scores and recommends</td><td class="cell-l">Real-time supplier graph</td><td class="cell-l-empty">System selects, negotiates, orders</td><td class="cell-l-empty">Autonomous within guardrails</td></tr>
+        <tr id="matrix-2-2"><td>2.2</td><td>Costing</td><td class="cell-l">Instinct-based negotiation</td><td class="cell-l">System tracks cost indices</td><td class="cell-l">Target cost per SKU pre-negotiation</td><td class="cell-l">Predicted landed cost pre-spec</td><td class="cell-l-empty">Predictive, real-time margin</td><td class="cell-l-empty">System-to-system pricing</td></tr>
+        <tr id="matrix-2-3"><td>2.3</td><td>Product Development</td><td class="cell-l">Multi-month physical cycle</td><td class="cell-l">AI generates concepts</td><td class="cell-l">Digital prototyping, partial</td><td class="cell-l">Majority digital approval</td><td class="cell-l-empty">Spec-to-order in days</td><td class="cell-l-empty">Generative design, direct-to-production</td></tr>
+        <tr id="matrix-2-4"><td>2.4</td><td>Order Placement</td><td class="cell-l">Bulk order, over-ordering</td><td class="cell-l">Forecasts inform quantities</td><td class="cell-l">Partial order, reserve capacity</td><td class="cell-l">Rolling orders, weekly adjustment</td><td class="cell-l-empty">Trend-to-order, human reviews</td><td class="cell-l-empty">Continuous, no order window</td></tr>
+        <tr id="matrix-2-5"><td>2.5</td><td>Vendor Management</td><td class="cell-l">Quarterly reviews, spreadsheets</td><td class="cell-l">Auto-generated scorecards</td><td class="cell-l">System flags at-risk vendors</td><td class="cell-l">Predictive risk identification</td><td class="cell-l-empty">System manages operationally</td><td class="cell-l-empty">Self-governing ecosystem</td></tr>
+
+        <tr class="section-row"><td colspan="8">Move</td></tr>
+        <tr id="matrix-3-1"><td>3.1</td><td>Production Tracking</td><td class="cell-l">Email and phone calls</td><td class="cell-l">AI monitors milestones</td><td class="cell-l">Digitised milestone tracking</td><td class="cell-l">Predictive completion modelling</td><td class="cell-l-empty">Delay predicted, mitigation auto-identified</td><td class="cell-l-empty">Orchestrated, not tracked</td></tr>
+        <tr id="matrix-3-2"><td>3.2</td><td>Quality Assurance</td><td class="cell-l">Warehouse inspection, high defects</td><td class="cell-l">Risk-scored inspection triggers</td><td class="cell-l">Selective QC replaces blanket</td><td class="cell-l">Pre-production confidence scoring</td><td class="cell-l-empty">Quality built in, not inspected</td><td class="cell-l-empty">Zero-defect, system-to-system</td></tr>
+        <tr id="matrix-3-3"><td>3.3</td><td>Allocation</td><td class="cell-l">Once per cycle, A/B/C grading</td><td class="cell-l">AI considers store-level demand</td><td class="cell-l">SKU-store level, one-time</td><td class="cell-l">Continuous, demand-signal driven</td><td class="cell-l-empty">Chase and replenish are one action</td><td class="cell-l-empty">Inventory is a network</td></tr>
+        <tr id="matrix-3-4"><td>3.4</td><td>Replenishment</td><td class="cell-l">Manual, weekly, store calls</td><td class="cell-l">Auto-trigger, static thresholds</td><td class="cell-l">Smart slow-seller / fast-seller</td><td class="cell-l">Dynamic, real-time thresholds</td><td class="cell-l-empty">Self-healing supply chain</td><td class="cell-l-empty">Nervous system, autonomous</td></tr>
+        <tr id="matrix-3-5"><td>3.5</td><td>Logistics</td><td class="cell-l">Carrier negotiation, 3PL routing</td><td class="cell-l">Optimised routing, TAT tracked</td><td class="cell-l">Ship-from-store, intelligent routing</td><td class="cell-l">Cross-network path optimisation</td><td class="cell-l-empty">Auto-rerouting on disruption</td><td class="cell-l-empty">Invisible, self-optimising</td></tr>
+
+        <tr class="section-row"><td colspan="8">Sell</td></tr>
+        <tr id="matrix-4-1"><td>4.1</td><td>Store Operations</td><td class="cell-l">Weekly visits, monthly reviews</td><td class="cell-l">Real-time dashboards</td><td class="cell-l">Same-day KPI deviations</td><td class="cell-l">Every store a market of one</td><td class="cell-l-empty">Daily briefs, guardrails not instructions</td><td class="cell-l-empty">Demand-sensing node</td></tr>
+        <tr id="matrix-4-2"><td>4.2</td><td>Visual Merchandising</td><td class="cell-l">Brand guidelines, periodic</td><td class="cell-l">AI recommends placement</td><td class="cell-l">Data-driven display rules</td><td class="cell-l">Daily recommendation per store</td><td class="cell-l-empty">Autonomous daily planograms</td><td class="cell-l-empty">Continuous, every fixture optimised</td></tr>
+        <tr id="matrix-4-3"><td>4.3</td><td>Pricing &amp; Markdowns</td><td class="cell-l">Calendar-based clearance</td><td class="cell-l">SKU-level markdown recommendations</td><td class="cell-l">Dynamic, product-driven timing</td><td class="cell-l">Continuous, store-specific</td><td class="cell-l-empty">Every SKU, every store, every day</td><td class="cell-l-empty">Price is a real-time function</td></tr>
+        <tr id="matrix-4-4"><td>4.4</td><td>Promotions</td><td class="cell-l">Central, uniform across stores</td><td class="cell-l">AI recommends where to promote</td><td class="cell-l">Cluster-level promotion variation</td><td class="cell-l">Opportunity-detected, instant approval</td><td class="cell-l-empty">Continuous micro-campaigns</td><td class="cell-l-empty">No campaigns, individual conversations</td></tr>
+        <tr id="matrix-4-5"><td>4.5</td><td>Omnichannel</td><td class="cell-l">Online and offline separate</td><td class="cell-l">Unified inventory</td><td class="cell-l">Intelligent fulfilment routing</td><td class="cell-l">Single pool, channel-agnostic</td><td class="cell-l-empty">Cross-format lifecycle management</td><td class="cell-l-empty">Shopping disappears as effort</td></tr>
+        <tr id="matrix-4-6"><td>4.6</td><td>Marketing</td><td class="cell-l">Calendar-based campaigns, broadcast</td><td class="cell-l">AI writes copy, resizes images</td><td class="cell-l">Data-driven segmentation, automated bidding</td><td class="cell-l">Micro-campaigns triggered by real-time signals</td><td class="cell-l-empty">Autonomous audience, creative, deploy, measure</td><td class="cell-l-empty">Continuous individual conversations</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="cap-num mt-4" style="color: var(--ink-muted);">Verbatim from <em>Operationalizing Autonomous Commerce for Retail</em> &middot; §1.4 &middot; pp. 3-5. The paper extends the table to Asset (5.1-5.4), Finance (6.1-6.3) and HR (7.1-7.3), not shown here as they sit outside the F&amp;L Plan/Buy/Move/Sell value chain Impetus targets.</p>
+</div></section>
+
+<!-- ===== §07 HOW PROGRESS IS MEASURED ===== -->
+<section id="measure" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+  <div class="section-label mb-4">07 · How progress is measured</div>
+  <p class="max-w-3xl mb-8" style="color: var(--ink); line-height: 1.65;">Three measurements decide whether a workflow is ready to move to its next level. Each one carries a rupee number. None of them is a feature count.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-5xl">
+    <div class="risk-card">
+      <div class="gate-label">Measurement 01</div>
+      <h3>Risk reduction</h3>
+      <p>Per the four risk gates: how much inventory, procurement, supply chain, or revenue risk does the workflow now actively avoid? Quoted in rupees of capital at risk, not in tickets closed.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">Measurement 02</div>
+      <h3>Throughput uplift</h3>
+      <p>Decisions per hour at the new level vs the old. The L2 → L3 jump is a skill upgrade: same people, faster cycle, higher reach per decision. The reach is measured directly.</p>
+    </div>
+    <div class="risk-card">
+      <div class="gate-label">Measurement 03</div>
+      <h3>Defect / anomaly rate</h3>
+      <p>What share of the system's decisions get reversed, escalated, or written off? L3 holds at low single digits within guardrails. L4 must beat that rate before the org accepts the identity shift.</p>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mt-10" style="color: var(--ink); line-height: 1.65;">
+    <p>The matrix is a workflow tool. Its deepest consequence is organisational. Once the target level per workflow is set, the org chart follows, because every role is defined by the workflows it touches. The move from L2 to L3 does not change the org chart. The planner is still a planner, the buyer is still a buyer: faster, better-informed, operating at higher reach per decision. <strong>The move from L3 to L4 changes what the organisation is.</strong> Planning teams compress from dozens to a handful of strategic minds who set intent and handle exceptions. Buying teams become acquisition strategists who manage supplier relationships and review AI-generated decisions. Supply chain teams become strategic operators who handle the disruptions that require human judgement.</p>
+    <p class="mt-4">Not everyone will step up. The honest reality is that L4 demands a capacity and ambition that not every person on every team possesses. The commitment is that the organisation will <strong>redirect, not displace</strong>, into work that did not exist before. The condition is equally clear: its people must become AI-native.</p>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+<script>
+/* Open Design scroll-reveal · v0.8.4 */
+(function(){
+  if (!('IntersectionObserver' in window)) {
+    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var el = e.target;
+        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
+        var idx = siblings.indexOf(el);
+        el.style.transitionDelay = (idx * 80) + 'ms';
+        el.classList.add('revealed');
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
