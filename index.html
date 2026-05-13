@@ -476,33 +476,27 @@
     @keyframes ic-win-b   { 0%,100%{opacity:.30} 50%{opacity:.88} }
     @keyframes ic-win-c   { 0%,100%{opacity:.22} 50%{opacity:.62} }
     @keyframes ic-dash    { to{stroke-dashoffset:-28} }
-    @keyframes ic-plane-land {
-      0%   { transform:translate(380px,-220px) scale(.55); opacity:0; }
-      6%   { opacity:1; }
-      38%  { transform:translate(130px,-70px) scale(.75); opacity:1; }
-      54%  { transform:translate(25px,-10px) scale(.92); opacity:1; }
-      60%  { transform:translate(0px,4px) scale(1); opacity:1; }
-      64%  { transform:translate(-6px,-2px) scale(1); opacity:1; }
-      68%  { transform:translate(-10px,0px) scale(1); opacity:1; }
-      82%  { transform:translate(-90px,45px) scale(1); opacity:1; }
-      90%  { transform:translate(-115px,58px) scale(1); opacity:1; }
-      95%  { transform:translate(-112px,56px) scale(1); opacity:1; }
-      98%  { transform:translate(-112px,56px) scale(1); opacity:1; }
-      100% { transform:translate(-112px,56px) scale(1); opacity:0; }
+    @keyframes ic-plane-flyby {
+      0%   { transform:translate(-550px, 120px); opacity:0; }
+      5%   { opacity:1; }
+      50%  { transform:translate(0px, 0px); opacity:1; }
+      95%  { opacity:1; }
+      100% { transform:translate(550px, -120px); opacity:0; }
     }
-    @keyframes ic-shadow-anim {
-      0%,52% { opacity:0; }
-      60%    { opacity:.14; }
-      95%    { opacity:.14; }
-      100%   { opacity:0; }
+    @keyframes ic-shadow-flyby {
+      0%   { transform:translate(-550px, 120px); opacity:0; }
+      5%   { opacity:.12; }
+      50%  { transform:translate(0px, 0px); opacity:.12; }
+      95%  { opacity:.12; }
+      100% { transform:translate(550px, -120px); opacity:0; }
     }
     .ic-beacon { animation:ic-beacon 1.4s ease-in-out infinite; }
     .icw-a { animation:ic-win-a 2.8s ease-in-out infinite; }
     .icw-b { animation:ic-win-b 3.5s ease-in-out infinite .7s; }
     .icw-c { animation:ic-win-c 2.3s ease-in-out infinite 1.3s; }
     .ic-conn { animation:ic-dash 2.2s linear infinite; }
-    .ic-plane-g { animation:ic-plane-land 10s cubic-bezier(.25,.1,.25,1) infinite; }
-    .ic-shadow-el { animation:ic-shadow-anim 10s cubic-bezier(.25,.1,.25,1) infinite; }
+    .ic-plane-g { animation:ic-plane-flyby 8s linear infinite; }
+    .ic-shadow-el { animation:ic-shadow-flyby 8s linear infinite; }
     @media(prefers-reduced-motion:reduce){
       .ic-beacon,.icw-a,.icw-b,.icw-c,.ic-conn,.ic-plane-g,.ic-shadow-el{animation:none!important;}
       .ic-plane-g,.ic-shadow-el{opacity:0!important;}
