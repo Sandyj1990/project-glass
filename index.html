@@ -843,45 +843,84 @@
   </svg>
   </div>
 
-  <!-- ── METRIC GRID (static) ────────────────────────────────────────────── -->
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 16px;">
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">380 M+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Customer identities unified across Reliance Retail &middot; UCP foundation across 100 % of formats (RR registered customers &middot; 387 M)</p>
+  <!-- ── METRIC SLIDER (manual) ──────────────────────────────────────────── -->
+  <style>
+    .ms-wrap { position:relative; max-width:900px; margin:0 auto 16px; overflow:hidden; }
+    .ms-track { display:flex; transition:transform .45s cubic-bezier(.4,0,.2,1); width:100%; }
+    .ms-page { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; width:100%; flex:0 0 100%; padding:0 2px; box-sizing:border-box; }
+    .ms-card { padding:28px 24px; }
+    .ms-num { font-size:clamp(28px,4vw,48px); line-height:1; margin-bottom:10px; }
+    .ms-desc { font-size:13px; line-height:1.5; color:var(--ink-mid); }
+    .ms-arrows { display:flex; justify-content:center; align-items:center; gap:16px; margin-top:18px; }
+    .ms-arrow { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--border); background:var(--bg); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s; color:var(--ink); font-size:18px; font-family:inherit; }
+    .ms-arrow:hover { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+    .ms-arrow:disabled { opacity:.25; cursor:default; pointer-events:none; }
+    .ms-dots { display:flex; gap:8px; align-items:center; }
+    .ms-dot { width:8px; height:8px; border-radius:50%; background:var(--border); cursor:pointer; transition:all .25s; border:none; }
+    .ms-dot.active { background:var(--ink); width:24px; border-radius:4px; }
+    @media(max-width:640px) {
+      .ms-page { grid-template-columns:1fr; gap:12px; }
+    }
+  </style>
+  <div class="ms-wrap">
+    <div class="ms-track" id="msTrack">
+      <!-- Page 1 -->
+      <div class="ms-page">
+        <div class="card ms-card"><div class="display-2 ms-num">380 M+</div><p class="ms-desc">Customer identities unified across Reliance Retail &middot; UCP foundation across 100 % of formats (RR registered customers &middot; 387 M)</p></div>
+        <div class="card ms-card"><div class="display-2 ms-num">100+</div><p class="ms-desc">Brands replatformed to Jio Commerce Platform &middot; 78 channels &middot; 68 live &middot; 700 K+ orders / day</p></div>
+        <div class="card ms-card"><div class="display-2 ms-num">15.08 Cr</div><p class="ms-desc">Pieces delivered FY 26 via Impetus F&amp;L &middot; 11.06 L POs FY 26 &middot; 43 brands live</p></div>
+      </div>
+      <!-- Page 2 -->
+      <div class="ms-page">
+        <div class="card ms-card"><div class="display-2 ms-num">88 %+</div><p class="ms-desc">Positive customer engagement &middot; AJIO ZIP agentic shopping &middot; 86 % chat-driven discovery on 2 M+ products</p></div>
+        <div class="card ms-card"><div class="display-2 ms-num">20 K+</div><p class="ms-desc">Stores connected on JCP across the Reliance Retail estate</p></div>
+        <div class="card ms-card"><div class="display-2 ms-num">22</div><p class="ms-desc">Platforms running today &middot; across Plan &middot; Buy &middot; Make &middot; Move &middot; Sell &middot; Data &middot; Store Health &middot; HR Tech</p></div>
+      </div>
+      <!-- Page 3 -->
+      <div class="ms-page">
+        <div class="card ms-card"><div class="display-2 ms-num">1 K+</div><p class="ms-desc">Vendors transacting on Impetus across the Reliance F&amp;L supply base</p></div>
+        <div class="card ms-card"><div class="display-2 ms-num">2.3 K+</div><p class="ms-desc">Reliance employees trained across platforms</p></div>
+        <div class="card ms-card"><div class="display-2 ms-num">1.2 K+</div><p class="ms-desc">Developer contributors across Jio Commerce Platform + Impetus</p></div>
+      </div>
     </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">100+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Brands replatformed to Jio Commerce Platform &middot; 78 channels &middot; 68 live &middot; 700 K+ orders / day</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">15.08 Cr</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Pieces delivered FY 26 via Impetus F&amp;L &middot; 11.06 L POs FY 26 &middot; 43 brands live</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">88 %+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Positive customer engagement &middot; AJIO ZIP agentic shopping &middot; 86 % chat-driven discovery on 2 M+ products</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">20 K+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Stores connected on JCP across the Reliance Retail estate</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">22</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Platforms running today &middot; across Plan &middot; Buy &middot; Make &middot; Move &middot; Sell &middot; Data &middot; Store Health &middot; HR Tech</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">1 K+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Vendors transacting on Impetus across the Reliance F&amp;L supply base</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">2.3 K+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Reliance employees trained across platforms</p>
-    </div>
-    <div class="card" style="padding:28px 24px;">
-      <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">1.2 K+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Developer contributors across Jio Commerce Platform + Impetus</p>
+    <div class="ms-arrows">
+      <button class="ms-arrow" id="msPrev" aria-label="Previous" disabled>&larr;</button>
+      <div class="ms-dots" id="msDots">
+        <span class="ms-dot active" data-i="0"></span>
+        <span class="ms-dot" data-i="1"></span>
+        <span class="ms-dot" data-i="2"></span>
+      </div>
+      <button class="ms-arrow" id="msNext" aria-label="Next">&rarr;</button>
     </div>
   </div>
+  <script>
+  (function(){
+    var track=document.getElementById('msTrack'),
+        prev=document.getElementById('msPrev'),
+        next=document.getElementById('msNext'),
+        dots=document.querySelectorAll('#msDots .ms-dot'),
+        pages=track.querySelectorAll('.ms-page'),
+        cur=0, total=pages.length;
+    function go(i){
+      if(i<0||i>=total)return;
+      cur=i;
+      track.style.transform='translateX(-'+(cur*100)+'%)';
+      prev.disabled=cur===0;
+      next.disabled=cur===total-1;
+      dots.forEach(function(d,idx){d.classList.toggle('active',idx===cur);});
+    }
+    prev.addEventListener('click',function(){go(cur-1);});
+    next.addEventListener('click',function(){go(cur+1);});
+    dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);});});
+    /* Swipe support for mobile */
+    var sx=0,sy=0;
+    track.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+    track.addEventListener('touchend',function(e){
+      var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+      if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>40){dx<0?go(cur+1):go(cur-1);}
+    },{passive:true});
+  })();
+  </script>
 
 </section>
 
