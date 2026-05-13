@@ -477,28 +477,18 @@
     @keyframes ic-win-c   { 0%,100%{opacity:.22} 50%{opacity:.62} }
     @keyframes ic-dash    { to{stroke-dashoffset:-28} }
     @keyframes ic-plane-flyby {
-      0%   { transform:translate(-580px, 60px) rotate(0deg); opacity:0; }
-      4%   { opacity:1; }
-      15%  { transform:translate(-360px, -20px) rotate(-3deg); opacity:1; }
-      30%  { transform:translate(-160px, -100px) rotate(-6deg); opacity:1; }
-      45%  { transform:translate(20px, -120px) rotate(-3deg); opacity:1; }
-      60%  { transform:translate(180px, -80px) rotate(2deg); opacity:1; }
-      75%  { transform:translate(340px, -10px) rotate(5deg); opacity:1; }
-      90%  { transform:translate(500px, 50px) rotate(3deg); opacity:1; }
-      96%  { opacity:1; }
-      100% { transform:translate(600px, 80px) rotate(2deg); opacity:0; }
+      0%   { transform:translate(-550px, -60px); opacity:0; }
+      5%   { opacity:1; }
+      50%  { transform:translate(0px, -180px); opacity:1; }
+      95%  { opacity:1; }
+      100% { transform:translate(550px, -300px); opacity:0; }
     }
     @keyframes ic-shadow-flyby {
-      0%   { transform:translate(-580px, 60px); opacity:0; }
-      4%   { opacity:.10; }
-      15%  { transform:translate(-360px, -20px); opacity:.10; }
-      30%  { transform:translate(-160px, -100px); opacity:.12; }
-      45%  { transform:translate(20px, -120px); opacity:.12; }
-      60%  { transform:translate(180px, -80px); opacity:.12; }
-      75%  { transform:translate(340px, -10px); opacity:.10; }
-      90%  { transform:translate(500px, 50px); opacity:.10; }
-      96%  { opacity:.10; }
-      100% { transform:translate(600px, 80px); opacity:0; }
+      0%   { transform:translate(-550px, 120px); opacity:0; }
+      5%   { opacity:.10; }
+      50%  { transform:translate(0px, 0px); opacity:.12; }
+      95%  { opacity:.10; }
+      100% { transform:translate(550px, -120px); opacity:0; }
     }
     .ic-beacon { animation:ic-beacon 1.4s ease-in-out infinite; }
     .icw-a { animation:ic-win-a 2.8s ease-in-out infinite; }
