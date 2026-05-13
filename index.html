@@ -468,629 +468,446 @@
     <h2 class="display-2">Fynd is the AI-native operating layer underneath.</h2>
   </div>
 
-  <!-- ── ISOMETRIC AIRFIELD ─────────────────────────────────────────────── -->
+  <!-- ── ISOMETRIC AIRFIELD v3 ──────────────────────────────────────────── -->
   <div style="width:100%;max-width:980px;margin:0 auto 56px;position:relative;">
   <style>
-    @keyframes ic-beacon  { 0%,100%{opacity:1} 50%{opacity:0.1} }
-    @keyframes ic-win-a   { 0%,100%{opacity:.15} 50%{opacity:.70} }
-    @keyframes ic-win-b   { 0%,100%{opacity:.30} 50%{opacity:.90} }
-    @keyframes ic-win-c   { 0%,100%{opacity:.20} 50%{opacity:.60} }
+    @keyframes ic-beacon  { 0%,100%{opacity:1} 50%{opacity:.12} }
+    @keyframes ic-win-a   { 0%,100%{opacity:.18} 50%{opacity:.72} }
+    @keyframes ic-win-b   { 0%,100%{opacity:.30} 50%{opacity:.88} }
+    @keyframes ic-win-c   { 0%,100%{opacity:.22} 50%{opacity:.62} }
     @keyframes ic-dash    { to{stroke-dashoffset:-28} }
-    .ic-beacon { animation: ic-beacon 1.4s ease-in-out infinite; }
-    .icw-a     { animation: ic-win-a  2.8s ease-in-out infinite; }
-    .icw-b     { animation: ic-win-b  3.5s ease-in-out infinite 0.7s; }
-    .icw-c     { animation: ic-win-c  2.3s ease-in-out infinite 1.3s; }
-    .icw-d     { animation: ic-win-a  3.1s ease-in-out infinite 0.4s; }
-    .icw-e     { animation: ic-win-b  2.6s ease-in-out infinite 1.0s; }
-    .ic-conn   { animation: ic-dash   2.2s linear infinite; }
-    @media (prefers-reduced-motion:reduce) {
-      .ic-beacon,.icw-a,.icw-b,.icw-c,.icw-d,.icw-e,.ic-conn {
-        animation:none!important; opacity:1!important;
-      }
+    @keyframes ic-plane-land {
+      0%   { transform:translate(380px,-220px) scale(.55); opacity:0; }
+      6%   { opacity:1; }
+      38%  { transform:translate(130px,-70px) scale(.75); opacity:1; }
+      54%  { transform:translate(25px,-10px) scale(.92); opacity:1; }
+      60%  { transform:translate(0px,4px) scale(1); opacity:1; }
+      64%  { transform:translate(-6px,-2px) scale(1); opacity:1; }
+      68%  { transform:translate(-10px,0px) scale(1); opacity:1; }
+      82%  { transform:translate(-90px,45px) scale(1); opacity:1; }
+      90%  { transform:translate(-115px,58px) scale(1); opacity:1; }
+      95%  { transform:translate(-112px,56px) scale(1); opacity:1; }
+      98%  { transform:translate(-112px,56px) scale(1); opacity:1; }
+      100% { transform:translate(-112px,56px) scale(1); opacity:0; }
+    }
+    @keyframes ic-shadow {
+      0%,52% { opacity:0; }
+      60%    { opacity:.14; }
+      95%    { opacity:.14; }
+      100%   { opacity:0; }
+    }
+    .ic-beacon { animation:ic-beacon 1.4s ease-in-out infinite; }
+    .icw-a { animation:ic-win-a 2.8s ease-in-out infinite; }
+    .icw-b { animation:ic-win-b 3.5s ease-in-out infinite .7s; }
+    .icw-c { animation:ic-win-c 2.3s ease-in-out infinite 1.3s; }
+    .ic-conn { animation:ic-dash 2.2s linear infinite; }
+    #ic-plane { animation:ic-plane-land 10s cubic-bezier(.25,.1,.25,1) infinite; transform-origin:700px 488px; }
+    #ic-shadow { animation:ic-shadow 10s cubic-bezier(.25,.1,.25,1) infinite; }
+    @media(prefers-reduced-motion:reduce){
+      .ic-beacon,.icw-a,.icw-b,.icw-c,.ic-conn,#ic-plane,#ic-shadow{animation:none!important;}
+      #ic-plane,#ic-shadow{opacity:0!important;}
     }
   </style>
 
-  <svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg"
+  <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg"
        style="width:100%;height:auto;display:block;" aria-hidden="true">
     <defs>
-      <radialGradient id="gGlow" cx="50%" cy="60%" r="45%">
-        <stop offset="0%" stop-color="#ed6f5c" stop-opacity="0.10"/>
+      <radialGradient id="gGlow" cx="50%" cy="55%" r="42%">
+        <stop offset="0%" stop-color="#ed6f5c" stop-opacity=".09"/>
         <stop offset="100%" stop-color="#ed6f5c" stop-opacity="0"/>
       </radialGradient>
-      <!-- glass gradient for cab windows -->
       <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="#c8e8f0" stop-opacity="0.55"/>
-        <stop offset="100%" stop-color="#8fc8d8" stop-opacity="0.25"/>
+        <stop offset="0%" stop-color="#b8dce6" stop-opacity=".60"/>
+        <stop offset="100%" stop-color="#7cb8c8" stop-opacity=".30"/>
+      </linearGradient>
+      <linearGradient id="gCyl" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#1a1a17"/>
+        <stop offset="35%" stop-color="#2a2a26"/>
+        <stop offset="70%" stop-color="#3d3d38"/>
+        <stop offset="100%" stop-color="#2a2a26"/>
+      </linearGradient>
+      <linearGradient id="gCylL" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#c0b8a4"/>
+        <stop offset="40%" stop-color="#d8d0bc"/>
+        <stop offset="80%" stop-color="#e8e0cc"/>
+        <stop offset="100%" stop-color="#d0c8b4"/>
+      </linearGradient>
+      <linearGradient id="gCoral" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#c45a49"/>
+        <stop offset="40%" stop-color="#ed6f5c"/>
+        <stop offset="80%" stop-color="#f5a090"/>
+        <stop offset="100%" stop-color="#d96350"/>
+      </linearGradient>
+      <linearGradient id="gBone" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#d8d0bc"/>
+        <stop offset="40%" stop-color="#f0e8d4"/>
+        <stop offset="80%" stop-color="#faf5ea"/>
+        <stop offset="100%" stop-color="#e0d8c4"/>
       </linearGradient>
     </defs>
 
     <!-- Ground glow -->
-    <ellipse cx="600" cy="480" rx="440" ry="110" fill="url(#gGlow)"/>
+    <ellipse cx="600" cy="490" rx="440" ry="120" fill="url(#gGlow)"/>
 
-    <!-- Tarmac / apron ground plane -->
-    <!-- Main apron rhombus -->
-    <polygon points="600,340 900,490 600,640 300,490"
-             fill="#e8e0cc" stroke="#d0c8b4" stroke-width="1" opacity="0.55"/>
-    <!-- Taxiway lines -->
-    <line x1="600" y1="390" x2="600" y2="580"
-          stroke="#c8c0ac" stroke-width="1.5" stroke-dasharray="14 8" opacity="0.45"/>
-    <line x1="480" y1="440" x2="720" y2="440"
-          stroke="#c8c0ac" stroke-width="1" stroke-dasharray="10 6" opacity="0.30"/>
+    <!-- Tarmac apron -->
+    <ellipse cx="600" cy="500" rx="380" ry="100" fill="#e4dcc8" stroke="#d0c8b4" stroke-width="1" opacity=".45"/>
+    <!-- Runway markings -->
+    <line x1="360" y1="490" x2="840" y2="490" stroke="#c8c0ac" stroke-width="2" stroke-dasharray="18 12" opacity=".35"/>
+    <line x1="400" y1="510" x2="800" y2="510" stroke="#c8c0ac" stroke-width="1.2" stroke-dasharray="10 8" opacity=".25"/>
 
-    <!-- ── CONNECTOR LINES (dashed taxiway style) ────────────────────────── -->
-    <g fill="none" stroke="#2a2a26" stroke-width="1.5" stroke-dasharray="7 5"
-       stroke-opacity="0.22" class="ic-conn">
-      <!-- tower → JCP (right) -->
-      <line x1="660" y1="390" x2="820" y2="430"/>
-      <!-- tower → IMPETUS (top-right) -->
-      <line x1="640" y1="310" x2="790" y2="245"/>
-      <!-- tower → UCP (left) -->
-      <line x1="540" y1="390" x2="390" y2="430"/>
-      <!-- tower → GRANARY (top-left) -->
-      <line x1="560" y1="310" x2="415" y2="245"/>
-      <!-- tower → AI-NATIVE (bottom) -->
-      <line x1="600" y1="430" x2="600" y2="520"/>
+    <!-- ── CONNECTORS ────────────────────────────────────────────────────── -->
+    <g fill="none" stroke="#2a2a26" stroke-width="1.4" stroke-dasharray="7 5"
+       stroke-opacity=".20" class="ic-conn">
+      <line x1="650" y1="380" x2="810" y2="430"/>
+      <line x1="640" y1="300" x2="790" y2="240"/>
+      <line x1="550" y1="380" x2="400" y2="430"/>
+      <line x1="560" y1="300" x2="420" y2="240"/>
+      <line x1="600" y1="440" x2="600" y2="530"/>
     </g>
 
     <!-- ════════════════════════════════════════════════════════════════════ -->
-    <!--  FYND — AIRPORT CONTROL TOWER                                       -->
+    <!--  FYND — CYLINDRICAL CONTROL TOWER                                   -->
     <!--  Centre: cx=600                                                     -->
     <!--                                                                     -->
-    <!--  Structure (bottom to top):                                         -->
-    <!--    1. Wide base plinth  (W=110, D=18)  cy=490                       -->
-    <!--    2. Mid plinth step   (W=80,  D=14)  cy=472                       -->
-    <!--    3. Shaft             (W=28,  D=160) cy=458                       -->
-    <!--    4. Cab overhang ring (W=56,  D=10)  cy=298                       -->
-    <!--    5. Cab glass box     (W=50,  D=60)  cy=288                       -->
-    <!--    6. Cab roof slab     (W=54,  D=8)   cy=228                       -->
-    <!--    7. Antenna                                                        -->
+    <!--  Isometric cylinder = rect body + top ellipse + bottom ellipse      -->
+    <!--  The ellipse rx:ry ratio ≈ 2.5:1 for iso projection               -->
     <!-- ════════════════════════════════════════════════════════════════════ -->
 
-    <!-- 1. Wide base plinth top face -->
-    <polygon points="600,472 710,527 600,582 490,527"
-             fill="#d8d0bc" stroke="#b8b0a0" stroke-width="1"/>
-    <!-- left wall -->
-    <polygon points="490,527 600,582 600,600 490,545"
-             fill="#b8b0a0" stroke="#a0988a" stroke-width="1"/>
-    <!-- right wall -->
-    <polygon points="710,527 600,582 600,600 710,545"
-             fill="#c8c0ac" stroke="#a0988a" stroke-width="1"/>
+    <!-- Base platform — wide disc -->
+    <ellipse cx="600" cy="490" rx="90" ry="28" fill="#d0c8b4" stroke="#b8b0a0" stroke-width="1"/>
+    <rect x="510" y="478" width="180" height="12" fill="url(#gCylL)"/>
+    <ellipse cx="600" cy="478" rx="90" ry="28" fill="#e0d8c4" stroke="#b8b0a0" stroke-width="1"/>
 
-    <!-- 2. Mid plinth top face -->
-    <polygon points="600,458 680,499 600,540 520,499"
-             fill="#c8c0ac" stroke="#a0988a" stroke-width="1"/>
-    <!-- left wall -->
-    <polygon points="520,499 600,540 600,554 520,513"
-             fill="#a8a090" stroke="#908880" stroke-width="1"/>
-    <!-- right wall -->
-    <polygon points="680,499 600,540 600,554 680,513"
-             fill="#b8b0a0" stroke="#908880" stroke-width="1"/>
+    <!-- Shaft — narrow cylinder (rx=22) -->
+    <rect x="578" y="300" width="44" height="178" fill="url(#gCyl)"/>
+    <ellipse cx="600" cy="478" rx="22" ry="7" fill="#1a1a17"/>
+    <!-- Shaft highlight stripe -->
+    <rect x="595" y="300" width="3" height="178" fill="#4a4a44" opacity=".40"/>
+    <!-- Floor band lines on shaft -->
+    <ellipse cx="600" cy="360" rx="22" ry="7" fill="none" stroke="#4a4a44" stroke-width=".8" opacity=".50"/>
+    <ellipse cx="600" cy="400" rx="22" ry="7" fill="none" stroke="#4a4a44" stroke-width=".8" opacity=".50"/>
+    <ellipse cx="600" cy="440" rx="22" ry="7" fill="none" stroke="#4a4a44" stroke-width=".8" opacity=".50"/>
 
-    <!-- 3. Shaft — narrow tall column -->
-    <!-- top face of shaft -->
-    <polygon points="600,298 628,312 600,326 572,312"
-             fill="#3d3d38" stroke="#1a1a17" stroke-width="1"/>
-    <!-- left wall of shaft -->
-    <polygon points="572,312 600,326 600,472 572,458"
-             fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.8"/>
-    <!-- right wall of shaft -->
-    <polygon points="628,312 600,326 600,472 628,458"
-             fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- Coral accent ring -->
+    <rect x="558" y="290" width="84" height="14" rx="2" fill="url(#gCoral)"/>
+    <ellipse cx="600" cy="290" rx="42" ry="13" fill="#f5a090" stroke="#c45a49" stroke-width=".8"/>
+    <ellipse cx="600" cy="304" rx="42" ry="13" fill="#c45a49" stroke="#c45a49" stroke-width=".8"/>
 
-    <!-- Shaft detail: horizontal band lines (floor markers) -->
-    <line x1="572" y1="370" x2="600" y2="384" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
-    <line x1="600" y1="384" x2="628" y2="370" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
-    <line x1="572" y1="410" x2="600" y2="424" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
-    <line x1="600" y1="424" x2="628" y2="410" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
-    <line x1="572" y1="450" x2="600" y2="464" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
-    <line x1="600" y1="464" x2="628" y2="450" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
+    <!-- Observation cab — wider cylinder with glass -->
+    <!-- Cab body -->
+    <rect x="548" y="230" width="104" height="60" fill="url(#gGlass)" stroke="#5a8898" stroke-width=".8"/>
+    <!-- Cab bottom ellipse -->
+    <ellipse cx="600" cy="290" rx="52" ry="16" fill="#5a8898" opacity=".30"/>
+    <!-- Glass band horizontal dividers -->
+    <line x1="548" y1="250" x2="652" y2="250" stroke="#5a8898" stroke-width=".7" opacity=".45"/>
+    <line x1="548" y1="270" x2="652" y2="270" stroke="#5a8898" stroke-width=".7" opacity=".45"/>
+    <!-- Glass vertical mullions -->
+    <line x1="570" y1="230" x2="570" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
+    <line x1="590" y1="230" x2="590" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
+    <line x1="610" y1="230" x2="610" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
+    <line x1="630" y1="230" x2="630" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
+    <!-- Interior warm glow -->
+    <rect x="550" y="232" width="100" height="56" rx="2" fill="#ffe8b0" opacity=".06"/>
+    <!-- Window light panels -->
+    <rect x="552" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-a" opacity=".25"/>
+    <rect x="574" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-b" opacity=".20"/>
+    <rect x="610" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-c" opacity=".22"/>
+    <rect x="632" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-a" opacity=".18"/>
 
-    <!-- External ladder suggestion on left face of shaft -->
-    <line x1="580" y1="330" x2="580" y2="460" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="345" x2="583" y2="348" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="360" x2="583" y2="363" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="375" x2="583" y2="378" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="390" x2="583" y2="393" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="405" x2="583" y2="408" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="420" x2="583" y2="423" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
-    <line x1="578" y1="435" x2="583" y2="438" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <!-- Roof disc -->
+    <ellipse cx="600" cy="230" rx="56" ry="17" fill="#2a2a26" stroke="#1a1a17" stroke-width="1"/>
+    <!-- Roof top surface -->
+    <ellipse cx="600" cy="228" rx="54" ry="16" fill="#3d3d38"/>
 
-    <!-- 4. Cab overhang ring (wider than shaft, coral) -->
-    <polygon points="600,288 656,317 600,346 544,317"
-             fill="#ed6f5c" stroke="#c45a49" stroke-width="1"/>
-    <!-- left ring wall -->
-    <polygon points="544,317 600,346 600,356 544,327"
-             fill="#c45a49" stroke="#c45a49" stroke-width="0.8"/>
-    <!-- right ring wall -->
-    <polygon points="656,317 600,346 600,356 656,327"
-             fill="#d96350" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- FYND label on roof -->
+    <text x="600" y="234" text-anchor="middle"
+          font-family="'Inter Tight',sans-serif" font-size="11" font-weight="800"
+          fill="#efe7d2" letter-spacing="3">FYND</text>
 
-    <!-- 5. Cab glass box (observation deck) -->
-    <!-- top face -->
-    <polygon points="600,228 650,254 600,280 550,254"
-             fill="#3d3d38" stroke="#1a1a17" stroke-width="1"/>
-    <!-- left glass wall -->
-    <polygon points="550,254 600,280 600,346 550,320"
-             fill="url(#gGlass)" stroke="#5a8898" stroke-width="0.8" opacity="0.85"/>
-    <!-- right glass wall -->
-    <polygon points="650,254 600,280 600,346 650,320"
-             fill="url(#gGlass)" stroke="#5a8898" stroke-width="0.8" opacity="0.70"/>
-
-    <!-- Glass window panes — left face -->
-    <line x1="566" y1="266" x2="566" y2="338" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
-    <line x1="582" y1="273" x2="582" y2="342" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
-    <line x1="550" y1="290" x2="600" y2="315" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
-    <line x1="550" y1="310" x2="600" y2="335" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
-    <!-- Glass window panes — right face -->
-    <line x1="618" y1="266" x2="618" y2="338" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
-    <line x1="634" y1="260" x2="634" y2="332" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
-    <line x1="600" y1="290" x2="650" y2="315" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
-    <line x1="600" y1="310" x2="650" y2="335" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
-
-    <!-- Interior light glow in cab -->
-    <polygon points="550,254 600,280 600,346 550,320"
-             fill="#ffe8b0" opacity="0.08"/>
-    <polygon points="650,254 600,280 600,346 650,320"
-             fill="#ffe8b0" opacity="0.06"/>
-
-    <!-- 6. Cab roof slab -->
-    <polygon points="600,220 654,247 600,274 546,247"
-             fill="#2a2a26" stroke="#1a1a17" stroke-width="1"/>
-    <!-- roof left -->
-    <polygon points="546,247 600,274 600,282 546,255"
-             fill="#1a1a17" stroke="#1a1a17" stroke-width="0.8"/>
-    <!-- roof right -->
-    <polygon points="654,247 600,274 600,282 654,255"
-             fill="#222220" stroke="#1a1a17" stroke-width="0.8"/>
-
-    <!-- FYND label on cab roof -->
-    <text x="600" y="255" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="10" font-weight="800"
-          fill="#efe7d2" letter-spacing="3" opacity="0.90">FYND</text>
-
-    <!-- 7. Antenna -->
-    <line x1="600" y1="100" x2="600" y2="220"
-          stroke="#2a2a26" stroke-width="2.2"/>
-    <!-- antenna cross-bar -->
-    <line x1="590" y1="140" x2="610" y2="140"
-          stroke="#2a2a26" stroke-width="1.4"/>
-    <line x1="594" y1="160" x2="606" y2="160"
-          stroke="#2a2a26" stroke-width="1.2"/>
-    <!-- beacon -->
-    <circle cx="600" cy="96" r="5.5" fill="#ed6f5c" class="ic-beacon"/>
-    <circle cx="600" cy="96" r="9" fill="none" stroke="#ed6f5c" stroke-width="1"
-            opacity="0.35" class="ic-beacon"/>
+    <!-- Antenna mast -->
+    <line x1="600" y1="120" x2="600" y2="228" stroke="#2a2a26" stroke-width="2.2"/>
+    <!-- Cross-arms -->
+    <line x1="590" y1="155" x2="610" y2="155" stroke="#2a2a26" stroke-width="1.3"/>
+    <line x1="593" y1="175" x2="607" y2="175" stroke="#2a2a26" stroke-width="1.1"/>
+    <!-- Beacon -->
+    <circle cx="600" cy="116" r="6" fill="#ed6f5c" class="ic-beacon"/>
+    <circle cx="600" cy="116" r="10" fill="none" stroke="#ed6f5c" stroke-width="1" opacity=".30" class="ic-beacon"/>
 
     <!-- ════════════════════════════════════════════════════════════════════ -->
-    <!--  SATELLITE CABINS                                                   -->
-    <!--  Each is a low single-storey pitched-roof cabin in isometric view   -->
-    <!--  Pitched roof = triangle on left/right end + sloped top planes      -->
-    <!--                                                                     -->
-    <!--  Cabin anatomy (isometric, looking from front-right):               -->
-    <!--    - Front wall (right face in iso)                                 -->
-    <!--    - Side wall  (left face in iso)                                  -->
-    <!--    - Roof: two sloped planes meeting at a ridge                     -->
-    <!--    - Door + small windows                                           -->
-    <!--    - Optional: small chimney / vent pipe                            -->
+    <!--  SATELLITE CABINS — Quonset/Nissen hut style (semicircular roof)   -->
+    <!--  Each cabin: elliptical front face + curved roof body               -->
+    <!--  Drawn with <path> arcs for the rounded roof                       -->
     <!-- ════════════════════════════════════════════════════════════════════ -->
 
-    <!-- ── JCP CABIN — right (cx≈840, ground-y≈480) ─────────────────────── -->
-    <!-- Cabin base/floor -->
-    <polygon points="840,430 900,460 840,490 780,460"
-             fill="#f08070" stroke="#c45a49" stroke-width="0.9"/>
-    <!-- front wall (right iso face) -->
-    <polygon points="900,460 840,490 840,530 900,500"
-             fill="#d96350" stroke="#c45a49" stroke-width="0.9"/>
-    <!-- side wall (left iso face) -->
-    <polygon points="780,460 840,490 840,530 780,500"
-             fill="#c45a49" stroke="#c45a49" stroke-width="0.9"/>
-    <!-- Roof: ridge runs left-right at top -->
-    <!-- Ridge line at y=410 (30px above base top) -->
-    <!-- Left roof slope: left-wall top edge → ridge -->
-    <polygon points="780,460 840,430 840,410 780,440"
-             fill="#f5a090" stroke="#c45a49" stroke-width="0.9"/>
-    <!-- Right roof slope: right-wall top edge → ridge -->
-    <polygon points="900,460 840,430 840,410 900,440"
-             fill="#e87060" stroke="#c45a49" stroke-width="0.9"/>
-    <!-- Roof ridge cap -->
-    <line x1="840" y1="410" x2="840" y2="430"
-          stroke="#c45a49" stroke-width="1.2"/>
-    <!-- Front gable triangle -->
-    <polygon points="900,460 900,440 840,410 840,430"
-             fill="#e07060" stroke="#c45a49" stroke-width="0.8"/>
-    <!-- Door on front face -->
-    <polygon points="876,490 888,484 888,500 876,506"
-             fill="#2a2a26" opacity="0.55"/>
-    <!-- Window on front face -->
-    <rect x="856" y="468" width="10" height="8" rx="1"
-          fill="#ffe8b0" class="icw-a" opacity="0.55"/>
-    <!-- Small vent on roof -->
-    <polygon points="858,438 864,435 864,428 858,431"
-             fill="#b84040" stroke="#c45a49" stroke-width="0.7"/>
-    <!-- Label -->
-    <text x="840" y="458" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="8.5" font-weight="700"
-          fill="#fff" letter-spacing="1.5" opacity="0.90">JCP</text>
+    <!-- ── JCP — right (cx=850, cy=450) — coral ─────────────────────────── -->
+    <g>
+      <!-- Floor shadow -->
+      <ellipse cx="850" cy="480" rx="52" ry="14" fill="#2a2a26" opacity=".06"/>
+      <!-- Curved roof body — side view (rect with rounded top) -->
+      <path d="M808,480 L808,455 A42,30 0 0,1 892,455 L892,480 Z"
+            fill="url(#gCoral)" stroke="#c45a49" stroke-width=".9"/>
+      <!-- Front face — half ellipse -->
+      <ellipse cx="850" cy="455" rx="42" ry="30" fill="#f08070" stroke="#c45a49" stroke-width=".9"/>
+      <!-- Cut bottom half of front ellipse (floor line) -->
+      <rect x="808" y="455" width="84" height="30" fill="url(#gCoral)" stroke="#c45a49" stroke-width=".9"/>
+      <!-- Re-draw top arc of front face -->
+      <path d="M808,455 A42,30 0 0,1 892,455" fill="#f5a090" stroke="#c45a49" stroke-width=".9"/>
+      <!-- Arched door -->
+      <path d="M842,480 L842,462 A8,10 0 0,1 858,462 L858,480 Z"
+            fill="#2a2a26" opacity=".55"/>
+      <!-- Round windows (portholes) -->
+      <circle cx="825" cy="462" r="6" fill="#ffe8b0" class="icw-a" opacity=".55" stroke="#c45a49" stroke-width=".7"/>
+      <circle cx="875" cy="462" r="6" fill="#ffe8b0" class="icw-b" opacity=".50" stroke="#c45a49" stroke-width=".7"/>
+      <!-- Roof ridge line -->
+      <line x1="808" y1="425" x2="892" y2="425" stroke="#c45a49" stroke-width=".5" opacity=".0"/>
+      <!-- Vent pipe -->
+      <rect x="870" y="428" width="5" height="16" rx="2" fill="#b84040" stroke="#c45a49" stroke-width=".6"/>
+      <ellipse cx="872" cy="428" rx="4" ry="2" fill="#d96350"/>
+      <!-- Label -->
+      <text x="850" y="450" text-anchor="middle"
+            font-family="'Inter Tight',sans-serif" font-size="9" font-weight="800"
+            fill="#fff" letter-spacing="2">JCP</text>
+    </g>
 
-    <!-- ── IMPETUS CABIN — top-right (cx≈810, ground-y≈270) ─────────────── -->
-    <!-- Cabin base/floor -->
-    <polygon points="810,220 870,250 810,280 750,250"
-             fill="#faf5ea" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- front wall -->
-    <polygon points="870,250 810,280 810,320 870,290"
-             fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- side wall -->
-    <polygon points="750,250 810,280 810,320 750,290"
-             fill="#d0c8b4" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- Left roof slope -->
-    <polygon points="750,250 810,220 810,200 750,230"
-             fill="#fff8ee" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- Right roof slope -->
-    <polygon points="870,250 810,220 810,200 870,230"
-             fill="#f0e8d4" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- Front gable -->
-    <polygon points="870,250 870,230 810,200 810,220"
-             fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.8"/>
-    <!-- Ridge -->
-    <line x1="810" y1="200" x2="810" y2="220"
-          stroke="#c8c0ac" stroke-width="1.2"/>
-    <!-- Door -->
-    <polygon points="846,310 858,304 858,320 846,326"
-             fill="#2a2a26" opacity="0.40"/>
-    <!-- Windows -->
-    <rect x="826" y="258" width="9" height="7" rx="1"
-          fill="#ffe8b0" class="icw-b" opacity="0.50"/>
-    <rect x="838" y="254" width="9" height="7" rx="1"
-          fill="#ffe8b0" class="icw-c" opacity="0.45"/>
-    <!-- Chimney -->
-    <polygon points="826,222 832,219 832,210 826,213"
-             fill="#c8c0ac" stroke="#b0a898" stroke-width="0.7"/>
-    <!-- Label -->
-    <text x="810" y="258" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="700"
-          fill="#2a2a26" letter-spacing="1" opacity="0.65">IMPETUS</text>
+    <!-- ── IMPETUS — top-right (cx=820, cy=250) — bone ──────────────────── -->
+    <g>
+      <ellipse cx="820" cy="280" rx="48" ry="13" fill="#2a2a26" opacity=".05"/>
+      <path d="M772,280 L772,258 A48,28 0 0,1 868,258 L868,280 Z"
+            fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
+      <ellipse cx="820" cy="258" rx="48" ry="28" fill="#f0e8d4" stroke="#c8c0ac" stroke-width=".9"/>
+      <rect x="772" y="258" width="96" height="22" fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
+      <path d="M772,258 A48,28 0 0,1 868,258" fill="#faf5ea" stroke="#c8c0ac" stroke-width=".9"/>
+      <!-- Arched door -->
+      <path d="M812,280 L812,265 A8,9 0 0,1 828,265 L828,280 Z"
+            fill="#2a2a26" opacity=".38"/>
+      <!-- Portholes -->
+      <circle cx="795" cy="264" r="5.5" fill="#ffe8b0" class="icw-c" opacity=".48" stroke="#c8c0ac" stroke-width=".7"/>
+      <circle cx="845" cy="264" r="5.5" fill="#ffe8b0" class="icw-a" opacity=".45" stroke="#c8c0ac" stroke-width=".7"/>
+      <!-- Chimney -->
+      <rect x="840" y="234" width="5" height="14" rx="2" fill="#c8c0ac" stroke="#b0a898" stroke-width=".6"/>
+      <ellipse cx="842" cy="234" rx="4" ry="2" fill="#d8d0bc"/>
+      <!-- Label -->
+      <text x="820" y="253" text-anchor="middle"
+            font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700"
+            fill="#2a2a26" letter-spacing="1.5" opacity=".65">IMPETUS</text>
+    </g>
 
-    <!-- ── UCP CABIN — left (cx≈365, ground-y≈480) ───────────────────────── -->
-    <!-- Cabin base/floor -->
-    <polygon points="365,430 425,460 365,490 305,460"
-             fill="#ede5d2" stroke="#c0b8a4" stroke-width="0.9"/>
-    <!-- front wall -->
-    <polygon points="425,460 365,490 365,530 425,500"
-             fill="#dcd4c0" stroke="#c0b8a4" stroke-width="0.9"/>
-    <!-- side wall -->
-    <polygon points="305,460 365,490 365,530 305,500"
-             fill="#ccc4b0" stroke="#c0b8a4" stroke-width="0.9"/>
-    <!-- Left roof slope -->
-    <polygon points="305,460 365,430 365,410 305,440"
-             fill="#f5f0e4" stroke="#c0b8a4" stroke-width="0.9"/>
-    <!-- Right roof slope -->
-    <polygon points="425,460 365,430 365,410 425,440"
-             fill="#e8e0cc" stroke="#c0b8a4" stroke-width="0.9"/>
-    <!-- Front gable -->
-    <polygon points="425,460 425,440 365,410 365,430"
-             fill="#e0d8c4" stroke="#c0b8a4" stroke-width="0.8"/>
-    <!-- Ridge -->
-    <line x1="365" y1="410" x2="365" y2="430"
-          stroke="#c0b8a4" stroke-width="1.2"/>
-    <!-- Door -->
-    <polygon points="401,520 413,514 413,530 401,536"
-             fill="#2a2a26" opacity="0.38"/>
-    <!-- Windows -->
-    <rect x="380" y="468" width="9" height="7" rx="1"
-          fill="#ffe8b0" class="icw-d" opacity="0.48"/>
-    <!-- Vent pipe -->
-    <polygon points="352,428 356,426 356,416 352,418"
-             fill="#c0b8a4" stroke="#a8a090" stroke-width="0.7"/>
-    <!-- Label -->
-    <text x="365" y="458" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="8.5" font-weight="700"
-          fill="#2a2a26" letter-spacing="1.5" opacity="0.65">UCP</text>
+    <!-- ── UCP — left (cx=360, cy=450) — warm grey ──────────────────────── -->
+    <g>
+      <ellipse cx="360" cy="480" rx="48" ry="13" fill="#2a2a26" opacity=".05"/>
+      <path d="M312,480 L312,458 A48,28 0 0,1 408,458 L408,480 Z"
+            fill="url(#gCylL)" stroke="#c0b8a4" stroke-width=".9"/>
+      <ellipse cx="360" cy="458" rx="48" ry="28" fill="#e0d8c4" stroke="#c0b8a4" stroke-width=".9"/>
+      <rect x="312" y="458" width="96" height="22" fill="url(#gCylL)" stroke="#c0b8a4" stroke-width=".9"/>
+      <path d="M312,458 A48,28 0 0,1 408,458" fill="#ede5d2" stroke="#c0b8a4" stroke-width=".9"/>
+      <!-- Door -->
+      <path d="M352,480 L352,465 A8,9 0 0,1 368,465 L368,480 Z"
+            fill="#2a2a26" opacity=".38"/>
+      <!-- Portholes -->
+      <circle cx="335" cy="464" r="5.5" fill="#ffe8b0" class="icw-b" opacity=".48" stroke="#c0b8a4" stroke-width=".7"/>
+      <circle cx="385" cy="464" r="5.5" fill="#ffe8b0" class="icw-c" opacity=".45" stroke="#c0b8a4" stroke-width=".7"/>
+      <!-- Vent -->
+      <rect x="390" y="436" width="5" height="12" rx="2" fill="#c0b8a4" stroke="#a8a090" stroke-width=".6"/>
+      <ellipse cx="392" cy="436" rx="4" ry="2" fill="#d0c8b4"/>
+      <!-- Label -->
+      <text x="360" y="453" text-anchor="middle"
+            font-family="'Inter Tight',sans-serif" font-size="9" font-weight="700"
+            fill="#2a2a26" letter-spacing="1.5" opacity=".65">UCP</text>
+    </g>
 
-    <!-- ── GRANARY CABIN — top-left (cx≈390, ground-y≈270) ──────────────── -->
-    <!-- Cabin base/floor -->
-    <polygon points="390,220 450,250 390,280 330,250"
-             fill="#faf5ea" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- front wall -->
-    <polygon points="450,250 390,280 390,320 450,290"
-             fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- side wall -->
-    <polygon points="330,250 390,280 390,320 330,290"
-             fill="#d8d0bc" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- Left roof slope (slightly steeper for granary feel) -->
-    <polygon points="330,250 390,220 390,196 330,226"
-             fill="#fff8ee" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- Right roof slope -->
-    <polygon points="450,250 390,220 390,196 450,226"
-             fill="#ede5d2" stroke="#c8c0ac" stroke-width="0.9"/>
-    <!-- Front gable -->
-    <polygon points="450,250 450,226 390,196 390,220"
-             fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
-    <!-- Ridge -->
-    <line x1="390" y1="196" x2="390" y2="220"
-          stroke="#c8c0ac" stroke-width="1.2"/>
-    <!-- Door -->
-    <polygon points="426,310 438,304 438,320 426,326"
-             fill="#2a2a26" opacity="0.38"/>
-    <!-- Windows -->
-    <rect x="406" y="258" width="9" height="7" rx="1"
-          fill="#ffe8b0" class="icw-e" opacity="0.48"/>
-    <rect x="418" y="254" width="9" height="7" rx="1"
-          fill="#ffe8b0" class="icw-a" opacity="0.42"/>
-    <!-- Chimney (double — granary has two) -->
-    <polygon points="406,218 410,216 410,206 406,208"
-             fill="#c8c0ac" stroke="#b0a898" stroke-width="0.7"/>
-    <polygon points="414,214 418,212 418,202 414,204"
-             fill="#c8c0ac" stroke="#b0a898" stroke-width="0.7"/>
-    <!-- Label -->
-    <text x="390" y="258" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="700"
-          fill="#2a2a26" letter-spacing="1" opacity="0.65">GRANARY</text>
+    <!-- ── GRANARY — top-left (cx=390, cy=250) — bone ───────────────────── -->
+    <g>
+      <ellipse cx="390" cy="280" rx="46" ry="12" fill="#2a2a26" opacity=".05"/>
+      <path d="M344,280 L344,258 A46,28 0 0,1 436,258 L436,280 Z"
+            fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
+      <ellipse cx="390" cy="258" rx="46" ry="28" fill="#f0e8d4" stroke="#c8c0ac" stroke-width=".9"/>
+      <rect x="344" y="258" width="92" height="22" fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
+      <path d="M344,258 A46,28 0 0,1 436,258" fill="#faf5ea" stroke="#c8c0ac" stroke-width=".9"/>
+      <!-- Door -->
+      <path d="M382,280 L382,265 A8,9 0 0,1 398,265 L398,280 Z"
+            fill="#2a2a26" opacity=".38"/>
+      <!-- Portholes -->
+      <circle cx="365" cy="264" r="5.5" fill="#ffe8b0" class="icw-a" opacity=".48" stroke="#c8c0ac" stroke-width=".7"/>
+      <circle cx="415" cy="264" r="5.5" fill="#ffe8b0" class="icw-b" opacity=".42" stroke="#c8c0ac" stroke-width=".7"/>
+      <!-- Double chimney (granary) -->
+      <rect x="410" y="234" width="5" height="14" rx="2" fill="#c8c0ac" stroke="#b0a898" stroke-width=".6"/>
+      <ellipse cx="412" cy="234" rx="4" ry="2" fill="#d8d0bc"/>
+      <rect x="420" y="237" width="5" height="11" rx="2" fill="#c8c0ac" stroke="#b0a898" stroke-width=".6"/>
+      <ellipse cx="422" cy="237" rx="4" ry="2" fill="#d8d0bc"/>
+      <!-- Label -->
+      <text x="390" y="253" text-anchor="middle"
+            font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700"
+            fill="#2a2a26" letter-spacing="1" opacity=".65">GRANARY</text>
+    </g>
 
-    <!-- ── AI-NATIVE CABIN — bottom (cx≈600, ground-y≈570) ──────────────── -->
-    <!-- Cabin base/floor -->
-    <polygon points="600,520 660,550 600,580 540,550"
-             fill="#3d3d38" stroke="#1a1a17" stroke-width="0.9"/>
-    <!-- front wall -->
-    <polygon points="660,550 600,580 600,620 660,590"
-             fill="#2a2a26" stroke="#1a1a17" stroke-width="0.9"/>
-    <!-- side wall -->
-    <polygon points="540,550 600,580 600,620 540,590"
-             fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.9"/>
-    <!-- Left roof slope (flat-ish, modern) -->
-    <polygon points="540,550 600,520 600,504 540,534"
-             fill="#4a4a44" stroke="#1a1a17" stroke-width="0.9"/>
-    <!-- Right roof slope -->
-    <polygon points="660,550 600,520 600,504 660,534"
-             fill="#3d3d38" stroke="#1a1a17" stroke-width="0.9"/>
-    <!-- Front gable -->
-    <polygon points="660,550 660,534 600,504 600,520"
-             fill="#333330" stroke="#1a1a17" stroke-width="0.8"/>
-    <!-- Ridge -->
-    <line x1="600" y1="504" x2="600" y2="520"
-          stroke="#1a1a17" stroke-width="1.2"/>
-    <!-- Door (coral accent) -->
-    <polygon points="636,608 648,602 648,618 636,624"
-             fill="#ed6f5c" opacity="0.80"/>
-    <!-- Windows with coral glow -->
-    <rect x="614" y="558" width="10" height="8" rx="1"
-          fill="#ed6f5c" class="icw-b" opacity="0.65"/>
-    <rect x="628" y="554" width="10" height="8" rx="1"
-          fill="#ed6f5c" class="icw-d" opacity="0.55"/>
-    <!-- Antenna on roof -->
-    <line x1="600" y1="490" x2="600" y2="504"
-          stroke="#ed6f5c" stroke-width="1.5"/>
-    <circle cx="600" cy="488" r="3.5" fill="#ed6f5c" opacity="0.80"/>
-    <!-- Label -->
-    <text x="600" y="538" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="800"
-          fill="#efe7d2" letter-spacing="1.5">AI-NATIVE</text>
+    <!-- ── AI-NATIVE — bottom (cx=600, cy=560) — ink ────────────────────── -->
+    <g>
+      <ellipse cx="600" cy="590" rx="48" ry="13" fill="#2a2a26" opacity=".08"/>
+      <path d="M552,590 L552,568 A48,28 0 0,1 648,568 L648,590 Z"
+            fill="url(#gCyl)" stroke="#1a1a17" stroke-width=".9"/>
+      <ellipse cx="600" cy="568" rx="48" ry="28" fill="#3d3d38" stroke="#1a1a17" stroke-width=".9"/>
+      <rect x="552" y="568" width="96" height="22" fill="url(#gCyl)" stroke="#1a1a17" stroke-width=".9"/>
+      <path d="M552,568 A48,28 0 0,1 648,568" fill="#4a4a44" stroke="#1a1a17" stroke-width=".9"/>
+      <!-- Coral door -->
+      <path d="M592,590 L592,575 A8,9 0 0,1 608,575 L608,590 Z"
+            fill="#ed6f5c" opacity=".80"/>
+      <!-- Coral-lit portholes -->
+      <circle cx="575" cy="574" r="5.5" fill="#ed6f5c" class="icw-b" opacity=".60" stroke="#1a1a17" stroke-width=".7"/>
+      <circle cx="625" cy="574" r="5.5" fill="#ed6f5c" class="icw-c" opacity=".55" stroke="#1a1a17" stroke-width=".7"/>
+      <!-- Antenna on roof -->
+      <line x1="600" y1="530" x2="600" y2="540" stroke="#ed6f5c" stroke-width="1.8"/>
+      <circle cx="600" cy="528" r="4" fill="#ed6f5c" opacity=".80"/>
+      <!-- Label -->
+      <text x="600" y="563" text-anchor="middle"
+            font-family="'Inter Tight',sans-serif" font-size="8" font-weight="800"
+            fill="#efe7d2" letter-spacing="1.5">AI-NATIVE</text>
+    </g>
 
-    <!-- ── SMALL GROUND DETAILS ──────────────────────────────────────────── -->
-    <!-- Fuel/data drums near JCP -->
-    <ellipse cx="920" cy="472" rx="9" ry="5" fill="#c45a49" opacity="0.55"/>
-    <rect x="911" y="462" width="18" height="10" rx="2"
-          fill="#d96350" stroke="#c45a49" stroke-width="0.8" opacity="0.70"/>
-    <ellipse cx="920" cy="462" rx="9" ry="5" fill="#f08070" opacity="0.70"/>
+    <!-- ── GROUND DETAILS ────────────────────────────────────────────────── -->
+    <!-- Wind sock -->
+    <line x1="680" y1="490" x2="680" y2="462" stroke="#2a2a26" stroke-width="1.2" opacity=".35"/>
+    <path d="M680,462 Q690,458 695,464 Q690,470 680,468 Z" fill="#ed6f5c" opacity=".50"/>
 
-    <!-- Small vehicle / cart near UCP -->
-    <polygon points="305,510 325,520 325,528 305,518"
-             fill="#c8c0ac" stroke="#a8a090" stroke-width="0.8" opacity="0.65"/>
-    <circle cx="312" cy="528" r="4" fill="#a8a090" opacity="0.65"/>
-    <circle cx="320" cy="524" r="4" fill="#a8a090" opacity="0.65"/>
+    <!-- Fuel drum near JCP -->
+    <ellipse cx="910" cy="470" rx="8" ry="4" fill="#d96350" opacity=".55"/>
+    <rect x="902" y="462" width="16" height="8" rx="3" fill="#c45a49" opacity=".60"/>
+    <ellipse cx="910" cy="462" rx="8" ry="4" fill="#f08070" opacity=".65"/>
 
-    <!-- Wind sock near tower base (right side) -->
-    <line x1="660" y1="490" x2="660" y2="460" stroke="#2a2a26" stroke-width="1.2" opacity="0.40"/>
-    <polygon points="660,460 680,454 678,462 660,468"
-              fill="#ed6f5c" opacity="0.55"/>
+    <!-- Small vehicle near UCP -->
+    <rect x="290" y="490" width="22" height="10" rx="4" fill="#c8c0ac" stroke="#a8a090" stroke-width=".7" opacity=".55"/>
+    <circle cx="296" cy="502" r="4" fill="#a8a090" opacity=".55"/>
+    <circle cx="308" cy="502" r="4" fill="#a8a090" opacity=".55"/>
+
+    <!-- ── PLANE ─────────────────────────────────────────────────────────── -->
+    <!-- Tarmac shadow -->
+    <ellipse id="ic-shadow" cx="700" cy="500" rx="48" ry="10" fill="#2a2a26" opacity="0"/>
+
+    <g id="ic-plane">
+      <!-- Fuselage — cigar shape using path with arcs -->
+      <!-- Main body: elongated oval, nose at right -->
+      <path d="M740,486 Q750,480 748,474 Q746,468 730,466
+              L670,462 Q654,460 650,466 Q646,472 654,478 L670,480 Z"
+            fill="#f0e8d4" stroke="#c8c0ac" stroke-width=".9"/>
+      <!-- Fuselage underside (darker belly) -->
+      <path d="M740,486 L670,480 Q654,478 650,472 Q648,476 654,482 L670,484 Z"
+            fill="#d8d0bc" stroke="#c8c0ac" stroke-width=".7"/>
+
+      <!-- Nose cone -->
+      <path d="M740,486 Q750,480 748,474 Q746,470 740,468 Q744,476 740,486 Z"
+            fill="#c8c0ac" stroke="#b8b0a0" stroke-width=".7"/>
+
+      <!-- Cockpit windows -->
+      <ellipse cx="738" cy="472" rx="3" ry="2" fill="#2a2a26" opacity=".60"
+               transform="rotate(-15,738,472)"/>
+      <ellipse cx="734" cy="470" rx="2.5" ry="1.8" fill="#2a2a26" opacity=".50"
+               transform="rotate(-15,734,470)"/>
+
+      <!-- Cabin windows — row of circles -->
+      <circle cx="726" cy="468" r="2" fill="#ffe8b0" opacity=".65"/>
+      <circle cx="720" cy="467" r="2" fill="#ffe8b0" opacity=".62"/>
+      <circle cx="714" cy="466" r="2" fill="#ffe8b0" opacity=".60"/>
+      <circle cx="708" cy="465" r="2" fill="#ffe8b0" opacity=".58"/>
+      <circle cx="702" cy="464" r="2" fill="#ffe8b0" opacity=".55"/>
+      <circle cx="696" cy="463" r="2" fill="#ffe8b0" opacity=".52"/>
+      <circle cx="690" cy="463" r="2" fill="#ffe8b0" opacity=".50"/>
+      <circle cx="684" cy="462" r="2" fill="#ffe8b0" opacity=".48"/>
+
+      <!-- LEFT WING (toward viewer — goes down-left in iso) -->
+      <path d="M710,478 L700,480 L658,510 L664,506 L690,490 Z"
+            fill="#e8e0cc" stroke="#c8c0ac" stroke-width=".8"/>
+      <!-- Wing leading edge highlight -->
+      <line x1="710" y1="478" x2="658" y2="510" stroke="#fff" stroke-width=".7" opacity=".40"/>
+      <!-- Left engine nacelle -->
+      <ellipse cx="682" cy="496" rx="9" ry="4" fill="#3d3d38" stroke="#1a1a17" stroke-width=".7"
+               transform="rotate(-28,682,496)"/>
+      <ellipse cx="681" cy="494" rx="7" ry="3" fill="#4a4a44"
+               transform="rotate(-28,681,494)"/>
+      <!-- Engine intake ring -->
+      <ellipse cx="686" cy="494" rx="3.5" ry="2.5" fill="none" stroke="#2a2a26" stroke-width=".8"
+               transform="rotate(-28,686,494)"/>
+
+      <!-- RIGHT WING (away from viewer — goes up-right in iso) -->
+      <path d="M710,466 L700,464 L726,444 L730,448 L716,460 Z"
+            fill="#dcd4c0" stroke="#c8c0ac" stroke-width=".8"/>
+      <line x1="710" y1="466" x2="726" y2="444" stroke="#fff" stroke-width=".6" opacity=".30"/>
+      <!-- Right engine nacelle -->
+      <ellipse cx="716" cy="454" rx="8" ry="3.5" fill="#3d3d38" stroke="#1a1a17" stroke-width=".7"
+               transform="rotate(-28,716,454)"/>
+      <ellipse cx="715" cy="452" rx="6" ry="2.5" fill="#4a4a44"
+               transform="rotate(-28,715,452)"/>
+
+      <!-- TAIL SECTION -->
+      <!-- Coral tail stripe -->
+      <path d="M670,480 L660,476 L654,478 L664,482 Z"
+            fill="#ed6f5c" stroke="#c45a49" stroke-width=".7"/>
+      <!-- Vertical stabiliser (fin) -->
+      <path d="M662,474 L658,454 L654,452 L656,470 Z"
+            fill="#2a2a26" stroke="#1a1a17" stroke-width=".7"/>
+      <!-- Fin tip -->
+      <path d="M658,454 L656,448 L654,452 Z" fill="#3d3d38"/>
+      <!-- Horizontal stabiliser left -->
+      <path d="M660,476 L648,488 L652,486 L662,478 Z"
+            fill="#e0d8c4" stroke="#c8c0ac" stroke-width=".6"/>
+      <!-- Horizontal stabiliser right -->
+      <path d="M660,468 L652,458 L654,460 L662,470 Z"
+            fill="#d8d0bc" stroke="#c8c0ac" stroke-width=".6"/>
+
+      <!-- LANDING GEAR -->
+      <!-- Nose gear -->
+      <line x1="730" y1="484" x2="730" y2="494" stroke="#2a2a26" stroke-width="1.2" opacity=".50"/>
+      <circle cx="730" cy="495" r="2.5" fill="#2a2a26" opacity=".50"/>
+      <!-- Main gear left -->
+      <line x1="700" y1="484" x2="700" y2="496" stroke="#2a2a26" stroke-width="1.1" opacity=".45"/>
+      <circle cx="700" cy="497" r="2.8" fill="#2a2a26" opacity=".45"/>
+      <!-- Main gear right -->
+      <line x1="694" y1="482" x2="694" y2="494" stroke="#2a2a26" stroke-width="1.1" opacity=".45"/>
+      <circle cx="694" cy="495" r="2.8" fill="#2a2a26" opacity=".45"/>
+    </g>
 
     <!-- ── METRIC CHIPS ──────────────────────────────────────────────────── -->
-    <!-- Customers 380 M+ — far left -->
     <g>
-      <rect x="28" y="340" width="152" height="54" rx="9"
-            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
-      <text x="44" y="362" font-family="'Inter Tight',sans-serif"
-            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Customers</text>
-      <text x="44" y="385" font-family="'Inter Tight',sans-serif"
+      <rect x="28" y="350" width="152" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity=".12"/>
+      <text x="44" y="372" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity=".48" font-weight="500">Customers</text>
+      <text x="44" y="395" font-family="'Inter Tight',sans-serif"
             font-size="20" font-weight="800" fill="#ed6f5c">380 M+</text>
     </g>
-    <!-- Brands live 100+ — far right -->
     <g>
-      <rect x="1020" y="340" width="152" height="54" rx="9"
-            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
-      <text x="1036" y="362" font-family="'Inter Tight',sans-serif"
-            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Brands live</text>
-      <text x="1036" y="385" font-family="'Inter Tight',sans-serif"
+      <rect x="1020" y="350" width="152" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity=".12"/>
+      <text x="1036" y="372" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity=".48" font-weight="500">Brands live</text>
+      <text x="1036" y="395" font-family="'Inter Tight',sans-serif"
             font-size="20" font-weight="800" fill="#ed6f5c">100+</text>
     </g>
-    <!-- Platforms 22 live — top centre -->
     <g>
       <rect x="476" y="30" width="148" height="54" rx="9" fill="#2a2a26"/>
       <text x="492" y="52" font-family="'Inter Tight',sans-serif"
-            font-size="10" fill="#efe7d2" opacity="0.55" font-weight="500">Platforms</text>
+            font-size="10" fill="#efe7d2" opacity=".55" font-weight="500">Platforms</text>
       <text x="492" y="75" font-family="'Inter Tight',sans-serif"
             font-size="20" font-weight="800" fill="#ed6f5c">22 live</text>
     </g>
-    <!-- Orders/day 700 K+ — bottom right -->
     <g>
-      <rect x="870" y="600" width="162" height="54" rx="9"
-            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
-      <text x="886" y="622" font-family="'Inter Tight',sans-serif"
-            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Orders / day</text>
-      <text x="886" y="645" font-family="'Inter Tight',sans-serif"
+      <rect x="870" y="610" width="162" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity=".12"/>
+      <text x="886" y="632" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity=".48" font-weight="500">Orders / day</text>
+      <text x="886" y="655" font-family="'Inter Tight',sans-serif"
             font-size="20" font-weight="800" fill="#ed6f5c">700 K+</text>
     </g>
-    <!-- Stores on JCP 20 K+ — bottom left -->
     <g>
-      <rect x="168" y="600" width="162" height="54" rx="9"
-            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
-      <text x="184" y="622" font-family="'Inter Tight',sans-serif"
-            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Stores on JCP</text>
-      <text x="184" y="645" font-family="'Inter Tight',sans-serif"
+      <rect x="168" y="610" width="162" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity=".12"/>
+      <text x="184" y="632" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity=".48" font-weight="500">Stores on JCP</text>
+      <text x="184" y="655" font-family="'Inter Tight',sans-serif"
             font-size="20" font-weight="800" fill="#ed6f5c">20 K+</text>
     </g>
-  
-    <!-- ── PLANE LANDING ANIMATION ──────────────────────────────────────── -->
-    <style>
-      @keyframes ic-plane-land {
-        /* Approach: enter from top-right, high altitude */
-        0%   { transform: translate(340px, -200px) rotate(-4deg); opacity: 0; }
-        5%   { opacity: 1; }
-        /* Glide slope descent */
-        35%  { transform: translate(120px, -60px) rotate(-4deg); opacity: 1; }
-        /* Flare: nose up, last 30px of descent */
-        52%  { transform: translate(20px, -8px) rotate(2deg); opacity: 1; }
-        /* Touchdown */
-        58%  { transform: translate(0px, 4px) rotate(0deg); opacity: 1; }
-        /* Bounce */
-        62%  { transform: translate(-8px, -3px) rotate(0deg); opacity: 1; }
-        /* Settle on tarmac */
-        66%  { transform: translate(-12px, 0px) rotate(0deg); opacity: 1; }
-        /* Taxi roll — decelerate */
-        80%  { transform: translate(-80px, 40px) rotate(0deg); opacity: 1; }
-        /* Park — slight overshoot then settle */
-        88%  { transform: translate(-110px, 55px) rotate(0deg); opacity: 1; }
-        93%  { transform: translate(-105px, 52px) rotate(0deg); opacity: 1; }
-        /* Hold parked */
-        96%  { transform: translate(-105px, 52px) rotate(0deg); opacity: 1; }
-        /* Fade out before loop */
-        100% { transform: translate(-105px, 52px) rotate(0deg); opacity: 0; }
-      }
-      #ic-plane {
-        animation: ic-plane-land 9s cubic-bezier(0.25,0.1,0.25,1) infinite;
-        transform-origin: 680px 490px;
-      }
-      /* Engine heat shimmer — subtle opacity pulse on nacelles */
-      @keyframes ic-engine {
-        0%,100% { opacity: 0.70; }
-        50%      { opacity: 0.95; }
-      }
-      .ic-nacelle { animation: ic-engine 0.4s ease-in-out infinite; }
-      /* Shadow on tarmac — fades in at touchdown */
-      @keyframes ic-shadow {
-        0%,50% { opacity: 0; transform: scaleX(0.3); }
-        58%    { opacity: 0.18; transform: scaleX(1); }
-        96%    { opacity: 0.18; transform: scaleX(1); }
-        100%   { opacity: 0; transform: scaleX(1); }
-      }
-      #ic-plane-shadow {
-        animation: ic-shadow 9s cubic-bezier(0.25,0.1,0.25,1) infinite;
-        transform-origin: 680px 502px;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        #ic-plane, #ic-plane-shadow, .ic-nacelle {
-          animation: none !important;
-          opacity: 0 !important;
-        }
-      }
-    </style>
-
-    <!-- Tarmac shadow (ellipse under plane, appears at touchdown) -->
-    <ellipse id="ic-plane-shadow" cx="680" cy="502" rx="42" ry="10"
-             fill="#2a2a26" opacity="0"/>
-
-    <!-- Plane group — drawn at parked position (cx≈680, tarmac level) -->
-    <g id="ic-plane">
-      <!--
-        ISOMETRIC SMALL COMMERCIAL JET — viewed from slightly above-right
-        Nose points toward top-right in iso space (same direction as approach)
-        Scale: roughly 80px long, 60px wingspan
-
-        Fuselage: long thin iso rhombus
-          Nose tip:    720, 478
-          Top edge:    720,478 → 684,460 → 640,482 → 676,500
-          (rhombus, 80px long, 18px wide in iso)
-      -->
-
-      <!-- Fuselage top face -->
-      <polygon points="720,478 700,468 648,494 668,504"
-               fill="#f7f1de" stroke="#c8c0ac" stroke-width="0.8"/>
-      <!-- Fuselage right side (underside visible) -->
-      <polygon points="720,478 668,504 668,510 720,484"
-               fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
-      <!-- Fuselage left side -->
-      <polygon points="700,468 648,494 648,500 700,474"
-               fill="#ede5d2" stroke="#c8c0ac" stroke-width="0.8"/>
-
-      <!-- Nose cone (darker, pointed) -->
-      <polygon points="720,478 720,484 730,481"
-               fill="#d0c8b4" stroke="#b8b0a0" stroke-width="0.8"/>
-
-      <!-- Tail section — coral stripe -->
-      <polygon points="648,494 656,490 656,496 648,500"
-               fill="#ed6f5c" stroke="#c45a49" stroke-width="0.7"/>
-      <polygon points="656,490 660,488 660,494 656,496"
-               fill="#f08070" stroke="#c45a49" stroke-width="0.7"/>
-
-      <!-- Tail fin (vertical stabiliser) — small wedge up from tail -->
-      <polygon points="650,494 654,480 658,478 654,492"
-               fill="#2a2a26" stroke="#1a1a17" stroke-width="0.7"/>
-      <!-- Horizontal stabilisers (small swept wings at tail) -->
-      <polygon points="650,494 638,500 640,504 652,498"
-               fill="#ede5d2" stroke="#c8c0ac" stroke-width="0.7"/>
-      <polygon points="652,490 640,484 642,488 654,494"
-               fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.7"/>
-
-      <!-- Main wings — swept delta, above fuselage midpoint -->
-      <!-- Left wing (goes toward viewer, lower-left in iso) -->
-      <polygon points="690,487 676,500 648,516 654,510 684,496"
-               fill="#f0e8d4" stroke="#c8c0ac" stroke-width="0.8"/>
-      <!-- Right wing (goes away from viewer, upper-right in iso) -->
-      <polygon points="690,487 684,496 700,474 706,468"
-               fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.8"/>
-      <!-- Wing leading edge highlight -->
-      <line x1="690" y1="487" x2="648" y2="516"
-            stroke="#fff" stroke-width="0.6" opacity="0.50"/>
-      <line x1="690" y1="487" x2="706" y2="468"
-            stroke="#fff" stroke-width="0.6" opacity="0.40"/>
-
-      <!-- Engine nacelles — two small ovals under wings -->
-      <!-- Left engine -->
-      <ellipse cx="672" cy="504" rx="7" ry="3.5"
-               fill="#2a2a26" stroke="#1a1a17" stroke-width="0.7"
-               transform="rotate(-26,672,504)" class="ic-nacelle"/>
-      <ellipse cx="672" cy="502" rx="6" ry="2.5"
-               fill="#3d3d38" stroke="none"
-               transform="rotate(-26,672,502)" class="ic-nacelle"/>
-      <!-- Right engine -->
-      <ellipse cx="698" cy="476" rx="7" ry="3.5"
-               fill="#2a2a26" stroke="#1a1a17" stroke-width="0.7"
-               transform="rotate(-26,698,476)" class="ic-nacelle"/>
-      <ellipse cx="698" cy="474" rx="6" ry="2.5"
-               fill="#3d3d38" stroke="none"
-               transform="rotate(-26,698,474)" class="ic-nacelle"/>
-
-      <!-- Cockpit windows — two small dark panels on nose -->
-      <polygon points="714,474 718,472 718,476 714,478"
-               fill="#2a2a26" opacity="0.65"/>
-      <polygon points="708,471 712,469 712,473 708,475"
-               fill="#2a2a26" opacity="0.55"/>
-
-      <!-- Cabin windows — tiny dots along fuselage -->
-      <circle cx="706" cy="470" r="1.8" fill="#ffe8b0" opacity="0.70"/>
-      <circle cx="700" cy="473" r="1.8" fill="#ffe8b0" opacity="0.65"/>
-      <circle cx="694" cy="476" r="1.8" fill="#ffe8b0" opacity="0.65"/>
-      <circle cx="688" cy="479" r="1.8" fill="#ffe8b0" opacity="0.60"/>
-      <circle cx="682" cy="482" r="1.8" fill="#ffe8b0" opacity="0.60"/>
-      <circle cx="676" cy="485" r="1.8" fill="#ffe8b0" opacity="0.55"/>
-      <circle cx="670" cy="488" r="1.8" fill="#ffe8b0" opacity="0.50"/>
-
-      <!-- Landing gear (small lines, visible only near touchdown) -->
-      <line x1="685" y1="500" x2="685" y2="508"
-            stroke="#2a2a26" stroke-width="1.2" opacity="0.55"/>
-      <line x1="676" y1="503" x2="676" y2="511"
-            stroke="#2a2a26" stroke-width="1.0" opacity="0.50"/>
-      <line x1="694" y1="498" x2="694" y2="505"
-            stroke="#2a2a26" stroke-width="1.0" opacity="0.50"/>
-      <!-- Wheel dots -->
-      <circle cx="685" cy="509" r="2.5" fill="#2a2a26" opacity="0.55"/>
-      <circle cx="676" cy="512" r="2.5" fill="#2a2a26" opacity="0.50"/>
-      <circle cx="694" cy="506" r="2.5" fill="#2a2a26" opacity="0.50"/>
-    </g>
-    <!-- ── END PLANE ──────────────────────────────────────────────────────── -->
-</svg>
+  </svg>
   </div>
 
-  <!-- ── METRIC GRID (static, no auto-scroll) ────────────────────────────── -->
+  <!-- ── METRIC GRID (static) ────────────────────────────────────────────── -->
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 16px;">
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">380 M+</div>
