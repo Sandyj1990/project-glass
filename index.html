@@ -929,6 +929,167 @@
 <div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 &middot; JIO COMMERCE PLATFORM</div>
 <h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Enterprise commerce platform &middot; <span style="color: var(--accent);">powering Reliance Retail.</span></h2>
+
+<!-- JCP Commerce Flow Graphic -->
+<div style="max-width:900px;margin:0 auto 48px;position:relative;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" style="width:100%;height:auto;display:block;">
+  <defs>
+    <!-- Subtle grid pattern for background -->
+    <pattern id="jcp-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0L0 0 0 20" fill="none" stroke="#d5cfc0" stroke-width=".3" opacity=".5"/>
+    </pattern>
+    <!-- Flow line marker -->
+    <marker id="jcp-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,1 L7,4 L0,7" fill="none" stroke="#ed6f5c" stroke-width="1.2"/>
+    </marker>
+    <!-- Glow filter for the central hub -->
+    <filter id="jcp-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Dash animation -->
+    <style>
+      @keyframes jcp-flow { to { stroke-dashoffset: -24; } }
+      .jcp-flow-line { stroke-dasharray: 8 4; animation: jcp-flow 1.2s linear infinite; }
+      @media(prefers-reduced-motion:reduce){ .jcp-flow-line { animation:none; } }
+      .jcp-brand-pill { transition: transform .2s; }
+      .jcp-brand-pill:hover { transform: translateX(3px); }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="420" fill="none"/>
+  <rect x="40" y="20" width="820" height="380" rx="12" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8" opacity=".5"/>
+  <rect x="40" y="20" width="820" height="380" rx="12" fill="url(#jcp-grid)" opacity=".3"/>
+
+  <!-- ═══ LEFT: BRANDS ═══ -->
+  <text x="80" y="58" font-family="inherit" font-size="10" font-weight="600" letter-spacing="2" fill="#8a8475" text-transform="uppercase">BRANDS</text>
+
+  <!-- Brand pills - stacked on the left -->
+  <g class="jcp-brand-pill">
+    <rect x="60" y="72" width="120" height="32" rx="16" fill="#2a2a26"/>
+    <text x="120" y="93" font-family="inherit" font-size="11" font-weight="600" fill="#faf5ea" text-anchor="middle">AJIO</text>
+  </g>
+  <g class="jcp-brand-pill">
+    <rect x="60" y="112" width="120" height="32" rx="16" fill="#2a2a26"/>
+    <text x="120" y="133" font-family="inherit" font-size="11" font-weight="600" fill="#faf5ea" text-anchor="middle">JioMart</text>
+  </g>
+  <g class="jcp-brand-pill">
+    <rect x="60" y="152" width="120" height="32" rx="16" fill="#ed6f5c"/>
+    <text x="120" y="173" font-family="inherit" font-size="11" font-weight="600" fill="#fff" text-anchor="middle">Reliance Digital</text>
+  </g>
+  <g class="jcp-brand-pill">
+    <rect x="60" y="192" width="120" height="32" rx="16" fill="#2a2a26"/>
+    <text x="120" y="213" font-family="inherit" font-size="11" font-weight="600" fill="#faf5ea" text-anchor="middle">Tira</text>
+  </g>
+  <g class="jcp-brand-pill">
+    <rect x="60" y="232" width="120" height="32" rx="16" fill="#2a2a26"/>
+    <text x="120" y="253" font-family="inherit" font-size="11" font-weight="600" fill="#faf5ea" text-anchor="middle">Trends</text>
+  </g>
+  <g class="jcp-brand-pill">
+    <rect x="60" y="272" width="120" height="32" rx="16" fill="#c4bfb0"/>
+    <text x="120" y="293" font-family="inherit" font-size="10" font-weight="500" fill="#2a2a26" text-anchor="middle">+ 95 more</text>
+  </g>
+
+  <!-- ═══ FLOW LINES: Brands → Hub ═══ -->
+  <line x1="185" y1="88"  x2="340" y2="195" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+  <line x1="185" y1="128" x2="340" y2="200" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+  <line x1="185" y1="168" x2="340" y2="210" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+  <line x1="185" y1="208" x2="340" y2="215" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+  <line x1="185" y1="248" x2="340" y2="220" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+  <line x1="185" y1="288" x2="340" y2="228" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+
+  <!-- ═══ CENTRE: JCP HUB ═══ -->
+  <!-- Outer glow ring -->
+  <rect x="335" y="140" width="230" height="140" rx="16" fill="#ed6f5c" opacity=".08" filter="url(#jcp-glow)"/>
+  <!-- Main hub box -->
+  <rect x="340" y="145" width="220" height="130" rx="12" fill="#2a2a26"/>
+  <!-- Inner accent line -->
+  <rect x="350" y="155" width="200" height="110" rx="8" fill="none" stroke="#ed6f5c" stroke-width=".8" opacity=".4"/>
+
+  <!-- Hub label -->
+  <text x="450" y="182" font-family="inherit" font-size="13" font-weight="700" fill="#faf5ea" text-anchor="middle" letter-spacing="3">JIO COMMERCE</text>
+  <text x="450" y="200" font-family="inherit" font-size="13" font-weight="700" fill="#ed6f5c" text-anchor="middle" letter-spacing="3">PLATFORM</text>
+
+  <!-- Hub stats row -->
+  <line x1="365" y1="215" x2="535" y2="215" stroke="#faf5ea" stroke-width=".3" opacity=".3"/>
+  <text x="385" y="238" font-family="inherit" font-size="18" font-weight="800" fill="#faf5ea" text-anchor="middle">78</text>
+  <text x="385" y="252" font-family="inherit" font-size="8" fill="#c4bfb0" text-anchor="middle">channels</text>
+  <text x="450" y="238" font-family="inherit" font-size="18" font-weight="800" fill="#ed6f5c" text-anchor="middle">700K+</text>
+  <text x="450" y="252" font-family="inherit" font-size="8" fill="#c4bfb0" text-anchor="middle">orders/day</text>
+  <text x="520" y="238" font-family="inherit" font-size="18" font-weight="800" fill="#faf5ea" text-anchor="middle">30K+</text>
+  <text x="520" y="252" font-family="inherit" font-size="8" fill="#c4bfb0" text-anchor="middle">stores</text>
+
+  <!-- ═══ FLOW LINES: Hub → Channels ═══ -->
+  <line x1="565" y1="180" x2="680" y2="88"  class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none" marker-end="url(#jcp-arrow)"/>
+  <line x1="565" y1="195" x2="680" y2="148" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none" marker-end="url(#jcp-arrow)"/>
+  <line x1="565" y1="210" x2="680" y2="208" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none" marker-end="url(#jcp-arrow)"/>
+  <line x1="565" y1="225" x2="680" y2="268" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none" marker-end="url(#jcp-arrow)"/>
+  <line x1="565" y1="240" x2="680" y2="328" class="jcp-flow-line" stroke="#ed6f5c" stroke-width="1.2" fill="none" marker-end="url(#jcp-arrow)"/>
+
+  <!-- ═══ RIGHT: CHANNELS / TOUCHPOINTS ═══ -->
+  <text x="700" y="58" font-family="inherit" font-size="10" font-weight="600" letter-spacing="2" fill="#8a8475">TOUCHPOINTS</text>
+
+  <!-- Channel: Website -->
+  <g>
+    <rect x="690" y="70" width="160" height="36" rx="8" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+    <!-- Monitor icon -->
+    <rect x="702" y="79" width="16" height="12" rx="2" fill="none" stroke="#2a2a26" stroke-width="1.2"/>
+    <line x1="710" y1="91" x2="710" y2="95" stroke="#2a2a26" stroke-width="1.2"/>
+    <line x1="705" y1="95" x2="715" y2="95" stroke="#2a2a26" stroke-width="1.2"/>
+    <text x="728" y="92" font-family="inherit" font-size="11" font-weight="600" fill="#2a2a26">Website</text>
+    <text x="828" y="92" font-family="inherit" font-size="9" fill="#ed6f5c" font-weight="600" text-anchor="end">LIVE</text>
+  </g>
+
+  <!-- Channel: In-Store -->
+  <g>
+    <rect x="690" y="130" width="160" height="36" rx="8" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+    <!-- Store icon -->
+    <path d="M702,152 L710,144 L718,152 M704,152 L704,157 L716,157 L716,152" fill="none" stroke="#2a2a26" stroke-width="1.2" stroke-linejoin="round"/>
+    <text x="728" y="152" font-family="inherit" font-size="11" font-weight="600" fill="#2a2a26">In-Store</text>
+    <text x="828" y="152" font-family="inherit" font-size="9" fill="#ed6f5c" font-weight="600" text-anchor="end">30K+</text>
+  </g>
+
+  <!-- Channel: Marketplace -->
+  <g>
+    <rect x="690" y="190" width="160" height="36" rx="8" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+    <!-- Cart icon -->
+    <path d="M704,204 L707,204 L710,213 L718,213" fill="none" stroke="#2a2a26" stroke-width="1.2" stroke-linejoin="round"/>
+    <circle cx="711" cy="217" r="1.5" fill="#2a2a26"/>
+    <circle cx="717" cy="217" r="1.5" fill="#2a2a26"/>
+    <text x="728" y="212" font-family="inherit" font-size="11" font-weight="600" fill="#2a2a26">Marketplace</text>
+    <text x="828" y="212" font-family="inherit" font-size="9" fill="#ed6f5c" font-weight="600" text-anchor="end">LIVE</text>
+  </g>
+
+  <!-- Channel: OMS -->
+  <g>
+    <rect x="690" y="250" width="160" height="36" rx="8" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+    <!-- Clipboard icon -->
+    <rect x="705" y="258" width="12" height="15" rx="2" fill="none" stroke="#2a2a26" stroke-width="1.2"/>
+    <line x1="708" y1="263" x2="714" y2="263" stroke="#2a2a26" stroke-width=".8"/>
+    <line x1="708" y1="267" x2="714" y2="267" stroke="#2a2a26" stroke-width=".8"/>
+    <line x1="708" y1="271" x2="712" y2="271" stroke="#2a2a26" stroke-width=".8"/>
+    <text x="728" y="272" font-family="inherit" font-size="11" font-weight="600" fill="#2a2a26">OMS</text>
+    <text x="828" y="272" font-family="inherit" font-size="9" fill="#ed6f5c" font-weight="600" text-anchor="end">LIVE</text>
+  </g>
+
+  <!-- Channel: AJIO ZIP (agentic) -->
+  <g>
+    <rect x="690" y="310" width="160" height="36" rx="8" fill="#ed6f5c" stroke="#ed6f5c" stroke-width=".8"/>
+    <!-- Lightning icon -->
+    <path d="M710,318 L707,328 L712,328 L709,338" fill="none" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+    <text x="728" y="332" font-family="inherit" font-size="11" font-weight="700" fill="#fff">AJIO ZIP</text>
+    <text x="828" y="332" font-family="inherit" font-size="9" fill="#fff" font-weight="600" text-anchor="end">88%+</text>
+  </g>
+
+  <!-- ═══ BOTTOM: Throughput bar ═══ -->
+  <rect x="120" y="370" width="660" height="24" rx="12" fill="#2a2a26"/>
+  <rect x="120" y="370" width="528" height="24" rx="12" fill="#ed6f5c" opacity=".85"/>
+  <text x="450" y="386" font-family="inherit" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">68 of 78 channels live &middot; 50 K+ orders / minute peak</text>
+
+</svg>
+</div>
+
 <div class="section-hero-split">
 <div><div class="num-display section-hero-num">100+</div><div class="section-hero-cap">Brands on one commerce stack</div></div>
 <div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Enterprise-grade commerce platform supporting large-scale operations for Reliance Retail. 78 channels &middot; 68 live &middot; 30 K+ stores served &middot; 700 K+ orders / day &middot; 50 K+ orders / minute peak &middot; 200 M+ customers. Hosts AJIO, JioMart, Reliance Digital, Tira, Trends and 100+ other brands across 10 clusters (website, in-store, marketplace, OMS). AJIO ZIP, agentic shopping inside JCP, at 88 % positive engagement.</p></div>
