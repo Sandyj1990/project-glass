@@ -928,7 +928,166 @@
       <text x="184" y="645" font-family="'Inter Tight',sans-serif"
             font-size="20" font-weight="800" fill="#ed6f5c">20 K+</text>
     </g>
-  </svg>
+  
+    <!-- ── PLANE LANDING ANIMATION ──────────────────────────────────────── -->
+    <style>
+      @keyframes ic-plane-land {
+        /* Approach: enter from top-right, high altitude */
+        0%   { transform: translate(340px, -200px) rotate(-4deg); opacity: 0; }
+        5%   { opacity: 1; }
+        /* Glide slope descent */
+        35%  { transform: translate(120px, -60px) rotate(-4deg); opacity: 1; }
+        /* Flare: nose up, last 30px of descent */
+        52%  { transform: translate(20px, -8px) rotate(2deg); opacity: 1; }
+        /* Touchdown */
+        58%  { transform: translate(0px, 4px) rotate(0deg); opacity: 1; }
+        /* Bounce */
+        62%  { transform: translate(-8px, -3px) rotate(0deg); opacity: 1; }
+        /* Settle on tarmac */
+        66%  { transform: translate(-12px, 0px) rotate(0deg); opacity: 1; }
+        /* Taxi roll — decelerate */
+        80%  { transform: translate(-80px, 40px) rotate(0deg); opacity: 1; }
+        /* Park — slight overshoot then settle */
+        88%  { transform: translate(-110px, 55px) rotate(0deg); opacity: 1; }
+        93%  { transform: translate(-105px, 52px) rotate(0deg); opacity: 1; }
+        /* Hold parked */
+        96%  { transform: translate(-105px, 52px) rotate(0deg); opacity: 1; }
+        /* Fade out before loop */
+        100% { transform: translate(-105px, 52px) rotate(0deg); opacity: 0; }
+      }
+      #ic-plane {
+        animation: ic-plane-land 9s cubic-bezier(0.25,0.1,0.25,1) infinite;
+        transform-origin: 680px 490px;
+      }
+      /* Engine heat shimmer — subtle opacity pulse on nacelles */
+      @keyframes ic-engine {
+        0%,100% { opacity: 0.70; }
+        50%      { opacity: 0.95; }
+      }
+      .ic-nacelle { animation: ic-engine 0.4s ease-in-out infinite; }
+      /* Shadow on tarmac — fades in at touchdown */
+      @keyframes ic-shadow {
+        0%,50% { opacity: 0; transform: scaleX(0.3); }
+        58%    { opacity: 0.18; transform: scaleX(1); }
+        96%    { opacity: 0.18; transform: scaleX(1); }
+        100%   { opacity: 0; transform: scaleX(1); }
+      }
+      #ic-plane-shadow {
+        animation: ic-shadow 9s cubic-bezier(0.25,0.1,0.25,1) infinite;
+        transform-origin: 680px 502px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #ic-plane, #ic-plane-shadow, .ic-nacelle {
+          animation: none !important;
+          opacity: 0 !important;
+        }
+      }
+    </style>
+
+    <!-- Tarmac shadow (ellipse under plane, appears at touchdown) -->
+    <ellipse id="ic-plane-shadow" cx="680" cy="502" rx="42" ry="10"
+             fill="#2a2a26" opacity="0"/>
+
+    <!-- Plane group — drawn at parked position (cx≈680, tarmac level) -->
+    <g id="ic-plane">
+      <!--
+        ISOMETRIC SMALL COMMERCIAL JET — viewed from slightly above-right
+        Nose points toward top-right in iso space (same direction as approach)
+        Scale: roughly 80px long, 60px wingspan
+
+        Fuselage: long thin iso rhombus
+          Nose tip:    720, 478
+          Top edge:    720,478 → 684,460 → 640,482 → 676,500
+          (rhombus, 80px long, 18px wide in iso)
+      -->
+
+      <!-- Fuselage top face -->
+      <polygon points="720,478 700,468 648,494 668,504"
+               fill="#f7f1de" stroke="#c8c0ac" stroke-width="0.8"/>
+      <!-- Fuselage right side (underside visible) -->
+      <polygon points="720,478 668,504 668,510 720,484"
+               fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
+      <!-- Fuselage left side -->
+      <polygon points="700,468 648,494 648,500 700,474"
+               fill="#ede5d2" stroke="#c8c0ac" stroke-width="0.8"/>
+
+      <!-- Nose cone (darker, pointed) -->
+      <polygon points="720,478 720,484 730,481"
+               fill="#d0c8b4" stroke="#b8b0a0" stroke-width="0.8"/>
+
+      <!-- Tail section — coral stripe -->
+      <polygon points="648,494 656,490 656,496 648,500"
+               fill="#ed6f5c" stroke="#c45a49" stroke-width="0.7"/>
+      <polygon points="656,490 660,488 660,494 656,496"
+               fill="#f08070" stroke="#c45a49" stroke-width="0.7"/>
+
+      <!-- Tail fin (vertical stabiliser) — small wedge up from tail -->
+      <polygon points="650,494 654,480 658,478 654,492"
+               fill="#2a2a26" stroke="#1a1a17" stroke-width="0.7"/>
+      <!-- Horizontal stabilisers (small swept wings at tail) -->
+      <polygon points="650,494 638,500 640,504 652,498"
+               fill="#ede5d2" stroke="#c8c0ac" stroke-width="0.7"/>
+      <polygon points="652,490 640,484 642,488 654,494"
+               fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.7"/>
+
+      <!-- Main wings — swept delta, above fuselage midpoint -->
+      <!-- Left wing (goes toward viewer, lower-left in iso) -->
+      <polygon points="690,487 676,500 648,516 654,510 684,496"
+               fill="#f0e8d4" stroke="#c8c0ac" stroke-width="0.8"/>
+      <!-- Right wing (goes away from viewer, upper-right in iso) -->
+      <polygon points="690,487 684,496 700,474 706,468"
+               fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.8"/>
+      <!-- Wing leading edge highlight -->
+      <line x1="690" y1="487" x2="648" y2="516"
+            stroke="#fff" stroke-width="0.6" opacity="0.50"/>
+      <line x1="690" y1="487" x2="706" y2="468"
+            stroke="#fff" stroke-width="0.6" opacity="0.40"/>
+
+      <!-- Engine nacelles — two small ovals under wings -->
+      <!-- Left engine -->
+      <ellipse cx="672" cy="504" rx="7" ry="3.5"
+               fill="#2a2a26" stroke="#1a1a17" stroke-width="0.7"
+               transform="rotate(-26,672,504)" class="ic-nacelle"/>
+      <ellipse cx="672" cy="502" rx="6" ry="2.5"
+               fill="#3d3d38" stroke="none"
+               transform="rotate(-26,672,502)" class="ic-nacelle"/>
+      <!-- Right engine -->
+      <ellipse cx="698" cy="476" rx="7" ry="3.5"
+               fill="#2a2a26" stroke="#1a1a17" stroke-width="0.7"
+               transform="rotate(-26,698,476)" class="ic-nacelle"/>
+      <ellipse cx="698" cy="474" rx="6" ry="2.5"
+               fill="#3d3d38" stroke="none"
+               transform="rotate(-26,698,474)" class="ic-nacelle"/>
+
+      <!-- Cockpit windows — two small dark panels on nose -->
+      <polygon points="714,474 718,472 718,476 714,478"
+               fill="#2a2a26" opacity="0.65"/>
+      <polygon points="708,471 712,469 712,473 708,475"
+               fill="#2a2a26" opacity="0.55"/>
+
+      <!-- Cabin windows — tiny dots along fuselage -->
+      <circle cx="706" cy="470" r="1.8" fill="#ffe8b0" opacity="0.70"/>
+      <circle cx="700" cy="473" r="1.8" fill="#ffe8b0" opacity="0.65"/>
+      <circle cx="694" cy="476" r="1.8" fill="#ffe8b0" opacity="0.65"/>
+      <circle cx="688" cy="479" r="1.8" fill="#ffe8b0" opacity="0.60"/>
+      <circle cx="682" cy="482" r="1.8" fill="#ffe8b0" opacity="0.60"/>
+      <circle cx="676" cy="485" r="1.8" fill="#ffe8b0" opacity="0.55"/>
+      <circle cx="670" cy="488" r="1.8" fill="#ffe8b0" opacity="0.50"/>
+
+      <!-- Landing gear (small lines, visible only near touchdown) -->
+      <line x1="685" y1="500" x2="685" y2="508"
+            stroke="#2a2a26" stroke-width="1.2" opacity="0.55"/>
+      <line x1="676" y1="503" x2="676" y2="511"
+            stroke="#2a2a26" stroke-width="1.0" opacity="0.50"/>
+      <line x1="694" y1="498" x2="694" y2="505"
+            stroke="#2a2a26" stroke-width="1.0" opacity="0.50"/>
+      <!-- Wheel dots -->
+      <circle cx="685" cy="509" r="2.5" fill="#2a2a26" opacity="0.55"/>
+      <circle cx="676" cy="512" r="2.5" fill="#2a2a26" opacity="0.50"/>
+      <circle cx="694" cy="506" r="2.5" fill="#2a2a26" opacity="0.50"/>
+    </g>
+    <!-- ── END PLANE ──────────────────────────────────────────────────────── -->
+</svg>
   </div>
 
   <!-- ── METRIC GRID (static, no auto-scroll) ────────────────────────────── -->
