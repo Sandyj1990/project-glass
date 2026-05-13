@@ -468,301 +468,465 @@
     <h2 class="display-2">Fynd is the AI-native operating layer underneath.</h2>
   </div>
 
-  <!-- ── ISOMETRIC CITY ──────────────────────────────────────────────────── -->
-  <div style="width:100%;max-width:960px;margin:0 auto 56px;position:relative;">
+  <!-- ── ISOMETRIC AIRFIELD ─────────────────────────────────────────────── -->
+  <div style="width:100%;max-width:980px;margin:0 auto 56px;position:relative;">
   <style>
-    @keyframes ic-win-a { 0%,100%{opacity:.15} 50%{opacity:.65} }
-    @keyframes ic-win-b { 0%,100%{opacity:.30} 50%{opacity:.85} }
-    @keyframes ic-win-c { 0%,100%{opacity:.20} 50%{opacity:.70} }
-    @keyframes ic-dash   { to{stroke-dashoffset:-32} }
-    @keyframes ic-ring1  { 0%,100%{r:34;opacity:.18} 50%{r:44;opacity:.06} }
-    @keyframes ic-ring2  { 0%,100%{r:52;opacity:.10} 50%{r:64;opacity:.03} }
-    .icw-a { animation: ic-win-a 2.8s ease-in-out infinite; }
-    .icw-b { animation: ic-win-b 3.5s ease-in-out infinite 0.7s; }
-    .icw-c { animation: ic-win-c 2.3s ease-in-out infinite 1.3s; }
-    .icw-d { animation: ic-win-a 3.1s ease-in-out infinite 0.4s; }
-    .icw-e { animation: ic-win-b 2.6s ease-in-out infinite 1.0s; }
-    .ic-conn { animation: ic-dash 2s linear infinite; }
-    .ic-r1   { animation: ic-ring1 4s ease-in-out infinite; }
-    .ic-r2   { animation: ic-ring2 4s ease-in-out infinite 1s; }
+    @keyframes ic-beacon  { 0%,100%{opacity:1} 50%{opacity:0.1} }
+    @keyframes ic-win-a   { 0%,100%{opacity:.15} 50%{opacity:.70} }
+    @keyframes ic-win-b   { 0%,100%{opacity:.30} 50%{opacity:.90} }
+    @keyframes ic-win-c   { 0%,100%{opacity:.20} 50%{opacity:.60} }
+    @keyframes ic-dash    { to{stroke-dashoffset:-28} }
+    .ic-beacon { animation: ic-beacon 1.4s ease-in-out infinite; }
+    .icw-a     { animation: ic-win-a  2.8s ease-in-out infinite; }
+    .icw-b     { animation: ic-win-b  3.5s ease-in-out infinite 0.7s; }
+    .icw-c     { animation: ic-win-c  2.3s ease-in-out infinite 1.3s; }
+    .icw-d     { animation: ic-win-a  3.1s ease-in-out infinite 0.4s; }
+    .icw-e     { animation: ic-win-b  2.6s ease-in-out infinite 1.0s; }
+    .ic-conn   { animation: ic-dash   2.2s linear infinite; }
     @media (prefers-reduced-motion:reduce) {
-      .icw-a,.icw-b,.icw-c,.icw-d,.icw-e,.ic-conn,.ic-r1,.ic-r2 { animation:none!important; opacity:1!important; }
+      .ic-beacon,.icw-a,.icw-b,.icw-c,.icw-d,.icw-e,.ic-conn {
+        animation:none!important; opacity:1!important;
+      }
     }
   </style>
 
-  <!--
-    COORDINATE SYSTEM
-    viewBox: 0 0 1200 620
-    Isometric projection: x-axis goes right+down at 30°, y-axis goes left+down at 30°
-    Each "unit" = 60px wide, 30px tall in iso space.
-
-    Building centres (cx, cy = top-face centre point):
-      FYND:    cx=600, cy=260   (centre)
-      JCP:     cx=820, cy=360   (right)
-      IMPETUS: cx=820, cy=180   (top-right)
-      UCP:     cx=380, cy=360   (left)
-      GRANARY: cx=380, cy=180   (top-left)
-      AI-NATIVE: cx=600, cy=460 (bottom)
-
-    Isometric top-face for a box of half-width W, half-height H:
-      top:   cx,cy-H  →  cx+W,cy  →  cx,cy+H  →  cx-W,cy
-    Left face (depth D going down):
-      cx-W,cy  →  cx,cy+H  →  cx,cy+H+D  →  cx-W,cy+D
-    Right face:
-      cx+W,cy  →  cx,cy+H  →  cx,cy+H+D  →  cx+W,cy+D
-  -->
-
-  <svg viewBox="0 0 1200 620" xmlns="http://www.w3.org/2000/svg"
+  <svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg"
        style="width:100%;height:auto;display:block;" aria-hidden="true">
     <defs>
-      <radialGradient id="icGlow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#ed6f5c" stop-opacity="0.12"/>
+      <radialGradient id="gGlow" cx="50%" cy="60%" r="45%">
+        <stop offset="0%" stop-color="#ed6f5c" stop-opacity="0.10"/>
         <stop offset="100%" stop-color="#ed6f5c" stop-opacity="0"/>
       </radialGradient>
+      <!-- glass gradient for cab windows -->
+      <linearGradient id="gGlass" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c8e8f0" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#8fc8d8" stop-opacity="0.25"/>
+      </linearGradient>
     </defs>
 
     <!-- Ground glow -->
-    <ellipse cx="600" cy="400" rx="420" ry="130" fill="url(#icGlow)"/>
+    <ellipse cx="600" cy="480" rx="440" ry="110" fill="url(#gGlow)"/>
 
-    <!-- Ground grid -->
-    <g stroke="#2a2a26" stroke-width="0.6" stroke-opacity="0.07">
-      <!-- iso horizontals -->
-      <line x1="180" y1="500" x2="1020" y2="500"/>
-      <line x1="200" y1="475" x2="1000" y2="475"/>
-      <line x1="230" y1="450" x2="970"  y2="450"/>
-      <line x1="270" y1="425" x2="930"  y2="425"/>
-      <!-- diagonals L→R -->
-      <line x1="250" y1="390" x2="600" y2="540"/>
-      <line x1="350" y1="370" x2="700" y2="540"/>
-      <line x1="450" y1="355" x2="800" y2="530"/>
-      <!-- diagonals R→L -->
-      <line x1="950" y1="390" x2="600" y2="540"/>
-      <line x1="850" y1="370" x2="500" y2="540"/>
-      <line x1="750" y1="355" x2="400" y2="530"/>
+    <!-- Tarmac / apron ground plane -->
+    <!-- Main apron rhombus -->
+    <polygon points="600,340 900,490 600,640 300,490"
+             fill="#e8e0cc" stroke="#d0c8b4" stroke-width="1" opacity="0.55"/>
+    <!-- Taxiway lines -->
+    <line x1="600" y1="390" x2="600" y2="580"
+          stroke="#c8c0ac" stroke-width="1.5" stroke-dasharray="14 8" opacity="0.45"/>
+    <line x1="480" y1="440" x2="720" y2="440"
+          stroke="#c8c0ac" stroke-width="1" stroke-dasharray="10 6" opacity="0.30"/>
+
+    <!-- ── CONNECTOR LINES (dashed taxiway style) ────────────────────────── -->
+    <g fill="none" stroke="#2a2a26" stroke-width="1.5" stroke-dasharray="7 5"
+       stroke-opacity="0.22" class="ic-conn">
+      <!-- tower → JCP (right) -->
+      <line x1="660" y1="390" x2="820" y2="430"/>
+      <!-- tower → IMPETUS (top-right) -->
+      <line x1="640" y1="310" x2="790" y2="245"/>
+      <!-- tower → UCP (left) -->
+      <line x1="540" y1="390" x2="390" y2="430"/>
+      <!-- tower → GRANARY (top-left) -->
+      <line x1="560" y1="310" x2="415" y2="245"/>
+      <!-- tower → AI-NATIVE (bottom) -->
+      <line x1="600" y1="430" x2="600" y2="520"/>
     </g>
 
-    <!-- Pulse rings at FYND base -->
-    <circle cx="600" cy="400" r="34" fill="none" stroke="#ed6f5c" stroke-width="1.5" class="ic-r1"/>
-    <circle cx="600" cy="400" r="52" fill="none" stroke="#ed6f5c" stroke-width="1"   class="ic-r2"/>
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!--  FYND — AIRPORT CONTROL TOWER                                       -->
+    <!--  Centre: cx=600                                                     -->
+    <!--                                                                     -->
+    <!--  Structure (bottom to top):                                         -->
+    <!--    1. Wide base plinth  (W=110, D=18)  cy=490                       -->
+    <!--    2. Mid plinth step   (W=80,  D=14)  cy=472                       -->
+    <!--    3. Shaft             (W=28,  D=160) cy=458                       -->
+    <!--    4. Cab overhang ring (W=56,  D=10)  cy=298                       -->
+    <!--    5. Cab glass box     (W=50,  D=60)  cy=288                       -->
+    <!--    6. Cab roof slab     (W=54,  D=8)   cy=228                       -->
+    <!--    7. Antenna                                                        -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
 
-    <!-- ── CONNECTOR LINES ─────────────────────────────── -->
-    <g fill="none" stroke="#2a2a26" stroke-width="1.4" stroke-dasharray="6 5"
-       stroke-opacity="0.30" class="ic-conn">
-      <!-- FYND → JCP -->
-      <line x1="660" y1="310" x2="780" y2="355"/>
-      <!-- FYND → IMPETUS -->
-      <line x1="650" y1="255" x2="770" y2="215"/>
-      <!-- FYND → UCP -->
-      <line x1="540" y1="310" x2="420" y2="355"/>
-      <!-- FYND → GRANARY -->
-      <line x1="550" y1="255" x2="430" y2="215"/>
-      <!-- FYND → AI-NATIVE -->
-      <line x1="600" y1="380" x2="600" y2="435"/>
-    </g>
+    <!-- 1. Wide base plinth top face -->
+    <polygon points="600,472 710,527 600,582 490,527"
+             fill="#d8d0bc" stroke="#b8b0a0" stroke-width="1"/>
+    <!-- left wall -->
+    <polygon points="490,527 600,582 600,600 490,545"
+             fill="#b8b0a0" stroke="#a0988a" stroke-width="1"/>
+    <!-- right wall -->
+    <polygon points="710,527 600,582 600,600 710,545"
+             fill="#c8c0ac" stroke="#a0988a" stroke-width="1"/>
 
-    <!-- ══════════════════════════════════════════════════ -->
-    <!-- FYND TOWER — centre, ink, 5 floors               -->
-    <!-- Top face: W=80, H=40; each floor depth 50-70px   -->
-    <!-- ══════════════════════════════════════════════════ -->
+    <!-- 2. Mid plinth top face -->
+    <polygon points="600,458 680,499 600,540 520,499"
+             fill="#c8c0ac" stroke="#a0988a" stroke-width="1"/>
+    <!-- left wall -->
+    <polygon points="520,499 600,540 600,554 520,513"
+             fill="#a8a090" stroke="#908880" stroke-width="1"/>
+    <!-- right wall -->
+    <polygon points="680,499 600,540 600,554 680,513"
+             fill="#b8b0a0" stroke="#908880" stroke-width="1"/>
 
-    <!-- Antenna -->
-    <line x1="600" y1="80" x2="600" y2="148" stroke="#2a2a26" stroke-width="2.5"/>
-    <circle cx="600" cy="78" r="5" fill="#ed6f5c"/>
+    <!-- 3. Shaft — narrow tall column -->
+    <!-- top face of shaft -->
+    <polygon points="600,298 628,312 600,326 572,312"
+             fill="#3d3d38" stroke="#1a1a17" stroke-width="1"/>
+    <!-- left wall of shaft -->
+    <polygon points="572,312 600,326 600,472 572,458"
+             fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- right wall of shaft -->
+    <polygon points="628,312 600,326 600,472 628,458"
+             fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
 
-    <!-- Floor 5 cap (W=30,H=15,D=22) -->
-    <polygon points="600,148 630,163 600,178 570,163" fill="#3d3d38" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="570,163 600,178 600,200 570,185" fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="630,163 600,178 600,200 630,185" fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- Shaft detail: horizontal band lines (floor markers) -->
+    <line x1="572" y1="370" x2="600" y2="384" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="384" x2="628" y2="370" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
+    <line x1="572" y1="410" x2="600" y2="424" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="424" x2="628" y2="410" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
+    <line x1="572" y1="450" x2="600" y2="464" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
+    <line x1="600" y1="464" x2="628" y2="450" stroke="#3d3d38" stroke-width="0.8" opacity="0.6"/>
 
-    <!-- Floor 4 coral band (W=46,H=23,D=30) -->
-    <polygon points="600,200 646,223 600,246 554,223" fill="#f08070" stroke="#c45a49" stroke-width="0.8"/>
-    <polygon points="554,223 600,246 600,276 554,253" fill="#c45a49" stroke="#c45a49" stroke-width="0.8"/>
-    <polygon points="646,223 600,246 600,276 646,253" fill="#d96350" stroke="#c45a49" stroke-width="0.8"/>
-    <!-- coral windows -->
-    <rect x="560" y="252" width="8" height="10" rx="1.5" fill="#fff" class="icw-a" opacity="0.4"/>
-    <rect x="572" y="252" width="8" height="10" rx="1.5" fill="#fff" class="icw-b" opacity="0.4"/>
-    <rect x="560" y="265" width="8" height="10" rx="1.5" fill="#fff" class="icw-c" opacity="0.4"/>
-    <rect x="616" y="252" width="8" height="10" rx="1.5" fill="#fff" class="icw-d" opacity="0.3"/>
-    <rect x="628" y="265" width="8" height="10" rx="1.5" fill="#fff" class="icw-e" opacity="0.3"/>
+    <!-- External ladder suggestion on left face of shaft -->
+    <line x1="580" y1="330" x2="580" y2="460" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="345" x2="583" y2="348" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="360" x2="583" y2="363" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="375" x2="583" y2="378" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="390" x2="583" y2="393" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="405" x2="583" y2="408" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="420" x2="583" y2="423" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
+    <line x1="578" y1="435" x2="583" y2="438" stroke="#3d3d38" stroke-width="0.7" opacity="0.5"/>
 
-    <!-- Floor 3 main ink body (W=60,H=30,D=70) -->
-    <polygon points="600,276 660,306 600,336 540,306" fill="#3d3d38" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="540,306 600,336 600,406 540,376" fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="660,306 600,336 600,406 660,376" fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
-    <!-- FYND label on top face -->
-    <text x="600" y="314" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="11" font-weight="800"
-          fill="#efe7d2" letter-spacing="3">FYND</text>
-    <!-- left face windows -->
-    <rect x="548" y="340" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-a" opacity="0.55"/>
-    <rect x="561" y="340" width="9" height="11" rx="1.5" fill="#fff"    class="icw-c" opacity="0.18"/>
-    <rect x="548" y="357" width="9" height="11" rx="1.5" fill="#fff"    class="icw-b" opacity="0.18"/>
-    <rect x="561" y="357" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-d" opacity="0.45"/>
-    <rect x="548" y="374" width="9" height="11" rx="1.5" fill="#fff"    class="icw-e" opacity="0.18"/>
-    <!-- right face windows -->
-    <rect x="614" y="340" width="9" height="11" rx="1.5" fill="#fff"    class="icw-c" opacity="0.15"/>
-    <rect x="627" y="340" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-a" opacity="0.40"/>
-    <rect x="614" y="357" width="9" height="11" rx="1.5" fill="#fff"    class="icw-b" opacity="0.15"/>
-    <rect x="627" y="374" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-e" opacity="0.35"/>
+    <!-- 4. Cab overhang ring (wider than shaft, coral) -->
+    <polygon points="600,288 656,317 600,346 544,317"
+             fill="#ed6f5c" stroke="#c45a49" stroke-width="1"/>
+    <!-- left ring wall -->
+    <polygon points="544,317 600,346 600,356 544,327"
+             fill="#c45a49" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- right ring wall -->
+    <polygon points="656,317 600,346 600,356 656,327"
+             fill="#d96350" stroke="#c45a49" stroke-width="0.8"/>
 
-    <!-- Floor 2 wide base (W=72,H=36,D=24) -->
-    <polygon points="600,406 672,442 600,478 528,442" fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="528,442 600,478 600,502 528,466" fill="#1a1a17" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="672,442 600,478 600,502 672,466" fill="#222220" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- 5. Cab glass box (observation deck) -->
+    <!-- top face -->
+    <polygon points="600,228 650,254 600,280 550,254"
+             fill="#3d3d38" stroke="#1a1a17" stroke-width="1"/>
+    <!-- left glass wall -->
+    <polygon points="550,254 600,280 600,346 550,320"
+             fill="url(#gGlass)" stroke="#5a8898" stroke-width="0.8" opacity="0.85"/>
+    <!-- right glass wall -->
+    <polygon points="650,254 600,280 600,346 650,320"
+             fill="url(#gGlass)" stroke="#5a8898" stroke-width="0.8" opacity="0.70"/>
 
-    <!-- ══════════════════════════════════════════════════ -->
-    <!-- JCP — right (cx=820,cy=355), coral, W=54,H=27,D=80 -->
-    <!-- ══════════════════════════════════════════════════ -->
-    <polygon points="820,328 874,355 820,382 766,355" fill="#f08070" stroke="#c45a49" stroke-width="0.8"/>
-    <polygon points="766,355 820,382 820,462 766,435" fill="#c45a49" stroke="#c45a49" stroke-width="0.8"/>
-    <polygon points="874,355 820,382 820,462 874,435" fill="#d96350" stroke="#c45a49" stroke-width="0.8"/>
-    <!-- label -->
-    <text x="820" y="363" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="9" font-weight="800"
-          fill="#fff" letter-spacing="2">JCP</text>
-    <!-- windows -->
-    <rect x="773" y="390" width="9" height="11" rx="1.5" fill="#fff" class="icw-a" opacity="0.35"/>
-    <rect x="786" y="390" width="9" height="11" rx="1.5" fill="#fff" class="icw-c" opacity="0.35"/>
-    <rect x="773" y="407" width="9" height="11" rx="1.5" fill="#fff" class="icw-b" opacity="0.35"/>
-    <rect x="786" y="407" width="9" height="11" rx="1.5" fill="#fff" class="icw-d" opacity="0.35"/>
-    <!-- accent cube on top -->
-    <polygon points="820,310 840,320 820,330 800,320" fill="#f5a090" stroke="#c45a49" stroke-width="0.7"/>
-    <polygon points="800,320 820,330 820,346 800,336" fill="#c45a49" stroke="#c45a49" stroke-width="0.7"/>
-    <polygon points="840,320 820,330 820,346 840,336" fill="#d96350" stroke="#c45a49" stroke-width="0.7"/>
+    <!-- Glass window panes — left face -->
+    <line x1="566" y1="266" x2="566" y2="338" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
+    <line x1="582" y1="273" x2="582" y2="342" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
+    <line x1="550" y1="290" x2="600" y2="315" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
+    <line x1="550" y1="310" x2="600" y2="335" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
+    <!-- Glass window panes — right face -->
+    <line x1="618" y1="266" x2="618" y2="338" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
+    <line x1="634" y1="260" x2="634" y2="332" stroke="#5a8898" stroke-width="0.6" opacity="0.5"/>
+    <line x1="600" y1="290" x2="650" y2="315" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
+    <line x1="600" y1="310" x2="650" y2="335" stroke="#5a8898" stroke-width="0.6" opacity="0.4"/>
 
-    <!-- ══════════════════════════════════════════════════ -->
-    <!-- IMPETUS — top-right (cx=810,cy=175), bone, W=58,H=29,D=100 -->
-    <!-- ══════════════════════════════════════════════════ -->
-    <polygon points="810,146 868,175 810,204 752,175" fill="#faf5ea" stroke="#c8c0ac" stroke-width="0.8"/>
-    <polygon points="752,175 810,204 810,304 752,275" fill="#d8d0bc" stroke="#c8c0ac" stroke-width="0.8"/>
-    <polygon points="868,175 810,204 810,304 868,275" fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
-    <!-- label -->
-    <text x="810" y="184" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700"
-          fill="#2a2a26" letter-spacing="1.5" opacity="0.65">IMPETUS</text>
-    <!-- bar chart on top face -->
-    <rect x="793" y="162" width="6" height="10" fill="#ed6f5c" opacity="0.6"/>
-    <rect x="802" y="157" width="6" height="15" fill="#2a2a26" opacity="0.35"/>
-    <rect x="811" y="164" width="6" height="8"  fill="#ed6f5c" opacity="0.5"/>
-    <rect x="820" y="159" width="6" height="13" fill="#2a2a26" opacity="0.3"/>
-    <!-- windows left -->
-    <rect x="759" y="215" width="9" height="11" rx="1.5" fill="#2a2a26" class="icw-b" opacity="0.10"/>
-    <rect x="772" y="215" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-a" opacity="0.22"/>
-    <rect x="759" y="232" width="9" height="11" rx="1.5" fill="#2a2a26" class="icw-c" opacity="0.10"/>
-    <rect x="772" y="232" width="9" height="11" rx="1.5" fill="#2a2a26" class="icw-d" opacity="0.10"/>
-    <rect x="759" y="249" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-e" opacity="0.18"/>
+    <!-- Interior light glow in cab -->
+    <polygon points="550,254 600,280 600,346 550,320"
+             fill="#ffe8b0" opacity="0.08"/>
+    <polygon points="650,254 600,280 600,346 650,320"
+             fill="#ffe8b0" opacity="0.06"/>
 
-    <!-- ══════════════════════════════════════════════════ -->
-    <!-- UCP — left (cx=380,cy=355), warm grey, W=54,H=27,D=75 -->
-    <!-- ══════════════════════════════════════════════════ -->
-    <polygon points="380,328 434,355 380,382 326,355" fill="#ede5d2" stroke="#c0b8a4" stroke-width="0.8"/>
-    <polygon points="326,355 380,382 380,457 326,430" fill="#d0c8b4" stroke="#c0b8a4" stroke-width="0.8"/>
-    <polygon points="434,355 380,382 380,457 434,430" fill="#dcd4c0" stroke="#c0b8a4" stroke-width="0.8"/>
-    <!-- label -->
-    <text x="380" y="363" text-anchor="middle"
-          font-family="'Inter Tight',sans-serif" font-size="9" font-weight="700"
-          fill="#2a2a26" letter-spacing="1.5" opacity="0.65">UCP</text>
-    <!-- circle decoration on top -->
-    <circle cx="380" cy="345" r="10" fill="none" stroke="#ed6f5c" stroke-width="1.5" opacity="0.5"/>
-    <circle cx="380" cy="345" r="4"  fill="#ed6f5c" opacity="0.5"/>
-    <!-- windows -->
-    <rect x="333" y="390" width="9" height="11" rx="1.5" fill="#2a2a26" class="icw-a" opacity="0.10"/>
-    <rect x="346" y="390" width="9" height="11" rx="1.5" fill="#ed6f5c" class="icw-c" opacity="0.22"/>
-    <rect x="333" y="407" width="9" height="11" rx="1.5" fill="#2a2a26" class="icw-b" opacity="0.10"/>
-    <rect x="346" y="407" width="9" height="11" rx="1.5" fill="#2a2a26" class="icw-d" opacity="0.10"/>
+    <!-- 6. Cab roof slab -->
+    <polygon points="600,220 654,247 600,274 546,247"
+             fill="#2a2a26" stroke="#1a1a17" stroke-width="1"/>
+    <!-- roof left -->
+    <polygon points="546,247 600,274 600,282 546,255"
+             fill="#1a1a17" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- roof right -->
+    <polygon points="654,247 600,274 600,282 654,255"
+             fill="#222220" stroke="#1a1a17" stroke-width="0.8"/>
 
-    <!-- ══════════════════════════════════════════════════ -->
-    <!-- GRANARY — top-left (cx=385,cy=175), bone, W=50,H=25,D=85 -->
-    <!-- ══════════════════════════════════════════════════ -->
-    <polygon points="385,150 435,175 385,200 335,175" fill="#faf5ea" stroke="#c8c0ac" stroke-width="0.8"/>
-    <polygon points="335,175 385,200 385,285 335,260" fill="#d8d0bc" stroke="#c8c0ac" stroke-width="0.8"/>
-    <polygon points="435,175 385,200 385,285 435,260" fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
-    <!-- label -->
-    <text x="385" y="183" text-anchor="middle"
+    <!-- FYND label on cab roof -->
+    <text x="600" y="255" text-anchor="middle"
+          font-family="'Inter Tight',sans-serif" font-size="10" font-weight="800"
+          fill="#efe7d2" letter-spacing="3" opacity="0.90">FYND</text>
+
+    <!-- 7. Antenna -->
+    <line x1="600" y1="100" x2="600" y2="220"
+          stroke="#2a2a26" stroke-width="2.2"/>
+    <!-- antenna cross-bar -->
+    <line x1="590" y1="140" x2="610" y2="140"
+          stroke="#2a2a26" stroke-width="1.4"/>
+    <line x1="594" y1="160" x2="606" y2="160"
+          stroke="#2a2a26" stroke-width="1.2"/>
+    <!-- beacon -->
+    <circle cx="600" cy="96" r="5.5" fill="#ed6f5c" class="ic-beacon"/>
+    <circle cx="600" cy="96" r="9" fill="none" stroke="#ed6f5c" stroke-width="1"
+            opacity="0.35" class="ic-beacon"/>
+
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!--  SATELLITE CABINS                                                   -->
+    <!--  Each is a low single-storey pitched-roof cabin in isometric view   -->
+    <!--  Pitched roof = triangle on left/right end + sloped top planes      -->
+    <!--                                                                     -->
+    <!--  Cabin anatomy (isometric, looking from front-right):               -->
+    <!--    - Front wall (right face in iso)                                 -->
+    <!--    - Side wall  (left face in iso)                                  -->
+    <!--    - Roof: two sloped planes meeting at a ridge                     -->
+    <!--    - Door + small windows                                           -->
+    <!--    - Optional: small chimney / vent pipe                            -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+
+    <!-- ── JCP CABIN — right (cx≈840, ground-y≈480) ─────────────────────── -->
+    <!-- Cabin base/floor -->
+    <polygon points="840,430 900,460 840,490 780,460"
+             fill="#f08070" stroke="#c45a49" stroke-width="0.9"/>
+    <!-- front wall (right iso face) -->
+    <polygon points="900,460 840,490 840,530 900,500"
+             fill="#d96350" stroke="#c45a49" stroke-width="0.9"/>
+    <!-- side wall (left iso face) -->
+    <polygon points="780,460 840,490 840,530 780,500"
+             fill="#c45a49" stroke="#c45a49" stroke-width="0.9"/>
+    <!-- Roof: ridge runs left-right at top -->
+    <!-- Ridge line at y=410 (30px above base top) -->
+    <!-- Left roof slope: left-wall top edge → ridge -->
+    <polygon points="780,460 840,430 840,410 780,440"
+             fill="#f5a090" stroke="#c45a49" stroke-width="0.9"/>
+    <!-- Right roof slope: right-wall top edge → ridge -->
+    <polygon points="900,460 840,430 840,410 900,440"
+             fill="#e87060" stroke="#c45a49" stroke-width="0.9"/>
+    <!-- Roof ridge cap -->
+    <line x1="840" y1="410" x2="840" y2="430"
+          stroke="#c45a49" stroke-width="1.2"/>
+    <!-- Front gable triangle -->
+    <polygon points="900,460 900,440 840,410 840,430"
+             fill="#e07060" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- Door on front face -->
+    <polygon points="876,490 888,484 888,500 876,506"
+             fill="#2a2a26" opacity="0.55"/>
+    <!-- Window on front face -->
+    <rect x="856" y="468" width="10" height="8" rx="1"
+          fill="#ffe8b0" class="icw-a" opacity="0.55"/>
+    <!-- Small vent on roof -->
+    <polygon points="858,438 864,435 864,428 858,431"
+             fill="#b84040" stroke="#c45a49" stroke-width="0.7"/>
+    <!-- Label -->
+    <text x="840" y="458" text-anchor="middle"
+          font-family="'Inter Tight',sans-serif" font-size="8.5" font-weight="700"
+          fill="#fff" letter-spacing="1.5" opacity="0.90">JCP</text>
+
+    <!-- ── IMPETUS CABIN — top-right (cx≈810, ground-y≈270) ─────────────── -->
+    <!-- Cabin base/floor -->
+    <polygon points="810,220 870,250 810,280 750,250"
+             fill="#faf5ea" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- front wall -->
+    <polygon points="870,250 810,280 810,320 870,290"
+             fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- side wall -->
+    <polygon points="750,250 810,280 810,320 750,290"
+             fill="#d0c8b4" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- Left roof slope -->
+    <polygon points="750,250 810,220 810,200 750,230"
+             fill="#fff8ee" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- Right roof slope -->
+    <polygon points="870,250 810,220 810,200 870,230"
+             fill="#f0e8d4" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- Front gable -->
+    <polygon points="870,250 870,230 810,200 810,220"
+             fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- Ridge -->
+    <line x1="810" y1="200" x2="810" y2="220"
+          stroke="#c8c0ac" stroke-width="1.2"/>
+    <!-- Door -->
+    <polygon points="846,310 858,304 858,320 846,326"
+             fill="#2a2a26" opacity="0.40"/>
+    <!-- Windows -->
+    <rect x="826" y="258" width="9" height="7" rx="1"
+          fill="#ffe8b0" class="icw-b" opacity="0.50"/>
+    <rect x="838" y="254" width="9" height="7" rx="1"
+          fill="#ffe8b0" class="icw-c" opacity="0.45"/>
+    <!-- Chimney -->
+    <polygon points="826,222 832,219 832,210 826,213"
+             fill="#c8c0ac" stroke="#b0a898" stroke-width="0.7"/>
+    <!-- Label -->
+    <text x="810" y="258" text-anchor="middle"
           font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="700"
-          fill="#2a2a26" letter-spacing="1.5" opacity="0.60">GRANARY</text>
-    <!-- grain dots on top face -->
-    <circle cx="375" cy="168" r="3" fill="#2a2a26" opacity="0.14"/>
-    <circle cx="385" cy="165" r="3" fill="#ed6f5c" opacity="0.30"/>
-    <circle cx="395" cy="168" r="3" fill="#2a2a26" opacity="0.14"/>
-    <circle cx="380" cy="173" r="2.5" fill="#2a2a26" opacity="0.12"/>
-    <circle cx="390" cy="172" r="2.5" fill="#2a2a26" opacity="0.12"/>
-    <!-- windows -->
-    <rect x="342" y="212" width="8" height="10" rx="1.5" fill="#2a2a26" class="icw-a" opacity="0.10"/>
-    <rect x="354" y="212" width="8" height="10" rx="1.5" fill="#2a2a26" class="icw-c" opacity="0.10"/>
-    <rect x="342" y="228" width="8" height="10" rx="1.5" fill="#ed6f5c" class="icw-b" opacity="0.20"/>
-    <rect x="354" y="228" width="8" height="10" rx="1.5" fill="#2a2a26" class="icw-d" opacity="0.10"/>
+          fill="#2a2a26" letter-spacing="1" opacity="0.65">IMPETUS</text>
 
-    <!-- ══════════════════════════════════════════════════ -->
-    <!-- AI-NATIVE — bottom (cx=600,cy=460), ink, W=52,H=26,D=60 -->
-    <!-- ══════════════════════════════════════════════════ -->
-    <polygon points="600,434 652,460 600,486 548,460" fill="#3d3d38" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="548,460 600,486 600,546 548,520" fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="652,460 600,486 600,546 652,520" fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
-    <!-- label -->
-    <text x="600" y="468" text-anchor="middle"
+    <!-- ── UCP CABIN — left (cx≈365, ground-y≈480) ───────────────────────── -->
+    <!-- Cabin base/floor -->
+    <polygon points="365,430 425,460 365,490 305,460"
+             fill="#ede5d2" stroke="#c0b8a4" stroke-width="0.9"/>
+    <!-- front wall -->
+    <polygon points="425,460 365,490 365,530 425,500"
+             fill="#dcd4c0" stroke="#c0b8a4" stroke-width="0.9"/>
+    <!-- side wall -->
+    <polygon points="305,460 365,490 365,530 305,500"
+             fill="#ccc4b0" stroke="#c0b8a4" stroke-width="0.9"/>
+    <!-- Left roof slope -->
+    <polygon points="305,460 365,430 365,410 305,440"
+             fill="#f5f0e4" stroke="#c0b8a4" stroke-width="0.9"/>
+    <!-- Right roof slope -->
+    <polygon points="425,460 365,430 365,410 425,440"
+             fill="#e8e0cc" stroke="#c0b8a4" stroke-width="0.9"/>
+    <!-- Front gable -->
+    <polygon points="425,460 425,440 365,410 365,430"
+             fill="#e0d8c4" stroke="#c0b8a4" stroke-width="0.8"/>
+    <!-- Ridge -->
+    <line x1="365" y1="410" x2="365" y2="430"
+          stroke="#c0b8a4" stroke-width="1.2"/>
+    <!-- Door -->
+    <polygon points="401,520 413,514 413,530 401,536"
+             fill="#2a2a26" opacity="0.38"/>
+    <!-- Windows -->
+    <rect x="380" y="468" width="9" height="7" rx="1"
+          fill="#ffe8b0" class="icw-d" opacity="0.48"/>
+    <!-- Vent pipe -->
+    <polygon points="352,428 356,426 356,416 352,418"
+             fill="#c0b8a4" stroke="#a8a090" stroke-width="0.7"/>
+    <!-- Label -->
+    <text x="365" y="458" text-anchor="middle"
+          font-family="'Inter Tight',sans-serif" font-size="8.5" font-weight="700"
+          fill="#2a2a26" letter-spacing="1.5" opacity="0.65">UCP</text>
+
+    <!-- ── GRANARY CABIN — top-left (cx≈390, ground-y≈270) ──────────────── -->
+    <!-- Cabin base/floor -->
+    <polygon points="390,220 450,250 390,280 330,250"
+             fill="#faf5ea" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- front wall -->
+    <polygon points="450,250 390,280 390,320 450,290"
+             fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- side wall -->
+    <polygon points="330,250 390,280 390,320 330,290"
+             fill="#d8d0bc" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- Left roof slope (slightly steeper for granary feel) -->
+    <polygon points="330,250 390,220 390,196 330,226"
+             fill="#fff8ee" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- Right roof slope -->
+    <polygon points="450,250 390,220 390,196 450,226"
+             fill="#ede5d2" stroke="#c8c0ac" stroke-width="0.9"/>
+    <!-- Front gable -->
+    <polygon points="450,250 450,226 390,196 390,220"
+             fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- Ridge -->
+    <line x1="390" y1="196" x2="390" y2="220"
+          stroke="#c8c0ac" stroke-width="1.2"/>
+    <!-- Door -->
+    <polygon points="426,310 438,304 438,320 426,326"
+             fill="#2a2a26" opacity="0.38"/>
+    <!-- Windows -->
+    <rect x="406" y="258" width="9" height="7" rx="1"
+          fill="#ffe8b0" class="icw-e" opacity="0.48"/>
+    <rect x="418" y="254" width="9" height="7" rx="1"
+          fill="#ffe8b0" class="icw-a" opacity="0.42"/>
+    <!-- Chimney (double — granary has two) -->
+    <polygon points="406,218 410,216 410,206 406,208"
+             fill="#c8c0ac" stroke="#b0a898" stroke-width="0.7"/>
+    <polygon points="414,214 418,212 418,202 414,204"
+             fill="#c8c0ac" stroke="#b0a898" stroke-width="0.7"/>
+    <!-- Label -->
+    <text x="390" y="258" text-anchor="middle"
+          font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="700"
+          fill="#2a2a26" letter-spacing="1" opacity="0.65">GRANARY</text>
+
+    <!-- ── AI-NATIVE CABIN — bottom (cx≈600, ground-y≈570) ──────────────── -->
+    <!-- Cabin base/floor -->
+    <polygon points="600,520 660,550 600,580 540,550"
+             fill="#3d3d38" stroke="#1a1a17" stroke-width="0.9"/>
+    <!-- front wall -->
+    <polygon points="660,550 600,580 600,620 660,590"
+             fill="#2a2a26" stroke="#1a1a17" stroke-width="0.9"/>
+    <!-- side wall -->
+    <polygon points="540,550 600,580 600,620 540,590"
+             fill="#1e1e1b" stroke="#1a1a17" stroke-width="0.9"/>
+    <!-- Left roof slope (flat-ish, modern) -->
+    <polygon points="540,550 600,520 600,504 540,534"
+             fill="#4a4a44" stroke="#1a1a17" stroke-width="0.9"/>
+    <!-- Right roof slope -->
+    <polygon points="660,550 600,520 600,504 660,534"
+             fill="#3d3d38" stroke="#1a1a17" stroke-width="0.9"/>
+    <!-- Front gable -->
+    <polygon points="660,550 660,534 600,504 600,520"
+             fill="#333330" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- Ridge -->
+    <line x1="600" y1="504" x2="600" y2="520"
+          stroke="#1a1a17" stroke-width="1.2"/>
+    <!-- Door (coral accent) -->
+    <polygon points="636,608 648,602 648,618 636,624"
+             fill="#ed6f5c" opacity="0.80"/>
+    <!-- Windows with coral glow -->
+    <rect x="614" y="558" width="10" height="8" rx="1"
+          fill="#ed6f5c" class="icw-b" opacity="0.65"/>
+    <rect x="628" y="554" width="10" height="8" rx="1"
+          fill="#ed6f5c" class="icw-d" opacity="0.55"/>
+    <!-- Antenna on roof -->
+    <line x1="600" y1="490" x2="600" y2="504"
+          stroke="#ed6f5c" stroke-width="1.5"/>
+    <circle cx="600" cy="488" r="3.5" fill="#ed6f5c" opacity="0.80"/>
+    <!-- Label -->
+    <text x="600" y="538" text-anchor="middle"
           font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="800"
           fill="#efe7d2" letter-spacing="1.5">AI-NATIVE</text>
-    <!-- neural dots on top face -->
-    <circle cx="585" cy="452" r="3" fill="#ed6f5c" opacity="0.70"/>
-    <circle cx="600" cy="448" r="3" fill="#ed6f5c" opacity="0.50"/>
-    <circle cx="615" cy="452" r="3" fill="#ed6f5c" opacity="0.70"/>
-    <line x1="585" y1="452" x2="600" y2="448" stroke="#ed6f5c" stroke-width="1" opacity="0.5"/>
-    <line x1="600" y1="448" x2="615" y2="452" stroke="#ed6f5c" stroke-width="1" opacity="0.5"/>
-    <!-- windows left -->
-    <rect x="555" y="494" width="9" height="10" rx="1.5" fill="#ed6f5c" class="icw-a" opacity="0.55"/>
-    <rect x="568" y="494" width="9" height="10" rx="1.5" fill="#fff"    class="icw-c" opacity="0.15"/>
-    <rect x="555" y="508" width="9" height="10" rx="1.5" fill="#fff"    class="icw-b" opacity="0.15"/>
-    <rect x="568" y="508" width="9" height="10" rx="1.5" fill="#ed6f5c" class="icw-d" opacity="0.45"/>
 
-    <!-- ── SMALL DECORATIVE FLOATING CUBES ──────────────── -->
-    <!-- top-left -->
-    <polygon points="160,200 184,212 160,224 136,212" fill="#e8e0cc" stroke="#c0b8a4" stroke-width="0.8"/>
-    <polygon points="136,212 160,224 160,248 136,236" fill="#d0c8b4" stroke="#c0b8a4" stroke-width="0.8"/>
-    <polygon points="184,212 160,224 160,248 184,236" fill="#dcd4c0" stroke="#c0b8a4" stroke-width="0.8"/>
-    <!-- top-right -->
-    <polygon points="1040,190 1064,202 1040,214 1016,202" fill="#f7f1de" stroke="#c8c0ac" stroke-width="0.8"/>
-    <polygon points="1016,202 1040,214 1040,238 1016,226" fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
-    <polygon points="1064,202 1040,214 1040,238 1064,226" fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.8"/>
-    <!-- mid-right coral -->
-    <polygon points="1060,370 1076,378 1060,386 1044,378" fill="#f08070" stroke="#c45a49" stroke-width="0.8"/>
-    <polygon points="1044,378 1060,386 1060,402 1044,394" fill="#c45a49" stroke="#c45a49" stroke-width="0.8"/>
-    <polygon points="1076,378 1060,386 1060,402 1076,394" fill="#d96350" stroke="#c45a49" stroke-width="0.8"/>
-    <!-- mid-left ink -->
-    <polygon points="140,370 156,378 140,386 124,378" fill="#3d3d38" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="124,378 140,386 140,402 124,394" fill="#1a1a17" stroke="#1a1a17" stroke-width="0.8"/>
-    <polygon points="156,378 140,386 140,402 156,394" fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- ── SMALL GROUND DETAILS ──────────────────────────────────────────── -->
+    <!-- Fuel/data drums near JCP -->
+    <ellipse cx="920" cy="472" rx="9" ry="5" fill="#c45a49" opacity="0.55"/>
+    <rect x="911" y="462" width="18" height="10" rx="2"
+          fill="#d96350" stroke="#c45a49" stroke-width="0.8" opacity="0.70"/>
+    <ellipse cx="920" cy="462" rx="9" ry="5" fill="#f08070" opacity="0.70"/>
 
-    <!-- ── METRIC CHIPS ──────────────────────────────────── -->
+    <!-- Small vehicle / cart near UCP -->
+    <polygon points="305,510 325,520 325,528 305,518"
+             fill="#c8c0ac" stroke="#a8a090" stroke-width="0.8" opacity="0.65"/>
+    <circle cx="312" cy="528" r="4" fill="#a8a090" opacity="0.65"/>
+    <circle cx="320" cy="524" r="4" fill="#a8a090" opacity="0.65"/>
+
+    <!-- Wind sock near tower base (right side) -->
+    <line x1="660" y1="490" x2="660" y2="460" stroke="#2a2a26" stroke-width="1.2" opacity="0.40"/>
+    <polygon points="660,460 680,454 678,462 660,468"
+              fill="#ed6f5c" opacity="0.55"/>
+
+    <!-- ── METRIC CHIPS ──────────────────────────────────────────────────── -->
     <!-- Customers 380 M+ — far left -->
     <g>
-      <rect x="30" y="330" width="148" height="52" rx="9" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.14"/>
-      <text x="46" y="352" font-family="'Inter Tight',sans-serif" font-size="10" fill="#2a2a26" opacity="0.50" font-weight="500">Customers</text>
-      <text x="46" y="374" font-family="'Inter Tight',sans-serif" font-size="19" font-weight="800" fill="#ed6f5c">380 M+</text>
+      <rect x="28" y="340" width="152" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="44" y="362" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Customers</text>
+      <text x="44" y="385" font-family="'Inter Tight',sans-serif"
+            font-size="20" font-weight="800" fill="#ed6f5c">380 M+</text>
     </g>
     <!-- Brands live 100+ — far right -->
     <g>
-      <rect x="1022" y="330" width="148" height="52" rx="9" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.14"/>
-      <text x="1038" y="352" font-family="'Inter Tight',sans-serif" font-size="10" fill="#2a2a26" opacity="0.50" font-weight="500">Brands live</text>
-      <text x="1038" y="374" font-family="'Inter Tight',sans-serif" font-size="19" font-weight="800" fill="#ed6f5c">100+</text>
+      <rect x="1020" y="340" width="152" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="1036" y="362" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Brands live</text>
+      <text x="1036" y="385" font-family="'Inter Tight',sans-serif"
+            font-size="20" font-weight="800" fill="#ed6f5c">100+</text>
     </g>
     <!-- Platforms 22 live — top centre -->
     <g>
-      <rect x="476" y="28" width="148" height="52" rx="9" fill="#2a2a26"/>
-      <text x="492" y="50" font-family="'Inter Tight',sans-serif" font-size="10" fill="#efe7d2" opacity="0.55" font-weight="500">Platforms</text>
-      <text x="492" y="72" font-family="'Inter Tight',sans-serif" font-size="19" font-weight="800" fill="#ed6f5c">22 live</text>
+      <rect x="476" y="30" width="148" height="54" rx="9" fill="#2a2a26"/>
+      <text x="492" y="52" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#efe7d2" opacity="0.55" font-weight="500">Platforms</text>
+      <text x="492" y="75" font-family="'Inter Tight',sans-serif"
+            font-size="20" font-weight="800" fill="#ed6f5c">22 live</text>
     </g>
     <!-- Orders/day 700 K+ — bottom right -->
     <g>
-      <rect x="870" y="530" width="160" height="52" rx="9" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.14"/>
-      <text x="886" y="552" font-family="'Inter Tight',sans-serif" font-size="10" fill="#2a2a26" opacity="0.50" font-weight="500">Orders / day</text>
-      <text x="886" y="574" font-family="'Inter Tight',sans-serif" font-size="19" font-weight="800" fill="#ed6f5c">700 K+</text>
+      <rect x="870" y="600" width="162" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="886" y="622" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Orders / day</text>
+      <text x="886" y="645" font-family="'Inter Tight',sans-serif"
+            font-size="20" font-weight="800" fill="#ed6f5c">700 K+</text>
     </g>
     <!-- Stores on JCP 20 K+ — bottom left -->
     <g>
-      <rect x="170" y="530" width="160" height="52" rx="9" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.14"/>
-      <text x="186" y="552" font-family="'Inter Tight',sans-serif" font-size="10" fill="#2a2a26" opacity="0.50" font-weight="500">Stores on JCP</text>
-      <text x="186" y="574" font-family="'Inter Tight',sans-serif" font-size="19" font-weight="800" fill="#ed6f5c">20 K+</text>
+      <rect x="168" y="600" width="162" height="54" rx="9"
+            fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="184" y="622" font-family="'Inter Tight',sans-serif"
+            font-size="10" fill="#2a2a26" opacity="0.48" font-weight="500">Stores on JCP</text>
+      <text x="184" y="645" font-family="'Inter Tight',sans-serif"
+            font-size="20" font-weight="800" fill="#ed6f5c">20 K+</text>
     </g>
   </svg>
   </div>
