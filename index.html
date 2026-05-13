@@ -471,368 +471,427 @@ Fynd is the AI-native operating layer underneath.
 </div>
 
       <!-- ── Isometric IMPACT composition ── -->
-      <div class="impact-iso-wrap" aria-hidden="true">
-        <svg class="impact-iso-svg" viewBox="0 0 760 340" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <style>
-              /* ── Impact ISO fill colours ── */
-              .imp-label {
-                font-family: 'JetBrains Mono','Courier New',monospace;
-                font-size: 8px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
-              }
-              .imp-chip-label {
-                font-family: 'Inter Tight','Inter',sans-serif;
-                font-size: 8px; font-weight: 600; fill: #5a5a52;
-              }
-              .imp-chip-val {
-                font-family: 'Inter Tight','Inter',sans-serif;
-                font-size: 11px; font-weight: 800; fill: #ed6f5c;
-              }
-              .imp-conn { stroke: #c8c0aa; stroke-width: 0.9; fill: none; }
-
-              /* ══ IMPACT ISO ANIMATIONS ══ */
-              @keyframes impRise {
-                from { opacity:0; transform:translateY(16px); }
-                to   { opacity:1; transform:translateY(0); }
-              }
-              @keyframes impHubFloat  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
-              @keyframes impB1Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-              @keyframes impB2Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-              @keyframes impB3Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
-              @keyframes impB4Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
-              @keyframes impB5Float   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
-              @keyframes impChip      { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(.95)} }
-              @keyframes impConn      { from{stroke-dashoffset:0} to{stroke-dashoffset:-18} }
-              @keyframes impHubPulse  { 0%,100%{opacity:1} 50%{opacity:.82} }
-              @keyframes impHubSpin   {
-                from { transform: rotate(0deg); transform-origin: 380px 170px; }
-                to   { transform: rotate(360deg); transform-origin: 380px 170px; }
-              }
-
-              /* Hub (central FYND block) */
-              .imp-hub  { animation: impRise .6s .1s ease both, impHubFloat 8s 1s ease-in-out infinite; }
-              /* Hub ring slow spin */
-              .imp-hub-ring { animation: impHubSpin 25s linear infinite; }
-              /* Satellite blocks — staggered */
-              .imp-b1   { animation: impRise .6s .25s ease both, impB1Float  9s 1.5s ease-in-out infinite; }
-              .imp-b2   { animation: impRise .6s .4s  ease both, impB2Float  7s 2s   ease-in-out infinite; }
-              .imp-b3   { animation: impRise .6s .55s ease both, impB3Float 10s 2.5s ease-in-out infinite; }
-              .imp-b4   { animation: impRise .6s .7s  ease both, impB4Float  8.5s 1.8s ease-in-out infinite; }
-              .imp-b5   { animation: impRise .6s .85s ease both, impB5Float 11s 3s   ease-in-out infinite; }
-              /* Metric chips */
-              .imp-c1   { animation: impRise .5s 1.1s ease both, impChip 5s 2s   ease-in-out infinite; }
-              .imp-c2   { animation: impRise .5s 1.3s ease both, impChip 6s 3s   ease-in-out infinite; }
-              .imp-c3   { animation: impRise .5s 1.5s ease both, impChip 4.5s 1.5s ease-in-out infinite; }
-              .imp-c4   { animation: impRise .5s 1.7s ease both, impChip 7s 2.8s ease-in-out infinite; }
-              .imp-c5   { animation: impRise .5s 1.9s ease both, impChip 5.5s 1.2s ease-in-out infinite; }
-              /* Connector lines — animated dash scroll */
-              .imp-conn { stroke-dasharray: 4 4; animation: impConn 2.5s linear infinite; }
-              /* Hub coral accent pulse */
-              .imp-hub-coral { animation: impHubPulse 3s ease-in-out infinite; }
-
-              @media (prefers-reduced-motion: reduce) {
-                .imp-hub,.imp-hub-ring,
-                .imp-b1,.imp-b2,.imp-b3,.imp-b4,.imp-b5,
-                .imp-c1,.imp-c2,.imp-c3,.imp-c4,.imp-c5,
-                .imp-hub-coral {
-                  animation: none; opacity: 1; transform: none;
-                }
-                .imp-conn { animation: none; stroke-dasharray: none; }
-              }
-            </style>
-            <filter id="imp-shadow">
-              <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#1a1a18" flood-opacity="0.12"/>
-            </filter>
-            <filter id="imp-shadow-sm">
-              <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#1a1a18" flood-opacity="0.08"/>
-            </filter>
-          </defs>
-
-          <!--
-            Isometric city layout — centre at (380, 170)
-            Hub (FYND) at centre, 5 platform blocks around it.
-
-            Isometric slab helper:
-              top-face rhombus: given centre (cx,cy), half-width hw, half-depth hd
-                top    = (cx, cy - hd*0.5)
-                right  = (cx + hw, cy + hw*0.5 - hd*0.5)
-                bottom = (cx, cy + hw*0.5)
-                left   = (cx - hw, cy + hw*0.5 - hd*0.5)
-              left-face: bottom-left of top → down by height h
-              right-face: bottom-right of top → down by height h
-
-            Simplified pre-calculated coordinates below.
-          -->
-
-          <!-- ── Connector lines (drawn first, behind blocks) ── -->
-          <!-- Hub → JCP (right) -->
-          <line class="imp-conn" x1="380" y1="170" x2="530" y2="145"/>
-          <!-- Hub → Impetus (top-right) -->
-          <line class="imp-conn" x1="380" y1="170" x2="490" y2="100"/>
-          <!-- Hub → UCP (left) -->
-          <line class="imp-conn" x1="380" y1="170" x2="230" y2="145"/>
-          <!-- Hub → Granary (top-left) -->
-          <line class="imp-conn" x1="380" y1="170" x2="270" y2="100"/>
-          <!-- Hub → AI-Native (bottom) -->
-          <line class="imp-conn" x1="380" y1="170" x2="380" y2="240"/>
-
-          <!-- ══ HUB — FYND (centre, tallest, ink dark) ══ -->
-          <g class="imp-hub" filter="url(#imp-shadow)">
-            <!-- top face: centre (380,140), hw=52, hd=52 -->
-            <polygon fill="#2a2a26"
-              points="380,114  432,140  380,166  328,140"/>
-            <!-- left face: h=36 -->
-            <polygon fill="#1a1a18"
-              points="328,140  380,166  380,202  328,176"/>
-            <!-- right face: h=36 -->
-            <polygon fill="#222220"
-              points="380,166  432,140  432,176  380,202"/>
-            <text class="imp-label" fill="#efe7d2" x="380" y="146" text-anchor="middle">FYND</text>
-          </g>
-
-          <!-- ══ BLOCK 1 — JCP (right, coral accent) ══ -->
-          <g class="imp-b1" filter="url(#imp-shadow)">
-            <!-- centre (530,145), hw=40, hd=40, h=24 -->
-            <polygon fill="#ed6f5c"
-              points="530,125  570,145  530,165  490,145"/>
-            <polygon fill="#c45a4a"
-              points="490,145  530,165  530,189  490,169"/>
-            <polygon fill="#d4614f"
-              points="530,165  570,145  570,169  530,189"/>
-            <text class="imp-label" fill="#efe7d2" x="530" y="150" text-anchor="middle">JCP</text>
-          </g>
-
-          <!-- ══ BLOCK 2 — Impetus (top-right, bone) ══ -->
-          <g class="imp-b2" filter="url(#imp-shadow)">
-            <!-- centre (490,90), hw=36, hd=36, h=20 -->
-            <polygon fill="#f7f1de"
-              points="490,72  526,90  490,108  454,90"/>
-            <polygon fill="#d4c9b0"
-              points="454,90  490,108  490,128  454,110"/>
-            <polygon fill="#e0d5bc"
-              points="490,108  526,90  526,110  490,128"/>
-            <text class="imp-label" fill="#1a1a18" x="490" y="96" text-anchor="middle">IMPETUS</text>
-          </g>
-
-          <!-- ══ BLOCK 3 — UCP (left, warm grey) ══ -->
-          <g class="imp-b3" filter="url(#imp-shadow)">
-            <!-- centre (230,145), hw=40, hd=40, h=24 -->
-            <polygon fill="#e8e0cc"
-              points="230,125  270,145  230,165  190,145"/>
-            <polygon fill="#c0b89e"
-              points="190,145  230,165  230,189  190,169"/>
-            <polygon fill="#cec6ac"
-              points="230,165  270,145  270,169  230,189"/>
-            <text class="imp-label" fill="#1a1a18" x="230" y="150" text-anchor="middle">UCP</text>
-          </g>
-
-          <!-- ══ BLOCK 4 — Granary (top-left, lighter bone) ══ -->
-          <g class="imp-b4" filter="url(#imp-shadow)">
-            <!-- centre (270,90), hw=36, hd=36, h=20 -->
-            <polygon fill="#f0ead6"
-              points="270,72  306,90  270,108  234,90"/>
-            <polygon fill="#cec6b0"
-              points="234,90  270,108  270,128  234,110"/>
-            <polygon fill="#dcd4be"
-              points="270,108  306,90  306,110  270,128"/>
-            <text class="imp-label" fill="#1a1a18" x="270" y="96" text-anchor="middle">GRANARY</text>
-          </g>
-
-          <!-- ══ BLOCK 5 — AI-Native (bottom, mid-dark) ══ -->
-          <g class="imp-b5" filter="url(#imp-shadow)">
-            <!-- centre (380,255), hw=38, hd=38, h=22 -->
-            <polygon fill="#3a3a34"
-              points="380,237  418,255  380,273  342,255"/>
-            <polygon fill="#2a2a26"
-              points="342,255  380,273  380,295  342,277"/>
-            <polygon fill="#323230"
-              points="380,273  418,255  418,277  380,295"/>
-            <text class="imp-label" fill="#efe7d2" x="380" y="261" text-anchor="middle">AI-NATIVE</text>
-          </g>
-
-          <!-- ══ METRIC CHIPS ══ -->
-          <!-- Chip 1: 380 M+ customers — far left -->
-          <g class="imp-c1" filter="url(#imp-shadow-sm)">
-            <line class="imp-conn" x1="190" y1="157" x2="100" y2="175"/>
-            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="18" y="158" width="84" height="34" rx="4"/>
-            <text class="imp-chip-label" x="60" y="171" text-anchor="middle">Customers</text>
-            <text class="imp-chip-val"   x="60" y="185" text-anchor="middle">380 M+</text>
-          </g>
-
-          <!-- Chip 2: 100+ brands — far right -->
-          <g class="imp-c2" filter="url(#imp-shadow-sm)">
-            <line class="imp-conn" x1="570" y1="157" x2="656" y2="175"/>
-            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="654" y="158" width="84" height="34" rx="4"/>
-            <text class="imp-chip-label" x="696" y="171" text-anchor="middle">Brands live</text>
-            <text class="imp-chip-val"   x="696" y="185" text-anchor="middle">100+</text>
-          </g>
-
-          <!-- Chip 3: 22 platforms — top centre -->
-          <g class="imp-c3" filter="url(#imp-shadow-sm)">
-            <line class="imp-conn" x1="380" y1="114" x2="380" y2="46"/>
-            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="338" y="12" width="84" height="34" rx="4"/>
-            <text class="imp-chip-label" x="380" y="25" text-anchor="middle">Platforms</text>
-            <text class="imp-chip-val"   x="380" y="39" text-anchor="middle">22 live</text>
-          </g>
-
-          <!-- Chip 4: 700 K+ orders — bottom right -->
-          <g class="imp-c4" filter="url(#imp-shadow-sm)">
-            <line class="imp-conn" x1="418" y1="266" x2="510" y2="295"/>
-            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="508" y="278" width="90" height="34" rx="4"/>
-            <text class="imp-chip-label" x="553" y="291" text-anchor="middle">Orders / day</text>
-            <text class="imp-chip-val"   x="553" y="305" text-anchor="middle">700 K+</text>
-          </g>
-
-          <!-- Chip 5: 20 K+ stores — bottom left -->
-          <g class="imp-c5" filter="url(#imp-shadow-sm)">
-            <line class="imp-conn" x1="342" y1="266" x2="250" y2="295"/>
-            <rect fill="#efe7d2" stroke="#d4c9b0" stroke-width="0.8" x="162" y="278" width="88" height="34" rx="4"/>
-            <text class="imp-chip-label" x="206" y="291" text-anchor="middle">Stores on JCP</text>
-            <text class="imp-chip-val"   x="206" y="305" text-anchor="middle">20 K+</text>
-          </g>
-
-        </svg>
-      </div>
-      <!-- ── end isometric IMPACT composition ── -->
-
+      <div class="impact-city-wrap" style="width:100%;max-width:900px;margin:0 auto 48px;position:relative;">
 <style>
-  /* ── Impact metric slider ─────────────────────────── */
-  .impact-slider-wrap {
-    position: relative;
-    overflow: hidden;
-    margin: 0 0 2.5rem 0;
-    /* fade masks on edges */
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  }
-  .impact-slider-track {
-    display: flex;
-    gap: 1rem;
-    width: max-content;
-    animation: impSlide 36s linear infinite;
-  }
-  .impact-slider-track:hover { animation-play-state: paused; }
-  @keyframes impSlide {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-  }
-  .impact-slide-card {
-    flex: 0 0 220px;
-    background: var(--bone, #f7f1de);
-    border: 1px solid var(--rule, #d4c9b0);
-    border-radius: 10px;
-    padding: 1.25rem 1.4rem;
-    display: flex;
-    flex-direction: column;
-    gap: .45rem;
-  }
-  .impact-slide-num {
-    font-family: 'Inter Tight', 'Inter', sans-serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 800;
-    color: var(--ink, #1a1a18);
-    line-height: 1;
-    letter-spacing: -.02em;
-  }
-  .impact-slide-cap {
-    font-family: 'Inter', sans-serif;
-    font-size: .72rem;
-    line-height: 1.45;
-    color: var(--ink-muted, #5a5a52);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .impact-slider-track { animation: none; }
-  }
-</style>
-<div class="impact-slider-wrap" aria-label="Impact metrics">
-  <div class="impact-slider-track">
-    <!-- Set 1 -->
-    <div class="impact-slide-card">
-          <div class="impact-slide-num">380 M+</div>
-          <div class="impact-slide-cap">Customer identities unified across Reliance Retail · UCP foundation across 100 % of formats</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">100+</div>
-          <div class="impact-slide-cap">Brands replatformed to Jio Commerce Platform · 78 channels · 68 live · 700 K+ orders / day</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">15.08 Cr</div>
-          <div class="impact-slide-cap">Pieces delivered FY 26 via Impetus F&amp;L · 11.06 L POs FY 26 · 43 brands live</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">88 %+</div>
-          <div class="impact-slide-cap">Positive customer engagement · AJIO ZIP agentic shopping · 86 % chat-driven discovery</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">20 K+</div>
-          <div class="impact-slide-cap">Stores connected on JCP across the Reliance Retail estate</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">22</div>
-          <div class="impact-slide-cap">Platforms running today · Plan · Buy · Make · Move · Sell · Data · Store Health · HR Tech</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">1 K+</div>
-          <div class="impact-slide-cap">Vendors transacting on Impetus across the Reliance F&amp;L supply base</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">2.3 K+</div>
-          <div class="impact-slide-cap">Reliance employees trained across platforms</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">1.2 K+</div>
-          <div class="impact-slide-cap">Developer contributors across Jio Commerce Platform + Impetus</div>
-        </div>
-    <!-- Set 2 (duplicate for seamless loop) -->
-    <div class="impact-slide-card">
-          <div class="impact-slide-num">380 M+</div>
-          <div class="impact-slide-cap">Customer identities unified across Reliance Retail · UCP foundation across 100 % of formats</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">100+</div>
-          <div class="impact-slide-cap">Brands replatformed to Jio Commerce Platform · 78 channels · 68 live · 700 K+ orders / day</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">15.08 Cr</div>
-          <div class="impact-slide-cap">Pieces delivered FY 26 via Impetus F&amp;L · 11.06 L POs FY 26 · 43 brands live</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">88 %+</div>
-          <div class="impact-slide-cap">Positive customer engagement · AJIO ZIP agentic shopping · 86 % chat-driven discovery</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">20 K+</div>
-          <div class="impact-slide-cap">Stores connected on JCP across the Reliance Retail estate</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">22</div>
-          <div class="impact-slide-cap">Platforms running today · Plan · Buy · Make · Move · Sell · Data · Store Health · HR Tech</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">1 K+</div>
-          <div class="impact-slide-cap">Vendors transacting on Impetus across the Reliance F&amp;L supply base</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">2.3 K+</div>
-          <div class="impact-slide-cap">Reliance employees trained across platforms</div>
-        </div>
-        <div class="impact-slide-card">
-          <div class="impact-slide-num">1.2 K+</div>
-          <div class="impact-slide-cap">Developer contributors across Jio Commerce Platform + Impetus</div>
-        </div>
-  </div>
-</div>
-</div>
-</section>
+/* ── IMPACT CITY ANIMATIONS ─────────────────────────── */
+@keyframes ic-float-a { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@keyframes ic-float-b { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes ic-float-c { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-9px)} }
+@keyframes ic-float-d { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes ic-float-e { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+@keyframes ic-float-f { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes ic-win-pulse { 0%,100%{opacity:.18} 50%{opacity:.7} }
+@keyframes ic-win-pulse2 { 0%,100%{opacity:.35} 50%{opacity:.9} }
+@keyframes ic-particle { 0%{offset-distance:0%;opacity:0} 10%{opacity:1} 90%{opacity:1} 100%{offset-distance:100%;opacity:0} }
+@keyframes ic-ring-pulse { 0%,100%{r:28;opacity:.18} 50%{r:36;opacity:.06} }
+@keyframes ic-ring-pulse2 { 0%,100%{r:44;opacity:.10} 50%{r:54;opacity:.03} }
+@keyframes ic-chip-in { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+@keyframes ic-chip-bob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+@keyframes ic-glow { 0%,100%{opacity:.08} 50%{opacity:.22} }
+@keyframes ic-dash { to{stroke-dashoffset:-40} }
+@keyframes ic-rise { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-<!-- 02 IMPETUS -->
-<section id="impetus" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="impetus">
-<div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">02 &middot; IMPETUS</div>
-<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">F&amp;L from design to shelf in 21 days &middot; <span style="color: var(--accent);">one AI-native platform.</span></h2>
-<div class="section-hero-split">
-<div><div class="num-display section-hero-num">15.08 Cr</div><div class="section-hero-cap">Pieces shipped FY 26</div></div>
-<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Plan &middot; Buy &middot; Make &middot; Sell on a single fabric for Fashion &amp; Lifestyle. 11.06 L POs FY 26 &middot; 460 K+ POs automated &middot; 720 K articles packed / day. Five named AI Agents &mdash; <a href="/agents/cortex-planning/" style="color: var(--accent); text-decoration: underline;">Cortex Planning</a> &middot; <a href="/agents/retail-vista/" style="color: var(--accent); text-decoration: underline;">Retail Vista</a> &middot; <a href="/agents/category-intelligence/" style="color: var(--accent); text-decoration: underline;">Category Intelligence</a> &middot; <a href="/agents/trend-to-design/" style="color: var(--accent); text-decoration: underline;">Trend-to-Design</a> &middot; <a href="/agents/agentic-marketing/" style="color: var(--accent); text-decoration: underline;">Marketing</a>.</p></div>
+.ic-tower   { animation: ic-float-a 7s ease-in-out infinite; transform-origin:center bottom; }
+.ic-jcp     { animation: ic-float-b 8.5s ease-in-out infinite 0.4s; transform-origin:center bottom; }
+.ic-impetus { animation: ic-float-c 9s ease-in-out infinite 1.1s; transform-origin:center bottom; }
+.ic-ucp     { animation: ic-float-d 7.8s ease-in-out infinite 0.7s; transform-origin:center bottom; }
+.ic-granary { animation: ic-float-e 8.2s ease-in-out infinite 1.5s; transform-origin:center bottom; }
+.ic-ainative{ animation: ic-float-f 9.5s ease-in-out infinite 0.2s; transform-origin:center bottom; }
+
+.ic-win-a { animation: ic-win-pulse  2.8s ease-in-out infinite; }
+.ic-win-b { animation: ic-win-pulse  3.4s ease-in-out infinite 0.6s; }
+.ic-win-c { animation: ic-win-pulse  2.2s ease-in-out infinite 1.2s; }
+.ic-win-d { animation: ic-win-pulse2 3.1s ease-in-out infinite 0.3s; }
+.ic-win-e { animation: ic-win-pulse2 2.6s ease-in-out infinite 0.9s; }
+
+.ic-ring1 { animation: ic-ring-pulse  4s ease-in-out infinite; }
+.ic-ring2 { animation: ic-ring-pulse2 4s ease-in-out infinite 1s; }
+.ic-glow  { animation: ic-glow 5s ease-in-out infinite; }
+.ic-dash  { animation: ic-dash 1.8s linear infinite; }
+
+.ic-p1 { motion-path:path("M450,310 Q380,360 260,420"); offset-path:path("M450,310 Q380,360 260,420"); animation:ic-particle 2.4s linear infinite; }
+.ic-p2 { motion-path:path("M450,310 Q520,360 640,420"); offset-path:path("M450,310 Q520,360 640,420"); animation:ic-particle 2.4s linear infinite 0.8s; }
+.ic-p3 { motion-path:path("M450,310 Q340,290 220,300"); offset-path:path("M450,310 Q340,290 220,300"); animation:ic-particle 2.8s linear infinite 0.3s; }
+.ic-p4 { motion-path:path("M450,310 Q560,290 680,300"); offset-path:path("M450,310 Q560,290 680,300"); animation:ic-particle 2.8s linear infinite 1.1s; }
+.ic-p5 { motion-path:path("M450,310 Q450,380 450,480"); offset-path:path("M450,310 Q450,380 450,480"); animation:ic-particle 3s linear infinite 0.5s; }
+.ic-p6 { motion-path:path("M450,310 Q390,250 330,180"); offset-path:path("M450,310 Q390,250 330,180"); animation:ic-particle 2.6s linear infinite 1.4s; }
+
+.ic-chip { animation: ic-chip-in 0.6s ease both, ic-chip-bob 5s ease-in-out infinite 0.6s; }
+.ic-chip-1 { animation-delay: 0.1s, 0.7s; }
+.ic-chip-2 { animation-delay: 0.2s, 1.1s; }
+.ic-chip-3 { animation-delay: 0.3s, 0.9s; }
+.ic-chip-4 { animation-delay: 0.4s, 1.3s; }
+.ic-chip-5 { animation-delay: 0.5s, 0.8s; }
+
+.ic-scene { animation: ic-rise 0.8s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ic-tower,.ic-jcp,.ic-impetus,.ic-ucp,.ic-granary,.ic-ainative,
+  .ic-win-a,.ic-win-b,.ic-win-c,.ic-win-d,.ic-win-e,
+  .ic-ring1,.ic-ring2,.ic-glow,.ic-dash,.ic-chip,.ic-scene,
+  .ic-p1,.ic-p2,.ic-p3,.ic-p4,.ic-p5,.ic-p6 { animation:none!important; opacity:1!important; }
+}
+</style>
+
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;" aria-hidden="true">
+  <defs>
+    <!-- isometric transform helpers via skewX/skewY on groups -->
+    <!-- Colour palette: ink=#2a2a26, coral=#ed6f5c, bone=#f7f1de, warm=#e8e0cc, paper=#efe7d2 -->
+
+    <!-- Ground glow -->
+    <radialGradient id="ic-ground-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ed6f5c" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#ed6f5c" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Building face gradients -->
+    <linearGradient id="ic-ink-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d3d38"/>
+      <stop offset="100%" stop-color="#2a2a26"/>
+    </linearGradient>
+    <linearGradient id="ic-ink-left" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1a1a17"/>
+      <stop offset="100%" stop-color="#2a2a26"/>
+    </linearGradient>
+    <linearGradient id="ic-ink-right" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2a2a26"/>
+      <stop offset="100%" stop-color="#222220"/>
+    </linearGradient>
+
+    <linearGradient id="ic-coral-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f08070"/>
+      <stop offset="100%" stop-color="#ed6f5c"/>
+    </linearGradient>
+    <linearGradient id="ic-coral-left" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c45a49"/>
+      <stop offset="100%" stop-color="#ed6f5c"/>
+    </linearGradient>
+    <linearGradient id="ic-coral-right" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ed6f5c"/>
+      <stop offset="100%" stop-color="#d96350"/>
+    </linearGradient>
+
+    <linearGradient id="ic-bone-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#faf5ea"/>
+      <stop offset="100%" stop-color="#f7f1de"/>
+    </linearGradient>
+    <linearGradient id="ic-bone-left" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#ddd6c4"/>
+      <stop offset="100%" stop-color="#e8e0cc"/>
+    </linearGradient>
+    <linearGradient id="ic-bone-right" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e8e0cc"/>
+      <stop offset="100%" stop-color="#d8d0bc"/>
+    </linearGradient>
+
+    <linearGradient id="ic-warm-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ede5d2"/>
+      <stop offset="100%" stop-color="#e8e0cc"/>
+    </linearGradient>
+
+    <!-- Particle dot -->
+    <circle id="ic-dot" r="3.5" fill="#ed6f5c"/>
+  </defs>
+
+  <!-- ── GROUND PLANE ─────────────────────────────────── -->
+  <ellipse cx="450" cy="390" rx="340" ry="110" fill="url(#ic-ground-glow)" class="ic-glow"/>
+
+  <!-- Ground grid lines (isometric) -->
+  <g stroke="#2a2a26" stroke-width="0.5" stroke-opacity="0.08">
+    <!-- horizontal iso lines -->
+    <line x1="130" y1="390" x2="770" y2="390"/>
+    <line x1="150" y1="370" x2="750" y2="370"/>
+    <line x1="175" y1="350" x2="725" y2="350"/>
+    <line x1="205" y1="330" x2="695" y2="330"/>
+    <!-- diagonal left-to-right -->
+    <line x1="200" y1="310" x2="450" y2="430"/>
+    <line x1="280" y1="295" x2="530" y2="430"/>
+    <line x1="360" y1="285" x2="610" y2="420"/>
+    <line x1="440" y1="280" x2="690" y2="415"/>
+    <!-- diagonal right-to-left -->
+    <line x1="700" y1="310" x2="450" y2="430"/>
+    <line x1="620" y1="295" x2="370" y2="430"/>
+    <line x1="540" y1="285" x2="290" y2="420"/>
+    <line x1="460" y1="280" x2="210" y2="415"/>
+  </g>
+
+  <!-- ── CONNECTOR LINES (animated dashes) ─────────────── -->
+  <g fill="none" stroke="#2a2a26" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.35" class="ic-dash">
+    <!-- tower → JCP (bottom-right) -->
+    <path d="M510,340 Q580,370 640,390"/>
+    <!-- tower → IMPETUS (top-right) -->
+    <path d="M490,280 Q560,260 630,250"/>
+    <!-- tower → UCP (left) -->
+    <path d="M410,310 Q340,310 260,320"/>
+    <!-- tower → GRANARY (top-left) -->
+    <path d="M430,270 Q370,240 300,220"/>
+    <!-- tower → AI-NATIVE (bottom) -->
+    <path d="M450,360 Q450,410 450,460"/>
+  </g>
+
+  <!-- ── PARTICLES ──────────────────────────────────────── -->
+  <use href="#ic-dot" class="ic-p1"/>
+  <use href="#ic-dot" class="ic-p2"/>
+  <use href="#ic-dot" class="ic-p3"/>
+  <use href="#ic-dot" class="ic-p4"/>
+  <use href="#ic-dot" class="ic-p5"/>
+  <use href="#ic-dot" class="ic-p6"/>
+
+  <!-- ── PULSE RINGS around tower base ─────────────────── -->
+  <circle cx="450" cy="355" r="28" fill="none" stroke="#ed6f5c" stroke-width="1.5" class="ic-ring1"/>
+  <circle cx="450" cy="355" r="44" fill="none" stroke="#ed6f5c" stroke-width="1" class="ic-ring2"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- CENTRAL FYND TOWER (tallest, ink dark)             -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <g class="ic-tower">
+    <!-- Floor 5 (top cap / antenna base) -->
+    <!-- Antenna -->
+    <line x1="450" y1="80" x2="450" y2="145" stroke="#2a2a26" stroke-width="2"/>
+    <circle cx="450" cy="80" r="4" fill="#ed6f5c"/>
+
+    <!-- Floor 5 — narrow cap -->
+    <!-- top face -->
+    <polygon points="450,145 480,160 450,175 420,160" fill="url(#ic-ink-top)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="420,160 450,175 450,195 420,180" fill="url(#ic-ink-left)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="480,160 450,175 450,195 480,180" fill="url(#ic-ink-right)" stroke="#1a1a17" stroke-width="0.8"/>
+
+    <!-- Floor 4 — coral band -->
+    <!-- top face -->
+    <polygon points="450,195 490,215 450,235 410,215" fill="url(#ic-coral-top)" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="410,215 450,235 450,265 410,245" fill="url(#ic-coral-left)" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="490,215 450,235 450,265 490,245" fill="url(#ic-coral-right)" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- windows on coral floor -->
+    <rect x="418" y="240" width="6" height="8" rx="1" fill="#fff" class="ic-win-a" opacity="0.4"/>
+    <rect x="428" y="240" width="6" height="8" rx="1" fill="#fff" class="ic-win-b" opacity="0.4"/>
+    <rect x="438" y="244" width="6" height="8" rx="1" fill="#fff" class="ic-win-c" opacity="0.4"/>
+    <rect x="462" y="240" width="6" height="8" rx="1" fill="#fff" class="ic-win-d" opacity="0.4"/>
+    <rect x="472" y="244" width="6" height="8" rx="1" fill="#fff" class="ic-win-e" opacity="0.4"/>
+
+    <!-- Floor 3 — main ink body (tall) -->
+    <!-- top face -->
+    <polygon points="450,265 500,290 450,315 400,290" fill="url(#ic-ink-top)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="400,290 450,315 450,380 400,355" fill="url(#ic-ink-left)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="500,290 450,315 450,380 500,355" fill="url(#ic-ink-right)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- window grid left face -->
+    <rect x="408" y="320" width="7" height="9" rx="1" fill="#ed6f5c" class="ic-win-a" opacity="0.5"/>
+    <rect x="420" y="320" width="7" height="9" rx="1" fill="#ed6f5c" class="ic-win-b" opacity="0.5"/>
+    <rect x="408" y="335" width="7" height="9" rx="1" fill="#fff" class="ic-win-c" opacity="0.25"/>
+    <rect x="420" y="335" width="7" height="9" rx="1" fill="#fff" class="ic-win-d" opacity="0.25"/>
+    <rect x="408" y="350" width="7" height="9" rx="1" fill="#ed6f5c" class="ic-win-e" opacity="0.4"/>
+    <!-- window grid right face -->
+    <rect x="462" y="320" width="7" height="9" rx="1" fill="#fff" class="ic-win-b" opacity="0.2"/>
+    <rect x="474" y="320" width="7" height="9" rx="1" fill="#fff" class="ic-win-a" opacity="0.2"/>
+    <rect x="462" y="335" width="7" height="9" rx="1" fill="#ed6f5c" class="ic-win-d" opacity="0.35"/>
+    <rect x="474" y="335" width="7" height="9" rx="1" fill="#fff" class="ic-win-c" opacity="0.2"/>
+
+    <!-- FYND label on top face -->
+    <text x="450" y="296" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" font-weight="800" fill="#efe7d2" letter-spacing="2">FYND</text>
+
+    <!-- Floor 2 — wide base step -->
+    <!-- top face -->
+    <polygon points="450,380 515,410 450,440 385,410" fill="url(#ic-ink-top)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="385,410 450,440 450,460 385,430" fill="url(#ic-ink-left)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="515,410 450,440 450,460 515,430" fill="url(#ic-ink-right)" stroke="#1a1a17" stroke-width="0.8"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- JCP BUILDING — bottom-right, coral, medium height  -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <g class="ic-jcp" transform="translate(640,340)">
+    <!-- top face -->
+    <polygon points="0,-30 44,-10 0,10 -44,-10" fill="url(#ic-coral-top)" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="-44,-10 0,10 0,80 -44,60" fill="url(#ic-coral-left)" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="44,-10 0,10 0,80 44,60" fill="url(#ic-coral-right)" stroke="#c45a49" stroke-width="0.8"/>
+    <!-- windows -->
+    <rect x="-36" y="18" width="8" height="10" rx="1" fill="#fff" class="ic-win-a" opacity="0.35"/>
+    <rect x="-24" y="18" width="8" height="10" rx="1" fill="#fff" class="ic-win-c" opacity="0.35"/>
+    <rect x="-36" y="34" width="8" height="10" rx="1" fill="#fff" class="ic-win-b" opacity="0.35"/>
+    <rect x="-24" y="34" width="8" height="10" rx="1" fill="#fff" class="ic-win-d" opacity="0.35"/>
+    <!-- label -->
+    <text x="0" y="-14" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="800" fill="#fff" letter-spacing="1.5">JCP</text>
+    <!-- small accent cube on top -->
+    <polygon points="0,-30 12,-24 0,-18 -12,-24" fill="#f08070" stroke="#c45a49" stroke-width="0.6"/>
+    <polygon points="-12,-24 0,-18 0,-10 -12,-16" fill="#c45a49" stroke="#c45a49" stroke-width="0.6"/>
+    <polygon points="12,-24 0,-18 0,-10 12,-16" fill="#d96350" stroke="#c45a49" stroke-width="0.6"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- IMPETUS BUILDING — top-right, bone, tall           -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <g class="ic-impetus" transform="translate(650,240)">
+    <!-- top face -->
+    <polygon points="0,-50 50,-25 0,0 -50,-25" fill="url(#ic-bone-top)" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="-50,-25 0,0 0,90 -50,65" fill="url(#ic-bone-left)" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="50,-25 0,0 0,90 50,65" fill="url(#ic-bone-right)" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- windows left -->
+    <rect x="-42" y="12" width="9" height="11" rx="1" fill="#2a2a26" class="ic-win-c" opacity="0.12"/>
+    <rect x="-28" y="12" width="9" height="11" rx="1" fill="#2a2a26" class="ic-win-a" opacity="0.12"/>
+    <rect x="-42" y="30" width="9" height="11" rx="1" fill="#ed6f5c" class="ic-win-b" opacity="0.25"/>
+    <rect x="-28" y="30" width="9" height="11" rx="1" fill="#2a2a26" class="ic-win-d" opacity="0.12"/>
+    <rect x="-42" y="48" width="9" height="11" rx="1" fill="#2a2a26" class="ic-win-e" opacity="0.12"/>
+    <!-- windows right -->
+    <rect x="18" y="12" width="9" height="11" rx="1" fill="#2a2a26" class="ic-win-a" opacity="0.10"/>
+    <rect x="30" y="30" width="9" height="11" rx="1" fill="#ed6f5c" class="ic-win-c" opacity="0.20"/>
+    <!-- label -->
+    <text x="0" y="-30" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="7" font-weight="700" fill="#2a2a26" letter-spacing="1.5" opacity="0.7">IMPETUS</text>
+    <!-- bar chart decoration on top face -->
+    <rect x="-15" y="-22" width="5" height="10" fill="#ed6f5c" opacity="0.6"/>
+    <rect x="-7" y="-26" width="5" height="14" fill="#2a2a26" opacity="0.4"/>
+    <rect x="1" y="-19" width="5" height="7" fill="#ed6f5c" opacity="0.5"/>
+    <rect x="9" y="-24" width="5" height="12" fill="#2a2a26" opacity="0.3"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- UCP BUILDING — left, warm grey, medium             -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <g class="ic-ucp" transform="translate(240,310)">
+    <!-- top face -->
+    <polygon points="0,-35 46,-16 0,3 -46,-16" fill="url(#ic-warm-top)" stroke="#c0b8a4" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="-46,-16 0,3 0,75 -46,56" fill="#d8d0bc" stroke="#c0b8a4" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="46,-16 0,3 0,75 46,56" fill="#e0d8c4" stroke="#c0b8a4" stroke-width="0.8"/>
+    <!-- windows -->
+    <rect x="-38" y="12" width="8" height="10" rx="1" fill="#2a2a26" class="ic-win-b" opacity="0.10"/>
+    <rect x="-26" y="12" width="8" height="10" rx="1" fill="#ed6f5c" class="ic-win-d" opacity="0.22"/>
+    <rect x="-38" y="28" width="8" height="10" rx="1" fill="#2a2a26" class="ic-win-a" opacity="0.10"/>
+    <rect x="-26" y="28" width="8" height="10" rx="1" fill="#2a2a26" class="ic-win-c" opacity="0.10"/>
+    <rect x="-38" y="44" width="8" height="10" rx="1" fill="#ed6f5c" class="ic-win-e" opacity="0.18"/>
+    <!-- label -->
+    <text x="0" y="-20" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="7.5" font-weight="700" fill="#2a2a26" letter-spacing="1.5" opacity="0.65">UCP</text>
+    <!-- circle decoration on top -->
+    <circle cx="0" cy="-10" r="8" fill="none" stroke="#ed6f5c" stroke-width="1.2" opacity="0.5"/>
+    <circle cx="0" cy="-10" r="3" fill="#ed6f5c" opacity="0.5"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- GRANARY BUILDING — top-left, bone, shorter         -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <g class="ic-granary" transform="translate(290,200)">
+    <!-- top face -->
+    <polygon points="0,-28 40,-10 0,8 -40,-10" fill="url(#ic-bone-top)" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="-40,-10 0,8 0,65 -40,47" fill="url(#ic-bone-left)" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="40,-10 0,8 0,65 40,47" fill="url(#ic-bone-right)" stroke="#c8c0ac" stroke-width="0.8"/>
+    <!-- windows -->
+    <rect x="-32" y="14" width="7" height="9" rx="1" fill="#2a2a26" class="ic-win-a" opacity="0.10"/>
+    <rect x="-21" y="14" width="7" height="9" rx="1" fill="#2a2a26" class="ic-win-c" opacity="0.10"/>
+    <rect x="-32" y="28" width="7" height="9" rx="1" fill="#ed6f5c" class="ic-win-b" opacity="0.20"/>
+    <!-- label -->
+    <text x="0" y="-14" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="6.5" font-weight="700" fill="#2a2a26" letter-spacing="1.5" opacity="0.6">GRANARY</text>
+    <!-- grain dots on top face -->
+    <circle cx="-10" cy="-4" r="2" fill="#2a2a26" opacity="0.15"/>
+    <circle cx="0" cy="-2" r="2" fill="#2a2a26" opacity="0.15"/>
+    <circle cx="10" cy="-4" r="2" fill="#2a2a26" opacity="0.15"/>
+    <circle cx="-5" cy="-8" r="2" fill="#ed6f5c" opacity="0.3"/>
+    <circle cx="5" cy="-7" r="2" fill="#2a2a26" opacity="0.15"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- AI-NATIVE BUILDING — bottom-centre, ink, medium    -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <g class="ic-ainative" transform="translate(450,470)">
+    <!-- top face -->
+    <polygon points="0,-32 44,-12 0,8 -44,-12" fill="url(#ic-ink-top)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- left face -->
+    <polygon points="-44,-12 0,8 0,58 -44,38" fill="url(#ic-ink-left)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- right face -->
+    <polygon points="44,-12 0,8 0,58 44,38" fill="url(#ic-ink-right)" stroke="#1a1a17" stroke-width="0.8"/>
+    <!-- windows -->
+    <rect x="-36" y="14" width="8" height="9" rx="1" fill="#ed6f5c" class="ic-win-a" opacity="0.55"/>
+    <rect x="-24" y="14" width="8" height="9" rx="1" fill="#fff" class="ic-win-c" opacity="0.15"/>
+    <rect x="-36" y="28" width="8" height="9" rx="1" fill="#fff" class="ic-win-b" opacity="0.15"/>
+    <rect x="-24" y="28" width="8" height="9" rx="1" fill="#ed6f5c" class="ic-win-d" opacity="0.45"/>
+    <!-- label -->
+    <text x="0" y="-16" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="6.5" font-weight="800" fill="#efe7d2" letter-spacing="1.5">AI-NATIVE</text>
+    <!-- neural dot pattern on top face -->
+    <circle cx="-8" cy="-5" r="2.5" fill="#ed6f5c" opacity="0.7"/>
+    <circle cx="0" cy="-2" r="2.5" fill="#ed6f5c" opacity="0.5"/>
+    <circle cx="8" cy="-5" r="2.5" fill="#ed6f5c" opacity="0.7"/>
+    <line x1="-8" y1="-5" x2="0" y2="-2" stroke="#ed6f5c" stroke-width="0.8" opacity="0.5"/>
+    <line x1="0" y1="-2" x2="8" y2="-5" stroke="#ed6f5c" stroke-width="0.8" opacity="0.5"/>
+    <line x1="-8" y1="-5" x2="8" y2="-5" stroke="#ed6f5c" stroke-width="0.8" opacity="0.3"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- METRIC CHIPS                                       -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Chip: Customers 380 M+ (far left) -->
+  <g class="ic-chip ic-chip-1" transform="translate(82,310)">
+    <rect x="0" y="0" width="120" height="46" rx="8" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.15"/>
+    <text x="12" y="16" font-family="'Inter Tight',sans-serif" font-size="8.5" fill="#2a2a26" opacity="0.55" font-weight="500">Customers</text>
+    <text x="12" y="36" font-family="'Inter Tight',sans-serif" font-size="16" font-weight="800" fill="#ed6f5c">380 M+</text>
+  </g>
+
+  <!-- Chip: Brands live 100+ (far right) -->
+  <g class="ic-chip ic-chip-2" transform="translate(698,310)">
+    <rect x="0" y="0" width="120" height="46" rx="8" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.15"/>
+    <text x="12" y="16" font-family="'Inter Tight',sans-serif" font-size="8.5" fill="#2a2a26" opacity="0.55" font-weight="500">Brands live</text>
+    <text x="12" y="36" font-family="'Inter Tight',sans-serif" font-size="16" font-weight="800" fill="#ed6f5c">100+</text>
+  </g>
+
+  <!-- Chip: Platforms 22 live (top-centre) -->
+  <g class="ic-chip ic-chip-3" transform="translate(360,60)">
+    <rect x="0" y="0" width="130" height="46" rx="8" fill="#2a2a26"/>
+    <text x="12" y="16" font-family="'Inter Tight',sans-serif" font-size="8.5" fill="#efe7d2" opacity="0.6" font-weight="500">Platforms</text>
+    <text x="12" y="36" font-family="'Inter Tight',sans-serif" font-size="16" font-weight="800" fill="#ed6f5c">22 live</text>
+  </g>
+
+  <!-- Chip: Orders/day 700 K+ (bottom-right) -->
+  <g class="ic-chip ic-chip-4" transform="translate(620,480)">
+    <rect x="0" y="0" width="130" height="46" rx="8" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.15"/>
+    <text x="12" y="16" font-family="'Inter Tight',sans-serif" font-size="8.5" fill="#2a2a26" opacity="0.55" font-weight="500">Orders / day</text>
+    <text x="12" y="36" font-family="'Inter Tight',sans-serif" font-size="16" font-weight="800" fill="#ed6f5c">700 K+</text>
+  </g>
+
+  <!-- Chip: Stores on JCP 20 K+ (bottom-left) -->
+  <g class="ic-chip ic-chip-5" transform="translate(150,480)">
+    <rect x="0" y="0" width="130" height="46" rx="8" fill="#f7f1de" stroke="#2a2a26" stroke-width="1" stroke-opacity="0.15"/>
+    <text x="12" y="16" font-family="'Inter Tight',sans-serif" font-size="8.5" fill="#2a2a26" opacity="0.55" font-weight="500">Stores on JCP</text>
+    <text x="12" y="36" font-family="'Inter Tight',sans-serif" font-size="16" font-weight="800" fill="#ed6f5c">20 K+</text>
+  </g>
+
+  <!-- ── SMALL FLOATING ACCENT CUBES (decorative) ──────── -->
+  <!-- top-left small cube -->
+  <g transform="translate(155,155)" style="animation:ic-float-b 11s ease-in-out infinite 2s">
+    <polygon points="0,-14 18,-6 0,2 -18,-6" fill="#e8e0cc" stroke="#c0b8a4" stroke-width="0.8"/>
+    <polygon points="-18,-6 0,2 0,18 -18,10" fill="#d0c8b4" stroke="#c0b8a4" stroke-width="0.8"/>
+    <polygon points="18,-6 0,2 0,18 18,10" fill="#dcd4c0" stroke="#c0b8a4" stroke-width="0.8"/>
+  </g>
+  <!-- top-right small cube -->
+  <g transform="translate(740,155)" style="animation:ic-float-c 10s ease-in-out infinite 3s">
+    <polygon points="0,-14 18,-6 0,2 -18,-6" fill="#f7f1de" stroke="#c8c0ac" stroke-width="0.8"/>
+    <polygon points="-18,-6 0,2 0,18 -18,10" fill="#e0d8c4" stroke="#c8c0ac" stroke-width="0.8"/>
+    <polygon points="18,-6 0,2 0,18 18,10" fill="#e8e0cc" stroke="#c8c0ac" stroke-width="0.8"/>
+  </g>
+  <!-- mid-right tiny coral cube -->
+  <g transform="translate(790,350)" style="animation:ic-float-a 8s ease-in-out infinite 1s">
+    <polygon points="0,-10 13,-4 0,2 -13,-4" fill="#f08070" stroke="#c45a49" stroke-width="0.8"/>
+    <polygon points="-13,-4 0,2 0,14 -13,8" fill="#c45a49" stroke="#c45a49" stroke-width="0.8"/>
+    <polygon points="13,-4 0,2 0,14 13,8" fill="#d96350" stroke="#c45a49" stroke-width="0.8"/>
+  </g>
+  <!-- mid-left tiny ink cube -->
+  <g transform="translate(110,220)" style="animation:ic-float-d 9s ease-in-out infinite 1.8s">
+    <polygon points="0,-10 13,-4 0,2 -13,-4" fill="#3d3d38" stroke="#1a1a17" stroke-width="0.8"/>
+    <polygon points="-13,-4 0,2 0,14 -13,8" fill="#1a1a17" stroke="#1a1a17" stroke-width="0.8"/>
+    <polygon points="13,-4 0,2 0,14 13,8" fill="#2a2a26" stroke="#1a1a17" stroke-width="0.8"/>
+  </g>
+
+</svg>
 </div>
 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-8">
 <a href="/impetus/cortex" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Cortex</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">One screen, the whole F&amp;L business &middot; refreshed daily, with AI that explains why a number moved, not just that it moved.</div><div class="platform-card-foot"><span class="platform-card-tag">Plan/Design</span></div><div class="platform-card-metric mt-3">F&amp;L on one screen</div></a>
