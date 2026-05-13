@@ -468,7 +468,7 @@
     <h2 class="display-2">Fynd is the AI-native operating layer underneath.</h2>
   </div>
 
-  <!-- ── ISOMETRIC AIRFIELD v3 ──────────────────────────────────────────── -->
+  <!-- ── ISOMETRIC AIRFIELD ─────────────────────────────────────────────── -->
   <div style="width:100%;max-width:980px;margin:0 auto 56px;position:relative;">
   <style>
     @keyframes ic-beacon  { 0%,100%{opacity:1} 50%{opacity:.12} }
@@ -490,7 +490,7 @@
       98%  { transform:translate(-112px,56px) scale(1); opacity:1; }
       100% { transform:translate(-112px,56px) scale(1); opacity:0; }
     }
-    @keyframes ic-shadow {
+    @keyframes ic-shadow-anim {
       0%,52% { opacity:0; }
       60%    { opacity:.14; }
       95%    { opacity:.14; }
@@ -501,11 +501,11 @@
     .icw-b { animation:ic-win-b 3.5s ease-in-out infinite .7s; }
     .icw-c { animation:ic-win-c 2.3s ease-in-out infinite 1.3s; }
     .ic-conn { animation:ic-dash 2.2s linear infinite; }
-    #ic-plane { animation:ic-plane-land 10s cubic-bezier(.25,.1,.25,1) infinite; transform-origin:700px 488px; }
-    #ic-shadow { animation:ic-shadow 10s cubic-bezier(.25,.1,.25,1) infinite; }
+    .ic-plane-g { animation:ic-plane-land 10s cubic-bezier(.25,.1,.25,1) infinite; }
+    .ic-shadow-el { animation:ic-shadow-anim 10s cubic-bezier(.25,.1,.25,1) infinite; }
     @media(prefers-reduced-motion:reduce){
-      .ic-beacon,.icw-a,.icw-b,.icw-c,.ic-conn,#ic-plane,#ic-shadow{animation:none!important;}
-      #ic-plane,#ic-shadow{opacity:0!important;}
+      .ic-beacon,.icw-a,.icw-b,.icw-c,.ic-conn,.ic-plane-g,.ic-shadow-el{animation:none!important;}
+      .ic-plane-g,.ic-shadow-el{opacity:0!important;}
     }
   </style>
 
@@ -551,7 +551,6 @@
 
     <!-- Tarmac apron -->
     <ellipse cx="600" cy="500" rx="380" ry="100" fill="#e4dcc8" stroke="#d0c8b4" stroke-width="1" opacity=".45"/>
-    <!-- Runway markings -->
     <line x1="360" y1="490" x2="840" y2="490" stroke="#c8c0ac" stroke-width="2" stroke-dasharray="18 12" opacity=".35"/>
     <line x1="400" y1="510" x2="800" y2="510" stroke="#c8c0ac" stroke-width="1.2" stroke-dasharray="10 8" opacity=".25"/>
 
@@ -567,23 +566,17 @@
 
     <!-- ════════════════════════════════════════════════════════════════════ -->
     <!--  FYND — CYLINDRICAL CONTROL TOWER                                   -->
-    <!--  Centre: cx=600                                                     -->
-    <!--                                                                     -->
-    <!--  Isometric cylinder = rect body + top ellipse + bottom ellipse      -->
-    <!--  The ellipse rx:ry ratio ≈ 2.5:1 for iso projection               -->
     <!-- ════════════════════════════════════════════════════════════════════ -->
 
-    <!-- Base platform — wide disc -->
+    <!-- Base platform -->
     <ellipse cx="600" cy="490" rx="90" ry="28" fill="#d0c8b4" stroke="#b8b0a0" stroke-width="1"/>
     <rect x="510" y="478" width="180" height="12" fill="url(#gCylL)"/>
     <ellipse cx="600" cy="478" rx="90" ry="28" fill="#e0d8c4" stroke="#b8b0a0" stroke-width="1"/>
 
-    <!-- Shaft — narrow cylinder (rx=22) -->
+    <!-- Shaft cylinder -->
     <rect x="578" y="300" width="44" height="178" fill="url(#gCyl)"/>
     <ellipse cx="600" cy="478" rx="22" ry="7" fill="#1a1a17"/>
-    <!-- Shaft highlight stripe -->
     <rect x="595" y="300" width="3" height="178" fill="#4a4a44" opacity=".40"/>
-    <!-- Floor band lines on shaft -->
     <ellipse cx="600" cy="360" rx="22" ry="7" fill="none" stroke="#4a4a44" stroke-width=".8" opacity=".50"/>
     <ellipse cx="600" cy="400" rx="22" ry="7" fill="none" stroke="#4a4a44" stroke-width=".8" opacity=".50"/>
     <ellipse cx="600" cy="440" rx="22" ry="7" fill="none" stroke="#4a4a44" stroke-width=".8" opacity=".50"/>
@@ -593,22 +586,16 @@
     <ellipse cx="600" cy="290" rx="42" ry="13" fill="#f5a090" stroke="#c45a49" stroke-width=".8"/>
     <ellipse cx="600" cy="304" rx="42" ry="13" fill="#c45a49" stroke="#c45a49" stroke-width=".8"/>
 
-    <!-- Observation cab — wider cylinder with glass -->
-    <!-- Cab body -->
+    <!-- Observation cab with glass -->
     <rect x="548" y="230" width="104" height="60" fill="url(#gGlass)" stroke="#5a8898" stroke-width=".8"/>
-    <!-- Cab bottom ellipse -->
     <ellipse cx="600" cy="290" rx="52" ry="16" fill="#5a8898" opacity=".30"/>
-    <!-- Glass band horizontal dividers -->
     <line x1="548" y1="250" x2="652" y2="250" stroke="#5a8898" stroke-width=".7" opacity=".45"/>
     <line x1="548" y1="270" x2="652" y2="270" stroke="#5a8898" stroke-width=".7" opacity=".45"/>
-    <!-- Glass vertical mullions -->
     <line x1="570" y1="230" x2="570" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
     <line x1="590" y1="230" x2="590" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
     <line x1="610" y1="230" x2="610" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
     <line x1="630" y1="230" x2="630" y2="290" stroke="#5a8898" stroke-width=".6" opacity=".35"/>
-    <!-- Interior warm glow -->
     <rect x="550" y="232" width="100" height="56" rx="2" fill="#ffe8b0" opacity=".06"/>
-    <!-- Window light panels -->
     <rect x="552" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-a" opacity=".25"/>
     <rect x="574" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-b" opacity=".20"/>
     <rect x="610" y="252" width="18" height="16" rx="2" fill="#ffe8b0" class="icw-c" opacity=".22"/>
@@ -616,252 +603,207 @@
 
     <!-- Roof disc -->
     <ellipse cx="600" cy="230" rx="56" ry="17" fill="#2a2a26" stroke="#1a1a17" stroke-width="1"/>
-    <!-- Roof top surface -->
     <ellipse cx="600" cy="228" rx="54" ry="16" fill="#3d3d38"/>
-
-    <!-- FYND label on roof -->
     <text x="600" y="234" text-anchor="middle"
           font-family="'Inter Tight',sans-serif" font-size="11" font-weight="800"
           fill="#efe7d2" letter-spacing="3">FYND</text>
 
-    <!-- Antenna mast -->
+    <!-- Antenna + beacon -->
     <line x1="600" y1="120" x2="600" y2="228" stroke="#2a2a26" stroke-width="2.2"/>
-    <!-- Cross-arms -->
     <line x1="590" y1="155" x2="610" y2="155" stroke="#2a2a26" stroke-width="1.3"/>
     <line x1="593" y1="175" x2="607" y2="175" stroke="#2a2a26" stroke-width="1.1"/>
-    <!-- Beacon -->
     <circle cx="600" cy="116" r="6" fill="#ed6f5c" class="ic-beacon"/>
     <circle cx="600" cy="116" r="10" fill="none" stroke="#ed6f5c" stroke-width="1" opacity=".30" class="ic-beacon"/>
 
     <!-- ════════════════════════════════════════════════════════════════════ -->
-    <!--  SATELLITE CABINS — Quonset/Nissen hut style (semicircular roof)   -->
-    <!--  Each cabin: elliptical front face + curved roof body               -->
-    <!--  Drawn with <path> arcs for the rounded roof                       -->
+    <!--  SATELLITE CABINS — Quonset/Nissen hut style                       -->
     <!-- ════════════════════════════════════════════════════════════════════ -->
 
-    <!-- ── JCP — right (cx=850, cy=450) — coral ─────────────────────────── -->
+    <!-- JCP — right (cx=850, cy=450) — coral -->
     <g>
-      <!-- Floor shadow -->
       <ellipse cx="850" cy="480" rx="52" ry="14" fill="#2a2a26" opacity=".06"/>
-      <!-- Curved roof body — side view (rect with rounded top) -->
-      <path d="M808,480 L808,455 A42,30 0 0,1 892,455 L892,480 Z"
-            fill="url(#gCoral)" stroke="#c45a49" stroke-width=".9"/>
-      <!-- Front face — half ellipse -->
+      <path d="M808,480 L808,455 A42,30 0 0,1 892,455 L892,480 Z" fill="url(#gCoral)" stroke="#c45a49" stroke-width=".9"/>
       <ellipse cx="850" cy="455" rx="42" ry="30" fill="#f08070" stroke="#c45a49" stroke-width=".9"/>
-      <!-- Cut bottom half of front ellipse (floor line) -->
-      <rect x="808" y="455" width="84" height="30" fill="url(#gCoral)" stroke="#c45a49" stroke-width=".9"/>
-      <!-- Re-draw top arc of front face -->
+      <rect x="808" y="455" width="84" height="25" fill="url(#gCoral)" stroke="#c45a49" stroke-width=".9"/>
       <path d="M808,455 A42,30 0 0,1 892,455" fill="#f5a090" stroke="#c45a49" stroke-width=".9"/>
-      <!-- Arched door -->
-      <path d="M842,480 L842,462 A8,10 0 0,1 858,462 L858,480 Z"
-            fill="#2a2a26" opacity=".55"/>
-      <!-- Round windows (portholes) -->
+      <path d="M842,480 L842,462 A8,10 0 0,1 858,462 L858,480 Z" fill="#2a2a26" opacity=".55"/>
       <circle cx="825" cy="462" r="6" fill="#ffe8b0" class="icw-a" opacity=".55" stroke="#c45a49" stroke-width=".7"/>
       <circle cx="875" cy="462" r="6" fill="#ffe8b0" class="icw-b" opacity=".50" stroke="#c45a49" stroke-width=".7"/>
-      <!-- Roof ridge line -->
-      <line x1="808" y1="425" x2="892" y2="425" stroke="#c45a49" stroke-width=".5" opacity=".0"/>
-      <!-- Vent pipe -->
       <rect x="870" y="428" width="5" height="16" rx="2" fill="#b84040" stroke="#c45a49" stroke-width=".6"/>
       <ellipse cx="872" cy="428" rx="4" ry="2" fill="#d96350"/>
-      <!-- Label -->
-      <text x="850" y="450" text-anchor="middle"
-            font-family="'Inter Tight',sans-serif" font-size="9" font-weight="800"
-            fill="#fff" letter-spacing="2">JCP</text>
+      <text x="850" y="450" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" font-weight="800" fill="#fff" letter-spacing="2">JCP</text>
     </g>
 
-    <!-- ── IMPETUS — top-right (cx=820, cy=250) — bone ──────────────────── -->
+    <!-- IMPETUS — top-right (cx=820, cy=250) — bone -->
     <g>
       <ellipse cx="820" cy="280" rx="48" ry="13" fill="#2a2a26" opacity=".05"/>
-      <path d="M772,280 L772,258 A48,28 0 0,1 868,258 L868,280 Z"
-            fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
+      <path d="M772,280 L772,258 A48,28 0 0,1 868,258 L868,280 Z" fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
       <ellipse cx="820" cy="258" rx="48" ry="28" fill="#f0e8d4" stroke="#c8c0ac" stroke-width=".9"/>
       <rect x="772" y="258" width="96" height="22" fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
       <path d="M772,258 A48,28 0 0,1 868,258" fill="#faf5ea" stroke="#c8c0ac" stroke-width=".9"/>
-      <!-- Arched door -->
-      <path d="M812,280 L812,265 A8,9 0 0,1 828,265 L828,280 Z"
-            fill="#2a2a26" opacity=".38"/>
-      <!-- Portholes -->
+      <path d="M812,280 L812,265 A8,9 0 0,1 828,265 L828,280 Z" fill="#2a2a26" opacity=".38"/>
       <circle cx="795" cy="264" r="5.5" fill="#ffe8b0" class="icw-c" opacity=".48" stroke="#c8c0ac" stroke-width=".7"/>
       <circle cx="845" cy="264" r="5.5" fill="#ffe8b0" class="icw-a" opacity=".45" stroke="#c8c0ac" stroke-width=".7"/>
-      <!-- Chimney -->
       <rect x="840" y="234" width="5" height="14" rx="2" fill="#c8c0ac" stroke="#b0a898" stroke-width=".6"/>
       <ellipse cx="842" cy="234" rx="4" ry="2" fill="#d8d0bc"/>
-      <!-- Label -->
-      <text x="820" y="253" text-anchor="middle"
-            font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700"
-            fill="#2a2a26" letter-spacing="1.5" opacity=".65">IMPETUS</text>
+      <text x="820" y="253" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700" fill="#2a2a26" letter-spacing="1.5" opacity=".65">IMPETUS</text>
     </g>
 
-    <!-- ── UCP — left (cx=360, cy=450) — warm grey ──────────────────────── -->
+    <!-- UCP — left (cx=360, cy=450) — warm grey -->
     <g>
       <ellipse cx="360" cy="480" rx="48" ry="13" fill="#2a2a26" opacity=".05"/>
-      <path d="M312,480 L312,458 A48,28 0 0,1 408,458 L408,480 Z"
-            fill="url(#gCylL)" stroke="#c0b8a4" stroke-width=".9"/>
+      <path d="M312,480 L312,458 A48,28 0 0,1 408,458 L408,480 Z" fill="url(#gCylL)" stroke="#c0b8a4" stroke-width=".9"/>
       <ellipse cx="360" cy="458" rx="48" ry="28" fill="#e0d8c4" stroke="#c0b8a4" stroke-width=".9"/>
       <rect x="312" y="458" width="96" height="22" fill="url(#gCylL)" stroke="#c0b8a4" stroke-width=".9"/>
       <path d="M312,458 A48,28 0 0,1 408,458" fill="#ede5d2" stroke="#c0b8a4" stroke-width=".9"/>
-      <!-- Door -->
-      <path d="M352,480 L352,465 A8,9 0 0,1 368,465 L368,480 Z"
-            fill="#2a2a26" opacity=".38"/>
-      <!-- Portholes -->
+      <path d="M352,480 L352,465 A8,9 0 0,1 368,465 L368,480 Z" fill="#2a2a26" opacity=".38"/>
       <circle cx="335" cy="464" r="5.5" fill="#ffe8b0" class="icw-b" opacity=".48" stroke="#c0b8a4" stroke-width=".7"/>
       <circle cx="385" cy="464" r="5.5" fill="#ffe8b0" class="icw-c" opacity=".45" stroke="#c0b8a4" stroke-width=".7"/>
-      <!-- Vent -->
       <rect x="390" y="436" width="5" height="12" rx="2" fill="#c0b8a4" stroke="#a8a090" stroke-width=".6"/>
       <ellipse cx="392" cy="436" rx="4" ry="2" fill="#d0c8b4"/>
-      <!-- Label -->
-      <text x="360" y="453" text-anchor="middle"
-            font-family="'Inter Tight',sans-serif" font-size="9" font-weight="700"
-            fill="#2a2a26" letter-spacing="1.5" opacity=".65">UCP</text>
+      <text x="360" y="453" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="9" font-weight="700" fill="#2a2a26" letter-spacing="1.5" opacity=".65">UCP</text>
     </g>
 
-    <!-- ── GRANARY — top-left (cx=390, cy=250) — bone ───────────────────── -->
+    <!-- GRANARY — top-left (cx=390, cy=250) — bone -->
     <g>
       <ellipse cx="390" cy="280" rx="46" ry="12" fill="#2a2a26" opacity=".05"/>
-      <path d="M344,280 L344,258 A46,28 0 0,1 436,258 L436,280 Z"
-            fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
+      <path d="M344,280 L344,258 A46,28 0 0,1 436,258 L436,280 Z" fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
       <ellipse cx="390" cy="258" rx="46" ry="28" fill="#f0e8d4" stroke="#c8c0ac" stroke-width=".9"/>
       <rect x="344" y="258" width="92" height="22" fill="url(#gBone)" stroke="#c8c0ac" stroke-width=".9"/>
       <path d="M344,258 A46,28 0 0,1 436,258" fill="#faf5ea" stroke="#c8c0ac" stroke-width=".9"/>
-      <!-- Door -->
-      <path d="M382,280 L382,265 A8,9 0 0,1 398,265 L398,280 Z"
-            fill="#2a2a26" opacity=".38"/>
-      <!-- Portholes -->
+      <path d="M382,280 L382,265 A8,9 0 0,1 398,265 L398,280 Z" fill="#2a2a26" opacity=".38"/>
       <circle cx="365" cy="264" r="5.5" fill="#ffe8b0" class="icw-a" opacity=".48" stroke="#c8c0ac" stroke-width=".7"/>
       <circle cx="415" cy="264" r="5.5" fill="#ffe8b0" class="icw-b" opacity=".42" stroke="#c8c0ac" stroke-width=".7"/>
-      <!-- Double chimney (granary) -->
       <rect x="410" y="234" width="5" height="14" rx="2" fill="#c8c0ac" stroke="#b0a898" stroke-width=".6"/>
       <ellipse cx="412" cy="234" rx="4" ry="2" fill="#d8d0bc"/>
       <rect x="420" y="237" width="5" height="11" rx="2" fill="#c8c0ac" stroke="#b0a898" stroke-width=".6"/>
       <ellipse cx="422" cy="237" rx="4" ry="2" fill="#d8d0bc"/>
-      <!-- Label -->
-      <text x="390" y="253" text-anchor="middle"
-            font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700"
-            fill="#2a2a26" letter-spacing="1" opacity=".65">GRANARY</text>
+      <text x="390" y="253" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="8" font-weight="700" fill="#2a2a26" letter-spacing="1" opacity=".65">GRANARY</text>
     </g>
 
-    <!-- ── AI-NATIVE — bottom (cx=600, cy=560) — ink ────────────────────── -->
+    <!-- AI-NATIVE — bottom (cx=600, cy=560) — ink -->
     <g>
       <ellipse cx="600" cy="590" rx="48" ry="13" fill="#2a2a26" opacity=".08"/>
-      <path d="M552,590 L552,568 A48,28 0 0,1 648,568 L648,590 Z"
-            fill="url(#gCyl)" stroke="#1a1a17" stroke-width=".9"/>
+      <path d="M552,590 L552,568 A48,28 0 0,1 648,568 L648,590 Z" fill="url(#gCyl)" stroke="#1a1a17" stroke-width=".9"/>
       <ellipse cx="600" cy="568" rx="48" ry="28" fill="#3d3d38" stroke="#1a1a17" stroke-width=".9"/>
       <rect x="552" y="568" width="96" height="22" fill="url(#gCyl)" stroke="#1a1a17" stroke-width=".9"/>
       <path d="M552,568 A48,28 0 0,1 648,568" fill="#4a4a44" stroke="#1a1a17" stroke-width=".9"/>
-      <!-- Coral door -->
-      <path d="M592,590 L592,575 A8,9 0 0,1 608,575 L608,590 Z"
-            fill="#ed6f5c" opacity=".80"/>
-      <!-- Coral-lit portholes -->
+      <path d="M592,590 L592,575 A8,9 0 0,1 608,575 L608,590 Z" fill="#ed6f5c" opacity=".80"/>
       <circle cx="575" cy="574" r="5.5" fill="#ed6f5c" class="icw-b" opacity=".60" stroke="#1a1a17" stroke-width=".7"/>
       <circle cx="625" cy="574" r="5.5" fill="#ed6f5c" class="icw-c" opacity=".55" stroke="#1a1a17" stroke-width=".7"/>
-      <!-- Antenna on roof -->
       <line x1="600" y1="530" x2="600" y2="540" stroke="#ed6f5c" stroke-width="1.8"/>
       <circle cx="600" cy="528" r="4" fill="#ed6f5c" opacity=".80"/>
-      <!-- Label -->
-      <text x="600" y="563" text-anchor="middle"
-            font-family="'Inter Tight',sans-serif" font-size="8" font-weight="800"
-            fill="#efe7d2" letter-spacing="1.5">AI-NATIVE</text>
+      <text x="600" y="563" text-anchor="middle" font-family="'Inter Tight',sans-serif" font-size="8" font-weight="800" fill="#efe7d2" letter-spacing="1.5">AI-NATIVE</text>
     </g>
 
     <!-- ── GROUND DETAILS ────────────────────────────────────────────────── -->
-    <!-- Wind sock -->
     <line x1="680" y1="490" x2="680" y2="462" stroke="#2a2a26" stroke-width="1.2" opacity=".35"/>
     <path d="M680,462 Q690,458 695,464 Q690,470 680,468 Z" fill="#ed6f5c" opacity=".50"/>
-
-    <!-- Fuel drum near JCP -->
     <ellipse cx="910" cy="470" rx="8" ry="4" fill="#d96350" opacity=".55"/>
     <rect x="902" y="462" width="16" height="8" rx="3" fill="#c45a49" opacity=".60"/>
     <ellipse cx="910" cy="462" rx="8" ry="4" fill="#f08070" opacity=".65"/>
-
-    <!-- Small vehicle near UCP -->
     <rect x="290" y="490" width="22" height="10" rx="4" fill="#c8c0ac" stroke="#a8a090" stroke-width=".7" opacity=".55"/>
     <circle cx="296" cy="502" r="4" fill="#a8a090" opacity=".55"/>
     <circle cx="308" cy="502" r="4" fill="#a8a090" opacity=".55"/>
 
-    <!-- ── PLANE ─────────────────────────────────────────────────────────── -->
-    <!-- Tarmac shadow -->
-    <ellipse id="ic-shadow" cx="700" cy="500" rx="48" ry="10" fill="#2a2a26" opacity="0"/>
+    <!-- ════════════════════════════════════════════════════════════════════ -->
+    <!--  PLANE — proper isometric commercial jet                           -->
+    <!--  Drawn flat top-down, then rotate(-25) scale(0.62, 0.36) for iso  -->
+    <!-- ════════════════════════════════════════════════════════════════════ -->
 
-    <g id="ic-plane">
-      <!-- Fuselage — cigar shape using path with arcs -->
-      <!-- Main body: elongated oval, nose at right -->
-      <path d="M740,486 Q750,480 748,474 Q746,468 730,466
-              L670,462 Q654,460 650,466 Q646,472 654,478 L670,480 Z"
-            fill="#f0e8d4" stroke="#c8c0ac" stroke-width=".9"/>
-      <!-- Fuselage underside (darker belly) -->
-      <path d="M740,486 L670,480 Q654,478 650,472 Q648,476 654,482 L670,484 Z"
-            fill="#d8d0bc" stroke="#c8c0ac" stroke-width=".7"/>
+    <!-- Tarmac shadow (animated) -->
+    <ellipse class="ic-shadow-el" cx="700" cy="500" rx="48" ry="10" fill="#2a2a26" opacity="0"/>
 
-      <!-- Nose cone -->
-      <path d="M740,486 Q750,480 748,474 Q746,470 740,468 Q744,476 740,486 Z"
-            fill="#c8c0ac" stroke="#b8b0a0" stroke-width=".7"/>
+    <!-- Animated plane group -->
+    <g class="ic-plane-g">
+      <g transform="translate(700,488) rotate(-25) scale(0.62, 0.36)">
 
-      <!-- Cockpit windows -->
-      <ellipse cx="738" cy="472" rx="3" ry="2" fill="#2a2a26" opacity=".60"
-               transform="rotate(-15,738,472)"/>
-      <ellipse cx="734" cy="470" rx="2.5" ry="1.8" fill="#2a2a26" opacity=".50"
-               transform="rotate(-15,734,470)"/>
+        <!-- RIGHT WING (far side, drawn first so fuselage overlaps) -->
+        <polygon points="10,-8  -22,-8  -50,-80  -10,-80"
+                 fill="#d8d0bc" stroke="#b8b0a0" stroke-width=".8"/>
+        <path d="M-50,-80 Q-55,-82 -52,-86 L-10,-80 Z" fill="#ccc4b0" stroke="#b8b0a0" stroke-width=".6"/>
+        <line x1="-18" y1="-12" x2="-46" y2="-78" stroke="#b8b0a0" stroke-width=".7" opacity=".50"/>
+        <line x1="-36" y1="-55" x2="-48" y2="-78" stroke="#b8b0a0" stroke-width=".6" opacity=".40"/>
 
-      <!-- Cabin windows — row of circles -->
-      <circle cx="726" cy="468" r="2" fill="#ffe8b0" opacity=".65"/>
-      <circle cx="720" cy="467" r="2" fill="#ffe8b0" opacity=".62"/>
-      <circle cx="714" cy="466" r="2" fill="#ffe8b0" opacity=".60"/>
-      <circle cx="708" cy="465" r="2" fill="#ffe8b0" opacity=".58"/>
-      <circle cx="702" cy="464" r="2" fill="#ffe8b0" opacity=".55"/>
-      <circle cx="696" cy="463" r="2" fill="#ffe8b0" opacity=".52"/>
-      <circle cx="690" cy="463" r="2" fill="#ffe8b0" opacity=".50"/>
-      <circle cx="684" cy="462" r="2" fill="#ffe8b0" opacity=".48"/>
+        <!-- Right engine nacelle -->
+        <g transform="translate(-18, -42)">
+          <ellipse cx="0" cy="0" rx="12" ry="5.5" fill="#8a8580" stroke="#706b66" stroke-width=".7"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.5" fill="#9a9590"/>
+          <ellipse cx="6" cy="0" rx="5" ry="4" fill="#706b66" stroke="#605b56" stroke-width=".6"/>
+          <ellipse cx="6" cy="0" rx="3.5" ry="2.8" fill="#8a8580"/>
+        </g>
 
-      <!-- LEFT WING (toward viewer — goes down-left in iso) -->
-      <path d="M710,478 L700,480 L658,510 L664,506 L690,490 Z"
-            fill="#e8e0cc" stroke="#c8c0ac" stroke-width=".8"/>
-      <!-- Wing leading edge highlight -->
-      <line x1="710" y1="478" x2="658" y2="510" stroke="#fff" stroke-width=".7" opacity=".40"/>
-      <!-- Left engine nacelle -->
-      <ellipse cx="682" cy="496" rx="9" ry="4" fill="#3d3d38" stroke="#1a1a17" stroke-width=".7"
-               transform="rotate(-28,682,496)"/>
-      <ellipse cx="681" cy="494" rx="7" ry="3" fill="#4a4a44"
-               transform="rotate(-28,681,494)"/>
-      <!-- Engine intake ring -->
-      <ellipse cx="686" cy="494" rx="3.5" ry="2.5" fill="none" stroke="#2a2a26" stroke-width=".8"
-               transform="rotate(-28,686,494)"/>
+        <!-- LEFT WING (near side, brighter) -->
+        <polygon points="10,8  -22,8  -50,80  -10,80"
+                 fill="#e8e0cc" stroke="#c0b8a4" stroke-width=".8"/>
+        <path d="M-50,80 Q-55,82 -52,86 L-10,80 Z" fill="#dcd4c0" stroke="#c0b8a4" stroke-width=".6"/>
+        <line x1="10" y1="8" x2="-50" y2="80" stroke="#fff" stroke-width=".9" opacity=".30"/>
+        <line x1="-18" y1="12" x2="-46" y2="78" stroke="#c0b8a4" stroke-width=".7" opacity=".50"/>
+        <line x1="-36" y1="55" x2="-48" y2="78" stroke="#c0b8a4" stroke-width=".6" opacity=".40"/>
 
-      <!-- RIGHT WING (away from viewer — goes up-right in iso) -->
-      <path d="M710,466 L700,464 L726,444 L730,448 L716,460 Z"
-            fill="#dcd4c0" stroke="#c8c0ac" stroke-width=".8"/>
-      <line x1="710" y1="466" x2="726" y2="444" stroke="#fff" stroke-width=".6" opacity=".30"/>
-      <!-- Right engine nacelle -->
-      <ellipse cx="716" cy="454" rx="8" ry="3.5" fill="#3d3d38" stroke="#1a1a17" stroke-width=".7"
-               transform="rotate(-28,716,454)"/>
-      <ellipse cx="715" cy="452" rx="6" ry="2.5" fill="#4a4a44"
-               transform="rotate(-28,715,452)"/>
+        <!-- Left engine nacelle -->
+        <g transform="translate(-18, 42)">
+          <ellipse cx="0" cy="0" rx="12" ry="5.5" fill="#7a756f" stroke="#605b56" stroke-width=".7"/>
+          <ellipse cx="0" cy="0" rx="10" ry="4.5" fill="#8a8580"/>
+          <ellipse cx="6" cy="0" rx="5" ry="4" fill="#605b56" stroke="#504b46" stroke-width=".6"/>
+          <ellipse cx="6" cy="0" rx="3.5" ry="2.8" fill="#7a756f"/>
+        </g>
 
-      <!-- TAIL SECTION -->
-      <!-- Coral tail stripe -->
-      <path d="M670,480 L660,476 L654,478 L664,482 Z"
-            fill="#ed6f5c" stroke="#c45a49" stroke-width=".7"/>
-      <!-- Vertical stabiliser (fin) -->
-      <path d="M662,474 L658,454 L654,452 L656,470 Z"
-            fill="#2a2a26" stroke="#1a1a17" stroke-width=".7"/>
-      <!-- Fin tip -->
-      <path d="M658,454 L656,448 L654,452 Z" fill="#3d3d38"/>
-      <!-- Horizontal stabiliser left -->
-      <path d="M660,476 L648,488 L652,486 L662,478 Z"
-            fill="#e0d8c4" stroke="#c8c0ac" stroke-width=".6"/>
-      <!-- Horizontal stabiliser right -->
-      <path d="M660,468 L652,458 L654,460 L662,470 Z"
-            fill="#d8d0bc" stroke="#c8c0ac" stroke-width=".6"/>
+        <!-- FUSELAGE — long rounded rectangle -->
+        <rect x="-68" y="-7.5" width="140" height="15" rx="7.5"
+              fill="#f0e8d4" stroke="#c0b8a4" stroke-width=".9"/>
+        <!-- Top highlight -->
+        <rect x="-60" y="-5" width="125" height="4" rx="2"
+              fill="#faf5ea" opacity=".55"/>
+        <!-- Bottom shadow -->
+        <rect x="-60" y="3" width="125" height="3" rx="1.5"
+              fill="#c8c0ac" opacity=".30"/>
 
-      <!-- LANDING GEAR -->
-      <!-- Nose gear -->
-      <line x1="730" y1="484" x2="730" y2="494" stroke="#2a2a26" stroke-width="1.2" opacity=".50"/>
-      <circle cx="730" cy="495" r="2.5" fill="#2a2a26" opacity=".50"/>
-      <!-- Main gear left -->
-      <line x1="700" y1="484" x2="700" y2="496" stroke="#2a2a26" stroke-width="1.1" opacity=".45"/>
-      <circle cx="700" cy="497" r="2.8" fill="#2a2a26" opacity=".45"/>
-      <!-- Main gear right -->
-      <line x1="694" y1="482" x2="694" y2="494" stroke="#2a2a26" stroke-width="1.1" opacity=".45"/>
-      <circle cx="694" cy="495" r="2.8" fill="#2a2a26" opacity=".45"/>
+        <!-- Nose cone -->
+        <path d="M72,-5 Q82,0 72,5 L68,5 L68,-5 Z"
+              fill="#d0c8b4" stroke="#b8b0a0" stroke-width=".7"/>
+
+        <!-- Cockpit windshield -->
+        <path d="M64,-5 L70,-3 L70,3 L64,5 L64,-5 Z"
+              fill="#6aa8b8" stroke="#4a8898" stroke-width=".6" opacity=".75"/>
+        <line x1="67" y1="-4" x2="67" y2="4" stroke="#4a8898" stroke-width=".5" opacity=".60"/>
+
+        <!-- Cabin windows — row of dots -->
+        <g fill="#ffe8b0" opacity=".50">
+          <circle cx="54" cy="-4" r="1.5"/>
+          <circle cx="48" cy="-4" r="1.5"/>
+          <circle cx="42" cy="-4" r="1.5"/>
+          <circle cx="36" cy="-4" r="1.5"/>
+          <circle cx="30" cy="-4" r="1.5"/>
+          <circle cx="24" cy="-4" r="1.5"/>
+          <circle cx="18" cy="-4" r="1.5"/>
+          <circle cx="12" cy="-4" r="1.5"/>
+          <circle cx="6"  cy="-4" r="1.5"/>
+          <circle cx="0"  cy="-4" r="1.5"/>
+          <circle cx="-6" cy="-4" r="1.5"/>
+          <circle cx="-12" cy="-4" r="1.5"/>
+          <circle cx="-18" cy="-4" r="1.5"/>
+          <circle cx="-24" cy="-4" r="1.5"/>
+        </g>
+
+        <!-- Horizontal stabilisers (T-tail) -->
+        <polygon points="-60,-6  -68,-6  -76,-30  -62,-28"
+                 fill="#d8d0bc" stroke="#b8b0a0" stroke-width=".7"/>
+        <polygon points="-60,6  -68,6  -76,30  -62,28"
+                 fill="#e0d8c4" stroke="#c0b8a4" stroke-width=".7"/>
+
+        <!-- Vertical stabiliser (fin — top-down view = thin strip) -->
+        <polygon points="-42,-3  -68,-3  -72,-7  -68,-8  -42,-8"
+                 fill="#2a2a26" stroke="#1a1a17" stroke-width=".7"/>
+        <!-- Coral stripe on fin -->
+        <polygon points="-62,-3  -68,-3  -72,-7  -68,-8  -62,-8"
+                 fill="#ed6f5c" stroke="#c45a49" stroke-width=".5"/>
+
+        <!-- Landing gear -->
+        <circle cx="50" cy="10" r="2.8" fill="#2a2a26" opacity=".35"/>
+        <circle cx="2" cy="14" r="3.2" fill="#2a2a26" opacity=".30"/>
+        <circle cx="-4" cy="14" r="3.2" fill="#2a2a26" opacity=".30"/>
+      </g>
     </g>
 
     <!-- ── METRIC CHIPS ──────────────────────────────────────────────────── -->
@@ -911,19 +853,19 @@
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto 16px;">
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">380 M+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Customer identities unified across Reliance Retail · UCP foundation across 100 % of formats (RR registered customers · 387 M)</p>
+      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Customer identities unified across Reliance Retail &middot; UCP foundation across 100 % of formats (RR registered customers &middot; 387 M)</p>
     </div>
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">100+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Brands replatformed to Jio Commerce Platform · 78 channels · 68 live · 700 K+ orders / day</p>
+      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Brands replatformed to Jio Commerce Platform &middot; 78 channels &middot; 68 live &middot; 700 K+ orders / day</p>
     </div>
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">15.08 Cr</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Pieces delivered FY 26 via Impetus F&amp;L · 11.06 L POs FY 26 · 43 brands live</p>
+      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Pieces delivered FY 26 via Impetus F&amp;L &middot; 11.06 L POs FY 26 &middot; 43 brands live</p>
     </div>
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">88 %+</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Positive customer engagement · AJIO ZIP agentic shopping · 86 % chat-driven discovery on 2 M+ products</p>
+      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Positive customer engagement &middot; AJIO ZIP agentic shopping &middot; 86 % chat-driven discovery on 2 M+ products</p>
     </div>
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">20 K+</div>
@@ -931,7 +873,7 @@
     </div>
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">22</div>
-      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Platforms running today · across Plan · Buy · Make · Move · Sell · Data · Store Health · HR Tech</p>
+      <p style="font-size:13px;line-height:1.5;color:var(--ink-mid);">Platforms running today &middot; across Plan &middot; Buy &middot; Make &middot; Move &middot; Sell &middot; Data &middot; Store Health &middot; HR Tech</p>
     </div>
     <div class="card" style="padding:28px 24px;">
       <div class="display-2" style="font-size:clamp(28px,4vw,48px);line-height:1;margin-bottom:10px;">1 K+</div>
