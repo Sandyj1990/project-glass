@@ -1108,233 +1108,202 @@
 <div class="section-label mb-3">04 &middot; UCP &amp; MARKETING OS</div>
 <h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Every Reliance Retail customer &middot; <span style="color: var(--accent);">one profile &middot; ready to act on.</span></h2>
 
-<!-- UCP & Marketing OS Graphic -->
-<div style="max-width:960px;margin:0 auto 48px;position:relative;">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 460" style="width:100%;height:auto;display:block;">
+<!-- UCP & Marketing OS Graphic v2 — Concentric Identity Rings -->
+<div style="max-width:860px;margin:0 auto 48px;position:relative;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 520" style="width:100%;height:auto;display:block;">
   <defs>
     <style>
-      @keyframes ucp-pulse { 0%,100%{r:18;opacity:.18} 50%{r:26;opacity:.06} }
-      @keyframes ucp-flow  { to{stroke-dashoffset:-20} }
-      @keyframes ucp-blink { 0%,100%{opacity:1} 45%,55%{opacity:.3} }
-      .ucp-pulse  { animation:ucp-pulse 2.4s ease-in-out infinite; }
-      .ucp-pulse2 { animation:ucp-pulse 2.4s ease-in-out infinite .6s; }
-      .ucp-pulse3 { animation:ucp-pulse 2.4s ease-in-out infinite 1.2s; }
-      .ucp-flow   { stroke-dasharray:6 4; animation:ucp-flow 1.1s linear infinite; }
-      .ucp-blink  { animation:ucp-blink 1.8s ease-in-out infinite; }
+      @keyframes ucp-spin-slow { from{transform-origin:430px 255px; transform:rotate(0deg)} to{transform-origin:430px 255px; transform:rotate(360deg)} }
+      @keyframes ucp-spin-rev  { from{transform-origin:430px 255px; transform:rotate(0deg)} to{transform-origin:430px 255px; transform:rotate(-360deg)} }
+      @keyframes ucp-pulse-core{ 0%,100%{opacity:.18;r:52} 50%{opacity:.06;r:62} }
+      @keyframes ucp-node-pop  { 0%,100%{opacity:.7} 50%{opacity:1} }
+      @keyframes ucp-signal    { 0%{stroke-dashoffset:0;opacity:.9} 100%{stroke-dashoffset:-60;opacity:0} }
+      @keyframes ucp-signal2   { 0%{stroke-dashoffset:0;opacity:.9} 100%{stroke-dashoffset:-60;opacity:0} }
+      .ucp-ring1 { animation: ucp-spin-slow 32s linear infinite; transform-origin:430px 255px; }
+      .ucp-ring2 { animation: ucp-spin-rev  48s linear infinite; transform-origin:430px 255px; }
+      .ucp-core-glow { animation: ucp-pulse-core 3s ease-in-out infinite; }
+      .ucp-sig-a { stroke-dasharray:12 48; animation: ucp-signal  2.4s linear infinite; }
+      .ucp-sig-b { stroke-dasharray:12 48; animation: ucp-signal  2.4s linear infinite .6s; }
+      .ucp-sig-c { stroke-dasharray:12 48; animation: ucp-signal  2.4s linear infinite 1.2s; }
+      .ucp-sig-d { stroke-dasharray:12 48; animation: ucp-signal  2.4s linear infinite 1.8s; }
+      .ucp-sig-e { stroke-dasharray:12 48; animation: ucp-signal2 2.4s linear infinite .3s; }
+      .ucp-sig-f { stroke-dasharray:12 48; animation: ucp-signal2 2.4s linear infinite .9s; }
       @media(prefers-reduced-motion:reduce){
-        .ucp-pulse,.ucp-pulse2,.ucp-pulse3,.ucp-flow,.ucp-blink{animation:none!important;}
+        .ucp-ring1,.ucp-ring2{animation:none!important;}
+        .ucp-sig-a,.ucp-sig-b,.ucp-sig-c,.ucp-sig-d,.ucp-sig-e,.ucp-sig-f{animation:none!important;opacity:.4;}
       }
     </style>
 
-    <!-- Soft radial glow behind the profile core -->
-    <radialGradient id="ucpGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%"   stop-color="#ed6f5c" stop-opacity=".13"/>
+    <!-- Radial gradient for the core glow -->
+    <radialGradient id="ucpCoreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#ed6f5c" stop-opacity=".22"/>
+      <stop offset="60%"  stop-color="#ed6f5c" stop-opacity=".06"/>
       <stop offset="100%" stop-color="#ed6f5c" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- Gradient for profile card -->
-    <linearGradient id="ucpCard" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#2a2a26"/>
+    <!-- Gradient for the profile card background -->
+    <radialGradient id="ucpCoreBg" cx="50%" cy="40%" r="60%">
+      <stop offset="0%"   stop-color="#3a3a35"/>
       <stop offset="100%" stop-color="#1a1a17"/>
-    </linearGradient>
+    </radialGradient>
 
-    <!-- Gradient for marketing layer -->
-    <linearGradient id="ucpMkt" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#ed6f5c"/>
-      <stop offset="100%" stop-color="#c45a49"/>
-    </linearGradient>
-
-    <!-- Subtle dot grid -->
-    <pattern id="ucpDots" width="18" height="18" patternUnits="userSpaceOnUse">
-      <circle cx="1" cy="1" r="1" fill="#c4bfb0" opacity=".35"/>
+    <!-- Dot grid background -->
+    <pattern id="ucpGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r=".9" fill="#c4bfb0" opacity=".3"/>
     </pattern>
+
+    <!-- Clip for outer boundary -->
+    <clipPath id="ucpClip">
+      <rect width="860" height="520" rx="14"/>
+    </clipPath>
   </defs>
 
   <!-- Background -->
-  <rect width="960" height="460" fill="#faf5ea" rx="12"/>
-  <rect width="960" height="460" fill="url(#ucpDots)" rx="12"/>
+  <rect width="860" height="520" rx="14" fill="#faf5ea"/>
+  <rect width="860" height="520" rx="14" fill="url(#ucpGrid)"/>
 
-  <!-- ══════════════════════════════════════════════════════════
-       LEFT COLUMN — Source brands / formats (the "many")
-  ══════════════════════════════════════════════════════════ -->
+  <!-- ── RING 3 (outermost): Marketing activation signals ─────────────── -->
+  <!-- Dashed orbit guide ring -->
+  <circle cx="430" cy="255" r="218" fill="none" stroke="#d5cfc0" stroke-width=".8" stroke-dasharray="4 6" opacity=".5"/>
 
-  <!-- Column header -->
-  <text x="100" y="44" font-family="var(--mono,monospace)" font-size="9" font-weight="600"
-        letter-spacing="2" fill="#8a8475" text-anchor="middle">75+ FORMATS</text>
+  <!-- Signal lines radiating outward from ring 2 to ring 3 nodes -->
+  <!-- These are animated dashes that travel outward -->
+  <!-- Top -->
+  <line class="ucp-sig-a" x1="430" y1="100" x2="430" y2="37" stroke="#ed6f5c" stroke-width="1.5" fill="none"/>
+  <!-- Top-right -->
+  <line class="ucp-sig-b" x1="540" y1="130" x2="608" y2="80" stroke="#ed6f5c" stroke-width="1.5" fill="none"/>
+  <!-- Right -->
+  <line class="ucp-sig-c" x1="590" y1="255" x2="660" y2="255" stroke="#ed6f5c" stroke-width="1.5" fill="none"/>
+  <!-- Bottom-right -->
+  <line class="ucp-sig-d" x1="540" y1="380" x2="608" y2="430" stroke="#ed6f5c" stroke-width="1.5" fill="none"/>
+  <!-- Bottom-left -->
+  <line class="ucp-sig-e" x1="320" y1="380" x2="252" y2="430" stroke="#ed6f5c" stroke-width="1.5" fill="none"/>
+  <!-- Left -->
+  <line class="ucp-sig-f" x1="270" y1="255" x2="200" y2="255" stroke="#ed6f5c" stroke-width="1.5" fill="none"/>
 
-  <!-- Brand dots with labels — stacked vertically -->
-  <!-- Each: circle + label + animated pulse ring -->
+  <!-- Activation nodes at ring 3 -->
+  <!-- Top: Personalised Push -->
+  <rect x="350" y="14" width="160" height="46" rx="10" fill="#2a2a26"/>
+  <text x="430" y="36" font-family="inherit" font-size="11" font-weight="700" fill="#faf5ea" text-anchor="middle">Personalised Push</text>
+  <text x="430" y="52" font-family="var(--mono,monospace)" font-size="8" fill="#ed6f5c" text-anchor="middle" letter-spacing="1">RIGHT MOMENT</text>
 
-  <!-- AJIO -->
-  <circle class="ucp-pulse" cx="100" cy="90" r="18" fill="#ed6f5c" opacity=".12"/>
-  <circle cx="100" cy="90" r="14" fill="#2a2a26"/>
-  <text x="100" y="94" font-family="var(--mono,monospace)" font-size="8" font-weight="700"
-        fill="#faf5ea" text-anchor="middle">AJIO</text>
+  <!-- Top-right: Campaign OS -->
+  <rect x="616" y="56" width="148" height="46" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+  <rect x="616" y="56" width="148" height="4" rx="2" fill="#ed6f5c"/>
+  <text x="690" y="80" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26" text-anchor="middle">Campaign OS</text>
+  <text x="690" y="95" font-family="var(--mono,monospace)" font-size="8" fill="#8a8475" text-anchor="middle">Weeks → minutes</text>
 
-  <!-- JioMart -->
-  <circle class="ucp-pulse2" cx="100" cy="148" r="18" fill="#ed6f5c" opacity=".12"/>
-  <circle cx="100" cy="148" r="14" fill="#2a2a26"/>
-  <text x="100" y="152" font-family="var(--mono,monospace)" font-size="7" font-weight="700"
-        fill="#faf5ea" text-anchor="middle">JioMart</text>
+  <!-- Right: Real-time Activation -->
+  <rect x="668" y="232" width="168" height="46" rx="10" fill="#ed6f5c"/>
+  <text x="752" y="254" font-family="inherit" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">Real-time Activation</text>
+  <text x="752" y="270" font-family="var(--mono,monospace)" font-size="8" fill="#fff" text-anchor="middle" opacity=".8">LIVE · EVERY FORMAT</text>
 
-  <!-- Reliance Digital -->
-  <circle class="ucp-pulse3" cx="100" cy="206" r="18" fill="#ed6f5c" opacity=".12"/>
-  <circle cx="100" cy="206" r="14" fill="#ed6f5c"/>
-  <text x="100" y="210" font-family="var(--mono,monospace)" font-size="6" font-weight="700"
-        fill="#fff" text-anchor="middle">RD</text>
+  <!-- Bottom-right: Brand Health -->
+  <rect x="616" y="418" width="148" height="46" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+  <rect x="616" y="418" width="148" height="4" rx="2" fill="#2a2a26"/>
+  <text x="690" y="442" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26" text-anchor="middle">Brand Health</text>
+  <text x="690" y="457" font-family="var(--mono,monospace)" font-size="8" fill="#8a8475" text-anchor="middle">KPIs · AI diagnostics</text>
 
-  <!-- Tira -->
-  <circle class="ucp-pulse" cx="100" cy="264" r="18" fill="#ed6f5c" opacity=".12"/>
-  <circle cx="100" cy="264" r="14" fill="#2a2a26"/>
-  <text x="100" y="268" font-family="var(--mono,monospace)" font-size="8" font-weight="700"
-        fill="#faf5ea" text-anchor="middle">Tira</text>
+  <!-- Bottom-left: Coupon Engine -->
+  <rect x="96" y="418" width="148" height="46" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
+  <rect x="96" y="418" width="148" height="4" rx="2" fill="#2a2a26"/>
+  <text x="170" y="442" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26" text-anchor="middle">Coupon Engine</text>
+  <text x="170" y="457" font-family="var(--mono,monospace)" font-size="8" fill="#8a8475" text-anchor="middle">JCP Coupons · self-serve</text>
 
-  <!-- Trends -->
-  <circle class="ucp-pulse2" cx="100" cy="322" r="18" fill="#ed6f5c" opacity=".12"/>
-  <circle cx="100" cy="322" r="14" fill="#2a2a26"/>
-  <text x="100" y="326" font-family="var(--mono,monospace)" font-size="7" font-weight="700"
-        fill="#faf5ea" text-anchor="middle">Trends</text>
+  <!-- Left: Lower Acq. Cost -->
+  <rect x="24" y="232" width="168" height="46" rx="10" fill="#2a2a26"/>
+  <text x="108" y="254" font-family="inherit" font-size="11" font-weight="700" fill="#faf5ea" text-anchor="middle">Lower Acq. Cost</text>
+  <text x="108" y="270" font-family="var(--mono,monospace)" font-size="8" fill="#ed6f5c" text-anchor="middle" letter-spacing="1">HIGHER REPEAT SPEND</text>
 
-  <!-- Smart Bazaar -->
-  <circle class="ucp-pulse3" cx="100" cy="380" r="18" fill="#ed6f5c" opacity=".12"/>
-  <circle cx="100" cy="380" r="14" fill="#c4bfb0"/>
-  <text x="100" y="384" font-family="var(--mono,monospace)" font-size="6" font-weight="700"
-        fill="#2a2a26" text-anchor="middle">SB</text>
+  <!-- ── RING 2 (middle): Brand format nodes — slowly counter-rotating ── -->
+  <g class="ucp-ring2">
+    <!-- Orbit guide -->
+    <circle cx="430" cy="255" r="148" fill="none" stroke="#d5cfc0" stroke-width=".6" stroke-dasharray="3 5" opacity=".6"/>
 
-  <!-- ══════════════════════════════════════════════════════════
-       CONVERGING FLOW LINES → UCP CORE
-  ══════════════════════════════════════════════════════════ -->
+    <!-- 6 brand nodes evenly spaced on ring 2 -->
+    <!-- AJIO: top (430, 107) -->
+    <circle cx="430" cy="107" r="22" fill="#2a2a26"/>
+    <text x="430" y="111" font-family="var(--mono,monospace)" font-size="9" font-weight="700" fill="#faf5ea" text-anchor="middle">AJIO</text>
 
-  <!-- Each line flows from brand circle edge to UCP core left edge -->
-  <line class="ucp-flow" x1="116" y1="90"  x2="370" y2="222" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="116" y1="148" x2="370" y2="228" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="116" y1="206" x2="370" y2="234" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="116" y1="264" x2="370" y2="238" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="116" y1="322" x2="370" y2="244" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="116" y1="380" x2="370" y2="250" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
+    <!-- JioMart: top-right (558, 181) -->
+    <circle cx="558" cy="181" r="22" fill="#2a2a26"/>
+    <text x="558" y="185" font-family="var(--mono,monospace)" font-size="8" font-weight="700" fill="#faf5ea" text-anchor="middle">JioMart</text>
 
-  <!-- Convergence label -->
-  <text x="240" y="192" font-family="var(--mono,monospace)" font-size="9" fill="#8a8475"
-        text-anchor="middle" letter-spacing="1">200+ attributes</text>
-  <text x="240" y="205" font-family="var(--mono,monospace)" font-size="9" fill="#8a8475"
-        text-anchor="middle" letter-spacing="1">per customer</text>
+    <!-- RD: bottom-right (558, 329) -->
+    <circle cx="558" cy="329" r="22" fill="#ed6f5c"/>
+    <text x="558" y="333" font-family="var(--mono,monospace)" font-size="8" font-weight="700" fill="#fff" text-anchor="middle">R.Digital</text>
 
-  <!-- ══════════════════════════════════════════════════════════
-       CENTRE — UCP PROFILE CORE
-  ══════════════════════════════════════════════════════════ -->
+    <!-- Tira: bottom (430, 403) -->
+    <circle cx="430" cy="403" r="22" fill="#2a2a26"/>
+    <text x="430" y="407" font-family="var(--mono,monospace)" font-size="9" font-weight="700" fill="#faf5ea" text-anchor="middle">Tira</text>
 
+    <!-- Trends: bottom-left (302, 329) -->
+    <circle cx="302" cy="329" r="22" fill="#2a2a26"/>
+    <text x="302" y="333" font-family="var(--mono,monospace)" font-size="8" font-weight="700" fill="#faf5ea" text-anchor="middle">Trends</text>
+
+    <!-- Smart Bazaar: top-left (302, 181) -->
+    <circle cx="302" cy="181" r="22" fill="#c4bfb0"/>
+    <text x="302" y="185" font-family="var(--mono,monospace)" font-size="7" font-weight="700" fill="#2a2a26" text-anchor="middle">Sm.Bazaar</text>
+  </g>
+
+  <!-- ── RING 1 (inner): Attribute orbit — slowly rotating ─────────────── -->
+  <g class="ucp-ring1">
+    <!-- Orbit guide -->
+    <circle cx="430" cy="255" r="90" fill="none" stroke="#d5cfc0" stroke-width=".5" stroke-dasharray="2 4" opacity=".5"/>
+
+    <!-- 8 attribute tags on ring 1 -->
+    <!-- Top (430, 165) -->
+    <rect x="400" y="155" width="60" height="20" rx="10" fill="#ed6f5c" opacity=".85"/>
+    <text x="430" y="169" font-family="var(--mono,monospace)" font-size="7.5" fill="#fff" text-anchor="middle" font-weight="600">Purchase</text>
+
+    <!-- Top-right (493, 192) -->
+    <rect x="468" y="182" width="50" height="20" rx="10" fill="#2a2a26" opacity=".75"/>
+    <text x="493" y="196" font-family="var(--mono,monospace)" font-size="7" fill="#faf5ea" text-anchor="middle">Location</text>
+
+    <!-- Right (520, 255) -->
+    <rect x="498" y="245" width="44" height="20" rx="10" fill="#2a2a26" opacity=".75"/>
+    <text x="520" y="259" font-family="var(--mono,monospace)" font-size="7" fill="#faf5ea" text-anchor="middle">Browse</text>
+
+    <!-- Bottom-right (493, 318) -->
+    <rect x="468" y="308" width="50" height="20" rx="10" fill="#ed6f5c" opacity=".7"/>
+    <text x="493" y="322" font-family="var(--mono,monospace)" font-size="7" fill="#fff" text-anchor="middle">Spend</text>
+
+    <!-- Bottom (430, 345) -->
+    <rect x="403" y="335" width="54" height="20" rx="10" fill="#2a2a26" opacity=".75"/>
+    <text x="430" y="349" font-family="var(--mono,monospace)" font-size="7" fill="#faf5ea" text-anchor="middle">Loyalty</text>
+
+    <!-- Bottom-left (367, 318) -->
+    <rect x="342" y="308" width="50" height="20" rx="10" fill="#2a2a26" opacity=".75"/>
+    <text x="367" y="322" font-family="var(--mono,monospace)" font-size="7" fill="#faf5ea" text-anchor="middle">Returns</text>
+
+    <!-- Left (340, 255) -->
+    <rect x="316" y="245" width="48" height="20" rx="10" fill="#ed6f5c" opacity=".7"/>
+    <text x="340" y="259" font-family="var(--mono,monospace)" font-size="7" fill="#fff" text-anchor="middle">Cohort</text>
+
+    <!-- Top-left (367, 192) -->
+    <rect x="342" y="182" width="50" height="20" rx="10" fill="#2a2a26" opacity=".75"/>
+    <text x="367" y="196" font-family="var(--mono,monospace)" font-size="7" fill="#faf5ea" text-anchor="middle">Device</text>
+  </g>
+
+  <!-- ── CORE: The unified customer profile ─────────────────────────────── -->
   <!-- Glow halo -->
-  <ellipse cx="480" cy="235" rx="110" ry="90" fill="url(#ucpGlow)"/>
+  <circle cx="430" cy="255" r="62" fill="url(#ucpCoreGlow)" opacity="1"/>
 
-  <!-- Main profile card -->
-  <rect x="370" y="130" width="220" height="210" rx="16" fill="url(#ucpCard)"/>
-  <!-- Inner border -->
-  <rect x="378" y="138" width="204" height="194" rx="12" fill="none" stroke="#ed6f5c" stroke-width=".7" opacity=".35"/>
+  <!-- Core circle -->
+  <circle cx="430" cy="255" r="52" fill="url(#ucpCoreBg)"/>
+  <circle cx="430" cy="255" r="52" fill="none" stroke="#ed6f5c" stroke-width="1.2" opacity=".5"/>
 
-  <!-- Avatar circle at top -->
-  <circle cx="480" cy="178" r="28" fill="#2a2a26" stroke="#ed6f5c" stroke-width="1.5"/>
-  <!-- Simplified person icon -->
-  <circle cx="480" cy="170" r="9" fill="#faf5ea" opacity=".85"/>
-  <path d="M460,198 Q460,183 480,183 Q500,183 500,198" fill="#faf5ea" opacity=".55"/>
+  <!-- Person icon -->
+  <circle cx="430" cy="240" r="12" fill="#faf5ea" opacity=".9"/>
+  <path d="M410,272 Q410,256 430,256 Q450,256 450,272" fill="#faf5ea" opacity=".5"/>
 
-  <!-- "ONE PROFILE" label -->
-  <text x="480" y="222" font-family="var(--mono,monospace)" font-size="9" font-weight="700"
-        fill="#ed6f5c" text-anchor="middle" letter-spacing="2">ONE PROFILE</text>
+  <!-- "380 M+" stat -->
+  <text x="430" y="292" font-family="inherit" font-size="15" font-weight="800" fill="#faf5ea" text-anchor="middle">380 M+</text>
+  <text x="430" y="306" font-family="var(--mono,monospace)" font-size="7" fill="#ed6f5c" text-anchor="middle" letter-spacing="1.5">ONE PROFILE</text>
 
-  <!-- Divider -->
-  <line x1="390" y1="232" x2="570" y2="232" stroke="#faf5ea" stroke-width=".3" opacity=".2"/>
-
-  <!-- Attribute rows -->
-  <!-- Row 1 -->
-  <rect x="390" y="240" width="60" height="7" rx="3.5" fill="#faf5ea" opacity=".15"/>
-  <rect x="458" y="240" width="90" height="7" rx="3.5" fill="#ed6f5c" opacity=".6"/>
-
-  <!-- Row 2 -->
-  <rect x="390" y="254" width="80" height="7" rx="3.5" fill="#faf5ea" opacity=".15"/>
-  <rect x="478" y="254" width="70" height="7" rx="3.5" fill="#faf5ea" opacity=".25"/>
-
-  <!-- Row 3 -->
-  <rect x="390" y="268" width="50" height="7" rx="3.5" fill="#faf5ea" opacity=".15"/>
-  <rect x="448" y="268" width="110" height="7" rx="3.5" fill="#ed6f5c" opacity=".4"/>
-
-  <!-- Row 4 -->
-  <rect x="390" y="282" width="70" height="7" rx="3.5" fill="#faf5ea" opacity=".15"/>
-  <rect x="468" y="282" width="85" height="7" rx="3.5" fill="#faf5ea" opacity=".2"/>
-
-  <!-- 380M stat -->
-  <text x="480" y="314" font-family="inherit" font-size="22" font-weight="800"
-        fill="#faf5ea" text-anchor="middle">380 M+</text>
-  <text x="480" y="330" font-family="var(--mono,monospace)" font-size="8"
-        fill="#c4bfb0" text-anchor="middle" letter-spacing="1.5">UNIFIED IDENTITIES</text>
-
-  <!-- ══════════════════════════════════════════════════════════
-       RIGHT COLUMN — Marketing OS activation outputs
-  ══════════════════════════════════════════════════════════ -->
-
-  <!-- Flow lines from UCP core right edge → output cards -->
-  <line class="ucp-flow" x1="590" y1="185" x2="720" y2="100" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="590" y1="210" x2="720" y2="185" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="590" y1="235" x2="720" y2="270" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-  <line class="ucp-flow" x1="590" y1="260" x2="720" y2="355" stroke="#ed6f5c" stroke-width="1.2" fill="none"/>
-
-  <!-- Column header -->
-  <text x="820" y="44" font-family="var(--mono,monospace)" font-size="9" font-weight="600"
-        letter-spacing="2" fill="#8a8475" text-anchor="middle">MARKETING OS</text>
-
-  <!-- Output card 1: Personalised Offer -->
-  <rect x="720" y="62" width="200" height="72" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
-  <!-- Coral top accent bar -->
-  <rect x="720" y="62" width="200" height="4" rx="2" fill="#ed6f5c"/>
-  <text x="736" y="90" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26">Personalised Offer</text>
-  <text x="736" y="106" font-family="inherit" font-size="10" fill="#8a8475">Right customer · right moment</text>
-  <!-- Mini sparkline -->
-  <polyline points="840,116 852,110 864,113 876,104 888,108 900,98" fill="none" stroke="#ed6f5c" stroke-width="1.5" stroke-linejoin="round"/>
-
-  <!-- Output card 2: Campaign Intelligence -->
-  <rect x="720" y="148" width="200" height="72" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
-  <rect x="720" y="148" width="200" height="4" rx="2" fill="#2a2a26"/>
-  <text x="736" y="176" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26">Campaign Intelligence</text>
-  <text x="736" y="192" font-family="inherit" font-size="10" fill="#8a8475">Weeks → minutes</text>
-  <!-- Mini bar chart -->
-  <rect x="840" y="202" width="8" height="14" rx="2" fill="#c4bfb0"/>
-  <rect x="852" y="196" width="8" height="20" rx="2" fill="#c4bfb0"/>
-  <rect x="864" y="190" width="8" height="26" rx="2" fill="#ed6f5c"/>
-  <rect x="876" y="194" width="8" height="22" rx="2" fill="#c4bfb0"/>
-  <rect x="888" y="188" width="8" height="28" rx="2" fill="#ed6f5c"/>
-
-  <!-- Output card 3: Brand Health Cockpit -->
-  <rect x="720" y="234" width="200" height="72" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8"/>
-  <rect x="720" y="234" width="200" height="4" rx="2" fill="#ed6f5c"/>
-  <text x="736" y="262" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26">Brand Health Cockpit</text>
-  <text x="736" y="278" font-family="inherit" font-size="10" fill="#8a8475">KPIs · AI diagnostics</text>
-  <!-- Donut mini chart -->
-  <circle cx="876" cy="268" r="16" fill="none" stroke="#d5cfc0" stroke-width="5"/>
-  <circle cx="876" cy="268" r="16" fill="none" stroke="#ed6f5c" stroke-width="5"
-          stroke-dasharray="63 38" stroke-dashoffset="25" transform="rotate(-90 876 268)"/>
-  <text x="876" y="272" font-family="var(--mono,monospace)" font-size="8" font-weight="700"
-        fill="#2a2a26" text-anchor="middle">62%</text>
-
-  <!-- Output card 4: AI-Native UCP (roadmap) -->
-  <rect x="720" y="320" width="200" height="72" rx="10" fill="#faf5ea" stroke="#d5cfc0" stroke-width=".8" opacity=".7"/>
-  <rect x="720" y="320" width="200" height="4" rx="2" fill="#c4bfb0"/>
-  <text x="736" y="348" font-family="inherit" font-size="11" font-weight="700" fill="#2a2a26" opacity=".7">AI-Native UCP</text>
-  <text x="736" y="364" font-family="inherit" font-size="10" fill="#8a8475">Speak → cohort → campaign</text>
-  <!-- Chat bubble icon -->
-  <rect x="844" y="338" width="60" height="36" rx="8" fill="none" stroke="#c4bfb0" stroke-width="1" opacity=".7"/>
-  <line x1="856" y1="352" x2="892" y2="352" stroke="#c4bfb0" stroke-width="1" opacity=".7"/>
-  <line x1="856" y1="362" x2="880" y2="362" stroke="#c4bfb0" stroke-width="1" opacity=".7"/>
-  <!-- Roadmap pill -->
-  <rect x="840" y="382" width="68" height="16" rx="8" fill="#c4bfb0" opacity=".5"/>
-  <text x="874" y="394" font-family="var(--mono,monospace)" font-size="7" fill="#2a2a26"
-        text-anchor="middle" letter-spacing="1">ROADMAP</text>
-
-  <!-- ══════════════════════════════════════════════════════════
-       BOTTOM STAT STRIP
-  ══════════════════════════════════════════════════════════ -->
-  <rect x="60" y="418" width="840" height="28" rx="14" fill="#2a2a26"/>
-  <text x="480" y="436" font-family="var(--mono,monospace)" font-size="9.5" font-weight="600"
-        fill="#faf5ea" text-anchor="middle" letter-spacing="1.5">
-    100% of RR formats · 200+ profile attributes · real-time activation · lower acquisition cost
+  <!-- ── LEGEND / RING LABELS ───────────────────────────────────────────── -->
+  <text x="430" y="480" font-family="var(--mono,monospace)" font-size="8.5" fill="#8a8475" text-anchor="middle" letter-spacing="1">
+    200+ profile attributes · 100% of RR formats · real-time · lower acquisition cost · higher repeat spend
   </text>
 
 </svg>
