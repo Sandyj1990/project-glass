@@ -1380,164 +1380,87 @@
 <div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 &middot; GRANARY</div>
 <h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Agentic planning + assortment <span style="color: var(--accent);">for Grocery</span></h2>
-<!-- GRANARY 2-COL LAYOUT -->
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:2.5rem;" class="granary-2col">
+<!-- GRANARY CARD LAYOUT -->
 
-  <!-- LEFT: text content -->
-  <div>
-    <div class="num-display section-hero-num">11 stores</div>
-    <div class="section-hero-cap" style="margin-bottom:1.5rem;">Mumbai pilot &middot; MAPE 41 %</div>
-    <p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Granary runs 48 million forecast rows every day across 12,000 SKUs and 4,000 stores. Phase 1 is live across an 11-store Mumbai pilot (Smart Bazaar + Smart Point), achieving a MAPE of 41% as of 28 Apr 2026. Cortex Planning modules &mdash; Assortment Intelligence, MBQ Automation, and Range Review &mdash; are live, with STP, CDT, and Consensus Forecasting on the roadmap. The wider Granary stack serves 12,000+ stores.</p>
+<!-- Hero dark card -->
+<div style="background:#1a1a16;border-radius:16px;padding:40px 44px 36px;margin-bottom:1.5rem;">
+  <p style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:2.5px;
+            color:rgba(255,255,255,.45);margin:0 0 20px;text-transform:uppercase;">
+    Agentic Grocery Planning &middot; 4,000 stores
+  </p>
+  <div style="display:flex;align-items:flex-start;gap:2rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:clamp(52px,7vw,80px);font-weight:800;color:#fff;line-height:1;margin-bottom:8px;">48 M+</div>
+      <div style="font-size:clamp(14px,1.6vw,18px);color:rgba(255,255,255,.65);line-height:1.4;max-width:380px;">
+        forecast rows processed every day across 12,000 SKUs and 4,000 stores
+      </div>
+    </div>
+  </div>
+  <!-- Pill badges -->
+  <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;">
+    <span style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.8px;
+                 color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);
+                 border-radius:100px;padding:6px 14px;text-transform:uppercase;">11 stores live</span>
+    <span style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.8px;
+                 color:#ed6f5c;border:1.5px solid #ed6f5c;
+                 border-radius:100px;padding:6px 14px;text-transform:uppercase;">MAPE 41 %</span>
+    <span style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.8px;
+                 color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);
+                 border-radius:100px;padding:6px 14px;text-transform:uppercase;">Mumbai pilot</span>
+    <span style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.8px;
+                 color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);
+                 border-radius:100px;padding:6px 14px;text-transform:uppercase;">Smart Bazaar &middot; Smart Point</span>
+  </div>
+</div>
+
+<!-- Three module cards -->
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:2.5rem;"
+     class="granary-module-cards">
+
+  <!-- Card 1 — Assortment Intelligence -->
+  <div style="background:#faf5ea;border:1px solid #ddd8c8;border-radius:12px;
+              padding:24px 22px 20px;border-top:3px solid #ed6f5c;">
+    <p style="font-family:var(--mono,monospace);font-size:8px;letter-spacing:2px;
+              color:#8a8475;margin:0 0 12px;text-transform:uppercase;">Assortment Intelligence</p>
+    <p style="font-size:clamp(20px,2.6vw,28px);font-weight:800;color:#2a2a26;
+              margin:0 0 6px;line-height:1.1;">12 K SKUs<br><span style="color:#ed6f5c;">planned daily</span></p>
+    <p style="font-size:12px;color:#8a8475;margin:0;line-height:1.5;">
+      Right product, right store, right week.
+    </p>
   </div>
 
-  <!-- RIGHT: minimal 2D graphic -->
-  <div>
-    <svg viewBox="0 0 460 380" xmlns="http://www.w3.org/2000/svg"
-         style="width:100%;display:block;border-radius:16px;"
-         aria-label="Granary planning modules graphic">
-
-      <!-- ── Background ── -->
-      <rect width="460" height="380" fill="#0e1117" rx="16"/>
-
-      <!-- Subtle dot-grid background -->
-      <pattern id="dotgrid" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-        <circle cx="10" cy="10" r="0.8" fill="#ffffff" opacity="0.04"/>
-      </pattern>
-      <rect width="460" height="380" fill="url(#dotgrid)" rx="16"/>
-
-      <!-- ── Top divider line ── -->
-      <line x1="40" y1="52" x2="420" y2="52" stroke="#ffffff" stroke-width="0.5" opacity="0.08"/>
-
-      <!-- ══════════════════════════════════════════
-           COLUMN 1 — Assortment Intelligence (coral)
-           ══════════════════════════════════════════ -->
-
-      <!-- Column bg card -->
-      <rect x="28" y="64" width="122" height="288" rx="10" fill="#ffffff" opacity="0.03"/>
-      <rect x="28" y="64" width="122" height="4" rx="2" fill="#e87050"/>
-
-      <!-- Bar chart — 6 bars of varying height -->
-      <rect x="42"  y="220" width="12" height="80" rx="3" fill="#e87050" opacity="0.30"/>
-      <rect x="58"  y="190" width="12" height="110" rx="3" fill="#e87050" opacity="0.50"/>
-      <rect x="74"  y="170" width="12" height="130" rx="3" fill="#e87050" opacity="0.70"/>
-      <rect x="90"  y="148" width="12" height="152" rx="3" fill="#e87050" opacity="0.90"/>
-      <rect x="106" y="162" width="12" height="138" rx="3" fill="#e87050" opacity="0.75"/>
-      <rect x="122" y="200" width="12" height="100" rx="3" fill="#e87050" opacity="0.45"/>
-
-      <!-- Baseline -->
-      <line x1="38" y1="302" x2="138" y2="302" stroke="#e87050" stroke-width="0.8" opacity="0.25"/>
-
-      <!-- Stat number -->
-      <text x="89" y="136" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="18" font-weight="700"
-            fill="#e87050">12 K</text>
-
-      <!-- Tiny label -->
-      <text x="89" y="330" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="7.5" letter-spacing="1.5"
-            fill="#e87050" opacity="0.6">SKUs</text>
-
-      <!-- ══════════════════════════════════════════
-           COLUMN 2 — MBQ Automation (teal)
-           ══════════════════════════════════════════ -->
-
-      <rect x="168" y="64" width="122" height="288" rx="10" fill="#ffffff" opacity="0.03"/>
-      <rect x="168" y="64" width="122" height="4" rx="2" fill="#50b090"/>
-
-      <!-- Donut chart — 83% arc -->
-      <!-- Track -->
-      <circle cx="229" cy="210" r="52" fill="none" stroke="#1e2a26" stroke-width="16"/>
-      <!-- Arc (83% = 299 deg of 360 = dasharray 299/360 * 2πr ≈ 268.5 of 326.7) -->
-      <circle cx="229" cy="210" r="52" fill="none" stroke="#50b090" stroke-width="16"
-              stroke-dasharray="268 59" stroke-dashoffset="82"
-              stroke-linecap="round"/>
-      <!-- Inner glow ring -->
-      <circle cx="229" cy="210" r="36" fill="none" stroke="#50b090" stroke-width="0.8" opacity="0.2"/>
-
-      <!-- Stat number centred in donut -->
-      <text x="229" y="205" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="18" font-weight="700"
-            fill="#50b090">83 %</text>
-      <text x="229" y="220" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="7.5" letter-spacing="1"
-            fill="#50b090" opacity="0.6">AUTO</text>
-
-      <!-- Tiny label -->
-      <text x="229" y="330" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="7.5" letter-spacing="1.5"
-            fill="#50b090" opacity="0.6">MBQ</text>
-
-      <!-- ══════════════════════════════════════════
-           COLUMN 3 — Range Review / MAPE (gold)
-           ══════════════════════════════════════════ -->
-
-      <rect x="308" y="64" width="122" height="288" rx="10" fill="#ffffff" opacity="0.03"/>
-      <rect x="308" y="64" width="122" height="4" rx="2" fill="#d4a840"/>
-
-      <!-- Sparkline — downward trend (MAPE improving W1→W8) -->
-      <!-- Area fill -->
-      <polygon points="322,260 336,248 350,238 364,228 378,218 392,210 406,202 420,196 420,302 322,302"
-               fill="#d4a840" opacity="0.08"/>
-      <!-- Line -->
-      <polyline points="322,260 336,248 350,238 364,228 378,218 392,210 406,202 420,196"
-                fill="none" stroke="#d4a840" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- Data points -->
-      <circle cx="322" cy="260" r="3" fill="#d4a840" opacity="0.5"/>
-      <circle cx="350" cy="238" r="3" fill="#d4a840" opacity="0.6"/>
-      <circle cx="378" cy="218" r="3" fill="#d4a840" opacity="0.7"/>
-      <circle cx="406" cy="202" r="3" fill="#d4a840" opacity="0.8"/>
-      <!-- End point (latest — highlighted) -->
-      <circle cx="420" cy="196" r="5" fill="#d4a840"/>
-      <circle cx="420" cy="196" r="9" fill="none" stroke="#d4a840" stroke-width="1" opacity="0.4"/>
-
-      <!-- Horizontal reference lines -->
-      <line x1="318" y1="240" x2="424" y2="240" stroke="#d4a840" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.2"/>
-      <line x1="318" y1="210" x2="424" y2="210" stroke="#d4a840" stroke-width="0.5" stroke-dasharray="3 4" opacity="0.2"/>
-
-      <!-- Stat number -->
-      <text x="369" y="136" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="18" font-weight="700"
-            fill="#d4a840">41 %</text>
-
-      <!-- Tiny label -->
-      <text x="369" y="330" text-anchor="middle"
-            font-family="'IBM Plex Mono',monospace" font-size="7.5" letter-spacing="1.5"
-            fill="#d4a840" opacity="0.6">MAPE</text>
-
-      <!-- ══════════════════════════════════════════
-           COLUMN SEPARATOR LINES
-           ══════════════════════════════════════════ -->
-      <line x1="155" y1="72" x2="155" y2="344" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
-      <line x1="295" y1="72" x2="295" y2="344" stroke="#ffffff" stroke-width="0.5" opacity="0.06"/>
-
-      <!-- ══════════════════════════════════════════
-           BOTTOM STATUS BAR
-           ══════════════════════════════════════════ -->
-      <rect x="28" y="356" width="402" height="16" rx="8" fill="#1e2118"/>
-      <!-- Forecast river fill — gradient left to right -->
-      <defs>
-        <linearGradient id="riverGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%"   stop-color="#e87050"/>
-          <stop offset="45%"  stop-color="#50b090"/>
-          <stop offset="100%" stop-color="#d4a840"/>
-        </linearGradient>
-      </defs>
-      <rect x="28" y="356" width="402" height="16" rx="8" fill="url(#riverGrad)" opacity="0.35"/>
-      <!-- Pulsing dot on the river -->
-      <circle cx="230" cy="364" r="3.5" fill="#ffffff" opacity="0.7"/>
-
-    </svg>
+  <!-- Card 2 — MBQ Automation (coral fill) -->
+  <div style="background:#ed6f5c;border-radius:12px;padding:24px 22px 20px;
+              border-top:3px solid rgba(0,0,0,.12);">
+    <p style="font-family:var(--mono,monospace);font-size:8px;letter-spacing:2px;
+              color:rgba(255,255,255,.7);margin:0 0 12px;text-transform:uppercase;">MBQ Automation</p>
+    <p style="font-size:clamp(20px,2.6vw,28px);font-weight:800;color:#fff;
+              margin:0 0 6px;line-height:1.1;">460 K<br>POs automated</p>
+    <p style="font-size:12px;color:rgba(255,255,255,.8);margin:0;line-height:1.5;">
+      Zero manual reorder decisions.
+    </p>
   </div>
 
-</div><!-- end granary-2col -->
+  <!-- Card 3 — Range Review -->
+  <div style="background:#faf5ea;border:1px solid #ddd8c8;border-radius:12px;
+              padding:24px 22px 20px;border-top:3px solid #ed6f5c;">
+    <p style="font-family:var(--mono,monospace);font-size:8px;letter-spacing:2px;
+              color:#8a8475;margin:0 0 12px;text-transform:uppercase;">Range Review</p>
+    <p style="font-size:clamp(20px,2.6vw,28px);font-weight:800;color:#2a2a26;
+              margin:0 0 6px;line-height:1.1;">41 %<br><span style="color:#ed6f5c;">MAPE achieved</span></p>
+    <p style="font-size:12px;color:#8a8475;margin:0;line-height:1.5;">
+      Forecast accuracy improving week-on-week.
+    </p>
+  </div>
+
+</div>
 
 <style>
 @media (max-width: 700px) {
-  .granary-2col { grid-template-columns: 1fr !important; }
+  .granary-module-cards { grid-template-columns: 1fr !important; }
 }
 </style>
-<!-- END GRANARY STATIC GRAPHIC -->
+<!-- END GRANARY CARD LAYOUT -->
 
 <div class="grid sm:grid-cols-2 gap-3 mb-8 max-w-xl">
 <a href="/granary" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Granary</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic planning + assortment for Grocery &middot; 48 M-row daily forecast &middot; MAPE 41 % across the 11-store Mumbai pilot.</div><div class="platform-card-foot"><span class="platform-card-tag">Plan/Design</span><span class="platform-card-tag">Buy/Make</span></div><div class="platform-card-metric mt-3">Phase 1 &middot; 28 - Apr - 2026</div></a>
