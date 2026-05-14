@@ -494,6 +494,22 @@ section.tight { padding: 80px 0; }
 }
 .platform-card-metric { font-family: var(--mono); font-size: 11px; color: var(--coral); }
 
+/* ── AI-Native 2D graphic ───────────────────────────────── */
+.ai-native-graphic {
+  margin: 32px 0 28px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--bone);
+  border: 1px solid var(--line-soft);
+}
+.ai-native-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+}
+
 /* ── Platform card with logo ─────────────────────────────── */
 .platform-card--logo .platform-card-logo-row {
   display: flex;
