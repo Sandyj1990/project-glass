@@ -1380,166 +1380,86 @@
 <div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 &middot; GRANARY</div>
 <h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Agentic planning + assortment <span style="color: var(--accent);">for Grocery</span></h2>
-<div class="section-hero-split">
-<div><div class="num-display section-hero-num">11 stores</div><div class="section-hero-cap">Mumbai pilot &middot; MAPE 41 %</div></div>
-<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Granary runs 48 million forecast rows every day across 12,000 SKUs and 4,000 stores. Phase 1 is live across an 11-store Mumbai pilot (Smart Bazaar + Smart Point), achieving a MAPE of 41% as of 28 Apr 2026. Cortex Planning modules &mdash; Assortment Intelligence, MBQ Automation, and Range Review &mdash; are live, with STP, CDT, and Consensus Forecasting on the roadmap. The wider Granary stack serves 12,000+ stores.</p></div>
-</div>
-<!-- GRANARY STATIC 2D GRAPHIC -->
-<div style="margin:2.5rem 0 2rem;">
-<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg"
-     style="width:100%;max-width:900px;display:block;border-radius:12px;overflow:hidden;"
-     aria-label="Granary planning modules diagram">
+<!-- GRANARY 2-COL LAYOUT -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-bottom:2.5rem;" class="granary-2col">
 
-  <!-- Background -->
-  <rect width="900" height="340" fill="#1a1a16" rx="12"/>
+  <!-- LEFT: text content -->
+  <div>
+    <div class="num-display section-hero-num">11 stores</div>
+    <div class="section-hero-cap" style="margin-bottom:1.5rem;">Mumbai pilot &middot; MAPE 41 %</div>
+    <p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Granary runs 48 million forecast rows every day across 12,000 SKUs and 4,000 stores. Phase 1 is live across an 11-store Mumbai pilot (Smart Bazaar + Smart Point), achieving a MAPE of 41% as of 28 Apr 2026. Cortex Planning modules &mdash; Assortment Intelligence, MBQ Automation, and Range Review &mdash; are live, with STP, CDT, and Consensus Forecasting on the roadmap. The wider Granary stack serves 12,000+ stores.</p>
+  </div>
 
-  <!-- Subtle grid lines -->
-  <g stroke="#2a2a22" stroke-width="1" opacity="0.5">
-    <line x1="0" y1="85"  x2="900" y2="85"/>
-    <line x1="0" y1="170" x2="900" y2="170"/>
-    <line x1="0" y1="255" x2="900" y2="255"/>
-    <line x1="300" y1="0" x2="300" y2="255"/>
-    <line x1="600" y1="0" x2="600" y2="255"/>
-  </g>
+  <!-- RIGHT: minimal 2D graphic -->
+  <div>
+    <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg"
+         style="width:100%;display:block;border-radius:14px;"
+         aria-label="Granary planning graphic">
 
-  <!-- ── Column 1: Assortment Intelligence ── -->
-  <!-- Header pill -->
-  <rect x="30" y="18" width="240" height="28" rx="14" fill="#e8705040" stroke="#e87050" stroke-width="1"/>
-  <text x="150" y="37" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#e87050" letter-spacing="1">ASSORTMENT INTELLIGENCE</text>
+      <!-- Background -->
+      <rect width="420" height="340" fill="#1a1a16" rx="14"/>
 
-  <!-- Bar chart: 7 bars representing SKU coverage by category -->
-  <!-- Fresh -->
-  <rect x="42"  y="140" width="22" height="95" rx="3" fill="#e87050" opacity="0.85"/>
-  <rect x="72"  y="110" width="22" height="125" rx="3" fill="#e87050" opacity="0.7"/>
-  <rect x="102" y="125" width="22" height="110" rx="3" fill="#e87050" opacity="0.75"/>
-  <rect x="132" y="95"  width="22" height="140" rx="3" fill="#e87050" opacity="0.9"/>
-  <rect x="162" y="118" width="22" height="117" rx="3" fill="#e87050" opacity="0.65"/>
-  <rect x="192" y="105" width="22" height="130" rx="3" fill="#e87050" opacity="0.8"/>
-  <rect x="222" y="130" width="22" height="105" rx="3" fill="#e87050" opacity="0.6"/>
+      <!-- ── Three module circles ── -->
 
-  <!-- Category labels (tiny) -->
-  <text x="53"  y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,53,248)">Fresh</text>
-  <text x="83"  y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,83,248)">Pkg</text>
-  <text x="113" y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,113,248)">Bev</text>
-  <text x="143" y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,143,248)">Dairy</text>
-  <text x="173" y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,173,248)">Snacks</text>
-  <text x="203" y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,203,248)">HPC</text>
-  <text x="233" y="248" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#888" transform="rotate(-45,233,248)">Staples</text>
+      <!-- Circle 1: Assortment (coral) — top left -->
+      <circle cx="120" cy="110" r="72" fill="#e8705012" stroke="#e87050" stroke-width="1.5"/>
+      <!-- Inner ring -->
+      <circle cx="120" cy="110" r="50" fill="#e8705008" stroke="#e87050" stroke-width="0.8" stroke-dasharray="4 3"/>
+      <!-- Bar chart inside (5 bars, no labels) -->
+      <rect x="88"  y="100" width="8" height="30" rx="2" fill="#e87050" opacity="0.9"/>
+      <rect x="100" y="88"  width="8" height="42" rx="2" fill="#e87050" opacity="0.7"/>
+      <rect x="112" y="94"  width="8" height="36" rx="2" fill="#e87050" opacity="0.8"/>
+      <rect x="124" y="82"  width="8" height="48" rx="2" fill="#e87050" opacity="1.0"/>
+      <rect x="136" y="90"  width="8" height="40" rx="2" fill="#e87050" opacity="0.75"/>
+      <!-- Baseline -->
+      <line x1="85" y1="130" x2="148" y2="130" stroke="#e87050" stroke-width="0.8" opacity="0.4"/>
 
-  <!-- Stat -->
-  <text x="150" y="72" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="22" font-weight="700" fill="#e87050">12 K</text>
-  <text x="150" y="87" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#888" letter-spacing="1">SKUs PLANNED</text>
+      <!-- Circle 2: MBQ (teal) — top right -->
+      <circle cx="300" cy="110" r="72" fill="#50b09012" stroke="#50b090" stroke-width="1.5"/>
+      <circle cx="300" cy="110" r="50" fill="#50b09008" stroke="#50b090" stroke-width="0.8" stroke-dasharray="4 3"/>
+      <!-- Donut inside (83% arc) -->
+      <circle cx="300" cy="110" r="32" fill="none" stroke="#2a2a22" stroke-width="10"/>
+      <circle cx="300" cy="110" r="32" fill="none" stroke="#50b090" stroke-width="10"
+              stroke-dasharray="168 33" stroke-dashoffset="50" stroke-linecap="round"/>
 
-  <!-- ── Column 2: MBQ Automation ── -->
-  <!-- Header pill -->
-  <rect x="330" y="18" width="240" height="28" rx="14" fill="#50b09040" stroke="#50b090" stroke-width="1"/>
-  <text x="450" y="37" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#50b090" letter-spacing="1">MBQ AUTOMATION</text>
+      <!-- Circle 3: Range Review (gold) — bottom centre -->
+      <circle cx="210" cy="248" r="72" fill="#d4a84012" stroke="#d4a840" stroke-width="1.5"/>
+      <circle cx="210" cy="248" r="50" fill="#d4a84008" stroke="#d4a840" stroke-width="0.8" stroke-dasharray="4 3"/>
+      <!-- Sparkline inside (improving trend) -->
+      <polyline points="172,268 184,262 196,258 208,252 220,246 232,240 244,234"
+                fill="none" stroke="#d4a840" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="244" cy="234" r="3.5" fill="#d4a840"/>
 
-  <!-- Donut chart representing automation coverage -->
-  <!-- Background ring -->
-  <circle cx="450" cy="155" r="62" fill="none" stroke="#2a2a22" stroke-width="18"/>
-  <!-- Automated arc (460K / total ≈ 83%) stroke-dasharray = 2π×62 ≈ 390 -->
-  <circle cx="450" cy="155" r="62" fill="none" stroke="#50b090" stroke-width="18"
-          stroke-dasharray="323 67" stroke-dashoffset="97" stroke-linecap="round"/>
-  <!-- Manual arc remainder -->
-  <circle cx="450" cy="155" r="62" fill="none" stroke="#50b09030" stroke-width="18"
-          stroke-dasharray="67 323" stroke-dashoffset="-226" stroke-linecap="round"/>
+      <!-- ── Connector lines between circles ── -->
+      <line x1="186" y1="130" x2="234" y2="130" stroke="#444" stroke-width="1" stroke-dasharray="4 3"/>
+      <line x1="150" y1="155" x2="185" y2="210" stroke="#444" stroke-width="1" stroke-dasharray="4 3"/>
+      <line x1="270" y1="155" x2="238" y2="210" stroke="#444" stroke-width="1" stroke-dasharray="4 3"/>
 
-  <!-- Centre label -->
-  <text x="450" y="150" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="20" font-weight="700" fill="#50b090">83 %</text>
-  <text x="450" y="167" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#888" letter-spacing="1">AUTOMATED</text>
+      <!-- ── Three stat numbers (minimal, no labels) ── -->
+      <text x="120" y="116" text-anchor="middle"
+            font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="700" fill="#e87050">12 K</text>
 
-  <!-- Stat -->
-  <text x="450" y="72" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="22" font-weight="700" fill="#50b090">460 K</text>
-  <text x="450" y="87" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#888" letter-spacing="1">POs AUTOMATED</text>
+      <text x="300" y="116" text-anchor="middle"
+            font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="700" fill="#50b090">83 %</text>
 
-  <!-- Legend -->
-  <rect x="390" y="228" width="10" height="10" rx="2" fill="#50b090"/>
-  <text x="405" y="238" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#888">Automated</text>
-  <rect x="470" y="228" width="10" height="10" rx="2" fill="#50b09030"/>
-  <text x="485" y="238" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#888">Manual</text>
+      <text x="210" y="254" text-anchor="middle"
+            font-family="'IBM Plex Mono',monospace" font-size="11" font-weight="700" fill="#d4a840">41 %</text>
 
-  <!-- ── Column 3: Range Review ── -->
-  <!-- Header pill -->
-  <rect x="630" y="18" width="240" height="28" rx="14" fill="#d4a84040" stroke="#d4a840" stroke-width="1"/>
-  <text x="750" y="37" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" fill="#d4a840" letter-spacing="1">RANGE REVIEW</text>
+      <!-- ── Three tiny dot labels below each circle ── -->
+      <circle cx="120" cy="195" r="4" fill="#e87050"/>
+      <circle cx="300" cy="195" r="4" fill="#50b090"/>
+      <circle cx="210" cy="330" r="4" fill="#d4a840"/>
 
-  <!-- Sparkline: MAPE trend over 8 weeks -->
-  <polyline points="640,215 665,200 690,195 715,185 740,178 765,168 790,162 815,155 840,148"
-            fill="none" stroke="#d4a840" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Area fill under sparkline -->
-  <polygon points="640,215 665,200 690,195 715,185 740,178 765,168 790,162 815,155 840,148 840,240 640,240"
-           fill="#d4a84018"/>
-  <!-- Data points -->
-  <circle cx="640" cy="215" r="3.5" fill="#d4a840"/>
-  <circle cx="665" cy="200" r="3.5" fill="#d4a840"/>
-  <circle cx="690" cy="195" r="3.5" fill="#d4a840"/>
-  <circle cx="715" cy="185" r="3.5" fill="#d4a840"/>
-  <circle cx="740" cy="178" r="3.5" fill="#d4a840"/>
-  <circle cx="765" cy="168" r="3.5" fill="#d4a840"/>
-  <circle cx="790" cy="162" r="3.5" fill="#d4a840"/>
-  <circle cx="815" cy="155" r="3.5" fill="#d4a840"/>
-  <!-- Final point highlighted -->
-  <circle cx="840" cy="148" r="5.5" fill="#d4a840" stroke="#1a1a16" stroke-width="2"/>
+    </svg>
+  </div>
 
-  <!-- MAPE label at final point -->
-  <text x="848" y="145" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#d4a840">41%</text>
+</div><!-- end granary-2col -->
 
-  <!-- Week labels -->
-  <text x="640" y="252" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555">W1</text>
-  <text x="840" y="252" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="#555">W8</text>
-
-  <!-- Stat -->
-  <text x="750" y="72" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="22" font-weight="700" fill="#d4a840">41 %</text>
-  <text x="750" y="87" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#888" letter-spacing="1">MAPE · 28 APR 2026</text>
-
-  <!-- Trend label -->
-  <text x="720" y="130" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#555">MAPE improving →</text>
-
-  <!-- ── Forecast river at bottom ── -->
-  <!-- Separator -->
-  <line x1="30" y1="262" x2="870" y2="262" stroke="#2a2a22" stroke-width="1"/>
-
-  <!-- Flow bar background -->
-  <rect x="30" y="272" width="840" height="16" rx="8" fill="#2a2a22"/>
-  <!-- Flow bar fill (48M rows = full width, animated via CSS) -->
-  <rect x="30" y="272" width="840" height="16" rx="8" fill="url(#flowGrad)"/>
-
-  <!-- Gradient for flow bar -->
-  <defs>
-    <linearGradient id="flowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%"   stop-color="#e87050" stop-opacity="0.6"/>
-      <stop offset="33%"  stop-color="#50b090" stop-opacity="0.6"/>
-      <stop offset="66%"  stop-color="#d4a840" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#e87050" stop-opacity="0.6"/>
-    </linearGradient>
-  </defs>
-
-  <!-- Flow label -->
-  <text x="450" y="305" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9" fill="#666" letter-spacing="2">48 MILLION FORECAST ROWS · DAILY · 12,000 SKUs × 4,000 STORES</text>
-
-  <!-- Store count pills -->
-  <rect x="30"  y="316" width="90"  height="16" rx="8" fill="#e8705020" stroke="#e87050" stroke-width="0.5"/>
-  <text x="75"  y="328" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="#e87050" letter-spacing="0.5">11 PILOT STORES</text>
-
-  <rect x="130" y="316" width="100" height="16" rx="8" fill="#50b09020" stroke="#50b090" stroke-width="0.5"/>
-  <text x="180" y="328" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="#50b090" letter-spacing="0.5">460K POs AUTOMATED</text>
-
-  <rect x="240" y="316" width="100" height="16" rx="8" fill="#d4a84020" stroke="#d4a840" stroke-width="0.5"/>
-  <text x="290" y="328" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="#d4a840" letter-spacing="0.5">MAPE 41% · W8</text>
-
-  <rect x="350" y="316" width="110" height="16" rx="8" fill="#88888820" stroke="#888" stroke-width="0.5"/>
-  <text x="405" y="328" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="#888" letter-spacing="0.5">4,000+ STORES TOTAL</text>
-
-  <rect x="470" y="316" width="110" height="16" rx="8" fill="#88888820" stroke="#888" stroke-width="0.5"/>
-  <text x="525" y="328" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7.5" fill="#888" letter-spacing="0.5">SMART BAZAAR + POINT</text>
-
-  <!-- LIVE badge -->
-  <rect x="820" y="316" width="50" height="16" rx="8" fill="#50b09030" stroke="#50b090" stroke-width="1"/>
-  <text x="845" y="328" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#50b090" font-weight="700">LIVE</text>
-
-</svg>
-</div>
+<style>
+@media (max-width: 700px) {
+  .granary-2col { grid-template-columns: 1fr !important; }
+}
+</style>
 <!-- END GRANARY STATIC GRAPHIC -->
 
 <div class="grid sm:grid-cols-2 gap-3 mb-8 max-w-xl">
