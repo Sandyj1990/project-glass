@@ -2114,21 +2114,25 @@
       .ri-truck-group {
         position: absolute;
         bottom: 48px;
-        animation: ri-truck-drive 14s linear infinite;
+        animation: ri-truck-drive 16s linear infinite;
       }
       @keyframes ri-truck-drive {
-        from { left: -65%; }
-        to   { left: 105%; }
+        0%   { left: -65%; }
+        42%  { left: 20%; }   /* arrive at centre */
+        52%  { left: 20%; }   /* pause ~1.5 s (10% of 16s = 1.6s) */
+        100% { left: 105%; } /* continue off-screen */
       }
-      /* Wheel spin animation */
+      /* Wheel spin animation — synced to truck: spins 0-42%, pauses 42-52%, spins 52-100% */
       @keyframes ri-wheel-spin {
-        from { transform: rotate(0deg); }
-        to   { transform: rotate(360deg); }
+        0%    { transform: rotate(0deg); }
+        42%   { transform: rotate(1512deg); }  /* 42% × 16s = 6.72s ÷ 0.6s × 360 = 4032deg, simplified */
+        52%   { transform: rotate(1512deg); }  /* hold — wheels stopped */
+        100%  { transform: rotate(4320deg); }  /* resume spinning to end */
       }
       .ri-wheel-spin {
         transform-box: fill-box;
         transform-origin: center;
-        animation: ri-wheel-spin 0.6s linear infinite;
+        animation: ri-wheel-spin 16s linear infinite;
       }
       /* Box label tooltips that pop up above boxes */
       .ri-box-label {
