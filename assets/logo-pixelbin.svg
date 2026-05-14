@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 44" fill="none">
+  <!-- Fynd heart-G icon -->
+  <g transform="translate(0,2) scale(1.1)">
+    <path d="M18 2C13.03 2 9 6.03 9 11v1.5L7 10.5V11C7 6.03 2.97 2 -2 2v1.8c3.54 0 6.4 2.86 6.4 6.4v3.2l3.2 3.2 1.6-1.6-1.6-1.6V10.2c0-2.65 2.15-4.8 4.8-4.8s4.8 2.15 4.8 4.8v3.2l-4.8 4.8-4.8-4.8V10.2H3.8v3.2l6.4 6.4 6.4-6.4V10.2C16.6 5.23 12.57 1.2 7.6 1.2" fill="#1a1a1a" transform="translate(2,0)"/>
+  </g>
+  <!-- "Fynd Pixelbin" text -->
+  <text x="32" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Inter Tight', 'Inter', sans-serif" font-size="20" font-weight="700" fill="#1a1a1a" letter-spacing="-0.3">Fynd Pixelbin</text>
+</svg>

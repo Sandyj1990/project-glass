@@ -494,6 +494,25 @@ section.tight { padding: 80px 0; }
 }
 .platform-card-metric { font-family: var(--mono); font-size: 11px; color: var(--coral); }
 
+/* ── Platform card with logo ─────────────────────────────── */
+.platform-card--logo .platform-card-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.platform-card--logo .platform-card-logo {
+  display: block;
+  height: 28px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  object-position: left center;
+  /* keep logos readable on the warm bone background */
+  filter: brightness(0) saturate(100%);
+}
+
 /* ── Lens / feature cards ────────────────────────────────── */
 .lens-card {
   background: var(--bone); border-radius: 18px;
