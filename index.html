@@ -1964,20 +1964,160 @@
 </section>
 
 <!-- 08 RECENT INNOVATIONS -->
-<section id="recent-innovations" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="recent-innovations">
-<div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">08 &middot; RECENT INNOVATIONS</div>
-<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">The next horizon &middot; <span style="color: var(--accent);">already shipping</span></h2>
-<div class="section-hero-split">
-<div><div class="num-display section-hero-num">7 days</div><div class="section-hero-cap">Order &rarr; doorstep &middot; Fynd Horizon MTO</div></div>
-<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Fynd Horizon brings Ultra Fast Retail to life &mdash; made-to-measure garments in 24 hours, live at RCP and the Mumbai cluster. AutRi delivers agentic planogram compliance: Phase 1 is live at FreshPik Powai with Fynd Nucleus. Dark Factory is a lights-out micro-factory paired with the Mobile Neo Tailor app inside AJIO &mdash; 200 pieces a day, currently in alpha.</p></div>
-</div>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
-<a href="/fynd-horizon" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Fynd Horizon</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Ultra Fast Retail &middot; made-to-measure in 24 hours. Live at RCP (31 - Mar - 2026) and Mumbai cluster (27 - Apr - 2026). Tirupur MTO factory cycle running.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">50 K+ SKUs / store &middot; 98.3 % body-scan accuracy</div></a>
-<a href="/autri" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">AutRi &middot; On-shelf Robotics</div><span class="pill pill-pilot">PILOT</span></div><div class="platform-card-desc">Agentic planogram compliance. AutRi captures shelves &middot; GMetri reads &middot; Command Centre routes fix to PulsePoint. Phase 1 live at FreshPik Powai with Fynd Nucleus.</div><div class="platform-card-foot"><span class="platform-card-tag">Move</span></div><div class="platform-card-metric mt-3">95 %+ shelf compliance &middot; 98 % SKU recog.</div></a>
-<a href="/dark-factory" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Dark Factory &middot; MTM</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Lights-out micro-factory + Mobile Neo Tailor app inside AJIO. 30 - sec phone scan &middot; 3D fit preview &middot; stitched in Bangalore &middot; delivered in 7 days. Alpha pending.</div><div class="platform-card-foot"><span class="platform-card-tag">Buy/Make</span></div><div class="platform-card-metric mt-3">7-day MTM &middot; 200 pieces / day &middot; alpha pending</div></a>
-</div>
-<a href="#explore" class="btn-secondary">Open every Recent Innovation <span aria-hidden="true">&rarr;</span></a>
+<section id="recent-innovations" class="border-b" style="border-color: var(--border); background: #0e1117; padding: 80px 0 96px;" data-od-id="recent-innovations">
+<style>
+  .ri-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(237,111,92,.15); border: 1px solid rgba(237,111,92,.35);
+    border-radius: 999px; padding: 4px 14px;
+    font-family: var(--mono, monospace); font-size: 10px; letter-spacing: 2px;
+    color: #ed6f5c; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .ri-heading {
+    font-size: clamp(28px, 4vw, 52px); font-weight: 800; line-height: 1.1;
+    color: #f5f0e8; text-align: center; margin-bottom: 16px;
+  }
+  .ri-heading span { color: #ed6f5c; }
+  .ri-sub {
+    font-size: clamp(14px, 1.5vw, 17px); color: rgba(245,240,232,.55);
+    text-align: center; max-width: 640px; margin: 0 auto 56px; line-height: 1.7;
+  }
+  .ri-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto 48px;
+  }
+  @media (max-width: 768px) { .ri-cards { grid-template-columns: 1fr; } }
+  .ri-card {
+    background: #161b26;
+    border: 1px solid rgba(245,240,232,.08);
+    border-radius: 16px;
+    padding: 32px 28px 28px;
+    display: flex; flex-direction: column; gap: 0;
+    transition: border-color .2s, transform .2s;
+    text-decoration: none;
+  }
+  .ri-card:hover {
+    border-color: rgba(237,111,92,.4);
+    transform: translateY(-3px);
+  }
+  .ri-card-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 8px;
+  }
+  .ri-card-stat {
+    font-size: clamp(36px, 4vw, 52px); font-weight: 800; line-height: 1;
+    letter-spacing: -1px; margin-bottom: 4px;
+  }
+  .ri-card-stat--coral { color: #ed6f5c; }
+  .ri-card-stat--teal  { color: #5ecfb0; }
+  .ri-card-stat--gold  { color: #e8c97a; }
+  .ri-card-name {
+    font-size: 15px; font-weight: 700; color: #f5f0e8;
+    margin-bottom: 12px; line-height: 1.3;
+  }
+  .ri-card-desc {
+    font-size: 13px; color: rgba(245,240,232,.55);
+    line-height: 1.6; flex: 1; margin-bottom: 20px;
+  }
+  .ri-card-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
+  }
+  .ri-card-tag {
+    background: rgba(245,240,232,.06); border: 1px solid rgba(245,240,232,.12);
+    border-radius: 999px; padding: 3px 10px;
+    font-family: var(--mono, monospace); font-size: 9px;
+    color: rgba(245,240,232,.5); letter-spacing: 1px; text-transform: uppercase;
+  }
+  .ri-card-metric {
+    font-family: var(--mono, monospace); font-size: 10px;
+    color: #ed6f5c; letter-spacing: 1px;
+  }
+  .ri-badge {
+    font-family: var(--mono, monospace); font-size: 9px; letter-spacing: 1.5px;
+    text-transform: uppercase; border-radius: 999px; padding: 4px 10px;
+    border: 1px solid;
+  }
+  .ri-badge--build { color: #ed6f5c; border-color: rgba(237,111,92,.4); background: rgba(237,111,92,.1); }
+  .ri-badge--pilot { color: #e8c97a; border-color: rgba(232,201,122,.4); background: rgba(232,201,122,.1); }
+  .ri-cta-wrap { text-align: center; }
+  .ri-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(245,240,232,.2); border-radius: 999px;
+    padding: 10px 24px; font-size: 13px; font-weight: 600;
+    color: rgba(245,240,232,.7); text-decoration: none;
+    transition: border-color .2s, color .2s;
+  }
+  .ri-cta:hover { border-color: #ed6f5c; color: #f5f0e8; }
+</style>
+<div class="max-w-7xl mx-auto px-6" style="text-align:center;">
+  <div class="ri-pill">08 &middot; RECENT INNOVATIONS</div>
+  <h2 class="ri-heading">The next horizon &middot; <span>already shipping</span></h2>
+  <p class="ri-sub">Fynd Horizon brings Ultra Fast Retail to life &mdash; made-to-measure garments in 24 hours, live at RCP and the Mumbai cluster. AutRi delivers agentic planogram compliance. Dark Factory is a lights-out micro-factory, 200 pieces a day, currently in alpha.</p>
+
+  <div class="ri-cards">
+
+    <!-- Fynd Horizon -->
+    <a href="/fynd-horizon" class="ri-card" data-reveal>
+      <div class="ri-card-top">
+        <div>
+          <div class="ri-card-stat ri-card-stat--coral">24 hr</div>
+          <div style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.5px;color:rgba(245,240,232,.35);text-transform:uppercase;margin-bottom:12px;">Made-to-measure</div>
+        </div>
+        <span class="ri-badge ri-badge--build">BUILD</span>
+      </div>
+      <div class="ri-card-name">Fynd Horizon</div>
+      <div class="ri-card-desc">Ultra Fast Retail. Made-to-measure garments in 24 hours. Live at RCP (31 Mar 2026) and Mumbai cluster (27 Apr 2026). Tirupur MTO factory cycle running.</div>
+      <div class="ri-card-tags">
+        <span class="ri-card-tag">Sell</span>
+        <span class="ri-card-tag">MTO</span>
+      </div>
+      <div class="ri-card-metric">50 K+ SKUs / store &middot; 98.3 % body-scan accuracy</div>
+    </a>
+
+    <!-- AutRi -->
+    <a href="/autri" class="ri-card" data-reveal>
+      <div class="ri-card-top">
+        <div>
+          <div class="ri-card-stat ri-card-stat--teal">95 %+</div>
+          <div style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.5px;color:rgba(245,240,232,.35);text-transform:uppercase;margin-bottom:12px;">Shelf compliance</div>
+        </div>
+        <span class="ri-badge ri-badge--pilot">PILOT</span>
+      </div>
+      <div class="ri-card-name">AutRi &middot; On-shelf Robotics</div>
+      <div class="ri-card-desc">Agentic planogram compliance. AutRi captures shelves, GMetri reads, Command Centre routes fix to PulsePoint. Phase 1 live at FreshPik Powai with Fynd Nucleus.</div>
+      <div class="ri-card-tags">
+        <span class="ri-card-tag">Move</span>
+        <span class="ri-card-tag">Store Health</span>
+      </div>
+      <div class="ri-card-metric">95 %+ shelf compliance &middot; 98 % SKU recog</div>
+    </a>
+
+    <!-- Dark Factory -->
+    <a href="/dark-factory" class="ri-card" data-reveal>
+      <div class="ri-card-top">
+        <div>
+          <div class="ri-card-stat ri-card-stat--gold">7 days</div>
+          <div style="font-family:var(--mono,monospace);font-size:9px;letter-spacing:1.5px;color:rgba(245,240,232,.35);text-transform:uppercase;margin-bottom:12px;">Order &rarr; doorstep</div>
+        </div>
+        <span class="ri-badge ri-badge--build">BUILD</span>
+      </div>
+      <div class="ri-card-name">Dark Factory &middot; MTM</div>
+      <div class="ri-card-desc">Lights-out micro-factory + Mobile Neo Tailor app inside AJIO. 30-sec phone scan, 3D fit preview, stitched in Bangalore, delivered in 7 days. Alpha pending.</div>
+      <div class="ri-card-tags">
+        <span class="ri-card-tag">Buy/Make</span>
+        <span class="ri-card-tag">MTM</span>
+      </div>
+      <div class="ri-card-metric">7-day MTM &middot; 200 pieces / day &middot; alpha pending</div>
+    </a>
+
+  </div>
+
+  <div class="ri-cta-wrap">
+    <a href="#explore" class="ri-cta">Open every Recent Innovation <span aria-hidden="true">&rarr;</span></a>
+  </div>
 </div>
 </section>
 
