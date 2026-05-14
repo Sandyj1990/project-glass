@@ -1374,413 +1374,404 @@
 <div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-3">06 &middot; SPECIAL PROJECTS</div>
   <h2 class="display-2 text-3xl md:text-5xl mb-4" style="color: var(--ink);">Six projects beyond the platforms &middot; <span style="color: var(--accent);">taken on by Fynd, shipped for Reliance.</span></h2>
-  <p class="text-base mb-12" style="color: var(--ink); opacity:.65; max-width:640px; line-height:1.7;">Net-new builds where Fynd took on a problem Reliance hadn&rsquo;t yet solved &mdash; from new-store opening to AI-native hiring.</p>
+  <p class="text-base mb-10" style="color: var(--ink); opacity:.6; max-width:600px; line-height:1.7;">Net-new builds where Fynd took on a problem Reliance hadn&rsquo;t yet solved &mdash; from new-store opening to AI-native hiring.</p>
 
   <!-- ═══════════════════════════════════════════════════════════════════ -->
-  <!--  3-D CONVEYOR BELT                                                 -->
+  <!--  ISOMETRIC PRODUCT ASSEMBLY LINE                                   -->
   <!-- ═══════════════════════════════════════════════════════════════════ -->
   <style>
-    /* ── belt wrapper ── */
-    .sp-belt-wrap {
-      position: relative;
-      overflow: hidden;
-      padding-bottom: 2rem;
-    }
+    .sp-iso-wrap { width:100%; overflow:hidden; }
+    .sp-iso-svg  { width:100%; height:auto; display:block; }
 
-    /* ── conveyor track ── */
-    .sp-track {
-      position: relative;
-      height: 14px;
-      margin: 0 0 2.5rem;
-      background: linear-gradient(180deg, #3a3630 0%, #2a2620 40%, #1a1610 100%);
-      border-radius: 7px;
-      box-shadow: 0 4px 12px rgba(0,0,0,.25), inset 0 2px 4px rgba(255,255,255,.06);
-    }
-    .sp-track::before {
-      content: '';
-      position: absolute;
-      inset: 3px 0;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent 0px, transparent 28px,
-        rgba(255,255,255,.07) 28px, rgba(255,255,255,.07) 32px
-      );
-      border-radius: 4px;
-    }
-    /* animated belt motion line */
-    .sp-track::after {
-      content: '';
-      position: absolute;
-      top: 5px; height: 3px;
-      left: -60%; width: 60%;
-      background: repeating-linear-gradient(
-        90deg,
-        transparent 0, transparent 14px,
-        rgba(237,111,92,.45) 14px, rgba(237,111,92,.45) 28px
-      );
-      border-radius: 2px;
-      animation: beltMove 3s linear infinite;
-    }
-    @keyframes beltMove { to { left: 100%; } }
-    @media (prefers-reduced-motion: reduce) { .sp-track::after { animation: none; } }
+    /* capsule hover glow */
+    .sp-capsule { cursor:pointer; transition: filter .25s; }
+    .sp-capsule:hover { filter: drop-shadow(0 4px 12px rgba(237,111,92,.45)); }
 
-    /* ── roller dots ── */
-    .sp-rollers {
-      display: flex;
-      justify-content: space-between;
-      padding: 0 2%;
-      margin-top: -22px;
-      pointer-events: none;
-    }
-    .sp-roller {
-      width: 22px; height: 22px;
-      background: radial-gradient(circle at 35% 35%, #6a6460, #2a2620);
-      border-radius: 50%;
-      border: 2px solid #3a3630;
-      box-shadow: 0 2px 6px rgba(0,0,0,.35);
-    }
-
-    /* ── crate grid ── */
-    .sp-crates {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-    @media (max-width: 768px) {
-      .sp-crates { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 480px) {
-      .sp-crates { grid-template-columns: 1fr; }
-    }
-
-    /* ── individual crate ── */
-    .sp-crate {
-      position: relative;
-      background: var(--bg-soft);
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 1.4rem 1.4rem 1.2rem;
-      cursor: pointer;
-      transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
-      transform-style: preserve-3d;
-      /* 3-D tilt effect via CSS custom props set by JS */
-      transform: perspective(600px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(0);
-      box-shadow: 0 2px 8px rgba(0,0,0,.06), 0 0 0 0 rgba(237,111,92,0);
-      /* scroll-reveal: start slightly below */
-      opacity: 0;
-      translate: 0 24px;
-    }
-    .sp-crate.sp-visible {
-      opacity: 1;
-      translate: 0 0;
-      transition: opacity .5s ease, translate .5s cubic-bezier(.22,1,.36,1),
-                  transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
-    }
-    .sp-crate:hover {
-      box-shadow: 0 8px 28px rgba(0,0,0,.12), 0 0 0 2px rgba(237,111,92,.25);
-      z-index: 2;
-    }
-
-    /* ── crate top edge (3-D lid illusion) ── */
-    .sp-crate::before {
-      content: '';
-      position: absolute;
-      top: -6px; left: 6px; right: 6px; height: 6px;
-      background: linear-gradient(180deg, #e8e0cc 0%, #d0c8b4 100%);
-      border-radius: 4px 4px 0 0;
-      border: 1.5px solid #c0b8a4;
-      border-bottom: none;
-      transform: skewX(-1deg);
-    }
-    /* ── crate side edge ── */
-    .sp-crate::after {
-      content: '';
-      position: absolute;
-      top: 6px; bottom: -4px; right: -6px; width: 6px;
-      background: linear-gradient(90deg, #c0b8a4 0%, #a8a090 100%);
-      border-radius: 0 4px 4px 0;
-      border: 1.5px solid #a8a090;
-      border-left: none;
-      transform: skewY(-1deg);
-    }
-
-    /* ── crate header ── */
-    .sp-crate-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: .5rem;
-      margin-bottom: .75rem;
-    }
-    .sp-crate-name {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: .85rem;
-      font-weight: 800;
-      letter-spacing: .04em;
-      color: var(--ink);
-      line-height: 1.2;
-    }
-
-    /* ── status stamp ── */
-    .sp-stamp {
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
+    /* stamp animation */
+    .sp-iso-stamp {
       font-family: 'Space Mono', monospace;
-      font-size: .6rem;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: .12em;
-      padding: .25rem .55rem;
-      border-radius: 4px;
-      border: 1.5px solid currentColor;
-      white-space: nowrap;
-      flex-shrink: 0;
-      /* stamp entrance */
-      transform: rotate(-4deg) scale(.85);
-      transition: transform .25s cubic-bezier(.34,1.56,.64,1);
-    }
-    .sp-crate:hover .sp-stamp,
-    .sp-crate.sp-visible .sp-stamp {
-      transform: rotate(-3deg) scale(1);
-    }
-    .sp-stamp.live   { color: #2a7a4a; background: #e8f5ee; border-color: #2a7a4a; }
-    .sp-stamp.pilot  { color: #7a5a1a; background: #fdf3e0; border-color: #c89030; }
-    .sp-stamp.build  { color: #4a4a8a; background: #eeeef8; border-color: #6a6aaa; }
-
-    /* ── crate body ── */
-    .sp-crate-desc {
-      font-size: .8rem;
-      line-height: 1.55;
-      color: var(--ink);
-      opacity: .65;
-      margin-bottom: .75rem;
+      fill: #ed6f5c;
     }
 
-    /* ── crate footer ── */
-    .sp-crate-foot {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: .5rem;
-      border-top: 1px solid var(--border);
-      padding-top: .65rem;
-      margin-top: auto;
-    }
-    .sp-crate-tag {
-      font-family: 'Space Mono', monospace;
-      font-size: .58rem;
-      letter-spacing: .1em;
-      color: var(--ink);
-      opacity: .45;
-      text-transform: uppercase;
-    }
-    .sp-crate-metric {
-      font-family: 'Space Mono', monospace;
-      font-size: .6rem;
-      color: var(--accent);
-      letter-spacing: .04em;
-      text-align: right;
-    }
+    /* belt motion */
+    @keyframes beltSlide { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -40; } }
+    .sp-belt-anim { animation: beltSlide 2s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .sp-belt-anim { animation: none; } }
 
-    /* ── SHIPPED seal ── */
-    .sp-shipped-seal {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-      padding: 1.25rem 2rem;
-      border: 2px solid var(--border);
-      border-radius: 10px;
-      background: var(--bg-soft);
-      opacity: 0;
-      translate: 0 16px;
-      transition: opacity .6s ease .4s, translate .6s cubic-bezier(.22,1,.36,1) .4s;
-    }
-    .sp-shipped-seal.sp-visible {
-      opacity: 1;
-      translate: 0 0;
-    }
-    .sp-seal-stamp {
-      font-family: 'Space Mono', monospace;
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      color: var(--accent);
-      border: 2.5px solid var(--accent);
-      padding: .4rem 1.1rem;
-      border-radius: 6px;
-      transform: rotate(-2deg);
-      display: inline-block;
-    }
-    .sp-seal-text {
-      font-size: .85rem;
-      color: var(--ink);
-      opacity: .55;
-      font-family: 'Space Mono', monospace;
-      letter-spacing: .06em;
-    }
-    .sp-seal-count {
-      font-family: 'Inter Tight', sans-serif;
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--ink);
-      line-height: 1;
-    }
-    .sp-seal-count span {
-      font-size: .75rem;
-      font-weight: 500;
-      opacity: .5;
-      display: block;
-      letter-spacing: .08em;
-    }
+    /* station pulse */
+    @keyframes stationPulse { 0%,100% { opacity:.15; } 50% { opacity:.35; } }
+    .sp-pulse { animation: stationPulse 3s ease-in-out infinite; }
+
+    /* scroll reveal */
+    .sp-iso-wrap { opacity:0; translate: 0 20px; transition: opacity .7s ease, translate .7s cubic-bezier(.22,1,.36,1); }
+    .sp-iso-wrap.sp-in { opacity:1; translate: 0 0; }
   </style>
 
-  <div class="sp-belt-wrap">
-    <!-- conveyor track -->
-    <div class="sp-track"></div>
-    <div class="sp-rollers">
-      <div class="sp-roller"></div>
-      <div class="sp-roller"></div>
-      <div class="sp-roller"></div>
-      <div class="sp-roller"></div>
-      <div class="sp-roller"></div>
-      <div class="sp-roller"></div>
-      <div class="sp-roller"></div>
-    </div>
+  <div class="sp-iso-wrap">
+  <svg class="sp-iso-svg" viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Isometric product assembly line showing six Fynd-built projects moving from Problem Intake through Build Bay and Pilot Zone to Live Shipped Dock">
+    <defs>
+      <!-- isometric grid floor tile -->
+      <pattern id="isoGrid" x="0" y="0" width="60" height="34.64" patternUnits="userSpaceOnUse">
+        <path d="M30 0 L60 17.32 L30 34.64 L0 17.32 Z" fill="none" stroke="#d8cfc0" stroke-width=".6" opacity=".5"/>
+      </pattern>
 
-    <!-- crates -->
-    <div class="sp-crates">
+      <!-- belt stripe pattern -->
+      <pattern id="beltStripe" x="0" y="0" width="40" height="1" patternUnits="userSpaceOnUse">
+        <rect width="20" height="1" fill="rgba(237,111,92,.3)"/>
+        <rect x="20" width="20" height="1" fill="transparent"/>
+      </pattern>
 
-      <!-- 1. ALP -->
-      <a href="/alp" class="sp-crate" style="transition-delay:.05s">
-        <div class="sp-crate-header">
-          <div class="sp-crate-name">ALP<br>Asset Lifecycle</div>
-          <span class="sp-stamp live">&#9679; LIVE</span>
-        </div>
-        <div class="sp-crate-desc">NSO platform for Reliance Retail. Lead &rarr; site visit &rarr; approvals &rarr; legal &rarr; fit-out &rarr; hand-off. 6 of 9 Phase 1 initiatives done.</div>
-        <div class="sp-crate-foot">
-          <span class="sp-crate-tag">New Store</span>
-          <span class="sp-crate-metric">GJ-cluster pilot &middot; Apr 2026</span>
-        </div>
-      </a>
+      <!-- glow filter -->
+      <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
 
-      <!-- 2. RetailVista -->
-      <a href="/retail-vista" class="sp-crate" style="transition-delay:.12s">
-        <div class="sp-crate-header">
-          <div class="sp-crate-name">RetailVista<br>Site Intelligence</div>
-          <span class="sp-stamp live">&#9679; LIVE</span>
-        </div>
-        <div class="sp-crate-desc">Agentic geospatial intelligence. Opportunity Explorer with 68 scored leads. 24 data categories on H3 hex grid.</div>
-        <div class="sp-crate-foot">
-          <span class="sp-crate-tag">New Store &middot; Plan</span>
-          <span class="sp-crate-metric">3 tracks live</span>
-        </div>
-      </a>
+      <!-- soft shadow -->
+      <filter id="shadow" x="-10%" y="-10%" width="130%" height="140%">
+        <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#2a2a26" flood-opacity=".18"/>
+      </filter>
+    </defs>
 
-      <!-- 3. Retail Jarvis -->
-      <a href="/retail-jarvis" class="sp-crate" style="transition-delay:.19s">
-        <div class="sp-crate-header">
-          <div class="sp-crate-name">Retail Jarvis<br>CX Sensing</div>
-          <span class="sp-stamp build">&#9632; BUILD</span>
-        </div>
-        <div class="sp-crate-desc">Predictive non-intrusive CX sensing. Anchor demo on Store 5943 Mumbai. Signals &rarr; engine &rarr; playbooks.</div>
-        <div class="sp-crate-foot">
-          <span class="sp-crate-tag">Store Health</span>
-          <span class="sp-crate-metric">4 scores &middot; Readiness/CX</span>
-        </div>
-      </a>
+    <!-- ── FLOOR ── -->
+    <rect width="1100" height="560" fill="#faf5ea"/>
+    <!-- isometric grid -->
+    <rect width="1100" height="560" fill="url(#isoGrid)" opacity=".7"/>
 
-      <!-- 4. Samarth Plus -->
-      <a href="/samarth" class="sp-crate" style="transition-delay:.26s">
-        <div class="sp-crate-header">
-          <div class="sp-crate-name">Samarth Plus<br>Frontline Careers</div>
-          <span class="sp-stamp live">&#9679; LIVE</span>
-        </div>
-        <div class="sp-crate-desc">Career platform for the RR frontline. Served inside People First. 5 career levels &middot; 3 formats &middot; SCORM-compliant.</div>
-        <div class="sp-crate-foot">
-          <span class="sp-crate-tag">HR Tech</span>
-          <span class="sp-crate-metric">Prod cutover &middot; Apr 2026</span>
-        </div>
-      </a>
+    <!-- ── MAIN DIAGONAL CONVEYOR BELT ── -->
+    <!-- Belt runs from top-left area to bottom-right area in isometric diagonal -->
+    <!-- Belt surface - dark track -->
+    <polygon points="80,180 920,180 960,230 120,230" fill="#2a2a26" rx="4"/>
+    <!-- Belt top highlight -->
+    <polygon points="80,180 920,180 940,195 100,195" fill="#3a3630" opacity=".8"/>
+    <!-- Belt animated stripes -->
+    <polygon points="80,185 920,185 940,200 100,200" fill="url(#beltStripe)" class="sp-belt-anim" stroke-dasharray="20 20"/>
+    <!-- Belt bottom shadow -->
+    <polygon points="120,230 960,230 960,238 120,238" fill="#1a1610" opacity=".4"/>
+    <!-- Belt left roller -->
+    <ellipse cx="100" cy="205" rx="22" ry="28" fill="#3a3630" stroke="#2a2a26" stroke-width="2"/>
+    <ellipse cx="100" cy="205" rx="12" ry="16" fill="#4a4440"/>
+    <ellipse cx="100" cy="205" rx="5" ry="7" fill="#5a5450"/>
+    <!-- Belt right roller -->
+    <ellipse cx="940" cy="205" rx="22" ry="28" fill="#3a3630" stroke="#2a2a26" stroke-width="2"/>
+    <ellipse cx="940" cy="205" rx="12" ry="16" fill="#4a4440"/>
+    <ellipse cx="940" cy="205" rx="5" ry="7" fill="#5a5450"/>
 
-      <!-- 5. HireFirst -->
-      <a href="/hirefirst" class="sp-crate" style="transition-delay:.33s">
-        <div class="sp-crate-header">
-          <div class="sp-crate-name">HireFirst (Orion)<br>AI Hiring OS</div>
-          <span class="sp-stamp live">&#9679; LIVE</span>
-        </div>
-        <div class="sp-crate-desc">Reliance HR Tech &middot; AI-Native Hiring OS. AI score calibration &middot; Apollo enrichment. SIT live.</div>
-        <div class="sp-crate-foot">
-          <span class="sp-crate-tag">HR Tech</span>
-          <span class="sp-crate-metric">Prod sign-off Jun 2026</span>
-        </div>
-      </a>
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- STATION 1: PROBLEM INTAKE (far left)                              -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Station platform - isometric box -->
+    <!-- Top face -->
+    <polygon points="30,100 150,100 150,170 30,170" fill="#e8e0cc" stroke="#c8c0ac" stroke-width="1.5"/>
+    <!-- Front face -->
+    <polygon points="30,170 150,170 150,240 30,240" fill="#d0c8b4" stroke="#c8c0ac" stroke-width="1.5"/>
+    <!-- Right face -->
+    <polygon points="150,100 200,130 200,200 150,170" fill="#c0b8a4" stroke="#b0a894" stroke-width="1.5"/>
+    <!-- Station top decoration - problem symbol -->
+    <text x="90" y="128" font-family="Space Mono,monospace" font-size="9" fill="#6a6050" letter-spacing=".1em" text-anchor="middle">PROBLEM</text>
+    <text x="90" y="142" font-family="Space Mono,monospace" font-size="9" fill="#6a6050" letter-spacing=".1em" text-anchor="middle">INTAKE</text>
+    <!-- Question mark icon on top face -->
+    <text x="90" y="168" font-family="Inter Tight,sans-serif" font-size="22" font-weight="900" fill="#2a2a26" opacity=".15" text-anchor="middle">?</text>
+    <!-- Reliance label -->
+    <text x="90" y="210" font-family="Space Mono,monospace" font-size="7.5" fill="#8a7a6a" letter-spacing=".08em" text-anchor="middle">RELIANCE</text>
+    <text x="90" y="222" font-family="Space Mono,monospace" font-size="7.5" fill="#8a7a6a" letter-spacing=".08em" text-anchor="middle">PROBLEMS</text>
+    <!-- Pulse ring on top -->
+    <ellipse cx="90" cy="135" rx="35" ry="20" fill="none" stroke="#ed6f5c" stroke-width="1.5" class="sp-pulse"/>
 
-      <!-- 6. SwapEasy -->
-      <a href="/swapeasy" class="sp-crate" style="transition-delay:.40s">
-        <div class="sp-crate-header">
-          <div class="sp-crate-name">SwapEasy<br>In-store Re-commerce</div>
-          <span class="sp-stamp live">&#9679; LIVE</span>
-        </div>
-        <div class="sp-crate-desc">SAP-traceable re-commerce. 41 liquidation partners &middot; ~&#8377;85 L wallet &middot; Apple 16+ pilot at 10.5 % attach.</div>
-        <div class="sp-crate-foot">
-          <span class="sp-crate-tag">Sell</span>
-          <span class="sp-crate-metric">&#8377;3.23 Cr &middot; Feb 2026</span>
-        </div>
-      </a>
+    <!-- Arrow from station 1 to belt -->
+    <path d="M150,165 L185,185" stroke="#ed6f5c" stroke-width="2" stroke-dasharray="4 3" fill="none" marker-end="url(#arrowCoral)"/>
 
-    </div><!-- /sp-crates -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- STATION 2: FYND BUILD BAY (centre-left)                           -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Large station - the main build engine -->
+    <!-- Top face -->
+    <polygon points="280,60 480,60 480,150 280,150" fill="#2a2a26" stroke="#1a1a16" stroke-width="1.5"/>
+    <!-- Front face -->
+    <polygon points="280,150 480,150 480,260 280,260" fill="#1a1a16" stroke="#0a0a06" stroke-width="1.5"/>
+    <!-- Right face -->
+    <polygon points="480,60 540,90 540,200 480,150" fill="#3a3a36" stroke="#2a2a26" stroke-width="1.5"/>
+    <!-- Coral accent stripe on top -->
+    <polygon points="280,60 480,60 480,75 280,75" fill="#ed6f5c" opacity=".9"/>
+    <!-- FYND BUILD BAY label on top face -->
+    <text x="380" y="95" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#faf5ea" letter-spacing=".12em" text-anchor="middle">FYND</text>
+    <text x="380" y="110" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#ed6f5c" letter-spacing=".12em" text-anchor="middle">BUILD BAY</text>
+    <!-- Screen/monitor on front face -->
+    <rect x="310" y="165" width="80" height="50" rx="3" fill="#2a2a26" stroke="#ed6f5c" stroke-width="1"/>
+    <rect x="313" y="168" width="74" height="40" rx="2" fill="#0a1a2a"/>
+    <!-- Code lines on screen -->
+    <line x1="317" y1="175" x2="355" y2="175" stroke="#ed6f5c" stroke-width="1.5" opacity=".7"/>
+    <line x1="317" y1="181" x2="370" y2="181" stroke="#4a8a6a" stroke-width="1.5" opacity=".7"/>
+    <line x1="317" y1="187" x2="348" y2="187" stroke="#faf5ea" stroke-width="1.5" opacity=".5"/>
+    <line x1="317" y1="193" x2="362" y2="193" stroke="#ed6f5c" stroke-width="1.5" opacity=".4"/>
+    <!-- Gear icon on front face -->
+    <circle cx="430" cy="195" r="18" fill="none" stroke="#faf5ea" stroke-width="2" opacity=".2"/>
+    <circle cx="430" cy="195" r="10" fill="none" stroke="#faf5ea" stroke-width="2" opacity=".2"/>
+    <text x="430" y="200" font-family="sans-serif" font-size="14" fill="#faf5ea" opacity=".25" text-anchor="middle">⚙</text>
+    <!-- "22 PLATFORMS" small label -->
+    <text x="380" y="245" font-family="Space Mono,monospace" font-size="7" fill="#faf5ea" opacity=".4" letter-spacing=".1em" text-anchor="middle">22 PLATFORMS BUILT</text>
 
-    <!-- SHIPPED FOR RELIANCE seal -->
-    <div class="sp-shipped-seal">
-      <div class="sp-seal-count">6<span>PROJECTS</span></div>
-      <div>
-        <div class="sp-seal-text">PROBLEM &rarr; BUILD &rarr; PILOT &rarr;</div>
-        <div class="sp-seal-stamp">SHIPPED FOR RELIANCE</div>
-      </div>
-      <div class="sp-seal-count">5<span>LIVE</span></div>
-    </div>
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- STATION 3: PILOT ZONE (centre-right)                              -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Top face -->
+    <polygon points="600,80 760,80 760,160 600,160" fill="#fdf3e0" stroke="#e0d0b0" stroke-width="1.5"/>
+    <!-- Front face -->
+    <polygon points="600,160 760,160 760,255 600,255" fill="#f0e8d0" stroke="#e0d0b0" stroke-width="1.5"/>
+    <!-- Right face -->
+    <polygon points="760,80 820,110 820,205 760,160" fill="#e0d8c0" stroke="#d0c8b0" stroke-width="1.5"/>
+    <!-- Amber accent stripe -->
+    <polygon points="600,80 760,80 760,93 600,93" fill="#c89030" opacity=".7"/>
+    <!-- PILOT ZONE label -->
+    <text x="680" y="115" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="#2a2a26" letter-spacing=".1em" text-anchor="middle">PILOT</text>
+    <text x="680" y="129" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="#c89030" letter-spacing=".1em" text-anchor="middle">ZONE</text>
+    <!-- Test tubes / validation icons -->
+    <rect x="648" y="138" width="8" height="16" rx="4" fill="#c89030" opacity=".5"/>
+    <rect x="662" y="134" width="8" height="20" rx="4" fill="#c89030" opacity=".7"/>
+    <rect x="676" y="136" width="8" height="18" rx="4" fill="#c89030" opacity=".5"/>
+    <rect x="690" y="132" width="8" height="22" rx="4" fill="#c89030" opacity=".8"/>
+    <rect x="704" y="138" width="8" height="16" rx="4" fill="#c89030" opacity=".5"/>
+    <!-- Status label on front -->
+    <text x="680" y="195" font-family="Space Mono,monospace" font-size="8" fill="#7a5a1a" letter-spacing=".1em" text-anchor="middle">VALIDATION</text>
+    <text x="680" y="208" font-family="Space Mono,monospace" font-size="8" fill="#7a5a1a" letter-spacing=".1em" text-anchor="middle">IN PROGRESS</text>
+    <!-- Checkmarks -->
+    <text x="680" y="228" font-family="sans-serif" font-size="11" fill="#2a7a4a" opacity=".6" text-anchor="middle">✓ ✓ ✓</text>
 
-  </div><!-- /sp-belt-wrap -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- STATION 4: LIVE / SHIPPED DOCK (far right)                        -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Top face -->
+    <polygon points="870,100 1020,100 1020,175 870,175" fill="#e8f5ee" stroke="#a0d0b0" stroke-width="1.5"/>
+    <!-- Front face -->
+    <polygon points="870,175 1020,175 1020,260 870,260" fill="#d8edd8" stroke="#a0d0b0" stroke-width="1.5"/>
+    <!-- Right face -->
+    <polygon points="1020,100 1070,130 1070,215 1020,175" fill="#c8e0c8" stroke="#90c090" stroke-width="1.5"/>
+    <!-- Green accent stripe -->
+    <polygon points="870,100 1020,100 1020,113 870,113" fill="#2a7a4a" opacity=".8"/>
+    <!-- LIVE SHIPPED label -->
+    <text x="945" y="133" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="#2a2a26" letter-spacing=".1em" text-anchor="middle">LIVE /</text>
+    <text x="945" y="147" font-family="Space Mono,monospace" font-size="9.5" font-weight="700" fill="#2a7a4a" letter-spacing=".1em" text-anchor="middle">SHIPPED</text>
+    <!-- Shipped boxes stacked on top face -->
+    <rect x="910" y="152" width="20" height="16" rx="2" fill="#2a7a4a" opacity=".3"/>
+    <rect x="934" y="148" width="20" height="20" rx="2" fill="#2a7a4a" opacity=".5"/>
+    <rect x="958" y="152" width="20" height="16" rx="2" fill="#2a7a4a" opacity=".3"/>
+    <!-- FOR RELIANCE label on front -->
+    <text x="945" y="205" font-family="Space Mono,monospace" font-size="8" fill="#1a5a3a" letter-spacing=".1em" text-anchor="middle">FOR RELIANCE</text>
+    <!-- Big checkmark -->
+    <text x="945" y="235" font-family="sans-serif" font-size="28" fill="#2a7a4a" opacity=".35" text-anchor="middle">✓</text>
 
-  <div class="mt-10">
-    <a href="#explore?filter=special-projects" class="btn-secondary">Open every special project <span aria-hidden="true">&rarr;</span></a>
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- 6 PROJECT CAPSULES ON THE BELT                                    -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Capsule helper: isometric box with label on top face -->
+    <!-- Each capsule: top face (lighter), front face (mid), right face (darker) -->
+
+    <!-- CAPSULE 1: ALP (leftmost, just entering belt) -->
+    <g class="sp-capsule" transform="translate(185,168)">
+      <!-- top face -->
+      <polygon points="0,-14 36,-14 36,0 0,0" fill="#faf5ea" stroke="#c8c0ac" stroke-width="1.2"/>
+      <!-- front face -->
+      <polygon points="0,0 36,0 36,18 0,18" fill="#e8e0cc" stroke="#c8c0ac" stroke-width="1.2"/>
+      <!-- right face -->
+      <polygon points="36,-14 50,-7 50,11 36,4" fill="#d8d0bc" stroke="#c8c0ac" stroke-width="1.2"/>
+      <!-- label on top -->
+      <text x="18" y="-4" font-family="Space Mono,monospace" font-size="6.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".05em">ALP</text>
+      <!-- status dot -->
+      <circle cx="42" cy="-9" r="4" fill="#2a7a4a"/>
+    </g>
+
+    <!-- CAPSULE 2: RetailVista -->
+    <g class="sp-capsule" transform="translate(285,168)">
+      <polygon points="0,-14 36,-14 36,0 0,0" fill="#faf5ea" stroke="#c8c0ac" stroke-width="1.2"/>
+      <polygon points="0,0 36,0 36,18 0,18" fill="#e8e0cc" stroke="#c8c0ac" stroke-width="1.2"/>
+      <polygon points="36,-14 50,-7 50,11 36,4" fill="#d8d0bc" stroke="#c8c0ac" stroke-width="1.2"/>
+      <text x="18" y="-6" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">RETAIL</text>
+      <text x="18" y="0" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">VISTA</text>
+      <circle cx="42" cy="-9" r="4" fill="#2a7a4a"/>
+    </g>
+
+    <!-- CAPSULE 3: Retail Jarvis (in Build Bay area - coral tint) -->
+    <g class="sp-capsule" transform="translate(490,168)">
+      <polygon points="0,-14 36,-14 36,0 0,0" fill="#fff0ec" stroke="#e8a090" stroke-width="1.2"/>
+      <polygon points="0,0 36,0 36,18 0,18" fill="#fde0d8" stroke="#e8a090" stroke-width="1.2"/>
+      <polygon points="36,-14 50,-7 50,11 36,4" fill="#f0c8bc" stroke="#e8a090" stroke-width="1.2"/>
+      <text x="18" y="-6" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">RETAIL</text>
+      <text x="18" y="0" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">JARVIS</text>
+      <!-- BUILD status - amber -->
+      <rect x="30" y="-16" width="22" height="9" rx="2" fill="#c89030"/>
+      <text x="41" y="-9" font-family="Space Mono,monospace" font-size="5" font-weight="700" fill="#fff" text-anchor="middle">BUILD</text>
+    </g>
+
+    <!-- CAPSULE 4: Samarth Plus (in Pilot Zone) -->
+    <g class="sp-capsule" transform="translate(610,168)">
+      <polygon points="0,-14 36,-14 36,0 0,0" fill="#fdf8f0" stroke="#d8c890" stroke-width="1.2"/>
+      <polygon points="0,0 36,0 36,18 0,18" fill="#f5eedd" stroke="#d8c890" stroke-width="1.2"/>
+      <polygon points="36,-14 50,-7 50,11 36,4" fill="#e8e0c8" stroke="#d8c890" stroke-width="1.2"/>
+      <text x="18" y="-6" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">SAMARTH</text>
+      <text x="18" y="0" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">PLUS</text>
+      <circle cx="42" cy="-9" r="4" fill="#2a7a4a"/>
+    </g>
+
+    <!-- CAPSULE 5: HireFirst (approaching shipped dock) -->
+    <g class="sp-capsule" transform="translate(720,168)">
+      <polygon points="0,-14 36,-14 36,0 0,0" fill="#faf5ea" stroke="#c8c0ac" stroke-width="1.2"/>
+      <polygon points="0,0 36,0 36,18 0,18" fill="#e8e0cc" stroke="#c8c0ac" stroke-width="1.2"/>
+      <polygon points="36,-14 50,-7 50,11 36,4" fill="#d8d0bc" stroke="#c8c0ac" stroke-width="1.2"/>
+      <text x="18" y="-6" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">HIRE</text>
+      <text x="18" y="0" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">FIRST</text>
+      <circle cx="42" cy="-9" r="4" fill="#2a7a4a"/>
+    </g>
+
+    <!-- CAPSULE 6: SwapEasy (at shipped dock, green tint) -->
+    <g class="sp-capsule" transform="translate(830,168)">
+      <polygon points="0,-14 36,-14 36,0 0,0" fill="#e8f5ee" stroke="#90c090" stroke-width="1.2"/>
+      <polygon points="0,0 36,0 36,18 0,18" fill="#d8edd8" stroke="#90c090" stroke-width="1.2"/>
+      <polygon points="36,-14 50,-7 50,11 36,4" fill="#c8e0c8" stroke="#90c090" stroke-width="1.2"/>
+      <text x="18" y="-6" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">SWAP</text>
+      <text x="18" y="0" font-family="Space Mono,monospace" font-size="5.5" font-weight="700" fill="#2a2a26" text-anchor="middle" letter-spacing=".04em">EASY</text>
+      <circle cx="42" cy="-9" r="4" fill="#2a7a4a"/>
+    </g>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- FLOW ARROWS BETWEEN STATIONS                                      -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <defs>
+      <marker id="arrowCoral" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 Z" fill="#ed6f5c"/>
+      </marker>
+      <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+        <path d="M0,0 L0,6 L8,3 Z" fill="#2a7a4a"/>
+      </marker>
+    </defs>
+
+    <!-- Station 1 → Station 2 arrow (above belt) -->
+    <path d="M200,130 Q240,100 280,100" stroke="#ed6f5c" stroke-width="1.5" stroke-dasharray="5 3" fill="none" marker-end="url(#arrowCoral)" opacity=".7"/>
+
+    <!-- Station 2 → Station 3 arrow -->
+    <path d="M540,110 Q570,90 600,100" stroke="#c89030" stroke-width="1.5" stroke-dasharray="5 3" fill="none" marker-end="url(#arrowCoral)" opacity=".7"/>
+
+    <!-- Station 3 → Station 4 arrow -->
+    <path d="M820,120 Q845,110 870,120" stroke="#2a7a4a" stroke-width="1.5" stroke-dasharray="5 3" fill="none" marker-end="url(#arrowGreen)" opacity=".7"/>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- BOTTOM LEGEND / PROCESS LABELS                                    -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Process step labels below the belt -->
+    <rect x="30" y="290" width="170" height="36" rx="6" fill="#2a2a26" opacity=".06"/>
+    <text x="115" y="306" font-family="Space Mono,monospace" font-size="8" fill="#2a2a26" opacity=".5" text-anchor="middle" letter-spacing=".1em">01</text>
+    <text x="115" y="319" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2a2a26" opacity=".7" text-anchor="middle" letter-spacing=".08em">PROBLEM INTAKE</text>
+
+    <rect x="280" y="290" width="220" height="36" rx="6" fill="#2a2a26" opacity=".08"/>
+    <text x="390" y="306" font-family="Space Mono,monospace" font-size="8" fill="#ed6f5c" opacity=".8" text-anchor="middle" letter-spacing=".1em">02</text>
+    <text x="390" y="319" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2a2a26" opacity=".7" text-anchor="middle" letter-spacing=".08em">FYND BUILD BAY</text>
+
+    <rect x="580" y="290" width="200" height="36" rx="6" fill="#2a2a26" opacity=".06"/>
+    <text x="680" y="306" font-family="Space Mono,monospace" font-size="8" fill="#c89030" opacity=".8" text-anchor="middle" letter-spacing=".1em">03</text>
+    <text x="680" y="319" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2a2a26" opacity=".7" text-anchor="middle" letter-spacing=".08em">PILOT ZONE</text>
+
+    <rect x="860" y="290" width="200" height="36" rx="6" fill="#2a7a4a" opacity=".1"/>
+    <text x="960" y="306" font-family="Space Mono,monospace" font-size="8" fill="#2a7a4a" opacity=".9" text-anchor="middle" letter-spacing=".1em">04</text>
+    <text x="960" y="319" font-family="Space Mono,monospace" font-size="8" font-weight="700" fill="#2a2a26" opacity=".7" text-anchor="middle" letter-spacing=".08em">LIVE / SHIPPED</text>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- BOTTOM STRIP: SHIPPED FOR RELIANCE                                -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <rect x="30" y="355" width="1040" height="64" rx="8" fill="#2a2a26"/>
+    <!-- Left: 6 projects -->
+    <text x="80" y="381" font-family="Inter Tight,sans-serif" font-size="28" font-weight="900" fill="#faf5ea" text-anchor="middle">6</text>
+    <text x="80" y="397" font-family="Space Mono,monospace" font-size="7" fill="#faf5ea" opacity=".5" text-anchor="middle" letter-spacing=".1em">PROJECTS</text>
+    <!-- Divider -->
+    <line x1="130" y1="365" x2="130" y2="409" stroke="#faf5ea" stroke-width=".5" opacity=".2"/>
+    <!-- Centre: process flow -->
+    <text x="550" y="378" font-family="Space Mono,monospace" font-size="8" fill="#faf5ea" opacity=".45" text-anchor="middle" letter-spacing=".12em">PROBLEM  →  BUILD  →  PILOT  →</text>
+    <!-- SHIPPED FOR RELIANCE stamp -->
+    <rect x="390" y="387" width="320" height="24" rx="4" fill="none" stroke="#ed6f5c" stroke-width="1.5"/>
+    <text x="550" y="403" font-family="Space Mono,monospace" font-size="10" font-weight="700" fill="#ed6f5c" text-anchor="middle" letter-spacing=".18em">SHIPPED FOR RELIANCE</text>
+    <!-- Right: 5 live -->
+    <line x1="930" y1="365" x2="930" y2="409" stroke="#faf5ea" stroke-width=".5" opacity=".2"/>
+    <text x="990" y="381" font-family="Inter Tight,sans-serif" font-size="28" font-weight="900" fill="#2a7a4a" text-anchor="middle">5</text>
+    <text x="990" y="397" font-family="Space Mono,monospace" font-size="7" fill="#faf5ea" opacity=".5" text-anchor="middle" letter-spacing=".1em">LIVE</text>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- FLOATING DETAIL LABELS (project names near capsules)              -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Small connector lines from capsules up to labels -->
+    <line x1="203" y1="154" x2="203" y2="130" stroke="#2a2a26" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+    <text x="203" y="126" font-family="Space Mono,monospace" font-size="7" fill="#2a2a26" opacity=".5" text-anchor="middle">ALP</text>
+
+    <line x1="303" y1="154" x2="303" y2="130" stroke="#2a2a26" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+    <text x="303" y="126" font-family="Space Mono,monospace" font-size="7" fill="#2a2a26" opacity=".5" text-anchor="middle">R.VISTA</text>
+
+    <line x1="628" y1="154" x2="628" y2="130" stroke="#2a2a26" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+    <text x="628" y="126" font-family="Space Mono,monospace" font-size="7" fill="#2a2a26" opacity=".5" text-anchor="middle">SAMARTH</text>
+
+    <line x1="738" y1="154" x2="738" y2="130" stroke="#2a2a26" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+    <text x="738" y="126" font-family="Space Mono,monospace" font-size="7" fill="#2a2a26" opacity=".5" text-anchor="middle">HIREFIRST</text>
+
+    <line x1="848" y1="154" x2="848" y2="130" stroke="#2a2a26" stroke-width=".8" opacity=".3" stroke-dasharray="2 2"/>
+    <text x="848" y="126" font-family="Space Mono,monospace" font-size="7" fill="#2a2a26" opacity=".5" text-anchor="middle">SWAPEASY</text>
+
+  </svg>
+  </div><!-- /sp-iso-wrap -->
+
+  <!-- Project detail cards below the illustration -->
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mt-10 mb-8">
+    <a href="/alp" class="platform-card" data-reveal>
+      <div class="platform-card-head"><div class="platform-card-name">ALP &middot; Asset Lifecycle</div><span class="pill pill-live">LIVE</span></div>
+      <div class="platform-card-desc">NSO platform for RR. Lead &rarr; site visit &rarr; approvals &rarr; legal &rarr; fit-out &rarr; hand-off. 6 of 9 Phase 1 initiatives done.</div>
+      <div class="platform-card-foot"><span class="platform-card-tag">New Store</span></div>
+      <div class="platform-card-metric mt-3">GJ-cluster pilot &middot; Apr 2026</div>
+    </a>
+    <a href="/retail-vista" class="platform-card" data-reveal>
+      <div class="platform-card-head"><div class="platform-card-name">RetailVista</div><span class="pill pill-live">LIVE</span></div>
+      <div class="platform-card-desc">Agentic geospatial intelligence. Opportunity Explorer &middot; 68 scored leads. Three tracks across UCP, Google Vertex AI, JioGIS.</div>
+      <div class="platform-card-foot"><span class="platform-card-tag">New Store</span><span class="platform-card-tag">Plan/Design</span></div>
+      <div class="platform-card-metric mt-3">3 tracks &middot; 24 data categories</div>
+    </a>
+    <a href="/retail-jarvis" class="platform-card" data-reveal>
+      <div class="platform-card-head"><div class="platform-card-name">Retail Jarvis</div><span class="pill pill-build">BUILD</span></div>
+      <div class="platform-card-desc">Predictive non-intrusive CX sensing. Anchor demo on Store 5943 Mumbai. Signals &rarr; engine &rarr; playbooks.</div>
+      <div class="platform-card-foot"><span class="platform-card-tag">Store Health</span></div>
+      <div class="platform-card-metric mt-3">4 scores &middot; Readiness/CX/Friction/Churn</div>
+    </a>
+    <a href="/samarth" class="platform-card" data-reveal>
+      <div class="platform-card-head"><div class="platform-card-name">Samarth Plus</div><span class="pill pill-live">LIVE</span></div>
+      <div class="platform-card-desc">Career platform for the RR frontline. Served inside People First. 5 career levels &middot; 3 formats &middot; SCORM-compliant.</div>
+      <div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div>
+      <div class="platform-card-metric mt-3">Prod cutover &middot; Apr 2026</div>
+    </a>
+    <a href="/hirefirst" class="platform-card" data-reveal>
+      <div class="platform-card-head"><div class="platform-card-name">HireFirst (Orion)</div><span class="pill pill-live">LIVE</span></div>
+      <div class="platform-card-desc">Reliance HR Tech &middot; AI-Native Hiring OS. AI score calibration &middot; Apollo enrichment. SIT live.</div>
+      <div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div>
+      <div class="platform-card-metric mt-3">Prod sign-off Jun 2026</div>
+    </a>
+    <a href="/swapeasy" class="platform-card" data-reveal>
+      <div class="platform-card-head"><div class="platform-card-name">SwapEasy</div><span class="pill pill-live">LIVE</span></div>
+      <div class="platform-card-desc">RR&rsquo;s in-store re-commerce platform. SAP-traceable &middot; 41 liquidation partners &middot; ~&#8377;85 L wallet &middot; Apple 16+ pilot 10.5 % attach.</div>
+      <div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div>
+      <div class="platform-card-metric mt-3">625 RD + 983 MJS &middot; &#8377;3.23 Cr Feb 2026</div>
+    </a>
   </div>
+
+  <a href="#explore?filter=special-projects" class="btn-secondary">Open every special project <span aria-hidden="true">&rarr;</span></a>
 </div>
 
 <script>
 (function(){
-  // ── scroll-reveal for crates ──
-  const crates = document.querySelectorAll('.sp-crate, .sp-shipped-seal');
+  var wrap = document.querySelector('.sp-iso-wrap');
+  if (!wrap) return;
   if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('sp-visible');
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    crates.forEach(c => io.observe(c));
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('sp-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    io.observe(wrap);
   } else {
-    crates.forEach(c => c.classList.add('sp-visible'));
+    wrap.classList.add('sp-in');
   }
-
-  // ── 3-D tilt on hover ──
-  document.querySelectorAll('.sp-crate').forEach(crate => {
-    crate.addEventListener('mousemove', e => {
-      const r = crate.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width  - 0.5;  // -0.5 to 0.5
-      const y = (e.clientY - r.top)  / r.height - 0.5;
-      crate.style.setProperty('--rx', `${(-y * 8).toFixed(1)}deg`);
-      crate.style.setProperty('--ry', `${( x * 8).toFixed(1)}deg`);
-    });
-    crate.addEventListener('mouseleave', () => {
-      crate.style.setProperty('--rx', '0deg');
-      crate.style.setProperty('--ry', '0deg');
-    });
-  });
 })();
 </script>
 </section>
