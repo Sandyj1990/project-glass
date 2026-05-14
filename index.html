@@ -2430,9 +2430,11 @@
 <div class="section-label mb-4">10 &middot; EVERY PLATFORM</div>
 <h2 class="display-2 text-4xl md:text-6xl mb-6" style="color: var(--ink);">Twenty-two platforms<br/><span style="color: var(--accent);">Pick a layer</span></h2>
 </div>
-<div class="text-sm mono" style="color: var(--ink-muted);" id="explore-count">22 platforms shown</div>
+<div class="text-sm mono" style="color: var(--ink-muted);" id="explore-count">22 of 22 platforms shown</div>
 </div>
-<div class="flex flex-wrap gap-2 mb-10" id="filter-chips" role="tablist" aria-label="Filter platforms by stack layer or track">
+
+<!-- Filter chips -->
+<div class="flex flex-wrap gap-2 mb-8" id="filter-chips" role="tablist" aria-label="Filter platforms by stack layer or track">
 <button type="button" class="filter-chip active" data-filter="all">All <span class="ct"></span></button>
 <button type="button" class="filter-chip" data-filter="sell">Sell <span class="ct"></span></button>
 <button type="button" class="filter-chip" data-filter="move">Move <span class="ct"></span></button>
@@ -2444,7 +2446,86 @@
 <button type="button" class="filter-chip" data-filter="hr-tech">HR Tech <span class="ct"></span></button>
 <button type="button" class="filter-chip" data-filter="special-projects">Special Projects <span class="ct"></span></button>
 </div>
-<div id="platform-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3"></div>
+
+<!-- Slider wrapper -->
+<style>
+  .ep-slider-wrap { position: relative; }
+  .ep-track-outer {
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .ep-track {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.4s cubic-bezier(.4,0,.2,1);
+    will-change: transform;
+  }
+  .ep-track .platform-card {
+    flex: 0 0 calc(33.333% - 11px);
+    min-width: 260px;
+    box-sizing: border-box;
+  }
+  @media (max-width: 900px) {
+    .ep-track .platform-card { flex: 0 0 calc(50% - 8px); }
+  }
+  @media (max-width: 580px) {
+    .ep-track .platform-card { flex: 0 0 calc(100% - 0px); }
+  }
+  .ep-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .ep-nav-btn {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: var(--bg-soft);
+    color: var(--ink);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, border-color .15s;
+  }
+  .ep-nav-btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .ep-nav-btn:disabled { opacity: .3; cursor: default; }
+  .ep-nav-btn:hover:disabled { background: var(--bg-soft); border-color: var(--border); color: var(--ink); }
+  .ep-dots {
+    display: flex; gap: 6px; align-items: center;
+  }
+  .ep-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: background .2s, transform .2s;
+    cursor: pointer;
+  }
+  .ep-dot.active {
+    background: var(--accent);
+    transform: scale(1.35);
+  }
+  .ep-page-label {
+    font-family: var(--mono, monospace);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--ink-muted);
+  }
+</style>
+
+<div class="ep-slider-wrap">
+  <div class="ep-track-outer">
+    <div id="platform-grid" class="ep-track"></div>
+  </div>
+  <div class="ep-nav">
+    <button class="ep-nav-btn" id="ep-prev" aria-label="Previous">&#8592;</button>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <div class="ep-dots" id="ep-dots"></div>
+      <span class="ep-page-label" id="ep-page-label"></span>
+    </div>
+    <button class="ep-nav-btn" id="ep-next" aria-label="Next">&#8594;</button>
+  </div>
+</div>
 </div>
 </section>
 
@@ -2483,6 +2564,21 @@
   const grid    = document.getElementById('platform-grid');
   const chips   = document.querySelectorAll('#filter-chips .filter-chip');
   const counter = document.getElementById('explore-count');
+  const prevBtn  = document.getElementById('ep-prev');
+  const nextBtn  = document.getElementById('ep-next');
+  const dotsWrap = document.getElementById('ep-dots');
+  const pageLabel= document.getElementById('ep-page-label');
+
+  let currentPage = 0;
+  let totalPages  = 1;
+  let perPage     = 3;
+
+  function getPerPage(){
+    const w = window.innerWidth;
+    if (w <= 580) return 1;
+    if (w <= 900) return 2;
+    return 3;
+  }
 
   function statusClass(s){
     if (s === 'Live')  return 'pill pill-live';
@@ -2501,8 +2597,40 @@
     return false;
   }
 
+  function buildDots(n){
+    dotsWrap.innerHTML = '';
+    for (let i = 0; i < n; i++){
+      const d = document.createElement('button');
+      d.className = 'ep-dot' + (i === currentPage ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to page ' + (i+1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function updateNav(){
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage >= totalPages - 1;
+    const dots = dotsWrap.querySelectorAll('.ep-dot');
+    dots.forEach((d,i) => d.classList.toggle('active', i === currentPage));
+    pageLabel.textContent = (currentPage + 1) + ' / ' + totalPages;
+  }
+
+  function goTo(page){
+    currentPage = Math.max(0, Math.min(page, totalPages - 1));
+    perPage = getPerPage();
+    const cardW = grid.querySelector('.platform-card');
+    if (!cardW) return;
+    const gap = 16;
+    const offset = currentPage * perPage * (cardW.offsetWidth + gap);
+    grid.style.transform = 'translateX(-' + offset + 'px)';
+    updateNav();
+  }
+
   function render(filter){
     grid.innerHTML = '';
+    grid.style.transform = 'translateX(0)';
+    currentPage = 0;
     const visible = PLATFORMS.filter(p => matches(p, filter));
     visible.forEach(p => {
       const a = document.createElement('a');
@@ -2512,6 +2640,10 @@
       grid.appendChild(a);
     });
     counter.textContent = visible.length + ' of ' + PLATFORMS.length + ' platforms shown';
+    perPage = getPerPage();
+    totalPages = Math.ceil(visible.length / perPage);
+    buildDots(totalPages);
+    updateNav();
   }
 
   function setFilter(f){
@@ -2526,6 +2658,33 @@
   });
 
   chips.forEach(c => c.addEventListener('click', () => setFilter(c.dataset.filter)));
+
+  prevBtn.addEventListener('click', () => goTo(currentPage - 1));
+  nextBtn.addEventListener('click', () => goTo(currentPage + 1));
+
+  /* Touch / swipe support */
+  let touchStartX = 0;
+  grid.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+  grid.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 40) goTo(currentPage + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+
+  /* Recalculate on resize */
+  window.addEventListener('resize', () => {
+    const pp = getPerPage();
+    if (pp !== perPage) {
+      perPage = pp;
+      const visible = PLATFORMS.filter(p => {
+        const f = Array.from(chips).find(c => c.classList.contains('active'));
+        return f ? matches(p, f.dataset.filter) : true;
+      });
+      totalPages = Math.ceil(visible.length / perPage);
+      currentPage = Math.min(currentPage, totalPages - 1);
+      buildDots(totalPages);
+      goTo(currentPage);
+    }
+  });
 
   function initialFilterFromHash(){
     const h = window.location.hash || '';
