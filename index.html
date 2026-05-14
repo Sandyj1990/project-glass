@@ -2057,6 +2057,206 @@
   <h2 class="ri-heading">The next horizon &middot; <span>already shipping</span></h2>
   <p class="ri-sub">Fynd Horizon brings Ultra Fast Retail to life &mdash; made-to-measure garments in 24 hours, live at RCP and the Mumbai cluster. AutRi delivers agentic planogram compliance. Dark Factory is a lights-out micro-factory, 200 pieces a day, currently in alpha.</p>
 
+  <!-- 2D GRAPHIC: floating innovation map -->
+  <div class="ri-graphic-wrap" aria-hidden="true">
+    <style>
+      .ri-graphic-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 860px;
+        margin: 0 auto 56px;
+        height: 340px;
+        overflow: visible;
+      }
+      /* Sparkle dots */
+      .ri-spark {
+        position: absolute;
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        opacity: .45;
+        animation: ri-pulse 3s ease-in-out infinite;
+      }
+      @keyframes ri-pulse {
+        0%,100% { opacity:.2; transform:scale(1); }
+        50%      { opacity:.7; transform:scale(1.6); }
+      }
+      /* Dashed connector lines */
+      .ri-connector {
+        position: absolute;
+        border-top: 1.5px dashed rgba(245,240,232,.12);
+        transform-origin: left center;
+        pointer-events: none;
+      }
+      /* Central focal element */
+      .ri-focal {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%,-50%);
+        width: 96px; height: 96px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, #1e2535 0%, #252d42 100%);
+        border: 1.5px solid rgba(237,111,92,.35);
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 6px;
+        box-shadow: 0 0 40px rgba(237,111,92,.12);
+        animation: ri-focal-glow 4s ease-in-out infinite;
+      }
+      @keyframes ri-focal-glow {
+        0%,100% { box-shadow: 0 0 30px rgba(237,111,92,.10); }
+        50%      { box-shadow: 0 0 60px rgba(237,111,92,.25); }
+      }
+      .ri-focal-icon { font-size: 28px; line-height: 1; }
+      .ri-focal-label {
+        font-family: var(--mono, monospace);
+        font-size: 8px; letter-spacing: 2px;
+        color: rgba(245,240,232,.45); text-transform: uppercase;
+      }
+      /* Floating info chips */
+      .ri-chip {
+        position: absolute;
+        background: #1a2030;
+        border: 1px solid rgba(245,240,232,.1);
+        border-radius: 12px;
+        padding: 10px 14px;
+        display: flex; flex-direction: column; gap: 3px;
+        animation: ri-float 5s ease-in-out infinite;
+        cursor: default;
+        transition: border-color .2s;
+      }
+      .ri-chip:hover { border-color: rgba(237,111,92,.4); }
+      .ri-chip--a { animation-delay: 0s; }
+      .ri-chip--b { animation-delay: 1.2s; }
+      .ri-chip--c { animation-delay: 2.4s; }
+      .ri-chip--d { animation-delay: 0.6s; }
+      .ri-chip--e { animation-delay: 1.8s; }
+      .ri-chip--f { animation-delay: 3s; }
+      @keyframes ri-float {
+        0%,100% { transform: translateY(0px); }
+        50%      { transform: translateY(-6px); }
+      }
+      .ri-chip-val {
+        font-size: 18px; font-weight: 800; line-height: 1;
+        letter-spacing: -0.5px;
+      }
+      .ri-chip-lbl {
+        font-family: var(--mono, monospace);
+        font-size: 8px; letter-spacing: 1.5px;
+        color: rgba(245,240,232,.4); text-transform: uppercase;
+      }
+      .ri-chip-name {
+        font-size: 10px; font-weight: 600;
+        color: rgba(245,240,232,.65); margin-top: 2px;
+      }
+      /* Orbit ring */
+      .ri-orbit {
+        position: absolute;
+        left: 50%; top: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 50%;
+        border: 1px dashed rgba(245,240,232,.06);
+        pointer-events: none;
+      }
+      /* Travelling dot on orbit */
+      .ri-orbit-dot {
+        position: absolute;
+        width: 7px; height: 7px;
+        border-radius: 50%;
+        background: #ed6f5c;
+        top: -3.5px; left: calc(50% - 3.5px);
+        transform-origin: 0 calc(50% + 3.5px);
+        animation: ri-orbit-spin 8s linear infinite;
+      }
+      @keyframes ri-orbit-spin {
+        from { transform: rotate(0deg) translateX(0) translateY(-130px); }
+        to   { transform: rotate(360deg) translateX(0) translateY(-130px); }
+      }
+      @media (max-width: 640px) {
+        .ri-graphic-wrap { height: 260px; }
+        .ri-chip { display: none; }
+        .ri-focal { width: 80px; height: 80px; }
+      }
+    </style>
+
+    <!-- Orbit rings -->
+    <div class="ri-orbit" style="width:260px;height:260px;"></div>
+    <div class="ri-orbit" style="width:420px;height:420px;opacity:.5;"></div>
+
+    <!-- Travelling dot -->
+    <div style="position:absolute;left:50%;top:50%;width:0;height:0;">
+      <div class="ri-orbit-dot"></div>
+    </div>
+
+    <!-- Central focal: the three innovations converge -->
+    <div class="ri-focal">
+      <div class="ri-focal-icon">🏭</div>
+      <div class="ri-focal-label">Next Horizon</div>
+    </div>
+
+    <!-- Floating chips: positioned around the focal -->
+    <!-- Fynd Horizon chips -->
+    <div class="ri-chip ri-chip--a" style="left:2%;top:8%;">
+      <div class="ri-chip-val" style="color:#ed6f5c;">24 hr</div>
+      <div class="ri-chip-lbl">Made-to-measure</div>
+      <div class="ri-chip-name">Fynd Horizon</div>
+    </div>
+
+    <div class="ri-chip ri-chip--b" style="left:5%;top:58%;">
+      <div class="ri-chip-val" style="color:#ed6f5c;">50 K+</div>
+      <div class="ri-chip-lbl">SKUs / store</div>
+      <div class="ri-chip-name">Body-scan fit</div>
+    </div>
+
+    <!-- AutRi chips -->
+    <div class="ri-chip ri-chip--c" style="right:4%;top:6%;">
+      <div class="ri-chip-val" style="color:#5ecfb0;">95 %+</div>
+      <div class="ri-chip-lbl">Shelf compliance</div>
+      <div class="ri-chip-name">AutRi · Robotics</div>
+    </div>
+
+    <div class="ri-chip ri-chip--d" style="right:2%;top:55%;">
+      <div class="ri-chip-val" style="color:#5ecfb0;">98 %</div>
+      <div class="ri-chip-lbl">SKU recognition</div>
+      <div class="ri-chip-name">GMetri vision</div>
+    </div>
+
+    <!-- Dark Factory chips -->
+    <div class="ri-chip ri-chip--e" style="left:32%;top:2%;">
+      <div class="ri-chip-val" style="color:#e8c97a;">7 days</div>
+      <div class="ri-chip-lbl">Order → doorstep</div>
+      <div class="ri-chip-name">Dark Factory</div>
+    </div>
+
+    <div class="ri-chip ri-chip--f" style="left:30%;bottom:4%;">
+      <div class="ri-chip-val" style="color:#e8c97a;">200</div>
+      <div class="ri-chip-lbl">Pieces / day</div>
+      <div class="ri-chip-name">MTM alpha</div>
+    </div>
+
+    <!-- Sparkle dots -->
+    <div class="ri-spark" style="background:#ed6f5c;left:18%;top:30%;animation-delay:0s;"></div>
+    <div class="ri-spark" style="background:#5ecfb0;right:22%;top:42%;animation-delay:1s;"></div>
+    <div class="ri-spark" style="background:#e8c97a;left:48%;top:78%;animation-delay:2s;"></div>
+    <div class="ri-spark" style="background:#ed6f5c;right:38%;top:15%;animation-delay:1.5s;"></div>
+    <div class="ri-spark" style="background:#5ecfb0;left:62%;bottom:20%;animation-delay:0.7s;"></div>
+
+    <!-- Dashed connector lines (SVG overlay) -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;" viewBox="0 0 860 340" preserveAspectRatio="xMidYMid meet">
+      <!-- chip-a (left-top) to focal centre -->
+      <line x1="130" y1="60" x2="430" y2="170" stroke="rgba(237,111,92,.18)" stroke-width="1" stroke-dasharray="5 4"/>
+      <!-- chip-b (left-bottom) to focal -->
+      <line x1="100" y1="230" x2="430" y2="170" stroke="rgba(237,111,92,.12)" stroke-width="1" stroke-dasharray="5 4"/>
+      <!-- chip-c (right-top) to focal -->
+      <line x1="730" y1="55" x2="430" y2="170" stroke="rgba(94,207,176,.18)" stroke-width="1" stroke-dasharray="5 4"/>
+      <!-- chip-d (right-bottom) to focal -->
+      <line x1="750" y1="225" x2="430" y2="170" stroke="rgba(94,207,176,.12)" stroke-width="1" stroke-dasharray="5 4"/>
+      <!-- chip-e (top-centre) to focal -->
+      <line x1="350" y1="30" x2="430" y2="122" stroke="rgba(232,201,122,.18)" stroke-width="1" stroke-dasharray="5 4"/>
+      <!-- chip-f (bottom-centre) to focal -->
+      <line x1="350" y1="310" x2="430" y2="218" stroke="rgba(232,201,122,.12)" stroke-width="1" stroke-dasharray="5 4"/>
+    </svg>
+  </div>
+  <!-- END 2D GRAPHIC -->
+
   <div class="ri-cards">
 
     <!-- Fynd Horizon -->
