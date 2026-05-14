@@ -1384,302 +1384,247 @@
 <div><div class="num-display section-hero-num">11 stores</div><div class="section-hero-cap">Mumbai pilot &middot; MAPE 41 %</div></div>
 <div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Granary runs 48 million forecast rows every day across 12,000 SKUs and 4,000 stores. Phase 1 is live across an 11-store Mumbai pilot (Smart Bazaar + Smart Point), achieving a MAPE of 41% as of 28 Apr 2026. Cortex Planning modules &mdash; Assortment Intelligence, MBQ Automation, and Range Review &mdash; are live, with STP, CDT, and Consensus Forecasting on the roadmap. The wider Granary stack serves 12,000+ stores.</p></div>
 </div>
-<!-- GRANARY SHELF GRAPHIC -->
-<div class="granary-shelf-wrap" style="margin:2.5rem 0 2rem;background:#1a1a16;border-radius:12px;overflow:hidden;padding:2rem 1.5rem 1.5rem;">
+<!-- GRANARY HEATMAP GRAPHIC -->
+<div class="granary-heatmap-wrap" style="margin:2.5rem 0 2rem;background:#1a1a16;border-radius:12px;overflow:hidden;padding:2rem 1.5rem 1.5rem;position:relative;">
 
 <style>
-/* ---- Granary Shelf ---- */
-.gs-shelf-rail { fill: #2e2e28; }
-.gs-shelf-edge { fill: #3a3a32; }
-.gs-slot-empty { fill: #252520; rx: 4; transition: fill .2s; }
-.gs-slot-empty.gap { fill: #3a2010; animation: gsGapPulse 1.8s ease-in-out infinite; }
-@keyframes gsGapPulse { 0%,100%{opacity:.5} 50%{opacity:1} }
-.gs-product { opacity: 0; cursor: pointer; transition: transform .15s; }
-.gs-product:hover { transform: translateY(-3px); }
-.gs-product.filled { animation: gsDrop .35s ease forwards; }
-@keyframes gsDrop {
-  0%   { opacity:0; transform: translateY(-18px); }
-  60%  { opacity:1; transform: translateY(2px); }
-  100% { opacity:1; transform: translateY(0); }
+/* ---- Granary Heatmap ---- */
+.gh-tile {
+  cursor: pointer;
+  transition: opacity .2s, filter .2s;
+  opacity: .18;
 }
-.gs-sparkline-wrap { opacity:0; transition: opacity .2s; pointer-events:none; }
-.gs-sparkline-wrap.active { opacity:1; pointer-events:all; }
-.gs-spark-bg { fill:#0e0e0a; rx:6; }
-.gs-spark-line { fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
-.gs-spark-area { opacity:.15; }
-.gs-label { font-family:"JetBrains Mono",monospace; font-size:7.5px; fill:#a0a090; letter-spacing:.5px; }
-.gs-label-hi { fill:#e07060; }
-.gs-label-teal { fill:#60c0a0; }
-.gs-label-gold { fill:#d4a840; }
-.gs-title { font-family:"JetBrains Mono",monospace; font-size:9px; fill:#f0ece0; font-weight:700; }
-.gs-close { font-family:"JetBrains Mono",monospace; font-size:11px; fill:#a0a090; cursor:pointer; }
+.gh-tile:hover { opacity: .55; filter: brightness(1.3); }
+.gh-tile.pilot {
+  opacity: 1;
+  animation: ghGlow 2.4s ease-in-out infinite;
+}
+.gh-tile.pilot:hover { filter: brightness(1.25); }
+@keyframes ghGlow {
+  0%,100% { opacity: 1; }
+  50%      { opacity: .72; }
+}
+.gh-tooltip { opacity:0; pointer-events:none; transition: opacity .18s; }
+.gh-tooltip.active { opacity:1; pointer-events:all; }
+.gh-tt-bg { fill:#0e0e0a; }
+.gh-tt-text { font-family:"JetBrains Mono",monospace; font-size:8px; fill:#f0ece0; }
+.gh-tt-label { font-family:"JetBrains Mono",monospace; font-size:7px; fill:#e07060; letter-spacing:.6px; }
+.gh-tt-bar { transition: width .3s; }
+.gh-legend { font-family:"JetBrains Mono",monospace; font-size:7.5px; fill:#a0a090; letter-spacing:.5px; }
+.gh-legend-dot { }
 </style>
 
-<svg id="granary-shelf" viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg"
+<svg id="granary-heatmap" viewBox="0 0 900 280"
+     xmlns="http://www.w3.org/2000/svg"
      style="width:100%;max-width:900px;height:auto;display:block;"
-     aria-label="Granary animated shelf fill">
+     aria-label="Granary store grid heatmap — 4,000 stores, 11 Mumbai pilot highlighted">
+
+<!-- Grid: 40 cols × 10 rows = 400 tiles representing ~4,000 stores (each tile = 10 stores) -->
+<!-- Tile size: 20×20, gap: 2, startX: 20, startY: 20 -->
+<!-- 11 pilot tiles scattered in the bottom-left quadrant (Mumbai region) -->
 
 <defs>
-  <!-- Gradient fills for product colours -->
-  <linearGradient id="gs-g1" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#e07060"/>
-    <stop offset="100%" stop-color="#a04030"/>
-  </linearGradient>
-  <linearGradient id="gs-g2" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#60c0a0"/>
-    <stop offset="100%" stop-color="#308060"/>
-  </linearGradient>
-  <linearGradient id="gs-g3" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#d4a840"/>
-    <stop offset="100%" stop-color="#906820"/>
-  </linearGradient>
-  <linearGradient id="gs-g4" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#8080d0"/>
-    <stop offset="100%" stop-color="#404090"/>
-  </linearGradient>
-  <linearGradient id="gs-g5" x1="0" y1="0" x2="0" y2="1">
-    <stop offset="0%" stop-color="#d08060"/>
-    <stop offset="100%" stop-color="#905030"/>
-  </linearGradient>
+  <filter id="gh-glow">
+    <feGaussianBlur stdDeviation="2.5" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
 </defs>
 
-<!-- ===== SHELF STRUCTURE: 4 rows ===== -->
-<!-- Row 1: y=40,  shelf rail at y=100 -->
-<!-- Row 2: y=110, shelf rail at y=170 -->
-<!-- Row 3: y=180, shelf rail at y=240 -->
-<!-- Row 4: y=250, shelf rail at y=285 (bottom) -->
+<!-- Grid tiles generated by JS below -->
+<g id="gh-grid"></g>
 
-<!-- Shelf rails (horizontal planks) -->
-<rect class="gs-shelf-rail" x="20" y="98"  width="860" height="6" rx="2"/>
-<rect class="gs-shelf-rail" x="20" y="168" width="860" height="6" rx="2"/>
-<rect class="gs-shelf-rail" x="20" y="238" width="860" height="6" rx="2"/>
-<rect class="gs-shelf-rail" x="20" y="283" width="860" height="6" rx="2"/>
-
-<!-- Shelf side uprights -->
-<rect class="gs-shelf-edge" x="16"  y="38" width="6" height="252" rx="2"/>
-<rect class="gs-shelf-edge" x="878" y="38" width="6" height="252" rx="2"/>
-
-<!-- Shelf dividers (vertical) -->
-<rect class="gs-shelf-edge" x="226" y="38" width="3" height="252" rx="1" opacity=".4"/>
-<rect class="gs-shelf-edge" x="446" y="38" width="3" height="252" rx="1" opacity=".4"/>
-<rect class="gs-shelf-edge" x="666" y="38" width="3" height="252" rx="1" opacity=".4"/>
-
-<!-- ===== PRODUCT SLOTS: 10 per row × 4 rows = 40 slots ===== -->
-<!-- Slot width=76, gap=10, startX=28, rows at y=42,112,182,252 -->
-<!-- Slot height=52 -->
-<!-- Generated as groups with class gs-product, id gs-p-{row}-{col} -->
-
-<!-- ROW 1 -->
-<g class="gs-product" id="gs-p-0-0"><rect x="28"  y="42" width="76" height="52" rx="4" fill="url(#gs-g1)"/><rect x="28"  y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-1"><rect x="114" y="42" width="76" height="52" rx="4" fill="url(#gs-g2)"/><rect x="114" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-2"><rect x="200" y="42" width="76" height="52" rx="4" fill="url(#gs-g3)"/><rect x="200" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-3"><rect x="286" y="42" width="76" height="52" rx="4" fill="url(#gs-g4)"/><rect x="286" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-4"><rect x="372" y="42" width="76" height="52" rx="4" fill="url(#gs-g5)"/><rect x="372" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-5"><rect x="458" y="42" width="76" height="52" rx="4" fill="url(#gs-g1)"/><rect x="458" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-6"><rect x="544" y="42" width="76" height="52" rx="4" fill="url(#gs-g2)"/><rect x="544" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-7"><rect x="630" y="42" width="76" height="52" rx="4" fill="url(#gs-g3)"/><rect x="630" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-8"><rect x="716" y="42" width="76" height="52" rx="4" fill="url(#gs-g4)"/><rect x="716" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-0-9"><rect x="802" y="42" width="76" height="52" rx="4" fill="url(#gs-g5)"/><rect x="802" y="42" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-
-<!-- ROW 2 -->
-<g class="gs-product" id="gs-p-1-0"><rect x="28"  y="112" width="76" height="52" rx="4" fill="url(#gs-g2)"/><rect x="28"  y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-1"><rect x="114" y="112" width="76" height="52" rx="4" fill="url(#gs-g3)"/><rect x="114" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-2"><rect x="200" y="112" width="76" height="52" rx="4" fill="url(#gs-g5)"/><rect x="200" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-3"><rect x="286" y="112" width="76" height="52" rx="4" fill="url(#gs-g1)"/><rect x="286" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-4"><rect x="372" y="112" width="76" height="52" rx="4" fill="url(#gs-g4)"/><rect x="372" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-5"><rect x="458" y="112" width="76" height="52" rx="4" fill="url(#gs-g3)"/><rect x="458" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-6"><rect x="544" y="112" width="76" height="52" rx="4" fill="url(#gs-g1)"/><rect x="544" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-7"><rect x="630" y="112" width="76" height="52" rx="4" fill="url(#gs-g5)"/><rect x="630" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-8"><rect x="716" y="112" width="76" height="52" rx="4" fill="url(#gs-g2)"/><rect x="716" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-1-9"><rect x="802" y="112" width="76" height="52" rx="4" fill="url(#gs-g4)"/><rect x="802" y="112" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-
-<!-- ROW 3 -->
-<g class="gs-product" id="gs-p-2-0"><rect x="28"  y="182" width="76" height="52" rx="4" fill="url(#gs-g4)"/><rect x="28"  y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-1"><rect x="114" y="182" width="76" height="52" rx="4" fill="url(#gs-g1)"/><rect x="114" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-2"><rect x="200" y="182" width="76" height="52" rx="4" fill="url(#gs-g2)"/><rect x="200" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-3"><rect x="286" y="182" width="76" height="52" rx="4" fill="url(#gs-g5)"/><rect x="286" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-4"><rect x="372" y="182" width="76" height="52" rx="4" fill="url(#gs-g3)"/><rect x="372" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-5"><rect x="458" y="182" width="76" height="52" rx="4" fill="url(#gs-g2)"/><rect x="458" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-6"><rect x="544" y="182" width="76" height="52" rx="4" fill="url(#gs-g5)"/><rect x="544" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-7"><rect x="630" y="182" width="76" height="52" rx="4" fill="url(#gs-g4)"/><rect x="630" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-8"><rect x="716" y="182" width="76" height="52" rx="4" fill="url(#gs-g1)"/><rect x="716" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-2-9"><rect x="802" y="182" width="76" height="52" rx="4" fill="url(#gs-g3)"/><rect x="802" y="182" width="76" height="8" rx="4" fill="#fff" opacity=".12"/></g>
-
-<!-- ROW 4 -->
-<g class="gs-product" id="gs-p-3-0"><rect x="28"  y="252" width="76" height="27" rx="4" fill="url(#gs-g3)"/><rect x="28"  y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-1"><rect x="114" y="252" width="76" height="27" rx="4" fill="url(#gs-g5)"/><rect x="114" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-2"><rect x="200" y="252" width="76" height="27" rx="4" fill="url(#gs-g1)"/><rect x="200" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-3"><rect x="286" y="252" width="76" height="27" rx="4" fill="url(#gs-g2)"/><rect x="286" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-4"><rect x="372" y="252" width="76" height="27" rx="4" fill="url(#gs-g4)"/><rect x="372" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-5"><rect x="458" y="252" width="76" height="27" rx="4" fill="url(#gs-g1)"/><rect x="458" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-6"><rect x="544" y="252" width="76" height="27" rx="4" fill="url(#gs-g3)"/><rect x="544" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-7"><rect x="630" y="252" width="76" height="27" rx="4" fill="url(#gs-g2)"/><rect x="630" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-8"><rect x="716" y="252" width="76" height="27" rx="4" fill="url(#gs-g5)"/><rect x="716" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-<g class="gs-product" id="gs-p-3-9"><rect x="802" y="252" width="76" height="27" rx="4" fill="url(#gs-g4)"/><rect x="802" y="252" width="76" height="6" rx="4" fill="#fff" opacity=".12"/></g>
-
-<!-- ===== SPARKLINE POPUP ===== -->
-<g id="gs-spark-popup" class="gs-sparkline-wrap">
-  <rect id="gs-spark-bg" x="350" y="60" width="200" height="110" rx="6" fill="#0e0e0a" stroke="#3a3a32" stroke-width="1"/>
-  <text id="gs-spark-title" x="362" y="80" class="gs-title">Category</text>
-  <text id="gs-spark-label" x="362" y="95" class="gs-label">DEMAND TREND · 7 DAYS</text>
-  <!-- Sparkline path -->
-  <path id="gs-spark-path" d="" class="gs-spark-line" stroke="#e07060"/>
-  <path id="gs-spark-area" d="" class="gs-spark-area" fill="#e07060"/>
-  <!-- Dots on sparkline -->
-  <circle id="gs-spark-dot" cx="0" cy="0" r="3" fill="#e07060" opacity="0"/>
-  <text id="gs-spark-close" x="536" y="78" class="gs-close">×</text>
-  <text id="gs-spark-stat" x="362" y="158" class="gs-label gs-label-hi">—</text>
+<!-- Tooltip -->
+<g id="gh-tooltip" class="gh-tooltip">
+  <rect id="gh-tt-bg" x="0" y="0" width="180" height="100" rx="6" class="gh-tt-bg" stroke="#3a3a32" stroke-width="1"/>
+  <text id="gh-tt-name" x="0" y="0" class="gh-tt-text" font-weight="700" font-size="9"></text>
+  <text id="gh-tt-label" x="0" y="0" class="gh-tt-label">FORECAST ACCURACY</text>
+  <line id="gh-tt-div" x1="0" y1="0" x2="0" y2="0" stroke="#3a3a32" stroke-width=".8"/>
+  <!-- Bar chart: 3 bars for Assortment, MBQ, Range -->
+  <rect id="gh-bar1-bg" x="0" y="0" width="140" height="8" rx="2" fill="#2a2a26"/>
+  <rect id="gh-bar1"    x="0" y="0" width="0"   height="8" rx="2" fill="#e07060" class="gh-tt-bar"/>
+  <text id="gh-bar1-l"  x="0" y="0" class="gh-tt-text" font-size="7" fill="#a0a090">Assortment</text>
+  <rect id="gh-bar2-bg" x="0" y="0" width="140" height="8" rx="2" fill="#2a2a26"/>
+  <rect id="gh-bar2"    x="0" y="0" width="0"   height="8" rx="2" fill="#60c0a0" class="gh-tt-bar"/>
+  <text id="gh-bar2-l"  x="0" y="0" class="gh-tt-text" font-size="7" fill="#a0a090">MBQ Auto</text>
+  <rect id="gh-bar3-bg" x="0" y="0" width="140" height="8" rx="2" fill="#2a2a26"/>
+  <rect id="gh-bar3"    x="0" y="0" width="0"   height="8" rx="2" fill="#d4a840" class="gh-tt-bar"/>
+  <text id="gh-bar3-l"  x="0" y="0" class="gh-tt-text" font-size="7" fill="#a0a090">Range Rev.</text>
+  <text id="gh-tt-mape" x="0" y="0" class="gh-tt-label" fill="#e07060" font-size="8" font-weight="700"></text>
+  <text id="gh-tt-close" x="0" y="0" class="gh-tt-text" font-size="11" fill="#a0a090" style="cursor:pointer">×</text>
 </g>
+
+<!-- Legend -->
+<rect x="20" y="258" width="12" height="12" rx="2" fill="#e07060" opacity=".9"/>
+<text x="38" y="268" class="gh-legend">11 Mumbai pilot stores (LIVE)</text>
+<rect x="220" y="258" width="12" height="12" rx="2" fill="#e07060" opacity=".18"/>
+<text x="238" y="268" class="gh-legend">4,000+ stores (wider Granary footprint)</text>
 
 </svg>
 
 <script>
 (function(){
-  var ROWS = 4, COLS = 10;
-  var TOTAL = ROWS * COLS; // 40
+  var COLS = 40, ROWS = 10;
+  var TW = 20, TH = 20, GAP = 2;
+  var SX = 20, SY = 20;
 
-  // Product categories for sparkline labels
-  var cats = ['Fresh Produce','Packaged Foods','Beverages','Personal Care','Dairy','Snacks','Household','Frozen','Bakery','Staples'];
-  var colours = ['#e07060','#60c0a0','#d4a840','#8080d0','#d08060'];
-  var colourIds = ['gs-g1','gs-g2','gs-g3','gs-g4','gs-g5'];
+  // 11 pilot tile indices (row, col) — bottom-left quadrant representing Mumbai
+  var pilotTiles = [
+    [7,3],[7,4],[7,5],[8,3],[8,4],[8,5],[8,6],[9,3],[9,4],[9,5],[9,6]
+  ];
+  var pilotSet = new Set(pilotTiles.map(function(p){ return p[0]+','+p[1]; }));
 
-  // Demand data (7-day sparkline values, normalised 0-1)
-  var demandData = [
-    [.4,.5,.6,.55,.7,.8,.75],
-    [.6,.55,.5,.65,.7,.6,.8],
-    [.3,.4,.5,.6,.55,.7,.65],
-    [.7,.6,.8,.75,.85,.9,.8],
-    [.5,.4,.6,.7,.65,.75,.8],
-    [.4,.5,.45,.6,.7,.65,.75],
-    [.6,.7,.65,.8,.75,.85,.9],
-    [.5,.6,.55,.7,.65,.75,.7],
-    [.3,.4,.5,.45,.6,.7,.65],
-    [.7,.65,.75,.8,.85,.9,.95]
+  var storeNames = [
+    'Smart Bazaar · Malad','Smart Bazaar · Kandivali','Smart Point · Borivali',
+    'Smart Bazaar · Andheri','Smart Point · Bandra','Smart Bazaar · Dadar',
+    'Smart Bazaar · Thane','Smart Point · Navi Mumbai','Smart Bazaar · Powai',
+    'Smart Point · Mulund','Smart Bazaar · Vashi'
+  ];
+  var mapes = ['41%','41%','43%','40%','44%','39%','42%','45%','40%','43%','41%'];
+  var bars = [
+    [.82,.75,.68],[.80,.72,.65],[.78,.70,.62],[.85,.78,.70],[.76,.68,.60],
+    [.88,.80,.72],[.81,.74,.66],[.74,.66,.58],[.84,.77,.69],[.79,.71,.63],[.82,.75,.67]
   ];
 
-  // Animate products dropping in sequentially
-  var allProducts = [];
+  var grid = document.getElementById('gh-grid');
+  var pilotIdx = 0;
+  var tileData = []; // store pilot data by tile key
+
   for (var r = 0; r < ROWS; r++) {
     for (var c = 0; c < COLS; c++) {
-      allProducts.push({ r: r, c: c });
+      var key = r+','+c;
+      var isPilot = pilotSet.has(key);
+      var x = SX + c * (TW + GAP);
+      var y = SY + r * (TH + GAP);
+
+      var rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+      rect.setAttribute('x', x);
+      rect.setAttribute('y', y);
+      rect.setAttribute('width', TW);
+      rect.setAttribute('height', TH);
+      rect.setAttribute('rx', 3);
+      rect.setAttribute('fill', '#e07060');
+      rect.classList.add('gh-tile');
+      if (isPilot) {
+        rect.classList.add('pilot');
+        rect.setAttribute('filter','url(#gh-glow)');
+        var pIdx = pilotIdx++;
+        rect.dataset.pilot = pIdx;
+        tileData[key] = pIdx;
+      }
+      rect.dataset.key = key;
+      rect.dataset.x = x;
+      rect.dataset.y = y;
+      grid.appendChild(rect);
     }
   }
 
-  function animateShelf() {
-    allProducts.forEach(function(p, i) {
-      var el = document.getElementById('gs-p-' + p.r + '-' + p.c);
-      if (!el) return;
-      setTimeout(function() {
-        el.classList.add('filled');
-      }, i * 60);
-    });
+  // Tooltip elements
+  var tooltip   = document.getElementById('gh-tooltip');
+  var ttBg      = document.getElementById('gh-tt-bg');
+  var ttName    = document.getElementById('gh-tt-name');
+  var ttLabel   = document.getElementById('gh-tt-label');
+  var ttDiv     = document.getElementById('gh-tt-div');
+  var bar1bg    = document.getElementById('gh-bar1-bg');
+  var bar1      = document.getElementById('gh-bar1');
+  var bar1l     = document.getElementById('gh-bar1-l');
+  var bar2bg    = document.getElementById('gh-bar2-bg');
+  var bar2      = document.getElementById('gh-bar2');
+  var bar2l     = document.getElementById('gh-bar2-l');
+  var bar3bg    = document.getElementById('gh-bar3-bg');
+  var bar3      = document.getElementById('gh-bar3');
+  var bar3l     = document.getElementById('gh-bar3-l');
+  var ttMape    = document.getElementById('gh-tt-mape');
+  var ttClose   = document.getElementById('gh-tt-close');
+
+  var W = 180, H = 108;
+
+  function showTooltip(pIdx, tx, ty) {
+    var name = storeNames[pIdx];
+    var mape = mapes[pIdx];
+    var b    = bars[pIdx];
+
+    // Position: prefer right of tile, flip if near edge
+    var px = tx + TW + 6;
+    var py = ty - 10;
+    if (px + W > 890) px = tx - W - 6;
+    if (py + H > 272) py = 272 - H;
+    if (py < 10) py = 10;
+
+    ttBg.setAttribute('x', px); ttBg.setAttribute('y', py);
+    ttBg.setAttribute('width', W); ttBg.setAttribute('height', H);
+
+    ttName.setAttribute('x', px+10); ttName.setAttribute('y', py+18);
+    ttName.textContent = name;
+
+    ttLabel.setAttribute('x', px+10); ttLabel.setAttribute('y', py+30);
+
+    ttDiv.setAttribute('x1', px); ttDiv.setAttribute('x2', px+W);
+    ttDiv.setAttribute('y1', py+36); ttDiv.setAttribute('y2', py+36);
+
+    var barX = px+10, barW = 140;
+    // Bar 1
+    bar1bg.setAttribute('x',barX); bar1bg.setAttribute('y',py+42); bar1bg.setAttribute('width',barW);
+    bar1.setAttribute('x',barX);   bar1.setAttribute('y',py+42);   bar1.setAttribute('width', (b[0]*barW).toFixed(1));
+    bar1l.setAttribute('x',barX+barW+4); bar1l.setAttribute('y',py+50); bar1l.textContent='Assortment';
+    // Bar 2
+    bar2bg.setAttribute('x',barX); bar2bg.setAttribute('y',py+56); bar2bg.setAttribute('width',barW);
+    bar2.setAttribute('x',barX);   bar2.setAttribute('y',py+56);   bar2.setAttribute('width', (b[1]*barW).toFixed(1));
+    bar2l.setAttribute('x',barX+barW+4); bar2l.setAttribute('y',py+64); bar2l.textContent='MBQ Auto';
+    // Bar 3
+    bar3bg.setAttribute('x',barX); bar3bg.setAttribute('y',py+70); bar3bg.setAttribute('width',barW);
+    bar3.setAttribute('x',barX);   bar3.setAttribute('y',py+70);   bar3.setAttribute('width', (b[2]*barW).toFixed(1));
+    bar3l.setAttribute('x',barX+barW+4); bar3l.setAttribute('y',py+78); bar3l.textContent='Range Rev.';
+
+    ttMape.setAttribute('x',px+10); ttMape.setAttribute('y',py+96);
+    ttMape.textContent = 'MAPE ' + mape + '  ·  LIVE';
+
+    ttClose.setAttribute('x', px+W-16); ttClose.setAttribute('y', py+16);
+
+    tooltip.classList.add('active');
   }
 
-  // IntersectionObserver to trigger on scroll into view
-  var shelf = document.getElementById('granary-shelf');
+  function hideTooltip() { tooltip.classList.remove('active'); }
+
+  grid.addEventListener('click', function(e) {
+    var tile = e.target;
+    if (!tile.classList.contains('gh-tile')) return;
+    if (!tile.classList.contains('pilot')) return;
+    var pIdx = parseInt(tile.dataset.pilot);
+    var tx = parseFloat(tile.dataset.x);
+    var ty = parseFloat(tile.dataset.y);
+    if (tooltip.classList.contains('active') && ttName.textContent === storeNames[pIdx]) {
+      hideTooltip();
+    } else {
+      showTooltip(pIdx, tx, ty);
+    }
+    e.stopPropagation();
+  });
+
+  ttClose && ttClose.addEventListener('click', hideTooltip);
+  document.getElementById('granary-heatmap').addEventListener('click', function(e) {
+    if (!e.target.closest('#gh-grid') && !e.target.closest('#gh-tooltip')) hideTooltip();
+  });
+
+  // Animate tiles in on scroll
   var triggered = false;
-  if (shelf && window.IntersectionObserver) {
+  var hm = document.getElementById('granary-heatmap');
+  if (hm && window.IntersectionObserver) {
     var obs = new IntersectionObserver(function(entries) {
       if (entries[0].isIntersecting && !triggered) {
         triggered = true;
-        animateShelf();
+        var tiles = grid.querySelectorAll('.gh-tile');
+        tiles.forEach(function(t, i) {
+          t.style.opacity = '0';
+          t.style.transition = 'opacity .3s ' + (i * 8) + 'ms';
+          setTimeout(function() {
+            t.style.opacity = t.classList.contains('pilot') ? '' : '.18';
+            if (!t.classList.contains('pilot')) t.style.transition = 'opacity .3s, filter .2s';
+          }, i * 8 + 50);
+        });
       }
     }, { threshold: 0.3 });
-    obs.observe(shelf);
-  } else if (shelf) {
-    animateShelf();
+    obs.observe(hm);
   }
-
-  // Sparkline popup on product click
-  var popup = document.getElementById('gs-spark-popup');
-  var sparkBg = document.getElementById('gs-spark-bg');
-  var sparkTitle = document.getElementById('gs-spark-title');
-  var sparkLabel = document.getElementById('gs-spark-label');
-  var sparkPath = document.getElementById('gs-spark-path');
-  var sparkArea = document.getElementById('gs-spark-area');
-  var sparkDot  = document.getElementById('gs-spark-dot');
-  var sparkClose = document.getElementById('gs-spark-close');
-  var sparkStat  = document.getElementById('gs-spark-stat');
-
-  function buildSparkPath(data, x0, y0, w, h) {
-    var pts = data.map(function(v, i) {
-      return [x0 + (i / (data.length - 1)) * w, y0 + h - v * h];
-    });
-    var d = pts.map(function(p, i) { return (i === 0 ? 'M' : 'L') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
-    var area = d + ' L' + pts[pts.length-1][0].toFixed(1) + ' ' + (y0+h) + ' L' + pts[0][0].toFixed(1) + ' ' + (y0+h) + ' Z';
-    return { line: d, area: area, lastX: pts[pts.length-1][0], lastY: pts[pts.length-1][1] };
-  }
-
-  document.querySelectorAll('#granary-shelf .gs-product').forEach(function(prod) {
-    prod.addEventListener('click', function(e) {
-      var id = prod.id; // gs-p-{r}-{c}
-      var parts = id.split('-');
-      var r = parseInt(parts[2]);
-      var c = parseInt(parts[3]);
-      var cat = cats[c];
-      var data = demandData[c];
-      var colIdx = (r * COLS + c) % colours.length;
-      var col = colours[colIdx];
-
-      // Position popup above the slot
-      var slotX = 28 + c * 86;
-      var slotY = [42, 112, 182, 252][r];
-      var popX = Math.min(slotX - 20, 900 - 210);
-      if (popX < 10) popX = 10;
-      var popY = slotY - 120;
-      if (popY < 10) popY = 10;
-
-      sparkBg.setAttribute('x', popX);
-      sparkBg.setAttribute('y', popY);
-      sparkBg.setAttribute('width', 200);
-      sparkBg.setAttribute('height', 110);
-      sparkBg.setAttribute('stroke', col);
-
-      sparkTitle.setAttribute('x', popX + 12);
-      sparkTitle.setAttribute('y', popY + 20);
-      sparkTitle.textContent = cat;
-
-      sparkLabel.setAttribute('x', popX + 12);
-      sparkLabel.setAttribute('y', popY + 34);
-      sparkLabel.setAttribute('fill', col);
-
-      var sp = buildSparkPath(data, popX + 12, popY + 42, 176, 44);
-      sparkPath.setAttribute('d', sp.line);
-      sparkPath.setAttribute('stroke', col);
-      sparkArea.setAttribute('d', sp.area);
-      sparkArea.setAttribute('fill', col);
-
-      sparkDot.setAttribute('cx', sp.lastX);
-      sparkDot.setAttribute('cy', sp.lastY);
-      sparkDot.setAttribute('fill', col);
-      sparkDot.setAttribute('opacity', '1');
-
-      sparkClose.setAttribute('x', popX + 180);
-      sparkClose.setAttribute('y', popY + 18);
-
-      var trend = data[data.length-1] > data[0] ? '+' : '';
-      var pct = Math.round((data[data.length-1] - data[0]) * 100);
-      sparkStat.setAttribute('x', popX + 12);
-      sparkStat.setAttribute('y', popY + 98);
-      sparkStat.setAttribute('fill', col);
-      sparkStat.textContent = '7-day demand: ' + trend + pct + '%';
-
-      popup.classList.add('active');
-      e.stopPropagation();
-    });
-  });
-
-  sparkClose && sparkClose.addEventListener('click', function() {
-    popup.classList.remove('active');
-    sparkDot.setAttribute('opacity', '0');
-  });
-
-  shelf && shelf.addEventListener('click', function(e) {
-    if (!e.target.closest('.gs-product') && !e.target.closest('#gs-spark-popup')) {
-      popup.classList.remove('active');
-      sparkDot.setAttribute('opacity', '0');
-    }
-  });
 })();
 </script>
 </div>
