@@ -1372,22 +1372,417 @@
 <!-- 06 SPECIAL PROJECTS -->
 <section id="special-projects" class="py-32 border-b" style="border-color: var(--border); background: var(--bg);" data-od-id="special-projects">
 <div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">06 &middot; SPECIAL PROJECTS</div>
-<h2 class="display-2 text-3xl md:text-5xl mb-10" style="color: var(--ink);">Six projects beyond the platforms &middot; <span style="color: var(--accent);">taken on by Fynd, shipped for Reliance.</span></h2>
-<div class="section-hero-split">
-<div><div class="num-display section-hero-num">6</div><div class="section-hero-cap">Builds for Reliance</div></div>
-<div><p class="text-base" style="color: var(--ink); line-height: 1.7;" data-reveal>Net-new builds where Fynd took on a problem Reliance hadn't yet solved. ALP for new-store opening. RetailVista for site intelligence. Retail Jarvis for non-intrusive CX sensing. Samarth Plus for the frontline career platform. HireFirst for AI-native hiring. SwapEasy for in-store re-commerce.</p></div>
+  <div class="section-label mb-3">06 &middot; SPECIAL PROJECTS</div>
+  <h2 class="display-2 text-3xl md:text-5xl mb-4" style="color: var(--ink);">Six projects beyond the platforms &middot; <span style="color: var(--accent);">taken on by Fynd, shipped for Reliance.</span></h2>
+  <p class="text-base mb-12" style="color: var(--ink); opacity:.65; max-width:640px; line-height:1.7;">Net-new builds where Fynd took on a problem Reliance hadn&rsquo;t yet solved &mdash; from new-store opening to AI-native hiring.</p>
+
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <!--  3-D CONVEYOR BELT                                                 -->
+  <!-- ═══════════════════════════════════════════════════════════════════ -->
+  <style>
+    /* ── belt wrapper ── */
+    .sp-belt-wrap {
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 2rem;
+    }
+
+    /* ── conveyor track ── */
+    .sp-track {
+      position: relative;
+      height: 14px;
+      margin: 0 0 2.5rem;
+      background: linear-gradient(180deg, #3a3630 0%, #2a2620 40%, #1a1610 100%);
+      border-radius: 7px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.25), inset 0 2px 4px rgba(255,255,255,.06);
+    }
+    .sp-track::before {
+      content: '';
+      position: absolute;
+      inset: 3px 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0px, transparent 28px,
+        rgba(255,255,255,.07) 28px, rgba(255,255,255,.07) 32px
+      );
+      border-radius: 4px;
+    }
+    /* animated belt motion line */
+    .sp-track::after {
+      content: '';
+      position: absolute;
+      top: 5px; height: 3px;
+      left: -60%; width: 60%;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent 0, transparent 14px,
+        rgba(237,111,92,.45) 14px, rgba(237,111,92,.45) 28px
+      );
+      border-radius: 2px;
+      animation: beltMove 3s linear infinite;
+    }
+    @keyframes beltMove { to { left: 100%; } }
+    @media (prefers-reduced-motion: reduce) { .sp-track::after { animation: none; } }
+
+    /* ── roller dots ── */
+    .sp-rollers {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 2%;
+      margin-top: -22px;
+      pointer-events: none;
+    }
+    .sp-roller {
+      width: 22px; height: 22px;
+      background: radial-gradient(circle at 35% 35%, #6a6460, #2a2620);
+      border-radius: 50%;
+      border: 2px solid #3a3630;
+      box-shadow: 0 2px 6px rgba(0,0,0,.35);
+    }
+
+    /* ── crate grid ── */
+    .sp-crates {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .sp-crates { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .sp-crates { grid-template-columns: 1fr; }
+    }
+
+    /* ── individual crate ── */
+    .sp-crate {
+      position: relative;
+      background: var(--bg-soft);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem 1.4rem 1.2rem;
+      cursor: pointer;
+      transition: transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+      transform-style: preserve-3d;
+      /* 3-D tilt effect via CSS custom props set by JS */
+      transform: perspective(600px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(0);
+      box-shadow: 0 2px 8px rgba(0,0,0,.06), 0 0 0 0 rgba(237,111,92,0);
+      /* scroll-reveal: start slightly below */
+      opacity: 0;
+      translate: 0 24px;
+    }
+    .sp-crate.sp-visible {
+      opacity: 1;
+      translate: 0 0;
+      transition: opacity .5s ease, translate .5s cubic-bezier(.22,1,.36,1),
+                  transform .3s cubic-bezier(.22,1,.36,1), box-shadow .3s;
+    }
+    .sp-crate:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,.12), 0 0 0 2px rgba(237,111,92,.25);
+      z-index: 2;
+    }
+
+    /* ── crate top edge (3-D lid illusion) ── */
+    .sp-crate::before {
+      content: '';
+      position: absolute;
+      top: -6px; left: 6px; right: 6px; height: 6px;
+      background: linear-gradient(180deg, #e8e0cc 0%, #d0c8b4 100%);
+      border-radius: 4px 4px 0 0;
+      border: 1.5px solid #c0b8a4;
+      border-bottom: none;
+      transform: skewX(-1deg);
+    }
+    /* ── crate side edge ── */
+    .sp-crate::after {
+      content: '';
+      position: absolute;
+      top: 6px; bottom: -4px; right: -6px; width: 6px;
+      background: linear-gradient(90deg, #c0b8a4 0%, #a8a090 100%);
+      border-radius: 0 4px 4px 0;
+      border: 1.5px solid #a8a090;
+      border-left: none;
+      transform: skewY(-1deg);
+    }
+
+    /* ── crate header ── */
+    .sp-crate-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: .5rem;
+      margin-bottom: .75rem;
+    }
+    .sp-crate-name {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: .85rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    /* ── status stamp ── */
+    .sp-stamp {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      padding: .25rem .55rem;
+      border-radius: 4px;
+      border: 1.5px solid currentColor;
+      white-space: nowrap;
+      flex-shrink: 0;
+      /* stamp entrance */
+      transform: rotate(-4deg) scale(.85);
+      transition: transform .25s cubic-bezier(.34,1.56,.64,1);
+    }
+    .sp-crate:hover .sp-stamp,
+    .sp-crate.sp-visible .sp-stamp {
+      transform: rotate(-3deg) scale(1);
+    }
+    .sp-stamp.live   { color: #2a7a4a; background: #e8f5ee; border-color: #2a7a4a; }
+    .sp-stamp.pilot  { color: #7a5a1a; background: #fdf3e0; border-color: #c89030; }
+    .sp-stamp.build  { color: #4a4a8a; background: #eeeef8; border-color: #6a6aaa; }
+
+    /* ── crate body ── */
+    .sp-crate-desc {
+      font-size: .8rem;
+      line-height: 1.55;
+      color: var(--ink);
+      opacity: .65;
+      margin-bottom: .75rem;
+    }
+
+    /* ── crate footer ── */
+    .sp-crate-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      border-top: 1px solid var(--border);
+      padding-top: .65rem;
+      margin-top: auto;
+    }
+    .sp-crate-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: .58rem;
+      letter-spacing: .1em;
+      color: var(--ink);
+      opacity: .45;
+      text-transform: uppercase;
+    }
+    .sp-crate-metric {
+      font-family: 'Space Mono', monospace;
+      font-size: .6rem;
+      color: var(--accent);
+      letter-spacing: .04em;
+      text-align: right;
+    }
+
+    /* ── SHIPPED seal ── */
+    .sp-shipped-seal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding: 1.25rem 2rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-soft);
+      opacity: 0;
+      translate: 0 16px;
+      transition: opacity .6s ease .4s, translate .6s cubic-bezier(.22,1,.36,1) .4s;
+    }
+    .sp-shipped-seal.sp-visible {
+      opacity: 1;
+      translate: 0 0;
+    }
+    .sp-seal-stamp {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      color: var(--accent);
+      border: 2.5px solid var(--accent);
+      padding: .4rem 1.1rem;
+      border-radius: 6px;
+      transform: rotate(-2deg);
+      display: inline-block;
+    }
+    .sp-seal-text {
+      font-size: .85rem;
+      color: var(--ink);
+      opacity: .55;
+      font-family: 'Space Mono', monospace;
+      letter-spacing: .06em;
+    }
+    .sp-seal-count {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--ink);
+      line-height: 1;
+    }
+    .sp-seal-count span {
+      font-size: .75rem;
+      font-weight: 500;
+      opacity: .5;
+      display: block;
+      letter-spacing: .08em;
+    }
+  </style>
+
+  <div class="sp-belt-wrap">
+    <!-- conveyor track -->
+    <div class="sp-track"></div>
+    <div class="sp-rollers">
+      <div class="sp-roller"></div>
+      <div class="sp-roller"></div>
+      <div class="sp-roller"></div>
+      <div class="sp-roller"></div>
+      <div class="sp-roller"></div>
+      <div class="sp-roller"></div>
+      <div class="sp-roller"></div>
+    </div>
+
+    <!-- crates -->
+    <div class="sp-crates">
+
+      <!-- 1. ALP -->
+      <a href="/alp" class="sp-crate" style="transition-delay:.05s">
+        <div class="sp-crate-header">
+          <div class="sp-crate-name">ALP<br>Asset Lifecycle</div>
+          <span class="sp-stamp live">&#9679; LIVE</span>
+        </div>
+        <div class="sp-crate-desc">NSO platform for Reliance Retail. Lead &rarr; site visit &rarr; approvals &rarr; legal &rarr; fit-out &rarr; hand-off. 6 of 9 Phase 1 initiatives done.</div>
+        <div class="sp-crate-foot">
+          <span class="sp-crate-tag">New Store</span>
+          <span class="sp-crate-metric">GJ-cluster pilot &middot; Apr 2026</span>
+        </div>
+      </a>
+
+      <!-- 2. RetailVista -->
+      <a href="/retail-vista" class="sp-crate" style="transition-delay:.12s">
+        <div class="sp-crate-header">
+          <div class="sp-crate-name">RetailVista<br>Site Intelligence</div>
+          <span class="sp-stamp live">&#9679; LIVE</span>
+        </div>
+        <div class="sp-crate-desc">Agentic geospatial intelligence. Opportunity Explorer with 68 scored leads. 24 data categories on H3 hex grid.</div>
+        <div class="sp-crate-foot">
+          <span class="sp-crate-tag">New Store &middot; Plan</span>
+          <span class="sp-crate-metric">3 tracks live</span>
+        </div>
+      </a>
+
+      <!-- 3. Retail Jarvis -->
+      <a href="/retail-jarvis" class="sp-crate" style="transition-delay:.19s">
+        <div class="sp-crate-header">
+          <div class="sp-crate-name">Retail Jarvis<br>CX Sensing</div>
+          <span class="sp-stamp build">&#9632; BUILD</span>
+        </div>
+        <div class="sp-crate-desc">Predictive non-intrusive CX sensing. Anchor demo on Store 5943 Mumbai. Signals &rarr; engine &rarr; playbooks.</div>
+        <div class="sp-crate-foot">
+          <span class="sp-crate-tag">Store Health</span>
+          <span class="sp-crate-metric">4 scores &middot; Readiness/CX</span>
+        </div>
+      </a>
+
+      <!-- 4. Samarth Plus -->
+      <a href="/samarth" class="sp-crate" style="transition-delay:.26s">
+        <div class="sp-crate-header">
+          <div class="sp-crate-name">Samarth Plus<br>Frontline Careers</div>
+          <span class="sp-stamp live">&#9679; LIVE</span>
+        </div>
+        <div class="sp-crate-desc">Career platform for the RR frontline. Served inside People First. 5 career levels &middot; 3 formats &middot; SCORM-compliant.</div>
+        <div class="sp-crate-foot">
+          <span class="sp-crate-tag">HR Tech</span>
+          <span class="sp-crate-metric">Prod cutover &middot; Apr 2026</span>
+        </div>
+      </a>
+
+      <!-- 5. HireFirst -->
+      <a href="/hirefirst" class="sp-crate" style="transition-delay:.33s">
+        <div class="sp-crate-header">
+          <div class="sp-crate-name">HireFirst (Orion)<br>AI Hiring OS</div>
+          <span class="sp-stamp live">&#9679; LIVE</span>
+        </div>
+        <div class="sp-crate-desc">Reliance HR Tech &middot; AI-Native Hiring OS. AI score calibration &middot; Apollo enrichment. SIT live.</div>
+        <div class="sp-crate-foot">
+          <span class="sp-crate-tag">HR Tech</span>
+          <span class="sp-crate-metric">Prod sign-off Jun 2026</span>
+        </div>
+      </a>
+
+      <!-- 6. SwapEasy -->
+      <a href="/swapeasy" class="sp-crate" style="transition-delay:.40s">
+        <div class="sp-crate-header">
+          <div class="sp-crate-name">SwapEasy<br>In-store Re-commerce</div>
+          <span class="sp-stamp live">&#9679; LIVE</span>
+        </div>
+        <div class="sp-crate-desc">SAP-traceable re-commerce. 41 liquidation partners &middot; ~&#8377;85 L wallet &middot; Apple 16+ pilot at 10.5 % attach.</div>
+        <div class="sp-crate-foot">
+          <span class="sp-crate-tag">Sell</span>
+          <span class="sp-crate-metric">&#8377;3.23 Cr &middot; Feb 2026</span>
+        </div>
+      </a>
+
+    </div><!-- /sp-crates -->
+
+    <!-- SHIPPED FOR RELIANCE seal -->
+    <div class="sp-shipped-seal">
+      <div class="sp-seal-count">6<span>PROJECTS</span></div>
+      <div>
+        <div class="sp-seal-text">PROBLEM &rarr; BUILD &rarr; PILOT &rarr;</div>
+        <div class="sp-seal-stamp">SHIPPED FOR RELIANCE</div>
+      </div>
+      <div class="sp-seal-count">5<span>LIVE</span></div>
+    </div>
+
+  </div><!-- /sp-belt-wrap -->
+
+  <div class="mt-10">
+    <a href="#explore?filter=special-projects" class="btn-secondary">Open every special project <span aria-hidden="true">&rarr;</span></a>
+  </div>
 </div>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-8">
-<a href="/alp" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">ALP &middot; Asset Lifecycle</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">NSO platform for RR. Lead &rarr; site visit &rarr; approvals &rarr; legal &rarr; fit-out &rarr; hand-off. 6 of 9 Phase 1 initiatives done.</div><div class="platform-card-foot"><span class="platform-card-tag">New Store</span></div><div class="platform-card-metric mt-3">GJ-cluster pilot &middot; Apr - 2026</div></a>
-<a href="/retail-vista" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">RetailVista</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Agentic geospatial intelligence. Internal Track live (Opportunity Explorer &middot; 68 scored leads). Three tracks across UCP, Google Vertex AI, JioGIS.</div><div class="platform-card-foot"><span class="platform-card-tag">New Store</span><span class="platform-card-tag">Plan/Design</span></div><div class="platform-card-metric mt-3">3 tracks &middot; 24 data categories</div></a>
-<a href="/retail-jarvis" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Retail Jarvis</div><span class="pill pill-build">BUILD</span></div><div class="platform-card-desc">Predictive non-intrusive CX sensing. Anchor demo on Store 5943 (Mumbai Infinity Malad). Signals &rarr; engine &rarr; playbooks.</div><div class="platform-card-foot"><span class="platform-card-tag">Store Health</span></div><div class="platform-card-metric mt-3">4 scores &middot; Readiness/CX/Friction/Churn</div></a>
-<a href="/samarth" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">Samarth Plus</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Career platform for the RR frontline. Served inside People First. 5 career levels &middot; 3 formats &middot; SCORM-compliant.</div><div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div><div class="platform-card-metric mt-3">Prod cutover &middot; Apr - 2026</div></a>
-<a href="/hirefirst" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">HireFirst (Orion)</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">Reliance HR Tech &middot; AI-Native Hiring OS. AI score calibration &middot; Apollo enrichment.</div><div class="platform-card-foot"><span class="platform-card-tag">HR Tech</span></div><div class="platform-card-metric mt-3">SIT live &middot; prod sign-off 15 - Jun - 2026</div></a>
-<a href="/swapeasy" class="platform-card" data-reveal><div class="platform-card-head"><div class="platform-card-name">SwapEasy</div><span class="pill pill-live">LIVE</span></div><div class="platform-card-desc">RR's in-store re-commerce platform. SAP-traceable &middot; 41 liquidation partners &middot; ~&#8377;85 L wallet &middot; Apple 16+ pilot 10.5 % attach.</div><div class="platform-card-foot"><span class="platform-card-tag">Sell</span></div><div class="platform-card-metric mt-3">625 RD + 983 MJS &middot; &#8377;3.23 Cr Feb '26</div></a>
-</div>
-<a href="#explore?filter=special-projects" class="btn-secondary">Open every special project <span aria-hidden="true">&rarr;</span></a>
-</div>
+
+<script>
+(function(){
+  // ── scroll-reveal for crates ──
+  const crates = document.querySelectorAll('.sp-crate, .sp-shipped-seal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('sp-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    crates.forEach(c => io.observe(c));
+  } else {
+    crates.forEach(c => c.classList.add('sp-visible'));
+  }
+
+  // ── 3-D tilt on hover ──
+  document.querySelectorAll('.sp-crate').forEach(crate => {
+    crate.addEventListener('mousemove', e => {
+      const r = crate.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;  // -0.5 to 0.5
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      crate.style.setProperty('--rx', `${(-y * 8).toFixed(1)}deg`);
+      crate.style.setProperty('--ry', `${( x * 8).toFixed(1)}deg`);
+    });
+    crate.addEventListener('mouseleave', () => {
+      crate.style.setProperty('--rx', '0deg');
+      crate.style.setProperty('--ry', '0deg');
+    });
+  });
+})();
+</script>
 </section>
 
 <!-- 07 AI-NATIVE -->
