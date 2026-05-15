@@ -22,11 +22,11 @@
 
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
-.od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.od-hero-text { }
-.od-hero-graphic { display: flex; justify-content: flex-end; }
-.od-graphic-frame { width: 100%; max-width: 460px; border-radius: 16px; overflow: hidden; background: transparent; }
-@media (max-width: 900px) { .od-hero-split { grid-template-columns: 1fr; } .od-hero-graphic { display: none; } }
+
+
+
+
+@media (max-width: 900px) {   }
 
 </style>
 </head>
@@ -102,11 +102,10 @@
 </nav>
 
 <!-- Hero -->
-<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<section class="pt-16 pb-12 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6 text-left">
 <div class="od-hero-split">
 <div class="od-hero-text">
-<div class="od-split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
-<div class="od-split-text">
 
 <div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Forge</span></div>
 <div class="section-label mb-3">Track 09 · Manufacturing OS · Pilot</div>
@@ -121,77 +120,6 @@
   <span class="pill pill-phase2">Roadmap · plant-wide rollout · Industry 5.0 agentic stack</span>
 </div>
 
-<div class="cap-num mb-3">Pilot · live at NeoLync Tirupati · today's state</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mb-3">
-<div class="card p-4"><div class="cap-num mb-1">Production volume</div><div class="display-2 text-3xl accent">~1,000</div><div class="text-xs mt-1" style="color: var(--ink-muted);">units · current run-rate</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Peak throughput</div><div class="display-2 text-3xl" style="color: var(--ink);">3,000</div><div class="text-xs mt-1" style="color: var(--ink-muted);">TPS · high-volume runs</div></div>
-<div class="card p-4"><div class="cap-num mb-1">On platform</div><div class="display-2 text-3xl" style="color: var(--ink);">50+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">operators · 25 line managers</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Deployment</div><div class="display-2 text-3xl" style="color: var(--ink);">100%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">on-premise · low-latency</div></div>
-</div>
-
-<div class="cap-num mb-3">Target outcomes</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
-<div class="card p-4"><div class="cap-num mb-1">Plan cycle time</div><div class="display-2 text-3xl" style="color: var(--ink);">−90%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">days → minutes</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Throughput</div><div class="display-2 text-3xl" style="color: var(--ink);">+5–10%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">line balancing + perpetual plan</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Stockouts</div><div class="display-2 text-3xl" style="color: var(--ink);">−50%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">predictive replenishment</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Audit cycle time</div><div class="display-2 text-3xl" style="color: var(--ink);">−80%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">in-line traceability + FPY</div></div>
-</div>
-
-</div>
-<div class="od-split-graphic">
-<div class="od-graphic-frame" style="background:var(--bone);border:1px solid var(--border);border-radius:16px;padding:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
-<svg viewBox="0 0 480 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-  <defs><pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#15140f" opacity="0.08"/></pattern></defs>
-  <rect width="480" height="360" fill="url(#dots)"/>
-  <!-- Manufacturing: Design → Cut → Sew → Pack → Ship -->
-  <g fill="#f7f1de" stroke="#15140f" stroke-width="1.5">
-    <rect x="16" y="148" width="72" height="64" rx="10"/>
-    <rect x="108" y="148" width="72" height="64" rx="10"/>
-    <rect x="200" y="148" width="72" height="64" rx="10"/>
-    <rect x="292" y="148" width="72" height="64" rx="10"/>
-    <rect x="384" y="148" width="80" height="64" rx="10"/>
-  </g>
-  <!-- Icons -->
-  <!-- Design: pencil -->
-  <line x1="32" y1="190" x2="72" y2="162" stroke="#ed6f5c" stroke-width="2"/>
-  <polygon points="32,190 28,198 40,194" fill="#ed6f5c"/>
-  <text x="52" y="224" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#15140f" font-weight="600">DESIGN</text>
-  <!-- Cut: scissors -->
-  <g stroke="#ed6f5c" stroke-width="1.5" fill="none">
-    <circle cx="120" cy="168" r="6"/><circle cx="120" cy="188" r="6"/>
-    <line x1="126" y1="168" x2="168" y2="196"/><line x1="126" y1="188" x2="168" y2="168"/>
-  </g>
-  <text x="144" y="224" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#15140f" font-weight="600">CUT</text>
-  <!-- Sew: needle -->
-  <line x1="216" y1="162" x2="256" y2="196" stroke="#ed6f5c" stroke-width="2"/>
-  <circle cx="216" cy="162" r="4" fill="#ed6f5c"/>
-  <path d="M 236 179 Q 248 172 256 196" stroke="#ed6f5c" stroke-width="1" fill="none" stroke-dasharray="3 2"/>
-  <text x="236" y="224" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#15140f" font-weight="600">SEW</text>
-  <!-- Pack: box -->
-  <rect x="308" y="162" width="40" height="36" rx="3" fill="#ed6f5c" opacity="0.2" stroke="#ed6f5c" stroke-width="1.5"/>
-  <line x1="308" y1="174" x2="348" y2="174" stroke="#ed6f5c" stroke-width="1"/>
-  <text x="328" y="224" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#15140f" font-weight="600">PACK</text>
-  <!-- Ship: truck -->
-  <rect x="396" y="168" width="52" height="28" rx="3" fill="#ed6f5c" opacity="0.3" stroke="#ed6f5c" stroke-width="1.5"/>
-  <circle cx="406" cy="198" r="6" fill="#15140f"/>
-  <circle cx="436" cy="198" r="6" fill="#15140f"/>
-  <text x="424" y="224" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7.5" fill="#15140f" font-weight="600">SHIP</text>
-  <!-- Arrows -->
-  <g stroke="#ed6f5c" stroke-width="1.5" marker-end="url(#arr5)">
-    <defs><marker id="arr5" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L5,2.5 L0,5 Z" fill="#ed6f5c"/></marker></defs>
-    <line x1="90" y1="180" x2="106" y2="180"/>
-    <line x1="182" y1="180" x2="198" y2="180"/>
-    <line x1="274" y1="180" x2="290" y2="180"/>
-    <line x1="366" y1="180" x2="382" y2="180"/>
-  </g>
-  <!-- Stat badge -->
-  <rect x="16" y="16" width="130" height="40" rx="8" fill="#15140f"/>
-  <text x="81" y="32" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#ed6f5c" letter-spacing="0.05em">FORGE MES</text>
-  <text x="81" y="48" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="14" fill="white" font-weight="700">Dark Factory</text>
-</svg>
-</div>
-</div>
-</div>
 </div>
 <div class="od-hero-graphic">
 <div class="od-graphic-frame">
@@ -227,13 +155,31 @@
 </div>
 </div>
 
+<!-- Stats row below hero -->
+<div class="cap-num mb-3">Pilot · live at NeoLync Tirupati · today's state</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mb-3">
+<div class="card p-4"><div class="cap-num mb-1">Production volume</div><div class="display-2 text-3xl accent">~1,000</div><div class="text-xs mt-1" style="color: var(--ink-muted);">units · current run-rate</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Peak throughput</div><div class="display-2 text-3xl" style="color: var(--ink);">3,000</div><div class="text-xs mt-1" style="color: var(--ink-muted);">TPS · high-volume runs</div></div>
+<div class="card p-4"><div class="cap-num mb-1">On platform</div><div class="display-2 text-3xl" style="color: var(--ink);">50+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">operators · 25 line managers</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Deployment</div><div class="display-2 text-3xl" style="color: var(--ink);">100%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">on-premise · low-latency</div></div>
+</div>
+
+<div class="cap-num mb-3">Target outcomes</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">Plan cycle time</div><div class="display-2 text-3xl" style="color: var(--ink);">−90%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">days → minutes</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Throughput</div><div class="display-2 text-3xl" style="color: var(--ink);">+5–10%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">line balancing + perpetual plan</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Stockouts</div><div class="display-2 text-3xl" style="color: var(--ink);">−50%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">predictive replenishment</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Audit cycle time</div><div class="display-2 text-3xl" style="color: var(--ink);">−80%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">in-line traceability + FPY</div></div>
+</div>
+
 <div class="od-meta-row" style="margin-top:24px;">
   <span class="od-meta-tag"><span class="od-meta-sep">●</span> Forge</span>
   <span class="od-meta-tag"><span class="od-meta-sep">·</span> MES Platform</span>
   <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
   <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
 </div>
-</div></section>
+</div>
+</section>
 
 <!-- Sticky in-page TOC -->
 <div class="story-toc">
