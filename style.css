@@ -168,7 +168,8 @@ nav.topnav {
   border-bottom: 1px solid var(--line);
   transition: box-shadow 220ms ease;
 }
-.topnav-inner {
+.topnav-inner,
+nav.topnav > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -177,8 +178,14 @@ nav.topnav {
   margin: 0 auto;
   padding: 0 64px;
 }
-@media (max-width: 1280px) { .topnav-inner { padding: 0 44px; } }
-@media (max-width: 880px)  { .topnav-inner { padding: 0 24px; } }
+@media (max-width: 1280px) {
+  .topnav-inner,
+  nav.topnav > div { padding: 0 44px; }
+}
+@media (max-width: 880px) {
+  .topnav-inner,
+  nav.topnav > div { padding: 0 24px; }
+}
 .brand {
   display: inline-flex;
   align-items: center;
