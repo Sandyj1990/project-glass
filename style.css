@@ -1371,6 +1371,92 @@ section.od-dark .od-ghost-btn:hover {
    OD · Consistent Image Sizing
    ═══════════════════════════════════════════════════════ */
 
+/* ── Professional screenshot browser-chrome frame ────────────── */
+.screenshot-frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+  border: 1px solid rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+.screenshot-frame .screenshot-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f8f8f8;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.screenshot-frame .screenshot-dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.screenshot-frame .screenshot-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: block;
+}
+.screenshot-frame .screenshot-dots span:nth-child(1) { background: #ff5f57; }
+.screenshot-frame .screenshot-dots span:nth-child(2) { background: #febc2e; }
+.screenshot-frame .screenshot-dots span:nth-child(3) { background: #28c840; }
+.screenshot-frame .screenshot-url {
+  flex: 1;
+  text-align: center;
+  font-family: var(--mono, 'JetBrains Mono', monospace);
+  font-size: 10px;
+  color: rgba(0,0,0,0.35);
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.screenshot-frame .screenshot-body {
+  background: #fff;
+}
+.screenshot-frame .screenshot-body img {
+  width: 100%;
+  display: block;
+  object-fit: contain;
+  max-height: 520px;
+  background: #fff;
+}
+.screenshot-frame .screenshot-body img.od-img {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  max-height: 520px;
+  background: #fff;
+}
+/* Mobile frame for app screenshots */
+.screenshot-frame.mobile-frame {
+  max-width: 320px;
+  border-radius: 24px;
+  border: 6px solid #1a1a1a;
+}
+.screenshot-frame.mobile-frame .screenshot-bar {
+  padding: 6px 16px;
+  background: #1a1a1a;
+  border-bottom: none;
+  justify-content: center;
+}
+.screenshot-frame.mobile-frame .screenshot-bar::before {
+  content: '';
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background: #333;
+}
+.screenshot-frame.mobile-frame .screenshot-dots { display: none; }
+.screenshot-frame.mobile-frame .screenshot-url { display: none; }
+.screenshot-frame.mobile-frame .screenshot-body img {
+  max-height: 580px;
+  border-radius: 0 0 18px 18px;
+}
+
 /* Standard content image — screenshots, UI captures */
 .od-img {
   width: 100%;
