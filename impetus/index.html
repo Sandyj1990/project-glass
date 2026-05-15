@@ -36,9 +36,9 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 480px;
+  grid-template-columns: 500px 1fr;
   align-items: center;
-  gap: 48px;
+  gap: 64px;
 }
 @media (max-width: 900px) {
   .imp-hero-inner { grid-template-columns: 1fr; }
@@ -47,7 +47,8 @@
 .imp-hero-graphic {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  order: -1;
 }
 .imp-hero-eyebrow {
   font-family: var(--mono);
@@ -702,76 +703,70 @@
 
   <!-- 2D hero graphic -->
   <div class="imp-hero-graphic">
-    <svg viewBox="0 0 420 380" width="420" height="380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg viewBox="0 0 480 420" width="480" height="420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <style>
-          .hg-node { transition: opacity .3s; }
-          @keyframes hg-pulse { 0%,100%{opacity:.18} 50%{opacity:.32} }
-          @keyframes hg-flow { 0%{stroke-dashoffset:120} 100%{stroke-dashoffset:0} }
-          .hg-line { stroke-dasharray:6 6; animation: hg-flow 2.4s linear infinite; }
-          .hg-line-2 { stroke-dasharray:6 6; animation: hg-flow 2.4s linear infinite; animation-delay:.6s; }
-          .hg-line-3 { stroke-dasharray:6 6; animation: hg-flow 2.4s linear infinite; animation-delay:1.2s; }
-          .hg-line-4 { stroke-dasharray:6 6; animation: hg-flow 2.4s linear infinite; animation-delay:1.8s; }
-          .hg-ring { animation: hg-pulse 3s ease-in-out infinite; }
+          @keyframes hg-pulse { 0%,100%{opacity:.25} 50%{opacity:.55} }
+          @keyframes hg-flow { 0%{stroke-dashoffset:200} 100%{stroke-dashoffset:0} }
+          .hg-line  { stroke-dasharray:8 6; animation: hg-flow 2.2s linear infinite; }
+          .hg-line2 { stroke-dasharray:8 6; animation: hg-flow 2.2s linear infinite; animation-delay:.55s; }
+          .hg-line3 { stroke-dasharray:8 6; animation: hg-flow 2.2s linear infinite; animation-delay:1.1s; }
+          .hg-line4 { stroke-dasharray:8 6; animation: hg-flow 2.2s linear infinite; animation-delay:1.65s; }
+          .hg-ring  { animation: hg-pulse 2.8s ease-in-out infinite; }
+          .hg-ring2 { animation: hg-pulse 2.8s ease-in-out infinite; animation-delay:.7s; }
+          .hg-ring3 { animation: hg-pulse 2.8s ease-in-out infinite; animation-delay:1.4s; }
+          .hg-ring4 { animation: hg-pulse 2.8s ease-in-out infinite; animation-delay:2.1s; }
         </style>
       </defs>
 
-      <!-- Background grid dots -->
-      <g opacity=".06">
-        <circle cx="60" cy="60" r="1.5" fill="white"/><circle cx="120" cy="60" r="1.5" fill="white"/><circle cx="180" cy="60" r="1.5" fill="white"/><circle cx="240" cy="60" r="1.5" fill="white"/><circle cx="300" cy="60" r="1.5" fill="white"/><circle cx="360" cy="60" r="1.5" fill="white"/>
-        <circle cx="60" cy="120" r="1.5" fill="white"/><circle cx="120" cy="120" r="1.5" fill="white"/><circle cx="180" cy="120" r="1.5" fill="white"/><circle cx="240" cy="120" r="1.5" fill="white"/><circle cx="300" cy="120" r="1.5" fill="white"/><circle cx="360" cy="120" r="1.5" fill="white"/>
-        <circle cx="60" cy="180" r="1.5" fill="white"/><circle cx="120" cy="180" r="1.5" fill="white"/><circle cx="180" cy="180" r="1.5" fill="white"/><circle cx="240" cy="180" r="1.5" fill="white"/><circle cx="300" cy="180" r="1.5" fill="white"/><circle cx="360" cy="180" r="1.5" fill="white"/>
-        <circle cx="60" cy="240" r="1.5" fill="white"/><circle cx="120" cy="240" r="1.5" fill="white"/><circle cx="180" cy="240" r="1.5" fill="white"/><circle cx="240" cy="240" r="1.5" fill="white"/><circle cx="300" cy="240" r="1.5" fill="white"/><circle cx="360" cy="240" r="1.5" fill="white"/>
-        <circle cx="60" cy="300" r="1.5" fill="white"/><circle cx="120" cy="300" r="1.5" fill="white"/><circle cx="180" cy="300" r="1.5" fill="white"/><circle cx="240" cy="300" r="1.5" fill="white"/><circle cx="300" cy="300" r="1.5" fill="white"/><circle cx="360" cy="300" r="1.5" fill="white"/>
+      <!-- Subtle dot grid -->
+      <g opacity=".12">
+        <circle cx="60" cy="60" r="2" fill="white"/><circle cx="140" cy="60" r="2" fill="white"/><circle cx="220" cy="60" r="2" fill="white"/><circle cx="300" cy="60" r="2" fill="white"/><circle cx="380" cy="60" r="2" fill="white"/><circle cx="460" cy="60" r="2" fill="white"/>
+        <circle cx="60" cy="140" r="2" fill="white"/><circle cx="140" cy="140" r="2" fill="white"/><circle cx="220" cy="140" r="2" fill="white"/><circle cx="300" cy="140" r="2" fill="white"/><circle cx="380" cy="140" r="2" fill="white"/><circle cx="460" cy="140" r="2" fill="white"/>
+        <circle cx="60" cy="220" r="2" fill="white"/><circle cx="140" cy="220" r="2" fill="white"/><circle cx="220" cy="220" r="2" fill="white"/><circle cx="300" cy="220" r="2" fill="white"/><circle cx="380" cy="220" r="2" fill="white"/><circle cx="460" cy="220" r="2" fill="white"/>
+        <circle cx="60" cy="300" r="2" fill="white"/><circle cx="140" cy="300" r="2" fill="white"/><circle cx="220" cy="300" r="2" fill="white"/><circle cx="300" cy="300" r="2" fill="white"/><circle cx="380" cy="300" r="2" fill="white"/><circle cx="460" cy="300" r="2" fill="white"/>
+        <circle cx="60" cy="380" r="2" fill="white"/><circle cx="140" cy="380" r="2" fill="white"/><circle cx="220" cy="380" r="2" fill="white"/><circle cx="300" cy="380" r="2" fill="white"/><circle cx="380" cy="380" r="2" fill="white"/><circle cx="460" cy="380" r="2" fill="white"/>
       </g>
 
-      <!-- Animated flow lines between nodes -->
-      <line class="hg-line" x1="90" y1="100" x2="210" y2="100" stroke="rgba(237,111,92,.45)" stroke-width="1.5"/>
-      <line class="hg-line-2" x1="210" y1="100" x2="330" y2="190" stroke="rgba(237,111,92,.45)" stroke-width="1.5"/>
-      <line class="hg-line-3" x1="210" y1="100" x2="210" y2="280" stroke="rgba(237,111,92,.3)" stroke-width="1.5"/>
-      <line class="hg-line-4" x1="90" y1="100" x2="90" y2="280" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-      <line class="hg-line" x1="90" y1="280" x2="210" y2="280" stroke="rgba(255,255,255,.15)" stroke-width="1.5"/>
-      <line class="hg-line-2" x1="330" y1="190" x2="330" y2="280" stroke="rgba(237,111,92,.3)" stroke-width="1.5"/>
-      <line class="hg-line-3" x1="210" y1="280" x2="330" y2="280" stroke="rgba(237,111,92,.3)" stroke-width="1.5"/>
+      <!-- Flow lines -->
+      <!-- PLAN → BUY -->
+      <line class="hg-line" x1="120" y1="100" x2="240" y2="100" stroke="#ED6F5C" stroke-width="2" opacity=".7"/>
+      <!-- BUY → MAKE -->
+      <line class="hg-line2" x1="240" y1="100" x2="360" y2="210" stroke="#ED6F5C" stroke-width="2" opacity=".7"/>
+      <!-- MAKE → SELL -->
+      <line class="hg-line3" x1="360" y1="210" x2="360" y2="320" stroke="#ED6F5C" stroke-width="2" opacity=".7"/>
+      <!-- PLAN → SELL (secondary) -->
+      <line class="hg-line4" x1="120" y1="100" x2="120" y2="320" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
+      <line class="hg-line" x1="120" y1="320" x2="360" y2="320" stroke="rgba(255,255,255,.22)" stroke-width="1.5"/>
 
-      <!-- Node: PLAN (top-left) -->
-      <circle class="hg-ring" cx="90" cy="100" r="28" stroke="rgba(237,111,92,.5)" stroke-width="1"/>
-      <circle cx="90" cy="100" r="18" fill="rgba(237,111,92,.15)" stroke="#ED6F5C" stroke-width="1.5"/>
-      <text x="90" y="96" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(255,255,255,.9)" letter-spacing=".08em">PLAN</text>
-      <text x="90" y="107" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,111,92,.8)" letter-spacing=".04em">01</text>
+      <!-- Node: PLAN -->
+      <circle class="hg-ring" cx="120" cy="100" r="36" stroke="#ED6F5C" stroke-width="1.5" fill="none"/>
+      <circle cx="120" cy="100" r="26" fill="rgba(237,111,92,.2)" stroke="#ED6F5C" stroke-width="2"/>
+      <text x="120" y="95" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="white" letter-spacing=".1em" font-weight="600">PLAN</text>
+      <text x="120" y="110" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ED6F5C" letter-spacing=".06em">01</text>
 
-      <!-- Node: BUY (top-centre) -->
-      <circle class="hg-ring" cx="210" cy="100" r="28" stroke="rgba(237,111,92,.5)" stroke-width="1" style="animation-delay:.8s"/>
-      <circle cx="210" cy="100" r="18" fill="rgba(237,111,92,.15)" stroke="#ED6F5C" stroke-width="1.5"/>
-      <text x="210" y="96" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(255,255,255,.9)" letter-spacing=".08em">BUY</text>
-      <text x="210" y="107" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,111,92,.8)" letter-spacing=".04em">02</text>
+      <!-- Node: BUY -->
+      <circle class="hg-ring2" cx="240" cy="100" r="36" stroke="#ED6F5C" stroke-width="1.5" fill="none"/>
+      <circle cx="240" cy="100" r="26" fill="rgba(237,111,92,.2)" stroke="#ED6F5C" stroke-width="2"/>
+      <text x="240" y="95" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="white" letter-spacing=".1em" font-weight="600">BUY</text>
+      <text x="240" y="110" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ED6F5C" letter-spacing=".06em">02</text>
 
-      <!-- Node: MAKE (right) -->
-      <circle class="hg-ring" cx="330" cy="190" r="28" stroke="rgba(237,111,92,.5)" stroke-width="1" style="animation-delay:1.6s"/>
-      <circle cx="330" cy="190" r="18" fill="rgba(237,111,92,.15)" stroke="#ED6F5C" stroke-width="1.5"/>
-      <text x="330" y="186" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(255,255,255,.9)" letter-spacing=".08em">MAKE</text>
-      <text x="330" y="197" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(237,111,92,.8)" letter-spacing=".04em">03</text>
+      <!-- Node: MAKE -->
+      <circle class="hg-ring3" cx="360" cy="210" r="36" stroke="#ED6F5C" stroke-width="1.5" fill="none"/>
+      <circle cx="360" cy="210" r="26" fill="rgba(237,111,92,.2)" stroke="#ED6F5C" stroke-width="2"/>
+      <text x="360" y="205" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="white" letter-spacing=".1em" font-weight="600">MAKE</text>
+      <text x="360" y="220" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="#ED6F5C" letter-spacing=".06em">03</text>
 
-      <!-- Node: SELL (bottom-right) -->
-      <circle class="hg-ring" cx="330" cy="280" r="28" stroke="rgba(237,111,92,.5)" stroke-width="1" style="animation-delay:2.4s"/>
-      <circle cx="330" cy="280" r="22" fill="#ED6F5C" stroke="#ED6F5C" stroke-width="1.5"/>
-      <text x="330" y="276" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="white" letter-spacing=".08em">SELL</text>
-      <text x="330" y="287" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(255,255,255,.8)" letter-spacing=".04em">04</text>
+      <!-- Node: SELL (filled coral — destination) -->
+      <circle class="hg-ring4" cx="360" cy="320" r="40" stroke="#ED6F5C" stroke-width="1.5" fill="none"/>
+      <circle cx="360" cy="320" r="30" fill="#ED6F5C" stroke="#ED6F5C" stroke-width="2"/>
+      <text x="360" y="315" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="9.5" fill="white" letter-spacing=".1em" font-weight="700">SELL</text>
+      <text x="360" y="330" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8" fill="rgba(255,255,255,.75)" letter-spacing=".06em">04</text>
 
-      <!-- Node: MOVE (bottom-centre, smaller) -->
-      <circle cx="210" cy="280" r="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
-      <text x="210" y="276" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="6" fill="rgba(255,255,255,.6)" letter-spacing=".06em">MOVE</text>
-      <text x="210" y="286" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5" fill="rgba(255,255,255,.35)" letter-spacing=".04em">05</text>
-
-      <!-- Node: OPERATE (bottom-left, smaller) -->
-      <circle cx="90" cy="280" r="14" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
-      <text x="90" y="276" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5.5" fill="rgba(255,255,255,.6)" letter-spacing=".04em">OPS</text>
-      <text x="90" y="286" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="5" fill="rgba(255,255,255,.35)" letter-spacing=".04em">06</text>
-
-      <!-- Stat label floating top-right -->
-      <rect x="290" y="36" width="110" height="36" rx="8" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-      <text x="345" y="52" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="7" fill="rgba(255,255,255,.4)" letter-spacing=".06em">PLATFORMS</text>
-      <text x="345" y="65" text-anchor="middle" font-family="'IBM Plex Sans',sans-serif" font-size="13" font-weight="700" fill="#ED6F5C">15 live</text>
+      <!-- Floating stat chip -->
+      <rect x="20" y="28" width="130" height="44" rx="10" fill="rgba(255,255,255,.07)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+      <text x="85" y="47" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="rgba(255,255,255,.5)" letter-spacing=".08em">PLATFORMS</text>
+      <text x="85" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="16" font-weight="700" fill="#ED6F5C">15 live</text>
     </svg>
   </div>
 </section>
