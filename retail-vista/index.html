@@ -350,43 +350,102 @@
 <div class="section-label mb-3">06 · Platform Vision</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where RetailVista is going<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">A pan-India geospatial backbone running across 1000 cities, weighted on Google's agentic stack, built around per-household Digital Twins and the full network reference for every Reliance operation.</p>
-<div class="grid md:grid-cols-2 gap-4">
-<div class="card p-6">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">01 · Scale</div><span class="pill pill-phase2">Roadmap</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">1000 cities.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">Pan-India spatial coverage at city level. Today's pilot is anchored on Mumbai across the Internal Track and Google MVP. Scale gates on JioGIS data unlock, Kentrix MMR enrichment, and foundation-model maturation.</p>
+<!-- Vision Slider -->
+<div class="vision-slider-wrap">
+  <div class="vision-slider" id="visionSlider">
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">01 · Scale</span><span class="pill pill-phase2">Roadmap</span></div>
+      <h3 class="vision-card-title">1000 cities.</h3>
+      <p class="vision-card-body">Pan-India spatial coverage at city level. Today's pilot is anchored on Mumbai across the Internal Track and Google MVP. Scale gates on JioGIS data unlock, Kentrix MMR enrichment, and foundation-model maturation.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">02 · Primary surface</span><span class="pill pill-pilot">Pilot</span></div>
+      <h3 class="vision-card-title">Google as the pan-India agentic surface.</h3>
+      <p class="vision-card-body">Engineering and partnership weight shifts to the Google joint track. Cannibalisation, feasibility and site-selection agents already validated end-to-end on Mumbai catchments. The Internal Track continues as the agentic capability benchmark.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">03 · Foundation</span><span class="pill pill-build">Building</span></div>
+      <h3 class="vision-card-title">Full-stack geospatial foundation.</h3>
+      <p class="vision-card-body">A 12-layer foundation platform spanning sources, aggregation, GIS, agentic orchestration and activation. The current 5-layer architecture is v0.1; the full stack closes the gap between raw signal and agent-ready decisioning across every Reliance vertical.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">04 · Operating model</span><span class="pill pill-build">Building</span></div>
+      <h3 class="vision-card-title">Joint execution · dedicated org.</h3>
+      <p class="vision-card-body">A dedicated RetailVista organisation operating across Reliance and Fynd. Engineering integration with Google folds into a single execution plan. Decisioning lives where the data lives. Agent skills callable across every track.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">05 · Customer Digital Twin</span><span class="pill pill-phase2">Roadmap</span></div>
+      <h3 class="vision-card-title">Per-customer Digital Twin · CDAP-native.</h3>
+      <p class="vision-card-body">Each customer rendered as a hex-anchored Digital Twin of consumption : wallet, channel mix, household, fibre, mobile. Drives personalised offers at decision time. Sits on Layer 04 Agentic Orchestration once UCP customer lat/long unlocks at scale.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">06 · Network reference</span><span class="pill pill-phase2">Roadmap</span></div>
+      <h3 class="vision-card-title">One GIS layer for every Reliance operation.</h3>
+      <p class="vision-card-body">5G + 4G network coverage, dark stores, RIL Neighbourhood stores and Enterprise Premise Connectivity rendered on a single GIS reference. Delivery, expansion and infra teams route off the same substrate.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+    <div class="vision-card">
+      <div class="vision-card-top"><span class="cap-num">07 · Household identification</span><span class="pill pill-phase2">Roadmap</span></div>
+      <h3 class="vision-card-title">100M households identified · path to 180M owned.</h3>
+      <p class="vision-card-body">All-India street-map resolution to identify 100M households from the Broadband and Air Fibre footprint. Sequenced path to the next 75–100M, ending at 150–180M owned-home relationships. Anchors the household Digital Twin and the JioGIS unlock.</p>
+      <span class="vision-card-arrow">→</span>
+    </div>
+  </div>
+  <div class="vision-slider-nav">
+    <button class="vision-nav-btn" id="visionPrev" aria-label="Previous">←</button>
+    <button class="vision-nav-btn" id="visionNext" aria-label="Next">→</button>
+  </div>
 </div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">02 · Primary surface</div><span class="pill pill-pilot">Pilot</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">Google as the pan-India agentic surface.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">Engineering and partnership weight shifts to the Google joint track. Cannibalisation, feasibility and site-selection agents already validated end-to-end on Mumbai catchments. The Internal Track continues as the agentic capability benchmark.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">03 · Foundation</div><span class="pill pill-build">Building</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">Full-stack geospatial foundation.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">A 12-layer foundation platform spanning sources, aggregation, GIS, agentic orchestration and activation. The current 5-layer architecture is v0.1; the full stack closes the gap between raw signal and agent-ready decisioning across every Reliance vertical.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">04 · Operating model</div><span class="pill pill-build">Building</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">Joint execution · dedicated org.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">A dedicated RetailVista organisation operating across Reliance and Fynd. Engineering integration with Google folds into a single execution plan. Decisioning lives where the data lives. Agent skills callable across every track.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">05 · Customer Digital Twin</div><span class="pill pill-phase2">Roadmap</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">Per-customer Digital Twin · CDAP-native.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">Each customer rendered as a hex-anchored Digital Twin of consumption : wallet, channel mix, household, fibre, mobile. Drives personalised offers at decision time. Sits on Layer 04 Agentic Orchestration once UCP customer lat/long unlocks at scale.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">06 · Network reference</div><span class="pill pill-phase2">Roadmap</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">One GIS layer for every Reliance operation.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">5G + 4G network coverage, dark stores, RIL Neighbourhood stores and Enterprise Premise Connectivity rendered on a single GIS reference. Delivery, expansion and infra teams route off the same substrate.</p>
-</div>
-<div class="card p-6 md:col-span-2">
-<div class="flex items-center justify-between mb-2"><div class="cap-num">07 · Household identification</div><span class="pill pill-phase2">Roadmap</span></div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">100M households identified · path to 180M owned.</h3>
-<p class="text-sm" style="color: var(--ink-muted);">All-India street-map resolution to identify 100M households from the Broadband and Air Fibre footprint. Sequenced path to the next 75–100M, ending at 150–180M owned-home relationships. Anchors the household Digital Twin and the JioGIS unlock.</p>
-</div>
-</div>
+<style>
+.vision-slider-wrap { position: relative; overflow: hidden; }
+.vision-slider { display: flex; gap: 16px; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); will-change: transform; }
+.vision-card { flex: 0 0 calc(33.333% - 11px); min-width: 280px; background: var(--paper, #faf8f4); border: 1px solid var(--border, rgba(0,0,0,0.08)); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; }
+.vision-card-top { display: flex; align-items: center; justify-content: space-between; }
+.vision-card-title { font-size: 1rem; font-weight: 600; color: var(--ink, #1a1a1a); margin: 0; line-height: 1.35; }
+.vision-card-body { font-size: 0.8125rem; color: var(--ink-muted, #666); line-height: 1.6; flex: 1; margin: 0; }
+.vision-card-arrow { display: block; text-align: right; color: var(--ink-muted, #666); font-size: 1rem; margin-top: auto; }
+.vision-slider-nav { display: flex; justify-content: flex-end; gap: 8px; margin-top: 20px; }
+.vision-nav-btn { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--border, rgba(0,0,0,0.12)); background: var(--paper, #faf8f4); color: var(--ink, #1a1a1a); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s; }
+.vision-nav-btn:hover { background: var(--bone, #f0ebe0); border-color: var(--ink-muted, #999); }
+.vision-nav-btn:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 900px) { .vision-card { flex: 0 0 calc(50% - 8px); } }
+@media (max-width: 600px) { .vision-card { flex: 0 0 85%; } }
+</style>
+<script>
+(function(){
+  var slider = document.getElementById('visionSlider');
+  var prevBtn = document.getElementById('visionPrev');
+  var nextBtn = document.getElementById('visionNext');
+  var currentIndex = 0;
+  function getVisible() { return window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3; }
+  function getCardWidth() { var card = slider.querySelector('.vision-card'); if(!card) return 0; return card.getBoundingClientRect().width + 16; }
+  function totalCards() { return slider.querySelectorAll('.vision-card').length; }
+  function update() {
+    var visible = getVisible();
+    var max = Math.max(0, totalCards() - visible);
+    if(currentIndex > max) currentIndex = max;
+    slider.style.transform = 'translateX(-' + (currentIndex * getCardWidth()) + 'px)';
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex >= max;
+  }
+  prevBtn.addEventListener('click', function(){ if(currentIndex > 0){ currentIndex--; update(); } });
+  nextBtn.addEventListener('click', function(){ var visible = getVisible(); var max = Math.max(0, totalCards() - visible); if(currentIndex < max){ currentIndex++; update(); } });
+  /* touch/swipe support */
+  var startX = 0;
+  slider.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
+  slider.addEventListener('touchend', function(e){
+    var dx = startX - e.changedTouches[0].clientX;
+    if(Math.abs(dx) > 40){ if(dx > 0) nextBtn.click(); else prevBtn.click(); }
+  }, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+})();
+</script>
 </div></section>
 <!-- §07 · Roadmap -->
 <section class="py-16 border-b" id="roadmap" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
