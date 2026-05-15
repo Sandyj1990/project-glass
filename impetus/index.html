@@ -16,29 +16,22 @@
 
 /* Hero dark band */
 .imp-hero {
-  background: var(--ink);
-  color: white;
-  padding: 72px 0 64px;
+  background: var(--bone);
+  color: var(--ink);
+  padding: 80px 0 72px;
   position: relative;
   overflow: hidden;
-}
-.imp-hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(237,111,92,0.12) 0%, transparent 70%);
-  pointer-events: none;
 }
 .imp-hero-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 48px;
+  padding: 0 64px;
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 500px;
+  grid-template-columns: 1fr 520px;
   align-items: center;
-  gap: 64px;
+  gap: 72px;
 }
 @media (max-width: 900px) {
   .imp-hero-inner { grid-template-columns: 1fr; }
@@ -49,31 +42,34 @@
   align-items: center;
   justify-content: flex-end;
 }
+.imp-hero-graphic-card {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--ink);
+  aspect-ratio: 4/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.18);
+  position: relative;
+}
 .imp-hero-eyebrow {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--coral);
+  font-weight: 700;
   margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.imp-hero-eyebrow::before {
-  content: '';
-  display: inline-block;
-  width: 24px;
-  height: 1px;
-  background: var(--coral);
 }
 .imp-hero-title {
   font-family: var(--sans);
-  font-size: clamp(48px, 6vw, 88px);
+  font-size: clamp(40px, 5vw, 72px);
   font-weight: 800;
-  line-height: 1.0;
+  line-height: 1.05;
   letter-spacing: -0.03em;
-  color: white;
+  color: var(--ink);
   margin-bottom: 24px;
 }
 .imp-hero-title em {
@@ -81,29 +77,72 @@
   color: var(--coral);
 }
 .imp-hero-desc {
-  font-size: 18px;
-  line-height: 1.6;
-  color: rgba(255,255,255,0.65);
-  max-width: 640px;
-  margin-bottom: 40px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(30,26,20,0.65);
+  max-width: 520px;
+  margin-bottom: 32px;
 }
+.imp-hero-stats {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+.imp-hero-stat-val {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  display: block;
+}
+.imp-hero-stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(30,26,20,0.45);
+  display: block;
+  margin-top: 2px;
+}
+.imp-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--ink);
+  color: white;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 13px 28px;
+  text-decoration: none;
+  transition: background .2s, transform .2s;
+}
+.imp-hero-cta:hover { background: var(--coral); transform: translateY(-1px); }
 .imp-hero-meta {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 .imp-hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 10px;
   letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.5);
-  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(30,26,20,0.5);
+  border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 5px 12px;
+  padding: 4px 12px;
 }
 .imp-hero-badge .dot {
   width: 6px;
@@ -689,19 +728,35 @@
 
 <section class="imp-hero">
   <div class="imp-hero-inner">
-    <div class="imp-hero-eyebrow">F&amp;L AI Platform · Live</div>
-    <h1 class="imp-hero-title">Impetus.<br><em>One platform.</em><br>Every stage.</h1>
-    <p class="imp-hero-desc">Reliance's AI-first platform for Fashion &amp; Lifestyle retail. <strong style="color:white;">15 sub-platforms in production</strong>, used by 2,000+ people across the F&amp;L value chain: Plan · Buy · Make · Sell. One integrated system across planning, execution, measurement and governance.</p>
-    <div class="imp-hero-meta">
-      <span class="imp-hero-badge"><span class="dot"></span> 15 sub-platforms live</span>
-      <span class="imp-hero-badge">2,000+ active users</span>
-      <span class="imp-hero-badge">FY26 · verified</span>
-      <span class="imp-hero-badge">RIL: Anand Thakur · Vineet Nair</span>
+    <!-- Left: text content -->
+    <div class="imp-hero-text">
+      <div class="imp-hero-eyebrow">F&amp;L AI Platform · Live</div>
+      <h1 class="imp-hero-title">Impetus.<br><em>One platform.</em><br>Every stage.</h1>
+      <p class="imp-hero-desc">Reliance's AI-first platform for Fashion &amp; Lifestyle retail — 15 sub-platforms in production, used by 2,000+ people across Plan · Buy · Make · Sell.</p>
+      <div class="imp-hero-stats">
+        <div>
+          <span class="imp-hero-stat-val">15 live</span>
+          <span class="imp-hero-stat-lbl">Sub-platforms</span>
+        </div>
+        <div>
+          <span class="imp-hero-stat-val">2,000+</span>
+          <span class="imp-hero-stat-lbl">Active users</span>
+        </div>
+        <div>
+          <span class="imp-hero-stat-val">15.08 Cr</span>
+          <span class="imp-hero-stat-lbl">Pieces delivered FY26</span>
+        </div>
+      </div>
+      <a href="#platforms" class="imp-hero-cta">Explore platforms →</a>
+      <div class="imp-hero-meta">
+        <span class="imp-hero-badge"><span class="dot"></span> FY26 · verified</span>
+        <span class="imp-hero-badge">RIL: Anand Thakur · Vineet Nair</span>
+      </div>
     </div>
-  </div>
 
   <!-- 2D hero graphic -->
   <div class="imp-hero-graphic">
+    <div class="imp-hero-graphic-card">
     <svg viewBox="0 0 480 420" width="480" height="420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
         <style>
@@ -767,6 +822,7 @@
       <text x="85" y="47" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="8.5" fill="rgba(255,255,255,.5)" letter-spacing=".08em">PLATFORMS</text>
       <text x="85" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="16" font-weight="700" fill="#ED6F5C">15 live</text>
     </svg>
+    </div>
   </div>
 </section>
 
