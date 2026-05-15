@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>RCPL · Fynd × RRVL · JPL</title>
-
-<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
-<link rel="stylesheet" href="/style.css">
-<link rel="stylesheet" href="/present.css">
-<script src="/present.js" defer></script>
+<link href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" rel="icon" type="image/png"/>
+<link href="/style.css" rel="stylesheet"/>
+<link href="/present.css" rel="stylesheet"/>
+<script defer="" src="/present.js"></script>
 <style>
   /* In-page section nav */
   .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
@@ -80,572 +80,533 @@
 </style>
 </head>
 <body>
-
 <nav class="topnav">
 <div class="topnav-inner">
-<a href="/" class="brand">
-  <div class="brand-mark">
-    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd logo" />
-  </div>
-  <div class="brand-meta">
-    <b>Fynd</b>
-    RRVL &middot; JPL
+<a class="brand" href="/">
+<div class="brand-mark">
+<img alt="Fynd logo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png"/>
+</div>
+<div class="brand-meta">
+<b>Fynd</b>
+    RRVL · JPL
   </div>
 </a>
 <div class="nav-links hidden md:flex items-center">
-  <a href="/" class="nav-link">Home</a>
-  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
-    <div class="nav-mega-panel" style="min-width: 720px;">
-      <div class="grid grid-cols-3 gap-6">
-        <div>
-          <div class="mega-col-label">Platforms</div>
-          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&amp;L AI</span></a>
-          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
-          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
-          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
-          <a href="/ucp" class="mega-link">UCP &amp; Marketing OS</a>
-        </div>
-        <div>
-          <div class="mega-col-label">Special Projects</div>
-          <a href="/alp" class="mega-link">ALP</a>
-          <a href="/retail-vista" class="mega-link">Retail Vista</a>
-          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
-          <a href="/samarth" class="mega-link">Samarth</a>
-          <a href="/forge" class="mega-link">Forge MES</a>
-          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
-          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
-        </div>
-        <div>
-          <div class="mega-col-label">AI-Native</div>
-          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
-          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
-          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
-          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
-          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
-          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
-          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
-          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
-          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
-          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
-          <a href="/autri" class="mega-link">Autri</a>
-          <a href="/dark-factory" class="mega-link">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
-    <div class="nav-mega-panel" style="min-width: 280px;">
-      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0&ndash;L5</span></a>
-      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
-      <a href="/frameworks" class="mega-link">Frameworks</a>
-      <a href="/organisation" class="mega-link">Organisation</a>
-      <a href="/culture" class="mega-link">Culture</a>
-      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
-    </div>
-  </div>
+<a class="nav-link" href="/">Home</a>
+<div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 12 12"><polyline points="3 5 6 8 9 5"></polyline></svg></span>
+<div class="nav-mega-panel" style="min-width: 720px;">
+<div class="grid grid-cols-3 gap-6">
+<div>
+<div class="mega-col-label">Platforms</div>
+<a class="mega-link" href="/impetus">Impetus <span class="mono-suffix">F&amp;L AI</span></a>
+<a class="mega-link" href="/jcp">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+<a class="mega-link" href="/rcpl">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+<a class="mega-link" href="/granary">Granary <span class="mono-suffix">Grocery AI</span></a>
+<a class="mega-link" href="/ucp">UCP &amp; Marketing OS</a>
+</div>
+<div>
+<div class="mega-col-label">Special Projects</div>
+<a class="mega-link" href="/alp">ALP</a>
+<a class="mega-link" href="/retail-vista">Retail Vista</a>
+<a class="mega-link" href="/retail-jarvis">Retail Jarvis</a>
+<a class="mega-link" href="/samarth">Samarth</a>
+<a class="mega-link" href="/forge">Forge MES</a>
+<a class="mega-link" href="/hirefirst">HireFirst <span class="mono-suffix">HR Tech</span></a>
+<a class="mega-link" href="/swapeasy">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+</div>
+<div>
+<div class="mega-col-label">AI-Native</div>
+<a class="mega-link" href="/agents">AI Agents <span class="mono-suffix">directory</span></a>
+<a class="mega-link" href="/boltic">Boltic <span class="mono-suffix">automation OS</span></a>
+<a class="mega-link" href="/pixelbin">PixelBin <span class="mono-suffix">visual AI</span></a>
+<a class="mega-link" href="/ratl">Ratl <span class="mono-suffix">agentic QA</span></a>
+<a class="mega-link" href="/kaily">Kaily <span class="mono-suffix">agentic commerce</span></a>
+<a class="mega-link" href="/fynd-konnect">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+<a class="mega-link" href="/tms">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+<a class="mega-link" href="/kio">Kio <span class="mono-suffix">self-checkout</span></a>
+<div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+<a class="mega-link" href="/fynd-horizon">Fynd Horizon</a>
+<a class="mega-link" href="/autri">Autri</a>
+<a class="mega-link" href="/dark-factory">Dark Factory <span class="mono-suffix">Mobile Neo Tailor</span></a>
+</div>
+</div>
+</div>
+</div>
+<div class="nav-mega"><span class="nav-link" tabindex="0">More <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 12 12"><polyline points="3 5 6 8 9 5"></polyline></svg></span>
+<div class="nav-mega-panel" style="min-width: 280px;">
+<a class="mega-link" href="/autonomous">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+<a class="mega-link" href="/ai-native">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+<a class="mega-link" href="/frameworks">Frameworks</a>
+<a class="mega-link" href="/organisation">Organisation</a>
+<a class="mega-link" href="/culture">Culture</a>
+<a class="mega-link" href="/fynd-academy">Fynd Academy <span class="mono-suffix">talent</span></a>
+</div>
+</div>
 </div>
 <div class="hidden lg:flex items-center shrink-0">
-  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+<span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
 </div>
 </div>
 </nav>
-
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="od-hero-split">
 <div class="od-hero-text">
 <div class="crumb mb-8"><a href="/">Home</a> <span class="sep">/</span> <span style="color: var(--ink);">RCPL</span></div>
-  <div class="section-label mb-3">FMCG B2B · Live · FY 2025-26</div>
-  <div class="od-eyebrow">FMCG B2B · Distribution · Reliance Consumer</div>
+<div class="section-label mb-3">FMCG B2B · Live · FY 2025-26</div>
+<div class="od-eyebrow">FMCG B2B · Distribution · Reliance Consumer</div>
 <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">RCPL.</h1>
-  <p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">Reliance Consumer Products. End-to-end digital platform (Pre-Sales, Van Sales, DMS, CTS, Pricing, SFA) built and run by Fynd across five PODs · ₹20,000 Cr FY26 run-rate.</p>
-
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
-    <div class="card p-4"><div class="cap-num mb-1">FY26 run-rate</div><div class="display-2 text-3xl accent">₹20,000 Cr</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Under three years</div></div>
-    <div class="card p-4"><div class="cap-num mb-1">Active delivery PODs</div><div class="display-2 text-3xl" style="color: var(--ink);">5</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Bev + Non-Bev parallel</div></div>
-    <div class="card p-4"><div class="cap-num mb-1">Order coverage · in test</div><div class="display-2 text-3xl" style="color: var(--ink);">₹5,000 Cr+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across primary + secondary</div></div>
-    <div class="card p-4"><div class="cap-num mb-1">Assets tracked · CTS</div><div class="display-2 text-3xl" style="color: var(--ink);">1.86 L</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Coolers · pan-India</div></div>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mt-3">
-    <div class="card p-4"><div class="cap-num mb-1">Product</div><div class="font-semibold" style="color: var(--ink);">Ashish Chandorkar</div></div>
-    <div class="card p-4"><div class="cap-num mb-1">Engineering</div><div class="font-semibold" style="color: var(--ink);">Abhishek Shinde · Fahim Sakri</div></div>
-    <div class="card p-4"><div class="cap-num mb-1">RCPL counterpart</div><div class="font-semibold" style="color: var(--ink);">Shashi Mohan</div></div>
-  </div>
+<p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">Reliance Consumer Products. End-to-end digital platform (Pre-Sales, Van Sales, DMS, CTS, Pricing, SFA) built and run by Fynd across five PODs · ₹20,000 Cr FY26 run-rate.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
+<div class="card p-4"><div class="cap-num mb-1">FY26 run-rate</div><div class="display-2 text-3xl accent">₹20,000 Cr</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Under three years</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Active delivery PODs</div><div class="display-2 text-3xl" style="color: var(--ink);">5</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Bev + Non-Bev parallel</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Order coverage · in test</div><div class="display-2 text-3xl" style="color: var(--ink);">₹5,000 Cr+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across primary + secondary</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Assets tracked · CTS</div><div class="display-2 text-3xl" style="color: var(--ink);">1.86 L</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Coolers · pan-India</div></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mt-3">
+<div class="card p-4"><div class="cap-num mb-1">Product</div><div class="font-semibold" style="color: var(--ink);">Ashish Chandorkar</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Engineering</div><div class="font-semibold" style="color: var(--ink);">Abhishek Shinde · Fahim Sakri</div></div>
+<div class="card p-4"><div class="cap-num mb-1">RCPL counterpart</div><div class="font-semibold" style="color: var(--ink);">Shashi Mohan</div></div>
+</div>
 </div>
 <div class="od-hero-graphic">
 <div class="od-graphic-frame">
-<svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
-  <rect width="420" height="300" rx="16" fill="#f5f0e8" opacity="0.7"/>
-  <defs><marker id="arr-r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c8a97e"/></marker></defs>
-  <rect x="155" y="110" width="110" height="56" rx="10" fill="#2d2d2d"/>
-  <text x="210" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#e07a5f" letter-spacing="1">RCPL</text>
-  <text x="210" y="153" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#c8a97e">₹20K Cr FY26</text>
-  <rect x="20" y="36" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
-  <text x="60" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">CAMPA</text>
-  <rect x="170" y="18" width="80" height="30" rx="6" fill="#e07a5f"/>
-  <text x="210" y="38" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#fff">INDEPENDENCE</text>
-  <rect x="320" y="36" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
-  <text x="360" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">SOSYO</text>
-  <rect x="20" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
-  <text x="60" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">DMS</text>
-  <rect x="170" y="238" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
-  <text x="210" y="258" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">SFA</text>
-  <rect x="320" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
-  <text x="360" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">CTS</text>
-  <line x1="100" y1="51" x2="155" y2="126" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
-  <line x1="210" y1="48" x2="210" y2="110" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
-  <line x1="320" y1="51" x2="265" y2="126" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
-  <line x1="155" y1="155" x2="100" y2="220" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
-  <line x1="210" y1="166" x2="210" y2="238" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
-  <line x1="265" y1="155" x2="320" y2="220" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
-  <text x="210" y="285" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8a97e" letter-spacing="1" opacity="0.6">FMCG B2B DISTRIBUTION · RCPL</text>
+<svg fill="none" style="width:100%;max-width:420px;" viewbox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f5f0e8" height="300" opacity="0.7" rx="16" width="420"></rect>
+<defs><marker id="arr-r" markerheight="6" markerwidth="6" orient="auto" refx="5" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#c8a97e"></path></marker></defs>
+<rect fill="#2d2d2d" height="56" rx="10" width="110" x="155" y="110"></rect>
+<text fill="#e07a5f" font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="1" text-anchor="middle" x="210" y="136">RCPL</text>
+<text fill="#c8a97e" font-family="Inter,sans-serif" font-size="9" text-anchor="middle" x="210" y="153">₹20K Cr FY26</text>
+<rect fill="#fff" height="30" rx="6" stroke="#c8a97e" stroke-width="1" width="80" x="20" y="36"></rect>
+<text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="60" y="56">CAMPA</text>
+<rect fill="#e07a5f" height="30" rx="6" width="80" x="170" y="18"></rect>
+<text fill="#fff" font-family="JetBrains Mono,monospace" font-size="7" text-anchor="middle" x="210" y="38">INDEPENDENCE</text>
+<rect fill="#fff" height="30" rx="6" stroke="#c8a97e" stroke-width="1" width="80" x="320" y="36"></rect>
+<text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="360" y="56">SOSYO</text>
+<rect fill="#fff" height="30" rx="6" stroke="#c8a97e" stroke-width="1" width="80" x="20" y="220"></rect>
+<text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="60" y="240">DMS</text>
+<rect fill="#fff" height="30" rx="6" stroke="#c8a97e" stroke-width="1" width="80" x="170" y="238"></rect>
+<text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="210" y="258">SFA</text>
+<rect fill="#fff" height="30" rx="6" stroke="#c8a97e" stroke-width="1" width="80" x="320" y="220"></rect>
+<text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="360" y="240">CTS</text>
+<line marker-end="url(#arr-r)" stroke="#c8a97e" stroke-dasharray="4,3" stroke-width="1" x1="100" x2="155" y1="51" y2="126"></line>
+<line marker-end="url(#arr-r)" stroke="#c8a97e" stroke-dasharray="4,3" stroke-width="1" x1="210" x2="210" y1="48" y2="110"></line>
+<line marker-end="url(#arr-r)" stroke="#c8a97e" stroke-dasharray="4,3" stroke-width="1" x1="320" x2="265" y1="51" y2="126"></line>
+<line marker-end="url(#arr-r)" stroke="#c8a97e" stroke-dasharray="4,3" stroke-width="1" x1="155" x2="100" y1="155" y2="220"></line>
+<line marker-end="url(#arr-r)" stroke="#c8a97e" stroke-dasharray="4,3" stroke-width="1" x1="210" x2="210" y1="166" y2="238"></line>
+<line marker-end="url(#arr-r)" stroke="#c8a97e" stroke-dasharray="4,3" stroke-width="1" x1="265" x2="320" y1="155" y2="220"></line>
+<text fill="#c8a97e" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="1" opacity="0.6" text-anchor="middle" x="210" y="285">FMCG B2B DISTRIBUTION · RCPL</text>
 </svg>
 </div>
 </div>
 </div>
-
 <div class="od-meta-row" style="margin-top:24px;">
-  <span class="od-meta-tag"><span class="od-meta-sep">●</span> RCPL</span>
-  <span class="od-meta-tag"><span class="od-meta-sep">·</span> FMCG B2B</span>
-  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
-  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+<span class="od-meta-tag"><span class="od-meta-sep">●</span> RCPL</span>
+<span class="od-meta-tag"><span class="od-meta-sep">·</span> FMCG B2B</span>
+<span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+<span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
 </div>
 </div></section>
-
 <!-- Sticky in-page TOC -->
 <div class="story-toc">
-  <div class="story-toc-inner" id="story-toc">
-    <a href="#status">01 · Status</a>
-    <a href="#pods">02 · PODs</a>
-    <a href="#architecture">03 · Architecture</a>
-    <a href="#releases">04 · Releases</a>
-    <a href="#vision">05 · Vision</a>
-    <a href="#roadmap">06 · Roadmap</a>
-  </div>
+<div class="story-toc-inner" id="story-toc">
+<a href="#status">01 · Status</a>
+<a href="#pods">02 · PODs</a>
+<a href="#architecture">03 · Architecture</a>
+<a href="#releases">04 · Releases</a>
+<a href="#vision">05 · Vision</a>
+<a href="#roadmap">06 · Roadmap</a>
 </div>
-
+</div>
 <!-- §01 · Status -->
-<section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" id="status" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · Status · 24-Apr-2026 cycle</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Stabilise and scale, in parallel<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Two-track stance. Track 1 · take ownership of the existing two-year-old stack and ship production deployments every cycle to close gaps and harden data quality. Track 2 · architect a dedicated, RCPL-owned, AI-native FMCG OS as the long-term home.</p>
-
 <div class="grid md:grid-cols-3 gap-4">
-  <div class="card p-6">
-    <span class="pill live mb-3">Delivered · Mar–Apr</span>
-    <h3 class="font-semibold text-xl mb-3 mt-3" style="color: var(--ink);">40+ items shipped to production.</h3>
-    <ul class="text-sm space-y-2" style="color: var(--ink);">
-      <li>· 5 workflow areas covered : Asset Mgmt, CTS, Primary DMS, Pre-Sales, Configuration</li>
-      <li>· ~35,000 physical CSO visits eliminated via backend verification of legacy assets</li>
-      <li>· 9 data-correction scripts run · 20-Apr-2026 (back-verification, MAT code, FOS/Empl ID changes)</li>
-    </ul>
-  </div>
-  <div class="card p-6">
-    <span class="pill flight mb-3">In flight · 28-Apr deployment</span>
-    <h3 class="font-semibold text-xl mb-3 mt-3" style="color: var(--ink);">15 items in current cycle.</h3>
-    <ul class="text-sm space-y-2" style="color: var(--ink);">
-      <li>· 5 modules : Asset Mgmt, CTS, Primary DMS, Pre-Sales, SFA</li>
-      <li>· 3 new SFA capabilities : Target Setting &amp; Outlet Tiers, CSO target view, CSO Performance Dashboard</li>
-      <li>· Pre-Sales DMS · demo cleared, deployment confirmed for next week</li>
-    </ul>
-  </div>
-  <div class="card p-6">
-    <span class="pill plan mb-3">Phase 2 · 4 domains queued</span>
-    <h3 class="font-semibold text-xl mb-3 mt-3" style="color: var(--ink);">Decisions needed to unblock.</h3>
-    <ul class="text-sm space-y-2" style="color: var(--ink);">
-      <li>· Van Sales + Multi-Role UAM. Completes Beverage DMS coverage (~₹1,000 Cr volume)</li>
-      <li>· Non-Beverage SFA (Multi-Segment Mapping + Beat Mgmt). Resolves 60–70% of L1 ticket load</li>
-      <li>· Anchor Order Fulfilment. Covers 20–30% of all DBs across segments</li>
-      <li>· UAT bandwidth : Pre-Sales DMS, Auto DO, Non-Bev DMS in parallel testing; sign-off bandwidth bottlenecked</li>
-    </ul>
-  </div>
+<div class="card p-6">
+<span class="pill live mb-3">Delivered · Mar–Apr</span>
+<h3 class="font-semibold text-xl mb-3 mt-3" style="color: var(--ink);">40+ items shipped to production.</h3>
+<ul class="text-sm space-y-2" style="color: var(--ink);">
+<li>· 5 workflow areas covered : Asset Mgmt, CTS, Primary DMS, Pre-Sales, Configuration</li>
+<li>· ~35,000 physical CSO visits eliminated via backend verification of legacy assets</li>
+<li>· 9 data-correction scripts run · 20-Apr-2026 (back-verification, MAT code, FOS/Empl ID changes)</li>
+</ul>
+</div>
+<div class="card p-6">
+<span class="pill flight mb-3">In flight · 28-Apr deployment</span>
+<h3 class="font-semibold text-xl mb-3 mt-3" style="color: var(--ink);">15 items in current cycle.</h3>
+<ul class="text-sm space-y-2" style="color: var(--ink);">
+<li>· 5 modules : Asset Mgmt, CTS, Primary DMS, Pre-Sales, SFA</li>
+<li>· 3 new SFA capabilities : Target Setting &amp; Outlet Tiers, CSO target view, CSO Performance Dashboard</li>
+<li>· Pre-Sales DMS · demo cleared, deployment confirmed for next week</li>
+</ul>
+</div>
+<div class="card p-6">
+<span class="pill plan mb-3">Phase 2 · 4 domains queued</span>
+<h3 class="font-semibold text-xl mb-3 mt-3" style="color: var(--ink);">Decisions needed to unblock.</h3>
+<ul class="text-sm space-y-2" style="color: var(--ink);">
+<li>· Van Sales + Multi-Role UAM. Completes Beverage DMS coverage (~₹1,000 Cr volume)</li>
+<li>· Non-Beverage SFA (Multi-Segment Mapping + Beat Mgmt). Resolves 60–70% of L1 ticket load</li>
+<li>· Anchor Order Fulfilment. Covers 20–30% of all DBs across segments</li>
+<li>· UAT bandwidth : Pre-Sales DMS, Auto DO, Non-Bev DMS in parallel testing; sign-off bandwidth bottlenecked</li>
+</ul>
+</div>
 </div>
 </div></section>
-
 <!-- §02 · 5 PODs -->
-
 <div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT'S LIVE · 5 DELIVERY PODS <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">001 / 005</span></div>
-<section id="pods" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" id="pods" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · What's live · 5 delivery PODs</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five parallel tracks across Beverage and Non-Beverage<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each POD owns a slice of the route-to-market : Pre-Sales and Van Sales for the Beverage business; Multi-Segment Distributor Mapping, CSO empowerment, and Beat Management for the broader CSO field force; CTS for cooler-asset deployment; Primary DMS for distributor ordering; Pricing &amp; Promotions for the full margin-and-scheme stack.</p>
-
 <div class="card overflow-hidden">
 <table class="grid-table">
-  <thead>
-    <tr><th>POD</th><th>Initiative</th><th>Business impact</th><th>Business unit</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>POD 1</td><td>Pre-Sales</td><td>80% of distributors · ~₹4,000 Cr order volume</td><td>Beverage</td></tr>
-    <tr><td>POD 1</td><td>Van Sales</td><td>20% of distributors · ~₹1,000 Cr order volume</td><td>Beverage</td></tr>
-    <tr><td>POD 1</td><td>User Access Mgmt · multi-role</td><td>20% of Beverage DBs need multi-role access</td><td>Beverage</td></tr>
-    <tr><td>POD 2</td><td>CTS · Cooler Tracking System</td><td>~₹50 Cr asset-loss avoidance via tracking + stakeholder visibility</td><td>Beverage</td></tr>
-    <tr><td>POD 3</td><td>Multi-Segment Distributor Mapping</td><td>60–70% of L1 issue tickets resolved</td><td>All Non-Beverage</td></tr>
-    <tr><td>POD 3</td><td>Empowering CSOs</td><td>CSO productivity uplift</td><td>Staples</td></tr>
-    <tr><td>POD 3</td><td>Managerial App</td><td>CSO productivity</td><td>All</td></tr>
-    <tr><td>POD 3</td><td>Beat Management</td><td>CSO productivity &amp; compliance</td><td>All</td></tr>
-    <tr><td>POD 4</td><td>Auto DO enhancements</td><td>Supports ₹500 Cr/month orders · ~₹1 Cr FTE optimisation</td><td>Beverage</td></tr>
-    <tr><td>POD 4</td><td>Primary DMS for other segments</td><td>Supports ₹1,000 Cr/month orders</td><td>All Non-Beverage</td></tr>
-    <tr><td>POD 4</td><td>User Access Mgmt · multi-user</td><td>Access for 1,000+ distributors</td><td>All</td></tr>
-    <tr><td>POD 4</td><td>Anchor Order Fulfilment</td><td>20–30% of DBs across the business are anchors</td><td>All</td></tr>
-    <tr><td>POD 5</td><td>Operational fixes &amp; tasks</td><td>FTE optimisation, productivity increase</td><td>Digital / Business Ops</td></tr>
-    <tr><td>POD 5</td><td>Pricing &amp; Promotions</td><td>Supports ₹1,200 Cr/month primary pricing · secondary scheme uplift</td><td>All</td></tr>
-  </tbody>
+<thead>
+<tr><th>POD</th><th>Initiative</th><th>Business impact</th><th>Business unit</th></tr>
+</thead>
+<tbody>
+<tr><td>POD 1</td><td>Pre-Sales</td><td>80% of distributors · ~₹4,000 Cr order volume</td><td>Beverage</td></tr>
+<tr><td>POD 1</td><td>Van Sales</td><td>20% of distributors · ~₹1,000 Cr order volume</td><td>Beverage</td></tr>
+<tr><td>POD 1</td><td>User Access Mgmt · multi-role</td><td>20% of Beverage DBs need multi-role access</td><td>Beverage</td></tr>
+<tr><td>POD 2</td><td>CTS · Cooler Tracking System</td><td>~₹50 Cr asset-loss avoidance via tracking + stakeholder visibility</td><td>Beverage</td></tr>
+<tr><td>POD 3</td><td>Multi-Segment Distributor Mapping</td><td>60–70% of L1 issue tickets resolved</td><td>All Non-Beverage</td></tr>
+<tr><td>POD 3</td><td>Empowering CSOs</td><td>CSO productivity uplift</td><td>Staples</td></tr>
+<tr><td>POD 3</td><td>Managerial App</td><td>CSO productivity</td><td>All</td></tr>
+<tr><td>POD 3</td><td>Beat Management</td><td>CSO productivity &amp; compliance</td><td>All</td></tr>
+<tr><td>POD 4</td><td>Auto DO enhancements</td><td>Supports ₹500 Cr/month orders · ~₹1 Cr FTE optimisation</td><td>Beverage</td></tr>
+<tr><td>POD 4</td><td>Primary DMS for other segments</td><td>Supports ₹1,000 Cr/month orders</td><td>All Non-Beverage</td></tr>
+<tr><td>POD 4</td><td>User Access Mgmt · multi-user</td><td>Access for 1,000+ distributors</td><td>All</td></tr>
+<tr><td>POD 4</td><td>Anchor Order Fulfilment</td><td>20–30% of DBs across the business are anchors</td><td>All</td></tr>
+<tr><td>POD 5</td><td>Operational fixes &amp; tasks</td><td>FTE optimisation, productivity increase</td><td>Digital / Business Ops</td></tr>
+<tr><td>POD 5</td><td>Pricing &amp; Promotions</td><td>Supports ₹1,200 Cr/month primary pricing · secondary scheme uplift</td><td>All</td></tr>
+</tbody>
 </table>
 </div>
 </div></section>
-
 <!-- §03 · Architecture / Six surfaces -->
-
 <div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">ARCHITECTURE · SIX PLATFORM SURFACES <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">002 / 005</span></div>
-<section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" id="architecture" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Architecture · six platform surfaces</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One DMS, six entry points<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The same data backbone serves every stakeholder (RCPL business team, distributor, channel sales officer, area sales manager, BPO ops, service provider) through a purpose-fit interface for each.</p>
-
 <div class="grid md:grid-cols-2 gap-4">
-  <div class="surface-card">
-    <div class="cap-num mb-2">01 · Admin Portal</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">RCPL Business + L1 ops console.</h3>
-    <p class="text-sm mb-3" style="color: var(--ink);">Bulk uploads · onboarding (distributor, CSO, retailer, factory, APOB) · pricing &amp; scheme rule setup · article-market mapping · primary indent management · data-correction scripts.</p>
-    <p class="url mb-3"><a href="https://portal.reliancedms.com/" target="_blank" rel="noopener">https://portal.reliancedms.com/</a></p>
-    <a href="/assets/jcp/rcpl/admin-indent-management.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-      <img src="/assets/jcp/rcpl/admin-indent-management.jpg" alt="Admin Portal · Primary Indent Management · 787 orders · Pending / Accepted / Rejected" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 320px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-    </a>
-  </div>
-  <div class="surface-card">
-    <div class="cap-num mb-2">02 · Distributor Platform</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Primary order + secondary action hub.</h3>
-    <p class="text-sm mb-3" style="color: var(--ink);">5-step primary ordering with FTL guidance and credit balance check · accept / modify / reject retailer secondary orders · invoice + picklist downloads at order or beat level · returns and reconciliation flows.</p>
-    <p class="url mb-3"><a href="https://reliancedms.jiomartpartners.com" target="_blank" rel="noopener">https://reliancedms.jiomartpartners.com</a></p>
-    <a href="/assets/jcp/rcpl/distributor-order-details.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-      <img src="/assets/jcp/rcpl/distributor-order-details.jpg" alt="Distributor Platform · order details · Accept / Modify / Reject" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 320px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-    </a>
-  </div>
-  <div class="surface-card">
-    <div class="cap-num mb-2">03 · CSO App</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Field-facing tool for channel sales officers.</h3>
-    <p class="text-sm mb-3" style="color: var(--ink);">Retailer onboarding (OTP-verified mobile + store image) · beat plan view (today / tomorrow / monthly) · category and brand browsing for secondary orders · off-beat ordering · Signature retailer 5-section onboarding (GSTIN auto-populate · penny-drop bank validation · branding capture).</p>
-    <p class="url mb-3"><a href="https://rcpl.jmpx3.de" target="_blank" rel="noopener">https://rcpl.jmpx3.de</a> · mobile app (Samruddhi)</p>
-    <div class="grid grid-cols-2 gap-2">
-      <a href="/assets/jcp/rcpl/cso-app-login.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-login.jpg" alt="CSO App · brand splash + sign-in to FOS · OTP verification" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 280px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-      </a>
-      <a href="/assets/jcp/rcpl/cso-app-home.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-home.jpg" alt="CSO App · home · today's beat plan + onboard retailers" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 280px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-      </a>
-    </div>
-    <div class="grid grid-cols-2 gap-2 mt-2">
-      <a href="/assets/jcp/rcpl/cso-app-onboard-otp.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-onboard-otp.jpg" alt="CSO App · retailer onboarding · OTP verification" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-      </a>
-      <a href="/assets/jcp/rcpl/cso-app-beat-mapping.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-beat-mapping.jpg" alt="CSO App · beat plan + retailer mapping" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-      </a>
-    </div>
-    <div class="mt-2">
-      <a href="/assets/jcp/rcpl/cso-app-beat-flow.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-beat-flow.jpg" alt="CSO App · beat mapping flow · distributor + beat selection" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 200px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-      </a>
-    </div>
-    <div class="mt-2">
-      <a href="/assets/jcp/rcpl/cso-app-cart-review.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-cart-review.jpg" alt="CSO App · cart + review order · pricing, margin, scheme breakdown" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-      </a>
-    </div>
-  </div>
-  <div class="surface-card">
-    <div class="cap-num mb-2">04 · Saarthi · assisted ordering</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">ASE / ASM places primary orders for distributors.</h3>
-    <p class="text-sm mb-3" style="color: var(--ink);">Mobile-web · ASM/ASE login by mobile + OTP · view mapped distributor list · click-through auto-login into the distributor's ordering portal · place full primary order with cart, scheme, and balance checks.</p>
-    <p class="url mb-3"><a href="https://saarthi.reliancedms.com/" target="_blank" rel="noopener">https://saarthi.reliancedms.com/</a></p>
-    <a href="/assets/jcp/rcpl/dms-login.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-      <img src="/assets/jcp/rcpl/dms-login.jpg" alt="DMS login · mobile-OTP entry" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 200px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
-    </a>
-  </div>
-  <div class="surface-card">
-    <div class="cap-num mb-2">05 · CMS Platform</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Article + catalogue authoring.</h3>
-    <p class="text-sm mb-3" style="color: var(--ink);">Single + bulk article creation · L3-category-specific Excel templates · image and video upload · inventory mapping · article-dimension definitions for primary / secondary / both · L2-category attribute setup for product listing filters.</p>
-    <p class="url"><a href="https://platform.jiomartpartners.com/" target="_blank" rel="noopener">https://platform.jiomartpartners.com/</a></p>
-  </div>
-  <div class="surface-card">
-    <div class="cap-num mb-2">06 · CTS · Cooler Tracking System</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Asset lifecycle across 10 stakeholder roles.</h3>
-    <p class="text-sm mb-3" style="color: var(--ink);">12-stage workflow : request initiation by FOS · ASE/ASM approval · BPO compliance + SAP code · CDE service-provider allocation · GRN upload · CCO generation in SAP · delivery + e-way bill · QR-scan installation · OTP confirmation · agreement upload · BPO verification &amp; closure.</p>
-    <p class="url"><a href="https://jio-dms-service.extensions.jmpx3.de/asset-management-login" target="_blank" rel="noopener">jio-dms-service.extensions.jmpx3.de/asset-management-login</a></p>
-  </div>
+<div class="surface-card">
+<div class="cap-num mb-2">01 · Admin Portal</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">RCPL Business + L1 ops console.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Bulk uploads · onboarding (distributor, CSO, retailer, factory, APOB) · pricing &amp; scheme rule setup · article-market mapping · primary indent management · data-correction scripts.</p>
+<p class="url mb-3"><a href="https://portal.reliancedms.com/" rel="noopener" target="_blank">https://portal.reliancedms.com/</a></p>
+<a class="js-lightbox" href="/assets/jcp/rcpl/admin-indent-management.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="Admin Portal · Primary Indent Management · 787 orders · Pending / Accepted / Rejected" class="od-img" loading="lazy" src="/assets/jcp/rcpl/admin-indent-management.jpg"/>
+</a>
+</div>
+<div class="surface-card">
+<div class="cap-num mb-2">02 · Distributor Platform</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Primary order + secondary action hub.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">5-step primary ordering with FTL guidance and credit balance check · accept / modify / reject retailer secondary orders · invoice + picklist downloads at order or beat level · returns and reconciliation flows.</p>
+<p class="url mb-3"><a href="https://reliancedms.jiomartpartners.com" rel="noopener" target="_blank">https://reliancedms.jiomartpartners.com</a></p>
+<a class="js-lightbox" href="/assets/jcp/rcpl/distributor-order-details.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="Distributor Platform · order details · Accept / Modify / Reject" class="od-img" loading="lazy" src="/assets/jcp/rcpl/distributor-order-details.jpg"/>
+</a>
+</div>
+<div class="surface-card">
+<div class="cap-num mb-2">03 · CSO App</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Field-facing tool for channel sales officers.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Retailer onboarding (OTP-verified mobile + store image) · beat plan view (today / tomorrow / monthly) · category and brand browsing for secondary orders · off-beat ordering · Signature retailer 5-section onboarding (GSTIN auto-populate · penny-drop bank validation · branding capture).</p>
+<p class="url mb-3"><a href="https://rcpl.jmpx3.de" rel="noopener" target="_blank">https://rcpl.jmpx3.de</a> · mobile app (Samruddhi)</p>
+<div class="grid grid-cols-2 gap-2">
+<a class="js-lightbox" href="/assets/jcp/rcpl/cso-app-login.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="CSO App · brand splash + sign-in to FOS · OTP verification" class="od-img" loading="lazy" src="/assets/jcp/rcpl/cso-app-login.jpg"/>
+</a>
+<a class="js-lightbox" href="/assets/jcp/rcpl/cso-app-home.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="CSO App · home · today's beat plan + onboard retailers" class="od-img" loading="lazy" src="/assets/jcp/rcpl/cso-app-home.jpg"/>
+</a>
+</div>
+<div class="grid grid-cols-2 gap-2 mt-2">
+<a class="js-lightbox" href="/assets/jcp/rcpl/cso-app-onboard-otp.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="CSO App · retailer onboarding · OTP verification" class="od-img" loading="lazy" src="/assets/jcp/rcpl/cso-app-onboard-otp.jpg"/>
+</a>
+<a class="js-lightbox" href="/assets/jcp/rcpl/cso-app-beat-mapping.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="CSO App · beat plan + retailer mapping" class="od-img" loading="lazy" src="/assets/jcp/rcpl/cso-app-beat-mapping.jpg"/>
+</a>
+</div>
+<div class="mt-2">
+<a class="js-lightbox" href="/assets/jcp/rcpl/cso-app-beat-flow.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="CSO App · beat mapping flow · distributor + beat selection" class="od-img" loading="lazy" src="/assets/jcp/rcpl/cso-app-beat-flow.jpg"/>
+</a>
+</div>
+<div class="mt-2">
+<a class="js-lightbox" href="/assets/jcp/rcpl/cso-app-cart-review.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="CSO App · cart + review order · pricing, margin, scheme breakdown" class="od-img" loading="lazy" src="/assets/jcp/rcpl/cso-app-cart-review.jpg"/>
+</a>
+</div>
+</div>
+<div class="surface-card">
+<div class="cap-num mb-2">04 · Saarthi · assisted ordering</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">ASE / ASM places primary orders for distributors.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Mobile-web · ASM/ASE login by mobile + OTP · view mapped distributor list · click-through auto-login into the distributor's ordering portal · place full primary order with cart, scheme, and balance checks.</p>
+<p class="url mb-3"><a href="https://saarthi.reliancedms.com/" rel="noopener" target="_blank">https://saarthi.reliancedms.com/</a></p>
+<a class="js-lightbox" href="/assets/jcp/rcpl/dms-login.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
+<img alt="DMS login · mobile-OTP entry" class="od-img" loading="lazy" src="/assets/jcp/rcpl/dms-login.jpg"/>
+</a>
+</div>
+<div class="surface-card">
+<div class="cap-num mb-2">05 · CMS Platform</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Article + catalogue authoring.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">Single + bulk article creation · L3-category-specific Excel templates · image and video upload · inventory mapping · article-dimension definitions for primary / secondary / both · L2-category attribute setup for product listing filters.</p>
+<p class="url"><a href="https://platform.jiomartpartners.com/" rel="noopener" target="_blank">https://platform.jiomartpartners.com/</a></p>
+</div>
+<div class="surface-card">
+<div class="cap-num mb-2">06 · CTS · Cooler Tracking System</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Asset lifecycle across 10 stakeholder roles.</h3>
+<p class="text-sm mb-3" style="color: var(--ink);">12-stage workflow : request initiation by FOS · ASE/ASM approval · BPO compliance + SAP code · CDE service-provider allocation · GRN upload · CCO generation in SAP · delivery + e-way bill · QR-scan installation · OTP confirmation · agreement upload · BPO verification &amp; closure.</p>
+<p class="url"><a href="https://jio-dms-service.extensions.jmpx3.de/asset-management-login" rel="noopener" target="_blank">jio-dms-service.extensions.jmpx3.de/asset-management-login</a></p>
+</div>
 </div>
 </div></section>
-
 <!-- §04 · Release notes (merged shipped + upcoming) -->
-
 <div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">RELEASE NOTES <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">003 / 005</span></div>
-<section id="releases" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" id="releases" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Release notes</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three releases shipped · one cycle in flight<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">40+ items deployed across Asset Management, CTS, Primary DMS, Pre-Sales, BPO flows, and Configuration in Mar-Apr 2026, including the elimination of ~35,000 physical CSO field visits via backend verification. 15 items confirmed for the 28-Apr-2026 cycle across the same five modules.</p>
-
 <div class="cap-num mb-4" style="color: var(--accent);">Released · Mar-Apr 2026 · 3 production deployments</div>
 <div class="grid md:grid-cols-3 gap-4">
-  <div class="card p-6">
-    <span class="pill live mb-3">Release 1 · Production</span>
-    <h3 class="font-semibold text-lg mb-2 mt-3" style="color: var(--ink);">CTU Asset Verification · Samruddhi App.</h3>
-    <p class="text-sm mb-4" style="color: var(--ink);">Counter Top Unit verification for the CCB business. CSOs and Sr. CSOs verify CTUs by scanning the QR code or entering serial number manually.</p>
-    <div class="cap-num mb-1" style="color: var(--ink-muted);">Impact</div>
-    <ul class="text-sm space-y-1" style="color: var(--ink);">
-      <li>· Pan-India CTU tracking across retailers</li>
-      <li>· Retailer-level asset deployment accountability</li>
-      <li>· Exact CSO-recorded location captured</li>
-    </ul>
-  </div>
-
-  <div class="card p-6">
-    <span class="pill live mb-3">Release 2 · Production</span>
-    <h3 class="font-semibold text-lg mb-2 mt-3" style="color: var(--ink);">BPO flows, asset dashboard &amp; data quality.</h3>
-    <ul class="text-sm space-y-1 mb-3" style="color: var(--ink);">
-      <li>· Delivery personnel limited to 10 asset requests · fixed (now shows all)</li>
-      <li>· Bulk upload allowed blank SAP code for BPO users · blocked</li>
-      <li>· Pagination count not visible on UI · fixed</li>
-      <li>· Agreements-rejected status incorrectly showing for BPO delivery user · fixed</li>
-      <li>· Dashboard record-count missing for BPO delivery, CCO, document verifier · fixed</li>
-      <li>· Non-compliant standardised reason list added to dropdown</li>
-      <li>· Asset type CTU / vending machine added</li>
-    </ul>
-  </div>
-
-  <div class="card p-6">
-    <span class="pill live mb-3">Release 3 · Production · latest</span>
-    <h3 class="font-semibold text-lg mb-2 mt-3" style="color: var(--ink);">CTS · Asset Mgmt, BPO &amp; field operations.</h3>
-    <ul class="text-sm space-y-1 mb-3" style="color: var(--ink);">
-      <li>· Incorrect Return Request flow for permanent asset post-delivery · resolved</li>
-      <li>· Operational activities on dummy retailers · restricted</li>
-      <li>· SP / CDE asset-sheet download for Status ALL · fixed</li>
-      <li>· Asset reassignment after suspension (GRN details not found) · resolved</li>
-      <li>· BPO customer can modify request fields irrespective of status</li>
-      <li>· Delivery challan fields 3/4/5 made non-mandatory</li>
-      <li>· Backend verification · eliminates ~35,000 physical CSO visits</li>
-      <li>· SAP customer code displayed for CSO and ASE/ASM roles</li>
-    </ul>
-  </div>
+<div class="card p-6">
+<span class="pill live mb-3">Release 1 · Production</span>
+<h3 class="font-semibold text-lg mb-2 mt-3" style="color: var(--ink);">CTU Asset Verification · Samruddhi App.</h3>
+<p class="text-sm mb-4" style="color: var(--ink);">Counter Top Unit verification for the CCB business. CSOs and Sr. CSOs verify CTUs by scanning the QR code or entering serial number manually.</p>
+<div class="cap-num mb-1" style="color: var(--ink-muted);">Impact</div>
+<ul class="text-sm space-y-1" style="color: var(--ink);">
+<li>· Pan-India CTU tracking across retailers</li>
+<li>· Retailer-level asset deployment accountability</li>
+<li>· Exact CSO-recorded location captured</li>
+</ul>
 </div>
-
+<div class="card p-6">
+<span class="pill live mb-3">Release 2 · Production</span>
+<h3 class="font-semibold text-lg mb-2 mt-3" style="color: var(--ink);">BPO flows, asset dashboard &amp; data quality.</h3>
+<ul class="text-sm space-y-1 mb-3" style="color: var(--ink);">
+<li>· Delivery personnel limited to 10 asset requests · fixed (now shows all)</li>
+<li>· Bulk upload allowed blank SAP code for BPO users · blocked</li>
+<li>· Pagination count not visible on UI · fixed</li>
+<li>· Agreements-rejected status incorrectly showing for BPO delivery user · fixed</li>
+<li>· Dashboard record-count missing for BPO delivery, CCO, document verifier · fixed</li>
+<li>· Non-compliant standardised reason list added to dropdown</li>
+<li>· Asset type CTU / vending machine added</li>
+</ul>
+</div>
+<div class="card p-6">
+<span class="pill live mb-3">Release 3 · Production · latest</span>
+<h3 class="font-semibold text-lg mb-2 mt-3" style="color: var(--ink);">CTS · Asset Mgmt, BPO &amp; field operations.</h3>
+<ul class="text-sm space-y-1 mb-3" style="color: var(--ink);">
+<li>· Incorrect Return Request flow for permanent asset post-delivery · resolved</li>
+<li>· Operational activities on dummy retailers · restricted</li>
+<li>· SP / CDE asset-sheet download for Status ALL · fixed</li>
+<li>· Asset reassignment after suspension (GRN details not found) · resolved</li>
+<li>· BPO customer can modify request fields irrespective of status</li>
+<li>· Delivery challan fields 3/4/5 made non-mandatory</li>
+<li>· Backend verification · eliminates ~35,000 physical CSO visits</li>
+<li>· SAP customer code displayed for CSO and ASE/ASM roles</li>
+</ul>
+</div>
+</div>
 <div class="cap-num mt-12 mb-4" style="color: var(--accent);">Upcoming · 28-Apr-2026 cycle · 15 items across 5 modules</div>
 <div class="card overflow-hidden">
 <table class="grid-table">
-  <thead>
-    <tr><th>Module</th><th>What is deploying</th><th>Status</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Asset Mgmt · CTS</td><td>Cash discount by distributor; retailer order listing; Aadhaar Card renamed to Masked Aadhaar Card; State field in Address · mandatory dropdown for CSO, ASE/ASM, BPO (request blocked if state missing)</td><td><span class="pill flight">In flight</span></td></tr>
-    <tr><td>CTS</td><td>OTP removal from installation flow</td><td><span class="pill flight">In flight</span></td></tr>
-    <tr><td>Primary DMS</td><td>Bulk Order Modification; Credit Deficit handling; HPC segment enabled for primary ordering</td><td><span class="pill flight">In flight</span></td></tr>
-    <tr><td>Pre-Sales</td><td>UI &amp; validation enhancement; retailer order listing; invoice format phase 2; cart enhancements; load creation enhancement</td><td><span class="pill flight">In flight</span></td></tr>
-    <tr><td>SFA</td><td>Target Setting &amp; Outlet Tiers; Target View for CSO; CSO Performance Dashboard <span class="cap-num" style="color: var(--ink-soft);">3 new SFA capabilities</span></td><td><span class="pill flight">In flight</span></td></tr>
-  </tbody>
+<thead>
+<tr><th>Module</th><th>What is deploying</th><th>Status</th></tr>
+</thead>
+<tbody>
+<tr><td>Asset Mgmt · CTS</td><td>Cash discount by distributor; retailer order listing; Aadhaar Card renamed to Masked Aadhaar Card; State field in Address · mandatory dropdown for CSO, ASE/ASM, BPO (request blocked if state missing)</td><td><span class="pill flight">In flight</span></td></tr>
+<tr><td>CTS</td><td>OTP removal from installation flow</td><td><span class="pill flight">In flight</span></td></tr>
+<tr><td>Primary DMS</td><td>Bulk Order Modification; Credit Deficit handling; HPC segment enabled for primary ordering</td><td><span class="pill flight">In flight</span></td></tr>
+<tr><td>Pre-Sales</td><td>UI &amp; validation enhancement; retailer order listing; invoice format phase 2; cart enhancements; load creation enhancement</td><td><span class="pill flight">In flight</span></td></tr>
+<tr><td>SFA</td><td>Target Setting &amp; Outlet Tiers; Target View for CSO; CSO Performance Dashboard <span class="cap-num" style="color: var(--ink-soft);">3 new SFA capabilities</span></td><td><span class="pill flight">In flight</span></td></tr>
+</tbody>
 </table>
 </div>
-
 <div class="card p-5 mt-6">
-  <div class="cap-num mb-1">No-code utility for data-correction scripts</div>
-  <p class="text-sm" style="color: var(--ink);">9 manual data-correction scripts ran on 20-Apr-2026 (back-verification, retailer deletions, FOS name change, MAT code corrections, employee ID change, signature bank addition, retailer name / type change, ASM approval-panel access). A no-code utility for these manual script runs is in build · 2–3 week target.</p>
+<div class="cap-num mb-1">No-code utility for data-correction scripts</div>
+<p class="text-sm" style="color: var(--ink);">9 manual data-correction scripts ran on 20-Apr-2026 (back-verification, retailer deletions, FOS name change, MAT code corrections, employee ID change, signature bank addition, retailer name / type change, ASM approval-panel access). A no-code utility for these manual script runs is in build · 2–3 week target.</p>
 </div>
 </div></section>
-
 <!-- §05 · Vision -->
-
 <div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">VISION · AI-NATIVE FMCG OS <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">004 / 005</span></div>
-<section id="vision" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" id="vision" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Vision · AI-native FMCG OS</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six-month plan · four integrated layers<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Proposed to the Reliance APEX Board on 01-May-2026. RCPL's distribution platform should not be a configured commercial DMS. It should be an AI-first, RCPL-owned operating system. Purpose-built for the scale, segment-mix, and route-to-market complexity that no off-the-shelf product covers end-to-end. Three principles: AI at the core (not bolted on); hyper-personalised down to the call; plug-in anything, plug into anything.</p>
-
 <div class="space-y-4">
-  <div class="card p-6">
-    <div class="flex items-start gap-4 mb-3">
-      <div class="layer-num">1</div>
-      <div class="flex-1">
-        <span class="pill proposal">Proposal · 6-month plan</span>
-        <h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">AI Sales Agent. The intelligent layer over SFA.</h3>
-      </div>
-    </div>
-    <p class="text-sm mb-4" style="color: var(--ink);">An AI-generated task and incentive engine that plugs into the Saarthi SFA app. Every morning, every sales rep gets a hyper-personalised plan (for each store, for each call) with instant reward points the moment a task is completed.</p>
-    <div class="card overflow-hidden" style="background: var(--bone); border: 1px solid var(--border);">
-      <table class="grid-table">
-        <thead><tr><th>Capability</th><th>What it does</th><th>Outcome</th></tr></thead>
-        <tbody>
-          <tr><td>Hyper-personalised target</td><td>ML-optimised target for each store, each call · not a flat beat-level number</td><td>Right target, right place</td></tr>
-          <tr><td>Hyper-personalised task</td><td>Execution tasks per store, per visit : focus SKUs, visibility, scheme push, recovery</td><td>Sharper field execution</td></tr>
-          <tr><td>Task-based incentive</td><td>Instant reward points on task completion · gamified, transparent, daily</td><td>Drives the right action, every call</td></tr>
-          <tr><td>Sales uplift</td><td>Closed-loop measurement of task → action → outcome at the store level</td><td>3–8% sales uplift per store</td></tr>
-          <tr><td>Intelligent order prediction</td><td>One-click ready order · ML predicts the basket the rep should propose at this store today</td><td>AOV up 8–12%</td></tr>
-          <tr><td>Intelligent engagement</td><td>Personalised nudges to rep and retailer · timed, contextual, action-oriented</td><td>30–50% higher engagement; 3–5% more transactions</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="card p-6">
-    <div class="flex items-start gap-4 mb-3">
-      <div class="layer-num">2</div>
-      <div class="flex-1">
-        <span class="pill proposal">Proposal · 6-month plan</span>
-        <h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">NextGen SFA. The field-force operating layer.</h3>
-      </div>
-    </div>
-    <p class="text-sm mb-3" style="color: var(--ink);">Saarthi evolves from a transaction app to a decision app. Four sub-layers stitched into the AI layer above.</p>
-    <ul class="text-sm space-y-2" style="color: var(--ink);">
-      <li>· <strong style="color: var(--ink);">Intelligent interface</strong> · search, text and voice ordering across WhatsApp, PWA, mobile · 30%+ adoption uplift target among CSOs and retailers.</li>
-      <li>· <strong style="color: var(--ink);">Intelligent product baskets</strong> · ML-based ready baskets per outlet · 5–18% lift in focus / premium-product distribution.</li>
-      <li>· <strong style="color: var(--ink);">Plug-in fabric</strong> · audited integration with SAP, image recognition (visibility / share-of-shelf), inventory, loyalty, wallet, payment, lending partners · extend without re-platforming.</li>
-      <li>· <strong style="color: var(--ink);">Beat &amp; manager layer</strong> · beat management, multi-segment distributor mapping, CSO Managerial App, target view, CSO performance dashboards. Already on the in-flight roadmap.</li>
-    </ul>
-  </div>
-
-  <div class="card p-6">
-    <div class="flex items-start gap-4 mb-3">
-      <div class="layer-num">3</div>
-      <div class="flex-1">
-        <span class="pill proposal">Proposal · 6-month plan</span>
-        <h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">NextGen DMS. The AI-augmented distributor layer.</h3>
-      </div>
-    </div>
-    <p class="text-sm mb-3" style="color: var(--ink);">The Distributor Management System becomes an AI-augmented automation system. To remove the age-old inefficiencies of traditional DMS (manual operators, stockouts, broken credit cycles, slow loadouts) and put intelligence at the centre.</p>
-    <div class="grid md:grid-cols-2 gap-4">
-      <div>
-        <div class="cap-num mb-2" style="color: var(--ink-muted);">Sales &amp; inventory intelligence</div>
-        <ul class="text-sm space-y-1" style="color: var(--ink);">
-          <li>· Secondary order prediction</li>
-          <li>· Stock-out prediction &amp; SKU-level alerts</li>
-          <li>· Primary order recommendation</li>
-          <li>· Loadout recommendation (ready-stock + Van Sales)</li>
-          <li>· Pre-order + remote order (covers rep absenteeism)</li>
-          <li>· Outlet attrition prediction with recovery actions</li>
-        </ul>
-      </div>
-      <div>
-        <div class="cap-num mb-2" style="color: var(--ink-muted);">Credit, cost &amp; CX intelligence</div>
-        <ul class="text-sm space-y-1" style="color: var(--ink);">
-          <li>· Outlet credit scorecard from RCPL transaction history</li>
-          <li>· Market credit recovery alerts and retailer nudges</li>
-          <li>· Channel financing &amp; micro-credit (one-click onboarding)</li>
-          <li>· Operating-cost optimisation (modern UI for self-serve DBs)</li>
-          <li>· Delivery route optimisation</li>
-          <li>· Stock-loss / expiry alerts with suggested actions</li>
-          <li>· Fill-rate &amp; CSAT scorecards · weekly · per distributor</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <div class="card p-6">
-    <div class="flex items-start gap-4 mb-3">
-      <div class="layer-num">4</div>
-      <div class="flex-1">
-        <span class="pill proposal">Proposal · 6-month plan</span>
-        <h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">eB2B App for retailers.</h3>
-      </div>
-    </div>
-    <p class="text-sm mb-3" style="color: var(--ink);">Retailers transact directly through a multi-channel eB2B layer (WhatsApp + PWA + native app), with intelligence pushed to the surface.</p>
-    <ul class="text-sm space-y-2" style="color: var(--ink);">
-      <li>· <strong style="color: var(--ink);">Intelligent interface</strong> · search, text, voice across WhatsApp, PWA, mobile · 30%+ adoption uplift target.</li>
-      <li>· <strong style="color: var(--ink);">Intelligent product baskets</strong> · ML-based, per-retailer ready baskets · 5–18% lift in focus / premium distribution.</li>
-      <li>· <strong style="color: var(--ink);">Personalised offers &amp; schemes</strong> · RCPL pricing &amp; promo engine surfaced contextually per retailer · integrated with secondary scheme pay-out.</li>
-      <li>· <strong style="color: var(--ink);">Loyalty &amp; wallet</strong> · native loyalty plug-in, retailer wallet, instant settlement. Closes the loop with the AI Sales Agent's reward points.</li>
-    </ul>
-  </div>
+<div class="card p-6">
+<div class="flex items-start gap-4 mb-3">
+<div class="layer-num">1</div>
+<div class="flex-1">
+<span class="pill proposal">Proposal · 6-month plan</span>
+<h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">AI Sales Agent. The intelligent layer over SFA.</h3>
 </div>
-
+</div>
+<p class="text-sm mb-4" style="color: var(--ink);">An AI-generated task and incentive engine that plugs into the Saarthi SFA app. Every morning, every sales rep gets a hyper-personalised plan (for each store, for each call) with instant reward points the moment a task is completed.</p>
+<div class="card overflow-hidden" style="background: var(--bone); border: 1px solid var(--border);">
+<table class="grid-table">
+<thead><tr><th>Capability</th><th>What it does</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td>Hyper-personalised target</td><td>ML-optimised target for each store, each call · not a flat beat-level number</td><td>Right target, right place</td></tr>
+<tr><td>Hyper-personalised task</td><td>Execution tasks per store, per visit : focus SKUs, visibility, scheme push, recovery</td><td>Sharper field execution</td></tr>
+<tr><td>Task-based incentive</td><td>Instant reward points on task completion · gamified, transparent, daily</td><td>Drives the right action, every call</td></tr>
+<tr><td>Sales uplift</td><td>Closed-loop measurement of task → action → outcome at the store level</td><td>3–8% sales uplift per store</td></tr>
+<tr><td>Intelligent order prediction</td><td>One-click ready order · ML predicts the basket the rep should propose at this store today</td><td>AOV up 8–12%</td></tr>
+<tr><td>Intelligent engagement</td><td>Personalised nudges to rep and retailer · timed, contextual, action-oriented</td><td>30–50% higher engagement; 3–5% more transactions</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="card p-6">
+<div class="flex items-start gap-4 mb-3">
+<div class="layer-num">2</div>
+<div class="flex-1">
+<span class="pill proposal">Proposal · 6-month plan</span>
+<h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">NextGen SFA. The field-force operating layer.</h3>
+</div>
+</div>
+<p class="text-sm mb-3" style="color: var(--ink);">Saarthi evolves from a transaction app to a decision app. Four sub-layers stitched into the AI layer above.</p>
+<ul class="text-sm space-y-2" style="color: var(--ink);">
+<li>· <strong style="color: var(--ink);">Intelligent interface</strong> · search, text and voice ordering across WhatsApp, PWA, mobile · 30%+ adoption uplift target among CSOs and retailers.</li>
+<li>· <strong style="color: var(--ink);">Intelligent product baskets</strong> · ML-based ready baskets per outlet · 5–18% lift in focus / premium-product distribution.</li>
+<li>· <strong style="color: var(--ink);">Plug-in fabric</strong> · audited integration with SAP, image recognition (visibility / share-of-shelf), inventory, loyalty, wallet, payment, lending partners · extend without re-platforming.</li>
+<li>· <strong style="color: var(--ink);">Beat &amp; manager layer</strong> · beat management, multi-segment distributor mapping, CSO Managerial App, target view, CSO performance dashboards. Already on the in-flight roadmap.</li>
+</ul>
+</div>
+<div class="card p-6">
+<div class="flex items-start gap-4 mb-3">
+<div class="layer-num">3</div>
+<div class="flex-1">
+<span class="pill proposal">Proposal · 6-month plan</span>
+<h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">NextGen DMS. The AI-augmented distributor layer.</h3>
+</div>
+</div>
+<p class="text-sm mb-3" style="color: var(--ink);">The Distributor Management System becomes an AI-augmented automation system. To remove the age-old inefficiencies of traditional DMS (manual operators, stockouts, broken credit cycles, slow loadouts) and put intelligence at the centre.</p>
+<div class="grid md:grid-cols-2 gap-4">
+<div>
+<div class="cap-num mb-2" style="color: var(--ink-muted);">Sales &amp; inventory intelligence</div>
+<ul class="text-sm space-y-1" style="color: var(--ink);">
+<li>· Secondary order prediction</li>
+<li>· Stock-out prediction &amp; SKU-level alerts</li>
+<li>· Primary order recommendation</li>
+<li>· Loadout recommendation (ready-stock + Van Sales)</li>
+<li>· Pre-order + remote order (covers rep absenteeism)</li>
+<li>· Outlet attrition prediction with recovery actions</li>
+</ul>
+</div>
+<div>
+<div class="cap-num mb-2" style="color: var(--ink-muted);">Credit, cost &amp; CX intelligence</div>
+<ul class="text-sm space-y-1" style="color: var(--ink);">
+<li>· Outlet credit scorecard from RCPL transaction history</li>
+<li>· Market credit recovery alerts and retailer nudges</li>
+<li>· Channel financing &amp; micro-credit (one-click onboarding)</li>
+<li>· Operating-cost optimisation (modern UI for self-serve DBs)</li>
+<li>· Delivery route optimisation</li>
+<li>· Stock-loss / expiry alerts with suggested actions</li>
+<li>· Fill-rate &amp; CSAT scorecards · weekly · per distributor</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="card p-6">
+<div class="flex items-start gap-4 mb-3">
+<div class="layer-num">4</div>
+<div class="flex-1">
+<span class="pill proposal">Proposal · 6-month plan</span>
+<h3 class="font-semibold text-xl mt-2" style="color: var(--ink);">eB2B App for retailers.</h3>
+</div>
+</div>
+<p class="text-sm mb-3" style="color: var(--ink);">Retailers transact directly through a multi-channel eB2B layer (WhatsApp + PWA + native app), with intelligence pushed to the surface.</p>
+<ul class="text-sm space-y-2" style="color: var(--ink);">
+<li>· <strong style="color: var(--ink);">Intelligent interface</strong> · search, text, voice across WhatsApp, PWA, mobile · 30%+ adoption uplift target.</li>
+<li>· <strong style="color: var(--ink);">Intelligent product baskets</strong> · ML-based, per-retailer ready baskets · 5–18% lift in focus / premium distribution.</li>
+<li>· <strong style="color: var(--ink);">Personalised offers &amp; schemes</strong> · RCPL pricing &amp; promo engine surfaced contextually per retailer · integrated with secondary scheme pay-out.</li>
+<li>· <strong style="color: var(--ink);">Loyalty &amp; wallet</strong> · native loyalty plug-in, retailer wallet, instant settlement. Closes the loop with the AI Sales Agent's reward points.</li>
+</ul>
+</div>
+</div>
 <div class="card p-6 mt-6" style="background: var(--bone);">
-  <div class="cap-num mb-2">Beyond DMS · the full FMCG OS</div>
-  <p class="text-sm" style="color: var(--ink);">Once the AI-native distribution platform is in steady state, the RCPL OS extends across the rest of the FMCG value chain (same data backbone, same AI layer, same plug-in fabric) applied to <strong style="color: var(--ink);">Marketing</strong> (brand, campaign, retailer loyalty, consumer activation), <strong style="color: var(--ink);">Manufacturing</strong> (plant-to-warehouse visibility, batch &amp; quality, demand-linked production planning) and <strong style="color: var(--ink);">Supply Chain</strong> (S&amp;OP, secondary logistics, inventory, demand sensing).</p>
+<div class="cap-num mb-2">Beyond DMS · the full FMCG OS</div>
+<p class="text-sm" style="color: var(--ink);">Once the AI-native distribution platform is in steady state, the RCPL OS extends across the rest of the FMCG value chain (same data backbone, same AI layer, same plug-in fabric) applied to <strong style="color: var(--ink);">Marketing</strong> (brand, campaign, retailer loyalty, consumer activation), <strong style="color: var(--ink);">Manufacturing</strong> (plant-to-warehouse visibility, batch &amp; quality, demand-linked production planning) and <strong style="color: var(--ink);">Supply Chain</strong> (S&amp;OP, secondary logistics, inventory, demand sensing).</p>
 </div>
-
 </div></section>
-
 <!-- §06 · Roadmap -->
-
 <div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">ROADMAP <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">005 / 005</span></div>
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" id="roadmap" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Roadmap</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The next 60 days. Closing Beverage. Opening Non-Beverage<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">RCPL has scaled to ₹20,000 Cr run-rate in under three years. Beverage primary is the spine that has carried that growth · Pre-Sales now runs 80% of distributors and routes ~₹4,000 Cr of order volume. The next cycle finishes Beverage and opens the Non-Beverage flank.</p>
-
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-  <div class="card p-6">
-    <div class="cap-num mb-3" style="color: var(--accent);">Close · Beverage</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Van Sales · the remaining 20%</h3>
-    <p class="text-sm mb-3" style="color: var(--ink-muted);">Pre-Sales already covers 80% of Beverage distributors. Van Sales closes the rest · ~<strong style="color: var(--ink);">₹1,000 Cr</strong> of order volume currently outside DMS. Multi-Role UAM ships alongside since 20% of these distributors need multi-role access.</p>
-    <p class="cap-num" style="color: var(--ink-soft);">Together with Auto DO (~₹500 Cr/month + ₹1 Cr FTE saved), this completes the Beverage spine.</p>
-  </div>
-  <div class="card p-6">
-    <div class="cap-num mb-3" style="color: #047857;">Protect · Field assets</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">CTS · Cooler Tracking</h3>
-    <p class="text-sm mb-3" style="color: var(--ink-muted);">1.86 lakh coolers are tracked across the field today. CTS Phase 2 minimises asset losses by ~<strong style="color: var(--ink);">₹50 Cr</strong> via continuous tracking and stakeholder visibility · the difference between assets that come back and assets that walk.</p>
-    <p class="cap-num" style="color: var(--ink-soft);">Backend verification eliminated ~35,000 physical CSO visits in the March–April cycle alone.</p>
-  </div>
-  <div class="card p-6">
-    <div class="cap-num mb-3" style="color: #C2410C;">Open · Non-Beverage</div>
-    <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Multi-Segment SFA · Beat Management</h3>
-    <p class="text-sm mb-3" style="color: var(--ink-muted);">Today's biggest operational drag · 60–70% of L1 support tickets stem from gaps in Non-Beverage distributor mapping. POD 3 ships Multi-Segment Mapping + Beat Management to resolve them at source. Primary DMS for other segments lights up ~<strong style="color: var(--ink);">₹1,000 Cr/month</strong> of additional order routing.</p>
-    <p class="cap-num" style="color: var(--ink-soft);">Plus the lever that compounds across all segments · Pricing &amp; Promotions at ~₹1,200 Cr/month primary scale.</p>
-  </div>
+<div class="card p-6">
+<div class="cap-num mb-3" style="color: var(--accent);">Close · Beverage</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Van Sales · the remaining 20%</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Pre-Sales already covers 80% of Beverage distributors. Van Sales closes the rest · ~<strong style="color: var(--ink);">₹1,000 Cr</strong> of order volume currently outside DMS. Multi-Role UAM ships alongside since 20% of these distributors need multi-role access.</p>
+<p class="cap-num" style="color: var(--ink-soft);">Together with Auto DO (~₹500 Cr/month + ₹1 Cr FTE saved), this completes the Beverage spine.</p>
 </div>
-
+<div class="card p-6">
+<div class="cap-num mb-3" style="color: #047857;">Protect · Field assets</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">CTS · Cooler Tracking</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">1.86 lakh coolers are tracked across the field today. CTS Phase 2 minimises asset losses by ~<strong style="color: var(--ink);">₹50 Cr</strong> via continuous tracking and stakeholder visibility · the difference between assets that come back and assets that walk.</p>
+<p class="cap-num" style="color: var(--ink-soft);">Backend verification eliminated ~35,000 physical CSO visits in the March–April cycle alone.</p>
+</div>
+<div class="card p-6">
+<div class="cap-num mb-3" style="color: #C2410C;">Open · Non-Beverage</div>
+<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Multi-Segment SFA · Beat Management</h3>
+<p class="text-sm mb-3" style="color: var(--ink-muted);">Today's biggest operational drag · 60–70% of L1 support tickets stem from gaps in Non-Beverage distributor mapping. POD 3 ships Multi-Segment Mapping + Beat Management to resolve them at source. Primary DMS for other segments lights up ~<strong style="color: var(--ink);">₹1,000 Cr/month</strong> of additional order routing.</p>
+<p class="cap-num" style="color: var(--ink-soft);">Plus the lever that compounds across all segments · Pricing &amp; Promotions at ~₹1,200 Cr/month primary scale.</p>
+</div>
+</div>
 <h3 class="font-semibold text-lg mt-4 mb-3" style="color: var(--ink);">Four asks that unblock the next horizon.</h3>
 <p class="text-base max-w-3xl mb-6" style="color: var(--ink-muted);">Three queued items need a Reliance business decision. The fourth is a testing-bandwidth call. Without these, the 60-day plan stretches.</p>
-
 <div class="card p-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
-    <div>
-      <div class="cap-num mb-1" style="color: var(--accent);">Ask 01 · timeline sign-off</div>
-      <div class="font-semibold text-base mb-1" style="color: var(--ink);">Van Sales + Multi-Role UAM</div>
-      <p class="text-sm" style="color: var(--ink-muted);">Both queued. Closes Beverage DMS for the last 20% of distributors. Business team needs to confirm timeline.</p>
-    </div>
-    <div>
-      <div class="cap-num mb-1" style="color: var(--accent);">Ask 02 · initiation approval</div>
-      <div class="font-semibold text-base mb-1" style="color: var(--ink);">Non-Beverage SFA · POD 3</div>
-      <p class="text-sm" style="color: var(--ink-muted);">Multi-Segment Mapping + Beat Management not yet initiated. Once live, resolves 60–70% of current L1 tickets.</p>
-    </div>
-    <div>
-      <div class="cap-num mb-1" style="color: var(--accent);">Ask 03 · scope definition</div>
-      <div class="font-semibold text-base mb-1" style="color: var(--ink);">Anchor Order Fulfilment · POD 4</div>
-      <p class="text-sm" style="color: var(--ink-muted);">20–30% of all distributors across segments are anchors · uncovered today. Scope and delivery timeline still undefined.</p>
-    </div>
-    <div>
-      <div class="cap-num mb-1" style="color: var(--accent);">Ask 04 · testing capacity</div>
-      <div class="font-semibold text-base mb-1" style="color: var(--ink);">UAT bandwidth</div>
-      <p class="text-sm" style="color: var(--ink-muted);">Pre-Sales DMS, Auto DO and Non-Beverage DMS are all in UAT simultaneously. Business sign-off is becoming the bottleneck.</p>
-    </div>
-  </div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+<div>
+<div class="cap-num mb-1" style="color: var(--accent);">Ask 01 · timeline sign-off</div>
+<div class="font-semibold text-base mb-1" style="color: var(--ink);">Van Sales + Multi-Role UAM</div>
+<p class="text-sm" style="color: var(--ink-muted);">Both queued. Closes Beverage DMS for the last 20% of distributors. Business team needs to confirm timeline.</p>
 </div>
-
+<div>
+<div class="cap-num mb-1" style="color: var(--accent);">Ask 02 · initiation approval</div>
+<div class="font-semibold text-base mb-1" style="color: var(--ink);">Non-Beverage SFA · POD 3</div>
+<p class="text-sm" style="color: var(--ink-muted);">Multi-Segment Mapping + Beat Management not yet initiated. Once live, resolves 60–70% of current L1 tickets.</p>
+</div>
+<div>
+<div class="cap-num mb-1" style="color: var(--accent);">Ask 03 · scope definition</div>
+<div class="font-semibold text-base mb-1" style="color: var(--ink);">Anchor Order Fulfilment · POD 4</div>
+<p class="text-sm" style="color: var(--ink-muted);">20–30% of all distributors across segments are anchors · uncovered today. Scope and delivery timeline still undefined.</p>
+</div>
+<div>
+<div class="cap-num mb-1" style="color: var(--accent);">Ask 04 · testing capacity</div>
+<div class="font-semibold text-base mb-1" style="color: var(--ink);">UAT bandwidth</div>
+<p class="text-sm" style="color: var(--ink-muted);">Pre-Sales DMS, Auto DO and Non-Beverage DMS are all in UAT simultaneously. Business sign-off is becoming the bottleneck.</p>
+</div>
+</div>
+</div>
 <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
-  <div class="card p-4"><div class="cap-num mb-1">Current cycle · 28-Apr</div><div class="display-2 text-3xl accent">15</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Items confirmed for deployment</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Mar–Apr shipped</div><div class="display-2 text-3xl" style="color: var(--ink);">40+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across 5 workflow areas · 1 critical security fix</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">CSO visits eliminated</div><div class="display-2 text-3xl" style="color: var(--ink);">35K</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Backend verification · legacy assets</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">New SFA capabilities</div><div class="display-2 text-3xl" style="color: var(--ink);">3</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Target Setting · Target View · CSO Dashboard</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Current cycle · 28-Apr</div><div class="display-2 text-3xl accent">15</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Items confirmed for deployment</div></div>
+<div class="card p-4"><div class="cap-num mb-1">Mar–Apr shipped</div><div class="display-2 text-3xl" style="color: var(--ink);">40+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across 5 workflow areas · 1 critical security fix</div></div>
+<div class="card p-4"><div class="cap-num mb-1">CSO visits eliminated</div><div class="display-2 text-3xl" style="color: var(--ink);">35K</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Backend verification · legacy assets</div></div>
+<div class="card p-4"><div class="cap-num mb-1">New SFA capabilities</div><div class="display-2 text-3xl" style="color: var(--ink);">3</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Target Setting · Target View · CSO Dashboard</div></div>
 </div>
-
 <div class="cap-num mt-8" style="color: var(--ink-muted);">Source · RCPL Digital Platform · Monthly Status Report · 24-Apr-2026 · prepared by Leena B · reviewed by Ashish C.</div>
 </div></section>
-
-
 <div class="container" style="padding-bottom: 32px;">
-  <hr class="od-dashed-sep">
-  <div class="od-practice-bar">
-    <span>Fynd × Reliance Retail · RCPL</span>
-    <span>Project Glass · 2025</span>
-  </div>
+<hr class="od-dashed-sep"/>
+<div class="od-practice-bar">
+<span>Fynd × Reliance Retail · RCPL</span>
+<span>Project Glass · 2025</span>
+</div>
 </div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
-  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
+<div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>
-
 <!-- Lightbox overlay (vanilla JS, no deps) -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
-  <button type="button" id="lightbox-close" aria-label="Close preview" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;">&times;</button>
-  <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; object-fit:contain; box-shadow:0 20px 60px rgba(0,0,0,0.5); cursor:auto;" />
+<div aria-label="Screenshot preview" aria-modal="true" id="lightbox" role="dialog" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
+<button aria-label="Close preview" id="lightbox-close" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;" type="button">×</button>
+<img alt="" class="od-img" id="lightbox-img" src="" style="cursor:auto"/>
 </div>
 <script>
 (function(){
@@ -667,7 +628,6 @@
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
 })();
 </script>
-
 <script>
 (function() {
   var toc = document.getElementById('story-toc');
@@ -696,7 +656,6 @@
   });
 })();
 </script>
-
 <script>
 /* Open Design scroll-reveal · v0.8.4 */
 (function(){
@@ -719,6 +678,5 @@
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
 })();
 </script>
-
 </body>
 </html>

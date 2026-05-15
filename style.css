@@ -1366,3 +1366,79 @@ section.od-dark .od-ghost-btn:hover {
   .od-filter-tabs { gap: 6px; }
   .od-filter-tab { padding: 6px 12px; font-size: 10px; }
 }
+
+/* ═══════════════════════════════════════════════════════
+   OD · Consistent Image Sizing
+   ═══════════════════════════════════════════════════════ */
+
+/* Standard content image — screenshots, UI captures */
+.od-img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  background: var(--bone, #f0ebe0);
+  border: 1px solid var(--border, #d6d0c4);
+  border-radius: 6px;
+  display: block;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.od-img:hover { opacity: 0.88; }
+
+/* Architecture / diagram — wider, taller */
+.od-img-diagram {
+  width: 100%;
+  max-width: 1100px;
+  max-height: 520px;
+  object-fit: contain;
+  background: var(--bone, #f0ebe0);
+  border: 1px solid var(--border, #d6d0c4);
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.od-img-diagram:hover { opacity: 0.88; }
+
+/* Small inline images (fayda-meter, NPS forms, etc.) */
+.od-img-sm {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: var(--bone, #f0ebe0);
+  border: 1px solid var(--border, #d6d0c4);
+  border-radius: 6px;
+  display: block;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.od-img-sm:hover { opacity: 0.88; }
+
+/* Photo gallery thumbnails */
+.od-img-thumb {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border, #d6d0c4);
+  display: block;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.od-img-thumb:hover { opacity: 0.88; }
+
+/* Dark factory / equipment images — cover mode */
+.od-img-cover {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center;
+  background: var(--bone, #f0ebe0);
+  border: 1px solid var(--border, #d6d0c4);
+  border-radius: 6px;
+  display: block;
+  cursor: zoom-in;
+  transition: opacity 0.2s;
+}
+.od-img-cover:hover { opacity: 0.88; }
