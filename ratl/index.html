@@ -30,56 +30,13 @@
 .image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
 img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
 img.zoomable:hover { opacity: 0.92; }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -162,6 +119,13 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="card p-4"><div class="cap-num mb-1">Release cycles</div><div class="display-2 text-3xl accent">70–80%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Faster vs. pre-Ratl baseline</div></div>
 <div class="card p-4"><div class="cap-num mb-1">Automation coverage</div><div class="display-2 text-3xl accent">0 → 100%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Across 33+ backend services and 85+ storefronts</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Ratl</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Agentic QA</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -178,8 +142,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §01 · WHAT RATL IS FOR RELIANCE -->
 <section id="what-ratl-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT RATL IS FOR RELIANCE <span class="od-bar-dot">·</span> Agentic QA</span><span class="od-bar-counter">001 / 006</span></div>
 <div class="section-label mb-3">01 · What Ratl is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -216,12 +181,13 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §02 · WHAT'S LIVE · SEVEN ENGINES -->
-<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">WHAT'S LIVE · SEVEN ENGINES <span class="od-bar-dot">·</span> Agentic QA</span><span class="od-bar-counter">002 / 006</span></div>
 <div class="section-label mb-3">02 · What's live · seven engines</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Seven engines. One reliability layer.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Seven engines. One reliability layer<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-6" style="color: var(--ink-muted);">Each engine ships as a live surface in the Ratl console. Used together as one stack in production at Reliance Retail.</p>
 
-<div class="card p-6 mb-8" style="background: white; border-color: var(--border);">
+<div class="card p-6 mb-8" style="background: var(--bone); border-color: var(--border);">
 <div class="flex items-baseline justify-between mb-3 flex-wrap gap-2"><span class="cap-num">Live RR estate · headline</span><span class="pill pill-live">Live · AJIO × JCP</span></div>
 <div class="flex items-baseline gap-4 flex-wrap">
 <div class="display-2 text-3xl accent">1,300</div>
@@ -270,11 +236,12 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §03 · ARCHITECTURE -->
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">ARCHITECTURE · THE AGENTIC SDLC LAYER <span class="od-bar-dot">·</span> Agentic QA</span><span class="od-bar-counter">003 / 006</span></div>
 <div class="section-label mb-3">03 · Architecture · the agentic SDLC layer</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four layers. One reliability layer across the SDLC.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four layers. One reliability layer across the SDLC<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Signals flow up from the systems under test; intelligence flows back into developer, release, and oncall surfaces. Every layer is live.</p>
 
-<div class="card p-8" style="background: white;">
+<div class="card p-8" style="background: var(--bone);">
 
 <!-- Layer 1: Surfaces -->
 <div class="mb-6">
@@ -306,12 +273,12 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="mb-6">
 <div class="cap-num mb-3" style="color: var(--ink-muted);">Layer 03 · Agentic engines · what executes the work</div>
 <div class="grid grid-cols-2 md:grid-cols-3 gap-2">
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Test Generation</span><div class="text-xs mt-1" style="color: var(--ink-muted);">NL → tests · OpenAPI mapping</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Autonomous Execution</span><div class="text-xs mt-1" style="color: var(--ink-muted);">10K+ validations/day</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Visual Diffing</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Synthetic monitoring agents</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">RCA Agent</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Failure clustering · root cause</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Crash → Fix → PR</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Mobile auto-remediation</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Pen-Test Agent</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Autonomous security probing</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Test Generation</span><div class="text-xs mt-1" style="color: var(--ink-muted);">NL → tests · OpenAPI mapping</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Autonomous Execution</span><div class="text-xs mt-1" style="color: var(--ink-muted);">10K+ validations/day</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Visual Diffing</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Synthetic monitoring agents</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">RCA Agent</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Failure clustering · root cause</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Crash → Fix → PR</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Mobile auto-remediation</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Pen-Test Agent</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Autonomous security probing</div></div>
 </div>
 </div>
 
@@ -320,7 +287,7 @@ img.zoomable:hover { opacity: 0.92; }
 <!-- Layer 4: Signals -->
 <div>
 <div class="cap-num mb-3" style="color: var(--ink-muted);">Layer 04 · Signals · what Ratl tests</div>
-<div class="rounded-lg p-5 text-center" style="background: var(--bg-soft); border: 1px solid var(--border);">
+<div class="rounded-lg p-5 text-center" style="background: var(--bone); border: 1px solid var(--border);">
 <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm" style="color: var(--ink);">
 <span>API</span><span style="color: var(--border);">·</span>
 <span>Web</span><span style="color: var(--border);">·</span>
@@ -339,9 +306,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §04 · DEEP DIVE · LIVE CONSOLE -->
-<section id="deep-dive" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="deep-dive" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">DEEP DIVE · THE LIVE CONSOLE <span class="od-bar-dot">·</span> Agentic QA</span><span class="od-bar-counter">004 / 006</span></div>
 <div class="section-label mb-3">04 · Deep dive · the live console</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Three surfaces from the running platform.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Three surfaces from the running platform<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-2" style="color: var(--ink-muted);">Screenshots from the live Ratl console used by Reliance Retail brand teams. Click any image to enlarge.</p>
 <p class="text-base max-w-3xl mb-8"><a href="https://ratl.ai" target="_blank" rel="noopener" class="mono" style="color: var(--accent);">View at ratl.ai →</a></p>
 
@@ -363,9 +331,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §05 · CATALOG INTELLIGENCE -->
 <section id="catalog-intelligence" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">CATALOG INTELLIGENCE · THE JIOMART OS FOUNDATION <span class="od-bar-dot">·</span> Agentic QA</span><span class="od-bar-counter">005 / 006</span></div>
 <div class="section-label mb-3">05 · Catalog Intelligence · the Jiomart OS foundation</div>
 <div class="flex items-center gap-3 mb-3 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Catalog Intelligence.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Catalog Intelligence<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-live">Live · Catalog observability</span>
 <span class="pill" style="background: #FEF3C7; color: #92400E; border-color: #FDE68A;">Building · Jiomart OS layer</span>
 </div>
@@ -399,16 +368,17 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 </div>
 
-<div class="card p-6" style="background: var(--bg-soft);">
+<div class="card p-6" style="background: var(--bone);">
 <div class="cap-num mb-2">Forward beat · evolving into the Jiomart OS intelligence layer</div>
 <p class="text-sm" style="color: var(--ink);">Catalog Intelligence is being extended into the core intelligence layer for Jiomart OS: unified data observability, cross-system orchestration, and AI-driven decisioning. Building.</p>
 </div>
 </div></section>
 
 <!-- §06 · OUTCOMES -->
-<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">OUTCOMES · THE RUNNING SCORECARD <span class="od-bar-dot">·</span> Agentic QA</span><span class="od-bar-counter">006 / 006</span></div>
 <div class="section-label mb-3">06 · Outcomes · the running scorecard</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">What changed once Ratl was running.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">What changed once Ratl was running<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Numbers below are pre-Ratl baseline → post-Ratl steady-state across the Reliance Retail ecosystem.</p>
 
 <table class="grid-table">
@@ -487,6 +457,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Ratl</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

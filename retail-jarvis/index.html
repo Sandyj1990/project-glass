@@ -13,56 +13,13 @@
 <script src="/present.js" defer></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -153,6 +110,13 @@
 <div class="card p-4"><div class="cap-num mb-1">Core outputs</div><div class="display-2 text-3xl" style="color: var(--ink);">4</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Readiness · CX · Friction · Churn</div></div>
 <div class="card p-4"><div class="cap-num mb-1">Engine stages</div><div class="display-2 text-3xl" style="color: var(--ink);">4</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Readiness → Journey → Behaviour → AI</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Retail Jarvis</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Intelligence Layer</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -170,8 +134,9 @@
 
 <!-- §01 · Status (01-May-2026) -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">STATUS · BUILD · 01 - MAY - 2026 <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">001 / 007</span></div>
 <div class="section-label mb-3">01 · Status · Build · 01 - May - 2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">In Build. Anchor demo on Store 5943. Production rollout next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">In Build. Anchor demo on Store 5943. Production rollout next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -197,9 +162,10 @@
 </div></section>
 
 <!-- §02 · First principles -->
-<section id="principles" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="principles" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">FIRST PRINCIPLES · WHY THIS EXISTS <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">002 / 007</span></div>
 <div class="section-label mb-3">02 · First principles · Why this exists</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Customer experience cannot be understood by asking customers.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Customer experience cannot be understood by asking customers<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">It must be observed. The cornerstone working note states four principles before any signal, score, or action is defined. Every downstream choice in the system rests on these.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -233,8 +199,9 @@
 
 <!-- §03 · Architecture -->
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">ARCHITECTURE · SIGNALS → ENGINE → PLAYBOOKS <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">003 / 007</span></div>
 <div class="section-label mb-3">03 · Architecture · Signals → Engine → Playbooks</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One sensing engine. Three sides.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One sensing engine. Three sides<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Signals enter on the left (offline · online · external). The Experience Sensing Engine runs four stages (Readiness Measurement, Journey Capture, Behavioural Analytics, AI Inference) and emits four core KPIs. Playbooks on the right route each KPI to the team that can act. Operational changes feed new signals back to the engine for continuous learning.</p>
 
 <div class="grid md:grid-cols-3 gap-3 mb-10">
@@ -283,15 +250,16 @@
 
 <!-- §04 · Demo product -->
 <section id="demo" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">ANCHOR DEMO · STORE 5943 · MUMBAI INFINITY MALAD <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">004 / 007</span></div>
 <div class="section-label mb-3">04 · Anchor demo · Store 5943 · Mumbai Infinity Malad</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five operator surfaces in build on the anchor store.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five operator surfaces in build on the anchor store<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Jarvis console being built against a single anchor store. Each surface answers one operational question : where does the funnel break, what happens at the door, what happens in the trial room, what happens at the till, what does the manager fix. Metrics labelled <em>from input data</em> are POS / roster facts; <em>CCTV observed</em> are silhouette-CV; <em>estimated</em> are model-inferred where instrumentation is still pending.</p>
 
 <div class="grid md:grid-cols-2 gap-6">
 
 <div class="card overflow-hidden">
 <a href="/assets/retail-jarvis/screenshots/01-customer-journey-funnel.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="/assets/retail-jarvis/screenshots/01-customer-journey-funnel.jpg" alt="Jarvis Console · Customer Journey Funnel for Store 5943 · Footfall 10,265 → Browsing 7,185 (-30%) → Trial 3,593 (-50%) → Billing 1,383 (-62%)" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="/assets/retail-jarvis/screenshots/01-customer-journey-funnel.jpg" alt="Jarvis Console · Customer Journey Funnel for Store 5943 · Footfall 10,265 → Browsing 7,185 (-30%) → Trial 3,593 (-50%) → Billing 1,383 (-62%)" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Console · Customer Journey Funnel</div><span class="pill pill-build">Build</span></div>
@@ -301,7 +269,7 @@
 
 <div class="card overflow-hidden">
 <a href="/assets/retail-jarvis/screenshots/02-walk-in-journey.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="/assets/retail-jarvis/screenshots/02-walk-in-journey.jpg" alt="Jarvis · Walk-in Journey · 20.6K total walk-ins · 30% walked out under 2 minutes · 12-15 min average engagement" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="/assets/retail-jarvis/screenshots/02-walk-in-journey.jpg" alt="Jarvis · Walk-in Journey · 20.6K total walk-ins · 30% walked out under 2 minutes · 12-15 min average engagement" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Walk-in Journey</div><span class="pill pill-build">Build</span></div>
@@ -311,7 +279,7 @@
 
 <div class="card overflow-hidden">
 <a href="/assets/retail-jarvis/screenshots/03-trial-selection-journey.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="/assets/retail-jarvis/screenshots/03-trial-selection-journey.jpg" alt="Jarvis · Trial / Selection Journey · 1:12 peak staff ratio · trial dwell 8-12 min · ~60% dwell over 5 min" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="/assets/retail-jarvis/screenshots/03-trial-selection-journey.jpg" alt="Jarvis · Trial / Selection Journey · 1:12 peak staff ratio · trial dwell 8-12 min · ~60% dwell over 5 min" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Trial / Selection Journey</div><span class="pill pill-build">Build</span></div>
@@ -321,7 +289,7 @@
 
 <div class="card overflow-hidden">
 <a href="/assets/retail-jarvis/screenshots/04-billing-journey.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="/assets/retail-jarvis/screenshots/04-billing-journey.jpg" alt="Jarvis · Billing Journey · queue 3-5 min · ~1-2/day queue over 15 min · avg bill ₹1,450 · 5 POS machines" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="/assets/retail-jarvis/screenshots/04-billing-journey.jpg" alt="Jarvis · Billing Journey · queue 3-5 min · ~1-2/day queue over 15 min · avg bill ₹1,450 · 5 POS machines" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Billing Journey</div><span class="pill pill-build">Build</span></div>
@@ -331,7 +299,7 @@
 
 <div class="card overflow-hidden md:col-span-2">
 <a href="/assets/retail-jarvis/screenshots/05-action-tracker.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="/assets/retail-jarvis/screenshots/05-action-tracker.jpg" alt="Jarvis · Action Tracker · 8 action items · 6 support tickets · 2 critical · 3 high · 2 watch · 1 resolved" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="/assets/retail-jarvis/screenshots/05-action-tracker.jpg" alt="Jarvis · Action Tracker · 8 action items · 6 support tickets · 2 critical · 3 high · 2 watch · 1 resolved" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 400px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Action Tracker · the closed loop</div><span class="pill pill-build">Build</span></div>
@@ -343,9 +311,10 @@
 </div></section>
 
 <!-- §05 · Four core outputs -->
-<section id="outputs" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="outputs" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">FOUR CORE OUTPUTS <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">005 / 007</span></div>
 <div class="section-label mb-3">05 · Four core outputs</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal collapses into four scores.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal collapses into four scores<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">All offline and online signals consolidate into four outputs. Each has a defined calculation, a defined meaning, and a downstream playbook.</p>
 
 <div class="card overflow-hidden">
@@ -383,8 +352,9 @@
 
 <!-- §06 · Signal inventory -->
 <section id="signals" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">SIGNAL INVENTORY · OFFLINE (BASIC / INTER. / ADV.) + ONLI... <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">006 / 007</span></div>
 <div class="section-label mb-3">06 · Signal inventory · offline (Basic / Inter. / Adv.) + online (Basic / Inter.&nbsp;·&nbsp;Adv. combined)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal that feeds the engine.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal that feeds the engine<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">From the cornerstone working note. Basic signals rely on existing POS / app data and can be turned on immediately. Intermediate signals require structured process or instrumentation. Advanced signals rely on CV, ML, identity stitching, or social listening. Cornerstone Section 3 combines online intermediate and advanced into a single tier. The page reflects this as <span class="mono">Inter./Adv.</span>. Each row maps to one or more of the four core outputs.</p>
 
 <h3 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">Offline stores.</h3>
@@ -458,9 +428,10 @@
 </div></section>
 
 <!-- §07 · Actions & feedback -->
-<section id="feedback" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="feedback" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">ACTIONS & FEEDBACK · THE CLOSED LOOP <span class="od-bar-dot">·</span> Intelligence Layer</span><span class="od-bar-counter">007 / 007</span></div>
 <div class="section-label mb-3">07 · Actions &amp; feedback · the closed loop</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Score → trigger → action → re-measure.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Score → trigger → action → re-measure<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each output is wired to a specific trigger, an action, an owner, and a re-measurement loop. The same signals are measured again after action; scores update; weighting refines based on observed outcomes.</p>
 
 <div class="card overflow-hidden">
@@ -532,6 +503,14 @@
 Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Retail Jarvis</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

@@ -13,56 +13,13 @@
 <script src="/present.js" defer></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -266,6 +223,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Forge</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> MES Platform</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -284,7 +248,7 @@
 <!-- §01 · Problem → Solution -->
 <section id="shift" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · The shift · Industry 4.0 → 5.0</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From fragmented ERP / MES / WMS to one OS.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From fragmented ERP / MES / WMS to one OS<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-2 gap-4">
 <div class="card p-6">
@@ -314,10 +278,10 @@
 
 <!-- §02 · Four AI-native stages -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section id="stages" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">THE FOUR AI-NATIVE STAGES <span class="od-bar-dot">·</span> MES Platform</span><span class="od-bar-counter">001 / 006</span></div>
+<section id="stages" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · The four AI-native stages</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Plan · Buy/Source · Assemble · Move.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Plan · Buy/Source · Assemble · Move<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Forge organises the factory across four stages on a single fabric. Every stage on the same data spine · every action traceable from raw material to dispatched carton. Outcome metrics per the Fynd MOS deck.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -355,14 +319,14 @@
 
 <!-- §03 · Architecture · the eight modules -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">ARCHITECTURE · KEY SYSTEM MODULES <span class="od-bar-dot">·</span> MES Platform</span><span class="od-bar-counter">002 / 006</span></div>
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Architecture · key system modules</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Eight modules · one fabric.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Eight modules · one fabric<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">A unified data backbone connects every module through a central API and AI orchestration layer. No silos, no manual reconciliation between systems.</p>
 
 <a href="/assets/forge/smart-factory-ecosystem.jpg" target="_blank" rel="noopener" title="Open full-size diagram" class="js-lightbox block mb-10" style="max-width: 1100px;">
-  <img src="/assets/forge/smart-factory-ecosystem.jpg" alt="Smart Factory Ecosystem · Planning &amp; Procurement → WMS → Manufacturing OS → Manufacturing Flow · API + Hardware integration above · Agentic AI Experience &amp; Insights Layer below" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); background: #fff; cursor: zoom-in;" />
+  <img src="/assets/forge/smart-factory-ecosystem.jpg" alt="Smart Factory Ecosystem · Planning &amp; Procurement → WMS → Manufacturing OS → Manufacturing Flow · API + Hardware integration above · Agentic AI Experience &amp; Insights Layer below" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); background: var(--bone); cursor: zoom-in;" />
 </a>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -379,10 +343,10 @@
 
 <!-- §04 · Pilot · NeoLync Tirupati -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
-<section id="pilot" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">PILOT · NEOLYNC TIRUPATI · PHASE 1 <span class="od-bar-dot">·</span> MES Platform</span><span class="od-bar-counter">003 / 006</span></div>
+<section id="pilot" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Pilot · NeoLync Tirupati · Phase 1</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Live at NeoLync Tirupati · Jio Air Fiber Wi-Fi.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Live at NeoLync Tirupati · Jio Air Fiber Wi-Fi<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-6" style="color: var(--ink);">Forge is deployed at NeoLync's Tirupati facility supporting <strong>Jio Air Fiber Wi-Fi device</strong> manufacturing. Current production run-rate ~1,000 units. Platform handles peaks of <strong>3,000 TPS</strong> during high-volume runs. <strong>50+ operators and 25 line managers</strong> are on Forge today. Deployment is <strong>100% on-premise</strong>. High reliability, complete data control, low-latency operations. End-to-end traceability across the entire production process. Pilot rollout in progress; plan is to extend Forge across all production sites and product lines within the plant.</p>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Go-live validation runs against a 15-category checklist (v2.0 · 07-Apr-2026). Phase 1 covers planning &amp; traceability, quality &amp; repair, scan-pack, ASN, and predictive maintenance. Each item carries a Fynd development status, a NeoLync site readiness status, a DRI / reviewer pair, and a target date.</p>
 
@@ -493,7 +457,7 @@
 <div class="text-xs pt-3 border-t" style="color: var(--ink-muted); border-color: var(--border);"><strong>Categories:</strong> 13 Dashboards &amp; KPIs · 14 RBAC &amp; Training · 15 Go-Live, Dry Run &amp; Hypercare.</div>
 </div>
 
-<div class="card p-6" style="background: var(--bg-soft); border-style: dashed;">
+<div class="card p-6" style="background: var(--bone); border-style: dashed;">
 <div class="cap-num mb-2" style="color: var(--ink-soft);">Source</div>
 <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Production-readiness sheet.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">15-category checklist v2.0 dated 07-Apr-2026. Per-category status, owner, reviewer, target date.</p>
@@ -505,10 +469,10 @@
 
 <!-- §05 · Agentic use cases -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">AGENTIC USE CASES · TARGET KPIS <span class="od-bar-dot">·</span> MES Platform</span><span class="od-bar-counter">004 / 006</span></div>
 <section id="agentic" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Agentic use cases · target KPIs</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Four agentic loops · measured.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Four agentic loops · measured<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="space-y-3">
 
@@ -557,10 +521,10 @@
 
 <!-- §06 · Roadmap -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">ROADMAP · PILOT TO PLANT-WIDE <span class="od-bar-dot">·</span> MES Platform</span><span class="od-bar-counter">005 / 006</span></div>
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Roadmap · pilot to plant-wide</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four phases. One factory becoming the template.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four phases. One factory becoming the template<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Forge moves from a single pilot line at NeoLync Tirupati to plant-wide rollout, then to a multi-plant footprint, then to a fully agentic Industry 5.0 stack. Each phase carries its own readiness gate.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -600,10 +564,10 @@
 
 <!-- §07 · Receipts -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VI</span><span>006</span></div>
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">RECEIPTS <span class="od-bar-dot">·</span> MES Platform</span><span class="od-bar-counter">006 / 006</span></div>
 <section id="receipts" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">07 · Receipts</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every claim above has a deeper artefact behind it.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -659,6 +623,14 @@
 </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Forge</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

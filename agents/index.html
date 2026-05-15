@@ -47,7 +47,7 @@
 
 .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .data-table th, .data-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); vertical-align: top; }
-.data-table th { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; background: var(--bg-soft); }
+.data-table th { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); font-weight: 600; background: var(--bone); }
 .data-table td .ent { font-size: 12.5px; color: var(--ink-muted); }
 
 .tech-chip { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #F1F5F9; color: #1E293B; font-family: 'JetBrains Mono', monospace; font-size: 11px; margin: 2px 4px 2px 0; border: 1px solid #E2E8F0; }
@@ -78,50 +78,7 @@
   .diagram-wrap, .diagram-caption { display: none; }
 }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -200,7 +157,14 @@
     <div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase;">AI Agents · Catalog · Live</div>
     <h1 class="display-1 text-4xl md:text-5xl mb-3" style="color: var(--ink); letter-spacing: -0.02em; font-weight: 800;">AI Agents.</h1>
     <p class="text-lg max-w-3xl mb-2" style="color: var(--ink-muted); line-height: 1.5;">7 agents shipping in v1, executing across Plan, Buy and Sell. Each maps to one or more Reliance platforms. Each carries data, design patterns, and evals. More agents to follow.</p>
-  </div>
+  
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> AI Agents</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Agent Directory</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
+</div>
 </section>
 <section class="py-10 border-t" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">02 · The agents · by value-chain track</div><div class="mb-10"><div class="band-header"><span class="b-label">Plan · 3</span><span class="b-framing">Demand sensing, planning, range and assortment intelligence.</span></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><a href="/agents/cortex-planning/" class="agent-card"><div class="ac-pills"><span class="pill pill-build">Building</span><span class="pill pill-l">L4</span></div><div class="ac-name">Cortex Planning Agent</div><div class="ac-sub">Store-realistic Plan of Record + continuous, exception-led replanning.</div><div class="ac-stat"><strong>L4 Agentic</strong> · Workflow level</div></a><a href="/agents/retail-vista/" class="agent-card"><div class="ac-pills"><span class="pill pill-build">Building</span><span class="pill pill-l">L4</span></div><div class="ac-name">Retail Vista</div><div class="ac-sub">All-India spatial intelligence — site discovery, scoring, and a conversational workspace for the expansion team.</div><div class="ac-stat"><strong>H3 grid</strong> · Spatial fabric</div></a><a href="/agents/category-intelligence/" class="agent-card"><div class="ac-pills"><span class="pill pill-build">Building</span><span class="pill pill-l">L4</span></div><div class="ac-name">Category Intelligence Agent</div><div class="ac-sub">Category × season × geography → 40-50pp evidence-tagged trend report. Built for buying teams, not for press.</div><div class="ac-stat"><strong>7 steps</strong> · Pipeline</div></a></div></div><div class="mb-10"><div class="band-header"><span class="b-label">Buy · 1</span><span class="b-framing">Design-to-buy pipeline.</span></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><a href="/agents/trend-to-design/" class="agent-card"><div class="ac-pills"><span class="pill pill-live">Live</span><span class="pill pill-l">L4</span></div><div class="ac-name">Trend-to-Design Agent</div><div class="ac-sub">Trend brief → manufacturable design package — image, BOM, costing, line sheets — without humans in the middle of the cycle.</div><div class="ac-stat"><strong>718 designs</strong> · Trend business run</div></a></div></div><div class="mb-10"><div class="band-header"><span class="b-label">Sell · 3</span><span class="b-framing">Marketing and cataloging.</span></div><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"><a href="/agents/agentic-marketing/" class="agent-card"><div class="ac-pills"><span class="pill pill-build">Building</span><span class="pill pill-l">L4</span></div><div class="ac-name">Marketing Agent</div><div class="ac-sub">Goal in plain English → audience, creative, channel mix, send time, measurement — autonomously, with humans only on guardrails.</div><div class="ac-stat"><strong>11 agents</strong> · Agent topology</div></a><a href="/agents/ai-photoshoot/" class="agent-card"><div class="ac-pills"><span class="pill pill-live">Live</span><span class="pill pill-l">L4</span></div><div class="ac-name">AI Photoshoot Agent</div><div class="ac-sub">Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit, and Ajio-standard delivery.</div><div class="ac-stat"><strong>47,473</strong> · Trends</div></a><a href="/agents/generative-media/" class="agent-card"><div class="ac-pills"><span class="pill pill-build">Building</span><span class="pill pill-l">L4</span></div><div class="ac-name">Generative Media Agent</div><div class="ac-sub">Brief → script → frames → video → post-production → distribution. Multi-agent autonomous pipeline producing shoppable, on-brand video for social and storefront.</div><div class="ac-stat"><strong>6</strong> · Specialist sub-agents</div></a></div></div></div></section>
 <section class="py-10 border-t" style="border-color: var(--border);">
@@ -214,6 +178,14 @@
   </div>
 </section>
 <section class="py-10 border-t" id="building-blocks" style="border-color: var(--border);"><div class="container mx-auto px-6 max-w-6xl"><div class="text-xs mb-3" style="color: var(--accent); font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.06em;">04 · The 10 building blocks · how every agent is constructed</div><p class="text-sm mb-5" style="color: var(--ink); line-height: 1.55; max-width: 720px;">Every agent on this catalog is built from some combination of these primitives.</p><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"><div class="pattern-chip"><div class="pc-name">Tool Calling</div><div class="pc-usage">Agent invokes external tools/functions to read state and write back to systems.</div></div><div class="pattern-chip"><div class="pc-name">Standard Tool Interfaces (MCP)</div><div class="pc-usage">Common contract for tool discovery, schemas, auth — agent and tool teams decoupled.</div></div><div class="pattern-chip"><div class="pc-name">Context Engineering</div><div class="pc-usage">Choosing, structuring, and compressing what the agent sees per turn.</div></div><div class="pattern-chip"><div class="pc-name">Agent Memory</div><div class="pc-usage">Short-term · episodic · semantic · procedural memory across runs.</div></div><div class="pattern-chip"><div class="pc-name">Context Graphs</div><div class="pc-usage">Entities and relationships for multi-hop reasoning over retail decisions.</div></div><div class="pattern-chip"><div class="pc-name">Wide Research</div><div class="pc-usage">Generate many candidate hypotheses, score broadly, then converge.</div></div><div class="pattern-chip"><div class="pc-name">Deep / Hierarchical</div><div class="pc-usage">Planner → specialist sub-agents → integrator.</div></div><div class="pattern-chip"><div class="pc-name">Multi-Agent Orchestration</div><div class="pc-usage">Peer agents propose · critique · enforce · arbitrate.</div></div><div class="pattern-chip"><div class="pc-name">Observability</div><div class="pc-usage">Inputs · context · tool calls · outputs · errors captured as traces.</div></div><div class="pattern-chip"><div class="pc-name">Evals</div><div class="pc-usage">Golden tests · simulations · replay · adversarial · policy compliance.</div></div></div></div></section>
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · AI Agents</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

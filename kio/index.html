@@ -12,56 +12,13 @@
 <link rel="stylesheet" href="/present.css">
 <script src="/present.js" defer></script>
 <style>
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -157,6 +114,13 @@
 <div class="mt-10">
 <img src="/assets/kio/cover.jpg" alt="Kio Series self-checkout kiosk · product hero" class="w-full max-w-3xl rounded-lg" style="border: 1px solid var(--border);" />
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Kio</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Self-Checkout</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -174,8 +138,9 @@
 
 <!-- §01 · Status today -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">STATUS (01 - MAY - 2026) <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">001 / 007</span></div>
 <div class="section-label mb-3">01 · Status (01 - May - 2026)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -214,9 +179,10 @@
 </div></section>
 
 <!-- §02 · What is live -->
-<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">WHAT IS LIVE <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">002 / 007</span></div>
 <div class="section-label mb-3">02 · What is live</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three modules running today.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three modules running today<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Kio is hardware (the kiosk), software (Swift Module for OTA), and a live lab (SnacAdda). Each runs today; all three feed the Fashion Factory rollout.</p>
 
 <div class="card overflow-hidden">
@@ -251,8 +217,9 @@
 
 <!-- §03 · Hardware architecture · 4 layers -->
 <section id="hardware" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">HARDWARE ARCHITECTURE · 4 LAYERS <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">003 / 007</span></div>
 <div class="section-label mb-3">03 · Hardware architecture · 4 layers</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From silicon to store.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From silicon to store<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-4 gap-4">
 <div class="card p-6"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 01 · Edge compute</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">FKAP1 + FKAP2 SoC.</h3><p class="text-sm" style="color: var(--ink-muted);">Cortex-A55 / A76 cores · NPU 1-6 TOPS · Android 13/14 + Linux. On-device barcode + RFID processing.</p></div>
@@ -263,14 +230,15 @@
 </div></section>
 
 <!-- §04 · Deep dive · Model variants -->
-<section id="variants" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="variants" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">DEEP DIVE · MODEL VARIANTS <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">004 / 007</span></div>
 <div class="section-label mb-3">04 · Deep dive · Model variants</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four Form Factors. One Platform.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four Form Factors. One Platform<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Same compute, same software, four physical formats. Convert between tabletop, wall, or standing in minutes via the modular mounting system. Bin variant pairs with RFID accessories for fashion bulk-drop checkout.</p>
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
 <div class="card overflow-hidden">
-<img src="/assets/kio/03-variant-wall.jpg" alt="Kio · Wall-mounted variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<img src="/assets/kio/03-variant-wall.jpg" alt="Kio · Wall-mounted variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bone);" />
 <div class="p-4">
 <div class="cap-num mb-1">Variant 01</div>
 <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Wall-mounted</h3>
@@ -278,7 +246,7 @@
 </div>
 </div>
 <div class="card overflow-hidden">
-<img src="/assets/kio/04-variant-standing.jpg" alt="Kio · Standing variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<img src="/assets/kio/04-variant-standing.jpg" alt="Kio · Standing variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bone);" />
 <div class="p-4">
 <div class="cap-num mb-1">Variant 02</div>
 <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Standing</h3>
@@ -286,7 +254,7 @@
 </div>
 </div>
 <div class="card overflow-hidden">
-<img src="/assets/kio/05-variant-tabletop.jpg" alt="Kio · Tabletop variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<img src="/assets/kio/05-variant-tabletop.jpg" alt="Kio · Tabletop variant" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bone);" />
 <div class="p-4">
 <div class="cap-num mb-1">Variant 03</div>
 <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Tabletop</h3>
@@ -294,7 +262,7 @@
 </div>
 </div>
 <div class="card overflow-hidden">
-<img src="/assets/kio/06-variant-bin.jpg" alt="Kio · Bin RFID variant for fashion bulk-drop checkout" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bg-soft);" />
+<img src="/assets/kio/06-variant-bin.jpg" alt="Kio · Bin RFID variant for fashion bulk-drop checkout" class="w-full block" style="border-bottom: 1px solid var(--border); background: var(--bone);" />
 <div class="p-4">
 <div class="cap-num mb-1">Variant 04</div>
 <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Bin · RFID</h3>
@@ -306,8 +274,9 @@
 
 <!-- §05 · In flight · this quarter -->
 <section id="in-flight" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">IN FLIGHT · THIS QUARTER <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">005 / 007</span></div>
 <div class="section-label mb-3">05 · In flight · this quarter</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What you'll hear about next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What you'll hear about next<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Threads in active execution as of 01 - May - 2026. Each carries a Building pill: work is well-defined, owner is named, gating step is in motion.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -340,9 +309,10 @@
 </div></section>
 
 <!-- §06 · SnacAdda case study -->
-<section id="snacadda" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="snacadda" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">SNACADDA · INTERNAL LAB CASE STUDY <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">006 / 007</span></div>
 <div class="section-label mb-3">06 · SnacAdda · internal lab case study</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Tested in the Fynd office first.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Tested in the Fynd office first<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">SnacAdda is a full-stack self-checkout kiosk Fynd deployed in its own WeWork Andheri office. Stand-mounted Kio (SPG Series) with StoreOS + FSM integration. Office pantries lack automated checkout, so Fynd built one to refine the technology in live use before customer-site deployment.</p>
 
 <div class="grid md:grid-cols-5 gap-6 items-start">
@@ -381,8 +351,9 @@
 
 <!-- §07 · Specifications -->
 <section id="specs" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">SPECIFICATIONS <span class="od-bar-dot">·</span> Self-Checkout</span><span class="od-bar-counter">007 / 007</span></div>
 <div class="section-label mb-3">07 · Specifications</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Hardware sheet.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Hardware sheet<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Verbatim from the Kio Series datasheet. Two compute platforms, one display platform, one peripherals stack.</p>
 
 <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Compute platforms</h3>
@@ -445,6 +416,14 @@
 Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Kio</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

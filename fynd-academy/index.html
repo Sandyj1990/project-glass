@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="/present.css">
 <script src="/present.js" defer></script>
 <style>
-  .session-card { padding: 24px; background: white; border: 1px solid var(--border); border-radius: 16px; transition: border-color 0.15s, transform 0.15s; }
+  .session-card { padding: 24px; background: var(--bone); border: 1px solid var(--border); border-radius: 16px; transition: border-color 0.15s, transform 0.15s; }
   .session-card:hover { border-color: var(--ink); }
   .ribbon { display: inline-flex; align-items: center; padding: 4px 10px; background: var(--ink); color: white; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; }
   .format-pill { display: inline-flex; align-items: center; padding: 4px 10px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.05em; border: 1px solid; }
@@ -22,7 +22,7 @@
   .format-in-person { background: #F5F3FF; color: #6D28D9; border-color: #DDD6FE; }
   .format-hybrid { background: #ECFEFF; color: #0E7490; border-color: #A5F3FC; }
   .photo-thumb { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); }
-  .stat-tile { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .stat-tile { background: var(--bone); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
   .module-row { display: flex; gap: 16px; padding: 14px 0; border-bottom: 1px solid var(--border-soft); }
   .module-row:last-child { border-bottom: 0; }
   .module-label { flex-shrink: 0; width: 180px; font-weight: 600; color: var(--ink); }
@@ -33,56 +33,13 @@
   .crumb a:hover { color: var(--ink); }
   .crumb .sep { margin: 0 8px; color: var(--ink-soft); }
   .cap-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); }
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -173,6 +130,13 @@
   <div class="stat-tile"><div class="cap-num mb-1">Participants reached</div><div class="display-2 text-3xl" style="color: var(--ink);">600+</div></div>
   <div class="stat-tile"><div class="cap-num mb-1">Average rating</div><div class="display-2 text-3xl" style="color: var(--ink);">4.6<span class="text-base ml-1" style="color: var(--ink-soft);">/ 5</span></div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Fynd Academy</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Talent Development</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -190,8 +154,9 @@
      §01 · Three session formats
      ===================================================================== -->
 <section id="session-formats" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">SESSION FORMATS <span class="od-bar-dot">·</span> Talent Development</span><span class="od-bar-counter">001 / 005</span></div>
 <div class="section-label mb-3">01 · Session formats</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three session formats.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three session formats<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each format serves a different demand shape from the Reliance side. Selection is led by the requesting team.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -219,9 +184,10 @@
 <!-- =====================================================================
      §02 · Sessions delivered
      ===================================================================== -->
-<section id="sessions" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="sessions" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">SESSIONS DELIVERED · REVERSE-CHRONOLOGICAL <span class="od-bar-dot">·</span> Talent Development</span><span class="od-bar-counter">002 / 005</span></div>
 <div class="section-label mb-3">02 · Sessions delivered · reverse-chronological</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six sessions, seven months.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six sessions, seven months<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each card lists the session date, audience, venue, format, headcount, and what was covered. Photos and materials shown where captured at source.</p>
 
 <div class="space-y-5 max-w-5xl">
@@ -372,14 +338,15 @@
      §03 · Audience map
      ===================================================================== -->
 <section id="audience-map" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">AUDIENCE MAP · FIVE RELIANCE ENTITIES SERVED <span class="od-bar-dot">·</span> Talent Development</span><span class="od-bar-counter">003 / 005</span></div>
 <div class="section-label mb-3">03 · Audience map · five Reliance entities served</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Embedded with five Reliance entities.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Embedded with five Reliance entities<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each row is a Reliance team that has hosted at least one Academy session. Sessions count toward the FY26 600+ headline.</p>
 
 <div class="card max-w-5xl overflow-hidden">
   <table class="w-full text-sm">
     <thead>
-      <tr style="background: var(--bg-soft); border-bottom: 1px solid var(--border);">
+      <tr style="background: var(--bone); border-bottom: 1px solid var(--border);">
         <th class="text-left p-3 cap-num">Audience</th>
         <th class="text-left p-3 cap-num">Sessions</th>
         <th class="text-left p-3 cap-num">Format</th>
@@ -403,9 +370,10 @@
 <!-- =====================================================================
      §04 · Curriculum
      ===================================================================== -->
-<section id="curriculum" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="curriculum" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">CURRICULUM <span class="od-bar-dot">·</span> Talent Development</span><span class="od-bar-counter">004 / 005</span></div>
 <div class="section-label mb-3">04 · Curriculum</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five modules. Drawn from delivered sessions.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five modules. Drawn from delivered sessions<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Apex-readable list of what Academy actually teaches. New requesting teams can choose modules à la carte or take the full stack.</p>
 
 <div class="card max-w-5xl p-6">
@@ -449,8 +417,9 @@
      §05 · Why this matters
      ===================================================================== -->
 <section id="why-this-matters" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">WHY THIS MATTERS <span class="od-bar-dot">·</span> Talent Development</span><span class="od-bar-counter">005 / 005</span></div>
 <div class="section-label mb-3">05 · Why this matters</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Adoption depends on trained users.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Adoption depends on trained users<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="max-w-3xl space-y-5 text-base" style="color: var(--ink);">
   <p>Demand is Reliance-led. Sessions are requested by Reliance L&amp;D, COOs (<strong>Vincent Braganza, Reliance Jewels</strong>), and functional teams (<strong>HSEF Copilot enablement</strong>, <strong>Reliance Marketing</strong>). Average session rating to date: <strong>4.6 / 5</strong>. The Dec-2025 RCP Train-the-Trainer cohort rated <strong>5 / 5</strong> and now serves as a local-trainer base for further rollout.</p>
@@ -460,6 +429,14 @@
 <!-- =====================================================================
      FOOTER
      ===================================================================== -->
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Fynd Academy</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

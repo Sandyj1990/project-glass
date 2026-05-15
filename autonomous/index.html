@@ -68,59 +68,16 @@
   .matrix-table tbody td.cell-l-empty { background: #FFFFFF; font-size: 11.5px; }
 
   /* Diagram frame */
-  .diagram-frame { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: white; }
+  .diagram-frame { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bone); }
   .diagram-frame img { width: 100%; height: auto; display: block; }
-  .diagram-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bg-soft); }
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .diagram-cap { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); padding: 10px 14px; border-top: 1px solid var(--border); background: var(--bone); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -238,6 +195,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Autonomous</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Autonomy Framework</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -267,7 +231,7 @@
 
 <!-- ===== §02 THE RISK GATES ===== -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">THE RISK GATES · GUARDRAILS <span class="od-bar-dot">·</span> Autonomy Framework</span><span class="od-bar-counter">001 / 006</span></div>
 <section id="risk-gates" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-4">02 · The risk gates &middot; guardrails</div>
   <div class="max-w-4xl mb-8" style="color: var(--ink); line-height: 1.65;">
@@ -302,7 +266,7 @@
 
 <!-- ===== §03 THE 6 LEVELS ===== -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">THE AUTONOMY LADDER · SIX LEVELS <span class="od-bar-dot">·</span> Autonomy Framework</span><span class="od-bar-counter">002 / 006</span></div>
 <section id="ladder" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-4">03 · The autonomy ladder &middot; six levels</div>
   <p class="max-w-3xl mb-8" style="color: var(--ink); line-height: 1.65;">Six levels of autonomy, adapted from the Autonomous Networks taxonomy standardised by TM Forum for telecommunications. The domains change (from network fault management to demand forecasting, from radio access to supply chain) but the architecture of autonomy is universal. Each level defines who decides, who executes, and who bears risk.</p>
@@ -382,7 +346,7 @@
 
 <!-- ===== §04 NOT EVERY WORKFLOW ===== -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">NOT EVERY WORKFLOW SHOULD REACH L5 <span class="od-bar-dot">·</span> Autonomy Framework</span><span class="od-bar-counter">003 / 006</span></div>
 <section id="not-every-workflow" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-4">04 · Not every workflow should reach L5</div>
   <div class="max-w-4xl mb-8" style="color: var(--ink); line-height: 1.65;">
@@ -410,7 +374,7 @@
 
 <!-- ===== §05 90-DAY MATRIX (DIAGRAMS) ===== -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">THE 90-DAY TARGET MATRIX · ACROSS THE F&L VALU... <span class="od-bar-dot">·</span> Autonomy Framework</span><span class="od-bar-counter">004 / 006</span></div>
 <section id="matrix" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-4">05 · The 90-day target matrix &middot; across the F&amp;L value chain</div>
   <p class="max-w-3xl mb-8" style="color: var(--ink); line-height: 1.65;">The matrix maps retail workflows against the six autonomy levels. Read it left to right to see how a single workflow evolves from fully manual to fully autonomous. Read it top to bottom within a value-chain stage to see the breadth of autonomy decisions an organisation must make simultaneously. The shaded cells show the target autonomy state in the next 90 days.</p>
@@ -430,7 +394,7 @@
 
 <!-- ===== §06 THE FULL WORKFLOW TABLE ===== -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">THE FULL WORKFLOW TABLE · PER-CELL CAPABILITY DESC... <span class="od-bar-dot">·</span> Autonomy Framework</span><span class="od-bar-counter">005 / 006</span></div>
 <section id="workflow-table" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-4">06 · The full workflow table &middot; per-cell capability descriptions</div>
   <p class="max-w-3xl mb-6" style="color: var(--ink); line-height: 1.65;">Every cell describes what that workflow looks like at that level of autonomy. Verbatim from the paper. The shaded cells are L0–L3, the workflow's current state for most stages today; clear cells are L4–L5, the targets.</p>
@@ -487,7 +451,7 @@
 
 <!-- ===== §07 HOW PROGRESS IS MEASURED ===== -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VI</span><span>006</span></div>
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">HOW PROGRESS IS MEASURED <span class="od-bar-dot">·</span> Autonomy Framework</span><span class="od-bar-counter">006 / 006</span></div>
 <section id="measure" class="py-14 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-4">07 · How progress is measured</div>
   <p class="max-w-3xl mb-8" style="color: var(--ink); line-height: 1.65;">Three measurements decide whether a workflow is ready to move to its next level. Each one carries a rupee number. None of them is a feature count.</p>
@@ -516,6 +480,14 @@
   </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Autonomous</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

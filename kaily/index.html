@@ -12,56 +12,13 @@
 <link rel="stylesheet" href="/present.css">
 <script src="/present.js" defer></script>
 <style>
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -180,6 +137,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Kaily</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Agentic Commerce</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -198,7 +162,7 @@
 <!-- §01 · WHAT KAILY IS FOR RELIANCE -->
 <section id="what-kaily-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · What Kaily is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -235,10 +199,10 @@
 
 <!-- §02 · CAPABILITY FRAMEWORK -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section id="capability-framework" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">CAPABILITY FRAMEWORK · TALKS · THINKS · ACTS <span class="od-bar-dot">·</span> Agentic Commerce</span><span class="od-bar-counter">001 / 006</span></div>
+<section id="capability-framework" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · Capability framework · Talks · Thinks · Acts</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Built to do the job, not just assist.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Built to do the job, not just assist<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Three capabilities, one agent. Each pillar is wired to the live retail stack (catalog, OMS, helpdesk, CRM) so an answer in chat is the same answer the operator sees on the back end.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -262,13 +226,13 @@
 
 <!-- §03 · ARCHITECTURE -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">ARCHITECTURE · THE FULL-STACK SYSTEM <span class="od-bar-dot">·</span> Agentic Commerce</span><span class="od-bar-counter">002 / 006</span></div>
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Architecture · the full-stack system</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A full-stack agent system, end-to-end.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A full-stack agent system, end-to-end<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Four layers · channels at the edge · the agent core in the middle · data sources + actions feeding it · live retail systems at the foundation. Same stack powers every Kaily deployment in Reliance.</p>
 
-<div class="card p-8" style="background: white;">
+<div class="card p-8" style="background: var(--bone);">
 
 <!-- Layer 1: Channels -->
 <div class="mb-6">
@@ -304,10 +268,10 @@
 <div class="mb-6">
 <div class="cap-num mb-3" style="color: var(--ink-muted);">Layer 03 · Data sources · what the agent reads</div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">PDFs</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Policies, manuals, FAQs</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Websites · URLs</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Crawled and embedded</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Google Drive</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Docs, sheets, decks</div></div>
-<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Apps · databases</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Live system state</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">PDFs</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Policies, manuals, FAQs</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Websites · URLs</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Crawled and embedded</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Google Drive</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Docs, sheets, decks</div></div>
+<div class="rounded-lg p-3 text-center text-sm" style="background: var(--bone); color: var(--ink); border: 1px solid var(--border);"><span class="font-semibold">Apps · databases</span><div class="text-xs mt-1" style="color: var(--ink-muted);">Live system state</div></div>
 </div>
 </div>
 
@@ -316,7 +280,7 @@
 <!-- Layer 4: Connected systems -->
 <div>
 <div class="cap-num mb-3" style="color: var(--ink-muted);">Layer 04 · Live retail systems · what the agent acts on</div>
-<div class="rounded-lg p-5 text-center" style="background: var(--bg-soft); border: 1px solid var(--border);">
+<div class="rounded-lg p-5 text-center" style="background: var(--bone); border: 1px solid var(--border);">
 <div class="flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm" style="color: var(--ink);">
 <span>Product Catalog</span><span style="color: var(--border);">·</span>
 <span>OMS</span><span style="color: var(--border);">·</span>
@@ -336,11 +300,11 @@
 
 <!-- §04 · AJIO ZIP -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
-<section id="ajio-zip" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">AJIO · ZIP · LIVE <span class="od-bar-dot">·</span> Agentic Commerce</span><span class="od-bar-counter">003 / 006</span></div>
+<section id="ajio-zip" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · AJIO · ZIP · live</div>
 <div class="flex items-center gap-3 mb-3 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">ZIP · AJIO Commerce Agent.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">ZIP · AJIO Commerce Agent<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-live">Live · RR · AJIO</span>
 </div>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Conversational AI shopping assistant on AJIO.com. Replaces menu-driven navigation with natural-language search and recommendations over chat and voice. Real-time catalog sync across the full AJIO assortment.</p>
@@ -378,11 +342,11 @@
 
 <!-- §05 · JIOMART JIIA -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">JIOMART · JIIA · LIVE · GOOGLE CLOUD NEXT '26 MAIN STAGE <span class="od-bar-dot">·</span> Agentic Commerce</span><span class="od-bar-counter">004 / 006</span></div>
 <section id="jiomart-jiia" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · JioMart · JIIA · live · Google Cloud Next '26 main stage</div>
 <div class="flex items-center gap-3 mb-3 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">JIIA · JioMart Agentic Shopping Assistant.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">JIIA · JioMart Agentic Shopping Assistant<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-live">Live · JPL · JioMart</span>
 </div>
 <p class="text-base max-w-3xl mb-4" style="color: var(--ink-muted);">Turns the JioMart storefront from a search box into an agentic commerce surface. A shopper types intent (<em>"help me plan a birthday party"</em>); JIIA breaks it into categories (Party decorations · Snacks &amp; Beverages · Gifts · Table Decor), assembles a ready-to-buy bundle, and carries the journey through cart and order management.</p>
@@ -409,11 +373,11 @@
 
 <!-- §06 · NETMEDS ASSISTANT -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
-<section id="netmeds-assistant" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">NETMEDS · AI CUSTOMER SERVICE AGENT · LIVE <span class="od-bar-dot">·</span> Agentic Commerce</span><span class="od-bar-counter">005 / 006</span></div>
+<section id="netmeds-assistant" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Netmeds · AI customer service agent · live</div>
 <div class="flex items-center gap-3 mb-3 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Netmeds Assistant · 850K Kaily messages · 96% favourable.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Netmeds Assistant · 850K Kaily messages · 96% favourable<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-live">Live · RR · Netmeds</span>
 </div>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Kaily-powered conversational agent for Netmeds, Reliance Retail's pharma vertical. Multi-channel · LLM grounded on Reliance vertical knowledge. Drops cost-per-contact while lifting CSAT.</p>
@@ -443,10 +407,10 @@
 
 <!-- §07 · WHY KAILY -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VI</span><span>006</span></div>
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">WHY KAILY · PLATFORM FIT FOR RELIANCE <span class="od-bar-dot">·</span> Agentic Commerce</span><span class="od-bar-counter">006 / 006</span></div>
 <section id="why-kaily" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">07 · Why Kaily · platform fit for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">One platform · built for outcomes, not replies.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">One platform · built for outcomes, not replies<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Six platform pillars · evaluated for Reliance Retail's scale, governance, and brand-tone requirements.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -487,6 +451,14 @@
 Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Kaily</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

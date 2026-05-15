@@ -13,56 +13,13 @@
 <script src="/present.js" defer></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -147,6 +104,13 @@
 <div class="card p-4"><div class="cap-num mb-1">Production</div><a href="https://hiring.ril.com" target="_blank" rel="noopener" class="display-2 text-base mono hover:underline" style="color: var(--ink);">hiring.ril.com</a><div class="text-xs mt-1" style="color: var(--amber);">Target sign-off 15 - Jun - 2026</div></div>
 <div class="card p-4"><div class="cap-num mb-1">SAP OM sync</div><div class="display-2 text-3xl accent">Daily</div><div class="text-xs mt-1" style="color: var(--ink-muted);">RFC integration · 9 entities</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> HireFirst</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> HR Tech</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -165,8 +129,9 @@
 
 <!-- §01 · WHAT HIREFIRST IS FOR RELIANCE -->
 <section id="for-reliance" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT HIREFIRST IS FOR RELIANCE <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">001 / 008</span></div>
 <div class="section-label mb-3">01 · What HireFirst is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -203,9 +168,10 @@
 </div></section>
 
 <!-- §02 · LIVE FOR RIL TODAY -->
-<section id="live-today" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="live-today" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">LIVE FOR RIL TODAY · 9 MODULES SHIPPED TO SIT <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">002 / 008</span></div>
 <div class="section-label mb-3">02 · Live for RIL today · 9 modules shipped to SIT</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What HireFirst does today.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What HireFirst does today<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -258,8 +224,9 @@
 
 <!-- §03 · ORION ARCHITECTURE -->
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">THE HIREFIRST ARCHITECTURE · 4 LAYERS <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">003 / 008</span></div>
 <div class="section-label mb-3">03 · The HireFirst architecture · 4 layers</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four layers. One core.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four layers. One core<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">HireFirst is built on a 4-layer platform. Most enterprise capabilities are pre-built; what's enabled on day one is a subset, expanded over the roadmap.</p>
 
 <div class="card overflow-hidden mb-8">
@@ -293,8 +260,9 @@
 
 <!-- §04 · FIVE INTELLIGENCE MODULES -->
 <section id="modules" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">FIVE INTELLIGENCE MODULES <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">004 / 008</span></div>
 <div class="section-label mb-3">04 · Five intelligence modules</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Where AI does the work.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Where AI does the work<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Five modules organise HireFirst's AI surface. Each card lists sub-features with explicit status. <span class="pill pill-live">Live</span> ships on SIT today. <span class="pill pill-phase2">Roadmap</span> is on the platform plan, not yet enabled.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -391,9 +359,10 @@
 </div></section>
 
 <!-- §05 · IN DEVELOPMENT FOR RIL -->
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">IN DEVELOPMENT FOR RIL · SHIPPING NEXT <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">005 / 008</span></div>
 <div class="section-label mb-3">05 · In development for RIL · shipping next</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Six modules in flight.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Six modules in flight<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -431,8 +400,9 @@
 
 <!-- §06 · GOVERNANCE & SECURITY -->
 <section id="governance" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">GOVERNANCE & SECURITY <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">006 / 008</span></div>
 <div class="section-label mb-3">06 · Governance &amp; security</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Enterprise compliance posture.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Enterprise compliance posture<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="card overflow-hidden">
 <table class="grid-table">
@@ -449,9 +419,10 @@
 </div></section>
 
 <!-- §07 · TECH STACK -->
-<section id="tech-stack" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="tech-stack" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">TECH STACK <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">007 / 008</span></div>
 <div class="section-label mb-3">07 · Tech stack</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What HireFirst runs on.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">What HireFirst runs on<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
 <div class="card p-5">
@@ -491,9 +462,10 @@
 </div></section>
 
 <!-- §08 · COMPETITIVE LANDSCAPE -->
-<section id="competitive" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="competitive" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VIII.</span><span class="od-bar-title">COMPETITIVE LANDSCAPE <span class="od-bar-dot">·</span> HR Tech</span><span class="od-bar-counter">008 / 008</span></div>
 <div class="section-label mb-3">08 · Competitive landscape</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Where HireFirst sits.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Where HireFirst sits<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Comparison set · traditional ATS (Workday, Greenhouse, Zoho Recruit, Keka) and point AI tools (TurboHire, Expertia AI). Six core capabilities below.</p>
 
 <div class="card overflow-hidden">
@@ -518,6 +490,14 @@
 Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · HireFirst</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

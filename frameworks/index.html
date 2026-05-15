@@ -13,28 +13,28 @@
 <script src="/present.js" defer></script>
 <style>
   /* Sticky in-page TOC */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
   .fw-eyebrow { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: .04em; }
   .fw-eyebrow::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
 
-  .fw-quick { display: block; background: white; border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: border-color .2s, transform .2s; }
+  .fw-quick { display: block; background: var(--bone); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: border-color .2s, transform .2s; }
   .fw-quick:hover { border-color: var(--ink); transform: translateY(-2px); }
   .fw-quick-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #16a34a; font-weight: 600; letter-spacing: .04em; }
   .fw-quick-q { font-size: 12px; color: var(--ink-muted); margin-top: 10px; font-style: italic; }
   .fw-quick-name { font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 4px; line-height: 1.25; }
 
-  .fw-connect { background: white; border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
+  .fw-connect { background: var(--bone); border: 1px solid var(--border); border-radius: 18px; padding: 28px; }
   .fw-connect-row { display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 16px 0; border-top: 1px solid var(--border-soft); }
   .fw-connect-row:first-child { border-top: 0; padding-top: 0; }
   .fw-connect-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 600; color: #16a34a; padding-top: 2px; }
   .fw-connect-text { font-size: 14px; color: var(--ink); line-height: 1.55; }
   .fw-connect-text strong { font-weight: 600; }
 
-  .fw-card { background: white; border: 1px solid var(--border); border-radius: 18px; transition: border-color .2s; overflow: hidden; }
+  .fw-card { background: var(--bone); border: 1px solid var(--border); border-radius: 18px; transition: border-color .2s; overflow: hidden; }
   .fw-card[open], .fw-card:hover { border-color: var(--ink); }
   .fw-card > summary { list-style: none; cursor: pointer; padding: 28px; display: grid; grid-template-columns: 56px 1fr 24px; gap: 20px; align-items: start; }
   .fw-card > summary::-webkit-details-marker { display: none; }
@@ -55,7 +55,7 @@
   .fw-insights { list-style: none; padding: 0; margin: 12px 0 0; }
   .fw-insights li { position: relative; padding-left: 18px; font-size: 14px; color: var(--ink); line-height: 1.55; margin-top: 8px; }
   .fw-insights li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
-  .fw-pullquote { background: var(--bg-soft); border-radius: 12px; padding: 22px; margin-top: 24px; }
+  .fw-pullquote { background: var(--bone); border-radius: 12px; padding: 22px; margin-top: 24px; }
   .fw-pullquote p { font-size: 16px; font-style: italic; font-weight: 500; color: var(--ink); line-height: 1.5; margin: 0; }
   .fw-pullquote .cite { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); margin-top: 12px; letter-spacing: .04em; }
   .fw-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: white; padding: 12px 22px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-top: 22px; transition: opacity .15s; }
@@ -65,50 +65,7 @@
     .fw-body { padding: 24px 20px 24px 20px; }
   }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -194,12 +151,20 @@
 <div class="mb-5"><span class="fw-eyebrow">The intellectual framework</span></div>
 <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">The AI Transformation Framework.</h1>
 <p class="text-lg max-w-3xl" style="color: var(--ink-muted);">Six working papers by Farooq Adam mapping the rebuild — of work, of roles, of organisations, of the surgery to force the split open, and of the software itself.</p>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Frameworks</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Engineering Standards</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- 01 · QUICK ACCESS -->
 <section id="four-papers" class="py-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">THE SIX PAPERS <span class="od-bar-dot">·</span> Engineering Standards</span><span class="od-bar-counter">001 / 003</span></div>
 <div class="section-label mb-3">01 · The six papers</div>
-<h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">Six questions. Six papers.</h2>
+<h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">Six questions. Six papers<span class="dot" style="color:var(--coral);">.</span></h2>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
   <a href="#paper-01" class="fw-quick">
     <div class="fw-quick-num">01</div>
@@ -235,9 +200,10 @@
 </div></section>
 
 <!-- 02 · HOW THE FRAMEWORK CONNECTS -->
-<section id="how-connects" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="how-connects" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">HOW THE FRAMEWORK CONNECTS <span class="od-bar-dot">·</span> Engineering Standards</span><span class="od-bar-counter">002 / 003</span></div>
 <div class="section-label mb-3">02 · How the framework connects</div>
-<h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">One argument, six papers.</h2>
+<h2 class="display-2 text-2xl md:text-3xl mb-6" style="color: var(--ink);">One argument, six papers<span class="dot" style="color:var(--coral);">.</span></h2>
 <div class="fw-connect max-w-4xl">
   <div class="fw-connect-row">
     <div class="fw-connect-num">01</div>
@@ -268,8 +234,9 @@
 
 <!-- 03 · DEEP CARDS -->
 <section id="full-papers" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">THE PAPERS <span class="od-bar-dot">·</span> Engineering Standards</span><span class="od-bar-counter">003 / 003</span></div>
 <div class="section-label mb-3">03 · The papers</div>
-<h2 class="display-2 text-2xl md:text-3xl mb-8" style="color: var(--ink);">Read the full argument.</h2>
+<h2 class="display-2 text-2xl md:text-3xl mb-8" style="color: var(--ink);">Read the full argument<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid grid-cols-1 gap-4 max-w-4xl">
 
@@ -500,6 +467,14 @@
 </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Frameworks</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

@@ -30,56 +30,13 @@
 .image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
 img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
 img.zoomable:hover { opacity: 0.92; }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -177,6 +134,13 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="p-4 text-xs" style="color: var(--ink-muted);">AutRi · autonomous shelf-scanning robot · navigates the grocery aisle and captures every fixture per scheduled session. 20–30K sqft per run.</div>
 </div>
 
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Autri</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> AI Assistant</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -197,8 +161,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §01 · Today vs the agentic flow -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">STATUS <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">001 / 010</span></div>
 <div class="section-label mb-3">01 · Status</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Today: a deployed scanner. Next: a closed loop.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Today: a deployed scanner. Next: a closed loop<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Phase 1 with Fynd Nucleus is running at <strong>FreshPik Powai</strong>. AutRi executes scheduled scans, draws bounding boxes around recognised SKUs, and produces brand-occupancy and facing heatmaps. A human still has to log in, interpret the heatmap, and tell someone to fix what's off. The agentic flow removes the human from the middle of that loop.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -245,9 +210,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §02 · The 6 compliance dimensions -->
-<section id="dimensions" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="dimensions" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">THE 6 COMPLIANCE DIMENSIONS <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">002 / 010</span></div>
 <div class="section-label mb-3">02 · The 6 compliance dimensions</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What "compliant" means on a grocery shelf.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What "compliant" means on a grocery shelf<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Planogram compliance means the live shelf matches the plan in every store, all day, every day, across six dimensions. Each one is what the AutRi scan reads, what GMetri interprets, and what the Agentic Command Centre decides on.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -311,8 +277,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §03 · Architecture · 3 layers + master data -->
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">ARCHITECTURE · 3 LAYERS + 1 MASTER DATA PLANE <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">003 / 010</span></div>
 <div class="section-label mb-3">03 · Architecture · 3 layers + 1 master data plane</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One shared master data plane. Three layers above it.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One shared master data plane. Three layers above it<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-4" style="color: var(--ink-muted);">Every layer exists to serve the planogram-compliance use case. No more, no less. The Data layer sees the shelf, the Intelligence layer judges it, the Action layer fixes it, and the Data layer re-sees it to close the loop.</p>
 <p class="cap-num mb-10" style="color: var(--ink-soft);">Layer 1 · sensing → Layer 2 · decision → Layer 3 · action → Layer 1 · verification</p>
 
@@ -345,7 +312,7 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <div class="card overflow-hidden">
-<img src="/assets/autri/07-architecture-diagram.jpg" alt="Architecture diagram · Master Data feeds Action and Intelligence; AutRi Robot + Image Repository under Data; GMetri + Agentic Command Centre under Intelligence; PulsePoint Admin + PulsePoint App under Action; verified-by-next-scan loop closes the cycle" class="w-full block zoomable" style="border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; background: #fff;" />
+<img src="/assets/autri/07-architecture-diagram.jpg" alt="Architecture diagram · Master Data feeds Action and Intelligence; AutRi Robot + Image Repository under Data; GMetri + Agentic Command Centre under Intelligence; PulsePoint Admin + PulsePoint App under Action; verified-by-next-scan loop closes the cycle" class="w-full block zoomable" style="border-bottom: 1px solid var(--border); max-width: 1100px; margin: 0 auto; background: var(--bone);" />
 <div class="p-5">
 <div class="cap-num mb-2">Source diagram · 21-Apr-2026 brief</div>
 <p class="text-sm" style="color: var(--ink-muted);">The dotted "verified by next scan" arrow from Action back to Data is the contract that makes this self-verifying. Without it, this is just another ticket queue.</p>
@@ -355,9 +322,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §04 · The 5-step loop -->
-<section id="loop" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="loop" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">THE 5-STEP LOOP <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">004 / 010</span></div>
 <div class="section-label mb-3">04 · The 5-step loop</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Scan. Read. Decide. Act. Verify.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Scan. Read. Decide. Act. Verify<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">A ticket is closed only when the next AutRi scan confirms compliance on that fixture. Staff evidence alone is not closure. This is what makes the loop self-verifying and the compliance number trustworthy.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
@@ -400,11 +368,11 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <div class="card overflow-hidden mb-6">
-<img src="/assets/autri/06-loop-diagram.jpg" alt="5-step loop diagram · SCAN → READ → DECIDE → ACT → VERIFY with a re-scan loop arc back to step 1" class="w-full block zoomable" style="background: #fff;" />
+<img src="/assets/autri/06-loop-diagram.jpg" alt="5-step loop diagram · SCAN → READ → DECIDE → ACT → VERIFY with a re-scan loop arc back to step 1" class="w-full block zoomable" style="background: var(--bone);" />
 </div>
 
 <div class="card overflow-hidden">
-<img src="/assets/autri/08-end-to-end-flow.jpg" alt="End-to-end sequence diagram · Store Ops scheduler triggers AutRi Robot; tagged images upload to Image Repository; GMetri reads against planogram; discrepancies flow to Agentic Command Centre; tickets created in PulsePoint; staff execute SOP and upload evidence; next AutRi scan re-reads the fixture and closes or escalates" class="w-full block zoomable" style="border-bottom: 1px solid var(--border); background: #fff;" />
+<img src="/assets/autri/08-end-to-end-flow.jpg" alt="End-to-end sequence diagram · Store Ops scheduler triggers AutRi Robot; tagged images upload to Image Repository; GMetri reads against planogram; discrepancies flow to Agentic Command Centre; tickets created in PulsePoint; staff execute SOP and upload evidence; next AutRi scan re-reads the fixture and closes or escalates" class="w-full block zoomable" style="border-bottom: 1px solid var(--border); background: var(--bone);" />
 <div class="p-5">
 <div class="cap-num mb-2">End-to-end sequence · 17 numbered steps</div>
 <p class="text-sm" style="color: var(--ink-muted);">The exact sequence the system runs, from a scheduled scan to a verified closure. Every step has an owner and a handoff. No manual bridges.</p>
@@ -415,8 +383,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §05 · Per-dimension handling -->
 <section id="per-dimension" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">PER-DIMENSION HANDLING <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">005 / 010</span></div>
 <div class="section-label mb-3">05 · Per-dimension handling</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six dimensions. Six routes. Six SOPs.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six dimensions. Six routes. Six SOPs<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each compliance dimension has a specific detection path, a specific severity decision, and a specific role it routes to. Velocity weighting and the active-promotion window override the default severity.</p>
 
 <div class="card overflow-hidden">
@@ -466,9 +435,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §06 · Plan · 4 stages -->
-<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">PLAN · 4 STAGES <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">006 / 010</span></div>
 <div class="section-label mb-3">06 · Plan · 4 stages</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four stages. Each stage is a standalone unlock.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Four stages. Each stage is a standalone unlock<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Value starts flowing before the full loop is live. Stages run in sequence, with Stages 2 and 3 overlapping through the middle of the build.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -507,8 +477,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §07 · Design choices for grocery -->
 <section id="design" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">DESIGN CHOICES FOR GROCERY <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">007 / 010</span></div>
 <div class="section-label mb-3">07 · Design choices for grocery</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three choices that make this work for grocery.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three choices that make this work for grocery<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Grocery is not fashion. The design choices below earn trust with store staff from day one and keep the inbox focused on what hits revenue.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -536,9 +507,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §08 · Outcome targets -->
-<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VIII.</span><span class="od-bar-title">OUTCOME TARGETS <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">008 / 010</span></div>
 <div class="section-label mb-3">08 · Outcome targets</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Compliance rate is the headline. The loop is the product.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Compliance rate is the headline. The loop is the product<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Nine targets, every one measurable. They are aspirational until the loop is live in pilot. Then they become the contract.</p>
 
 <div class="card overflow-hidden">
@@ -562,8 +534,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §09 · Risks -->
 <section id="risks" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IX.</span><span class="od-bar-title">RISKS & MITIGATIONS <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">009 / 010</span></div>
 <div class="section-label mb-3">09 · Risks &amp; mitigations</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five named risks. Five named mitigations.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five named risks. Five named mitigations<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The loop only works if the staff trust it, the data stays fresh, and a robot outage doesn't stop the store.</p>
 
 <div class="card overflow-hidden">
@@ -582,9 +555,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §10 · Receipts -->
-<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">X.</span><span class="od-bar-title">RECEIPTS <span class="od-bar-dot">·</span> AI Assistant</span><span class="od-bar-counter">010 / 010</span></div>
 <div class="section-label mb-3">10 · Receipts</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every claim above has a deeper artefact behind it.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -667,6 +641,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Autri</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

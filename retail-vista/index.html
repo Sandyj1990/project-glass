@@ -13,56 +13,13 @@
 <script src="/present.js" defer></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -161,6 +118,13 @@
 <div class="card p-4"><div class="cap-num mb-1">RIL Steering</div><div class="font-semibold" style="color: var(--ink);">Prateek Mathur · Alex Thomas · Gaurav Verma · Advait Pandit</div></div>
 <div class="card p-4"><div class="cap-num mb-1">RIL data partners</div><div class="font-semibold" style="color: var(--ink);">Biswaketan Kundu · Raghuram Velega</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Retail Vista</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Analytics Platform</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -178,8 +142,9 @@
 
 <!-- §01 · Status (01-May-2026) -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">STATUS (01 - MAY - 2026) · THREE TRACKS <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">001 / 007</span></div>
 <div class="section-label mb-3">01 · Status (01 - May - 2026) · Three tracks</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -207,9 +172,10 @@
 </div></section>
 
 <!-- §02 · What is live · Modules -->
-<section id="opportunity" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="opportunity" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">WHAT IS LIVE · OPPORTUNITY EXPLORER <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">002 / 007</span></div>
 <div class="section-label mb-3">02 · What is live · Opportunity Explorer</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Modules running today.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Modules running today<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Internal Track surfaces deployed on UCP design language. Each module is the Opportunity Explorer flow that takes a catchment from a scored signal to a pipeline decision. Live as of 01 - May - 2026 on real grocery NSO leads, aggregated on JioMart data.</p>
 
 <div class="card overflow-hidden mb-12">
@@ -232,7 +198,7 @@
 
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/01-home-command-center.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/01-home-command-center.jpg" alt="RetailVista Home · Command Center with Opportunity Intelligence panel and Top Opportunities list" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/01-home-command-center.jpg" alt="RetailVista Home · Command Center with Opportunity Intelligence panel and Top Opportunities list" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Home · Command Center</div><span class="pill pill-live">Live</span></div>
@@ -242,7 +208,7 @@
 
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/02-explorer-list.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/02-explorer-list.jpg" alt="Explorer · scored opportunity list with synchronised Google Maps" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/02-explorer-list.jpg" alt="Explorer · scored opportunity list with synchronised Google Maps" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Explorer · scored list + map</div><span class="pill pill-live">Live</span></div>
@@ -252,7 +218,7 @@
 
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/04-explorer-full-analysis.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/04-explorer-full-analysis.jpg" alt="Explorer · Full Analysis with 10 LI dimensions and composite score breakdown" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/04-explorer-full-analysis.jpg" alt="Explorer · Full Analysis with 10 LI dimensions and composite score breakdown" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Full Analysis · 10 LI dimensions</div><span class="pill pill-live">Live</span></div>
@@ -262,7 +228,7 @@
 
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/05-explorer-pipeline-kanban.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/05-explorer-pipeline-kanban.jpg" alt="Explorer · Pipeline Kanban with New / Shortlisted / Site Visit / Approved / Dismissed columns" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/05-explorer-pipeline-kanban.jpg" alt="Explorer · Pipeline Kanban with New / Shortlisted / Site Visit / Approved / Dismissed columns" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Pipeline · Kanban</div><span class="pill pill-live">Live</span></div>
@@ -272,7 +238,7 @@
 
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/07-workspace-copilot.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/07-workspace-copilot.jpg" alt="Workspace · AI co-pilot with feasibility analysis output for Andheri" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/07-workspace-copilot.jpg" alt="Workspace · AI co-pilot with feasibility analysis output for Andheri" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Workspace · AI Co-Pilot</div><span class="pill pill-live">Live</span></div>
@@ -282,7 +248,7 @@
 
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/08-users.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/08-users.jpg" alt="Users · access management table" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/screenshots/08-users.jpg" alt="Users · access management table" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Users · access management</div><span class="pill pill-live">Live</span></div>
@@ -298,8 +264,8 @@
      Render contents via: python tools/inject_path_to_l4.py --only retail-vista
      ===================================================================== -->
 <!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
-<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
+<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">PATH TO L4 <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">003 / 007</span></div>
 <div class="section-label mb-3">03 · PATH TO L4</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How RETAIL VISTA becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Currently at <strong>L3</strong>. 3 parallel tracks close the gap to L4.</p>
@@ -336,8 +302,9 @@
 
 <!-- §04 · Architecture -->
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">ARCHITECTURE · 5 LAYERS <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">004 / 007</span></div>
 <div class="section-label mb-3">04 · Architecture · 5 layers</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From raw signals to activated decision.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From raw signals to activated decision<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Five layers · Sources, Spatial Aggregation, GIS Visualisation, Agentic Orchestration, Activation. Agents read live signals, run guarded playbooks, write outcomes back for continuous learning. A question asked once becomes a callable agent skill across all three tracks.</p>
 
 <div class="grid md:grid-cols-5 gap-3 mb-10">
@@ -358,8 +325,9 @@
 
 <!-- §05 · Data foundation · 24 categories -->
 <section id="data" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">DATA FOUNDATION · 24 CATEGORIES <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">005 / 007</span></div>
 <div class="section-label mb-3">05 · Data foundation · 24 categories</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal that lands on the hex.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every signal that lands on the hex<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The shared data inventory feeding all three tracks. Reliance proprietary (UCP, store master), Jio (GIS, telco), Government (Census, NCRB, RBI, RERA, NFHS, SECC) and third-party POI (Kentrix). Volatility ranges from real-time to as-is.</p>
 
 <div class="card overflow-hidden">
@@ -403,7 +371,7 @@
 </div>
 <div class="card overflow-hidden">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/cornerstone/h3-mumbai-attractability.jpg" target="_blank" rel="noopener" title="Open full-size visualisation" class="js-lightbox">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/cornerstone/h3-mumbai-attractability.jpg" alt="H3 hex visualisation · Mumbai Attractability scoring with Ghatkopar 642 popup" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 480px; object-fit: contain; background: #fff; cursor: zoom-in;" />
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/cornerstone/h3-mumbai-attractability.jpg" alt="H3 hex visualisation · Mumbai Attractability scoring with Ghatkopar 642 popup" class="w-full block" style="border-bottom: 1px solid var(--border); max-height: 480px; object-fit: contain; background: var(--bone); cursor: zoom-in;" />
 </a>
 <div class="p-5"><div class="cap-num mb-1">H3 hex visualisation · Mumbai</div><p class="text-sm" style="color: var(--ink-muted);">Per-hex Attractability score (0-100 · Low / Medium / High / Very High) across MMR. Sample popup (Ghatkopar 642): Attractability 53/100 · Jio Penetration 43% · Connectivity 47% · UPI Growth +37% YoY · Competitors 4 · Real Estate ₹13.4K/sqft · Rent ₹201/sqft · Cannibalisation Risk 9% · Population 315K.</p></div>
 </div>
@@ -413,8 +381,9 @@
 
 <!-- §06 · Platform Vision -->
 <section id="vision" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">PLATFORM VISION <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">006 / 007</span></div>
 <div class="section-label mb-3">06 · Platform Vision</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where RetailVista is going.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where RetailVista is going<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">A pan-India geospatial backbone running across 1000 cities, weighted on Google's agentic stack, built around per-household Digital Twins and the full network reference for every Reliance operation.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -465,9 +434,10 @@
 </div></section>
 
 <!-- §07 · Roadmap -->
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">ROADMAP · ACTIVATION-LAYER USE CASES <span class="od-bar-dot">·</span> Analytics Platform</span><span class="od-bar-counter">007 / 007</span></div>
 <div class="section-label mb-3">07 · Roadmap · Activation-layer use cases</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every business question becomes an agent skill.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every business question becomes an agent skill<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Use cases mapped to the Activation Layer and Agentic Orchestration cells of the cornerstone architecture. First set is Live (NSO + dark-store drive time + catchment intelligence). Remaining cells are Building or Roadmap as agents inherit the data unlock from the JioGIS track. The platform is a single standard across formats : Grocery and Fresh through Digital, Trends, Strip Mall and Dark Store.</p>
 
 <div class="card overflow-hidden">
@@ -519,6 +489,14 @@
 Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Retail Vista</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

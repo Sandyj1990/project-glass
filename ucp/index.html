@@ -13,7 +13,7 @@
 <script src="/present.js" defer></script>
 <style>
 .video-thumb {
-  position: relative; aspect-ratio: 16/9; background: var(--bg-soft);
+  position: relative; aspect-ratio: 16/9; background: var(--bone);
   border-radius: 8px 8px 0 0; overflow: hidden; border-bottom: 1px solid var(--border);
   cursor: pointer;
 }
@@ -48,50 +48,7 @@
 img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
 img.zoomable:hover { opacity: 0.92; }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -209,12 +166,19 @@ img.zoomable:hover { opacity: 0.92; }
     </div>
   </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> UCP</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Marketing OS</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- §01 · Status -->
 <section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · Status (30 - Apr - 2026)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -261,7 +225,7 @@ img.zoomable:hover { opacity: 0.92; }
 <!-- §02 · Architecture · 4 layers -->
 <section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · Architecture</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Identity → Data → Activation → Agentic.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Identity → Data → Activation → Agentic<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each layer earns the next. Identity made unified data possible. Unified data made segmentation and activation possible. Activation at scale is what makes the agentic layer worth building.</p>
 
 <!-- Reference diagram + walkthrough video -->
@@ -342,9 +306,9 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §03 · Marketing OS · 3 cockpits -->
-<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Marketing OS · 3 cockpits</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The agentic marketing layer.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The agentic marketing layer<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Marketing OS sits on top of UCP. Three cockpits today. Each answers a different question every vertical leader asks. Each carries an L-rung pill for current state and target. Reference: <a href="/autonomous" style="color: var(--accent); text-decoration: underline;">L0–L5 autonomy framework</a>.</p>
 
 <!-- Card A · Marketing Intelligence -->
@@ -491,8 +455,8 @@ img.zoomable:hover { opacity: 0.92; }
      Render contents via: python tools/inject_path_to_l4.py --only ucp
      ===================================================================== -->
 <!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
-<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
+<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">PATH TO L4 <span class="od-bar-dot">·</span> Marketing OS</span><span class="od-bar-counter">001 / 001</span></div>
 <div class="section-label mb-3">04 · PATH TO L4</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How UCP becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Currently at <strong>L3</strong>. 1 named agent from the <a href="/agents/" style="color: var(--accent); text-decoration: underline;">/agents/</a> directory closes the gap to L4.</p>
@@ -520,12 +484,12 @@ img.zoomable:hover { opacity: 0.92; }
   .bp-summary::-webkit-details-marker { display: none; }
   .bp-summary::before { content: '▸'; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-muted); transition: transform 0.15s; margin-right: 4px; }
   details[open] > .bp-summary::before { transform: rotate(90deg); }
-  .bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: white; }
+  .bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: var(--bone); }
   .bp-card-title { font-weight: 700; font-size: 16px; color: var(--ink); flex: 1 1 auto; }
   .bp-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
   .bp-body { padding: 18px 20px 22px; border-top: 1px solid var(--border); overflow-x: auto; }
   table.bp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; }
-  table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+  table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bone); }
   table.bp-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--ink); }
   table.bp-table td.bp-step { font-weight: 600; white-space: nowrap; width: 14em; }
   table.bp-table td.bp-when { font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: nowrap; }
@@ -534,7 +498,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 <section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Platform Roadmap</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What ships next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What ships next<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Two roadmap threads in flight from Day-0 <strong>04 - May - 2026</strong>. Platform deliverables ship the new operator surfaces; AI deliverables close the loop toward the autonomous Marketing Agent above. Release window <strong>15 - May → 09 - Jun - 2026</strong>.</p>
 
 <!-- ============== Card 1 · Platform Roadmap ============== -->
@@ -584,7 +548,7 @@ img.zoomable:hover { opacity: 0.92; }
 <!-- §06 · Case study · RD DDD -->
 <section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Case study · UCP-powered campaign</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Reliance Digital · Digital Discount Days.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Reliance Digital · Digital Discount Days<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">10 RCS campaigns · 11 - Apr - 2026 → 19 - Apr - 2026 · UCP's first large-scale conversion-tracked campaign for RD. End-to-end · audience segmentation through RCS delivery to offline POS conversion tracking, all powered by UCP.</p>
 
 <div class="p-8 rounded-2xl" style="background: var(--ink); color: white;">
@@ -622,9 +586,9 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §07 · Release timeline -->
-<section class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">07 · Release timeline · 9 major milestones · Jan-2026 → Apr-2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How UCP got here.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How UCP got here<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-sm mb-10" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">Releases shown from 01 - Jan - 2026 onwards.</p>
 
 <div class="space-y-1">
@@ -645,6 +609,14 @@ img.zoomable:hover { opacity: 0.92; }
 Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · UCP</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

@@ -13,56 +13,13 @@
 <script src="/present.js" defer></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -235,6 +192,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> ALP</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Ajio Logistics</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -251,7 +215,7 @@
 <!-- §01 · What ALP is for Reliance -->
 <section id="overview" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · What ALP is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From scouting to keys-in-hand · in one system.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From scouting to keys-in-hand · in one system<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 <div class="card p-6"><div class="cap-num mb-2" style="color: var(--red);">Problem</div>
@@ -287,10 +251,10 @@
 
 <!-- §02 · Phase 1 · what's live today -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section id="phase1" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">PHASE 1 · WHAT'S LIVE TODAY <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">001 / 004</span></div>
+<section id="phase1" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · Phase 1 · what's live today</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Nine initiatives · seven Done · two In Progress.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Nine initiatives · seven Done · two In Progress<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source-of-truth status from <span class="mono">ALP project plan for phase 1.xlsx</span>. Each initiative below maps 1:1 to a row in that plan.</p>
 
 <div class="card overflow-hidden">
@@ -350,10 +314,10 @@
 
 <!-- §03 · Lead lifecycle + screens -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">LEAD LIFECYCLE · HOW THE PLATFORM WORKS <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">002 / 004</span></div>
 <section id="lifecycle" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Lead lifecycle · how the platform works</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">11 statuses · 7 tabs · 7 timeline stages · live screens.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">11 statuses · 7 tabs · 7 timeline stages · live screens<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every lead in ALP carries an ID, sits in one of 11 statuses, and progresses through a 7-tab Details page. The Progress Timeline widget at the top of every Lead Details collapses the journey into 7 stages from Site Details through Rent Declaration.</p>
 
 <div class="grid md:grid-cols-3 gap-6 mb-10">
@@ -444,10 +408,10 @@
 
 <!-- §04 · Access model · who sees what -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">ACCESS MODEL · WHO SEES WHAT <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">003 / 004</span></div>
 <section id="access" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Access model · who sees what</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Role-Based Access Control · scoped on login.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Role-Based Access Control · scoped on login<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="card overflow-hidden">
 <table class="grid-table">
@@ -496,10 +460,10 @@
 
 <!-- §05 · Phase 2 · roadmap -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">PHASE 2 · ROADMAP <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">004 / 004</span></div>
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Phase 2 · roadmap</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Two horizons.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Two horizons<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Group A is the explicit Phase 2 plan from the project file · scoped, sequenced, not yet started (per plan Sheet 2). Group B captures longer-horizon platform intent that does not yet have a PRD or build owner.</p>
 
 <h3 class="font-semibold text-lg mb-4" style="color: var(--ink);">A · Phase 2 plan</h3>
@@ -604,6 +568,14 @@
 </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · ALP</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

@@ -13,56 +13,13 @@
 <script src="/present.js" defer></script>
 <style>
 /* In-page section nav */
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -220,6 +177,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Samarth</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Store Intelligence</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -239,7 +203,7 @@
 <!-- §01 · Status strip -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · Status · what Samarth Plus does for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Live on prod. Bulk-tooling stabilising. AI agents on the roadmap.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Live on prod. Bulk-tooling stabilising. AI agents on the roadmap<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -278,10 +242,10 @@
 
 <!-- §02 · Architecture -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">ARCHITECTURE · WHAT SAMARTH PLUS IS, AS A SYSTEM <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">001 / 007</span></div>
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · Architecture · what Samarth Plus is, as a system</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Node + Prisma + Postgres on Reliance infra. SCORM player, SSO bridge, signed-URL storage, single-session auth.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Node + Prisma + Postgres on Reliance infra. SCORM player, SSO bridge, signed-URL storage, single-session auth<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Samarth Plus is served inside the Reliance People First app. Entry is a notification on the People First home; tapping it opens the Samarth Plus interface inside the host app. Below is the slice of stack that runs the eligibility, learning, OJT and certification flows. Source · Module Work Breakdown · Raunak Sharma · Phase 1-6.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -330,7 +294,7 @@
 </div>
 </div>
 
-<div class="mt-8 card p-6" style="background: var(--bg-soft);">
+<div class="mt-8 card p-6" style="background: var(--bone);">
 <div class="cap-num mb-2">Stack at a glance</div>
 <p class="text-sm" style="color: var(--ink);">Frontend · React inside the People First webview. Backend · Node.js + Express + Prisma + TypeScript. Datastore · Postgres on Reliance infra, behind the Reliance gateway. Pipeline · Azure DevOps · Harbor registry · ADC credentials. Mail · Sendgrid. Source of truth for the Apr-2026 cutover · <span class="mono">supabase-backup-20251014.tar.gz</span> migrated into the new Postgres via a one-off backfill script.</p>
 </div>
@@ -338,10 +302,10 @@
 
 <!-- §03 · Candidate journey -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
-<section id="journey" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">WHAT'S LIVE · THE CANDIDATE JOURNEY <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">002 / 007</span></div>
+<section id="journey" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · What's live · the candidate journey</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six steps from "I want my next role" to certified.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six steps from "I want my next role" to certified<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The journey an associate sees inside the People First app. Entry point: a notification on the People First home. <em>"You are eligible to apply for a new role."</em> Tapping it opens the Samarth Plus interface. The HRBP playbook below is what Reliance HRBPs use to brief frontline teams.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -349,7 +313,7 @@
 <div class="flex items-center justify-between mb-3"><div class="cap-num">Step 01</div><span class="pill pill-live"><span class="status-dot dot-green"></span> Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Pick Your Path.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">Career Road Map shows the role lattice for the associate's format · TA / K1 / K2 / K3 / DM. Associate selects a target role, reviews responsibilities + skills gap, taps <em>Begin the Program</em>.</p>
-<a href="/assets/samarth/03-pick-your-path.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/03-pick-your-path.jpg" alt="CSA role detail showing eligibility, responsibilities and Begin the Program button" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" /></a>
+<a href="/assets/samarth/03-pick-your-path.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/03-pick-your-path.jpg" alt="CSA role detail showing eligibility, responsibilities and Begin the Program button" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" /></a>
 <div class="text-xs mono mt-auto" style="color: var(--ink-muted);">Constraint · within-format growth + cross-format exploration both allowed</div>
 </div>
 
@@ -357,7 +321,7 @@
 <div class="flex items-center justify-between mb-3"><div class="cap-num">Step 02</div><span class="pill pill-live"><span class="status-dot dot-green"></span> Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Quick Check.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">Pre-screening · Aptitude Test (MCQ, 30 min) + Behavioural Assessment (scenarios, 40 min). Proctored: front-camera identity capture. Quiet, well-lit room. 2 min per question, no go-back.</p>
-<a href="/assets/samarth/04-quick-check.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/04-quick-check.jpg" alt="Career Growth Program screening step with Aptitude test 30 mins and Behavioural Assessment 40 mins" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" /></a>
+<a href="/assets/samarth/04-quick-check.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/04-quick-check.jpg" alt="Career Growth Program screening step with Aptitude test 30 mins and Behavioural Assessment 40 mins" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" /></a>
 <div class="text-xs mono mt-auto" style="color: var(--ink-muted);">Constraint · screening must be cleared before the Learning Journey opens</div>
 </div>
 
@@ -365,7 +329,7 @@
 <div class="flex items-center justify-between mb-3"><div class="cap-num">Step 03</div><span class="pill pill-live"><span class="status-dot dot-green"></span> Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Skill Up.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">Learning Journey · SCORM-compliant skill modules auto-mapped to gaps for the target role. Mandatory: 100% module completion before progression. Skill assessments per module · re-attempts allowed.</p>
-<a href="/assets/samarth/05-skill-up.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/05-skill-up.jpg" alt="Shrink Management video module with course content, on-going video and assessment" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" /></a>
+<a href="/assets/samarth/05-skill-up.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/05-skill-up.jpg" alt="Shrink Management video module with course content, on-going video and assessment" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" /></a>
 <div class="text-xs mono mt-auto" style="color: var(--ink-muted);">Constraint · mandatory · 100% progress required to unlock OJT</div>
 </div>
 
@@ -373,7 +337,7 @@
 <div class="flex items-center justify-between mb-3"><div class="cap-num">Step 04</div><span class="pill pill-live"><span class="status-dot dot-green"></span> Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Practice · OJT.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">On-the-Job Training in a model store. Initiation → Shadowing → Checklist → Performance → Video Proof → Assessor Approval. Daily activity log; assessor reviews each day before approving.</p>
-<a href="/assets/samarth/07-ojt-activities.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/07-ojt-activities.jpg" alt="OJT current status under review with Day 1 Approved, Day 2 and Day 3 Under Review, Awaiting Assessor Approval" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" /></a>
+<a href="/assets/samarth/07-ojt-activities.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/07-ojt-activities.jpg" alt="OJT current status under review with Day 1 Approved, Day 2 and Day 3 Under Review, Awaiting Assessor Approval" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" /></a>
 <div class="text-xs mono mt-auto" style="color: var(--ink-muted);">Constraint · required for higher-leadership transitions (e.g. K3 → DM)</div>
 </div>
 
@@ -381,7 +345,7 @@
 <div class="flex items-center justify-between mb-3"><div class="cap-num">Step 05</div><span class="pill pill-live"><span class="status-dot dot-green"></span> Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Get Certified.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">All OJT days approved → status moves to <em>Certified</em>. Associate downloads a Certificate of Completion (PDF). Issuance verified on prod traffic during the Apr-2026 cutover.</p>
-<a href="/assets/samarth/08-certificate.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/08-certificate.jpg" alt="Certificate of Completion screen showing Status Certified and Download Certificate button" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" /></a>
+<a href="/assets/samarth/08-certificate.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/08-certificate.jpg" alt="Certificate of Completion screen showing Status Certified and Download Certificate button" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" /></a>
 <div class="text-xs mono mt-auto" style="color: var(--ink-muted);">Constraint · all sub-modules must be Approved</div>
 </div>
 
@@ -389,7 +353,7 @@
 <div class="flex items-center justify-between mb-3"><div class="cap-num">Step 06</div><span class="pill pill-live"><span class="status-dot dot-green"></span> Live · external handoff</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Progress.</h3>
 <p class="text-sm mb-3" style="color: var(--ink-muted);">Associate brings the certificate to the Store Manager to discuss openings matching certified skills. HRBP coordinates the move. LMS + IJP integration on the forward roadmap will close this loop inside the platform.</p>
-<a href="/assets/samarth/02-people-first-entry.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/02-people-first-entry.jpg" alt="People First app home screen with eligibility notification You are eligible to apply for a new role" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: #fff; cursor: zoom-in;" /></a>
+<a href="/assets/samarth/02-people-first-entry.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox"><img src="/assets/samarth/02-people-first-entry.jpg" alt="People First app home screen with eligibility notification You are eligible to apply for a new role" class="rounded-md border w-full mb-3 hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 360px; object-fit: contain; background: var(--bone); cursor: zoom-in;" /></a>
 <div class="text-xs mono mt-auto" style="color: var(--ink-muted);">Constraint · handoff to Store Manager + HRBP today; in-platform IJP on roadmap</div>
 </div>
 </div>
@@ -397,10 +361,10 @@
 
 <!-- §04 · Platform pillars -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">PLATFORM PILLARS · WHAT'S WIRED IN <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">003 / 007</span></div>
 <section id="pillars" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Platform pillars · what's wired in</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Four employee pillars + an admin tower.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Four employee pillars + an admin tower<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-2 gap-4">
 <div class="card p-6"><div class="cap-num mb-2">Pillar 01</div><h3 class="font-semibold mb-2" style="color: var(--ink);">Proctored Pre-Screening.</h3><p class="text-sm" style="color: var(--ink-muted);">Aptitude + behavioural assessments with built-in proctoring, configurable timers per role, and prescreening-attempts persistence so an interrupted session resumes cleanly.</p></div>
@@ -413,10 +377,10 @@
 
 <!-- §05 · Shipped -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
-<section id="shipped" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">SHIPPED · 7-MONTH DELIVERY FROM SUPABASE PROTOTYPE TO REL... <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">004 / 007</span></div>
+<section id="shipped" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Shipped · 7-month delivery from Supabase prototype to Reliance prod</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six phases. Dev → SIT → UAT → Prod. Oct-2025 to Apr-2026.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six phases. Dev → SIT → UAT → Prod. Oct-2025 to Apr-2026<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Incremental delivery log, by phase. Each phase names what was built, the environment it ran in, and one headline. Source · Module Work Breakdown · Raunak Sharma · primary contributor, with Vikas Singh and Yash on UI / SSO collaboration.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -514,10 +478,10 @@
 
 <!-- §06 · Roadmap -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">ROADMAP · ALPHA TO GA, 6 TO 12 MONTHS OUT <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">005 / 007</span></div>
 <section id="roadmap" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Roadmap · alpha to GA, 6 to 12 months out</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From limited pilot today, to wider rollout, to autonomous talent operations.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From limited pilot today, to wider rollout, to autonomous talent operations<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Three lenses on what comes next. Phase A is the work in flight today, hardening the build for wider rollout. Phase B opens the platform up to format-by-format expansion. Phase C is the AI agent layer over the certified-pipeline graph. DRIs and exact go-live dates remain on the Reliance rollout calendar.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -561,10 +525,10 @@
 
 <!-- §07 · Receipts -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VI</span><span>006</span></div>
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">RECEIPTS · SOURCE DOCUMENTS AND AUDITS <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">006 / 007</span></div>
 <section id="receipts" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">07 · Receipts · source documents and audits</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every claim on this page is sourced. Open the artefact.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Every claim on this page is sourced. Open the artefact<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Two source artefacts compile the page · one HRBP-facing training deck and one engineering delivery log. Two adversarial audits stress-tested the page against those sources. The compilation folder holds the originals. Strict internal circulation only.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -614,11 +578,19 @@
 
 <!-- §08 · Built by -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VII</span><span>007</span></div>
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">SECTION VII <span class="od-bar-dot">·</span> Store Intelligence</span><span class="od-bar-counter">007 / 007</span></div>
 <section id="team" class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
 08 · Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Samarth</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

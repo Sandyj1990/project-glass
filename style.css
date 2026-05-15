@@ -759,30 +759,59 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   .marquee-track { animation: none; }
 }
 
-/* ── Open-Design.ai Layout System ───────────────────────── */
+/* ══════════════════════════════════════════════════════════════
+   Open-Design.ai — Comprehensive Pattern Library v2
+   ══════════════════════════════════════════════════════════════ */
 
-/* Section index bar — thin ruled divider with Roman numeral + page counter */
+/* ── Rich Section Index Bar ─────────────────────────────────── */
 .od-index-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 10px 0;
-  margin-bottom: 64px;
+  padding: 12px 0;
+  margin-bottom: 56px;
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.14em;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink-faint);
   gap: 16px;
 }
+.od-index-bar .od-roman {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--coral);
+  font-size: 15px;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  min-width: 28px;
+}
+.od-index-bar .od-bar-title {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.od-index-bar .od-bar-dot {
+  color: var(--coral);
+  font-size: 8px;
+}
+.od-index-bar .od-bar-counter {
+  font-variant-numeric: tabular-nums;
+  min-width: 56px;
+  text-align: right;
+}
+/* Legacy fallbacks */
 .od-index-bar .od-numeral { font-weight: 600; color: var(--ink-mute); min-width: 24px; }
 .od-index-bar .od-section-title { flex: 1; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .od-index-bar .od-section-title span.od-dot { color: var(--coral); font-size: 14px; }
 .od-index-bar .od-page-num { text-align: right; min-width: 48px; }
 
-/* Eyebrow label — "— LABEL · Nº 01" */
+/* ── Eyebrow label — "— LABEL · Nº 01" ─────────────────────── */
 .od-eyebrow {
   display: inline-flex;
   align-items: center;
@@ -796,7 +825,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
 }
 .od-eyebrow::before { content: '—'; color: var(--coral); }
 
-/* Headline with coral dot punctuation */
+/* ── Headline with coral dot punctuation ─────────────────────── */
 .od-headline {
   font-family: var(--sans);
   font-size: clamp(36px, 5vw, 64px);
@@ -809,7 +838,10 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
 .od-headline em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .od-headline .od-coral-dot::after { content: '.'; color: var(--coral); }
 
-/* 2-column alternating layout */
+/* ── Body copy under headline ────────────────────────────────── */
+.od-body { font-size: 16px; line-height: 1.7; color: var(--ink-mute); max-width: 48ch; margin-bottom: 24px; }
+
+/* ── 2-column alternating layout ─────────────────────────────── */
 .od-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -819,12 +851,8 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
 }
 .od-split.od-flip { direction: rtl; }
 .od-split.od-flip > * { direction: ltr; }
-@media (max-width: 900px) {
-  .od-split { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
-  .od-split.od-flip { direction: ltr; }
-}
 
-/* Graphic frame with corner brackets and vertical label */
+/* ── Graphic frame with corner brackets ──────────────────────── */
 .od-graphic-frame {
   position: relative;
   border-radius: 16px;
@@ -860,8 +888,44 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   color: var(--ink-faint);
   white-space: nowrap;
 }
+.od-dot-grid {
+  background-image: radial-gradient(circle, var(--ink-faint) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.25;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
 
-/* Numbered feature cards */
+/* ── od-hero split layout ────────────────────────────────────── */
+.od-hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  min-height: 420px;
+}
+.od-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.od-hero-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.od-hero-graphic .od-graphic-frame {
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid rgba(200,169,126,0.25);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+}
+
+/* ── Numbered feature cards ──────────────────────────────────── */
 .od-cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -894,7 +958,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
 .od-card-arrow { position: absolute; bottom: 20px; right: 20px; font-size: 16px; color: var(--ink-faint); transition: color 0.15s, transform 0.15s; }
 .od-card:hover .od-card-arrow { color: var(--coral); transform: translate(2px, -2px); }
 
-/* Stat pills row */
+/* ── Stat pills row ──────────────────────────────────────────── */
 .od-stats-row {
   display: flex;
   gap: 32px;
@@ -907,52 +971,398 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
 .od-stat-num { font-family: var(--sans); font-size: 22px; font-weight: 800; color: var(--ink); }
 .od-stat-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
 
-/* Body copy under headline */
-.od-body { font-size: 16px; line-height: 1.7; color: var(--ink-mute); max-width: 48ch; margin-bottom: 24px; }
+/* ── Ghost Button (dashed border, OD style) ──────────────────── */
+.od-ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 20px;
+  border: 1.5px dashed rgba(74, 124, 89, 0.5);
+  border-radius: 8px;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+.od-ghost-btn:hover {
+  border-color: var(--olive);
+  background: rgba(74, 124, 89, 0.06);
+  color: var(--ink);
+}
+.od-ghost-btn .od-btn-arrow {
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+.od-ghost-btn:hover .od-btn-arrow {
+  transform: translateX(3px);
+}
 
-/* Dot-grid background pattern for graphic frames */
-.od-dot-grid {
-  background-image: radial-gradient(circle, var(--ink-faint) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.25;
+/* ── Green Dashed Corner Brackets (decorative) ───────────────── */
+.od-brackets {
+  position: relative;
+}
+.od-brackets::before,
+.od-brackets::after {
+  content: '';
   position: absolute;
-  inset: 0;
+  width: 18px;
+  height: 18px;
+  border-style: dashed;
+  border-color: rgba(74, 124, 89, 0.45);
   pointer-events: none;
 }
+.od-brackets::before {
+  top: -6px; left: -6px;
+  border-width: 1.5px 0 0 1.5px;
+}
+.od-brackets::after {
+  bottom: -6px; right: -6px;
+  border-width: 0 1.5px 1.5px 0;
+}
 
-/* ── od-hero split layout ─────────────────────────────── */
-.od-hero-split {
+/* ── Process / Method Step Row ───────────────────────────────── */
+.od-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin: 48px 0;
+}
+.od-step {
+  position: relative;
+  padding-right: 24px;
+}
+.od-step::after {
+  content: '\2192';
+  position: absolute;
+  right: -4px;
+  top: 8px;
+  font-size: 20px;
+  color: var(--ink-faint);
+}
+.od-step:last-child::after {
+  display: none;
+}
+.od-step-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 400;
+  color: var(--coral);
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.od-step-title {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.od-step-desc {
+  font-size: 14px;
+  color: var(--ink-mute);
+  line-height: 1.6;
+}
+
+/* ── Filter Tabs (pill-style, OD) ────────────────────────────── */
+.od-filter-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.od-filter-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-decoration: none;
+}
+.od-filter-tab:hover {
+  background: rgba(21, 20, 15, 0.04);
+  border-color: var(--ink-faint);
+}
+.od-filter-tab.active {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #fff;
+}
+.od-filter-tab .od-tab-count {
+  font-size: 10px;
+  opacity: 0.7;
+  padding-left: 4px;
+  border-left: 1px solid currentColor;
+  margin-left: 2px;
+}
+
+/* ── Image Frame with Metadata Overlay ───────────────────────── */
+.od-image-frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--paper-warm);
+  border: 1px solid var(--line);
+}
+.od-image-frame img,
+.od-image-frame svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.od-image-meta {
+  position: absolute;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 3px 8px;
+  background: rgba(239, 231, 210, 0.85);
+  border-radius: 4px;
+}
+.od-image-meta.top-left { top: 10px; left: 10px; }
+.od-image-meta.top-right { top: 10px; right: 10px; }
+.od-image-meta.bottom-left { bottom: 10px; left: 10px; }
+.od-image-meta.bottom-right { bottom: 10px; right: 10px; }
+
+/* ── Testimonial / Pull Quote ────────────────────────────────── */
+.od-quote {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.od-quote em {
+  font-style: italic;
+  color: var(--coral);
+}
+.od-attribution {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink-mute);
+}
+.od-attribution-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 14px;
+}
+.od-attribution strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ── Dark Section ────────────────────────────────────────────── */
+section.od-dark {
+  background: var(--ink);
+  color: var(--paper);
+}
+section.od-dark .od-index-bar {
+  border-color: rgba(239, 231, 210, 0.15);
+  color: rgba(239, 231, 210, 0.5);
+}
+section.od-dark .od-index-bar .od-roman { color: var(--coral); }
+section.od-dark .od-eyebrow { color: var(--coral); }
+section.od-dark .od-headline { color: var(--paper); }
+section.od-dark .od-body { color: rgba(239, 231, 210, 0.65); }
+section.od-dark .od-card {
+  background: rgba(239, 231, 210, 0.08);
+  border-color: rgba(239, 231, 210, 0.12);
+}
+section.od-dark .od-card-title { color: var(--paper); }
+section.od-dark .od-card-desc { color: rgba(239, 231, 210, 0.6); }
+section.od-dark .od-ghost-btn {
+  border-color: rgba(74, 124, 89, 0.4);
+  color: rgba(239, 231, 210, 0.7);
+}
+section.od-dark .od-ghost-btn:hover {
+  color: var(--paper);
+  background: rgba(74, 124, 89, 0.12);
+}
+
+/* ── Capability Matrix Header ────────────────────────────────── */
+.od-matrix-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.od-matrix-header .od-matrix-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+/* ── Dashed Coral Separator ──────────────────────────────────── */
+.od-dashed-sep {
+  border: none;
+  border-top: 2px dashed var(--coral);
+  opacity: 0.4;
+  margin: 40px 0;
+}
+
+/* ── Status Line ─────────────────────────────────────────────── */
+.od-status-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 20px;
+  margin-top: 40px;
+  border-top: 1px solid var(--line);
+}
+.od-status-line .od-live-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+/* ── Numbered List (editorial) ───────────────────────────────── */
+.od-numbered-list {
+  list-style: none;
+  counter-reset: od-list;
+  margin: 32px 0;
+}
+.od-numbered-list li {
+  counter-increment: od-list;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.od-numbered-list li::before {
+  content: counter(od-list, decimal-leading-zero);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--coral);
+  letter-spacing: 0.08em;
+  padding-top: 2px;
+}
+
+/* ── Two-column text block ───────────────────────────────────── */
+.od-two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: center;
-  min-height: 420px;
+  gap: 64px;
+  margin: 48px 0;
 }
-.od-hero-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.od-hero-graphic {
+
+/* ── Metadata Tag Row ────────────────────────────────────────── */
+.od-meta-row {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding: 16px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  margin: 32px 0;
 }
-.od-hero-graphic .od-graphic-frame {
-  width: 100%;
-  max-width: 480px;
-  padding: 24px;
-  background: #1a1a1a;
-  border-radius: 20px;
-  border: 1px solid rgba(200,169,126,0.25);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+.od-meta-row .od-meta-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.od-meta-row .od-meta-sep {
+  color: var(--coral);
+  font-size: 8px;
+}
+
+/* ── Practice Bar ────────────────────────────────────────────── */
+.od-practice-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.od-practice-bar .od-practice-icon {
+  font-size: 16px;
+  color: var(--ink-mute);
+}
+
+/* ── Internal Page Hero Enhancement ──────────────────────────── */
+.od-page-hero {
+  padding: 56px 0 48px;
+  position: relative;
+}
+.od-page-hero .od-hero-split { min-height: 380px; }
+.od-page-hero .od-eyebrow { margin-bottom: 16px; }
+.od-page-hero .od-headline { margin-bottom: 20px; }
+.od-page-hero .od-body { margin-bottom: 20px; }
+.od-page-hero .od-stats-row { margin-top: 24px; }
+
+/* ── Responsive — OD patterns ────────────────────────────────── */
+@media (max-width: 900px) {
+  .od-split { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
+  .od-split.od-flip { direction: ltr; }
+  .od-steps { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 768px) {
-  .od-hero-split {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .od-hero-graphic {
-    order: -1;
-  }
+  .od-hero-split { grid-template-columns: 1fr; gap: 32px; }
+  .od-hero-graphic { order: -1; }
+  .od-index-bar { font-size: 9px; gap: 8px; }
+  .od-index-bar .od-bar-title { display: none; }
+  .od-two-col { grid-template-columns: 1fr; gap: 32px; }
+  .od-steps { grid-template-columns: 1fr; }
+  .od-step::after { display: none; }
+}
+@media (max-width: 480px) {
+  .od-filter-tabs { gap: 6px; }
+  .od-filter-tab { padding: 6px 12px; font-size: 10px; }
 }

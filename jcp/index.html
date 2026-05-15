@@ -14,16 +14,16 @@
 <script defer="" src="/present.js"></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
   /* People bar chart */
   .bar-row { display: grid; grid-template-columns: 200px 1fr 60px; align-items: center; gap: 12px; padding: 6px 0; }
   .bar-row .lbl { font-size: 13px; color: var(--ink); }
   .bar-row .num { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ink); text-align: right; font-weight: 500; }
-  .bar-track { background: var(--bg-soft); height: 18px; border-radius: 4px; position: relative; overflow: hidden; }
+  .bar-track { background: var(--bone); height: 18px; border-radius: 4px; position: relative; overflow: hidden; }
   .bar-fill { height: 100%; background: var(--accent); display: block; }
   .bar-fill.shared { background: var(--ink-soft); }
   /* Roadmap timeline */
@@ -42,27 +42,27 @@
   .ch-status.progress { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
   .ch-status.planned { background: #F3F4F6; color: #4B5563; border: 1px solid #D1D5DB; }
   .ch-status.b2b { background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
-  .ch-card { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: block; }
+  .ch-card { background: var(--bone); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: block; }
   .ch-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .ch-thumb { position: relative; aspect-ratio: 9/16; background: var(--bg-soft); border-bottom: 1px solid var(--border); overflow: hidden; }
+  .ch-thumb { position: relative; aspect-ratio: 9/16; background: var(--bone); border-bottom: 1px solid var(--border); overflow: hidden; }
   .ch-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-  .ch-icon { position: absolute; top: 8px; left: 8px; width: 36px; height: 36px; border-radius: 8px; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); background: white; overflow: hidden; }
+  .ch-icon { position: absolute; top: 8px; left: 8px; width: 36px; height: 36px; border-radius: 8px; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.15); background: var(--bone); overflow: hidden; }
   .ch-icon img { width: 100%; height: 100%; object-fit: cover; }
   .ch-meta { padding: 12px; }
   .ch-meta h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 6px 0 2px; }
   .ch-meta .vert { font-size: 11px; color: var(--ink-muted); }
   /* Storefront 16:9 card */
-  .ch-shot { background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: block; }
+  .ch-shot { background: var(--bone); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: block; }
   .ch-shot:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .ch-shot-thumb { position: relative; aspect-ratio: 16/9; background: var(--bg-soft); border-bottom: 1px solid var(--border); overflow: hidden; }
+  .ch-shot-thumb { position: relative; aspect-ratio: 16/9; background: var(--bone); border-bottom: 1px solid var(--border); overflow: hidden; }
   .ch-shot-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
   /* Logo card · centered brand image · for brands without storefront screenshots */
-  .ch-logo-card { aspect-ratio: 9/16; background: white; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: flex; flex-direction: column; }
+  .ch-logo-card { aspect-ratio: 9/16; background: var(--bone); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all .15s; display: flex; flex-direction: column; }
   .ch-logo-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-  .ch-logo-thumb { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--bg-soft); border-bottom: 1px solid var(--border); }
+  .ch-logo-thumb { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; background: var(--bone); border-bottom: 1px solid var(--border); }
   .ch-logo-thumb img { max-width: 100%; max-height: 100%; object-fit: contain; }
   /* Collapsed chip · compact inline pill for brands without logos */
-  .ch-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px 6px 6px; transition: all .15s; }
+  .ch-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bone); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px 6px 6px; transition: all .15s; }
   .ch-chip:hover { border-color: var(--ink); }
   .ch-chip h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.2; }
   .ch-chip .vert { display: none; }
@@ -76,50 +76,7 @@
     .timeline { grid-template-columns: 1fr; gap: 4px; }
   }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -243,6 +200,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> JCP</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Enterprise Commerce</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 <!-- Sticky in-page TOC -->
 <div class="story-toc">
@@ -263,7 +227,7 @@
 <!-- §01 · The bet -->
 <section class="py-16 border-b" id="bet" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · The bet</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">78 stacks. Or one.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">78 stacks. Or one<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-4" style="color: var(--ink-muted);">Reliance Retail runs 78 commerce channels across 10 verticals: fashion, grocery, electronics, beauty, furniture, pharma, jewellery, home decor, fresh food, digital top-up. Built channel-by-channel, that is 78 codebases, 78 OMS instances, 78 release trains, 78 catalog systems, 78 AI roadmaps. Every brand pays its own engineering tax. Every breakthrough has to be re-built 78 times.</p>
 <p class="text-base max-w-3xl mb-4" style="color: var(--ink);"><strong>JCP is the bet that one stack does it instead.</strong> One codebase. One release train. One AI substrate. Every brand inherits, no brand loses its identity.</p>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The math only works if the platform holds at peak. It does. <strong style="color: var(--ink);">350K orders / hour tested · 700K+ orders / day live.</strong> Vertex Search shipped to 5 channels in one cutover, not 5 projects. Web Grounding shipped to Netmeds, Reliance Digital and Tira off one pipeline.</p>
@@ -290,7 +254,7 @@
 <li>· 200M+ customers on the same substrate</li>
 </ul>
 </div>
-<div class="card p-6" style="background: var(--bg-soft); border-color: var(--border);">
+<div class="card p-6" style="background: var(--bone); border-color: var(--border);">
 <div class="cap-num mb-2" style="color: var(--accent);">What it took</div>
 <h3 class="font-semibold text-lg mb-3" style="color: var(--ink);">Discipline at the core, freedom at the edge.</h3>
 <ul class="text-sm space-y-1" style="color: var(--ink-muted); list-style: none; padding: 0;">
@@ -305,10 +269,10 @@
 </div></section>
 <!-- §02 · Scale -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section class="py-16 border-b" id="scale" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">SCALE <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">001 / 010</span></div>
+<section class="py-16 border-b" id="scale" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · Scale</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What it carries today.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What it carries today<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">FY 2025-26 production load. Measured, not promised.</p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
 <div class="card p-5"><div class="cap-num mb-1">Orders / day</div><div class="display-2 text-3xl accent">700K+</div></div>
@@ -326,10 +290,10 @@
 </div></section>
 <!-- §03 · Coverage -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">COVERAGE <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">002 / 010</span></div>
 <section class="py-16 border-b" id="coverage" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Coverage</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where JCP runs.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where JCP runs<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">78 channels (73 B2C, 5 B2B) across the full Reliance Retail surface. 68 already serving live customers. 10 verticals, with Agri planned.</p>
 <div class="grid grid-cols-3 gap-3 max-w-3xl mb-10">
 <div class="card p-5"><div class="cap-num mb-1">Live</div><div class="display-2 text-3xl" style="color: var(--green);">68</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Customer-using-it</div></div>
@@ -503,10 +467,10 @@
 </div></section>
 <!-- §04 · People -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
-<section class="py-16 border-b" id="people" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">PEOPLE <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">003 / 010</span></div>
+<section class="py-16 border-b" id="people" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · People</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">274 hands on JCP.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">274 hands on JCP<span class="dot" style="color:var(--coral);">.</span></h2>
 <div class="card p-8">
 <div class="cap-num mb-4">Where they sit · 13 tracks</div>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-1">
@@ -528,10 +492,10 @@
 </div></section>
 <!-- §05 · Architecture -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">ARCHITECTURE <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">004 / 010</span></div>
 <section class="py-16 border-b" id="architecture" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Architecture</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What sits underneath.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What sits underneath<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JCP coverage across the full retail surface: Online Customer · Store · Warehouse · Back Office. Single platform, modular services.</p>
 <div class="card p-4 overflow-x-auto" style="max-width: 1100px;">
 <svg preserveaspectratio="xMidYMid meet" role="img" style="width:100%;min-width:720px;height:auto;display:block;font-family:'Inter',system-ui,sans-serif;" viewbox="0 0 1200 590" xmlns="http://www.w3.org/2000/svg">
@@ -669,10 +633,10 @@
 </div></section>
 <!-- §06 · Product surface -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
-<section class="py-16 border-b" id="properties" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">PRODUCT SURFACE <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">005 / 010</span></div>
+<section class="py-16 border-b" id="properties" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Product surface</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Eight products. One platform.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Eight products. One platform<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JCP is a unified commerce stack. Every Reliance brand inherits the same eight products, configured to its vertical. Orchestrated end-to-end through a modular API substrate (REST + GraphQL) with 100+ pre-built extensions.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 <div class="card p-6"><div class="cap-num mb-2" style="color: var(--accent);">Commerce core · 01</div><h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">eCommerce Platform</h3><p class="text-sm" style="color: var(--ink-muted);">End-to-end online commerce: catalog, cart, checkout, payments. The substrate every brand storefront inherits.</p></div>
@@ -692,10 +656,10 @@
 </div></section>
 <!-- §07 · AI shipped -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VI</span><span>006</span></div>
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">AI SHIPPED <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">006 / 010</span></div>
 <section class="py-16 border-b" id="ai" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">07 · AI shipped</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Search, cataloging, recommendations · live.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Search, cataloging, recommendations · live<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Three AI capabilities shipped on JCP this year (search, cataloging, recommendations) measured against live A/B traffic, not synthetic benchmarks. Next wave: agentic commerce on top of the same substrate.</p>
 <div class="grid md:grid-cols-2 gap-4 mb-6">
 <div class="card p-8">
@@ -751,7 +715,7 @@
      ===================================================================== -->
 <!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VII</span><span>007</span></div>
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">PATH TO L4 <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">007 / 010</span></div>
 <section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
 <div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">08 · PATH TO L4</div>
@@ -780,10 +744,10 @@
 <!-- PATH-TO-L4-END -->
 <!-- §09 · Shipped this year -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VIII</span><span>008</span></div>
-<section class="py-16 border-b" id="shipped" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VIII.</span><span class="od-bar-title">SHIPPED THIS YEAR <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">008 / 010</span></div>
+<section class="py-16 border-b" id="shipped" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">09 · Shipped this year</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">~150 capability releases. 10 sub-systems.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">~150 capability releases. 10 sub-systems<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">FY 2025-26, sourced from internal JCP product release notes. The shape of a year.</p>
 <div class="card overflow-x-auto">
 <table class="grid-table" style="min-width: 560px;">
@@ -808,10 +772,10 @@
 </div></section>
 <!-- §10 · Roadmap -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IX</span><span>009</span></div>
+<div class="od-index-bar"><span class="od-roman">IX.</span><span class="od-bar-title">ROADMAP · Q2 AMJ 2026 <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">009 / 010</span></div>
 <section class="py-16 border-b" id="roadmap" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">10 · Roadmap · Q2 AMJ 2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">90 Day Roadmap.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">90 Day Roadmap<span class="dot" style="color:var(--coral);">.</span></h2>
 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
 <div class="card p-6">
 <div class="cap-num mb-3" style="color: var(--accent);">Money flows · 55 features</div>
@@ -847,10 +811,10 @@
 </div></section>
 <!-- §11 · Receipts -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>X</span><span>010</span></div>
-<section class="py-16 border-b" id="receipts" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">X.</span><span class="od-bar-title">RECEIPTS <span class="od-bar-dot">·</span> Enterprise Commerce</span><span class="od-bar-counter">010 / 010</span></div>
+<section class="py-16 border-b" id="receipts" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">11 · Receipts</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every claim above has a deeper artefact behind it.</p>
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 <a class="card card-hover p-6 block" href="/jcp/channels"><div class="cap-num mb-2">Coverage</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Channel gallery · 78</h3><p class="text-sm" style="color: var(--ink-muted);">Visual inventory of every storefront and app.</p></a>
@@ -861,6 +825,14 @@
 <a class="card card-hover p-6 block" href="/"><div class="cap-num mb-2">Home</div><h3 class="font-semibold text-base mb-2" style="color: var(--ink);">Back to the register</h3><p class="text-sm" style="color: var(--ink-muted);">Cross-platform overview · all 20+ tracks across the Fynd × RRVL surface.</p></a>
 </div>
 </div></section>
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · JCP</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

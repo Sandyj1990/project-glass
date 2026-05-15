@@ -12,11 +12,11 @@
 <script src="/present.js" defer></script>
 <style>
   /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
   .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+  .story-toc a:hover { color: var(--ink); background: var(--bone); }
+  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
   /* Page-local helpers */
   .pill {
     display: inline-flex; align-items: center;
@@ -45,13 +45,13 @@
     font-size: 11px; font-weight: 500;
     color: var(--ink-muted);
     text-transform: uppercase; letter-spacing: 0.04em;
-    background: var(--bg-soft);
+    background: var(--bone);
     border-bottom: 1px solid var(--ink);
   }
   .grid-table td:first-child { color: var(--ink); font-weight: 600; }
 
   .surface-card {
-    background: white; border: 1px solid var(--border);
+    background: var(--bone); border: 1px solid var(--border);
     border-radius: 12px; padding: 20px;
   }
   .surface-card .url {
@@ -68,50 +68,7 @@
     font-size: 12px; font-weight: 600;
   }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -243,6 +200,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> RCPL</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> FMCG B2B</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -260,7 +224,7 @@
 <!-- §01 · Status -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · Status · 24-Apr-2026 cycle</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Stabilise and scale, in parallel.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Stabilise and scale, in parallel<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Two-track stance. Track 1 · take ownership of the existing two-year-old stack and ship production deployments every cycle to close gaps and harden data quality. Track 2 · architect a dedicated, RCPL-owned, AI-native FMCG OS as the long-term home.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -297,10 +261,10 @@
 
 <!-- §02 · 5 PODs -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section id="pods" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT'S LIVE · 5 DELIVERY PODS <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">001 / 005</span></div>
+<section id="pods" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · What's live · 5 delivery PODs</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five parallel tracks across Beverage and Non-Beverage.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Five parallel tracks across Beverage and Non-Beverage<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each POD owns a slice of the route-to-market : Pre-Sales and Van Sales for the Beverage business; Multi-Segment Distributor Mapping, CSO empowerment, and Beat Management for the broader CSO field force; CTS for cooler-asset deployment; Primary DMS for distributor ordering; Pricing &amp; Promotions for the full margin-and-scheme stack.</p>
 
 <div class="card overflow-hidden">
@@ -330,10 +294,10 @@
 
 <!-- §03 · Architecture / Six surfaces -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">ARCHITECTURE · SIX PLATFORM SURFACES <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">002 / 005</span></div>
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Architecture · six platform surfaces</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One DMS, six entry points.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One DMS, six entry points<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The same data backbone serves every stakeholder (RCPL business team, distributor, channel sales officer, area sales manager, BPO ops, service provider) through a purpose-fit interface for each.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -343,7 +307,7 @@
     <p class="text-sm mb-3" style="color: var(--ink);">Bulk uploads · onboarding (distributor, CSO, retailer, factory, APOB) · pricing &amp; scheme rule setup · article-market mapping · primary indent management · data-correction scripts.</p>
     <p class="url mb-3"><a href="https://portal.reliancedms.com/" target="_blank" rel="noopener">https://portal.reliancedms.com/</a></p>
     <a href="/assets/jcp/rcpl/admin-indent-management.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-      <img src="/assets/jcp/rcpl/admin-indent-management.jpg" alt="Admin Portal · Primary Indent Management · 787 orders · Pending / Accepted / Rejected" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 320px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+      <img src="/assets/jcp/rcpl/admin-indent-management.jpg" alt="Admin Portal · Primary Indent Management · 787 orders · Pending / Accepted / Rejected" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 320px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
     </a>
   </div>
   <div class="surface-card">
@@ -352,7 +316,7 @@
     <p class="text-sm mb-3" style="color: var(--ink);">5-step primary ordering with FTL guidance and credit balance check · accept / modify / reject retailer secondary orders · invoice + picklist downloads at order or beat level · returns and reconciliation flows.</p>
     <p class="url mb-3"><a href="https://reliancedms.jiomartpartners.com" target="_blank" rel="noopener">https://reliancedms.jiomartpartners.com</a></p>
     <a href="/assets/jcp/rcpl/distributor-order-details.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-      <img src="/assets/jcp/rcpl/distributor-order-details.jpg" alt="Distributor Platform · order details · Accept / Modify / Reject" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 320px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+      <img src="/assets/jcp/rcpl/distributor-order-details.jpg" alt="Distributor Platform · order details · Accept / Modify / Reject" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 320px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
     </a>
   </div>
   <div class="surface-card">
@@ -362,28 +326,28 @@
     <p class="url mb-3"><a href="https://rcpl.jmpx3.de" target="_blank" rel="noopener">https://rcpl.jmpx3.de</a> · mobile app (Samruddhi)</p>
     <div class="grid grid-cols-2 gap-2">
       <a href="/assets/jcp/rcpl/cso-app-login.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-login.jpg" alt="CSO App · brand splash + sign-in to FOS · OTP verification" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 280px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+        <img src="/assets/jcp/rcpl/cso-app-login.jpg" alt="CSO App · brand splash + sign-in to FOS · OTP verification" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 280px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
       </a>
       <a href="/assets/jcp/rcpl/cso-app-home.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-home.jpg" alt="CSO App · home · today's beat plan + onboard retailers" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 280px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+        <img src="/assets/jcp/rcpl/cso-app-home.jpg" alt="CSO App · home · today's beat plan + onboard retailers" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 280px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
       </a>
     </div>
     <div class="grid grid-cols-2 gap-2 mt-2">
       <a href="/assets/jcp/rcpl/cso-app-onboard-otp.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-onboard-otp.jpg" alt="CSO App · retailer onboarding · OTP verification" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+        <img src="/assets/jcp/rcpl/cso-app-onboard-otp.jpg" alt="CSO App · retailer onboarding · OTP verification" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
       </a>
       <a href="/assets/jcp/rcpl/cso-app-beat-mapping.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-beat-mapping.jpg" alt="CSO App · beat plan + retailer mapping" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+        <img src="/assets/jcp/rcpl/cso-app-beat-mapping.jpg" alt="CSO App · beat plan + retailer mapping" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
       </a>
     </div>
     <div class="mt-2">
       <a href="/assets/jcp/rcpl/cso-app-beat-flow.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-beat-flow.jpg" alt="CSO App · beat mapping flow · distributor + beat selection" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 200px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+        <img src="/assets/jcp/rcpl/cso-app-beat-flow.jpg" alt="CSO App · beat mapping flow · distributor + beat selection" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 200px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
       </a>
     </div>
     <div class="mt-2">
       <a href="/assets/jcp/rcpl/cso-app-cart-review.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-        <img src="/assets/jcp/rcpl/cso-app-cart-review.jpg" alt="CSO App · cart + review order · pricing, margin, scheme breakdown" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+        <img src="/assets/jcp/rcpl/cso-app-cart-review.jpg" alt="CSO App · cart + review order · pricing, margin, scheme breakdown" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 240px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
       </a>
     </div>
   </div>
@@ -393,7 +357,7 @@
     <p class="text-sm mb-3" style="color: var(--ink);">Mobile-web · ASM/ASE login by mobile + OTP · view mapped distributor list · click-through auto-login into the distributor's ordering portal · place full primary order with cart, scheme, and balance checks.</p>
     <p class="url mb-3"><a href="https://saarthi.reliancedms.com/" target="_blank" rel="noopener">https://saarthi.reliancedms.com/</a></p>
     <a href="/assets/jcp/rcpl/dms-login.jpg" target="_blank" rel="noopener" title="Open full-size screenshot" class="js-lightbox">
-      <img src="/assets/jcp/rcpl/dms-login.jpg" alt="DMS login · mobile-OTP entry" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 200px; object-fit: contain; background: #fff; cursor: zoom-in;" loading="lazy" />
+      <img src="/assets/jcp/rcpl/dms-login.jpg" alt="DMS login · mobile-OTP entry" class="rounded-md border w-full hover:opacity-90 transition-opacity" style="border-color: var(--border); max-height: 200px; object-fit: contain; background: var(--bone); cursor: zoom-in;" loading="lazy" />
     </a>
   </div>
   <div class="surface-card">
@@ -413,10 +377,10 @@
 
 <!-- §04 · Release notes (merged shipped + upcoming) -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
-<section id="releases" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">RELEASE NOTES <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">003 / 005</span></div>
+<section id="releases" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Release notes</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three releases shipped · one cycle in flight.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three releases shipped · one cycle in flight<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">40+ items deployed across Asset Management, CTS, Primary DMS, Pre-Sales, BPO flows, and Configuration in Mar-Apr 2026, including the elimination of ~35,000 physical CSO field visits via backend verification. 15 items confirmed for the 28-Apr-2026 cycle across the same five modules.</p>
 
 <div class="cap-num mb-4" style="color: var(--accent);">Released · Mar-Apr 2026 · 3 production deployments</div>
@@ -487,10 +451,10 @@
 
 <!-- §05 · Vision -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">VISION · AI-NATIVE FMCG OS <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">004 / 005</span></div>
 <section id="vision" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Vision · AI-native FMCG OS</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six-month plan · four integrated layers.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six-month plan · four integrated layers<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Proposed to the Reliance APEX Board on 01-May-2026. RCPL's distribution platform should not be a configured commercial DMS. It should be an AI-first, RCPL-owned operating system. Purpose-built for the scale, segment-mix, and route-to-market complexity that no off-the-shelf product covers end-to-end. Three principles: AI at the core (not bolted on); hyper-personalised down to the call; plug-in anything, plug into anything.</p>
 
 <div class="space-y-4">
@@ -503,7 +467,7 @@
       </div>
     </div>
     <p class="text-sm mb-4" style="color: var(--ink);">An AI-generated task and incentive engine that plugs into the Saarthi SFA app. Every morning, every sales rep gets a hyper-personalised plan (for each store, for each call) with instant reward points the moment a task is completed.</p>
-    <div class="card overflow-hidden" style="background: var(--bg-soft); border: 1px solid var(--border);">
+    <div class="card overflow-hidden" style="background: var(--bone); border: 1px solid var(--border);">
       <table class="grid-table">
         <thead><tr><th>Capability</th><th>What it does</th><th>Outcome</th></tr></thead>
         <tbody>
@@ -589,7 +553,7 @@
   </div>
 </div>
 
-<div class="card p-6 mt-6" style="background: white;">
+<div class="card p-6 mt-6" style="background: var(--bone);">
   <div class="cap-num mb-2">Beyond DMS · the full FMCG OS</div>
   <p class="text-sm" style="color: var(--ink);">Once the AI-native distribution platform is in steady state, the RCPL OS extends across the rest of the FMCG value chain (same data backbone, same AI layer, same plug-in fabric) applied to <strong style="color: var(--ink);">Marketing</strong> (brand, campaign, retailer loyalty, consumer activation), <strong style="color: var(--ink);">Manufacturing</strong> (plant-to-warehouse visibility, batch &amp; quality, demand-linked production planning) and <strong style="color: var(--ink);">Supply Chain</strong> (S&amp;OP, secondary logistics, inventory, demand sensing).</p>
 </div>
@@ -598,10 +562,10 @@
 
 <!-- §06 · Roadmap -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">ROADMAP <span class="od-bar-dot">·</span> FMCG B2B</span><span class="od-bar-counter">005 / 005</span></div>
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Roadmap</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The next 60 days. Closing Beverage. Opening Non-Beverage.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The next 60 days. Closing Beverage. Opening Non-Beverage<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">RCPL has scaled to ₹20,000 Cr run-rate in under three years. Beverage primary is the spine that has carried that growth · Pre-Sales now runs 80% of distributors and routes ~₹4,000 Cr of order volume. The next cycle finishes Beverage and opens the Non-Beverage flank.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
@@ -663,6 +627,14 @@
 <div class="cap-num mt-8" style="color: var(--ink-muted);">Source · RCPL Digital Platform · Monthly Status Report · 24-Apr-2026 · prepared by Leena B · reviewed by Ashish C.</div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · RCPL</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

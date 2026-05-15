@@ -28,62 +28,19 @@
 .pillar-card ul { list-style: none; padding: 0; margin: 0; font-size: 13px; color: var(--ink); line-height: 1.55; }
 .pillar-card li { position: relative; padding-left: 14px; margin-bottom: 6px; }
 .pillar-card li::before { content: "·"; position: absolute; left: 4px; color: var(--accent); font-weight: 700; }
-.industry-pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); margin: 4px 4px 0 0; }
+.industry-pill { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bone); color: var(--ink); border: 1px solid var(--border); margin: 4px 4px 0 0; }
 .scale-tile { padding: 18px 22px; border: 1px solid var(--border); border-radius: 10px; background: var(--bg); }
 .scale-tile .st-num { font-family: 'JetBrains Mono', monospace; font-size: 30px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
 .scale-tile .st-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
 .compliance-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.compliance-pill { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 4px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.compliance-pill { display: inline-flex; align-items: center; gap: 6px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 4px; background: var(--bone); color: var(--ink); border: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -206,6 +163,13 @@
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> PixelBin</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Visual AI</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -221,16 +185,16 @@
 
 <section id="what-pixelbin-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · What PixelBin is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">One AI-native pipeline from creative brief to channel publication.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">One AI-native pipeline from creative brief to channel publication<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-4" style="color: var(--ink);">Visual production for retail used to be a serial bottleneck: shoots, edits, format adaptation, channel-specific exports. Slow enough that campaigns missed launch dates and catalog refreshes lagged collection arrivals. PixelBin replaces that loop with an AI-native platform that creates, transforms and delivers visual content in one system.</p>
 <p class="text-base max-w-3xl mb-4" style="color: var(--ink);">Reliance brands use it for product photography automation, AI-generated ads, immersive AR/VR commerce surfaces, and CDN-delivered images at storefront scale. Built by Fynd. Owned and run by Reliance.</p>
 </div></section>
 
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT'S LIVE · THREE SUB-PRODUCTS <span class="od-bar-dot">·</span> Visual AI</span><span class="od-bar-counter">001 / 004</span></div>
+<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · What's live · three sub-products</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Three products under the PixelBin umbrella.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Three products under the PixelBin umbrella<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
   <div class="product-card">
@@ -264,10 +228,10 @@
 </div></section>
 
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">ARCHITECTURE · THREE PILLARS <span class="od-bar-dot">·</span> Visual AI</span><span class="od-bar-counter">002 / 004</span></div>
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Architecture · three pillars</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Create · Transform · Deliver.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Create · Transform · Deliver<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Every sub-product slots into one of three platform pillars. The pillars share the same asset store, the same compliance posture, and the same global CDN.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -307,10 +271,10 @@
 </div></section>
 
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
-<section id="deployments" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">WHERE RELIANCE DEPLOYS IT <span class="od-bar-dot">·</span> Visual AI</span><span class="od-bar-counter">003 / 004</span></div>
+<section id="deployments" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Where Reliance deploys it</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Across categories and channels in the Reliance ecosystem.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Across categories and channels in the Reliance ecosystem<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-6" style="color: var(--ink);">PixelBin powers visual production across Reliance Brands, Reliance Jewels, JioMart, AJIO, and Reliance Digital. Module mix changes by category: fashion runs PixelBin transforms; jewellery runs GlamAR VTO and 3D models; beauty runs GlamAR Skin Analysis and Studios for ads; furniture runs GlamAR virtual staging.</p>
 
 <div class="cap-num mb-3" style="color: var(--ink-muted);">Categories covered</div>
@@ -327,10 +291,10 @@
 </div></section>
 
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">SCALE, RELIABILITY AND INTEGRATION <span class="od-bar-dot">·</span> Visual AI</span><span class="od-bar-counter">004 / 004</span></div>
 <section id="scale" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Scale, reliability and integration</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Enterprise-grade · proven at platform scale.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Enterprise-grade · proven at platform scale<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
   <div class="scale-tile"><div class="st-num">312M+</div><div class="st-label">Transformations processed</div></div>
@@ -365,6 +329,14 @@
 </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · PixelBin</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

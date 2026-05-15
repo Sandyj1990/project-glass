@@ -13,11 +13,11 @@
 <script src="/present.js" defer></script>
 <style>
 /* In-page section nav */
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 .lightbox {
   position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
   display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
@@ -48,50 +48,7 @@ img.zoomable:hover { opacity: 0.92; }
   font-family: 'JetBrains Mono', monospace;
 }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 
 /* Open-design.ai inspired 2-col hero split for internal pages */
 .od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
@@ -267,6 +224,13 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 </div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> SwapEasy</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Re-Commerce</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -284,7 +248,7 @@ img.zoomable:hover { opacity: 0.92; }
 <!-- §01 · STATUS -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">01 · Status · Feb 2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -324,7 +288,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 </div>
 
-<div class="mt-8 card p-5" style="background: var(--bg-soft);">
+<div class="mt-8 card p-5" style="background: var(--bone);">
 <div class="cap-num mb-2">Read-out · Feb '26 data</div>
 <p class="text-base" style="color: var(--ink);"><strong>Stores that adopt SwapEasy sell more.</strong> Stores with &gt;5% exchange attach show 23–37% higher ASP across 5 months · February platform uplift strengthened to 41%, the strongest signal across all 5 months. The constraint is adoption discipline, not platform capability.</p>
 </div>
@@ -332,10 +296,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §02 · WHAT'S LIVE -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
-<section id="live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT'S LIVE FOR RELIANCE TODAY <span class="od-bar-dot">·</span> Re-Commerce</span><span class="od-bar-counter">001 / 005</span></div>
+<section id="live" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · What's live for Reliance today</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four modules. One transactional spine.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Four modules. One transactional spine<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Each module ships as a live surface across the Reliance Digital and My Jio Store in-store estate. Used together as one stack on every transacting counter.</p>
 
 <table class="grid-table">
@@ -373,10 +337,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §03 · HOW IT WORKS -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">HOW IT WORKS · 5 STEPS FROM COUNTER TO CASH <span class="od-bar-dot">·</span> Re-Commerce</span><span class="od-bar-counter">002 / 005</span></div>
 <section id="how" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · How it works · 5 steps from counter to cash</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">One spine. Diagnostic → quote → POS → Liquidation Partner.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">One spine. Diagnostic → quote → POS → Liquidation Partner<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The same flow used for every mobile exchange today is the flow every category (laptops, TVs, home & living) will reuse as the platform expands (§06 roadmap).</p>
 
 <!-- Steps 1-3 with mobile screenshots -->
@@ -420,10 +384,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §04 · DEEP DIVE · OPERATOR CONSOLE -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
-<section id="console" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">DEEP DIVE · OPERATOR CONSOLE <span class="od-bar-dot">·</span> Re-Commerce</span><span class="od-bar-counter">003 / 005</span></div>
+<section id="console" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Deep dive · operator console</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two surfaces from the running platform.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two surfaces from the running platform<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Screenshots from the live SwapEasy operator console. The Exchanges queue closes the customer flow above; the Transactions ledger reconciles every confirmed exchange against the Liquidation Partner wallet. Click any image to enlarge.</p>
 
 <div class="grid md:grid-cols-2 gap-6">
@@ -443,10 +407,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §05 · IN FLIGHT -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">IN FLIGHT · NEXT 60 DAYS <span class="od-bar-dot">·</span> Re-Commerce</span><span class="od-bar-counter">004 / 005</span></div>
 <section id="in-flight" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · In flight · next 60 days</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Five workstreams. Named outcomes by Day 60.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Five workstreams. Named outcomes by Day 60<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">From a deployed platform to a default counter behaviour across every Reliance Digital and My Jio Store outlet, while seeding the next category.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -491,10 +455,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §06 · ROADMAP + VISION -->
 
-<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
-<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">6-MONTH ROADMAP + VISION <span class="od-bar-dot">·</span> Re-Commerce</span><span class="od-bar-counter">005 / 005</span></div>
+<section id="roadmap" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · 6-month roadmap + vision</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two axes. Same spine.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Two axes. Same spine<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Deeper categories within electronics, then beyond electronics into broader lifestyle goods. Each expansion reuses the same diagnostic-quote-Liquidation Partner-POS spine that is live for mobiles today.</p>
 
 <div class="grid lg:grid-cols-3 gap-6">
@@ -536,7 +500,7 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <!-- Vision -->
-<div class="mt-10 card p-8" style="background: white;">
+<div class="mt-10 card p-8" style="background: var(--bone);">
 <div class="cap-num mb-3" style="color: var(--accent);">Vision · re-commerce OS for Reliance</div>
 <h3 class="display-2 text-2xl md:text-3xl mb-5" style="color: var(--ink);">The re-commerce spine for Reliance. Wherever exchange applies.</h3>
 <div class="grid md:grid-cols-3 gap-6 text-sm" style="color: var(--ink);">
@@ -583,6 +547,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · SwapEasy</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

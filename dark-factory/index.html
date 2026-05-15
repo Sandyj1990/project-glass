@@ -20,56 +20,13 @@
 .image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
 img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
 img.zoomable:hover { opacity: 0.92; }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 
 </head>
@@ -188,6 +145,13 @@ img.zoomable:hover { opacity: 0.92; }
 <p class="text-base" style="color: var(--ink);"><strong>One scan, one fit, one promise.</strong> Made to order, never made to stock. Same selling price as a regular Trends garment for the standard fit; customisations priced live before payment, opt-in upside on every order.</p>
 </div>
 
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Dark Factory</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Mobile Neo Tailor</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -208,15 +172,16 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <!-- §01 · How this fits · Customer → Horizon → Dark Factory → Doorstep -->
-<section id="how-this-fits" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="how-this-fits" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">HOW THIS FITS · CUSTOMER → HORIZON → DARK FACTORY → DOORSTEP <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">001 / 011</span></div>
 <div class="section-label mb-3">01 · How this fits · Customer → Horizon → Dark Factory → Doorstep</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Front-end captures the customer. Dark Factory makes the garment.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Front-end captures the customer. Dark Factory makes the garment<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);"><a href="/fynd-horizon" style="color: var(--accent); text-decoration: underline;">Fynd Horizon</a> is the customer-facing experience layer: body scan, 3D try-on, checkout. Live today at RCP and Mumbai cluster. Dark Factory is the Reliance-owned manufacturing back-end that scales Horizon's MTO promise beyond the Tirupur partner factory. One paid-order event hands off the body model + garment spec from front-end to back-end.</p>
 
 <!-- Desktop · horizontal flow -->
 <div class="hidden md:flex items-stretch gap-3">
 
-<div class="card p-5 flex-1" style="background: white;">
+<div class="card p-5 flex-1" style="background: var(--bone);">
 <div class="cap-num mb-2">Step 1 · Customer</div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">AJIO app or Trends store.</h3>
 <p class="text-sm mb-3" style="color: var(--ink);">Three AJIO-app surfaces (banner, home-feed card, Trends PDP ribbon) or three in-store placements (entry standee QR, fabric-bay shelf-talkers, back-wall scan zone).</p>
@@ -227,7 +192,7 @@ img.zoomable:hover { opacity: 0.92; }
   <svg viewBox="0 0 32 16" width="28" height="14" fill="none" stroke="var(--ink-muted)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8 H28 M22 3 L28 8 L22 13"/></svg>
 </div>
 
-<div class="card p-5 flex-1" style="background: white; border-color: var(--accent);">
+<div class="card p-5 flex-1" style="background: var(--bone); border-color: var(--accent);">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Step 2 · <a href="/fynd-horizon" style="color: var(--accent); text-decoration: underline;">Fynd Horizon</a></div><span class="pill pill-live">Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Front-end · capture &amp; try.</h3>
 <p class="text-sm mb-3" style="color: var(--ink);">Body scan (RealSense + phone camera) · 3D try-on at &lt; 2 s render · catalogue browse · one-tap checkout. Live at RCP since 31-Mar-2026, Mumbai cluster since 27-Apr-2026.</p>
@@ -249,7 +214,7 @@ img.zoomable:hover { opacity: 0.92; }
   <svg viewBox="0 0 32 16" width="28" height="14" fill="none" stroke="var(--ink-muted)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8 H28 M22 3 L28 8 L22 13"/></svg>
 </div>
 
-<div class="card p-5 flex-1" style="background: white;">
+<div class="card p-5 flex-1" style="background: var(--bone);">
 <div class="cap-num mb-2">Step 4 · Doorstep</div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">7 days.</h3>
 <p class="text-sm mb-3" style="color: var(--ink);">Guaranteed delivery date shown before payment. Live order timeline through every factory stage.</p>
@@ -261,7 +226,7 @@ img.zoomable:hover { opacity: 0.92; }
 <!-- Mobile · vertical flow -->
 <div class="md:hidden flex flex-col gap-3">
 
-<div class="card p-5" style="background: white;">
+<div class="card p-5" style="background: var(--bone);">
 <div class="cap-num mb-2">Step 1 · Customer</div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">AJIO app or Trends store.</h3>
 <p class="text-sm" style="color: var(--ink);">Three AJIO-app surfaces or three in-store placements deep-link into the M-Tailor tab.</p>
@@ -271,7 +236,7 @@ img.zoomable:hover { opacity: 0.92; }
   <svg viewBox="0 0 16 32" width="16" height="28" fill="none" stroke="var(--ink-muted)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2 V28 M3 22 L8 28 L13 22"/></svg>
 </div>
 
-<div class="card p-5" style="background: white; border-color: var(--accent);">
+<div class="card p-5" style="background: var(--bone); border-color: var(--accent);">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Step 2 · Fynd Horizon</div><span class="pill pill-live">Live</span></div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">Front-end · capture &amp; try.</h3>
 <p class="text-sm" style="color: var(--ink);">Body scan · 3D try-on · catalogue browse · checkout. Live at RCP and Mumbai cluster.</p>
@@ -291,7 +256,7 @@ img.zoomable:hover { opacity: 0.92; }
   <svg viewBox="0 0 16 32" width="16" height="28" fill="none" stroke="var(--ink-muted)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2 V28 M3 22 L8 28 L13 22"/></svg>
 </div>
 
-<div class="card p-5" style="background: white;">
+<div class="card p-5" style="background: var(--bone);">
 <div class="cap-num mb-2">Step 4 · Doorstep</div>
 <h3 class="font-semibold mb-2" style="color: var(--ink);">7 days.</h3>
 <p class="text-sm" style="color: var(--ink);">Guaranteed delivery date shown before payment.</p>
@@ -299,7 +264,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 </div>
 
-<div class="card p-5 mt-6" style="background: white;">
+<div class="card p-5 mt-6" style="background: var(--bone);">
 <div class="cap-num mb-2">Why this split</div>
 <p class="text-sm" style="color: var(--ink);">Today, Horizon's measure-perfect path runs through the Tirupur partner factory at 24-48 hr. Dark Factory takes that same MTO commitment in-house: Reliance-owned, single-piece flow, scoped for AJIO catalogue depth (shirt, T-shirt, polo, pants → all categories at gamma). The front-end (Horizon) and the back-end (Dark Factory) are sized independently and connected through one paid-order event.</p>
 </div>
@@ -308,8 +273,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §02 · Status · 30-Apr-2026 -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">STATUS · 30-APR-2026 <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">002 / 011</span></div>
 <div class="section-label mb-3">02 · Status · 30-Apr-2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's specified. What's pending. What ships when.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's specified. What's pending. What ships when<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -345,9 +311,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §03 · Strategic shift -->
-<section id="strategic-shift" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="strategic-shift" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">STRATEGIC SHIFT <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">003 / 011</span></div>
 <div class="section-label mb-3">03 · Strategic shift</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From a shop visit to an app scan. From shelf inventory to make-to-order.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From a shop visit to an app scan. From shelf inventory to make-to-order<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Reliance Trends today sells ready-made garments to a body that is never average. Custom fit means a tailor's shop: slow, inconsistent, no preview before the garment is finished. Mobile Neo Tailor brings the tailor inside the AJIO app and the lights-out factory inside Reliance's manufacturing footprint.</p>
 
 <div class="card overflow-hidden mb-8"><table class="grid-table">
@@ -377,14 +344,15 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §04 · Customer journey · 8 steps · two entry points -->
 <section id="customer-journey" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">CUSTOMER JOURNEY · 8 STEPS · TWO ENTRY POINTS <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">004 / 011</span></div>
 <div class="section-label mb-3">04 · Customer journey · 8 steps · two entry points</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Two entry points. One M-Tailor screen. Eight steps to a 7-day delivery.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Two entry points. One M-Tailor screen. Eight steps to a 7-day delivery<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">From the AJIO app, three home surfaces (banner on app open, hero card on the home feed, contextual ribbon on every Trends product page) deep-link into the M-Tailor tab. In a Trends store, three placements (entry standee QR, fabric-bay shelf-talkers, back-wall scan zone) do the same. Both paths walk through the same eight steps.</p>
 
 <!-- Entry blocks · two sources feeding the M-Tailor tab -->
 <div class="grid md:grid-cols-2 gap-3 mb-8">
 
-<div class="card p-5" style="background: var(--bg-soft);">
+<div class="card p-5" style="background: var(--bone);">
 <div class="flex items-start gap-3 mb-3">
 <div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px; background: var(--ink); color: white; display: flex; align-items: center; justify-content: center;">
 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 L12 3 L21 11"/><path d="M5 9 V21 H19 V9"/></svg>
@@ -402,7 +370,7 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="text-xs" style="color: var(--accent);"><strong>Deep-link → M-Tailor tab</strong></div>
 </div>
 
-<div class="card p-5" style="background: var(--bg-soft);">
+<div class="card p-5" style="background: var(--bone);">
 <div class="flex items-start gap-3 mb-3">
 <div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px; background: var(--ink); color: white; display: flex; align-items: center; justify-content: center;">
 <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="6" width="16" height="14" rx="1"/><path d="M4 10 H20"/><path d="M9 6 V3 H15 V6"/></svg>
@@ -468,7 +436,7 @@ img.zoomable:hover { opacity: 0.92; }
 <p class="text-sm" style="color: var(--ink); margin-left: 36px;">Garment drapes on the customer's own 3D body model. Six fit sliders, three presets · slim, regular, relaxed.</p>
 </div>
 
-<div class="card p-5 relative" style="padding-left: 28px; background: var(--bg-soft);">
+<div class="card p-5 relative" style="padding-left: 28px; background: var(--bone);">
 <div style="position: absolute; left: 14px; top: 14px; width: 28px; height: 28px; border-radius: 999px; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600;">7</div>
 <div class="cap-num mb-1" style="margin-left: 36px;">Customise + pay</div>
 <h3 class="font-semibold mb-2" style="color: var(--ink); margin-left: 36px;">Collar / pocket / button / mono · UPI.</h3>
@@ -494,7 +462,7 @@ img.zoomable:hover { opacity: 0.92; }
 <h3 class="display-2 text-2xl mb-3" style="color: var(--ink);">Customer journey · end-to-end demo.</h3>
 <p class="text-sm" style="color: var(--ink);">A walk-through of the eight steps above on a phone · discover → companion → M-Tailor tab → pick → scan → adjust → customise + pay → track + receive. <a href="https://www.youtube.com/shorts/XKxBTMx7RWk" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Open on YouTube</a>.</p>
 </div>
-<div class="md:col-span-5 flex items-center justify-center p-5" style="background: var(--bg-soft); border-left: 1px solid var(--border);">
+<div class="md:col-span-5 flex items-center justify-center p-5" style="background: var(--bone); border-left: 1px solid var(--border);">
 <div style="width: 100%; max-width: 280px; aspect-ratio: 9 / 16; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.08);">
 <iframe src="https://www.youtube.com/embed/XKxBTMx7RWk" title="Mobile Neo Tailor · customer journey demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="width: 100%; height: 100%; border: 0; display: block;"></iframe>
 </div>
@@ -506,9 +474,10 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §05 · What the customer customises · 4 levers -->
 <section id="customisation" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">WHAT THE CUSTOMER CUSTOMISES · 4 LEVERS <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">005 / 011</span></div>
 <div class="section-label mb-3">05 · What the customer customises · 4 levers</div>
 <div class="flex items-center gap-3 mb-4 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Design. Fabric. Trims. Embroidery. Each lever opt-in. Each priced live.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Design. Fabric. Trims. Embroidery. Each lever opt-in. Each priced live<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-build">Proposal</span>
 </div>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every Mobile Neo Tailor garment is the customer's own in four ways. Each lever is opt-in, priced live, and previewed on the customer's 3D body model before payment. Skip every lever and the garment is the standard fit at the standard Trends price; opt in and the upside lands as margin.</p>
@@ -545,7 +514,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 </div>
 
-<div class="card p-5 mt-6" style="background: var(--bg-soft);">
+<div class="card p-5 mt-6" style="background: var(--bone);">
 <div class="cap-num mb-2">How the levers price</div>
 <p class="text-sm" style="color: var(--ink);">Standard fit at the standard Trends price. Each lever shows a delta in the basket as it is opted in. The customer sees the final price and the guaranteed delivery date together, before UPI checkout.</p>
 </div>
@@ -553,9 +522,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §06 · Factory internals · 6 cards · body measurement -> folding -->
-<section id="factory-internals" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="factory-internals" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">FACTORY INTERNALS · HOW A SINGLE GARMENT IS MADE <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">006 / 011</span></div>
 <div class="section-label mb-3">06 · Factory internals · how a single garment is made</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six departments. One single-piece flow. Every machine sized for 200 pieces / day.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Six departments. One single-piece flow. Every machine sized for 200 pieces / day<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each department is single-purpose, replaceable, and named to a specific brand. The line runs single-ply through every step: fabric is cut, sewn, finished, and packed for one order at a time, never batched.</p>
 
 <!-- Card 1 · Body measurement (native diagram) -->
@@ -635,7 +605,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 <div class="card overflow-hidden flex flex-col">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/04-pattern-cad-gerber.jpg" target="_blank" rel="noopener" class="js-lightbox block">
-<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/04-pattern-cad-gerber.jpg" alt="Gerber AccuMark MTM CAD interface &middot; pattern blocks for shirt back, sleeves, and cuffs with size-rule overlays" class="w-full block zoomable" style="background: white; height: 220px; object-fit: cover; object-position: center;" />
+<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/04-pattern-cad-gerber.jpg" alt="Gerber AccuMark MTM CAD interface &middot; pattern blocks for shirt back, sleeves, and cuffs with size-rule overlays" class="w-full block zoomable" style="background: var(--bone); height: 220px; object-fit: cover; object-position: center;" />
 </a>
 <div class="p-5 flex-1 flex flex-col">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Department 2 &middot; Pattern engineering</div><span class="pill pill-build">Proposal</span></div>
@@ -647,7 +617,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 <div class="card overflow-hidden flex flex-col">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/01-cutting-morgan-italia.jpg" target="_blank" rel="noopener" class="js-lightbox block">
-<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/01-cutting-morgan-italia.jpg" alt="Morgan Italia single-ply cutter &middot; automated cutting bed with overhead carriage" class="w-full block zoomable" style="background: white; height: 220px; object-fit: cover; object-position: center;" />
+<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/01-cutting-morgan-italia.jpg" alt="Morgan Italia single-ply cutter &middot; automated cutting bed with overhead carriage" class="w-full block zoomable" style="background: var(--bone); height: 220px; object-fit: cover; object-position: center;" />
 </a>
 <div class="p-5 flex-1 flex flex-col">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Department 3 &middot; Cutting room</div><span class="pill pill-build">Proposal</span></div>
@@ -659,7 +629,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 <div class="card overflow-hidden flex flex-col">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/02-sewing-juki-automat.jpg" target="_blank" rel="noopener" class="js-lightbox block">
-<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/02-sewing-juki-automat.jpg" alt="Juki sewing automat in operation on the factory floor &middot; digital control screen + single-piece workstation" class="w-full block zoomable" style="background: white; height: 220px; object-fit: cover; object-position: center;" />
+<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/02-sewing-juki-automat.jpg" alt="Juki sewing automat in operation on the factory floor &middot; digital control screen + single-piece workstation" class="w-full block zoomable" style="background: var(--bone); height: 220px; object-fit: cover; object-position: center;" />
 </a>
 <div class="p-5 flex-1 flex flex-col">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Department 4 &middot; Sewing room</div><span class="pill pill-build">Proposal</span></div>
@@ -671,7 +641,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 <div class="card overflow-hidden flex flex-col">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/05-pressing-macpi-line.jpg" target="_blank" rel="noopener" class="js-lightbox block">
-<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/05-pressing-macpi-line.jpg" alt="Macpi modular pressing chamber line &middot; 5 chambers with overhead carriage and control panel" class="w-full block zoomable" style="background: white; height: 220px; object-fit: cover; object-position: center;" />
+<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/05-pressing-macpi-line.jpg" alt="Macpi modular pressing chamber line &middot; 5 chambers with overhead carriage and control panel" class="w-full block zoomable" style="background: var(--bone); height: 220px; object-fit: cover; object-position: center;" />
 </a>
 <div class="p-5 flex-1 flex flex-col">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Department 5 &middot; Pressing &amp; finishing</div><span class="pill pill-build">Proposal</span></div>
@@ -683,7 +653,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 <div class="card overflow-hidden flex flex-col">
 <a href="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/03-folding-epa-5001.jpg" target="_blank" rel="noopener" class="js-lightbox block">
-<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/03-folding-epa-5001.jpg" alt="EPA-5001 automatic folding and packaging line &middot; production folding machine on the factory floor" class="w-full block zoomable" style="background: white; height: 220px; object-fit: cover; object-position: center;" />
+<img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/dark-factory/03-folding-epa-5001.jpg" alt="EPA-5001 automatic folding and packaging line &middot; production folding machine on the factory floor" class="w-full block zoomable" style="background: var(--bone); height: 220px; object-fit: cover; object-position: center;" />
 </a>
 <div class="p-5 flex-1 flex flex-col">
 <div class="flex items-center justify-between mb-2"><div class="cap-num">Department 6 &middot; Folding &amp; packing</div><span class="pill pill-build">Proposal</span></div>
@@ -704,16 +674,17 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §06 · Factory layout · native diagram · 15,326 sq ft single floor -->
 <section id="factory-layout" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">FACTORY LAYOUT · 15,326 SQ FT · SINGLE FLOOR <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">007 / 011</span></div>
 <div class="section-label mb-3">07 · Factory layout &middot; 15,326 sq ft &middot; single floor</div>
 <div class="flex items-center gap-3 mb-4 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">One floor. Four zones. First-in-first-out from entrance to dispatch.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">One floor. Four zones. First-in-first-out from entrance to dispatch<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-build">Proposal</span>
 </div>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Cutting runs through the centre line &middot; sewing on the right &middot; finishing, pressing and packing on the south wall &middot; fabric and trims store flush against the entrance for first-in-first-out flow. The Eton overhead conveyor links every zone.</p>
 
-<div class="card p-6" style="background: var(--bg-soft);">
+<div class="card p-6" style="background: var(--bone);">
 
-<div style="border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; background: white;">
+<div style="border: 2px solid var(--ink); border-radius: 12px; overflow: hidden; background: var(--bone);">
 
 <div class="px-5 py-4 flex items-center justify-between" style="background: var(--ink); color: white;">
 <div>
@@ -737,7 +708,7 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="text-xs mt-3" style="color: var(--ink-muted);">single-piece pattern flow &middot; centre line of floor</div>
 </div>
 
-<div class="md:col-span-5 p-5 border-b" style="border-color: var(--border); background: white;">
+<div class="md:col-span-5 p-5 border-b" style="border-color: var(--border); background: var(--bone);">
 <div class="cap-num mb-1">Zone C &middot; right block</div>
 <div class="font-semibold text-base mb-2" style="color: var(--ink);">Sewing block</div>
 <ul class="space-y-1 text-sm" style="color: var(--ink);">
@@ -749,7 +720,7 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 </div>
 
-<div class="px-5 py-4" style="background: var(--bg-soft);">
+<div class="px-5 py-4" style="background: var(--bone);">
 <div class="flex items-center justify-between mb-1">
   <div>
     <div class="cap-num">Zone D &middot; south wall</div>
@@ -782,9 +753,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §07 · Live Kitchen -->
-<section id="live-kitchen" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="live-kitchen" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VIII.</span><span class="od-bar-title">LIVE KITCHEN · THE CUSTOMER WATCHES HER GARMENT GET MADE <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">008 / 011</span></div>
 <div class="section-label mb-3">08 · Live Kitchen · the customer watches her garment get made</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Trust built into the order screen, not into a marketing claim.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Trust built into the order screen, not into a marketing claim<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Like a transparent restaurant kitchen, the customer sees a real photo of her own garment at every factory stage. The order timeline replaces the &quot;your order is being processed&quot; abstraction with five named, photographed states.</p>
 
 <!-- Desktop · 5-stage horizontal timeline -->
@@ -794,10 +766,10 @@ img.zoomable:hover { opacity: 0.92; }
   <div class="flex items-stretch gap-3 relative" style="z-index: 1;">
 
 <div class="flex-1 flex flex-col items-center text-center" style="min-width: 0;">
-  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">1</div>
-  <div class="card p-4 w-full text-left" style="background: white;">
+  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">1</div>
+  <div class="card p-4 w-full text-left" style="background: var(--bone);">
     <h3 class="font-semibold mb-2" style="color: var(--ink);">Sourced</h3>
-    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; min-height: 56px;">
+    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bone); display: flex; align-items: center; justify-content: center; min-height: 56px;">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6 L9.5 4 H14.5 L16 6"/></svg>
       <span class="cap-num" style="margin-left: 8px;">Live photo · stage 1</span>
     </div>
@@ -806,10 +778,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <div class="flex-1 flex flex-col items-center text-center" style="min-width: 0;">
-  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">2</div>
-  <div class="card p-4 w-full text-left" style="background: white;">
+  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">2</div>
+  <div class="card p-4 w-full text-left" style="background: var(--bone);">
     <h3 class="font-semibold mb-2" style="color: var(--ink);">Cut</h3>
-    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; min-height: 56px;">
+    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bone); display: flex; align-items: center; justify-content: center; min-height: 56px;">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6 L9.5 4 H14.5 L16 6"/></svg>
       <span class="cap-num" style="margin-left: 8px;">Live photo · stage 2</span>
     </div>
@@ -818,10 +790,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <div class="flex-1 flex flex-col items-center text-center" style="min-width: 0;">
-  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">3</div>
-  <div class="card p-4 w-full text-left" style="background: white;">
+  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">3</div>
+  <div class="card p-4 w-full text-left" style="background: var(--bone);">
     <h3 class="font-semibold mb-2" style="color: var(--ink);">Stitched</h3>
-    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; min-height: 56px;">
+    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bone); display: flex; align-items: center; justify-content: center; min-height: 56px;">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6 L9.5 4 H14.5 L16 6"/></svg>
       <span class="cap-num" style="margin-left: 8px;">Live photo · stage 3</span>
     </div>
@@ -830,10 +802,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <div class="flex-1 flex flex-col items-center text-center" style="min-width: 0;">
-  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">4</div>
-  <div class="card p-4 w-full text-left" style="background: white;">
+  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">4</div>
+  <div class="card p-4 w-full text-left" style="background: var(--bone);">
     <h3 class="font-semibold mb-2" style="color: var(--ink);">Finished</h3>
-    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; min-height: 56px;">
+    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bone); display: flex; align-items: center; justify-content: center; min-height: 56px;">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6 L9.5 4 H14.5 L16 6"/></svg>
       <span class="cap-num" style="margin-left: 8px;">Live photo · stage 4</span>
     </div>
@@ -842,10 +814,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <div class="flex-1 flex flex-col items-center text-center" style="min-width: 0;">
-  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">5</div>
-  <div class="card p-4 w-full text-left" style="background: white;">
+  <div style="position: relative; z-index: 1; width: 44px; height: 44px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 700; margin-bottom: 14px;">5</div>
+  <div class="card p-4 w-full text-left" style="background: var(--bone);">
     <h3 class="font-semibold mb-2" style="color: var(--ink);">Shipped</h3>
-    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; min-height: 56px;">
+    <div style="border: 1px dashed var(--border); border-radius: 8px; padding: 14px; margin-bottom: 10px; background: var(--bone); display: flex; align-items: center; justify-content: center; min-height: 56px;">
       <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--ink-soft)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6 L9.5 4 H14.5 L16 6"/></svg>
       <span class="cap-num" style="margin-left: 8px;">Live photo · stage 5</span>
     </div>
@@ -858,11 +830,11 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- Mobile · 5-stage vertical stack -->
 <div class="md:hidden flex flex-col gap-3">
-<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">1</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Sourced</h3><p class="text-xs" style="color: var(--ink);">Fabric pulled · trims tagged · QR-attached to the order.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 1</div></div></div>
-<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">2</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Cut</h3><p class="text-xs" style="color: var(--ink);">Single-ply cutter · per-order pattern · stripes and plaids aligned.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 2</div></div></div>
-<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">3</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Stitched</h3><p class="text-xs" style="color: var(--ink);">Single-piece flow · automats for shirt / polo / pants · semi-automats for knits.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 3</div></div></div>
-<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">4</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Finished</h3><p class="text-xs" style="color: var(--ink);">Pressing chamber · folding line · monogram printed where ordered.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 4</div></div></div>
-<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: white; border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">5</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Shipped</h3><p class="text-xs" style="color: var(--ink);">Packed · dispatched · last-mile handoff · delivery date confirmed.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 5</div></div></div>
+<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">1</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Sourced</h3><p class="text-xs" style="color: var(--ink);">Fabric pulled · trims tagged · QR-attached to the order.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 1</div></div></div>
+<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">2</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Cut</h3><p class="text-xs" style="color: var(--ink);">Single-ply cutter · per-order pattern · stripes and plaids aligned.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 2</div></div></div>
+<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">3</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Stitched</h3><p class="text-xs" style="color: var(--ink);">Single-piece flow · automats for shirt / polo / pants · semi-automats for knits.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 3</div></div></div>
+<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">4</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Finished</h3><p class="text-xs" style="color: var(--ink);">Pressing chamber · folding line · monogram printed where ordered.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 4</div></div></div>
+<div class="card p-4 flex gap-3 items-start"><div style="flex-shrink: 0; width: 36px; height: 36px; border-radius: 999px; background: var(--bone); border: 2px solid var(--ink); color: var(--ink); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700;">5</div><div><h3 class="font-semibold mb-1" style="color: var(--ink);">Shipped</h3><p class="text-xs" style="color: var(--ink);">Packed · dispatched · last-mile handoff · delivery date confirmed.</p><div class="cap-num mt-2" style="color: var(--ink-muted);">Live photo · stage 5</div></div></div>
 </div>
 
 <p class="cap-num mt-6" style="color: var(--ink-muted);">Photo zone is the placeholder where the customer's own factory-stage photo lands during alpha. Until then, the timeline communicates the five named states.</p>
@@ -871,8 +843,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §08 · Operating model -->
 <section id="operating-model" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IX.</span><span class="od-bar-title">OPERATING MODEL · TWO LOOPS, ONE CUSTOMER <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">009 / 011</span></div>
 <div class="section-label mb-3">09 · Operating model · two loops, one customer</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Demand loop in the app. Supply loop in the factory. Customer is the only person who sees both.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Demand loop in the app. Supply loop in the factory. Customer is the only person who sees both<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The two loops are separable, sized independently, and connected through a single paid-order event that triggers fabric pull. This is what removes inventory risk while keeping the customer experience tight.</p>
 
 <div class="grid md:grid-cols-2 gap-6">
@@ -904,10 +877,11 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §10 · Outcomes · customer wins + business wins -->
-<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="outcomes" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">X.</span><span class="od-bar-title">OUTCOMES · CUSTOMER WINS + BUSINESS WINS <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">010 / 011</span></div>
 <div class="section-label mb-3">10 · Outcomes · customer wins + business wins</div>
 <div class="flex items-center gap-3 mb-4 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">What the customer gets. What Trends gets. One screen, two audiences, one plan.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">What the customer gets. What Trends gets. One screen, two audiences, one plan<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-build">Proposal</span>
 </div>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each outcome carries a single tracked metric: alpha-trial number on the left of the arrow, gamma-target number on the right. The phase-gate plan exits a stage only when its numbers are met.</p>
@@ -994,8 +968,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §10 · Phase-gate plan -->
 <section id="phase-gate" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">XI.</span><span class="od-bar-title">PHASE-GATE PLAN <span class="od-bar-dot">·</span> Mobile Neo Tailor</span><span class="od-bar-counter">011 / 011</span></div>
 <div class="section-label mb-3">11 · Phase-gate plan</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three phases. Each phase exits on a number, not a date.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three phases. Each phase exits on a number, not a date<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Start dates are pending the decision-ask sign-off. Each phase gates on measured exit criteria, not on calendar promises.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -1050,6 +1025,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Dark Factory</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

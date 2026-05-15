@@ -29,7 +29,7 @@ img.zoomable:hover { opacity: 0.92; }
 
 /* layered architecture stack */
 .layer-stack { display: grid; gap: 12px; }
-.layer-card { padding: 18px 22px; border-radius: 8px; border: 1px solid var(--border); background: white; }
+.layer-card { padding: 18px 22px; border-radius: 8px; border: 1px solid var(--border); background: var(--bone); }
 .layer-card .layer-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
 .layer-card .layer-title { font-weight: 600; color: var(--ink); margin-bottom: 6px; }
 .layer-card .layer-body { font-size: 14px; color: var(--ink); line-height: 1.5; }
@@ -41,56 +41,13 @@ img.zoomable:hover { opacity: 0.92; }
   background: var(--accent); color: white; font-weight: 700; font-size: 14px;
   font-family: 'JetBrains Mono', monospace;
 }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -180,6 +137,13 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="card p-4"><div class="cap-num mb-1">JioMart system uptime</div><div class="display-2 text-3xl accent">100%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">since platform launch</div></div>
 <div class="card p-4"><div class="cap-num mb-1">RBL shipment automation</div><div class="display-2 text-3xl accent">85%</div><div class="text-xs mt-1" style="color: var(--ink-muted);">West Elm + Pottery Barn · 4 cities</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> TMS</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Quick-Commerce OS</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -192,9 +156,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 
 <!-- §01 · WHAT'S LIVE (was §02 before §01 Status was dropped · see spec D10) -->
-<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="whats-live" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT'S LIVE FOR RELIANCE TODAY <span class="od-bar-dot">·</span> Quick-Commerce OS</span><span class="od-bar-counter">001 / 003</span></div>
 <div class="section-label mb-3">01 · What's live for Reliance today</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Five modules. Four layers. One transport spine.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Five modules. Four layers. One transport spine<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-3" style="color: var(--ink-muted);">Fynd TMS is the transport spine for three Reliance delivery models. JioMart proves it at quick-commerce scale (1000+ stores · 10–30 min). RBL proves it at high-touch furniture grain (4 cities · slot-based · in-home assembly). Netmeds runs an in-house medicine fleet on the same platform.</p>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Bottom-up: where an order enters → how it's routed → who executes it → what it talks to on the Reliance side. The same four layers run for all three deployments.</p>
 
@@ -279,8 +244,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §02 · DEEP DIVE · THREE RELIANCE DEPLOYMENTS -->
 <section id="deployments" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">DEEP DIVE · THREE RELIANCE DEPLOYMENTS <span class="od-bar-dot">·</span> Quick-Commerce OS</span><span class="od-bar-counter">002 / 003</span></div>
 <div class="section-label mb-3">02 · Deep dive · three Reliance deployments</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Same platform. Three delivery models.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Same platform. Three delivery models<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">JioMart uses TMS for ultra-short hops at quick-commerce scale. RBL uses TMS for slot-based, high-touch furniture deliveries with in-home assembly. Netmeds uses TMS for an in-house medicine fleet with dynamic routing. JioMart and RBL numbers come from published Fynd customer stories; Netmeds claims come from the Fynd TMS sales deck (citations inline).</p>
 
 <div class="grid lg:grid-cols-3 gap-6 mb-12">
@@ -289,10 +255,10 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="flex items-baseline justify-between mb-3"><div class="cap-num">Deployment 01</div><span class="pill pill-live">Live · 1000+ locations</span></div>
 <h3 class="font-semibold text-xl mb-2" style="color: var(--ink);">JioMart · quick commerce · 10–30 min promise</h3>
 <div class="grid grid-cols-2 gap-3 mb-5">
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Locations live</div><div class="display-2 text-2xl accent">1000+</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">On-time rate</div><div class="display-2 text-2xl accent">95%</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">System uptime</div><div class="display-2 text-2xl accent">100%</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Order capacity lift</div><div class="display-2 text-2xl accent">3×</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Locations live</div><div class="display-2 text-2xl accent">1000+</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">On-time rate</div><div class="display-2 text-2xl accent">95%</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">System uptime</div><div class="display-2 text-2xl accent">100%</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Order capacity lift</div><div class="display-2 text-2xl accent">3×</div></div>
 </div>
 <ul class="space-y-2 text-sm" style="color: var(--ink);">
 <li><strong>Precision mapping.</strong> Street-level polygons replace broad pin-code zones. Automatic optimal-store assignment based on customer coordinates. Zero coverage gaps.</li>
@@ -305,10 +271,10 @@ img.zoomable:hover { opacity: 0.92; }
 <h3 class="font-semibold text-xl mb-2" style="color: var(--ink);">RBL · West Elm + Pottery Barn · in-house furniture fleet</h3>
 <p class="text-sm mb-4" style="color: var(--ink-muted);">DRIs · Divyendu Behera (RBL SCM) · Ravi Patere (RBL Furniture · Pan-India)</p>
 <div class="grid grid-cols-2 gap-3 mb-5">
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">On-time rate</div><div class="display-2 text-2xl accent">90%</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Faster dispatch</div><div class="display-2 text-2xl accent">40%</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Pain-point drop</div><div class="display-2 text-2xl accent">80%</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Shipment automation</div><div class="display-2 text-2xl accent">85%</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">On-time rate</div><div class="display-2 text-2xl accent">90%</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Faster dispatch</div><div class="display-2 text-2xl accent">40%</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Pain-point drop</div><div class="display-2 text-2xl accent">80%</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Shipment automation</div><div class="display-2 text-2xl accent">85%</div></div>
 </div>
 <ul class="space-y-2 text-sm" style="color: var(--ink);">
 <li><strong>Cities live.</strong> Delhi NCR · Mumbai · Hyderabad · Ahmedabad. All consistently meeting delivery timelines.</li>
@@ -324,10 +290,10 @@ img.zoomable:hover { opacity: 0.92; }
 <h3 class="font-semibold text-xl mb-2" style="color: var(--ink);">Netmeds · medicine quick-delivery</h3>
 <p class="text-sm mb-4" style="color: var(--ink-muted);">Netmeds is part of the Reliance Retail (Pharma) portfolio</p>
 <div class="grid grid-cols-2 gap-3 mb-5">
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Fleet model</div><div class="text-sm font-semibold accent" style="line-height:1.3;">In-house</div><div class="text-xs mt-1" style="color: var(--ink-muted);">replaces 3PL dependency</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Routing</div><div class="text-sm font-semibold accent" style="line-height:1.3;">Dynamic + real-time</div><div class="text-xs mt-1" style="color: var(--ink-muted);">AI Route Optimization</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Tracking</div><div class="text-sm font-semibold accent" style="line-height:1.3;">Live · per-rider</div><div class="text-xs mt-1" style="color: var(--ink-muted);">via Rider App + customer surface</div></div>
-<div class="p-3" style="background: var(--bg-soft); border-radius: 6px;"><div class="cap-num mb-1">Telemetry</div><div class="text-sm font-semibold" style="line-height:1.3; color: var(--ink-muted);">Not yet shared</div><div class="text-xs mt-1" style="color: var(--ink-muted);">qualitative source only</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Fleet model</div><div class="text-sm font-semibold accent" style="line-height:1.3;">In-house</div><div class="text-xs mt-1" style="color: var(--ink-muted);">replaces 3PL dependency</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Routing</div><div class="text-sm font-semibold accent" style="line-height:1.3;">Dynamic + real-time</div><div class="text-xs mt-1" style="color: var(--ink-muted);">AI Route Optimization</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Tracking</div><div class="text-sm font-semibold accent" style="line-height:1.3;">Live · per-rider</div><div class="text-xs mt-1" style="color: var(--ink-muted);">via Rider App + customer surface</div></div>
+<div class="p-3" style="background: var(--bone); border-radius: 6px;"><div class="cap-num mb-1">Telemetry</div><div class="text-sm font-semibold" style="line-height:1.3; color: var(--ink-muted);">Not yet shared</div><div class="text-xs mt-1" style="color: var(--ink-muted);">qualitative source only</div></div>
 </div>
 <ul class="space-y-2 text-sm" style="color: var(--ink);">
 <li><strong>Problem the source names.</strong> Inconsistent delivery times and limited control over ground operations were affecting timely delivery of essential medications and customer trust.</li>
@@ -342,9 +308,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §03 · IN FLIGHT -->
-<section id="in-flight" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="in-flight" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">IN FLIGHT · UPCOMING FEATURES <span class="od-bar-dot">·</span> Quick-Commerce OS</span><span class="od-bar-counter">003 / 003</span></div>
 <div class="section-label mb-3">03 · In flight · upcoming features</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Six workstreams shipping next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Six workstreams shipping next<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">From the platform roadmap (deck slide 30 · "TMS of the Future"). Each adds AI-native depth to a layer that already runs in production.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -419,6 +386,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · TMS</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

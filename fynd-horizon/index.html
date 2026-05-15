@@ -30,56 +30,13 @@
 .image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
 img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
 img.zoomable:hover { opacity: 0.92; }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -176,6 +133,13 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="p-4 text-xs" style="color: var(--ink-muted);">Live installation · Reliance Trends store · LED wall renders Infinite Aisle catalog + life-size customer try-on. Photo: in-store, 27-Apr-2026.</div>
 </div>
 
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Fynd Horizon</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Innovation Lab</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -194,8 +158,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §01 · Status (27-Apr-2026) -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">STATUS · 27-APR-2026 <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">001 / 008</span></div>
 <div class="section-label mb-3">01 · Status · 27-Apr-2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -236,9 +201,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §02 · The strategic shift -->
-<section id="shift" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="shift" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">THE STRATEGIC SHIFT <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">002 / 008</span></div>
 <div class="section-label mb-3">02 · The strategic shift</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From inventory-heavy retail to AI-native ultra fast retail.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From inventory-heavy retail to AI-native ultra fast retail<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Trends today is constrained by floor square footage. When a customer's size or colour isn't on the floor, they walk out. Horizon decouples the store from physical stock: scan, try, buy, manufacture, deliver, without ever holding inventory.</p>
 
 <div class="card overflow-hidden mb-8">
@@ -260,8 +226,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §03 · User journey -->
 <section id="journey" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">USER JOURNEY · 6 STEPS <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">003 / 008</span></div>
 <div class="section-label mb-3">03 · User journey · 6 steps</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One store. One system. Infinite inventory.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">One store. One system. Infinite inventory<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The end-to-end customer flow at any Horizon-enabled Trends store. Step 0 is one-time onboarding; steps 1-5 repeat per visit.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -323,9 +290,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §04 · In-store hardware kit -->
-<section id="hardware" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="hardware" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">IN-STORE HARDWARE KIT <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">004 / 008</span></div>
 <div class="section-label mb-3">04 · In-store hardware kit</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Plug-and-play. ≤6 hours per store.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Plug-and-play. ≤6 hours per store<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Standardised SKUs · zero local config · the same kit ships to every Horizon-enabled Trends store. Five components (one wall, one tablet, two depth cameras, one edge box, one webcam) assembled in under a working day.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
@@ -370,8 +338,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §05 · AI-native layer -->
 <section id="ai-native" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">AI-NATIVE LAYER <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">005 / 008</span></div>
 <div class="section-label mb-3">05 · AI-native layer</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Predicting the future. Not reflecting the past.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Predicting the future. Not reflecting the past<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Three agents make Horizon AI-native rather than AI-flavoured: a demand-prediction loop that pre-cuts factory fabric tonight for tomorrow's predicted orders, a self-healing render-QA loop that catches model drift before customers see it, and a token-economics loop that meters every try-on against a profitability threshold.</p>
 
 <div class="grid md:grid-cols-3 gap-4 mb-10">
@@ -410,9 +379,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §06 · Two fit paths -->
-<section id="fit-paths" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="fit-paths" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">TWO FIT PATHS <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">006 / 008</span></div>
 <div class="section-label mb-3">06 · Two fit paths</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Speed or measure-perfect. Both end with a perfect fit.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Speed or measure-perfect. Both end with a perfect fit<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Re-framed from D01: not casual vs formal. Speed vs measure-perfect. The customer picks the trade-off they want at checkout.</p>
 
 <div class="grid md:grid-cols-2 gap-6">
@@ -447,8 +417,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §07 · Benchmarks -->
 <section id="benchmarks" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">BENCHMARKS · VS UNIQLO, SHEIN, ZARA <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">007 / 008</span></div>
 <div class="section-label mb-3">07 · Benchmarks · vs Uniqlo, Shein, Zara</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Benchmarked against the global standard. Not against ourselves.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Benchmarked against the global standard. Not against ourselves<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The honest read on how Horizon compares to the fast-fashion playbooks the world has already validated. Targets are Ratl-verified, not internal projections.</p>
 
 <div class="card overflow-hidden mb-6">
@@ -468,9 +439,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §08 · Research -->
-<section id="research" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="research" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VIII.</span><span class="od-bar-title">RESEARCH · MATHEMATICS BEHIND MEASUREMENTS <span class="od-bar-dot">·</span> Innovation Lab</span><span class="od-bar-counter">008 / 008</span></div>
 <div class="section-label mb-3">08 · Research · Mathematics behind measurements</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">A single phone camera + a 100-year-old equation = tape-measure-grade body data.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">A single phone camera + a 100-year-old equation = tape-measure-grade body data<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">The CEO Brief on the math powering Horizon's body-measurement engine. Three pillars: 17-keypoint pose estimation, depth-sensing pixel→world projection, and Ramanujan's ellipse approximation for body circumferences. Read it inline below or download the 2-page PDF.</p>
 
 <div class="grid md:grid-cols-3 gap-4 mb-8">
@@ -538,6 +510,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Fynd Horizon</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

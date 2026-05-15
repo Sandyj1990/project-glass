@@ -12,56 +12,13 @@
 <link rel="stylesheet" href="/present.css">
 <script src="/present.js" defer></script>
 <style>
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -146,6 +103,13 @@
 <div class="card p-4"><div class="cap-num mb-1">Live RR brands</div><div class="display-2 text-3xl accent">2</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Tira · Urban Ladder on Boltic</div></div>
 <div class="card p-4"><div class="cap-num mb-1">Monthly executions</div><div class="display-2 text-3xl accent">1.79M</div><div class="text-xs mt-1" style="color: var(--ink-muted);">198 workflows · Sep-2025 sample</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Boltic</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Automation OS</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -162,8 +126,9 @@
 
 <!-- §01 · WHAT BOLTIC IS FOR RELIANCE -->
 <section id="what-boltic-is" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">WHAT BOLTIC IS FOR RELIANCE <span class="od-bar-dot">·</span> Automation OS</span><span class="od-bar-counter">001 / 006</span></div>
 <div class="section-label mb-3">01 · What Boltic is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Problem · Solution · Impact<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 <div class="card p-6">
@@ -200,9 +165,10 @@
 </div></section>
 
 <!-- §02 · THE PLATFORM · 8 MODULES + LIVE UI -->
-<section id="platform" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="platform" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">THE PLATFORM · 8 MODULES · LIVE UI <span class="od-bar-dot">·</span> Automation OS</span><span class="od-bar-counter">002 / 006</span></div>
 <div class="section-label mb-3">02 · The platform · 8 modules · live UI</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Eight modules. One automation OS.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Eight modules. One automation OS<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Every module ships as a live surface, powering workflows across Fynd and Reliance Retail. Used as a single stack, not as point tools. Six surfaces of the live console below.</p>
 
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -283,8 +249,9 @@
 
 <!-- §03 · ARCHITECTURE -->
 <section id="architecture" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">ARCHITECTURE · THE FULL-STACK SYSTEM <span class="od-bar-dot">·</span> Automation OS</span><span class="od-bar-counter">003 / 006</span></div>
 <div class="section-label mb-3">03 · Architecture · the full-stack system</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A full-stack system for real results.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A full-stack system for real results<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Four layers · pre-built solutions on top, the 8-module core in the middle, multi-provider AI models, and 500+ apps + data sources at the foundation. Everything needed to connect, automate, and scale in one platform.</p>
 
 <div class="grid md:grid-cols-2 gap-4">
@@ -342,10 +309,11 @@
 </div></section>
 
 <!-- §04 · TIRA · LIVE RR · DATA + REPORTING ON BOLTIC -->
-<section id="tira" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="tira" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">TIRA · LIVE RR · DATA + REPORTING ON BOLTIC <span class="od-bar-dot">·</span> Automation OS</span><span class="od-bar-counter">004 / 006</span></div>
 <div class="section-label mb-3">04 · Tira · live RR · data + reporting on Boltic</div>
 <div class="flex items-center gap-3 mb-3 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Tira on Boltic.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Tira on Boltic<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-live">Live · RR · Tira</span>
 </div>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Reliance Retail's beauty brand Tira runs its data flow, reporting, and order-data access on Boltic, replacing manual sync pipelines with event-driven workflows.</p>
@@ -385,9 +353,10 @@
 
 <!-- §05 · URBAN LADDER · LIVE RR · EVENT COLLECTOR -->
 <section id="urban-ladder" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">URBAN LADDER · LIVE RR · BOLTIC AS EVENT COLLECTOR <span class="od-bar-dot">·</span> Automation OS</span><span class="od-bar-counter">005 / 006</span></div>
 <div class="section-label mb-3">05 · Urban Ladder · live RR · Boltic as event collector</div>
 <div class="flex items-center gap-3 mb-3 flex-wrap">
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Urban Ladder · Boltic as event collector.</h2>
+<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Urban Ladder · Boltic as event collector<span class="dot" style="color:var(--coral);">.</span></h2>
 <span class="pill pill-live">Live · RR · Urban Ladder</span>
 </div>
 <p class="text-base max-w-4xl mb-10" style="color: var(--ink-muted);">Reliance Retail's home-and-interiors brand Urban Ladder runs Boltic as the central event-collection and routing layer across a heterogeneous stack: storefront, order management, Kapture (interiors CRM), CleverTap (engagement), GA4 (analytics), Sentry (monitoring). Events ingested by Boltic, fanned out reliably in parallel to downstream analytics and engagement platforms.</p>
@@ -446,9 +415,10 @@
 </div></section>
 
 <!-- §06 · RECEIPTS -->
-<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">RECEIPTS <span class="od-bar-dot">·</span> Automation OS</span><span class="od-bar-counter">006 / 006</span></div>
 <div class="section-label mb-3">06 · Receipts</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where the claims come from.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where the claims come from<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source decks, live console screenshots, and the cover letter that placed Boltic in the AI-Native register.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -500,6 +470,14 @@
 </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Boltic</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

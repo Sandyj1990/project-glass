@@ -39,61 +39,18 @@ img.zoomable:hover { opacity: 0.92; }
   font-family: 'JetBrains Mono', monospace; font-weight: 500;
 }
 .metric-tile {
-  background: white; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--bone); border: 1px solid var(--border); border-radius: 12px;
   padding: 18px 20px;
 }
 .metric-tile .v { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 28px; color: var(--ink); letter-spacing: -0.02em; }
 .metric-tile .l { font-size: 12px; color: var(--ink-muted); margin-top: 4px; }
-.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
 .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
-.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.story-toc a:hover { color: var(--ink); background: var(--bone); }
+.story-toc a.is-active { color: var(--ink); background: var(--bone); }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -185,6 +142,13 @@ img.zoomable:hover { opacity: 0.92; }
 <div class="card p-4"><div class="cap-num mb-1">RBL capabilities · 12 mo</div><div class="display-2 text-3xl accent">13</div><div class="text-xs mt-1" style="color: var(--ink-muted);">May-2025 to May-2026 delivered</div></div>
 <div class="card p-4"><div class="cap-num mb-1">Marketplaces live</div><div class="display-2 text-3xl accent">50+</div><div class="text-xs mt-1" style="color: var(--ink-muted);">25+ live · 12+ countries</div></div>
 </div>
+
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Fynd Konnect</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Integration Backbone</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
@@ -202,8 +166,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §01 · STATUS -->
 <section id="status" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">STATUS (01-MAY-2026) <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">001 / 007</span></div>
 <div class="section-label mb-3">01 · Status (01-May-2026)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-3 gap-4">
 
@@ -239,9 +204,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §02 · PLATFORM ARCHITECTURE (one diagram) -->
-<section id="architecture" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="architecture" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">II.</span><span class="od-bar-title">PLATFORM ARCHITECTURE <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">002 / 007</span></div>
 <div class="section-label mb-3">02 · Platform architecture</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What Konnect connects.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What Konnect connects<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Eight subsystems flow through the Konnect hub: <strong>Sales & Returns Posting · Shipping Updates · Analytics & Insights · Inventory Sync · Returns Management · Product Catalog · Pricing Updates · Order Processing.</strong> Marketplaces, storefronts and Fynd marketplaces enter on the left; 3P ERP, WMS, POS and Store OS exit on the right.</p>
 
 <div class="card overflow-hidden p-6 bg-white">
@@ -251,8 +217,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §03 · THREE PILLARS -->
 <section id="pillars" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">III.</span><span class="od-bar-title">THE THREE PILLARS <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">003 / 007</span></div>
 <div class="section-label mb-3">03 · The three pillars</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three reinforcing platforms. One integration spine.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Three reinforcing platforms. One integration spine<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each is operated, owned and evolved by Fynd. Each carries its own scale, technical depth and commercial significance. The three pillars are summarised here; deep dives follow.</p>
 
 <div class="grid md:grid-cols-3 gap-4">
@@ -278,9 +245,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §04 · PILLAR 1 DEEP DIVE -->
-<section id="pillar-1" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="pillar-1" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">IV.</span><span class="od-bar-title">PILLAR 1 · JIOMART 3P SELLER PLATFORM (FYND KONNECT) <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">004 / 007</span></div>
 <div class="section-label mb-3">04 · Pillar 1 · JioMart 3P Seller Platform (Fynd Konnect)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The seller-side rail for JioMart.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The seller-side rail for JioMart<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">The JioMart Channel is the largest channel Fynd Konnect has built and operates on top of Fynd Commerce. It is the bridge between JioMart's three core systems and the seller's choice of OMS, WMS or ERP, and is directly responsible for JioMart's 3P seller scale-up.</p>
 
 <div class="card overflow-hidden mb-10">
@@ -411,8 +379,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §05 · PILLAR 2 (Marketplace) -->
 <section id="pillar-2" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">V.</span><span class="od-bar-title">PILLAR 2 · GLOBAL MARKETPLACE REACH (FYND KONNECT) <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">005 / 007</span></div>
 <div class="section-label mb-3">05 · Pillar 2 · Global Marketplace Reach (Fynd Konnect)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">25+ live marketplaces. 12+ countries. One integration contract.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">25+ live marketplaces. 12+ countries. One integration contract<span class="dot" style="color:var(--coral);">.</span></h2>
 
 <div class="grid md:grid-cols-2 gap-8 mb-10">
 <p class="text-base" style="color: var(--ink-muted);">Beyond the systems already operating across the Reliance ecosystem, Fynd Konnect is a marketplace gateway with 50+ pre-built integrations spanning marketplaces, quick commerce, ERP, WMS, POS and payment systems across India, Middle East and Southeast Asia. Any RBL brand can be expanded onto a new channel (domestic or international) using infrastructure that already exists.</p>
@@ -437,7 +406,7 @@ img.zoomable:hover { opacity: 0.92; }
 <thead><tr><th>Country / region</th><th>Channel</th><th>Status</th><th>Integration detail</th></tr></thead>
 <tbody>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">India · 12 live marketplaces · 4 quick-commerce channels via PO ingestion</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">India · 12 live marketplaces · 4 quick-commerce channels via PO ingestion</span></td></tr>
 <tr><td class="text-sm">India</td><td class="font-medium">Amazon</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Amazon Seller Central (SC) · Amazon Multi-Location Fulfilment (MLF) · Amazon Vendor Direct Fulfilment (VDF) · Amazon FBA · Amazon B2B · Amazon Retail B2B</td></tr>
 <tr><td class="text-sm">India</td><td class="font-medium">Flipkart</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Flipkart Omnichannel · Flipkart Multichannel</td></tr>
 <tr><td class="text-sm">India</td><td class="font-medium">Myntra</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Myntra Omni · Myntra PPMP (Pure Play Marketplace)</td></tr>
@@ -457,7 +426,7 @@ img.zoomable:hover { opacity: 0.92; }
 <tr><td class="text-sm">India</td><td class="font-medium">JioMart Self-Ship</td><td class="text-sm"><span class="pill pill-build">In dev</span></td><td class="text-sm">1P JioMart self-ship channel · first use case: UrbanLadder; reusable for other 1P sellers</td></tr>
 <tr><td class="text-sm">India</td><td class="font-medium">Zilo</td><td class="text-sm"><span class="pill pill-build">In dev</span></td><td class="text-sm">Fashion-forward Quick Commerce</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Middle East · 5 live marketplaces · 1 in dev</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Middle East · 5 live marketplaces · 1 in dev</span></td></tr>
 <tr><td class="text-sm">UAE · KSA</td><td class="font-medium">Amazon (ME)</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Amazon UAE and Amazon KSA · native integration covering both fulfilment models</td></tr>
 <tr><td class="text-sm">UAE · KSA · Egypt</td><td class="font-medium">Noon</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Marketplace integration across UAE, KSA and Egypt</td></tr>
 <tr><td class="text-sm">UAE · KSA · KW · QA · BH · OM</td><td class="font-medium">Namshi</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Fashion marketplace serving the GCC</td></tr>
@@ -465,14 +434,14 @@ img.zoomable:hover { opacity: 0.92; }
 <tr><td class="text-sm">Turkey · GCC · EU</td><td class="font-medium">Trendyol</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Cross-border fashion and lifestyle marketplace · Turkey, GCC and European markets</td></tr>
 <tr><td class="text-sm">KSA-led · ME</td><td class="font-medium">eXtra</td><td class="text-sm"><span class="pill pill-build">In dev</span></td><td class="text-sm">Electronics and home appliances marketplace · KSA-led, with regional reach</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Southeast Asia · 5 live marketplaces</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Southeast Asia · 5 live marketplaces</span></td></tr>
 <tr><td class="text-sm">Pan-SEA</td><td class="font-medium">Lazada</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Singapore, Malaysia, Thailand, Vietnam, Indonesia, Philippines</td></tr>
 <tr><td class="text-sm">Pan-SEA</td><td class="font-medium">Shopee</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">The largest e-commerce platform in the region</td></tr>
 <tr><td class="text-sm">Pan-SEA</td><td class="font-medium">TikTok Shop</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Pan-SEA social-commerce channel with rapid growth</td></tr>
 <tr><td class="text-sm">Indonesia</td><td class="font-medium">Blibli</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Indonesia marketplace</td></tr>
 <tr><td class="text-sm">Indonesia</td><td class="font-medium">Tokopedia</td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Indonesia marketplace</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">United Kingdom · 2 in dev · priority for RBL brands targeting UK fashion</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">United Kingdom · 2 in dev · priority for RBL brands targeting UK fashion</span></td></tr>
 <tr><td class="text-sm">UK</td><td class="font-medium">ASOS</td><td class="text-sm"><span class="pill pill-build">In dev</span></td><td class="text-sm">Fashion marketplace integration · priority for RBL brands targeting the UK fashion segment</td></tr>
 <tr><td class="text-sm">UK</td><td class="font-medium">Next</td><td class="text-sm"><span class="pill pill-build">In dev</span></td><td class="text-sm">Fashion and lifestyle marketplace integration</td></tr>
 
@@ -499,8 +468,9 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- §06 · PILLAR 3 (RBL/RRVL Brand Ops · Release Notes) -->
 <section id="pillar-3" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VI.</span><span class="od-bar-title">PILLAR 3 · RBL & RRVL BRAND OPERATIONS · 13 CAPABILITY DE... <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">006 / 007</span></div>
 <div class="section-label mb-3">06 · Pillar 3 · RBL & RRVL Brand Operations · 13 capability deliveries</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where every RBL order, payment and return reconciles with SAP.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where every RBL order, payment and return reconciles with SAP<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Fynd Konnect operates the integration backbone that connects RBL's and RRVL's SAP, TIBCO and store-level systems to Fynd Commerce. This is the layer that decides whether RBL's brand portfolio can scale safely. It touches every order, every inventory event, every payment and every return. Between May-2025 and May-2026, thirteen significant capability deliveries were completed. Each was either a precondition for new brand onboarding, a regulatory requirement, or a leadership-escalated production fix.</p>
 
 <!-- Pillar 3 stat strip -->
@@ -522,29 +492,29 @@ img.zoomable:hover { opacity: 0.92; }
 <thead><tr><th>#</th><th>Capability</th><th>Status</th><th>Outcome</th></tr></thead>
 <tbody>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Theme · Foundation Architecture (3) · three deliveries that determine whether the brand portfolio can scale safely; every other capability sits on top of these</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Theme · Foundation Architecture (3) · three deliveries that determine whether the brand portfolio can scale safely; every other capability sits on top of these</span></td></tr>
 <tr><td class="font-medium">01</td><td class="text-sm"><strong>SAP WM Migration · MDN to Delivery-Based Model (DBM)</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Migrated SAP posting trigger from POSDTA-on-sale to delivery confirmation + PGI. Validated on TUMI; rolled across all RBL brands. Escalated by RIL leadership. Thousands of orders daily.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">DBM became the prerequisite for safe brand onboarding. RBL can onboard any new brand on Fynd without introducing reconciliation risk into SAP.</td></tr>
 <tr><td class="font-medium">06</td><td class="text-sm"><strong>RRA Kafka Pipelines · inventory backbone modernised</strong><br/><span class="text-xs" style="color: var(--ink-muted);">New brand pipelines (Yousta, Tira, Freshpik, Reliance Trends, GAP, Performax) + Swadesh / 7-Eleven India migrated to new Kafka brokers + WestElm / Pottery Barn / PB Kids moved from SFTP batch → real-time Kafka.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">10+ RRVL brands across 2 dedicated clusters · hundreds of thousands of inventory events / day · 100+ stores per brand. Inventory-accuracy window collapsed from hours to seconds.</td></tr>
 <tr><td class="font-medium">09</td><td class="text-sm"><strong>RBL Furniture · full parity with Non-Furniture</strong><br/><span class="text-xs" style="color: var(--ink-muted);">WestElm / Pottery Barn / PB Kids migrated from legacy TIBCO-only to RDIP + DBM. Fixed the silent TO-Confirmation auth error that had caused permanent SAP / physical mismatches.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Furniture brought to architectural parity with Non-Furniture. Dual-maintenance overhead removed · one architecture across the entire RBL portfolio.</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Theme · Compliance & Finance (3) · three deliveries that closed regulatory and financial-accuracy gaps</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Theme · Compliance & Finance (3) · three deliveries that closed regulatory and financial-accuracy gaps</span></td></tr>
 <tr><td class="font-medium">02</td><td class="text-sm"><strong>B2B E-Invoice (IRN) Compliance for GST audit</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Mandatory IRN check before any B2B SAP / TIBCO posting. Cancellations / reversals require credit-note IRN. Enforced at bag_invoiced, cancelled and credit-note states.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Konnect is now a GST-compliant B2B posting engine, not just a sales sync tool. RBL's B2B revenue cannot create audit liability through Fynd.</td></tr>
 <tr><td class="font-medium">04</td><td class="text-sm"><strong>Multi-MOP Coverage · every payment method RBL uses</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Flipkart prepaid, Myntra PPMP, COD with DP own-account, Qwikcilver, JioPay, JioOnePay, multi-PG (Razorpay + JioOnePay), BharatPay QR, price-adjustment MOPs. 10+ distinct tender types validated against RBL's chart of accounts.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Every rupee of revenue lands in the correct GL account in SAP from day one. Every new channel or PG can be activated without creating financial gaps.</td></tr>
 <tr><td class="font-medium">05</td><td class="text-sm"><strong>Delivery Partner Own-Account Posting · COD and returns</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Tender-code mapping for the model where DPs (Delhivery, Xpressbees) collect cash and settle directly with RBL. Same logic extended to returns. Validated on TUMI over a single weekend with RIL monitoring; rolled across the portfolio.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">RBL's COD revenue stream (meaningful share of total revenue, especially in Tier-2 / Tier-3 markets) is now reconcilable with delivery partners at scale.</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Theme · Brand Enablement (3) · three deliveries that opened new revenue streams or fixed brand-specific blockers; each tied to a specific RBL or RRVL business priority</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Theme · Brand Enablement (3) · three deliveries that opened new revenue streams or fixed brand-specific blockers; each tied to a specific RBL or RRVL business priority</span></td></tr>
 <tr><td class="font-medium">03</td><td class="text-sm"><strong>Product Exchange · end-to-end SAP posting with convenience-fee model</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Convenience fee (not store credit) so no liability sits on RBL's books. Tax-slab logic (5% GST below ₹2,500). Tested on GAP, TUMI, WestElm; rolling across the portfolio.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">RBL brands offer a seamless in-app exchange experience without manual SAP intervention. Convenience fees appear correctly as revenue, not silently lost.</td></tr>
 <tr><td class="font-medium">08</td><td class="text-sm"><strong>Tira & Nexus Marketplace · new sales-channel enablement</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Nexus has its own SAP company ID (own MOP codes, GL, transaction types). Tira needed POSDTA codes aligned to Reliance's beauty-revenue classification. Each is a separate profit centre.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Both formats went live on Fynd with correct SAP postings from day one. No month-close surprises, no GL-mapping rework.</td></tr>
 <tr><td class="font-medium">13</td><td class="text-sm"><strong>EAN vs. Article Code · flexible inventory identifier at brand level</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Company-level configuration toggle in the RRA extension. Some RRVL brands use EAN (GAP, Reliance Trends), others use internal article code (ALU). Resolved a GAP launch issue (configured EAN, catalogued ALU, inventory not flowing).</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Inventory flow is Day-1 infrastructure for any new brand. No engineering dependency, no multi-crore visibility gap from identifier mismatches.</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Theme · Loyalty & Programmes (1) · loyalty redemption, posted to SAP correctly</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Theme · Loyalty & Programmes (1) · loyalty redemption, posted to SAP correctly</span></td></tr>
 <tr><td class="font-medium">10</td><td class="text-sm"><strong>Sephora Beauty Pass · loyalty redemption in SAP posting</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Members can redeem points as payment at checkout (e.g. ₹700 cash + ₹300 points). Redemption on placed event, discount in delivery event, boutique-product specifics, full-or-partial reversal on returns. Phase 2 added mixed carts (regular + boutique) with separate posting sequences.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Sephora's finance team can reconcile its loyalty liability automatically. Sephora can scale online sales without creating a finance-operations bottleneck. Thousands of redemptions / month.</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Theme · Payments Modernisation (2) · aligned with Reliance's strategic payments roadmap; JioOnePay live, Split Payment readied</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Theme · Payments Modernisation (2) · aligned with Reliance's strategic payments roadmap; JioOnePay live, Split Payment readied</span></td></tr>
 <tr><td class="font-medium">11</td><td class="text-sm"><strong>JioOnePay / JioPay Multi-PG support</strong><br/><span class="text-xs" style="color: var(--ink-muted);">MOP mapping for JioOnePay / JioPay in SAP and TIBCO. Resolved posting failures when BharatPay QR ran alongside other gateways. Multi-PG: a single order can split between JioOnePay + Razorpay; each leg posts to the correct GL. Delivered to an RBI compliance deadline. Missing it would have shut down RBL StoreOS.</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Reliance's own payment product can be scaled across RBL storefronts without any gap in the downstream financial accounting.</td></tr>
 <tr><td class="font-medium">12</td><td class="text-sm"><strong>Split Payment Readiness</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Fynd Platform launched Split Payment in April 2026 (e.g. half by card + half by UPI). Konnect proactively assessed multi-MOP SAP payload changes and tender-code logic ahead of any RBL brand going live with the feature.</span></td><td class="text-sm"><span class="pill pill-build">Building</span></td><td class="text-sm">When RBL brands adopt Split Payment, the SAP posting layer is ready on day one. No financial gap created by the new feature's adoption.</td></tr>
 
-<tr><td colspan="4" style="background: var(--bg-soft); padding: 10px 14px;"><span class="theme-tag">Theme · Performance & Operational Excellence (1) · faster pipelines, lower infrastructure cost, reliability when it matters most</span></td></tr>
+<tr><td colspan="4" style="background: var(--bone); padding: 10px 14px;"><span class="theme-tag">Theme · Performance & Operational Excellence (1) · faster pipelines, lower infrastructure cost, reliability when it matters most</span></td></tr>
 <tr><td class="font-medium">07</td><td class="text-sm"><strong>Skip Unchanged Inventory · performance optimisation at RRL scale</strong><br/><span class="text-xs" style="color: var(--ink-muted);">Suppress inventory events for unchanged quantities across all RRA supply extensions; previously every sync pushed all records through Kafka regardless of change. Particularly impactful during peak sale events (End of Reason Sale, Big Fashion Festival).</span></td><td class="text-sm"><span class="pill pill-live">Live</span></td><td class="text-sm">Faster processing of real changes, lower infrastructure cost, and a more stable pipeline during exactly the high-traffic periods when reliability matters most.</td></tr>
 
 </tbody>
@@ -554,9 +524,10 @@ img.zoomable:hover { opacity: 0.92; }
 </div></section>
 
 <!-- §07 · RECEIPTS -->
-<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
+<section id="receipts" class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">VII.</span><span class="od-bar-title">RECEIPTS <span class="od-bar-dot">·</span> Integration Backbone</span><span class="od-bar-counter">007 / 007</span></div>
 <div class="section-label mb-3">07 · Receipts</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where the claims come from.</h2>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where the claims come from<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source documents, audit JSON, partnership reviews and case studies behind every number on this page.</p>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -619,6 +590,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Fynd Konnect</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>

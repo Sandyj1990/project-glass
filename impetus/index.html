@@ -199,7 +199,7 @@
 
 /* Value chain tabs */
 .imp-chain {
-  background: white;
+  background: var(--bone);
   border-bottom: 1px solid var(--line);
 }
 .imp-chain-inner {
@@ -313,7 +313,7 @@
   padding: 8px 18px;
   border-radius: 100px;
   border: 1.5px solid var(--line);
-  background: white;
+  background: var(--bone);
   font-family: var(--mono);
   font-size: 12px;
   letter-spacing: .06em;
@@ -361,7 +361,7 @@
   height: 36px;
   border-radius: 50%;
   border: 1.5px solid var(--line);
-  background: white;
+  background: var(--bone);
   font-size: 16px;
   cursor: pointer;
   display: flex;
@@ -379,7 +379,7 @@
 @media (max-width: 900px) { .imp-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .imp-grid { grid-template-columns: 1fr; } }
 .imp-card {
-  background: white;
+  background: var(--bone);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 24px;
@@ -555,7 +555,7 @@
 }
 @media (max-width: 700px) { .imp-portfolio-grid { grid-template-columns: 1fr; } }
 .imp-portfolio-card {
-  background: white;
+  background: var(--bone);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 28px;
@@ -592,56 +592,13 @@
   .platform-card:hover { border-color: var(--ink); transform: translateY(-1px); }
   .platform-card .cat { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px; }
   .stage-band {
-    background: var(--bg-soft);
+    background: var(--bone);
     border-radius: 14px;
     padding: 28px;
     border: 1px solid var(--border);
   }
 
-/* ── Open Design revamp layer · v0.8.4 ──────────────────────────────────────
-   Injected by patch_internal_pages.py · do not edit manually
-   ─────────────────────────────────────────────────────────────────────────── */
 
-/* Platform cards */
-.platform-card { display: flex; flex-direction: column; padding: 20px; background: white; border: 1px solid var(--border); border-radius: 14px; text-decoration: none; transition: border-color 0.18s, transform 0.18s; height: 100%; }
-.platform-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.platform-card-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 6px; }
-.platform-card-name { font-weight: 700; font-size: 15px; color: var(--ink); line-height: 1.25; }
-.platform-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; flex: 1; margin-bottom: 12px; }
-.platform-card-foot { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-.platform-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 3px 8px; border-radius: 999px; background: var(--bg-soft); border: 1px solid var(--border-soft); }
-.platform-card-metric { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); }
-
-/* Section hero split */
-.section-hero-split { display: grid; grid-template-columns: auto 1fr; gap: 56px; align-items: start; margin-bottom: 40px; }
-.section-hero-num { font-size: clamp(56px, 6vw, 96px); color: var(--ink); white-space: nowrap; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.section-hero-cap { font-size: 13px; color: var(--caption); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px; }
-@media (max-width: 768px) { .section-hero-split { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; } .section-hero-num { font-size: 56px; } }
-
-/* Impact tiles */
-.impact-tile { padding: 32px; display: flex; flex-direction: column; gap: 14px; }
-.impact-tile-num { font-size: clamp(48px, 5vw, 72px); color: var(--ink); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-.impact-tile-cap { font-size: 14px; color: var(--ink); line-height: 1.5; }
-
-/* Lens cards */
-.lens-card { background: white; border: 1px solid var(--border); border-radius: 20px; padding: 32px; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column; height: 100%; }
-.lens-card:hover { border-color: var(--ink); transform: translateY(-2px); }
-.lens-title { font-weight: 700; font-size: 18px; line-height: 1.3; color: var(--ink); margin-bottom: 8px; }
-.lens-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-
-/* Scroll reveal */
-[data-reveal] { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-[data-reveal].revealed { opacity: 1; transform: none; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  [data-reveal] { opacity: 1; transform: none; }
-}
-
-/* Utility */
-.num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
-/* ── end Open Design revamp layer ─────────────────────────────────────────── */
 </style>
 </head>
 <body>
@@ -822,7 +779,14 @@
       <text x="85" y="64" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="16" font-weight="700" fill="#ED6F5C">15 live</text>
     </svg>
     </div>
-  </div>
+  
+<div class="od-meta-row" style="margin-top:24px;">
+  <span class="od-meta-tag"><span class="od-meta-sep">●</span> Impetus</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> F&L AI Platform</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+  <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+</div>
+</div>
 </section>
 
 <!-- Stat band -->
@@ -1075,26 +1039,26 @@
   .bp-summary::-webkit-details-marker { display: none; }
   .bp-summary::before { content: '▸'; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-muted); transition: transform 0.15s; margin-right: 4px; }
   details[open] > .bp-summary::before { transform: rotate(90deg); }
-  .bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: white; }
+  .bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: var(--bone); }
   .bp-card-title { font-weight: 700; font-size: 16px; color: var(--ink); flex: 1 1 auto; }
   .bp-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
   .bp-body { padding: 18px 20px 22px; border-top: 1px solid var(--border); overflow-x: auto; }
   .bp-body h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); margin: 18px 0 8px; }
   .bp-body h4:first-child { margin-top: 0; }
   table.bp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; }
-  table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bg-soft); }
+  table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--bone); }
   table.bp-table td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; color: var(--ink); }
   table.bp-table td.bp-step { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); white-space: nowrap; width: 8em; }
   table.bp-table td.bp-when { font-family: 'JetBrains Mono', monospace; font-size: 11px; white-space: nowrap; }
   table.bp-table td.bp-pill { white-space: nowrap; width: 7em; }
   .bp-legend { display: flex; flex-wrap: wrap; gap: 10px 18px; font-size: 12px; color: var(--ink-muted); padding: 12px 14px; border: 1px dashed var(--border); border-radius: 8px; margin-top: 14px; }
   .bp-legend > span { display: inline-flex; align-items: center; gap: 6px; }
-  .bp-honesty { font-size: 12px; color: var(--ink-muted); padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--bg-soft); margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+  .bp-honesty { font-size: 12px; color: var(--ink-muted); padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--bone); margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
   .bp-uplink { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); text-decoration: underline; }
 </style>
 
-<section id="path-to-l4-buildplan" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
+<section id="path-to-l4-buildplan" class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="od-index-bar"><span class="od-roman">I.</span><span class="od-bar-title">PATH TO L4 · THE BUILD PLAN <span class="od-bar-dot">·</span> F&L AI Platform</span><span class="od-bar-counter">001 / 001</span></div>
 <div class="section-label mb-3">04 · PATH TO L4 · the build plan</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How <span style="color: var(--accent);">Impetus gets there.</span></h2>
 <p class="mb-8"><a href="#path-to-l4" class="bp-uplink">↑ §03 Path to L4 · the agents</a></p>
@@ -1437,6 +1401,14 @@
 </div>
 </div></section>
 
+
+<div class="container" style="padding-bottom: 32px;">
+  <hr class="od-dashed-sep">
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Impetus</span>
+    <span>Project Glass · 2025</span>
+  </div>
+</div>
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
   <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>
