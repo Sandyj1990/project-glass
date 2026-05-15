@@ -919,10 +919,10 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   width: 100%;
   max-width: 480px;
   padding: 24px;
-  background: #1a1a1a;
+  background: var(--bone);
   border-radius: 20px;
-  border: 1px solid rgba(200,169,126,0.25);
-  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 
 /* ── Numbered feature cards ──────────────────────────────────── */
