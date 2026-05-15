@@ -92,6 +92,14 @@ img.zoomable:hover { opacity: 0.92; }
 /* Utility */
 .num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
 /* ── end Open Design revamp layer ─────────────────────────────────────────── */
+
+/* Open-design.ai inspired 2-col hero split for internal pages */
+.od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.od-hero-text { }
+.od-hero-graphic { display: flex; justify-content: flex-end; }
+.od-graphic-frame { width: 100%; max-width: 460px; border-radius: 16px; overflow: hidden; background: transparent; }
+@media (max-width: 900px) { .od-hero-split { grid-template-columns: 1fr; } .od-hero-graphic { display: none; } }
+
 </style>
 </head>
 <body>
@@ -164,6 +172,8 @@ img.zoomable:hover { opacity: 0.92; }
 
 <!-- Hero -->
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="od-hero-split">
+<div class="od-hero-text">
 <div class="od-split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
 <div class="od-split-text">
 
@@ -231,6 +241,28 @@ img.zoomable:hover { opacity: 0.92; }
   <rect x="16" y="16" width="130" height="40" rx="8" fill="#15140f"/>
   <text x="81" y="32" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#ed6f5c" letter-spacing="0.05em">WALLET</text>
   <text x="81" y="48" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="14" fill="white" font-weight="700">₹85L+</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="od-hero-graphic">
+<div class="od-graphic-frame">
+<svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
+  <rect width="420" height="300" rx="16" fill="#f5f0e8" opacity="0.7"/>
+  <defs><marker id="arr-s" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e07a5f"/></marker></defs>
+  <path d="M 210 72 A 88 88 0 0 1 298 160" stroke="#e07a5f" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-s)"/>
+  <path d="M 298 180 A 88 88 0 0 1 210 248" stroke="#c8a97e" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-s)"/>
+  <path d="M 190 248 A 88 88 0 0 1 122 180" stroke="#e07a5f" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-s)"/>
+  <path d="M 122 160 A 88 88 0 0 1 190 72" stroke="#c8a97e" stroke-width="2" fill="none" stroke-dasharray="6,3" marker-end="url(#arr-s)"/>
+  <circle cx="210" cy="160" r="42" fill="#2d2d2d"/>
+  <text x="210" y="155" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#e07a5f" letter-spacing="0.5">SWAP</text>
+  <text x="210" y="172" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#c8a97e" letter-spacing="0.5">EASY</text>
+  <text x="210" y="58" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#2d2d2d">Customer returns</text>
+  <text x="330" y="175" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#2d2d2d">Grade + price</text>
+  <text x="210" y="272" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#2d2d2d">Re-list · 41 partners</text>
+  <text x="82" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#2d2d2d">₹85L wallet</text>
+  <text x="210" y="292" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8a97e" letter-spacing="1" opacity="0.6">RE-COMMERCE · SWAPEASY</text>
 </svg>
 </div>
 </div>

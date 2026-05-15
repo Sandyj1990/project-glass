@@ -63,6 +63,14 @@
 /* Utility */
 .num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
 /* ── end Open Design revamp layer ─────────────────────────────────────────── */
+
+/* Open-design.ai inspired 2-col hero split for internal pages */
+.od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.od-hero-text { }
+.od-hero-graphic { display: flex; justify-content: flex-end; }
+.od-graphic-frame { width: 100%; max-width: 460px; border-radius: 16px; overflow: hidden; background: transparent; }
+@media (max-width: 900px) { .od-hero-split { grid-template-columns: 1fr; } .od-hero-graphic { display: none; } }
+
 </style>
 </head>
 <body>
@@ -135,6 +143,8 @@
 
 <!-- Hero -->
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="od-hero-split">
+<div class="od-hero-text">
 <div class="od-split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
 <div class="od-split-text">
 
@@ -218,6 +228,40 @@
   <rect x="16" y="16" width="130" height="40" rx="8" fill="#15140f"/>
   <text x="81" y="32" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#ed6f5c" letter-spacing="0.05em">FORGE MES</text>
   <text x="81" y="48" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="14" fill="white" font-weight="700">Dark Factory</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="od-hero-graphic">
+<div class="od-graphic-frame">
+<svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
+  <rect width="420" height="300" rx="16" fill="#f5f0e8" opacity="0.7"/>
+  <defs><marker id="arr-f" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e07a5f"/></marker></defs>
+  <rect x="10" y="120" width="58" height="52" rx="6" fill="#2d2d2d"/>
+  <text x="39" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#e07a5f">DESIGN</text>
+  <text x="39" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#fff">CAD</text>
+  <line x1="68" y1="146" x2="84" y2="146" stroke="#e07a5f" stroke-width="1.2" marker-end="url(#arr-f)"/>
+  <rect x="84" y="120" width="58" height="52" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1.2"/>
+  <text x="113" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#2d2d2d">CUT</text>
+  <text x="113" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#e07a5f">AI nest</text>
+  <line x1="142" y1="146" x2="158" y2="146" stroke="#e07a5f" stroke-width="1.2" marker-end="url(#arr-f)"/>
+  <rect x="158" y="120" width="58" height="52" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1.2"/>
+  <text x="187" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#2d2d2d">SEW</text>
+  <text x="187" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#e07a5f">720K/d</text>
+  <line x1="216" y1="146" x2="232" y2="146" stroke="#e07a5f" stroke-width="1.2" marker-end="url(#arr-f)"/>
+  <rect x="232" y="120" width="58" height="52" rx="6" fill="#e07a5f"/>
+  <text x="261" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#fff">QC</text>
+  <text x="261" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#fff">AI vision</text>
+  <line x1="290" y1="146" x2="306" y2="146" stroke="#e07a5f" stroke-width="1.2" marker-end="url(#arr-f)"/>
+  <rect x="306" y="120" width="58" height="52" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1.2"/>
+  <text x="335" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#2d2d2d">PACK</text>
+  <text x="335" y="158" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#e07a5f">barcode</text>
+  <line x1="364" y1="146" x2="380" y2="146" stroke="#e07a5f" stroke-width="1.2" marker-end="url(#arr-f)"/>
+  <rect x="380" y="120" width="34" height="52" rx="6" fill="#2d2d2d"/>
+  <text x="397" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#e07a5f">SHIP</text>
+  <text x="210" y="220" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8a97e" letter-spacing="1" opacity="0.7">MANUFACTURING EXECUTION SYSTEM</text>
+  <text x="210" y="260" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="28" fill="#2d2d2d" font-weight="700" opacity="0.07">FORGE</text>
 </svg>
 </div>
 </div>

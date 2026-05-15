@@ -63,6 +63,14 @@
 /* Utility */
 .num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
 /* ── end Open Design revamp layer ─────────────────────────────────────────── */
+
+/* Open-design.ai inspired 2-col hero split for internal pages */
+.od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.od-hero-text { }
+.od-hero-graphic { display: flex; justify-content: flex-end; }
+.od-graphic-frame { width: 100%; max-width: 460px; border-radius: 16px; overflow: hidden; background: transparent; }
+@media (max-width: 900px) { .od-hero-split { grid-template-columns: 1fr; } .od-hero-graphic { display: none; } }
+
 </style>
 </head>
 <body>
@@ -135,6 +143,8 @@
 
 <!-- Hero -->
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="od-hero-split">
+<div class="od-hero-text">
 <div class="od-split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
 <div class="od-split-text">
 
@@ -184,6 +194,28 @@
   <rect x="16" y="16" width="130" height="40" rx="8" fill="#15140f"/>
   <text x="81" y="32" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#ed6f5c" letter-spacing="0.05em">CAREER</text>
   <text x="81" y="48" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="14" fill="white" font-weight="700">5 Levels</text>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<div class="od-hero-graphic">
+<div class="od-graphic-frame">
+<svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
+  <rect width="420" height="300" rx="16" fill="#f5f0e8" opacity="0.7"/>
+  <rect x="60" y="230" width="52" height="40" rx="4" fill="#e8e0d0" stroke="#c8a97e" stroke-width="1"/>
+  <text x="86" y="255" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#2d2d2d">L1</text>
+  <rect x="122" y="190" width="52" height="80" rx="4" fill="#e8e0d0" stroke="#c8a97e" stroke-width="1"/>
+  <text x="148" y="235" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#2d2d2d">L2</text>
+  <rect x="184" y="150" width="52" height="120" rx="4" fill="#c8a97e"/>
+  <text x="210" y="215" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#fff">L3</text>
+  <rect x="246" y="110" width="52" height="160" rx="4" fill="#e07a5f"/>
+  <text x="272" y="195" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#fff">L4</text>
+  <rect x="308" y="70" width="52" height="200" rx="4" fill="#2d2d2d"/>
+  <text x="334" y="175" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#e07a5f">L5</text>
+  <rect x="60" y="36" width="140" height="30" rx="8" fill="#2d2d2d"/>
+  <text x="130" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#e07a5f">5 career levels</text>
+  <text x="210" y="285" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8a97e" letter-spacing="1" opacity="0.6">SAMARTH PLUS · CAREER PLATFORM</text>
 </svg>
 </div>
 </div>

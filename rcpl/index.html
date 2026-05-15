@@ -112,6 +112,14 @@
 /* Utility */
 .num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
 /* ── end Open Design revamp layer ─────────────────────────────────────────── */
+
+/* Open-design.ai inspired 2-col hero split for internal pages */
+.od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.od-hero-text { }
+.od-hero-graphic { display: flex; justify-content: flex-end; }
+.od-graphic-frame { width: 100%; max-width: 460px; border-radius: 16px; overflow: hidden; background: transparent; }
+@media (max-width: 900px) { .od-hero-split { grid-template-columns: 1fr; } .od-hero-graphic { display: none; } }
+
 </style>
 </head>
 <body>
@@ -183,7 +191,9 @@
 </div></nav>
 
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-  <div class="crumb mb-8"><a href="/">Home</a> <span class="sep">/</span> <span style="color: var(--ink);">RCPL</span></div>
+<div class="od-hero-split">
+<div class="od-hero-text">
+<div class="crumb mb-8"><a href="/">Home</a> <span class="sep">/</span> <span style="color: var(--ink);">RCPL</span></div>
   <div class="section-label mb-3">FMCG B2B · Live · FY 2025-26</div>
   <div class="od-eyebrow">FMCG B2B · Distribution · Reliance Consumer</div>
 <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">RCPL.</h1>
@@ -201,6 +211,38 @@
     <div class="card p-4"><div class="cap-num mb-1">Engineering</div><div class="font-semibold" style="color: var(--ink);">Abhishek Shinde · Fahim Sakri</div></div>
     <div class="card p-4"><div class="cap-num mb-1">RCPL counterpart</div><div class="font-semibold" style="color: var(--ink);">Shashi Mohan</div></div>
   </div>
+</div>
+<div class="od-hero-graphic">
+<div class="od-graphic-frame">
+<svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
+  <rect width="420" height="300" rx="16" fill="#f5f0e8" opacity="0.7"/>
+  <defs><marker id="arr-r" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#c8a97e"/></marker></defs>
+  <rect x="155" y="110" width="110" height="56" rx="10" fill="#2d2d2d"/>
+  <text x="210" y="136" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" fill="#e07a5f" letter-spacing="1">RCPL</text>
+  <text x="210" y="153" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#c8a97e">₹20K Cr FY26</text>
+  <rect x="20" y="36" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
+  <text x="60" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">CAMPA</text>
+  <rect x="170" y="18" width="80" height="30" rx="6" fill="#e07a5f"/>
+  <text x="210" y="38" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#fff">INDEPENDENCE</text>
+  <rect x="320" y="36" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
+  <text x="360" y="56" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">SOSYO</text>
+  <rect x="20" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
+  <text x="60" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">DMS</text>
+  <rect x="170" y="238" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
+  <text x="210" y="258" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">SFA</text>
+  <rect x="320" y="220" width="80" height="30" rx="6" fill="#fff" stroke="#c8a97e" stroke-width="1"/>
+  <text x="360" y="240" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#2d2d2d">CTS</text>
+  <line x1="100" y1="51" x2="155" y2="126" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
+  <line x1="210" y1="48" x2="210" y2="110" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
+  <line x1="320" y1="51" x2="265" y2="126" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
+  <line x1="155" y1="155" x2="100" y2="220" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
+  <line x1="210" y1="166" x2="210" y2="238" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
+  <line x1="265" y1="155" x2="320" y2="220" stroke="#c8a97e" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr-r)"/>
+  <text x="210" y="285" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8a97e" letter-spacing="1" opacity="0.6">FMCG B2B DISTRIBUTION · RCPL</text>
+</svg>
+</div>
+</div>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->

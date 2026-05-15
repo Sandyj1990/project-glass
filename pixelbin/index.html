@@ -84,6 +84,14 @@
 /* Utility */
 .num-display { font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
 /* ── end Open Design revamp layer ─────────────────────────────────────────── */
+
+/* Open-design.ai inspired 2-col hero split for internal pages */
+.od-hero-split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.od-hero-text { }
+.od-hero-graphic { display: flex; justify-content: flex-end; }
+.od-graphic-frame { width: 100%; max-width: 460px; border-radius: 16px; overflow: hidden; background: transparent; }
+@media (max-width: 900px) { .od-hero-split { grid-template-columns: 1fr; } .od-hero-graphic { display: none; } }
+
 </style>
 </head>
 <body>
@@ -154,13 +162,50 @@
 </div></nav>
 
 <section class="pt-16 pb-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-  <div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <span style="color: var(--ink);">PixelBin</span></div>
+<div class="od-hero-split">
+<div class="od-hero-text">
+<div class="crumb mb-6"><a href="/">Home</a> <span class="sep">/</span> <span style="color: var(--ink);">PixelBin</span></div>
   <div class="flex flex-wrap gap-2 mb-8"><a href="/pixelbin" class="subnav-link active">Overview</a><a href="/pixelbin/glamar" class="subnav-link">GlamAR</a><a href="/pixelbin/videos" class="subnav-link">Videos</a></div>
   <div class="section-label mb-3">PixelBin · AI visual platform · Live</div>
   <div class="od-eyebrow">Visual AI · Image Processing · Enhancement</div>
 <h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">PixelBin.</h1>
   <p class="text-lg max-w-3xl mb-6" style="color: var(--ink-muted);">AI-native visual production for Reliance retail. One umbrella · three sub-products · used across Reliance Brands (Sephora, Vision Express, West Elm), Reliance Jewels, JioMart, AJIO and more.</p>
   <div class="flex flex-wrap gap-2"><a href="/pixelbin" class="subnav-link active">Overview</a><a href="/pixelbin/glamar" class="subnav-link">GlamAR</a><a href="/pixelbin/videos" class="subnav-link">Videos</a></div>
+</div>
+<div class="od-hero-graphic">
+<div class="od-graphic-frame">
+<svg viewBox="0 0 420 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;">
+  <rect width="420" height="300" rx="16" fill="#f5f0e8" opacity="0.7"/>
+  <defs><marker id="arr-px" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e07a5f"/></marker></defs>
+  <rect x="20" y="110" width="72" height="72" rx="8" fill="#fff" stroke="#c8a97e" stroke-width="1.2"/>
+  <rect x="30" y="120" width="52" height="36" rx="4" fill="#e8e0d0"/>
+  <text x="56" y="172" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#2d2d2d">SOURCE</text>
+  <line x1="92" y1="146" x2="118" y2="146" stroke="#e07a5f" stroke-width="1.5" marker-end="url(#arr-px)"/>
+  <rect x="118" y="110" width="72" height="72" rx="8" fill="#e07a5f"/>
+  <text x="154" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#fff">TRANSFORM</text>
+  <text x="154" y="157" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#fff">AI · resize</text>
+  <text x="154" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#fff">bg-remove</text>
+  <line x1="190" y1="146" x2="216" y2="146" stroke="#e07a5f" stroke-width="1.5" marker-end="url(#arr-px)"/>
+  <rect x="216" y="110" width="72" height="72" rx="8" fill="#fff" stroke="#c8a97e" stroke-width="1.2"/>
+  <text x="252" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#2d2d2d">OPTIMISE</text>
+  <text x="252" y="157" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#e07a5f">WebP · AVIF</text>
+  <text x="252" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#e07a5f">CDN edge</text>
+  <line x1="288" y1="146" x2="314" y2="146" stroke="#e07a5f" stroke-width="1.5" marker-end="url(#arr-px)"/>
+  <rect x="314" y="110" width="86" height="72" rx="8" fill="#2d2d2d"/>
+  <text x="357" y="143" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="7" fill="#e07a5f">DELIVER</text>
+  <text x="357" y="157" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#fff">global CDN</text>
+  <text x="357" y="170" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="#c8a97e">40ms p95</text>
+  <rect x="20" y="216" width="110" height="30" rx="8" fill="#2d2d2d"/>
+  <text x="75" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#e07a5f">1B+ images</text>
+  <rect x="145" y="216" width="130" height="30" rx="8" fill="#2d2d2d"/>
+  <text x="210" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#c8a97e">99.9% uptime</text>
+  <rect x="290" y="216" width="110" height="30" rx="8" fill="#2d2d2d"/>
+  <text x="345" y="236" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#e07a5f">40ms p95</text>
+  <text x="210" y="278" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#c8a97e" letter-spacing="1" opacity="0.6">VISUAL AI PLATFORM · PIXELBIN</text>
+</svg>
+</div>
+</div>
+</div>
 </div></section>
 
 <!-- Sticky in-page TOC -->
