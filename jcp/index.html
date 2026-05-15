@@ -190,8 +190,12 @@
 </div></nav>
 <!-- Hero -->
 <section class="pt-12 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-left">
+<div class="od-split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
+<div class="od-split-text">
+
 <div class="crumb mb-8"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">JCP</span></div>
 <div class="section-label mb-3">Enterprise Commerce · FY 2025-26 · Live</div>
+<div class="od-eyebrow">Enterprise Commerce · FY 2025-26 · 78 Channels</div>
 <h1 class="hero-h1 display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Jio Commerce Platform.</h1>
 <p class="text-lg max-w-3xl mb-8" style="color: var(--ink-muted);">One Sell + Support layer underneath every B2C and B2B Reliance Retail brand. 78 channels. AI shipped in production. Modular, microservice-based, AI-native.</p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
@@ -199,6 +203,45 @@
 <div class="card p-4"><div class="cap-num mb-1">Peak / hour</div><div class="display-2 text-3xl accent">350K</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Tested · headroom held</div></div>
 <div class="card p-4"><div class="cap-num mb-1">Customers · FY26</div><div class="display-2 text-3xl accent">200M+</div></div>
 <div class="card p-4"><div class="cap-num mb-1">Channels live</div><div class="display-2 text-3xl accent">78</div></div>
+</div>
+
+</div>
+<div class="od-split-graphic">
+<div class="od-graphic-frame" style="background:var(--bone);border:1px solid var(--border);border-radius:16px;padding:24px;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;">
+<svg viewBox="0 0 480 360" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+  <!-- dot grid -->
+  <defs><pattern id="dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#15140f" opacity="0.08"/></pattern></defs>
+  <rect width="480" height="360" fill="url(#dots)"/>
+  <!-- Hub and spoke: 78 channels → central hub → customer -->
+  <!-- Central hub -->
+  <circle cx="240" cy="180" r="36" fill="#ed6f5c" opacity="0.15" stroke="#ed6f5c" stroke-width="2"/>
+  <circle cx="240" cy="180" r="20" fill="#ed6f5c" opacity="0.3"/>
+  <text x="240" y="185" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="9" fill="#15140f" font-weight="600">JCP</text>
+  <!-- Spokes: channels -->
+  <g stroke="#15140f" stroke-width="1" opacity="0.3" stroke-dasharray="4 3">
+    <line x1="240" y1="144" x2="240" y2="72"/><line x1="240" y1="216" x2="240" y2="288"/>
+    <line x1="204" y1="180" x2="120" y2="180"/><line x1="276" y1="180" x2="360" y2="180"/>
+    <line x1="214" y1="154" x2="155" y2="95"/><line x1="266" y1="154" x2="325" y2="95"/>
+    <line x1="214" y1="206" x2="155" y2="265"/><line x1="266" y1="206" x2="325" y2="265"/>
+  </g>
+  <!-- Channel nodes -->
+  <g fill="#f7f1de" stroke="#15140f" stroke-width="1.5">
+    <rect x="208" y="52" width="64" height="28" rx="6"/><text x="240" y="70" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">AJIO</text>
+    <rect x="208" y="280" width="64" height="28" rx="6"/><text x="240" y="298" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">JioMart</text>
+    <rect x="80" y="166" width="64" height="28" rx="6"/><text x="112" y="184" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">Tira</text>
+    <rect x="336" y="166" width="64" height="28" rx="6"/><text x="368" y="184" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">RD</text>
+    <rect x="120" y="76" width="64" height="28" rx="6"/><text x="152" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">Trends</text>
+    <rect x="296" y="76" width="64" height="28" rx="6"/><text x="328" y="94" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">Netmeds</text>
+    <rect x="120" y="256" width="64" height="28" rx="6"/><text x="152" y="274" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">B2B</text>
+    <rect x="296" y="256" width="64" height="28" rx="6"/><text x="328" y="274" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#15140f">+70 more</text>
+  </g>
+  <!-- Stat badge -->
+  <rect x="16" y="16" width="96" height="40" rx="8" fill="#15140f"/>
+  <text x="64" y="32" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="8" fill="#ed6f5c" letter-spacing="0.05em">ORDERS/DAY</text>
+  <text x="64" y="48" text-anchor="middle" font-family="Inter Tight,sans-serif" font-size="14" fill="white" font-weight="700">700K+</text>
+</svg>
+</div>
+</div>
 </div>
 </div></section>
 <!-- Sticky in-page TOC -->
@@ -261,6 +304,8 @@
 </div>
 </div></section>
 <!-- §02 · Scale -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>I</span><span>001</span></div>
 <section class="py-16 border-b" id="scale" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">02 · Scale</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What it carries today.</h2>
@@ -280,6 +325,8 @@
 </div>
 </div></section>
 <!-- §03 · Coverage -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>II</span><span>002</span></div>
 <section class="py-16 border-b" id="coverage" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">03 · Coverage</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where JCP runs.</h2>
@@ -455,6 +502,8 @@
 </div>
 </div></section>
 <!-- §04 · People -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>III</span><span>003</span></div>
 <section class="py-16 border-b" id="people" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · People</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">274 hands on JCP.</h2>
@@ -478,6 +527,8 @@
 </div>
 </div></section>
 <!-- §05 · Architecture -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IV</span><span>004</span></div>
 <section class="py-16 border-b" id="architecture" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">05 · Architecture</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What sits underneath.</h2>
@@ -617,6 +668,8 @@
 </div>
 </div></section>
 <!-- §06 · Product surface -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>V</span><span>005</span></div>
 <section class="py-16 border-b" id="properties" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Product surface</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Eight products. One platform.</h2>
@@ -638,6 +691,8 @@
 </div>
 </div></section>
 <!-- §07 · AI shipped -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VI</span><span>006</span></div>
 <section class="py-16 border-b" id="ai" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">07 · AI shipped</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Search, cataloging, recommendations · live.</h2>
@@ -695,6 +750,8 @@
      Render contents via: python tools/inject_path_to_l4.py --only jcp
      ===================================================================== -->
 <!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VII</span><span>007</span></div>
 <section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
 <div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">08 · PATH TO L4</div>
@@ -722,6 +779,8 @@
 </section>
 <!-- PATH-TO-L4-END -->
 <!-- §09 · Shipped this year -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>VIII</span><span>008</span></div>
 <section class="py-16 border-b" id="shipped" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">09 · Shipped this year</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">~150 capability releases. 10 sub-systems.</h2>
@@ -748,6 +807,8 @@
 </div>
 </div></section>
 <!-- §10 · Roadmap -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>IX</span><span>009</span></div>
 <section class="py-16 border-b" id="roadmap" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">10 · Roadmap · Q2 AMJ 2026</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">90 Day Roadmap.</h2>
@@ -785,6 +846,8 @@
 </div>
 </div></section>
 <!-- §11 · Receipts -->
+
+<div class="od-index-bar" style="display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border-soft);margin-bottom:0;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink-muted);letter-spacing:0.06em;text-transform:uppercase;"><span>X</span><span>010</span></div>
 <section class="py-16 border-b" id="receipts" style="border-color: var(--border); background: var(--bg-soft);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">11 · Receipts</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where to go next.</h2>
