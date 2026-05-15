@@ -12,6 +12,453 @@
 <link rel="stylesheet" href="/present.css">
 <script src="/present.js" defer></script>
 <style>
+/* ── Shopify-inspired Impetus redesign ── */
+
+/* Hero dark band */
+.imp-hero {
+  background: var(--ink);
+  color: white;
+  padding: 72px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.imp-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(237,111,92,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.imp-hero-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 1;
+}
+.imp-hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.imp-hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--coral);
+}
+.imp-hero-title {
+  font-family: var(--sans);
+  font-size: clamp(48px, 6vw, 88px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: white;
+  margin-bottom: 24px;
+}
+.imp-hero-title em {
+  font-style: normal;
+  color: var(--coral);
+}
+.imp-hero-desc {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+.imp-hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.imp-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  padding: 5px 12px;
+}
+.imp-hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+}
+
+/* Stat band */
+.imp-stats {
+  background: var(--bone);
+  border-bottom: 1px solid var(--line);
+  padding: 0;
+}
+.imp-stats-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-left: 1px solid var(--line);
+}
+@media (max-width: 900px) { .imp-stats-inner { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .imp-stats-inner { grid-template-columns: 1fr; } }
+.imp-stat {
+  padding: 36px 32px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.imp-stat-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 10px;
+}
+.imp-stat-num {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+}
+.imp-stat-num.accent { color: var(--coral); }
+.imp-stat-unit {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-mute);
+  margin-left: 3px;
+}
+
+/* Value chain tabs */
+.imp-chain {
+  background: white;
+  border-bottom: 1px solid var(--line);
+}
+.imp-chain-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px;
+}
+.imp-chain-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+.imp-chain-title {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 48px;
+}
+.imp-chain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+@media (max-width: 900px) { .imp-chain-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .imp-chain-grid { grid-template-columns: 1fr; } }
+.imp-chain-card {
+  padding: 32px 28px;
+  border-right: 1px solid var(--line);
+  position: relative;
+  transition: background 0.2s;
+}
+.imp-chain-card:last-child { border-right: none; }
+.imp-chain-card:hover { background: var(--bone); }
+.imp-chain-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: 12px;
+}
+.imp-chain-stage {
+  font-family: var(--sans);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+.imp-chain-tagline {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+.imp-chain-tools {
+  font-size: 12px;
+  color: var(--ink-mute);
+  line-height: 1.6;
+}
+
+/* Platform grid */
+.imp-platforms {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.imp-platforms-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px;
+}
+.imp-platforms-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.imp-platforms-title {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.imp-platforms-sub {
+  font-size: 14px;
+  color: var(--ink-mute);
+  max-width: 440px;
+  line-height: 1.5;
+}
+.imp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) { .imp-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .imp-grid { grid-template-columns: 1fr; } }
+.imp-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+.imp-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(21,20,15,0.08);
+}
+.imp-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.imp-card-num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+}
+.imp-card-name {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+.imp-card-desc {
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.imp-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.imp-card-arrow {
+  font-size: 14px;
+  color: var(--ink-mute);
+  transition: transform 0.15s, color 0.15s;
+}
+.imp-card:hover .imp-card-arrow {
+  transform: translateX(3px);
+  color: var(--ink);
+}
+
+/* Agents section */
+.imp-agents {
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.imp-agents-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px;
+}
+.imp-agents-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+.imp-agents-title {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 12px;
+}
+.imp-agents-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.55);
+  max-width: 560px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.imp-agents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 700px) { .imp-agents-grid { grid-template-columns: 1fr; } }
+.imp-agent-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 28px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.imp-agent-card:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(237,111,92,0.5);
+}
+.imp-agent-name {
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 700;
+  color: white;
+}
+.imp-agent-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.55;
+}
+.imp-agent-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+}
+.imp-agent-link {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--coral);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.imp-agent-link:hover { text-decoration: underline; }
+
+/* Portfolio section */
+.imp-portfolio {
+  background: var(--bone);
+  border-bottom: 1px solid var(--line);
+}
+.imp-portfolio-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 48px;
+}
+.imp-portfolio-title {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.imp-portfolio-sub {
+  font-size: 15px;
+  color: var(--ink-mute);
+  max-width: 560px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.imp-portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 700px) { .imp-portfolio-grid { grid-template-columns: 1fr; } }
+.imp-portfolio-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 28px;
+  text-decoration: none;
+  transition: border-color 0.18s, transform 0.18s;
+  display: block;
+}
+.imp-portfolio-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-2px);
+}
+.imp-portfolio-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 12px;
+}
+.imp-portfolio-name {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.imp-portfolio-desc {
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+}
+
   .platform-card { transition: border-color 0.15s, transform 0.15s; }
   .platform-card:hover { border-color: var(--ink); transform: translateY(-1px); }
   .platform-card .cat { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--accent); margin-bottom: 8px; }
@@ -137,185 +584,224 @@
 </div></nav>
 
 <!-- =====================================================================
-     HERO
+     HERO — Shopify-inspired dark hero
      ===================================================================== -->
-<section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Impetus</span></div>
-  <div class="flex flex-wrap gap-2 mb-8"><a href="/impetus" class="subnav-link active">Overview</a><a href="/impetus/brands" class="subnav-link">Design Library</a><a href="/impetus/category-intel" class="subnav-link">Category Intel</a></div>
-<div class="section-label mb-3">F&amp;L AI Platform · Live</div>
-<h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Impetus.</h1>
-<p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">Reliance's AI-first platform for Fashion &amp; Lifestyle retail. <strong style="color: var(--ink);">15 sub-platforms in production</strong>, used by 2,000+ people across the F&amp;L value chain: Plan · Buy · Make · Sell.</p>
-<p class="text-base max-w-3xl mb-8" style="color: var(--ink);"><strong>One integrated system across planning, execution, measurement and governance.</strong> Continuously learning, autonomously acting, always accountable to a human.</p>
-
-<div class="cap-num mb-3">FY26 scale · 1 Apr 2025 → 31 Mar 2026 · verified</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl">
-  <div class="card p-4"><div class="cap-num mb-1">Options designed</div><div class="display-2 text-3xl" style="color: var(--ink);">1,06,892</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Active vendors</div><div class="display-2 text-3xl" style="color: var(--ink);">1,316</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Shipments dispatched</div><div class="display-2 text-3xl" style="color: var(--ink);">27,48,859</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Peak packing / day</div><div class="display-2 text-3xl" style="color: var(--ink);">1,11,241<span class="text-base ml-1" style="color: var(--ink-soft);">qty</span></div></div>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-5xl mt-3">
-  <div class="card p-4"><div class="cap-num mb-1">Total POs created</div><div class="display-2 text-3xl accent">11,06,954</div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Pieces delivered</div><div class="display-2 text-3xl accent">15.08<span class="text-base ml-1" style="color: var(--ink-soft);">Cr</span></div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Vendor → store</div><div class="display-2 text-3xl accent">5<span class="text-base ml-1" style="color: var(--ink-soft);">days avg</span></div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Q1 release compendium</div><div class="display-2 text-3xl" style="color: var(--ink);">40+<span class="text-base ml-1" style="color: var(--ink-soft);">updates</span></div></div>
+<div style="background:var(--ink); padding: 12px 48px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+  <div style="max-width:1280px; margin:0 auto; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+    <div style="font-family:var(--mono); font-size:11px; color:rgba(255,255,255,0.4);"><a href="/" style="color:rgba(255,255,255,0.4); text-decoration:none;">Home</a> <span style="margin:0 6px;">›</span> <span style="color:rgba(255,255,255,0.7);">Impetus</span></div>
+    <div style="margin-left:auto; display:flex; gap:8px;">
+      <a href="/impetus" style="font-family:var(--mono); font-size:11px; letter-spacing:0.06em; color:white; background:rgba(255,255,255,0.12); border-radius:999px; padding:5px 14px; text-decoration:none;">Overview</a>
+      <a href="/impetus/brands" style="font-family:var(--mono); font-size:11px; letter-spacing:0.06em; color:rgba(255,255,255,0.5); border-radius:999px; padding:5px 14px; text-decoration:none; border:1px solid rgba(255,255,255,0.12);">Design Library</a>
+      <a href="/impetus/category-intel" style="font-family:var(--mono); font-size:11px; letter-spacing:0.06em; color:rgba(255,255,255,0.5); border-radius:999px; padding:5px 14px; text-decoration:none; border:1px solid rgba(255,255,255,0.12);">Category Intel</a>
+    </div>
+  </div>
 </div>
 
-<div class="cap-num mt-8 mb-3">Platform breadth · sub-IPs in production</div>
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 max-w-6xl">
-  <div class="card p-4"><div class="cap-num mb-1">Sub-platforms</div><div class="display-2 text-3xl" style="color: var(--ink);">15<span class="text-base ml-1" style="color: var(--ink-soft);">in production</span></div></div>
-  <div class="card p-4"><div class="cap-num mb-1">At L3+ today</div><div class="display-2 text-3xl" style="color: var(--ink);">5<span class="text-base ml-1" style="color: var(--ink-soft);">of 15 platforms</span></div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Active users</div><div class="display-2 text-3xl" style="color: var(--ink);">2,000+<span class="text-base ml-1" style="color: var(--ink-soft);">across F&amp;L</span></div></div>
-  <div class="card p-4"><div class="cap-num mb-1">Release compendium</div><div class="display-2 text-3xl" style="color: var(--ink);">18<span class="text-base ml-1" style="color: var(--ink-soft);">product tracks</span></div></div>
-  <div class="card p-4"><div class="cap-num mb-1">RIL counterpart</div><div class="text-base font-semibold leading-tight" style="color: var(--ink);">Anand Thakur</div><div class="text-base font-semibold leading-tight" style="color: var(--ink);">Vineet Nair</div></div>
+<section class="imp-hero">
+  <div class="imp-hero-inner">
+    <div class="imp-hero-eyebrow">F&amp;L AI Platform · Live</div>
+    <h1 class="imp-hero-title">Impetus.<br><em>One platform.</em><br>Every stage.</h1>
+    <p class="imp-hero-desc">Reliance's AI-first platform for Fashion &amp; Lifestyle retail. <strong style="color:white;">15 sub-platforms in production</strong>, used by 2,000+ people across the F&amp;L value chain: Plan · Buy · Make · Sell. One integrated system across planning, execution, measurement and governance.</p>
+    <div class="imp-hero-meta">
+      <span class="imp-hero-badge"><span class="dot"></span> 15 sub-platforms live</span>
+      <span class="imp-hero-badge">2,000+ active users</span>
+      <span class="imp-hero-badge">FY26 · verified</span>
+      <span class="imp-hero-badge">RIL: Anand Thakur · Vineet Nair</span>
+    </div>
+  </div>
+</section>
+
+<!-- Stat band -->
+<div class="imp-stats">
+  <div class="imp-stats-inner">
+    <div class="imp-stat">
+      <div class="imp-stat-label">Options Designed</div>
+      <div class="imp-stat-num">1,06,892</div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Shipments Dispatched</div>
+      <div class="imp-stat-num">27,48,859</div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Total POs Created</div>
+      <div class="imp-stat-num accent">11,06,954</div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Pieces Delivered</div>
+      <div class="imp-stat-num accent">15.08<span class="imp-stat-unit">Cr</span></div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Peak Packing / Day</div>
+      <div class="imp-stat-num">1,11,241<span class="imp-stat-unit">qty</span></div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Active Vendors</div>
+      <div class="imp-stat-num">1,316</div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Vendor → Store</div>
+      <div class="imp-stat-num accent">5<span class="imp-stat-unit">days avg</span></div>
+    </div>
+    <div class="imp-stat">
+      <div class="imp-stat-label">Q1 Release Updates</div>
+      <div class="imp-stat-num">40+</div>
+    </div>
+  </div>
 </div>
+
+<!-- =====================================================================
+     §01 · The 15 sub-platforms — Shopify-style platform grid
+     ===================================================================== -->
+<section class="imp-platforms"><div class="imp-platforms-inner">
+<div class="imp-chain-label">01 · 15 sub-platforms in production</div>
+<div class="imp-platforms-header">
+  <div>
+    <div class="imp-platforms-title">All 15 sub-platforms.</div>
+  </div>
+  <div class="imp-platforms-sub">Every sub-platform lives by the same template: who it's for, what it does, how many use it, what improved, what shipped, screenshots.</div>
+</div>
+
+<div class="imp-grid">
+
+<a href="/impetus/cortex" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">01 · Plan / Buy / Make / Sell</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Cortex (Planning Engine)</div>
+  <div class="imp-card-desc">Revenue, margin, inventory, vendor &amp; AOP dashboards with AI-explained insights.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/intelliloom" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">02 · Buy</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Fabric Platform</div>
+  <div class="imp-card-desc">Unified fabric ordering &amp; inventory management. ₹420Cr+ on-platform.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/plm" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">03 · Buy / Make</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Impetus PLM</div>
+  <div class="imp-card-desc">End-to-end product lifecycle: Design → Tech Pack → Sourcing → Production.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/nextwave" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">04 · Plan</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">NextWave (Fashion Trends Forecasting)</div>
+  <div class="imp-card-desc">Fashion Trends Forecasting: celebrity, regional &amp; marketplace trend signals.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/costing-engine" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">05 · Buy</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Costing Engine</div>
+  <div class="imp-card-desc">Automated material-level costing with vendor pricing &amp; approval workflows.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/master-hub" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">06 · Plan · Master Data</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Master Data Platform</div>
+  <div class="imp-card-desc">Single source of truth for vendor, material &amp; product data.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/intelliverse" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">07 · Make / Move</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Vendor Management Platform</div>
+  <div class="imp-card-desc">Procuro · IntelliMake · IntelliQC · IntelliPack · PO to shipping. PO→Ship 55→30 days.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/uvp" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">08 · Buy · Vendor</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Design Co-Creation Platform</div>
+  <div class="imp-card-desc">Vendor co-creation platform · used by Shein.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/recollect" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">09 · Sell · Reconciliation</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Reconciliation Platform</div>
+  <div class="imp-card-desc">Reconciliation engine for invoice ↔ PO ↔ GRN matching. Auto-flags discrepancies.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/gmetri" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">10 · Sell · Store Ops</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Store Digital Twin</div>
+  <div class="imp-card-desc">3D store visualisation &amp; shelf/planogram compliance auditing. 109 stores · ~70% target.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/pulsepoint" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">11 · Sell · Store Ops</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Store Ops Platform</div>
+  <div class="imp-card-desc">Store-ops task management, surveys &amp; KPI dashboards. 1,605 of 1,926 stores (83%).</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/companion-app" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">12 · Sell · In-Store</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Store Companion App</div>
+  <div class="imp-card-desc">In-store shopping companion for product discovery &amp; assistance.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/ai-photoshoot" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">13 · Sell · Catalog</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">AI Photoshoot</div>
+  <div class="imp-card-desc">AI-powered product photography &amp; video generation. 88% first-pass · 90% cost reduction.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/analytics" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">14 · Cross-Cutting · Analytics</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Impetus Command Center</div>
+  <div class="imp-card-desc">Analytics &amp; real-time dashboards for all business functions. Powers Ask Impetus.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+<a href="/impetus/instadesk" class="imp-card">
+  <div class="imp-card-top"><div class="imp-card-num">15 · Operate · Helpdesk</div><span class="pill pill-live">Live</span></div>
+  <div class="imp-card-name">Support Platform</div>
+  <div class="imp-card-desc">Unified helpdesk for support tickets &amp; SLA tracking. Replaced Freshdesk.</div>
+  <div class="imp-card-foot"><span></span><span class="imp-card-arrow">→</span></div>
+</a>
+
+</div>
+
 </div></section>
 
 <!-- =====================================================================
-     §01 · The 15 sub-platforms
+     §02 · Adoption · F&L value chain — Shopify-style chain grid
      ===================================================================== -->
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">01 · 15 sub-platforms in production</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">All 15 sub-platforms.</h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every sub-platform lives by the same template: who it's for, what it does, how many use it, what improved, what shipped, screenshots.</p>
-
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-<a href="/impetus/cortex" class="card platform-card p-5 block">
-  <div class="cat">01 · Plan / Buy / Make / Sell</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Cortex (Planning Engine)</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Revenue, margin, inventory, vendor &amp; AOP dashboards with AI-explained insights.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/intelliloom" class="card platform-card p-5 block">
-  <div class="cat">02 · Buy</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Fabric Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Unified fabric ordering &amp; inventory management. ₹420Cr+ on-platform.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/plm" class="card platform-card p-5 block">
-  <div class="cat">03 · Buy / Make</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Impetus PLM</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">End-to-end product lifecycle: Design → Tech Pack → Sourcing → Production.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/nextwave" class="card platform-card p-5 block">
-  <div class="cat">04 · Plan</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">NextWave (Fashion Trends Forecasting)</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Fashion Trends Forecasting: celebrity, regional &amp; marketplace trend signals.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/costing-engine" class="card platform-card p-5 block">
-  <div class="cat">05 · Buy</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Costing Engine</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Automated material-level costing with vendor pricing &amp; approval workflows.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/master-hub" class="card platform-card p-5 block">
-  <div class="cat">06 · Plan · master data</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Master Data Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Single source of truth for vendor, material &amp; product data.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/intelliverse" class="card platform-card p-5 block">
-  <div class="cat">07 · Make / Move</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Vendor Management Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Procuro · IntelliMake · IntelliQC · IntelliPack · PO to shipping. PO→Ship 55→30 days.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/uvp" class="card platform-card p-5 block">
-  <div class="cat">08 · Buy · Vendor</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Design Co-Creation Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Vendor co-creation platform · used by Shein.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/recollect" class="card platform-card p-5 block">
-  <div class="cat">09 · Sell · Reconciliation</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Reconciliation Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Reconciliation engine for invoice ↔ PO ↔ GRN matching. Auto-flags discrepancies.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/gmetri" class="card platform-card p-5 block">
-  <div class="cat">10 · Sell · Store ops</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Store Digital Twin</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">3D store visualisation &amp; shelf/planogram compliance auditing. 109 stores · ~70% target.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/pulsepoint" class="card platform-card p-5 block">
-  <div class="cat">11 · Sell · Store ops</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Store Ops Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Store-ops task management, surveys &amp; KPI dashboards. 1,605 of 1,926 stores (83%).</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/companion-app" class="card platform-card p-5 block">
-  <div class="cat">12 · Sell · In-store</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Store Companion App</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">In-store shopping companion for product discovery &amp; assistance.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/ai-photoshoot" class="card platform-card p-5 block">
-  <div class="cat">13 · Sell · Catalog</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">AI Photoshoot</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">AI-powered product photography &amp; video generation. 88% first-pass · 90% cost reduction.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/analytics" class="card platform-card p-5 block">
-  <div class="cat">14 · Cross-cutting · Analytics</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Impetus Command Center</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Analytics &amp; real-time dashboards for all business functions. Powers Ask Impetus.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-<a href="/impetus/instadesk" class="card platform-card p-5 block">
-  <div class="cat">15 · Operate · Helpdesk</div>
-  <h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Support Platform</h3>
-  <p class="text-sm mb-3" style="color: var(--ink-muted);">Unified helpdesk for support tickets &amp; SLA tracking. Replaced Freshdesk.</p>
-  <span class="pill pill-live">Live</span>
-</a>
-
-</div>
-
-</div></section>
-
-<!-- =====================================================================
-     §02 · Adoption · F&L value chain
-     ===================================================================== -->
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">02 · Adoption · across the F&amp;L value chain</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Embedded in every F&amp;L stage · Plan · Buy · Make · Sell.</h2>
-<div class="grid md:grid-cols-4 gap-4">
-  <div class="card p-6">
-    <div class="cap-num mb-2">Plan</div>
-    <h3 class="font-semibold mb-2" style="color: var(--ink);">Demand → assortment → space.</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">NextWave (trends) · Cortex (Command Center) · Master-Hub (CMT) · Analytics (SuperSet).</p>
+<section class="imp-chain"><div class="imp-chain-inner">
+<div class="imp-chain-label">02 · Adoption · across the F&amp;L value chain</div>
+<div class="imp-chain-title">Embedded in every F&amp;L stage.</div>
+<div class="imp-chain-grid">
+  <div class="imp-chain-card">
+    <div class="imp-chain-num">01 · PLAN</div>
+    <div class="imp-chain-stage">Plan</div>
+    <div class="imp-chain-tagline">Demand → assortment → space.</div>
+    <div class="imp-chain-tools">NextWave · Cortex · Master-Hub · Analytics</div>
   </div>
-  <div class="card p-6">
-    <div class="cap-num mb-2">Buy</div>
-    <h3 class="font-semibold mb-2" style="color: var(--ink);">Trend → design → vendor.</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">PLM · IntelliLoom · Costing Engine · UVP · Cortex.</p>
+  <div class="imp-chain-card">
+    <div class="imp-chain-num">02 · BUY</div>
+    <div class="imp-chain-stage">Buy</div>
+    <div class="imp-chain-tagline">Trend → design → vendor.</div>
+    <div class="imp-chain-tools">PLM · IntelliLoom · Costing Engine · UVP</div>
   </div>
-  <div class="card p-6">
-    <div class="cap-num mb-2">Make / Move</div>
-    <h3 class="font-semibold mb-2" style="color: var(--ink);">Factory → DC → shelf.</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">IntelliVerse (Procuro · IntelliMake · IntelliQC · IntelliPack).</p>
+  <div class="imp-chain-card">
+    <div class="imp-chain-num">03 · MAKE / MOVE</div>
+    <div class="imp-chain-stage">Make</div>
+    <div class="imp-chain-tagline">Factory → DC → shelf.</div>
+    <div class="imp-chain-tools">Procuro · IntelliMake · IntelliQC · IntelliPack</div>
   </div>
-  <div class="card p-6">
-    <div class="cap-num mb-2">Sell · Operate</div>
-    <h3 class="font-semibold mb-2" style="color: var(--ink);">Discover → buy → serve.</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">AI Photoshoot · Companion App · GMetri · PulsePoint · Recollect · InstaDesk.</p>
+  <div class="imp-chain-card">
+    <div class="imp-chain-num">04 · SELL</div>
+    <div class="imp-chain-stage">Sell</div>
+    <div class="imp-chain-tagline">Discover → buy → serve.</div>
+    <div class="imp-chain-tools">AI Photoshoot · Companion App · GMetri · PulsePoint · Recollect · InstaDesk</div>
   </div>
 </div>
 </div></section>
@@ -325,47 +811,32 @@
      Render contents via: python tools/inject_path_to_l4.py --only impetus
      ===================================================================== -->
 <!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
-<section id="path-to-l4" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">03 · PATH TO L4</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How IMPETUS becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
-<p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Currently at <strong>L3</strong>. 4 named agents from the <a href="/agents/" style="color: var(--accent); text-decoration: underline;">/agents/</a> directory close the gap to L4. &nbsp;<a href="#path-to-l4-buildplan" style="color: var(--accent); text-decoration: underline; font-family: 'JetBrains Mono', monospace; font-size: 13px;">See the 3-week build plan ↓</a></p>
-<div class="overflow-x-auto">
-  <table class="grid-table">
-    <thead>
-      <tr><th>Agent</th><th>State</th><th>Target rung</th><th>Next milestone</th><th>What it delivers for this platform</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="/agents/cortex-planning/" style="color: var(--accent); text-decoration: underline;">Cortex Planning Agent</a></td>
-        <td><span class="pill pill-build">Building</span></td>
-        <td><span class="cap-num">L4</span></td>
-        <td><span class="cap-num">25-May-2026 · Pilot Hit/Year decision (category-led model)</span></td>
-        <td>Store-realistic Plan of Record + continuous, exception-led replanning across the Impetus stack.</td>
-      </tr>
-      <tr>
-        <td><a href="/agents/trend-to-design/" style="color: var(--accent); text-decoration: underline;">Trend-to-Design Agent</a></td>
-        <td><span class="pill pill-live">Live</span></td>
-        <td><span class="cap-num">L4</span></td>
-        <td><span class="cap-num">30-May-2026 · Saree drape (Category 15) + Indian designer (Category 42) + sherwani craft (Category 7) improvement window</span></td>
-        <td>Trend brief → manufacturable design package without humans in the design cycle middle.</td>
-      </tr>
-      <tr>
-        <td><a href="/agents/category-intelligence/" style="color: var(--accent); text-decoration: underline;">Category Intelligence Agent</a></td>
-        <td><span class="pill pill-build">Building</span></td>
-        <td><span class="cap-num">L4</span></td>
-        <td><span class="cap-num">-</span></td>
-        <td>Category × season × geography → 40-50 pp evidence-tagged trend report for buying teams.</td>
-      </tr>
-      <tr>
-        <td><a href="/agents/ai-photoshoot/" style="color: var(--accent); text-decoration: underline;">AI Photoshoot Agent</a></td>
-        <td><span class="pill pill-live">Live</span></td>
-        <td><span class="cap-num">L4</span></td>
-        <td><span class="cap-num">28-May-2026 · Ethnic wear pipeline (kurtas, kurta sets, ethnic dresses)</span></td>
-        <td>Flat-lay or mannequin product image → on-model 4K catalogue shoot in 2-4 minutes, with autonomous detection, surgical edit and Ajio-standard delivery.</td>
-      </tr>
-    </tbody>
-  </table>
+<section id="path-to-l4" class="imp-agents">
+<div class="imp-agents-inner">
+<div class="imp-agents-label">03 · PATH TO L4</div>
+<div class="imp-agents-title">How Impetus becomes <span style="color:var(--coral);">L4 agentic.</span></div>
+<div class="imp-agents-sub">Currently at <strong style="color:white;">L3</strong>. 4 named agents from the <a href="/agents/" style="color:var(--coral);">agents directory</a> close the gap to L4. <a href="#path-to-l4-buildplan" style="color:var(--coral); font-family:var(--mono); font-size:12px;">See the 3-week build plan ↓</a></div>
+<div class="imp-agents-grid">
+  <a href="/agents/cortex-planning/" class="imp-agent-card">
+    <div class="imp-agent-name">Cortex Planning Agent</div>
+    <div class="imp-agent-desc">Store-realistic Plan of Record + continuous, exception-led replanning across the Impetus stack.</div>
+    <div class="imp-agent-foot"><span class="pill pill-build" style="background:rgba(237,111,92,0.15); border-color:rgba(237,111,92,0.3); color:var(--coral);">Building · L4</span><span class="imp-agent-link">Agent page →</span></div>
+  </a>
+  <a href="/agents/trend-to-design/" class="imp-agent-card">
+    <div class="imp-agent-name">Trend-to-Design Agent</div>
+    <div class="imp-agent-desc">Trend brief → manufacturable design package without humans in the design cycle middle.</div>
+    <div class="imp-agent-foot"><span class="pill pill-live" style="background:rgba(61,122,74,0.2); border-color:rgba(61,122,74,0.4); color:#4ade80;">Live · L4</span><span class="imp-agent-link">Agent page →</span></div>
+  </a>
+  <a href="/agents/category-intelligence/" class="imp-agent-card">
+    <div class="imp-agent-name">Category Intelligence Agent</div>
+    <div class="imp-agent-desc">Category × season × geography → 40-50 pp evidence-tagged trend report for buying teams.</div>
+    <div class="imp-agent-foot"><span class="pill pill-build" style="background:rgba(237,111,92,0.15); border-color:rgba(237,111,92,0.3); color:var(--coral);">Building · L4</span><span class="imp-agent-link">Agent page →</span></div>
+  </a>
+  <a href="/agents/ai-photoshoot/" class="imp-agent-card">
+    <div class="imp-agent-name">AI Photoshoot Agent</div>
+    <div class="imp-agent-desc">Flat-lay or mannequin → on-model 4K catalogue shoot in 2-4 minutes. Autonomous detection, surgical edit, Ajio-standard delivery.</div>
+    <div class="imp-agent-foot"><span class="pill pill-live" style="background:rgba(61,122,74,0.2); border-color:rgba(61,122,74,0.4); color:#4ade80;">Live · L4</span><span class="imp-agent-link">Agent page →</span></div>
+  </a>
 </div>
 </div>
 </section>
@@ -720,28 +1191,27 @@
 </section>
 
 <!-- =====================================================================
-     §05 · Design portfolio · output of the platforms
+     §05 · Design portfolio — Shopify-style portfolio section
      ===================================================================== -->
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">05 · Design portfolio · what Impetus has shipped</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What Impetus has shipped.</h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Distinct from the platform sub-IPs above. This is the creative <strong>work product</strong> (designs, photoshoots, videos, category-intel reports) produced ON the platforms and visible to Reliance brand teams today.</p>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-  <a href="/impetus/brands" class="card card-hover p-5 block">
-    <div class="cap-num mb-2">A · DESIGN LIBRARY</div>
-    <h3 class="font-semibold mb-1">Garment designs · PLP</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">876 unique designs · gender × category × brand. Image output of the <strong>Trend-to-Design Agent</strong> · full design package (image, BOM, costing, line sheets) flows to Costing Engine and PLM.</p>
+<section class="imp-portfolio"><div class="imp-portfolio-inner">
+<div class="imp-chain-label">05 · Design portfolio · what Impetus has shipped</div>
+<div class="imp-portfolio-title">What Impetus has shipped.</div>
+<div class="imp-portfolio-sub">The creative work product — designs, photoshoots, category-intel reports — produced on the platforms and visible to Reliance brand teams today.</div>
+<div class="imp-portfolio-grid">
+  <a href="/impetus/brands" class="imp-portfolio-card">
+    <div class="imp-portfolio-tag">A · Design Library</div>
+    <div class="imp-portfolio-name">Garment designs · PLP</div>
+    <div class="imp-portfolio-desc">876 unique designs · gender × category × brand. Image output of the Trend-to-Design Agent · full design package flows to Costing Engine and PLM.</div>
   </a>
-  <a href="/impetus/ai-photoshoot#section-04" class="card card-hover p-5 block">
-    <div class="cap-num mb-2">B · PHOTOSHOOTS</div>
-    <h3 class="font-semibold mb-1">AI on-model shoots</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">4 shoots · representative sample. Output of the <strong>AI Photoshoot platform (SNAP)</strong> · see the platform page for the full output gallery.</p>
+  <a href="/impetus/ai-photoshoot#section-04" class="imp-portfolio-card">
+    <div class="imp-portfolio-tag">B · Photoshoots</div>
+    <div class="imp-portfolio-name">AI on-model shoots</div>
+    <div class="imp-portfolio-desc">4 shoots · representative sample. Output of the AI Photoshoot platform (SNAP) · see the platform page for the full output gallery.</div>
   </a>
-  <a href="/impetus/category-intel" class="card card-hover p-5 block">
-    <div class="cap-num mb-2">C · CATEGORY INTEL</div>
-    <h3 class="font-semibold mb-1">Trend reports · India</h3>
-    <p class="text-sm" style="color: var(--ink-muted);">4 reports · SS27 · AW26.</p>
+  <a href="/impetus/category-intel" class="imp-portfolio-card">
+    <div class="imp-portfolio-tag">C · Category Intel</div>
+    <div class="imp-portfolio-name">Trend reports · India</div>
+    <div class="imp-portfolio-desc">4 reports · SS27 · AW26. Evidence-tagged, category-level trend intelligence for buying teams.</div>
   </a>
 </div>
 </div></section>
