@@ -919,3 +919,40 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   inset: 0;
   pointer-events: none;
 }
+
+/* ── od-hero split layout ─────────────────────────────── */
+.od-hero-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  min-height: 420px;
+}
+.od-hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.od-hero-graphic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.od-hero-graphic .od-graphic-frame {
+  width: 100%;
+  max-width: 480px;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid rgba(200,169,126,0.25);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.12);
+}
+@media (max-width: 768px) {
+  .od-hero-split {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .od-hero-graphic {
+    order: -1;
+  }
+}
