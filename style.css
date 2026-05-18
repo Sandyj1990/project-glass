@@ -1521,6 +1521,16 @@ section.od-dark .od-ghost-btn:hover {
   box-shadow: none;
   background: #fff;
 }
+/* Override od-img styles when inside phone-frame to prevent border/max-height conflicts */
+.phone-frame .phone-screen img.od-img {
+  max-height: 400px;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+  object-fit: cover;
+  cursor: default;
+}
 /* Home indicator */
 .phone-frame .phone-home {
   background: #000;
