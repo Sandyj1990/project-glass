@@ -77,6 +77,14 @@
   .ch-filter-btn.active { background: var(--ink); color: var(--bone); border-color: var(--ink); }
   .ch-group[data-category] { transition: opacity .25s, max-height .3s; overflow: hidden; }
   .ch-group.hidden { display: none; }
+  /* Logo slider */
+  .logo-slider { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); background: var(--bone); padding: 24px 0; }
+  .logo-slider-track { display: flex; gap: 32px; animation: logo-scroll 30s linear infinite; width: max-content; }
+  .logo-slider:hover .logo-slider-track { animation-play-state: paused; }
+  .logo-slide { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 80px; }
+  .logo-slide img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border); background: #fff; }
+  .logo-slide span { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); white-space: nowrap; text-align: center; }
+  @keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   /* Mobile tweaks */
   @media (max-width: 640px) {
     .hero-h1 { font-size: 40px !important; line-height: 1.05 !important; }
@@ -401,19 +409,55 @@
 <div class="ch-group-title">Emerging Commerce · 22 microsites</div>
 <div class="ch-group-count">Live brand storefronts on the same Fynd Platform substrate</div>
 </div>
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="ADIDAS Kids" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>ADIDAS Kids</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Kate Spade" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Kate Spade</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="VERSACE" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>VERSACE</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Tory Burch" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Tory Burch</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Scotch &amp; Soda" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Scotch &amp; Soda</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Paul Smith" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Paul Smith</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Michael Kors" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Michael Kors</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="BOSS" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>BOSS</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Emporio Armani" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Emporio Armani</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Dune London" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Dune London</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-logo-card"><div class="ch-logo-thumb"><div class="phone-frame"><div class="phone-status"><div class="phone-island"></div></div><div class="phone-screen"><img alt="Kiko Milano" class="od-img" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/></div><div class="phone-home"></div></div></div><div class="ch-meta"><span class="ch-status planned">Planned</span><h4>Kiko Milano</h4><div class="vert">Beauty</div></div></a>
-</div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Paul &amp; Shark</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>EA7 Emporio Armani</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>PRET</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Catwalk</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Avantra</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Swadesh</h4></div><div class="ch-chip"><span class="ch-status progress">In-Progress</span><h4>AJSK</h4></div><div class="ch-chip"><span class="ch-status planned">Planned</span><h4>Farmer</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>PBG Websites</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>AJIO DMS</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>RBL Fashion B2B</h4></div></div>
+<div class="logo-slider" id="emerging-slider">
+<div class="logo-slider-track">
+<div class="logo-slide"><img alt="ADIDAS Kids" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>ADIDAS Kids</span></div>
+<div class="logo-slide"><img alt="Kate Spade" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Kate Spade</span></div>
+<div class="logo-slide"><img alt="VERSACE" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>VERSACE</span></div>
+<div class="logo-slide"><img alt="Tory Burch" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Tory Burch</span></div>
+<div class="logo-slide"><img alt="Scotch &amp; Soda" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>Scotch &amp; Soda</span></div>
+<div class="logo-slide"><img alt="Paul Smith" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul Smith</span></div>
+<div class="logo-slide"><img alt="Michael Kors" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>Michael Kors</span></div>
+<div class="logo-slide"><img alt="BOSS" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>BOSS</span></div>
+<div class="logo-slide"><img alt="Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>Emporio Armani</span></div>
+<div class="logo-slide"><img alt="Dune London" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>Dune London</span></div>
+<div class="logo-slide"><img alt="Kiko Milano" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Kiko Milano</span></div>
+<div class="logo-slide"><img alt="Paul &amp; Shark" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul &amp; Shark</span></div>
+<div class="logo-slide"><img alt="EA7 Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>EA7</span></div>
+<div class="logo-slide"><img alt="PRET" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>PRET</span></div>
+<div class="logo-slide"><img alt="Catwalk" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Catwalk</span></div>
+<div class="logo-slide"><img alt="Avantra" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>Avantra</span></div>
+<div class="logo-slide"><img alt="Swadesh" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Swadesh</span></div>
+<div class="logo-slide"><img alt="AJSK" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>AJSK</span></div>
+<div class="logo-slide"><img alt="PBG Websites" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>PBG Websites</span></div>
+<div class="logo-slide"><img alt="AJIO DMS" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>AJIO DMS</span></div>
+<div class="logo-slide"><img alt="RBL Fashion B2B" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>RBL Fashion</span></div>
+<div class="logo-slide"><img alt="Farmer" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Farmer</span></div>
+<!-- Duplicate for seamless loop -->
+<div class="logo-slide"><img alt="ADIDAS Kids" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>ADIDAS Kids</span></div>
+<div class="logo-slide"><img alt="Kate Spade" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Kate Spade</span></div>
+<div class="logo-slide"><img alt="VERSACE" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>VERSACE</span></div>
+<div class="logo-slide"><img alt="Tory Burch" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Tory Burch</span></div>
+<div class="logo-slide"><img alt="Scotch &amp; Soda" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>Scotch &amp; Soda</span></div>
+<div class="logo-slide"><img alt="Paul Smith" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul Smith</span></div>
+<div class="logo-slide"><img alt="Michael Kors" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>Michael Kors</span></div>
+<div class="logo-slide"><img alt="BOSS" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>BOSS</span></div>
+<div class="logo-slide"><img alt="Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>Emporio Armani</span></div>
+<div class="logo-slide"><img alt="Dune London" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>Dune London</span></div>
+<div class="logo-slide"><img alt="Kiko Milano" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Kiko Milano</span></div>
+<div class="logo-slide"><img alt="Paul &amp; Shark" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul &amp; Shark</span></div>
+<div class="logo-slide"><img alt="EA7" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>EA7</span></div>
+<div class="logo-slide"><img alt="PRET" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>PRET</span></div>
+<div class="logo-slide"><img alt="Catwalk" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Catwalk</span></div>
+<div class="logo-slide"><img alt="Avantra" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>Avantra</span></div>
+<div class="logo-slide"><img alt="Swadesh" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Swadesh</span></div>
+<div class="logo-slide"><img alt="AJSK" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>AJSK</span></div>
+<div class="logo-slide"><img alt="PBG Websites" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>PBG Websites</span></div>
+<div class="logo-slide"><img alt="AJIO DMS" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>AJIO DMS</span></div>
+<div class="logo-slide"><img alt="RBL Fashion" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>RBL Fashion</span></div>
+<div class="logo-slide"><img alt="Farmer" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Farmer</span></div>
+</div>
+</div>
 </div>
 <div class="mt-8">
 <a class="btn-primary inline-block" href="/jcp/channels">Open the full channel gallery →</a>
