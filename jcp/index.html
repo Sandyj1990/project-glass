@@ -78,13 +78,14 @@
   .ch-group[data-category] { transition: opacity .25s, max-height .3s; overflow: hidden; }
   .ch-group.hidden { display: none; }
   /* Logo slider */
-  .logo-slider { position: relative; overflow: hidden; border-radius: 8px; border: 1px solid var(--border); background: var(--bone); padding: 24px 0; }
-  .logo-slider-track { display: flex; gap: 32px; animation: logo-scroll 30s linear infinite; width: max-content; }
-  .logo-slider:hover .logo-slider-track { animation-play-state: paused; }
+  .logo-slider { position: relative; overflow-x: auto; overflow-y: hidden; border-radius: 8px; border: 1px solid var(--border); background: var(--bone); padding: 24px 16px; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
+  .logo-slider::-webkit-scrollbar { height: 6px; }
+  .logo-slider::-webkit-scrollbar-track { background: transparent; }
+  .logo-slider::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .logo-slider-track { display: flex; gap: 32px; width: max-content; }
   .logo-slide { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 80px; }
-  .logo-slide img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; border: 1px solid var(--border); background: #fff; }
+  .logo-slide img { width: 56px; height: 56px; border-radius: 12px; object-fit: contain; border: 1px solid var(--border); background: #fff; padding: 4px; }
   .logo-slide span { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); white-space: nowrap; text-align: center; }
-  @keyframes logo-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
   /* Mobile tweaks */
   @media (max-width: 640px) {
     .hero-h1 { font-size: 40px !important; line-height: 1.05 !important; }
@@ -422,40 +423,6 @@
 <div class="logo-slide"><img alt="Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>Emporio Armani</span></div>
 <div class="logo-slide"><img alt="Dune London" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>Dune London</span></div>
 <div class="logo-slide"><img alt="Kiko Milano" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Kiko Milano</span></div>
-<div class="logo-slide"><img alt="Paul &amp; Shark" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul &amp; Shark</span></div>
-<div class="logo-slide"><img alt="EA7 Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>EA7</span></div>
-<div class="logo-slide"><img alt="PRET" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>PRET</span></div>
-<div class="logo-slide"><img alt="Catwalk" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Catwalk</span></div>
-<div class="logo-slide"><img alt="Avantra" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>Avantra</span></div>
-<div class="logo-slide"><img alt="Swadesh" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Swadesh</span></div>
-<div class="logo-slide"><img alt="AJSK" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>AJSK</span></div>
-<div class="logo-slide"><img alt="PBG Websites" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>PBG Websites</span></div>
-<div class="logo-slide"><img alt="AJIO DMS" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>AJIO DMS</span></div>
-<div class="logo-slide"><img alt="RBL Fashion B2B" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>RBL Fashion</span></div>
-<div class="logo-slide"><img alt="Farmer" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Farmer</span></div>
-<!-- Duplicate for seamless loop -->
-<div class="logo-slide"><img alt="ADIDAS Kids" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>ADIDAS Kids</span></div>
-<div class="logo-slide"><img alt="Kate Spade" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Kate Spade</span></div>
-<div class="logo-slide"><img alt="VERSACE" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>VERSACE</span></div>
-<div class="logo-slide"><img alt="Tory Burch" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Tory Burch</span></div>
-<div class="logo-slide"><img alt="Scotch &amp; Soda" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>Scotch &amp; Soda</span></div>
-<div class="logo-slide"><img alt="Paul Smith" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul Smith</span></div>
-<div class="logo-slide"><img alt="Michael Kors" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>Michael Kors</span></div>
-<div class="logo-slide"><img alt="BOSS" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>BOSS</span></div>
-<div class="logo-slide"><img alt="Emporio Armani" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>Emporio Armani</span></div>
-<div class="logo-slide"><img alt="Dune London" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>Dune London</span></div>
-<div class="logo-slide"><img alt="Kiko Milano" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Kiko Milano</span></div>
-<div class="logo-slide"><img alt="Paul &amp; Shark" loading="lazy" src="/assets/jcp-channels-mobile/paul-smith.png"/><span>Paul &amp; Shark</span></div>
-<div class="logo-slide"><img alt="EA7" loading="lazy" src="/assets/jcp-channels-mobile/emporio-armani.png"/><span>EA7</span></div>
-<div class="logo-slide"><img alt="PRET" loading="lazy" src="/assets/jcp-channels-mobile/boss.jpg"/><span>PRET</span></div>
-<div class="logo-slide"><img alt="Catwalk" loading="lazy" src="/assets/jcp-channels-mobile/kate-spade.png"/><span>Catwalk</span></div>
-<div class="logo-slide"><img alt="Avantra" loading="lazy" src="/assets/jcp-channels-mobile/versace.png"/><span>Avantra</span></div>
-<div class="logo-slide"><img alt="Swadesh" loading="lazy" src="/assets/jcp-channels-mobile/tory-burch.png"/><span>Swadesh</span></div>
-<div class="logo-slide"><img alt="AJSK" loading="lazy" src="/assets/jcp-channels-mobile/scotch-soda.png"/><span>AJSK</span></div>
-<div class="logo-slide"><img alt="PBG Websites" loading="lazy" src="/assets/jcp-channels-mobile/michael-kors.png"/><span>PBG Websites</span></div>
-<div class="logo-slide"><img alt="AJIO DMS" loading="lazy" src="/assets/jcp-channels-mobile/adidas-kids.png"/><span>AJIO DMS</span></div>
-<div class="logo-slide"><img alt="RBL Fashion" loading="lazy" src="/assets/jcp-channels-mobile/dune-london.jpg"/><span>RBL Fashion</span></div>
-<div class="logo-slide"><img alt="Farmer" loading="lazy" src="/assets/jcp-channels-mobile/kiko-milano.png"/><span>Farmer</span></div>
 </div>
 </div>
 </div>
