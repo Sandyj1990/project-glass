@@ -70,6 +70,13 @@
   .ch-chip .ch-status { margin: 0; }
   .ch-chip-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0 4px; border-top: 1px solid var(--border-soft); margin-top: 16px; }
   .ch-chip-row-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); width: 100%; margin-bottom: 4px; }
+  /* Category filter */
+  .ch-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .ch-filter-btn { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--bone); color: var(--ink-muted); cursor: pointer; transition: all .15s; }
+  .ch-filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .ch-filter-btn.active { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .ch-group[data-category] { transition: opacity .25s, max-height .3s; overflow: hidden; }
+  .ch-group.hidden { display: none; }
   /* Mobile tweaks */
   @media (max-width: 640px) {
     .hero-h1 { font-size: 40px !important; line-height: 1.05 !important; }
@@ -277,8 +284,18 @@
 </div>
 <h3 class="font-semibold text-lg mt-12 mb-2" style="color: var(--ink);">Every channel, grouped.</h3>
 <p class="text-sm mb-8" style="color: var(--ink-muted);">All 78 channels across 6 groups: flagship channels, in-store commerce, B2B distribution, furniture &amp; beauty, fashion &amp; lifestyle storefronts, and emerging commerce.</p>
+<!-- Category filter -->
+<div class="ch-filter" id="ch-filter">
+<button class="ch-filter-btn active" data-filter="all">All · 78</button>
+<button class="ch-filter-btn" data-filter="flagship">Flagship · 7</button>
+<button class="ch-filter-btn" data-filter="instore">In Store · 14</button>
+<button class="ch-filter-btn" data-filter="b2b">B2B · 6</button>
+<button class="ch-filter-btn" data-filter="furniture">Furniture · Beauty · Home · 11</button>
+<button class="ch-filter-btn" data-filter="fashion">Fashion · Lifestyle · 28</button>
+<button class="ch-filter-btn" data-filter="emerging">Emerging · 22</button>
+</div>
 <!-- Group 1 · Flagship Channels -->
-<div class="ch-group">
+<div class="ch-group" data-category="flagship">
 <div class="ch-group-head">
 <div class="ch-group-title">Flagship Channels · 7</div>
 <div class="ch-group-count">B2C apps · the household names</div>
@@ -294,7 +311,7 @@
 </div>
 </div>
 <!-- Group 2 · In Store Commerce -->
-<div class="ch-group">
+<div class="ch-group" data-category="instore">
 <div class="ch-group-head">
 <div class="ch-group-title">In Store Commerce · 14</div>
 <div class="ch-group-count">3,000+ stores · companion-app footprint</div>
@@ -311,7 +328,7 @@
 </div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Yousta</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Azorte</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Fashion Factory</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Trends Footwear</h4></div><div class="ch-chip"><span class="ch-status live">Live</span><h4>Performax</h4></div><div class="ch-chip planned"><span class="ch-status planned">Planned</span><h4>Amante</h4></div></div>
 </div>
 <!-- Group 3 · B2B / DMS -->
-<div class="ch-group">
+<div class="ch-group" data-category="b2b">
 <div class="ch-group-head">
 <div class="ch-group-title">B2B · DMS distribution · 6</div>
 <div class="ch-group-count">Wholesale · partner · FMCG · electronics ASP</div>
@@ -323,7 +340,7 @@
 </div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>JioMart Partner</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>AJIO Business</h4></div><div class="ch-chip"><span class="ch-status b2b">B2B</span><h4>Netmeds Wholesale</h4></div></div>
 </div>
 <!-- Group 4 · Furniture · Beauty · Toys · Home -->
-<div class="ch-group">
+<div class="ch-group" data-category="furniture">
 <div class="ch-group-head">
 <div class="ch-group-title">Furniture · Beauty · Home · Toys · 11</div>
 <div class="ch-group-count">Single-tenant flagships and category brands</div>
@@ -342,7 +359,7 @@
 </div><div class="ch-chip-row"><div class="ch-chip-row-label">Also live · brand storefronts on the same JCP substrate</div><div class="ch-chip progress"><span class="ch-status progress">In-Progress</span><h4>Facegym</h4></div></div>
 </div>
 <!-- Group 5 · Fashion brand storefronts (FP-50) · visual sample -->
-<div class="ch-group">
+<div class="ch-group" data-category="fashion">
 <div class="ch-group-head">
 <div class="ch-group-title">Fashion &amp; Lifestyle storefronts · FP-50 · 28 visual</div>
 <div class="ch-group-count">Single-brand commerce on Fynd Platform</div>
@@ -379,7 +396,7 @@
 </div>
 </div>
 <!-- Group 6 · Emerging Commerce -->
-<div class="ch-group">
+<div class="ch-group" data-category="emerging">
 <div class="ch-group-head">
 <div class="ch-group-title">Emerging Commerce · 22 microsites</div>
 <div class="ch-group-count">Live brand storefronts on the same Fynd Platform substrate</div>
@@ -811,6 +828,29 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+/* Category filter for channel groups */
+(function() {
+  var filter = document.getElementById('ch-filter');
+  if (!filter) return;
+  var buttons = filter.querySelectorAll('.ch-filter-btn');
+  var groups = document.querySelectorAll('.ch-group[data-category]');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var cat = btn.getAttribute('data-filter');
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      groups.forEach(function(g) {
+        if (cat === 'all' || g.getAttribute('data-category') === cat) {
+          g.classList.remove('hidden');
+        } else {
+          g.classList.add('hidden');
+        }
+      });
+    });
+  });
 })();
 </script>
 </body>
