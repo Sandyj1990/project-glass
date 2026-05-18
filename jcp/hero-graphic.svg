@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" fill="none">
+  <!-- Background card -->
+  <rect x="0.5" y="0.5" width="479" height="359" rx="12" fill="#FDFCFA" stroke="#E8E4DF"/>
+  
+  <!-- Header label -->
+  <text x="24" y="28" font-family="'JetBrains Mono', monospace" font-size="9" fill="#9B9488" letter-spacing="0.06em">ENTERPRISE COMMERCE · 78 CHANNELS</text>
+  
+  <!-- Central hub - "JCP" -->
+  <rect x="190" y="140" width="100" height="60" rx="8" fill="#1A1A18" stroke="none"/>
+  <text x="240" y="175" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#FDFCFA" text-anchor="middle">JCP</text>
+  
+  <!-- Radiating channel nodes - Top row (B2C apps) -->
+  <rect x="60" y="40" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="88" y="58" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#C44D38" text-anchor="middle">JioMart</text>
+  
+  <rect x="130" y="40" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="158" y="58" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#C44D38" text-anchor="middle">AJIO</text>
+  
+  <rect x="200" y="40" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="228" y="58" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#C44D38" text-anchor="middle">Tira</text>
+  
+  <rect x="270" y="40" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="298" y="58" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#C44D38" text-anchor="middle">Netmeds</text>
+  
+  <rect x="340" y="40" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="368" y="58" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#C44D38" text-anchor="middle">Digital</text>
+  
+  <!-- Left column (In-Store) -->
+  <rect x="30" y="100" width="56" height="28" rx="4" fill="#ECFDF5" stroke="#86EFAC"/>
+  <text x="58" y="118" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#047857" text-anchor="middle">Trends</text>
+  
+  <rect x="30" y="140" width="56" height="28" rx="4" fill="#ECFDF5" stroke="#86EFAC"/>
+  <text x="58" y="158" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#047857" text-anchor="middle">7-Eleven</text>
+  
+  <rect x="30" y="180" width="56" height="28" rx="4" fill="#ECFDF5" stroke="#86EFAC"/>
+  <text x="58" y="198" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#047857" text-anchor="middle">Jewels</text>
+  
+  <!-- Right column (Fashion) -->
+  <rect x="394" y="100" width="56" height="28" rx="4" fill="#FEF9E7" stroke="#FDE68A"/>
+  <text x="422" y="118" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#92400E" text-anchor="middle">Coach</text>
+  
+  <rect x="394" y="140" width="56" height="28" rx="4" fill="#FEF9E7" stroke="#FDE68A"/>
+  <text x="422" y="158" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#92400E" text-anchor="middle">SuperDry</text>
+  
+  <rect x="394" y="180" width="56" height="28" rx="4" fill="#FEF9E7" stroke="#FDE68A"/>
+  <text x="422" y="198" font-family="'Inter', sans-serif" font-size="8" font-weight="500" fill="#92400E" text-anchor="middle">Sephora</text>
+  
+  <!-- Bottom row (B2B + Furniture) -->
+  <rect x="100" y="260" width="56" height="28" rx="4" fill="#F3F4F6" stroke="#D1D5DB"/>
+  <text x="128" y="278" font-family="'Inter', sans-serif" font-size="7" font-weight="500" fill="#4B5563" text-anchor="middle">Metro B2B</text>
+  
+  <rect x="170" y="260" width="56" height="28" rx="4" fill="#F3F4F6" stroke="#D1D5DB"/>
+  <text x="198" y="278" font-family="'Inter', sans-serif" font-size="7" font-weight="500" fill="#4B5563" text-anchor="middle">RCPL</text>
+  
+  <rect x="254" y="260" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="282" y="278" font-family="'Inter', sans-serif" font-size="7" font-weight="500" fill="#C44D38" text-anchor="middle">FreshPik</text>
+  
+  <rect x="324" y="260" width="56" height="28" rx="4" fill="#FEF0ED" stroke="#F4A393"/>
+  <text x="352" y="278" font-family="'Inter', sans-serif" font-size="7" font-weight="500" fill="#C44D38" text-anchor="middle">Hamleys</text>
+  
+  <!-- Connecting lines from hub to nodes -->
+  <!-- Top connections -->
+  <line x1="210" y1="140" x2="88" y2="68" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="220" y1="140" x2="158" y2="68" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="240" y1="140" x2="228" y2="68" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="260" y1="140" x2="298" y2="68" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="270" y1="140" x2="368" y2="68" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- Left connections -->
+  <line x1="190" y1="158" x2="86" y2="114" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="190" y1="165" x2="86" y2="154" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="190" y1="175" x2="86" y2="194" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- Right connections -->
+  <line x1="290" y1="158" x2="394" y2="114" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="290" y1="165" x2="394" y2="154" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="290" y1="175" x2="394" y2="194" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- Bottom connections -->
+  <line x1="215" y1="200" x2="128" y2="260" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="230" y1="200" x2="198" y2="260" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="250" y1="200" x2="282" y2="260" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="265" y1="200" x2="352" y2="260" stroke="#E8E4DF" stroke-width="1" stroke-dasharray="3,3"/>
+  
+  <!-- Ellipsis indicators for "more channels" -->
+  <text x="420" y="58" font-family="'Inter', sans-serif" font-size="10" fill="#9B9488">+73</text>
+  <text x="30" y="228" font-family="'Inter', sans-serif" font-size="10" fill="#9B9488">+11</text>
+  <text x="422" y="228" font-family="'Inter', sans-serif" font-size="10" fill="#9B9488">+25</text>
+  <text x="400" y="278" font-family="'Inter', sans-serif" font-size="10" fill="#9B9488">+7</text>
+  
+  <!-- Stats row at bottom -->
+  <text x="88" y="320" font-family="'JetBrains Mono', monospace" font-size="9" fill="#9B9488" text-anchor="middle">700K+ orders/day</text>
+  <text x="240" y="320" font-family="'JetBrains Mono', monospace" font-size="9" fill="#9B9488" text-anchor="middle">200M+ customers</text>
+  <text x="392" y="320" font-family="'JetBrains Mono', monospace" font-size="9" fill="#9B9488" text-anchor="middle">10 verticals</text>
+  
+  <!-- Footer label -->
+  <text x="240" y="348" font-family="'JetBrains Mono', monospace" font-size="9" fill="#C8C2BA" text-anchor="middle" letter-spacing="0.08em">JCP · ENTERPRISE COMMERCE</text>
+</svg>
