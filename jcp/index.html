@@ -32,7 +32,13 @@
   .timeline .what { font-size: 15px; color: var(--ink); }
   .timeline .why { font-size: 13px; color: var(--ink-muted); margin-top: 4px; }
   /* Channel gallery */
-  .ch-group { margin-bottom: 36px; }
+  /* Category filter */
+  .ch-filter { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+  .ch-filter-btn { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--bone); color: var(--ink-muted); cursor: pointer; transition: all .15s; }
+  .ch-filter-btn:hover { border-color: var(--ink); color: var(--ink); }
+  .ch-filter-btn.active { background: var(--ink); color: var(--bone); border-color: var(--ink); }
+  .ch-group { margin-bottom: 36px; transition: opacity .2s; }
+  .ch-group.hidden { display: none; }
   .ch-group-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
   .ch-group-title { font-weight: 600; font-size: 16px; color: var(--ink); }
   .ch-group-count { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
@@ -286,6 +292,15 @@
 <h3 class="font-semibold text-lg mt-12 mb-2" style="color: var(--ink);">Every channel, grouped.</h3>
 <p class="text-sm mb-8" style="color: var(--ink-muted);">All 78 channels across 6 groups: flagship channels, in-store commerce, B2B distribution, furniture &amp; beauty, fashion &amp; lifestyle storefronts, and emerging commerce.</p>
 <!-- Category filter -->
+<div class="ch-filter">
+<button class="ch-filter-btn active" data-filter="all">All · 78</button>
+<button class="ch-filter-btn" data-filter="flagship">Flagship · 7</button>
+<button class="ch-filter-btn" data-filter="instore">In Store · 14</button>
+<button class="ch-filter-btn" data-filter="b2b">B2B · 6</button>
+<button class="ch-filter-btn" data-filter="furniture">Furniture · Beauty · Home · 11</button>
+<button class="ch-filter-btn" data-filter="fashion">Fashion · Lifestyle · 28</button>
+<button class="ch-filter-btn" data-filter="emerging">Emerging · 22</button>
+</div>
 
 <!-- Group 1 · Flagship Channels -->
 <div class="ch-group" data-category="flagship">
@@ -830,6 +845,28 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<!-- Category filter logic -->
+<script>
+(function(){
+  var btns = document.querySelectorAll('.ch-filter-btn');
+  var groups = document.querySelectorAll('.ch-group[data-category]');
+  btns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var filter = btn.getAttribute('data-filter');
+      btns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      groups.forEach(function(g){
+        if (filter === 'all' || g.getAttribute('data-category') === filter) {
+          g.classList.remove('hidden');
+        } else {
+          g.classList.add('hidden');
+        }
+      });
+    });
+  });
 })();
 </script>
 
