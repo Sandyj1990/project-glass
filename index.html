@@ -1036,375 +1036,15 @@ body { overflow-x: hidden; }
   color: rgba(250,245,234,.3);
 }
 
-/* ═══════════════════════════════════════════════════════════════════════
-   ANIMATIONS — iventions.com-style motion system
-   Easing: --easeOutQuart = cubic-bezier(0.165, 0.84, 0.44, 1)
-═══════════════════════════════════════════════════════════════════════ */
-:root {
-  --easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
-  --easeOutExpo: cubic-bezier(0.16, 1, 0.3, 1);
-  --easeInOutQuart: cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-/* ── Hero shape float ── */
+/* ── HERO shape animation ── */
 @keyframes shapeFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-  50%       { transform: translateY(-18px) rotate(0.8deg) scale(1.01); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-12px) rotate(0.5deg); }
 }
 
 .iv-hero-shape-anim {
   animation: shapeFloat 12s ease-in-out infinite;
   transform-origin: center;
-}
-
-/* ── Hero text split-reveal animation ── */
-@keyframes heroTextReveal {
-  from { transform: translateY(110%); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes heroFadeUp {
-  from { transform: translateY(40px); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes heroFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.iv-hero-eyebrow {
-  opacity: 0;
-  animation: heroFadeUp 0.8s var(--easeOutQuart) 0.3s forwards;
-}
-
-.iv-hero-h1 {
-  overflow: hidden;
-}
-
-.iv-hero-h1 .line {
-  display: block;
-  overflow: hidden;
-}
-
-.iv-hero-h1 .line-inner {
-  display: block;
-  transform: translateY(110%);
-  animation: heroTextReveal 1s var(--easeOutExpo) forwards;
-}
-
-.iv-hero-h1 .line:nth-child(1) .line-inner { animation-delay: 0.4s; }
-.iv-hero-h1 .line:nth-child(2) .line-inner { animation-delay: 0.55s; }
-.iv-hero-h1 .line:nth-child(3) .line-inner { animation-delay: 0.7s; }
-
-.iv-hero-sub {
-  opacity: 0;
-  animation: heroFadeUp 0.8s var(--easeOutQuart) 0.9s forwards;
-}
-
-.iv-hero-cta {
-  opacity: 0;
-  animation: heroFadeUp 0.8s var(--easeOutQuart) 1.05s forwards;
-}
-
-.iv-hero-topright {
-  opacity: 0;
-  animation: heroFadeUp 0.8s var(--easeOutQuart) 1.1s forwards;
-}
-
-@keyframes wordmarkSlide {
-  from { transform: translateX(-5%); opacity: 0; }
-  to   { transform: translateX(0); opacity: .12; }
-}
-
-.iv-hero-wordmark span {
-  opacity: 0;
-  animation: wordmarkSlide 1.4s var(--easeOutQuart) 0.6s forwards;
-}
-
-/* ── Scroll-triggered reveal system ── */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity 0.8s var(--easeOutQuart), transform 0.8s var(--easeOutQuart);
-  will-change: opacity, transform;
-}
-
-[data-reveal].revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Variant: slide from left */
-[data-reveal="left"] {
-  transform: translateX(-60px);
-}
-[data-reveal="left"].revealed {
-  transform: translateX(0);
-}
-
-/* Variant: slide from right */
-[data-reveal="right"] {
-  transform: translateX(60px);
-}
-[data-reveal="right"].revealed {
-  transform: translateX(0);
-}
-
-/* Variant: scale up */
-[data-reveal="scale"] {
-  transform: scale(0.92);
-}
-[data-reveal="scale"].revealed {
-  transform: scale(1);
-}
-
-/* Variant: clip reveal (text mask) */
-[data-reveal="clip"] {
-  transform: none;
-  clip-path: inset(0 0 100% 0);
-  transition: opacity 0.8s var(--easeOutQuart), clip-path 0.8s var(--easeOutQuart);
-}
-[data-reveal="clip"].revealed {
-  clip-path: inset(0 0 0% 0);
-}
-
-/* ── Platform list stagger animation ── */
-.iv-list-item {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.6s var(--easeOutQuart), transform 0.6s var(--easeOutQuart);
-}
-
-.iv-list-item.revealed {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.iv-list-item:hover .iv-list-name {
-  transform: translateX(12px);
-  color: var(--accent, #ed6f5c);
-}
-
-.iv-list-name {
-  transition: transform 0.4s var(--easeOutQuart), color 0.4s var(--easeOutQuart);
-  display: inline-block;
-}
-
-/* ── List item separator line animation ── */
-.iv-list-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--accent, #ed6f5c);
-  transition: width 0.6s var(--easeOutQuart);
-}
-
-.iv-list-item:hover::after {
-  width: 100%;
-}
-
-.iv-list-item {
-  position: relative;
-  cursor: pointer;
-}
-
-/* ── Service card entrance ── */
-.iv-service-card {
-  opacity: 0;
-  transform: translateY(30px) scale(0.96);
-  transition: opacity 0.6s var(--easeOutQuart), transform 0.6s var(--easeOutQuart), background 0.3s, border-color 0.3s;
-}
-
-.iv-service-card.revealed {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.iv-service-card:hover {
-  transform: translateY(-4px) scale(1.02) !important;
-  box-shadow: 0 16px 40px rgba(42,42,38,.12);
-}
-
-/* ── Service section parallax ── */
-.iv-service {
-  transition: transform 0.1s linear;
-}
-
-.iv-service-num {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s var(--easeOutQuart) 0.1s, transform 0.6s var(--easeOutQuart) 0.1s;
-}
-
-.iv-service.in-view .iv-service-num {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.iv-service-title {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s var(--easeOutQuart) 0.2s, transform 0.7s var(--easeOutQuart) 0.2s;
-}
-
-.iv-service.in-view .iv-service-title {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.iv-service-stat {
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.6s var(--easeOutQuart) 0.3s, transform 0.6s var(--easeOutQuart) 0.3s;
-}
-
-.iv-service.in-view .iv-service-stat {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ── Stats counter animation ── */
-.iv-stats-num {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.7s var(--easeOutQuart), transform 0.7s var(--easeOutQuart);
-}
-
-.iv-stats-num.counted {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── Insight cards hover lift ── */
-.iv-insight-card {
-  transition: transform 0.4s var(--easeOutQuart), box-shadow 0.4s var(--easeOutQuart);
-}
-
-.iv-insight-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 50px rgba(42,42,38,.12);
-}
-
-/* ── Carousel slide transition ── */
-.iv-carousel-track {
-  transition: transform 0.8s var(--easeOutExpo);
-}
-
-.iv-carousel-slide .iv-carousel-content {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s var(--easeOutQuart) 0.3s, transform 0.6s var(--easeOutQuart) 0.3s;
-}
-
-.iv-carousel-slide.active .iv-carousel-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.iv-carousel-num {
-  transition: opacity 0.8s var(--easeOutQuart) 0.2s;
-}
-
-/* ── Explore section ── */
-.iv-explore-title {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s var(--easeOutQuart), transform 0.8s var(--easeOutQuart);
-}
-
-.iv-explore.in-view .iv-explore-title {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── Link and button hover transitions ── */
-.iv-hero-cta {
-  transition: background 0.4s var(--easeOutQuart), color 0.4s var(--easeOutQuart), opacity 0.8s var(--easeOutQuart);
-}
-
-.iv-service-link, .iv-stats-cta, .iv-insights-cta-link, .iv-carousel-link {
-  transition: color 0.4s var(--easeOutQuart), border-color 0.4s var(--easeOutQuart), transform 0.3s var(--easeOutQuart);
-}
-
-.iv-service-link:hover, .iv-carousel-link:hover {
-  transform: translateX(4px);
-}
-
-/* ── Platform card hover in explore section ── */
-.iv-platform-card {
-  transition: background 0.3s var(--easeOutQuart), border-color 0.3s var(--easeOutQuart), transform 0.4s var(--easeOutQuart);
-}
-
-.iv-platform-card:hover {
-  transform: translateY(-3px);
-}
-
-/* ── Chip hover effect ── */
-.iv-chip {
-  transition: all 0.3s var(--easeOutQuart);
-}
-
-/* ── Smooth page-level scroll ── */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ── Loading screen ── */
-@keyframes loaderFade {
-  to { opacity: 0; visibility: hidden; pointer-events: none; }
-}
-
-.iv-loader {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--paper, #f5f0e8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: loaderFade 0.6s var(--easeOutQuart) 1.2s forwards;
-}
-
-.iv-loader-text {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 900;
-  color: var(--ink, #2a2a26);
-  letter-spacing: -2px;
-  overflow: hidden;
-}
-
-@keyframes loaderTextReveal {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
-}
-
-.iv-loader-text span {
-  display: inline-block;
-  transform: translateY(100%);
-  animation: loaderTextReveal 0.6s var(--easeOutExpo) 0.2s forwards;
-}
-
-/* ── Reduced motion ── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  [data-reveal] { opacity: 1; transform: none; }
-  .iv-list-item { opacity: 1; transform: none; }
-  .iv-service-card { opacity: 1; transform: none; }
-  .iv-service-num, .iv-service-title, .iv-service-stat { opacity: 1; transform: none; }
-  .iv-stats-num { opacity: 1; transform: none; }
-  .iv-carousel-slide .iv-carousel-content { opacity: 1; transform: none; }
-  .iv-explore-title { opacity: 1; transform: none; }
-  .iv-loader { display: none; }
 }
 
 /* ── Responsive hero ── */
@@ -1424,11 +1064,6 @@ html {
 </style>
 </head>
 <body>
-
-<!-- Loading screen -->
-<div class="iv-loader" aria-hidden="true">
-  <div class="iv-loader-text"><span>Project Glass</span></div>
-</div>
 
 <!-- TOP METADATA STRIP -->
 <div class="topbar">
@@ -1565,9 +1200,7 @@ html {
   <div class="iv-hero-text">
     <div class="iv-hero-eyebrow">Confidential &middot; For Apex Leadership</div>
     <h1 class="iv-hero-h1">
-      <span class="line"><span class="line-inner">Making Reliance</span></span>
-      <span class="line"><span class="line-inner">Retail the</span></span>
-      <span class="line"><span class="line-inner"><em>AI Frontier.</em></span></span>
+      Making Reliance<br>Retail the<br><em>AI Frontier.</em>
     </h1>
     <p class="iv-hero-sub">World's first frontier autonomous retailer &mdash; built on 22 platforms, from Plan to Sell.</p>
     <a href="#platforms" class="iv-hero-cta">Explore 22 platforms &rarr;</a>
@@ -1675,7 +1308,7 @@ html {
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="iv-list" data-od-id="platform-list">
   <div style="max-width:1280px;margin:0 auto;">
-    <p class="iv-list-header" data-reveal>We are proud to have built</p>
+    <p class="iv-list-header">We are proud to have built</p>
     <ul class="iv-list-items">
       <li class="iv-list-item">
         <a href="/jcp" class="iv-list-name">JCP &middot; Jio Commerce Platform</a>
@@ -1874,7 +1507,7 @@ html {
 <section class="iv-stats" data-od-id="stats">
   <div class="iv-stats-inner">
     <div>
-      <p class="iv-stats-tagline" data-reveal>Where ambition meets execution</p>
+      <p class="iv-stats-tagline">Where ambition meets execution</p>
       <ul class="iv-stats-stack">
         <li class="iv-stats-row">
           <span class="iv-stats-num">22</span>
@@ -1898,7 +1531,7 @@ html {
         </li>
       </ul>
     </div>
-    <div class="iv-stats-right" data-reveal>
+    <div class="iv-stats-right">
       <p class="iv-stats-desc">Big stages, <em>small details.</em> Each platform designed to leave a mark.</p>
       <p class="iv-stats-body">Fynd is the AI-native operating layer powering Reliance Retail &mdash; the world's largest retailer by store count. Every platform is live, every metric is real, and every number is earned.</p>
       <a href="/organisation" class="iv-stats-cta">Get to know us &rarr;</a>
@@ -1941,7 +1574,7 @@ html {
         <span class="iv-ticker-item">Fynd Kio</span>
       </div>
     </div>
-    <div class="iv-ticker-text-col" data-reveal="right">
+    <div class="iv-ticker-text-col">
       <h2 class="iv-ticker-heading">We've built platforms across every layer of retail.</h2>
       <p class="iv-ticker-sub">From planning to shelf compliance, from customer identity to agentic commerce &mdash; Fynd's 22 platforms cover the full retail stack. Boundless reach. Seamless delivery.</p>
     </div>
@@ -1953,14 +1586,14 @@ html {
 ═══════════════════════════════════════════════════════════════════ -->
 <section class="iv-insights" data-od-id="insights">
   <div class="iv-insights-inner">
-    <div class="iv-insights-header" data-reveal>
+    <div class="iv-insights-header">
       <div class="iv-insights-title">
         Inside Project Glass
         <span>Recent milestones, platform updates, and what's shipping next.</span>
       </div>
       <a href="#explore" class="iv-insights-cta-link">Explore all platforms &rarr;</a>
     </div>
-    <div class="iv-insights-grid" data-reveal>
+    <div class="iv-insights-grid">
       <a href="/jcp" class="iv-insight-card">
         <div class="iv-insight-tag">JCP &middot; Commerce</div>
         <div class="iv-insight-title">78 channels, 68 live &mdash; the commerce spine is complete</div>
@@ -2050,8 +1683,6 @@ html {
     prev.disabled = cur === 0;
     next.disabled = cur === total - 1;
     counter.textContent = pad(cur+1) + ' / ' + pad(total);
-    // Toggle active class for content animation
-    slides.forEach(function(s, idx){ s.classList.toggle('active', idx === cur); });
   }
 
   prev.addEventListener('click', function(){ go(cur - 1); });
@@ -2220,164 +1851,26 @@ html {
 })();
 </script>
 
-<!-- ═══════════════════════════════════════════════════════════════════
-  ANIMATION ENGINE — iventions.com-style scroll reveals, parallax,
-  counter animations, carousel active states, service section reveals
-═══════════════════════════════════════════════════════════════════ -->
+<!-- Reveal animation -->
 <script>
 (function(){
-  'use strict';
-
-  /* ── Fallback for no IntersectionObserver ── */
-  if (!('IntersectionObserver' in window)) {
+  if(!('IntersectionObserver' in window)){
     document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
-    document.querySelectorAll('.iv-list-item').forEach(function(el){ el.classList.add('revealed'); });
-    document.querySelectorAll('.iv-service-card').forEach(function(el){ el.classList.add('revealed'); });
-    document.querySelectorAll('.iv-service').forEach(function(el){ el.classList.add('in-view'); });
-    document.querySelectorAll('.iv-stats-num').forEach(function(el){ el.classList.add('counted'); });
-    document.querySelectorAll('.iv-explore').forEach(function(el){ el.classList.add('in-view'); });
     return;
   }
-
-  /* ── 1. Generic data-reveal observer ── */
-  var revealIO = new IntersectionObserver(function(entries){
+  var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if (e.isIntersecting) {
+      if(e.isIntersecting){
         var el = e.target;
         var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
         var idx = siblings.indexOf(el);
-        el.style.transitionDelay = (idx * 100) + 'ms';
+        el.style.transitionDelay = (idx * 80) + 'ms';
         el.classList.add('revealed');
-        revealIO.unobserve(el);
+        io.unobserve(el);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
-  document.querySelectorAll('[data-reveal]').forEach(function(el){ revealIO.observe(el); });
-
-  /* ── 2. Platform list items — staggered slide-in ── */
-  var listIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) {
-        var el = e.target;
-        var items = Array.from(el.closest('.iv-list-items').children);
-        var idx = items.indexOf(el);
-        el.style.transitionDelay = (idx * 70) + 'ms';
-        el.classList.add('revealed');
-        listIO.unobserve(el);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-
-  document.querySelectorAll('.iv-list-item').forEach(function(el){ listIO.observe(el); });
-
-  /* ── 3. Service sections — in-view class + card stagger ── */
-  var serviceIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-        // Stagger cards
-        var cards = e.target.querySelectorAll('.iv-service-card');
-        cards.forEach(function(card, i){
-          card.style.transitionDelay = (200 + i * 120) + 'ms';
-          card.classList.add('revealed');
-        });
-        serviceIO.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.iv-service').forEach(function(el){ serviceIO.observe(el); });
-
-  /* ── 4. Stats counter animation ── */
-  var statsIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) {
-        var nums = e.target.querySelectorAll('.iv-stats-num');
-        nums.forEach(function(num, i){
-          num.style.transitionDelay = (i * 150) + 'ms';
-          num.classList.add('counted');
-        });
-        statsIO.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  var statsSection = document.querySelector('.iv-stats');
-  if (statsSection) statsIO.observe(statsSection);
-
-  /* ── 5. Explore section ── */
-  var exploreIO = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting) {
-        e.target.classList.add('in-view');
-        exploreIO.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.iv-explore').forEach(function(el){ exploreIO.observe(el); });
-
-  /* ── 6. Carousel active state ── */
-  var slides = document.querySelectorAll('.iv-carousel-slide');
-  if (slides.length) slides[0].classList.add('active');
-
-  // Hook into carousel navigation to toggle active class
-  var origGo = window.__ivCarouselGo;
-  var track = document.getElementById('ivCarouselTrack');
-  if (track) {
-    var observer = new MutationObserver(function(){
-      var transform = track.style.transform;
-      var match = transform.match(/translateX\(-?(\d+)%\)/);
-      var idx = match ? Math.round(parseInt(match[1]) / 100) : 0;
-      slides.forEach(function(s, i){ s.classList.toggle('active', i === idx); });
-    });
-    observer.observe(track, { attributes: true, attributeFilter: ['style'] });
-  }
-
-  /* ── 7. Parallax on scroll (subtle) ── */
-  var parallaxEls = document.querySelectorAll('.iv-hero-shape, .iv-carousel-accent');
-  var ticking = false;
-
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(function(){
-        var scrollY = window.pageYOffset;
-        parallaxEls.forEach(function(el){
-          var speed = 0.15;
-          var rect = el.getBoundingClientRect();
-          if (rect.bottom > 0 && rect.top < window.innerHeight) {
-            el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
-          }
-        });
-        ticking = false;
-      });
-      ticking = true;
-    }
-  }
-
-  window.addEventListener('scroll', onScroll, { passive: true });
-
-  /* ── 8. Navbar hide/show on scroll ── */
-  var nav = document.querySelector('.topnav');
-  var lastScrollY = 0;
-  var navHidden = false;
-
-  function onNavScroll() {
-    var currentY = window.pageYOffset;
-    if (currentY > lastScrollY && currentY > 200 && !navHidden) {
-      nav.style.transform = 'translateY(-100%)';
-      nav.style.transition = 'transform 0.4s var(--easeOutQuart)';
-      navHidden = true;
-    } else if (currentY < lastScrollY && navHidden) {
-      nav.style.transform = 'translateY(0)';
-      navHidden = false;
-    }
-    lastScrollY = currentY;
-  }
-
-  if (nav) window.addEventListener('scroll', onNavScroll, { passive: true });
-
+  }, {threshold: 0.1});
+  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
 })();
 </script>
 
