@@ -925,6 +925,89 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   box-shadow: 0 2px 16px rgba(0,0,0,0.06);
 }
 
+/* ── od-hero standardized components ────────────────────────── */
+.od-hero-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px;
+}
+.od-hero-title {
+  font-family: var(--display);
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+.od-hero-title em {
+  font-style: normal;
+  color: var(--coral);
+}
+.od-hero-desc {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--ink-muted);
+  max-width: 520px;
+  margin-bottom: 28px;
+}
+.od-hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 40px;
+  margin-bottom: 28px;
+}
+.od-hero-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.od-hero-stat-val {
+  font-family: var(--display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1;
+}
+.od-hero-stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+.od-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.od-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-muted);
+  background: var(--bone);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+.od-hero-badge .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4caf50;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
 /* ── Numbered feature cards ──────────────────────────────────── */
 .od-cards-grid {
   display: grid;
