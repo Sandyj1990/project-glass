@@ -989,7 +989,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
 .od-hero-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 12px;
   padding-top: 20px;
   border-top: 1px solid var(--border);
 }
@@ -1003,7 +1003,7 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   background: var(--bone);
   border: 1px solid var(--border);
   border-radius: 100px;
-  padding: 4px 12px;
+  padding: 6px 14px;
 }
 .od-hero-badge .dot {
   width: 6px;
