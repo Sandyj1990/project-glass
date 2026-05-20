@@ -627,9 +627,14 @@ section.tight { padding: 56px 0; }
 @keyframes panel-drift-b { 0%,100% { transform: translateY(0px) translateX(0px); } 50% { transform: translateY(6px) translateX(-5px); } }
 
 /* ── Tables ──────────────────────────────────────────────── */
-table.grid-table { width: 100%; border-collapse: collapse; }
-table.grid-table th, table.grid-table td { border-bottom: 1px solid var(--line); padding: 18px 20px; text-align: left; vertical-align: top; }
-table.grid-table th { font-family: var(--mono); font-size: 10.5px; font-weight: 500; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.14em; border-bottom: 1px solid var(--ink); background: var(--paper-warm); }
+table.grid-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; border: 1px solid var(--line); }
+table.grid-table th { font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--line); border-right: 1px solid var(--line); background: var(--bone); }
+table.grid-table th:last-child { border-right: none; }
+table.grid-table td { padding: 14px 12px; border-bottom: 1px solid var(--line); border-right: 1px solid var(--line); vertical-align: top; color: var(--ink); line-height: 1.5; text-align: left; }
+table.grid-table td:last-child { border-right: none; }
+table.grid-table td:first-child { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--ink); white-space: normal; word-break: break-word; }
+table.grid-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+table.grid-table tbody tr:last-child td { border-bottom: none; }
 
 /* ── Filter chips (legacy alias) ─────────────────────────── */
 .filter-chip { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; background: transparent; border: 1px solid var(--line); border-radius: 999px; font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--ink-soft); cursor: pointer; transition: all 0.15s; user-select: none; white-space: nowrap; }

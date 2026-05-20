@@ -25,23 +25,24 @@
   .verdict-pill.partial { background: #FFFBEB; color: #B45309; border-color: #FDE68A; }
   .verdict-pill.no-match{ background: #FEF2F2; color: #B91C1C; border-color: #FECACA; }
 
-  .compare-table { width: 100%; border-collapse: collapse; }
-  .compare-table th, .compare-table td {
-    border-bottom: 1px solid var(--border);
-    padding: 14px 18px;
-    text-align: left;
-    vertical-align: top;
-    font-size: 14px;
-  }
+  .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; table-layout: fixed; border: 1px solid var(--border); }
   .compare-table th {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    color: var(--ink-muted);
-    text-transform: uppercase; letter-spacing: 0.04em;
-    border-bottom: 1px solid var(--ink);
-    background: var(--bg-soft);
+    font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-muted); font-weight: 600; text-align: left;
+    padding: 10px 12px; border-bottom: 2px solid var(--border);
+    border-right: 1px solid var(--border); background: var(--bg-soft);
   }
-  .compare-table td:first-child { font-weight: 600; color: var(--ink); }
+  .compare-table th:last-child { border-right: none; }
+  .compare-table td {
+    padding: 14px 12px; border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border); vertical-align: top;
+    color: var(--ink); line-height: 1.5; text-align: left; font-size: 13px;
+  }
+  .compare-table td:last-child { border-right: none; }
+  .compare-table td:first-child { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--ink); }
+  .compare-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+  .compare-table tbody tr:last-child td { border-bottom: none; }
   .compare-table .impact-cell { color: var(--ink); font-weight: 500; }
   .compare-table .as-is-cell { color: var(--ink-muted); }
 

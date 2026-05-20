@@ -47,9 +47,12 @@
   .filter-chip:hover { border-color: var(--ink); }
   .filter-chip.active { background: var(--ink); color: white; border-color: var(--ink); }
 
-  .ip-table { width: 100%; border-collapse: collapse; }
-  .ip-table th { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--ink); background: var(--bg-soft); }
-  .ip-row td { padding: 12px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .ip-table { width: 100%; border-collapse: collapse; font-size: 13px; border: 1px solid var(--border); }
+  .ip-table th { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); border-right: 1px solid var(--border); background: var(--bg-soft); }
+  .ip-table th:last-child { border-right: none; }
+  .ip-row td { padding: 14px 12px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: middle; }
+  .ip-row td:last-child { border-right: none; }
+  .ip-row td:first-child { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; }
   .ip-row { cursor: pointer; transition: background .12s; }
   .ip-row:hover { background: var(--bg-soft); }
   .ip-row.expanded { background: rgba(107,91,214,0.04); }
