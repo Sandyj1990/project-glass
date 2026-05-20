@@ -35,10 +35,11 @@
 
 /* Storefront card · 16:9 desktop screenshot */
 .shot-card {
-  background: white; border: 1px solid var(--border); border-radius: 8px;
-  overflow: hidden; transition: all 0.15s;
+  background: white; border: 2px solid var(--border); border-radius: 12px;
+  overflow: hidden; transition: all 0.18s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
-.shot-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.shot-card:hover { border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
 .shot-thumb {
   position: relative; aspect-ratio: 16/9; background: var(--bg-soft);
   border-bottom: 1px solid var(--border); cursor: zoom-in;
@@ -53,10 +54,11 @@
 
 /* App card · phone-shaped 9:16 screenshot with icon overlay */
 .app-card {
-  background: white; border: 1px solid var(--border); border-radius: 8px;
-  overflow: hidden; transition: all 0.15s;
+  background: white; border: 2px solid var(--border); border-radius: 12px;
+  overflow: hidden; transition: all 0.18s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
-.app-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.app-card:hover { border-color: var(--ink); transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.10); }
 .app-thumb {
   position: relative; aspect-ratio: 9/16; background: var(--bg-soft);
   border-bottom: 1px solid var(--border); cursor: zoom-in;
@@ -240,7 +242,7 @@
   <div class="section-label mb-3">Mobile apps · 18</div>
   <h2 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">Consumer apps powered by JCP.</h2>
   <p class="text-sm max-w-3xl mb-8" style="color: var(--ink-muted);">First phone screenshot from each app's Google Play Store listing. Click any tile to zoom; click ↗ to open the listing.</p>
-  <div id="grid-apps" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+  <div id="grid-apps" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
     
 <article class="app-card channel-card"
   data-slug="metro-kirana" data-cluster="JMP" data-status="Live" data-surface="mobile-app" data-vertical="Grocery">
@@ -536,7 +538,7 @@
 <section class="py-12 border-b" id="section-storefronts" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
   <div class="section-label mb-3">Storefronts · 34</div>
   <h2 class="display-2 text-2xl md:text-3xl mb-8" style="color: var(--ink);">Live websites powered by JCP.</h2>
-  <div id="grid-storefronts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+  <div id="grid-storefronts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
 <article class="shot-card channel-card"
   data-slug="centro" data-cluster="SNG" data-status="Live" data-surface="storefront" data-vertical="F&amp;L">
@@ -1089,7 +1091,7 @@
   <div class="section-label mb-3">In-store · B2B · planned · 30</div>
   <h2 class="display-2 text-2xl md:text-3xl mb-2" style="color: var(--ink);">No public consumer surface.</h2>
   <p class="text-sm max-w-3xl mb-8" style="color: var(--ink-muted);">Channels powered by JCP that don't have a separate consumer storefront or app — surfaced via the Companion App, StoreOS, kiosks, partner apps, B2B portals or sites under construction.</p>
-  <div id="grid-other" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+  <div id="grid-other" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
     
 <article class="skip-card channel-card"
   data-slug="ajio-dms" data-cluster="JMP" data-status="Live" data-surface="other" data-vertical="F&amp;L">
