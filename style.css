@@ -902,18 +902,19 @@ footer { border-top: 1px solid var(--line); padding: 60px 0 30px; margin-top: 60
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 48px;
-  align-items: center;
+  align-items: start;
   min-height: 420px;
 }
 .od-hero-text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .od-hero-graphic {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-self: center;
 }
 .od-hero-graphic .od-graphic-frame {
   width: 100%;
