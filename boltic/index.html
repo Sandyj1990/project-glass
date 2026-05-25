@@ -549,58 +549,58 @@
     </div>
   </div>
 
-  <!-- Source screenshots -->
+  <!-- Source screenshots + nav links · slider -->
   <div class="cap-num mb-4" style="color: var(--ink);">Source · live console screenshots</div>
-  <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-    <a class="card card-hover p-5 block" href="/assets/boltic/screens/dashboard.jpg" rel="noopener" target="_blank" data-reveal>
-      <div class="cap-num mb-1">Console · 01</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Dashboard</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">Operator control surface · workflow library · integrations panel.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/assets/boltic/screens/workflow-analytics.jpg" rel="noopener" target="_blank" data-reveal>
-      <div class="cap-num mb-1">Console · 02</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Workflow analytics</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">1.79M total executions · 198 workflows · Sep-2025 sample.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/assets/boltic/screens/ai-agents.jpg" rel="noopener" target="_blank" data-reveal>
-      <div class="cap-num mb-1">Console · 03</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AI Agents</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">Custom agents · per-agent enable/disable · run history.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/assets/boltic/screens/mcp.jpg" rel="noopener" target="_blank" data-reveal>
-      <div class="cap-num mb-1">Console · 04</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">MCP servers</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">Standard-protocol bridges · build a server in minutes.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/assets/boltic/screens/monitoring.jpg" rel="noopener" target="_blank" data-reveal>
-      <div class="cap-num mb-1">Console · 05</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Monitoring</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">Uptime, page-load, broken-link, workflow-health checks.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/assets/boltic/screens/gateway.jpg" rel="noopener" target="_blank" data-reveal>
-      <div class="cap-num mb-1">Console · 06</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Gateway</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">API surfaces · end-to-end security · adaptive scaling.</p>
-    </a>
-  </div>
-
-  <!-- Navigation links -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-    <a class="card card-hover p-5 block" href="/agents" data-reveal>
-      <div class="cap-num mb-1">Adjacent</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AI Agents directory</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">The full Fynd agent catalogue · how Boltic-built agents fit into the broader AI-Native surface.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/ai-native" data-reveal>
-      <div class="cap-num mb-1">Context</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AI-Native Engineering</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">How Fynd builds · the engineering posture that produced Boltic, PixelBin, Ratl and Kaily.</p>
-    </a>
-    <a class="card card-hover p-5 block" href="/" data-reveal>
-      <div class="cap-num mb-1">Home</div>
-      <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Back to the register</h3>
-      <p class="text-xs" style="color: var(--ink-muted);">Cross-platform overview · all 20+ tracks across the Fynd × RRVL surface.</p>
-    </a>
+  <div style="position: relative;">
+    <button aria-label="Previous" class="boltic-src-prev" id="boltic-src-prev" style="position:absolute;left:-20px;top:50%;transform:translateY(-50%);z-index:10;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink);transition:opacity .2s;" disabled>←</button>
+    <div id="boltic-src-track" style="display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:4px 2px 8px;">
+      <a class="card card-hover p-5" href="/assets/boltic/screens/dashboard.jpg" rel="noopener" target="_blank" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Console · 01</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Dashboard</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">Operator control surface · workflow library · integrations panel.</p>
+      </a>
+      <a class="card card-hover p-5" href="/assets/boltic/screens/workflow-analytics.jpg" rel="noopener" target="_blank" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Console · 02</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Workflow analytics</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">1.79M total executions · 198 workflows · Sep-2025 sample.</p>
+      </a>
+      <a class="card card-hover p-5" href="/assets/boltic/screens/ai-agents.jpg" rel="noopener" target="_blank" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Console · 03</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AI Agents</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">Custom agents · per-agent enable/disable · run history.</p>
+      </a>
+      <a class="card card-hover p-5" href="/assets/boltic/screens/mcp.jpg" rel="noopener" target="_blank" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Console · 04</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">MCP servers</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">Standard-protocol bridges · build a server in minutes.</p>
+      </a>
+      <a class="card card-hover p-5" href="/assets/boltic/screens/monitoring.jpg" rel="noopener" target="_blank" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Console · 05</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Monitoring</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">Uptime, page-load, broken-link, workflow-health checks.</p>
+      </a>
+      <a class="card card-hover p-5" href="/assets/boltic/screens/gateway.jpg" rel="noopener" target="_blank" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Console · 06</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Gateway</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">API surfaces · end-to-end security · adaptive scaling.</p>
+      </a>
+      <a class="card card-hover p-5" href="/agents" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Adjacent</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AI Agents directory</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">The full Fynd agent catalogue · how Boltic-built agents fit into the broader AI-Native surface.</p>
+      </a>
+      <a class="card card-hover p-5" href="/ai-native" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Context</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">AI-Native Engineering</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">How Fynd builds · the engineering posture that produced Boltic, PixelBin, Ratl and Kaily.</p>
+      </a>
+      <a class="card card-hover p-5" href="/" style="min-width:280px;flex-shrink:0;scroll-snap-align:start;">
+        <div class="cap-num mb-1">Home</div>
+        <h3 class="font-semibold text-sm mb-1" style="color: var(--ink);">Back to the register</h3>
+        <p class="text-xs" style="color: var(--ink-muted);">Cross-platform overview · all 20+ tracks across the Fynd × RRVL surface.</p>
+      </a>
+    </div>
+    <button aria-label="Next" class="boltic-src-next" id="boltic-src-next" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);z-index:10;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--ink);transition:opacity .2s;">→</button>
   </div>
 </div>
 </section>
@@ -664,6 +664,26 @@
     });
   }, { threshold: 0.1 });
   document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+})();
+</script>
+<script>
+/* Boltic source-screenshots slider */
+(function(){
+  var track = document.getElementById('boltic-src-track');
+  var prev = document.getElementById('boltic-src-prev');
+  var next = document.getElementById('boltic-src-next');
+  if (!track || !prev || !next) return;
+  var cardW = 280 + 16; // min-width + gap
+  function updateBtns() {
+    prev.disabled = track.scrollLeft <= 4;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+    prev.style.opacity = prev.disabled ? '0.3' : '1';
+    next.style.opacity = next.disabled ? '0.3' : '1';
+  }
+  prev.addEventListener('click', function(){ track.scrollBy({ left: -cardW * 3, behavior: 'smooth' }); });
+  next.addEventListener('click', function(){ track.scrollBy({ left: cardW * 3, behavior: 'smooth' }); });
+  track.addEventListener('scroll', updateBtns);
+  updateBtns();
 })();
 </script>
 </body>
