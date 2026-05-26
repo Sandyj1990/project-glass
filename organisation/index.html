@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&amp;family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 <meta charset="utf-8"/>
 <meta content="noindex, nofollow, noarchive, nosnippet, noimageindex" name="robots"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
@@ -10,46 +9,53 @@
 <link href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" rel="icon" type="image/png"/>
 <link href="/style.css" rel="stylesheet"/>
 <link href="/present.css" rel="stylesheet"/>
-<script defer="" src="/present.js"></script>
+<script defer src="/present.js"></script>
 <style>
-  /* Sticky in-page TOC */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  /* ── Sticky in-page TOC ── */
+  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239,231,210,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
   .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
-  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; text-decoration: none; }
   .story-toc a:hover { color: var(--ink); background: var(--bone); }
   .story-toc a.is-active { color: var(--ink); background: var(--bone); }
-  /* §01 leadership masthead · editorial, text-only matrix */
-  .mast-row { padding: 18px 0; border-top: 1px solid var(--border-soft); }
-  .mast-row:first-child { border-top: 1px solid var(--border); }
-  .mast-row:last-child { border-bottom: 1px solid var(--border); }
-  .mast-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 6px; }
-  .mast-grid { display: grid; gap: 18px 32px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .mast-name { font-weight: 600; color: var(--ink); font-size: 15px; line-height: 1.3; }
-  .mast-title { font-size: 12px; color: var(--ink-muted); margin-top: 2px; }
-  .mast-scope { font-size: 12px; color: var(--ink-muted); margin-top: 4px; line-height: 1.45; }
-  .mast-uncertain::after { content: " ·"; }
-  .mast-uncertain-tag { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); margin-left: 4px; }
 
-  /* Tier section header */
-  .tier-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; gap: 16px; }
-  .tier-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-muted); }
+  /* ── Sub-nav tabs ── */
+  .org-subnav { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 0 0; border-top: 1px solid var(--border-soft); margin-top: 32px; }
+  .org-subnav a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); text-decoration: none; transition: all .15s; }
+  .org-subnav a:hover { color: var(--ink); border-color: var(--ink); }
+  .org-subnav a.active { color: var(--ink); background: var(--ink); color: white; border-color: var(--ink); }
 
-  /* Project card */
-  .pcard { display: flex; flex-direction: column; padding: 18px; background: var(--bone); border: 1px solid var(--border); border-radius: 14px; transition: border-color 0.18s; }
+  /* ── Hero stat tiles ── */
+  .org-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 32px; }
+  .org-stat { background: white; border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .org-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); margin-bottom: 8px; }
+  .org-stat-num { font-family: 'Inter Tight', sans-serif; font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1; }
+  .org-stat-num.accent { color: var(--accent); }
+  .org-stat-sub { font-size: 11px; color: var(--ink-muted); margin-top: 6px; line-height: 1.4; }
+
+  /* ── §01 Leadership ── */
+  .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .founder-card { background: var(--ink); color: white; border-radius: 16px; padding: 28px; }
+  .founder-card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.5; margin-bottom: 12px; }
+  .founder-card-name { font-family: 'Inter Tight', sans-serif; font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+  .founder-card-title { font-size: 13px; opacity: 0.6; margin-bottom: 12px; }
+  .founder-card-scope { font-size: 13px; opacity: 0.8; line-height: 1.5; }
+
+  .csuite-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  .csuite-card { background: var(--bone); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .csuite-role { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; }
+  .csuite-name { font-weight: 700; font-size: 15px; color: var(--ink); margin-bottom: 3px; }
+  .csuite-title { font-size: 12px; color: var(--ink-muted); }
+  .csuite-dept { font-size: 11px; color: var(--ink-muted); margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--border-soft); }
+
+  /* ── §02 Platform cards ── */
+  .pcard { background: var(--bone); border: 1px solid var(--border); border-radius: 14px; padding: 20px; transition: border-color .18s; display: flex; flex-direction: column; }
   .pcard:hover { border-color: var(--ink); }
-  .pcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
-  .pcard-name { font-weight: 700; font-size: 16px; color: var(--ink); line-height: 1.2; }
+  .pcard-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 14px; }
+  .pcard-name { font-weight: 700; font-size: 16px; color: var(--ink); }
   .pcard-name a { color: var(--ink); text-decoration: none; }
   .pcard-name a:hover { color: var(--accent); }
-  .pcard-count { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink); font-weight: 600; }
-  .pcard-bar { height: 4px; background: var(--bone); border-radius: 2px; overflow: hidden; margin-bottom: 14px; }
-  .pcard-bar-fill { height: 100%; background: var(--ink); border-radius: 2px; }
-  .pcard-lead { display: flex; flex-direction: column; padding: 10px 12px; background: var(--bone); border-radius: 8px; margin-bottom: 14px; }
-  .pcard-lead-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.04em; color: var(--ink-muted); margin-bottom: 2px; }
-  .pcard-lead-name { font-weight: 600; font-size: 13px; color: var(--ink); }
-  .pcard-lead-title { font-size: 11px; color: var(--ink-muted); margin-top: 1px; }
-  .pcard-lead-pending { font-size: 11px; color: var(--ink-muted); font-style: italic; }
-  .pcard-tracks { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; flex: 1; }
+  .pcard-count { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 600; color: var(--ink); }
+  .pcard-tracks { display: flex; flex-direction: column; gap: 5px; flex: 1; margin-bottom: 14px; }
   .pcard-track { display: flex; align-items: baseline; justify-content: space-between; font-size: 12px; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--border-soft); }
   .pcard-track:last-of-type { border-bottom: none; }
   .pcard-track-name { color: var(--ink); flex: 1; }
@@ -60,43 +66,41 @@
   .pcard-track-chip:hover { background: var(--accent); color: white; }
   .pcard-more { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); padding-top: 6px; cursor: pointer; user-select: none; }
   .pcard-more:hover { text-decoration: underline; }
-  .pcard-more-list { display: flex; flex-direction: column; gap: 6px; padding-top: 6px; }
+  .pcard-more-list { display: flex; flex-direction: column; gap: 5px; padding-top: 6px; }
   .pcard-foot { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); border-top: 1px solid var(--border-soft); padding-top: 12px; margin-top: auto; }
   .pcard-foot a { color: var(--accent); text-decoration: none; }
   .pcard-foot a:hover { text-decoration: underline; }
 
-  /* §03 External Commercialization · same surface as the rest of the page */
-  .ext-block { background: var(--bone); color: var(--ink); border: 1px solid var(--border); border-radius: 20px; padding: 32px; margin-top: 14px; }
+  /* ── §03 Foundation ── */
+  .foundation-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .foundation-stat { background: var(--bone); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+  .foundation-stat-num { font-family: 'Inter Tight', sans-serif; font-size: 28px; font-weight: 800; color: var(--ink); }
+  .foundation-stat-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted); margin-top: 4px; }
+
+  /* ── §04 External ── */
+  .ext-card { background: var(--bone); border: 1px solid var(--border); border-radius: 20px; padding: 32px; }
   .ext-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 14px; }
-  .ext-headline { font-weight: 700; font-size: 26px; line-height: 1.2; margin-bottom: 16px; color: var(--ink); }
-  .ext-narrative { font-size: 15px; line-height: 1.6; color: var(--ink-muted); max-width: 720px; margin-bottom: 24px; }
-  .ext-narrative strong { color: var(--ink); font-weight: 600; }
-  .ext-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; padding: 20px 0; border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
-  .ext-stat-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 600; color: var(--ink); }
+  .ext-headline { font-weight: 700; font-size: 24px; line-height: 1.2; margin-bottom: 12px; color: var(--ink); }
+  .ext-narrative { font-size: 14px; line-height: 1.6; color: var(--ink-muted); max-width: 680px; margin-bottom: 24px; }
+  .ext-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; padding: 20px 0; border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
+  .ext-stat-num { font-family: 'Inter Tight', sans-serif; font-size: 32px; font-weight: 800; color: var(--ink); }
   .ext-stat-cap { font-size: 11px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
   .ext-cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--ink); color: white; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 13px; }
   .ext-cta:hover { background: var(--accent); }
 
-  /* §05 adjacent inline */
   @media (max-width: 768px) {
-    .mast-grid { grid-template-columns: 1fr 1fr; }
-    .ext-headline { font-size: 22px; }
+    .org-stats { grid-template-columns: 1fr 1fr; }
+    .founders-grid { grid-template-columns: 1fr; }
+    .ext-stats { grid-template-columns: 1fr 1fr; }
   }
-
-
 </style>
 </head>
 <body>
 <nav class="topnav">
 <div class="topnav-inner">
 <a class="brand" href="/">
-<div class="brand-mark">
-<img alt="Fynd logo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png"/>
-</div>
-<div class="brand-meta">
-<b>Fynd</b>
-    RRVL · JPL
-  </div>
+<div class="brand-mark"><img alt="Fynd logo" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png"/></div>
+<div class="brand-meta"><b>Fynd</b> RRVL · JPL</div>
 </a>
 <div class="nav-links hidden md:flex items-center">
 <a class="nav-link" href="/">Home</a>
@@ -105,7 +109,7 @@
 <div class="grid grid-cols-3 gap-6">
 <div>
 <div class="mega-col-label">Platforms</div>
-<a class="mega-link" href="/impetus">Impetus <span class="mono-suffix">F&amp;L AI</span></a>
+<a class="mega-link" href="/impetus">Impetus <span class="mono-suffix">F&L AI</span></a>
 <a class="mega-link" href="/jcp">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
 <a class="mega-link" href="/rcpl">RCPL <span class="mono-suffix">FMCG B2B</span></a>
 <a class="mega-link" href="/granary">Granary <span class="mono-suffix">Grocery AI</span></a>
@@ -155,107 +159,161 @@
 </div>
 </div>
 </nav>
+
 <!-- Sticky in-page TOC -->
 <div class="story-toc">
 <div class="story-toc-inner" id="story-toc">
 <a href="#leadership">01 · Leadership</a>
 <a href="#rr-platforms">02 · RR Platforms</a>
-<a href="#shared-foundation">03 · Foundation</a>
+<a href="#foundation">03 · Foundation</a>
 <a href="#external">04 · External</a>
 </div>
 </div>
-<!-- HERO -->
-<section class="pt-16 pb-10" style="background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="od-hero-split"><div><div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Organisation</span></div><div class="flex flex-wrap gap-2 mb-8">
-<a class="subnav-link active" href="/organisation">Overview</a>
-<a class="subnav-link" href="/organisation/organogram">Reporting Tree</a>
-<a class="subnav-link" href="/organisation/directory">People Directory</a>
-<a class="subnav-link" href="/organisation/external">External Commercialization</a>
-</div><div class="section-label mb-3">Organisation · who runs each platform · how the org maps to what ships</div><h1 class="display text-5xl md:text-7xl mb-6" style="color: var(--ink);">Organisation.</h1><p class="text-lg max-w-3xl mb-4" style="color: var(--ink-muted);">A founder-led, engineering-heavy, <a href="/ai-native" style="color: var(--accent); text-decoration: underline;">AI-native</a> team. The work splits across three tiers: what ships to Reliance Retail, the self-sustaining commercial engine, and the shared foundation that supports both.</p><p class="mb-8"><a href="/ai-native" style="color: var(--accent); text-decoration: underline; font-family: 'JetBrains Mono', monospace; font-size: 13px;">→ How Fynd builds · the AI-native operating mandate</a></p><div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl">
-<div class="card p-4"><div class="cap-num mb-1">Overall Org Size</div><div class="display-2 text-3xl" data-stat="total" style="color: var(--ink);">…</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Product Builders</div><div class="display-2 text-3xl" data-stat="buildersPct" style="color: var(--ink);">…</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Engineering · Product · Design · Data · QA · Research</div></div>
-<div class="card p-4"><div class="cap-num mb-1">10+ years tenure</div><div class="display-2 text-3xl accent">10</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Members on the roster since 2016 or earlier</div></div>
-<div class="card p-4"><div class="cap-num mb-1">Founder-led</div><div class="display-2 text-3xl" style="color: var(--ink);">13 yrs</div><div class="text-xs mt-1" style="color: var(--ink-muted);">Farooq + Sreeraman · since 01 - May - 2013</div></div>
-</div></div><div style="display:flex;align-items:center;justify-content:center;"><svg fill="none" style="width:100%;max-width:420px;" viewbox="0 0 420 300" xmlns="http://www.w3.org/2000/svg">
-<rect fill="#f5f0e8" height="300"  rx="16" width="420"></rect>
-<defs><marker id="arr" markerheight="6" markerwidth="6" orient="auto" refx="5" refy="3"><path d="M0,0 L6,3 L0,6 Z" fill="#e07a5f"></path></marker></defs>
-<text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="7" letter-spacing="1" text-anchor="middle" x="210" y="30">THE TEAM BEHIND 22 PLATFORMS</text><rect fill="#2d2d2d" height="34" rx="4" width="120" x="160" y="50"></rect><text fill="#fff" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="210" y="72">Leadership</text><rect fill="#e07a5f" height="34" rx="4" width="180" x="120" y="92"></rect><text fill="#fff" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="210" y="114">Engineering 66%</text><rect fill="#fff" height="34" rx="4" stroke="#c8a97e" stroke-width="1.2" width="260" x="80" y="134"></rect><text fill="#2d2d2d" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="210" y="156">Product · Design · Data</text><rect fill="#2d2d2d" height="34" rx="4" width="340" x="40" y="176"></rect><text fill="#fff" font-family="JetBrains Mono,monospace" font-size="8" text-anchor="middle" x="210" y="198">1,056 people · 14 years</text><text fill="#2d2d2d" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" x="210" y="240">Founder-led · AI-native · $2.5B GMV</text><text fill="#c8a97e" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="1" opacity="0.6" text-anchor="middle" x="210" y="288">ORGANISATION · FYND</text>
-</svg></div></div>
 
+<!-- ── HERO ── -->
+<section style="background: var(--bone); padding: 56px 0 48px;">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="crumb mb-6"><a href="/">Home</a><span class="sep">/</span><span style="color: var(--ink);">Organisation</span></div>
+  <div class="section-label mb-3">Organisation · who runs each platform · how the org maps to what ships</div>
+  <h1 class="display" style="font-size: clamp(48px, 7vw, 80px); color: var(--ink); margin-bottom: 16px;">Organisation<span class="dot" style="color:var(--accent);">.</span></h1>
+  <p style="font-size: 17px; color: var(--ink-muted); max-width: 640px; line-height: 1.6; margin-bottom: 8px;">
+    A founder-led, engineering-heavy, <a href="/ai-native" style="color: var(--accent); text-decoration: underline;">AI-native</a> team. Three tiers: what ships to Reliance Retail, the shared foundation that supports it, and the self-sustaining commercial engine.
+  </p>
+  <a href="/ai-native" style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); text-decoration: underline;">→ How Fynd builds · the AI-native operating mandate</a>
 
+  <!-- Stat tiles -->
+  <div class="org-stats">
+    <div class="org-stat">
+      <div class="org-stat-label">Overall org size</div>
+      <div class="org-stat-num" data-stat="total">…</div>
+      <div class="org-stat-sub">People across all tiers</div>
+    </div>
+    <div class="org-stat">
+      <div class="org-stat-label">Product builders</div>
+      <div class="org-stat-num" data-stat="buildersPct">…</div>
+      <div class="org-stat-sub">Engineering · Product · Design · Data · QA · Research</div>
+    </div>
+    <div class="org-stat">
+      <div class="org-stat-label">10+ years tenure</div>
+      <div class="org-stat-num accent">10</div>
+      <div class="org-stat-sub">Members on the roster since 2016 or earlier</div>
+    </div>
+    <div class="org-stat">
+      <div class="org-stat-label">Founder-led</div>
+      <div class="org-stat-num">13 yrs</div>
+      <div class="org-stat-sub">Farooq + Sreeraman · since 01 May 2013</div>
+    </div>
+  </div>
 
+  <!-- Sub-nav -->
+  <nav class="org-subnav">
+    <a class="active" href="/organisation">Overview</a>
+    <a href="/organisation/organogram">Reporting Tree</a>
+    <a href="/organisation/directory">People Directory</a>
+    <a href="/organisation/external">External Commercialization</a>
+  </nav>
 
+  <div class="od-meta-row" style="margin-top: 24px;">
+    <span class="od-meta-tag"><span class="od-meta-sep">●</span> Organisation</span>
+    <span class="od-meta-tag"><span class="od-meta-sep">·</span> Structure &amp; Teams</span>
+    <span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
+    <span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+  </div>
+</div>
+</section>
 
+<!-- ── §01 LEADERSHIP ── -->
+<section class="py-14 border-b" id="leadership" style="border-color: var(--border); background: white;">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="od-index-bar"><span class="od-bar-title">LEADERSHIP · Structure &amp; Teams</span><span class="od-bar-counter">001 / 004</span></div>
+  <div class="section-label mb-3">01 · Leadership</div>
+  <h2 class="display-2" style="font-size: clamp(28px, 4vw, 40px); color: var(--ink); margin-bottom: 32px;">Who runs Fynd<span class="dot" style="color:var(--accent);">.</span></h2>
 
-<div class="od-meta-row" style="margin-top:24px;">
-<span class="od-meta-tag"><span class="od-meta-sep">●</span> Organisation</span>
-<span class="od-meta-tag"><span class="od-meta-sep">·</span> Structure &amp; Teams</span>
-<span class="od-meta-tag"><span class="od-meta-sep">·</span> Fynd × Reliance Retail</span>
-<span class="od-meta-tag"><span class="od-meta-sep">·</span> Project Glass 2025</span>
+  <!-- Founders -->
+  <div class="section-label mb-4" style="font-size: 11px; letter-spacing: 0.06em;">Founders</div>
+  <div class="founders-grid" id="founders-grid"></div>
+
+  <!-- C-Suite -->
+  <div class="section-label mb-4" style="font-size: 11px; letter-spacing: 0.06em;">C-Suite &amp; Leadership</div>
+  <div class="csuite-grid" id="csuite-grid"></div>
 </div>
-</div></section>
-<!-- §01 LEADERSHIP STEWARDSHIP -->
-<section class="py-14 border-b" id="leadership" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="od-index-bar"><span class="od-bar-title">LEADERSHIP STEWARDSHIP <span class="od-bar-dot">·</span> Structure &amp; Teams</span><span class="od-bar-counter">001 / 002</span></div>
-<div class="section-label mb-3">01 · Leadership stewardship</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Who runs Fynd<span class="dot" style="color:var(--coral);">.</span></h2>
-<div id="leadership-mast"></div>
-</div></section>
-<!-- §02 RR PLATFORMS -->
-<section class="py-14 border-b" id="rr-platforms" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="tier-head">
-<div>
-<div class="section-label mb-3">02 · What Fynd ships for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Reliance Platforms<span class="dot" style="color:var(--coral);">.</span></h2>
+</section>
+
+<!-- ── §02 RR PLATFORMS ── -->
+<section class="py-14 border-b" id="rr-platforms" style="border-color: var(--border); background: var(--bone);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="od-index-bar"><span class="od-bar-title">RELIANCE PLATFORMS · What Fynd ships</span><span class="od-bar-counter">002 / 004</span></div>
+  <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; gap: 16px;">
+    <div>
+      <div class="section-label mb-3">02 · What Fynd ships for Reliance</div>
+      <h2 class="display-2" style="font-size: clamp(28px, 4vw, 40px); color: var(--ink);">Reliance Platforms<span class="dot" style="color:var(--accent);">.</span></h2>
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-muted);" data-tier-meta="rr-platforms"></div>
+  </div>
+  <p style="font-size: 13px; color: var(--ink-muted); margin-bottom: 28px; max-width: 600px;">The platforms shipped for Retail, JPL &amp; RCPL. Each card lists the top tracks by headcount with a drill-down to the full roster.</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tier-rr-platforms"></div>
 </div>
-<div class="tier-meta" data-tier-meta="rr-platforms">…</div>
+</section>
+
+<!-- ── §03 SHARED FOUNDATION ── -->
+<section class="py-14 border-b" id="foundation" style="border-color: var(--border); background: white;">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="od-index-bar"><span class="od-bar-title">SHARED FOUNDATION · Infrastructure &amp; Support</span><span class="od-bar-counter">003 / 004</span></div>
+  <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; gap: 16px;">
+    <div>
+      <div class="section-label mb-3">03 · Shared Foundation</div>
+      <h2 class="display-2" style="font-size: clamp(28px, 4vw, 40px); color: var(--ink);">Infrastructure + Central Support<span class="dot" style="color:var(--accent);">.</span></h2>
+    </div>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ink-muted);" data-tier-meta="foundation"></div>
+  </div>
+  <p style="font-size: 13px; color: var(--ink-muted); margin-bottom: 28px; max-width: 600px;">Cross-cutting orgs that support every platform: the infra fabric and the back-office spine.</p>
+
+  <!-- Foundation stat tiles (rendered by JS) -->
+  <div class="foundation-stats" id="foundation-stats"></div>
+
+  <!-- Foundation project cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="tier-foundation"></div>
 </div>
-<p class="text-sm mb-8 max-w-2xl" style="color: var(--ink-muted);">The platforms shipped for Retail, JPL &amp; RCPL. Each card lists the top tracks by headcount and a drill-down to the full roster.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="tier-rr-platforms"></div>
-</div></section>
-<!-- §03 SHARED FOUNDATION -->
-<section class="py-14 border-b" id="shared-foundation" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="tier-head">
-<div>
-<div class="section-label mb-3">03 · Shared Foundation</div>
-<h2 class="display-2 text-3xl md:text-4xl" style="color: var(--ink);">Infrastructure + Central Support<span class="dot" style="color:var(--coral);">.</span></h2>
+</section>
+
+<!-- ── §04 EXTERNAL COMMERCIALIZATION ── -->
+<section class="py-14 border-b" id="external" style="border-color: var(--border); background: var(--bone);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="od-index-bar"><span class="od-bar-title">EXTERNAL COMMERCIALIZATION · Self-sustaining</span><span class="od-bar-counter">004 / 004</span></div>
+  <div class="section-label mb-3">04 · External Commercialization</div>
+  <h2 class="display-2" style="font-size: clamp(28px, 4vw, 40px); color: var(--ink); margin-bottom: 28px;">The engine that funds the rest<span class="dot" style="color:var(--accent);">.</span></h2>
+
+  <div class="ext-card">
+    <div class="ext-eyebrow">External Commercialization · Self-sustaining</div>
+    <div class="ext-headline">Commercializes Fynd IP to external customers.</div>
+    <div class="ext-narrative">The external arm operates as a self-sustaining commercial engine — selling the same platforms built for Reliance Retail to third-party brands and retailers. Revenue from external customers funds continued platform investment.</div>
+    <div class="ext-stats">
+      <div><div class="ext-stat-num" data-ext-stat="total">…</div><div class="ext-stat-cap">People</div></div>
+      <div><div class="ext-stat-num" data-ext-stat="commerce">…</div><div class="ext-stat-cap">On Commerce</div></div>
+      <div><div class="ext-stat-num" data-ext-stat="tracks">…</div><div class="ext-stat-cap">Sub-tracks</div></div>
+    </div>
+    <a class="ext-cta" href="/organisation/external">Open External Commercialization deep-dive →</a>
+  </div>
 </div>
-<div class="tier-meta" data-tier-meta="foundation">…</div>
-</div>
-<p class="text-sm mb-8 max-w-2xl" style="color: var(--ink-muted);">Cross-cutting orgs that support every platform: the infra fabric and the back-office spine.</p>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="tier-foundation"></div>
-</div></section>
-<!-- §04 EXTERNAL COMMERCIALIZATION -->
-<section class="py-14 border-b" id="external" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="od-index-bar"><span class="od-bar-title">EXTERNAL COMMERCIALIZATION · SELF-SUSTAINING <span class="od-bar-dot">·</span> Structure &amp; Teams</span><span class="od-bar-counter">002 / 002</span></div>
-<div class="section-label mb-3">04 · External Commercialization · self-sustaining</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">The engine that funds the rest<span class="dot" style="color:var(--coral);">.</span></h2>
-<div class="ext-block" id="external-block">
-<div class="ext-eyebrow">External Commercialization</div>
-<div class="ext-headline">Self-sustaining. Commercializes Fynd IP to external customers.</div>
-<div class="ext-stats" id="external-stats">
-<div><div class="ext-stat-num" data-ext-stat="total">…</div><div class="ext-stat-cap">People</div></div>
-<div><div class="ext-stat-num" data-ext-stat="commerce">…</div><div class="ext-stat-cap">On Commerce</div></div>
-<div><div class="ext-stat-num" data-ext-stat="tracks">…</div><div class="ext-stat-cap">Sub-tracks</div></div>
-</div>
-<a class="ext-cta" href="/organisation/external">Open External Commercialization deep-dive →</a>
-</div>
-</div></section>
+</section>
+
 <div class="container" style="padding-bottom: 32px;">
-<hr class="od-dashed-sep"/>
-<div class="od-practice-bar">
-<span>Fynd × Reliance Retail · Organisation</span>
-<span>Project Glass · 2025</span>
+  <hr class="od-dashed-sep"/>
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · Organisation</span>
+    <span>Project Glass · 2025</span>
+  </div>
 </div>
+
+<footer class="py-10" style="background: var(--ink); color: white;">
+<div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div>
-<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
-<div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
-</div></footer>
+</footer>
+
 <script>
 // -----------------------------------------------------------------
-// Overview · Round 2 · render leadership masthead + tier sections
-// from /organisation/data.json. Directory + filter UI live at
-// /organisation/directory; External deep-dive at /organisation/external.
+// Organisation overview · data-driven rendering from /organisation/data.json
 // -----------------------------------------------------------------
 
 function escapeHtml(s) {
@@ -265,55 +323,43 @@ function escapeHtml(s) {
 let DATA = null;
 
 // -----------------------------------------------------------------
-// §01 · Leadership masthead
+// §01 · Leadership — founders + c-suite
 // -----------------------------------------------------------------
-function renderMasthead() {
-  const root = document.getElementById("leadership-mast");
+function renderLeadership() {
   const L = DATA.leaders || {};
   const founders = L.founders || [];
   const cSuite = L.cSuite || [];
 
-  // Group cSuite by _role if present, otherwise lump as "Leadership"
-  const byRole = {};
-  for (const p of cSuite) {
-    const role = p._role || "Leadership";
-    (byRole[role] = byRole[role] || []).push(p);
+  // Founders — prominent dark cards
+  const foundersRoot = document.getElementById("founders-grid");
+  if (foundersRoot && founders.length) {
+    foundersRoot.innerHTML = founders.map(p => `
+      <div class="founder-card">
+        <div class="founder-card-label">Founder · since ${(p.since || "").slice(0,4)}</div>
+        <div class="founder-card-name">${escapeHtml(p.name)}</div>
+        <div class="founder-card-title">${escapeHtml(p.title)}</div>
+        <div class="founder-card-scope">${escapeHtml(p.scope || "")}</div>
+      </div>`).join("");
   }
 
-  const rows = [];
-
-  if (founders.length) {
-    rows.push(rowHtml("Founders", founders, p => ({
-      name: p.name, title: p.title + (p.since ? " · since " + p.since.slice(0,4) : ""), scope: p.scope, uncertain: p._uncertain,
-    })));
+  // C-Suite — clean role-labelled cards
+  const csuiteRoot = document.getElementById("csuite-grid");
+  if (csuiteRoot && cSuite.length) {
+    csuiteRoot.innerHTML = cSuite.map(p => {
+      const uncertain = p._uncertain ? `<span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--accent);margin-left:6px;">_uncertain</span>` : "";
+      const dept = p.department ? `<div class="csuite-dept">${escapeHtml(p.department)}${p.directReports ? " · " + p.directReports + " direct reports" : ""}</div>` : "";
+      return `<div class="csuite-card">
+        <div class="csuite-role">${escapeHtml(p._role || "Leadership")}</div>
+        <div class="csuite-name">${escapeHtml(p.name)}${uncertain}</div>
+        <div class="csuite-title">${escapeHtml(p.title)}</div>
+        ${dept}
+      </div>`;
+    }).join("");
   }
-  for (const role of Object.keys(byRole)) {
-    rows.push(rowHtml(role, byRole[role], p => ({
-      name: p.name, title: p.title, scope: p.department ? p.department + (p.directReports ? " · " + p.directReports + " direct reports" : "") : "", uncertain: p._uncertain,
-    })));
-  }
-
-  root.innerHTML = rows.join("");
-}
-
-function rowHtml(label, people, mapPerson) {
-  const cells = people.map(p => {
-    const v = mapPerson(p);
-    const tag = v.uncertain ? `<span class="mast-uncertain-tag">_uncertain</span>` : "";
-    return `<div>
-      <div class="mast-name">${escapeHtml(v.name)}${tag}</div>
-      ${v.title ? `<div class="mast-title">${escapeHtml(v.title)}</div>` : ""}
-      ${v.scope ? `<div class="mast-scope">${escapeHtml(v.scope)}</div>` : ""}
-    </div>`;
-  }).join("");
-  return `<div class="mast-row">
-    <div class="mast-label">${escapeHtml(label)}</div>
-    <div class="mast-grid">${cells}</div>
-  </div>`;
 }
 
 // -----------------------------------------------------------------
-// Project card
+// §02 / §03 · Platform cards
 // -----------------------------------------------------------------
 function projectNameHtml(p) {
   if (p.projectRoute) return `<a href="${p.projectRoute}">${escapeHtml(p.project)}</a>`;
@@ -321,24 +367,16 @@ function projectNameHtml(p) {
 }
 
 function trackNameHtml(t) {
-  let html;
-  if (t.trackRoute) {
-    html = `<a href="${t.trackRoute}">${escapeHtml(t.track)}</a>`;
-  } else {
-    html = escapeHtml(t.track);
-  }
+  let html = t.trackRoute ? `<a href="${t.trackRoute}">${escapeHtml(t.track)}</a>` : escapeHtml(t.track);
   for (const c of (t.trackChips || [])) {
-    if (c.route) html += `<a class="pcard-track-chip" href="${c.route}">${escapeHtml(c.label)}</a>`;
-    else html += `<span class="pcard-track-chip">${escapeHtml(c.label)}</span>`;
+    html += c.route
+      ? `<a class="pcard-track-chip" href="${c.route}">${escapeHtml(c.label)}</a>`
+      : `<span class="pcard-track-chip">${escapeHtml(c.label)}</span>`;
   }
   return html;
 }
 
-function projectCardHtml(p, tierMax) {
-  const widthPct = tierMax > 0 ? Math.round(p.total / tierMax * 100) : 0;
-  // Render ALL tracks; top-5 stay visible, rest are inside a hidden block
-  // toggled by clicking the "+N more" line. No truncation; full list always
-  // available inline, no need to leave the page.
+function projectCardHtml(p) {
   const allTracks = p.tracks || [];
   const VISIBLE = 5;
   const visibleTracks = allTracks.slice(0, VISIBLE).map(t => `
@@ -356,63 +394,79 @@ function projectCardHtml(p, tierMax) {
     ? `<div class="pcard-more-wrap" data-expanded="false">
          <div class="pcard-more" data-toggle-more>+${moreCount} more · click to expand</div>
          <div class="pcard-more-list" hidden>${hiddenTracks}</div>
-       </div>`
-    : "";
-
+       </div>` : "";
   const dirHref = `/organisation/directory?project=${encodeURIComponent(p.project)}`;
   return `<div class="pcard">
     <div class="pcard-head">
       <div class="pcard-name">${projectNameHtml(p)}</div>
       <div class="pcard-count">${p.total}</div>
     </div>
-    <div class="pcard-bar"><div class="pcard-bar-fill" style="width: ${widthPct}%"></div></div>
     <div class="pcard-tracks">${visibleTracks}${moreBlock}</div>
     <div class="pcard-foot">→ <a href="${dirHref}">${p.total} people · open directory</a></div>
   </div>`;
 }
 
-// -----------------------------------------------------------------
-// Render tier sections
-// -----------------------------------------------------------------
 function renderTier(tierKey, mountId) {
-  const projects = DATA.pivot.filter(p => p.tier === tierKey)
-                            .sort((a, b) => b.total - a.total);
-  const tierMax = projects.reduce((m, p) => Math.max(m, p.total), 0);
+  const projects = DATA.pivot.filter(p => p.tier === tierKey).sort((a, b) => b.total - a.total);
   const root = document.getElementById(mountId);
-  root.innerHTML = projects.map(p => projectCardHtml(p, tierMax)).join("");
-  // Tier meta line · headcount only (project count dropped per feedback).
+  if (root) root.innerHTML = projects.map(p => projectCardHtml(p)).join("");
   const tierMeta = (DATA.tiers || []).find(t => t.key === tierKey);
   const metaEl = document.querySelector(`[data-tier-meta="${tierKey}"]`);
-  if (metaEl && tierMeta) {
-    metaEl.textContent = `${tierMeta.total} people`;
-  }
+  if (metaEl && tierMeta) metaEl.textContent = `${tierMeta.total} people`;
 }
 
 // -----------------------------------------------------------------
-// §03 External block stats
+// §03 · Foundation stat tiles
+// -----------------------------------------------------------------
+function renderFoundationStats() {
+  const foundationProjects = DATA.pivot.filter(p => p.tier === "foundation");
+  const allTracks = foundationProjects.flatMap(p => p.tracks || []);
+
+  // Build stat tiles from tracks
+  const statMap = {};
+  for (const t of allTracks) {
+    statMap[t.track] = (statMap[t.track] || 0) + t.count;
+  }
+
+  const statOrder = [
+    { key: "Infrastructure", label: "Infrastructure" },
+    { key: "Quality Assurance", label: "Quality Assurance" },
+    { key: "DevOps", label: "DevOps" },
+    { key: "Reliability · SRE", label: "Reliability · SRE" },
+    { key: "Security · IRM", label: "Security · IRM" },
+    { key: "HR · Admin · Finance · IT", label: "HR · Admin · Finance · IT" },
+  ];
+
+  const root = document.getElementById("foundation-stats");
+  if (!root) return;
+  root.innerHTML = statOrder.map(s => {
+    const val = statMap[s.key] || "—";
+    return `<div class="foundation-stat">
+      <div class="foundation-stat-num">${val}</div>
+      <div class="foundation-stat-label">${escapeHtml(s.label)}</div>
+    </div>`;
+  }).join("");
+}
+
+// -----------------------------------------------------------------
+// §04 · External stats
 // -----------------------------------------------------------------
 function renderExternal() {
   const ext = DATA.pivot.filter(p => p.tier === "external");
   const total = ext.reduce((s, p) => s + p.total, 0);
-  const allTracks = ext.flatMap(p => p.tracks);
+  const allTracks = ext.flatMap(p => p.tracks || []);
   const commerce = allTracks.filter(t => t.track === "Commerce").reduce((s, t) => s + t.count, 0);
-  const setStat = (k, v) => {
-    const el = document.querySelector(`[data-ext-stat="${k}"]`);
-    if (el) el.textContent = v;
-  };
+  const setStat = (k, v) => { const el = document.querySelector(`[data-ext-stat="${k}"]`); if (el) el.textContent = v; };
   setStat("total", total.toLocaleString());
   setStat("commerce", commerce.toLocaleString());
   setStat("tracks", allTracks.length);
-  // Tier meta line dropped for External · the inverted block already states
-  // "310 people" prominently. The "1 project · N sub-tracks" line was redundant.
 }
 
 // -----------------------------------------------------------------
-// Legacy hash redirect (AI-Native moved to /ai-native/ on 2026-05-02)
+// Legacy hash redirect
 // -----------------------------------------------------------------
-(function redirectLegacyHash() {
-  if (typeof location === "undefined") return;
-  if (location.hash.replace("#", "") === "ai-native") {
+(function() {
+  if (typeof location !== "undefined" && location.hash.replace("#","") === "ai-native") {
     location.replace("/ai-native/");
   }
 })();
@@ -426,14 +480,14 @@ async function boot() {
   const setStat = (k, v) => { const el = document.querySelector(`[data-stat="${k}"]`); if (el) el.textContent = v; };
   setStat("total", DATA.meta.totals.rows.toLocaleString());
   setStat("buildersPct", DATA.meta.totals.productBuildersPct + " %");
-  renderMasthead();
+  renderLeadership();
   renderTier("rr-platforms", "tier-rr-platforms");
+  renderFoundationStats();
   renderTier("foundation", "tier-foundation");
   renderExternal();
   wireMoreToggles();
 }
 
-// "+N more · click to expand" · show/hide the rest of the tracks inline.
 function wireMoreToggles() {
   document.body.addEventListener("click", e => {
     const trigger = e.target.closest("[data-toggle-more]");
@@ -444,8 +498,7 @@ function wireMoreToggles() {
     if (expanded) {
       list.hidden = true;
       wrap.dataset.expanded = "false";
-      const remaining = list.querySelectorAll(".pcard-track").length;
-      trigger.textContent = `+${remaining} more · click to expand`;
+      trigger.textContent = `+${list.querySelectorAll(".pcard-track").length} more · click to expand`;
     } else {
       list.hidden = false;
       wrap.dataset.expanded = "true";
@@ -456,7 +509,8 @@ function wireMoreToggles() {
 
 boot().catch(err => {
   console.error(err);
-  document.getElementById("tier-rr-platforms").innerHTML = `<div style="padding: 24px; color: #b91c1c;">Failed to load data.json · ${escapeHtml(err.message)}</div>`;
+  const el = document.getElementById("tier-rr-platforms");
+  if (el) el.innerHTML = `<div style="padding:24px;color:#b91c1c;">Failed to load data.json · ${escapeHtml(err.message)}</div>`;
 });
 
 // Sticky TOC active-state observer
@@ -464,46 +518,37 @@ boot().catch(err => {
   var toc = document.getElementById('story-toc');
   if (!toc) return;
   var links = Array.from(toc.querySelectorAll('a'));
-  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  var ids = links.map(a => a.getAttribute('href').slice(1));
   function setActive(id) {
-    links.forEach(function(a) {
-      var hashId = a.getAttribute('href').slice(1);
-      a.classList.toggle('is-active', hashId === id);
-    });
+    links.forEach(a => a.classList.toggle('is-active', a.getAttribute('href').slice(1) === id));
     var active = toc.querySelector('a.is-active');
     if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
   }
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) setActive(e.target.id);
-    });
+  var io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
   }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
-  ids.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) io.observe(el);
-  });
+  ids.forEach(id => { var el = document.getElementById(id); if (el) io.observe(el); });
 })();
 </script>
 <script>
 /* Open Design scroll-reveal · v0.8.4 */
 (function(){
   if (!('IntersectionObserver' in window)) {
-    document.querySelectorAll('[data-reveal]').forEach(function(el){ el.classList.add('revealed'); });
+    document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('revealed'));
     return;
   }
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
+  var io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
       if (e.isIntersecting) {
         var el = e.target;
-        var siblings = Array.from(el.parentNode.children).filter(function(c){ return c.hasAttribute('data-reveal'); });
-        var idx = siblings.indexOf(el);
-        el.style.transitionDelay = (idx * 80) + 'ms';
+        var siblings = Array.from(el.parentNode.children).filter(c => c.hasAttribute('data-reveal'));
+        el.style.transitionDelay = (siblings.indexOf(el) * 80) + 'ms';
         el.classList.add('revealed');
         io.unobserve(el);
       }
     });
   }, { threshold: 0.1 });
-  document.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+  document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
 })();
 </script>
 </body>
