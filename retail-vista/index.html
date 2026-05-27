@@ -145,6 +145,7 @@
 <a href="#data">05 · Data</a>
 <a href="#vision">06 · Vision</a>
 <a href="#roadmap">07 · Roadmap</a>
+<a href="#team">08 · Team</a>
 </div>
 </div>
 <!-- §01 · Status (01-May-2026) -->
@@ -290,19 +291,19 @@
 <section class="py-16 border-b" id="architecture" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">04 · Architecture · 5 layers</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">From raw signals to activated decision<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Five layers · Sources, Spatial Aggregation, GIS Visualisation, Agentic Orchestration, Activation. Agents read live signals, run guarded playbooks, write outcomes back for continuous learning. A question asked once becomes a callable agent skill across all three tracks.</p>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Five layers · Sources, Spatial Aggregation, GIS Visualisation, Agentic Orchestration, Activation. Agents read live signals, run guarded playbooks, write outcomes back for continuous learning. A question asked once becomes a callable agent skill across all three tracks. Infrastructure: Databricks + Google BigQuery · Ingest via Batch Files (GeoJson/CSV), Kafka streaming, REST APIs · Data Security &amp; Governance with Access Controls, Monitoring, Lineage.</p>
 <div class="grid md:grid-cols-5 gap-6 mb-10">
-<div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 01 · Sources</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">24 categories.</h3><p class="text-xs" style="color: var(--ink-muted);">UCP · JioGIS · Retail store master · Customer locations / demographics / behaviour / intent · Government data (Census, NCRB, RBI, RERA, NFHS) · Third-party POI (Kentrix). See §05.</p></div>
+<div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 01 · Sources</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">24 categories.</h3><p class="text-xs" style="color: var(--ink-muted);">UCP · JioGIS · Customer Listening · Retail store master · Customer locations / demographics / behaviour / intent · Google Earth Engine Datasets · Google Places Insight Datasets · Government data (Census, NCRB, RBI, RERA, NFHS) · Third-party POI (Kentrix). See §05.</p></div>
 <div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 02 · Aggregation</div><span class="pill pill-live">Live</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">H3 hex index.</h3><p class="text-xs" style="color: var(--ink-muted);">Hex-first aggregation · no PII · events snapped to H3 cells · only aggregated metrics per hex reach models. One spatial truth, many zooms (resolution 7 · 5.16 km² · resolution 9 · 0.10 km²).</p></div>
 <div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 03 · GIS visualisation</div><span class="pill pill-pilot">Pilot</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Maps + heat overlays.</h3><p class="text-xs" style="color: var(--ink-muted);">Per-hex score colouring on Mumbai catchments today · Google Maps + MapLibre engine toggle · Street View for last-mile. Pan-India per-hex Attractability heat is in build.</p></div>
 <div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 04 · Agentic orchestration</div><span class="pill pill-build">Mixed</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Agent skills.</h3><p class="text-xs" style="color: var(--ink-muted);">Six skills mapped : 3 Live (New Store Opening · Catchment Analysis · Dark-store Drive Time) · 1 Building (Customer Sentiment) · 2 Roadmap (Pricing Promotion · Land Parcel · Transport Optimisation). See §07 for per-skill status.</p></div>
-<div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 05 · Activation</div><span class="pill pill-build">Building</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Hand-off surfaces.</h3><p class="text-xs" style="color: var(--ink-muted);">Outputs to ALP · Granary · JioMart routing · brand-team workflows. New stores · Pricing · SCM Optimisation · Customer Listening as the activation cells from cornerstone deck.</p></div>
+<div class="card p-5"><div class="flex items-center justify-between mb-2"><div class="cap-num">Layer 05 · Activation</div><span class="pill pill-build">Building</span></div><h3 class="font-semibold mb-2" style="color: var(--ink);">Hand-off surfaces.</h3><p class="text-xs" style="color: var(--ink-muted);">Analyze surfaces: Conversational Interface · Google Maps Interface · Control Tower · Simulation Interface · BI Tools. Outputs to ALP · Granary · JioMart routing · brand-team workflows. Use cases: New Stores · SCM Optimisation · Customer Listening · Pricing/Promotions · Land Parcels · TAM · Inventory.</p></div>
 </div>
 <div class="card overflow-hidden">
 <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">RetailVista architecture · Sources → Ingest / Transform / Pr...</span></div><div class="screenshot-body"><a class="js-lightbox" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/cornerstone/architecture.jpg" rel="noopener" target="_blank" title="Open full-size diagram">
 <img alt="RetailVista architecture · Sources → Ingest / Transform / Process / Serve / Analyze → Use Cases" class="od-img-diagram od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/retail-vista/cornerstone/architecture.jpg"/>
 </a></div></div>
-<div class="p-5"><div class="cap-num mb-1">Architecture diagram</div><p class="text-sm" style="color: var(--ink-muted);">Five stages from source to outcome. <strong>Sources</strong> · UCP, JioGIS, Customer Listening, Google Earth, Reliance datasets, Kentrix, Government, Third-party. <strong>Ingest</strong> · Geoson, CSV, Kafka, REST APIs. <strong>Transform / Process / Serve</strong> · Databricks, BigQuery, Data Security &amp; Governance, Agentic Orchestration (New Store Opening, Customer Onboarding, Pricing Promotion, Land Parcel Availability, Transport Optimization, Catchment Analysis). <strong>Analyze</strong> · Conversational, Maps, Control Tower, Simulation, BI. <strong>Use Cases</strong> · New Stores, SCM, Customer Listening, Pricing/Promotions, Land Parcels, TAM, Inventory.</p></div>
+<div class="p-5"><div class="cap-num mb-1">Architecture diagram · Proposed</div><p class="text-sm" style="color: var(--ink-muted);">Five stages from source to outcome. <strong>Sources</strong> · UCP, JioGIS, Customer Listening, Google Earth Engine Datasets, Google Places Insight Datasets, Reliance Datasets, Govt Datasets, Third Party Datasets, Data Provider (Kentrix), Others. <strong>Ingest</strong> · Batch Files (GeoJson/CSV), Kafka streaming, REST APIs. <strong>Core</strong> · Databricks + Google BigQuery · Data Security &amp; Governance (Access Controls, Monitoring, Lineage). <strong>Agentic Orchestration</strong> · New Store Opening · Customer Listening · Transport Optimization · Pricing Promotion · Land Parcel Availability · Catchment Analysis. <strong>Analyze</strong> · Conversational Interface · Google Maps Interface · Control Tower · Simulation Interface · BI Tools. <strong>Use Cases</strong> · New Stores · SCM Optimization · Customer Listening · Pricing/Promotions · Land Parcels for Strip Malls · TAM · Inventory Availability · Others.</p></div>
 </div>
 </div></section>
 <!-- §05 · Data foundation · 24 categories -->
@@ -360,7 +361,10 @@
 <section class="py-16 border-b" id="vision" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
 <div class="section-label mb-3">06 · Platform Vision</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Where RetailVista is going<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">A pan-India geospatial backbone running across 1000 cities, weighted on Google's agentic stack, built around per-household Digital Twins and the full network reference for every Reliance operation.</p>
+<p class="text-base max-w-3xl mb-6" style="color: var(--ink-muted);">A pan-India geospatial backbone running across 1000 cities, weighted on Google's agentic stack, built around per-household Digital Twins and the full network reference for every Reliance operation.</p>
+<blockquote class="od-blockquote mb-10" style="border-left: 3px solid var(--coral); padding-left: 16px; font-style: italic; color: var(--ink-muted); font-size: 0.9375rem; max-width: 48rem;">“One unified spatial intelligence layer that connects customers, operations, and infrastructure — empowering Reliance Retail to plan, operate, and grow with real-time precision and measurable impact.”
+<span style="display: block; margin-top: 6px; font-style: normal; font-size: 0.8125rem; color: var(--ink-muted); opacity: 0.7;">RetailVista Cornerstone · Executive Summary</span>
+</blockquote>
 <!-- Vision Slider -->
 <div class="vision-slider-wrap">
   <div class="vision-slider" id="visionSlider">
@@ -506,13 +510,31 @@
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
 })();
 </script>
-<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
-Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
+<!-- §08 · Team -->
+<section class="py-16 border-b" id="team" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">08 · Team · RetailVista</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Who is building this<span class="dot" style="color:var(--coral);">.</span></h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Cross-functional team spanning Reliance Retail and Fynd. Steering committee includes RIL and Fynd leadership. Source: RetailVista Cornerstone deck · May 2026.</p>
+<div class="card overflow-hidden">
+<table class="grid-table">
+<thead><tr><th>Area</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td class="font-medium">Steering Committee</td><td class="text-sm" style="color: var(--ink-muted);">Prateek Mathur · Alex Thomas · Gaurav Verma · Farooq Adam · Advait Pandit</td></tr>
+<tr><td class="font-medium">Architecture</td><td class="text-sm" style="color: var(--ink-muted);">Farooq Adam · Advait Pandit · Saumil Dalal</td></tr>
+<tr><td class="font-medium">Data and Data Interfaces</td><td class="text-sm" style="color: var(--ink-muted);">Biswaketan Kundu · Raghuram Velega · Saumil Dalal</td></tr>
+<tr><td class="font-medium">Data Sciences and Modelling</td><td class="text-sm" style="color: var(--ink-muted);">Saumil Dalal · Vaibhav Kulkarni</td></tr>
+<tr><td class="font-medium">GIS Visualisation</td><td class="text-sm" style="color: var(--ink-muted);">Gaurav Puranik</td></tr>
+<tr><td class="font-medium">Platform Engineering</td><td class="text-sm" style="color: var(--ink-muted);">Vaibhav Kulkarni</td></tr>
+<tr><td class="font-medium">Product Management</td><td class="text-sm" style="color: var(--ink-muted);">Salman Saudagar · Karan Muley</td></tr>
+</tbody>
+</table>
+</div>
+<p class="text-xs mt-4" style="color: var(--ink-muted);">Full org chart · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a></p>
 </div></section>
 <div class="container" style="padding-bottom: 32px;">
 <hr class="od-dashed-sep"/>
 <div class="od-practice-bar">
-<span>Fynd × Reliance Retail · Retail Vista</span>
+<span>Fynd × Reliance Retail · RetailVista</span>
 <span>Project Glass · 2025</span>
 </div>
 </div>
