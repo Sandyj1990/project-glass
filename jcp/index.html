@@ -104,6 +104,87 @@
     .timeline { grid-template-columns: 1fr; gap: 4px; }
   }
 
+  /* ── Channel marquee (Shopify-style) ── */
+  @keyframes ch-slideshow-fwd {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes ch-slideshow-rev {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  .ch-marquee-wrap {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -24px 32px;
+  }
+  .ch-marquee-row {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .ch-marquee-row:last-child { margin-bottom: 0; }
+  .ch-marquee-track {
+    display: flex;
+    gap: 12px;
+    /* width is 200% so the duplicate set fills the second half */
+    width: max-content;
+    will-change: transform;
+  }
+  .ch-marquee-track.fwd {
+    animation: ch-slideshow-fwd 36s linear infinite;
+  }
+  .ch-marquee-track.rev {
+    animation: ch-slideshow-rev 36s linear infinite;
+  }
+  /* Pause on hover over the whole band */
+  .ch-marquee-wrap:hover .ch-marquee-track {
+    animation-play-state: paused;
+  }
+  /* Respect prefers-reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    .ch-marquee-track { animation: none !important; }
+    .ch-marquee-row { overflow-x: auto; }
+  }
+  .ch-mq-card {
+    flex: 0 0 auto;
+    width: 120px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color .15s, transform .15s;
+  }
+  .ch-mq-card:hover {
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .ch-mq-thumb {
+    aspect-ratio: 9/16;
+    overflow: hidden;
+    background: var(--bg-soft, #f9f9f7);
+  }
+  .ch-mq-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+  .ch-mq-label {
+    padding: 7px 8px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+
 
 </style>
 </head>
@@ -328,7 +409,77 @@
 </div>
 </div>
 <h3 class="font-semibold text-lg mt-12 mb-2" style="color: var(--ink);">Every channel, grouped.</h3>
-<p class="text-sm mb-8" style="color: var(--ink-muted);">All 78 channels across 6 groups: flagship channels, in-store commerce, B2B distribution, furniture &amp; beauty, fashion &amp; lifestyle storefronts, and emerging commerce.</p>
+<p class="text-sm mb-6" style="color: var(--ink-muted);">All 78 channels across 6 groups: flagship channels, in-store commerce, B2B distribution, furniture &amp; beauty, fashion &amp; lifestyle storefronts, and emerging commerce.</p>
+
+<!-- Channel marquee band (Shopify-style two-row infinite scroll) -->
+<div class="ch-marquee-wrap" aria-hidden="true">
+  <!-- Row 1 · scrolls left (forward) -->
+  <div class="ch-marquee-row">
+    <div class="ch-marquee-track fwd">
+      <!-- Set A -->
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="JioMart" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/accenture-s33-img03.png"/></div><div class="ch-mq-label">JioMart</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Tira" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/accenture-s33-img04.png"/></div><div class="ch-mq-label">Tira</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="AJIO" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png"/></div><div class="ch-mq-label">AJIO</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Netmeds" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png"/></div><div class="ch-mq-label">Netmeds</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Reliance Digital" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/accenture-s34-img03.png"/></div><div class="ch-mq-label">Reliance Digital</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="FreshPik" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/shot-1.png"/></div><div class="ch-mq-label">FreshPik</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Milkbasket" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/shot-4.png"/></div><div class="ch-mq-label">Milkbasket</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Trends" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/trends/accenture-s33-img01.png"/></div><div class="ch-mq-label">Trends</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="7-Eleven" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/shot-2.png"/></div><div class="ch-mq-label">7-Eleven</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Reliance Jewels" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/shot-2.png"/></div><div class="ch-mq-label">Reliance Jewels</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Metro Kirana" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/accenture-s34-img04.png"/></div><div class="ch-mq-label">Metro Kirana</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="RCPL" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/rcpl/accenture-s34-img01.png"/></div><div class="ch-mq-label">RCPL</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="JioMart Digital" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart-digital/accenture-s34-img06.png"/></div><div class="ch-mq-label">JioMart Digital</div></div>
+      <!-- Set B (duplicate for seamless loop) -->
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="JioMart" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart/accenture-s33-img03.png"/></div><div class="ch-mq-label">JioMart</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Tira" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/tira/accenture-s33-img04.png"/></div><div class="ch-mq-label">Tira</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="AJIO" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png"/></div><div class="ch-mq-label">AJIO</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Netmeds" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png"/></div><div class="ch-mq-label">Netmeds</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Reliance Digital" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-digital/accenture-s34-img03.png"/></div><div class="ch-mq-label">Reliance Digital</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="FreshPik" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/freshpik/shot-1.png"/></div><div class="ch-mq-label">FreshPik</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Milkbasket" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/milkbasket/shot-4.png"/></div><div class="ch-mq-label">Milkbasket</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Trends" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/trends/accenture-s33-img01.png"/></div><div class="ch-mq-label">Trends</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="7-Eleven" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/7eleven/shot-2.png"/></div><div class="ch-mq-label">7-Eleven</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Reliance Jewels" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/reliance-jewels/shot-2.png"/></div><div class="ch-mq-label">Reliance Jewels</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Metro Kirana" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/metro-kirana/accenture-s34-img04.png"/></div><div class="ch-mq-label">Metro Kirana</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="RCPL" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/rcpl/accenture-s34-img01.png"/></div><div class="ch-mq-label">RCPL</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="JioMart Digital" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiomart-digital/accenture-s34-img06.png"/></div><div class="ch-mq-label">JioMart Digital</div></div>
+    </div>
+  </div>
+  <!-- Row 2 · scrolls right (reverse) -->
+  <div class="ch-marquee-row">
+    <div class="ch-marquee-track rev">
+      <!-- Set A -->
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Urban Ladder" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/shot-2.png"/></div><div class="ch-mq-label">Urban Ladder</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Sephora" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora-app/shot-1.png"/></div><div class="ch-mq-label">Sephora</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Hamleys" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys-app/shot-1.png"/></div><div class="ch-mq-label">Hamleys</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="SuperDry" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry.png"/></div><div class="ch-mq-label">SuperDry</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Pottery Barn" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn.png"/></div><div class="ch-mq-label">Pottery Barn</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="West Elm" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/westelm.png"/></div><div class="ch-mq-label">West Elm</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Muji" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/muji.png"/></div><div class="ch-mq-label">Muji</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Mothercare" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/mothercare.png"/></div><div class="ch-mq-label">Mothercare</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="JioGames" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/shot-1.png"/></div><div class="ch-mq-label">JioGames</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Pottery Barn Kids" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn-kids.png"/></div><div class="ch-mq-label">Pottery Barn Kids</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Sephora App" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora.png"/></div><div class="ch-mq-label">Sephora · Web</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Netmeds" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png"/></div><div class="ch-mq-label">Netmeds</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="AJIO" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png"/></div><div class="ch-mq-label">AJIO</div></div>
+      <!-- Set B (duplicate for seamless loop) -->
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Urban Ladder" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/urban-ladder/shot-2.png"/></div><div class="ch-mq-label">Urban Ladder</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Sephora" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora-app/shot-1.png"/></div><div class="ch-mq-label">Sephora</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Hamleys" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/hamleys-app/shot-1.png"/></div><div class="ch-mq-label">Hamleys</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="SuperDry" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/superdry.png"/></div><div class="ch-mq-label">SuperDry</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Pottery Barn" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn.png"/></div><div class="ch-mq-label">Pottery Barn</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="West Elm" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/westelm.png"/></div><div class="ch-mq-label">West Elm</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Muji" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/muji.png"/></div><div class="ch-mq-label">Muji</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Mothercare" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/mothercare.png"/></div><div class="ch-mq-label">Mothercare</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="JioGames" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/jiogames/shot-1.png"/></div><div class="ch-mq-label">JioGames</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Pottery Barn Kids" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/pottery-barn-kids.png"/></div><div class="ch-mq-label">Pottery Barn Kids</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Sephora App" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/sephora.png"/></div><div class="ch-mq-label">Sephora · Web</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="Netmeds" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/netmeds/shot-2.png"/></div><div class="ch-mq-label">Netmeds</div></div>
+      <div class="ch-mq-card"><div class="ch-mq-thumb"><img alt="AJIO" loading="lazy" src="https://socialassets.impetusz0.de/rrl-portfolio/images/jcp-channels/ajio/accenture-s33-img06.png"/></div><div class="ch-mq-label">AJIO</div></div>
+    </div>
+  </div>
+</div>
 <!-- Category filter -->
 <div class="ch-filter">
 <button class="ch-filter-btn active" data-filter="all">All · 78</button>
