@@ -12,22 +12,73 @@
 <link href="/present.css" rel="stylesheet"/>
 <script defer="" src="/present.js"></script>
 <style>
-  /* In-page section nav */
-  .story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(239, 231, 210, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
-  .story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
-  .story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
-  .story-toc a:hover { color: var(--ink); background: var(--bone); }
-  .story-toc a.is-active { color: var(--ink); background: var(--bone); }
+/* ALP page-specific styles — Shopify Shipping inspired */
 
+/* Dark value-prop section */
+.alp-dark { background: var(--ink); color: #fff; padding: 80px 0; }
+.alp-dark .section-label { color: var(--coral); }
+.alp-dark h2 { color: #fff; }
+.alp-dark p { color: rgba(255,255,255,0.7); }
+.alp-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+.alp-stat-block { border-left: 2px solid var(--coral); padding-left: 16px; }
+.alp-stat-val { font-family: 'Inter Tight', sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #fff; display: block; }
+.alp-stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(255,255,255,0.5); margin-top: 4px; display: block; }
 
+/* Initiative grid — 3×3 */
+.alp-init-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 768px) { .alp-init-grid { grid-template-columns: 1fr; } .alp-stat-row { grid-template-columns: 1fr; gap: 24px; } }
+.alp-init-card { background: var(--bone); border: 1px solid var(--border); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 8px; }
+.alp-init-card h4 { font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); margin: 0; }
+.alp-init-card p { font-size: 13px; color: var(--ink-muted); margin: 0; flex: 1; }
+.alp-init-status { margin-top: auto; padding-top: 8px; }
 
-/* Open-design.ai inspired 2-col hero split for internal pages */
+/* Bento screenshot grid */
+.alp-bento { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+@media (max-width: 768px) { .alp-bento { grid-template-columns: 1fr; } }
+.alp-bento-card { background: var(--bone); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.alp-bento-card img { width: 100%; display: block; }
+.alp-bento-caption { padding: 16px 20px; font-family: 'Inter Tight', sans-serif; font-size: 15px; font-weight: 600; color: var(--ink); }
+.alp-bento-caption span { display: block; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: var(--ink-muted); margin-top: 4px; }
 
+/* Pull-quote */
+.alp-quote-section { background: var(--ink); padding: 80px 0; }
+.alp-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 2.5vw, 2rem); font-style: italic; color: #fff; max-width: 640px; line-height: 1.4; }
+.alp-quote-attr { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: rgba(255,255,255,0.5); margin-top: 16px; }
 
+/* Roadmap dark section */
+.alp-roadmap { background: #1a1a1a; color: #fff; padding: 80px 0; }
+.alp-roadmap h2 { color: #fff; }
+.alp-roadmap p { color: rgba(255,255,255,0.6); }
+.alp-road-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+@media (max-width: 768px) { .alp-road-grid { grid-template-columns: 1fr; } }
+.alp-road-card { background: #2a2a2a; border-radius: 12px; padding: 28px; }
+.alp-road-card h4 { font-family: 'Inter Tight', sans-serif; font-size: 17px; font-weight: 600; color: #fff; margin: 0 0 8px; }
+.alp-road-card p { font-size: 13px; color: rgba(255,255,255,0.6); margin: 0 0 16px; }
+.alp-road-card ul { list-style: none; padding: 0; margin: 0; }
+.alp-road-card ul li { font-size: 12px; font-family: 'JetBrains Mono', monospace; color: rgba(255,255,255,0.5); padding: 4px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.alp-road-card ul li:first-child { border-top: none; }
 
+/* Lifecycle info strip */
+.alp-lifecycle-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+@media (max-width: 768px) { .alp-lifecycle-strip { grid-template-columns: 1fr; } }
+.alp-lc-card { background: var(--bone); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.alp-lc-card h4 { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--coral); margin: 0 0 12px; }
+.alp-lc-card ol, .alp-lc-card ul { font-size: 13px; color: var(--ink); padding-left: 16px; margin: 0; }
+.alp-lc-card ol { list-style: decimal; }
+.alp-lc-card ul { list-style: none; padding: 0; }
+.alp-lc-card ul li { padding: 3px 0; }
 
-@media (max-width: 900px) {   }
+/* RBAC compact table */
+.alp-rbac-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.alp-rbac-table th { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+.alp-rbac-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; }
+.alp-rbac-table td:first-child { font-weight: 500; white-space: nowrap; }
 
+/* Longer-horizon scroll strip */
+.alp-horizon-strip { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 16px; -webkit-overflow-scrolling: touch; }
+.alp-horizon-chip { flex: 0 0 auto; background: #333; border-radius: 8px; padding: 16px 20px; min-width: 200px; max-width: 240px; }
+.alp-horizon-chip h5 { font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 600; color: #fff; margin: 0 0 6px; }
+.alp-horizon-chip p { font-size: 11px; color: rgba(255,255,255,0.5); margin: 0; }
 </style>
 </head>
 <body>
@@ -99,31 +150,32 @@
 </div>
 </div>
 </nav>
+
 <!-- Hero -->
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);">
 <div class="max-w-7xl mx-auto px-6 text-left">
 <div class="od-hero-split">
   <div class="od-hero-text">
-    <div class="od-hero-eyebrow">Assortment & Lifecycle Planning · Live</div>
-    <h1 class="od-hero-title">ALP.<br/><em>AI-native assortment intelligence.</em></h1>
-    <p class="od-hero-desc">Reliance Retail's AI-native assortment and lifecycle planning platform. Predicts what to buy, when to mark down, and how to allocate — across 43 brands.</p>
+    <div class="od-hero-eyebrow">Asset Lifecycle Platform · Live</div>
+    <h1 class="od-hero-title">ALP.<br/><em>Scouting to keys-in-hand. One system.</em></h1>
+    <p class="od-hero-desc">Reliance Retail's end-to-end new-store-opening platform. One record per candidate site — from lead creation through legal, fit-out, and handover — across all formats.</p>
     <div class="od-hero-stats">
     <div>
-      <span class="od-hero-stat-val">43</span>
-      <span class="od-hero-stat-lbl">Brands on platform</span>
+      <span class="od-hero-stat-val">9</span>
+      <span class="od-hero-stat-lbl">Phase 1 initiatives</span>
     </div>
     <div>
-      <span class="od-hero-stat-val">AI-native</span>
-      <span class="od-hero-stat-lbl">Planning engine</span>
+      <span class="od-hero-stat-val">7 Done</span>
+      <span class="od-hero-stat-lbl">2 In Progress</span>
     </div>
     <div>
-      <span class="od-hero-stat-val">Live</span>
-      <span class="od-hero-stat-lbl">Production</span>
+      <span class="od-hero-stat-val">GJ cluster</span>
+      <span class="od-hero-stat-lbl">Pilot live · Apr 2026</span>
     </div>
   </div>
     <div class="od-hero-meta">
-    <span class="od-hero-badge"><span class="dot"></span> Live · F&L AI Platform</span>
-    <span class="od-hero-badge">Impetus · Fynd × Reliance Retail</span>
+    <span class="od-hero-badge"><span class="dot"></span> Live · NSO Platform</span>
+    <span class="od-hero-badge">Fynd × Reliance Retail</span>
   </div>
   </div>
   <div class="od-hero-graphic">
@@ -148,354 +200,243 @@
 <text fill="#c8a97e" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" x="315" y="182">build</text>
 <text fill="#c8a97e" font-family="Inter,sans-serif" font-size="8" text-anchor="middle" x="385" y="182">handoff</text>
 <rect fill="#2d2d2d" height="40" rx="8" width="140" x="140" y="56"></rect>
-<text fill="#e07a5f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle" x="210" y="74">6 of 9 Phase 1</text>
+<text fill="#e07a5f" font-family="JetBrains Mono,monospace" font-size="9" text-anchor="middle" x="210" y="74">7 of 9 Done</text>
 <text fill="#c8a97e" font-family="Inter,sans-serif" font-size="9" text-anchor="middle" x="210" y="89">GJ-cluster · Apr 2026</text>
 <text fill="#c8a97e" font-family="JetBrains Mono,monospace" font-size="8" letter-spacing="1" opacity="0.6" text-anchor="middle" x="210" y="270">ASSET LIFECYCLE PLATFORM</text>
 </svg>
 </div>
 </div>
 </div>
-<!-- Stats row below hero -->
-<div class="grid md:grid-cols-3 gap-6 mt-8">
-<div class="card p-6"><div class="cap-num mb-1">Phase 1 initiatives</div><div class="display-2 text-3xl" style="color: var(--ink);">9</div><div class="cap-num mt-2">6 Done · 2 In Progress · 1 deferred</div></div>
-<div class="card p-6"><div class="cap-num mb-1">Pilot scope</div><div class="font-semibold" style="color: var(--ink);">GJ cluster · grocery formats</div></div>
-<div class="card p-6"><div class="cap-num mb-1">RIL counterpart</div><div class="font-semibold" style="color: var(--ink);">Irin Mathew</div></div>
-</div>
-
 </div>
 </section>
-<!-- Sticky in-page TOC -->
-<div class="story-toc">
-<div class="story-toc-inner" id="story-toc">
-<a href="#overview">01 · Overview</a>
-<a href="#phase1">02 · Phase 1</a>
-<a href="#lifecycle">03 · Lifecycle</a>
-<a href="#access">04 · Access</a>
-<a href="#roadmap">05 · Roadmap</a>
+
+<!-- Dark value-prop section — "What ALP replaces" -->
+<section class="alp-dark">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">The problem it solves</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4">NSO ran on email + spreadsheets.<br/>ALP replaces all of it.</h2>
+<p class="text-base max-w-3xl">Document exchange over email, scattered site-assessment notes with no audit trail, no single state-by-state AOP funnel. ALP gives every candidate site one record — lead creation through legal, fit-out, and payments — with role-based access scoped on login.</p>
+<div class="alp-stat-row">
+<div class="alp-stat-block">
+<span class="alp-stat-val">11</span>
+<span class="alp-stat-lbl">Status taxonomy · auto-applied by role</span>
+</div>
+<div class="alp-stat-block">
+<span class="alp-stat-val">7 tabs</span>
+<span class="alp-stat-lbl">Per lead · Overview → Payments</span>
+</div>
+<div class="alp-stat-block">
+<span class="alp-stat-val">SAML SSO</span>
+<span class="alp-stat-lbl">Reliance accounts · IRM-compliant</span>
 </div>
 </div>
-<!-- §01 · What ALP is for Reliance -->
-<section class="py-16 border-b" id="overview" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">01 · What ALP is for Reliance</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">From scouting to keys-in-hand · in one system<span class="dot" style="color:var(--coral);">.</span></h2>
-<div class="grid md:grid-cols-3 gap-4">
-<div class="card p-6"><div class="cap-num mb-2" style="color: var(--red);">Problem</div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">NSO ran on email + spreadsheets.</h3>
-<ul class="text-sm space-y-1.5" style="color: var(--ink-muted);">
-<li>· Document exchange ran over email · ALP replaces with in-app uploads + comments per lead (PRD §Lead Creation)</li>
-<li>· Approvals tracked manually across RE, BT, NSO, Format CFO, Apex</li>
-<li>· Site assessment notes scattered · no audit trail</li>
-<li>· No single state-by-state or format-by-format AOP funnel</li>
-</ul>
 </div>
-<div class="card p-6"><div class="cap-num mb-2" style="color: var(--accent);">What ALP does</div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">One record per candidate site. End-to-end.</h3>
-<ul class="text-sm space-y-1.5" style="color: var(--ink-muted);">
-<li>· Lead creation form + auto-generated Lead ID (<span class="mono">ALP-2026-NNNN</span>)</li>
-<li>· 7-tab Lead Details · Overview → Site Visit → Validation → Approvals → Legal → Fit-Out → Payments</li>
-<li>· 11-state lifecycle · ageing in days from BT-submission</li>
-<li>· Role-Based Access Control scoped to state (RE) and format-category (BT)</li>
-<li>· Activity log + backend audit trail per lead</li>
-</ul>
+</section>
+
+<!-- Phase 1 initiatives — 3×3 grid -->
+<section class="py-16 border-b" id="phase1" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Phase 1 · what's live today</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Nine initiatives. Seven shipped<span class="dot" style="color:var(--coral);">.</span></h2>
+<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source-of-truth from the Phase 1 project plan. Each card maps 1:1 to a row in that plan.</p>
+<div class="alp-init-grid">
+<div class="alp-init-card">
+<h4>Governance &amp; Access</h4>
+<p>SAML SSO + RBAC across RE / BT / Legal / EPC teams, scoped by state and format-category.</p>
+<div class="alp-init-status"><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></div>
 </div>
-<div class="card p-6"><div class="cap-num mb-2" style="color: var(--green);">Impact today</div>
-<h3 class="font-semibold mb-2" style="color: var(--ink);">GJ-cluster pilot live, Apr-2026.</h3>
-<ul class="text-sm space-y-1.5" style="color: var(--ink-muted);">
-<li>· Live data captured for the GJ-cluster pilot · including TEST leads from UAT</li>
-<li>· 11-status taxonomy live · auto-applied filters by role</li>
-<li>· SAML SSO with Reliance accounts · IRM-compliant</li>
-<li>· 4 manual-update tabs ready for Phase 2 integration with Board / Sirion / R-Dash / SAP</li>
-</ul>
+<div class="alp-init-card">
+<h4>AOP &amp; Catchment Ingestion</h4>
+<p>Upload AOP data, tag catchment per lead. Powers the funnel cards on the dashboard.</p>
+<div class="alp-init-status"><span class="pill pill-build"><span class="status-dot dot-amber"></span> In Progress</span></div>
+</div>
+<div class="alp-init-card">
+<h4>ALP Dashboard</h4>
+<p>AOP funnel in 5 cards (RE vs BT view). Leads table with filter, search, ageing column.</p>
+<div class="alp-init-status"><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></div>
+</div>
+<div class="alp-init-card">
+<h4>Lead Creation</h4>
+<p>Detailed form, auto-generated Lead ID, document upload + comments (replaces email exchange).</p>
+<div class="alp-init-status"><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></div>
+</div>
+<div class="alp-init-card">
+<h4>Lead Journey Workflow</h4>
+<p>7-tab Details page, Progress Timeline (7 stages), Activity Log, multi-function approval mechanism.</p>
+<div class="alp-init-status"><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></div>
+</div>
+<div class="alp-init-card">
+<h4>Prototype for Feedback</h4>
+<p>Frontend-only prototype shipped to limited RE / BT / NSO users for early UAT.</p>
+<div class="alp-init-status"><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></div>
+</div>
+<div class="alp-init-card">
+<h4>AI Business Feasibility</h4>
+<p>Location intelligence from Retail Vista; AI scoring + recommendation per site. Blocked on Vista data.</p>
+<div class="alp-init-status"><span class="pill pill-phase2">Phase 2</span></div>
+</div>
+<div class="alp-init-card">
+<h4>Email Alerts &amp; Escalations</h4>
+<p>5–10 email triggers across the workflow with recipients, SLAs, and escalation hierarchy.</p>
+<div class="alp-init-status"><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></div>
+</div>
+<div class="alp-init-card">
+<h4>Feedback &amp; Testing</h4>
+<p>Feedback incorporation from PMs, formats, NSO. Testing across roles.</p>
+<div class="alp-init-status"><span class="pill pill-build"><span class="status-dot dot-amber"></span> In Progress</span></div>
 </div>
 </div>
-</div></section>
-<!-- §02 · Phase 1 · what's live today -->
-<div class="od-index-bar"><span class="od-bar-title">PHASE 1 · WHAT'S LIVE TODAY <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">001 / 004</span></div>
-<section class="py-16 border-b" id="phase1" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">02 · Phase 1 · what's live today</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Nine initiatives · seven Done · two In Progress<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Source-of-truth status from <span class="mono">ALP project plan for phase 1.xlsx</span>. Each initiative below maps 1:1 to a row in that plan.</p>
-<div class="card overflow-hidden">
-<table class="grid-table">
-<thead><tr><th style="width: 30%;">Initiative</th><th>What it does</th><th style="width: 18%;">Status</th></tr></thead>
-<tbody>
-<tr>
-<td class="font-medium">1 · Governance &amp; Access</td>
-<td class="text-sm">SAML SSO with Reliance accounts. Role-Based Access Control (RBAC) across RE / BT / Legal / EPC teams · scoped by state, format-category, region.</td>
-<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
-</tr>
-<tr>
-<td class="font-medium">2 · AOP &amp; catchment ingestion</td>
-<td class="text-sm">Upload AOP data; tag catchment per lead. Powers the funnel cards on the dashboard.</td>
-<td><span class="pill pill-build"><span class="status-dot dot-amber"></span> In Progress</span></td>
-</tr>
-<tr>
-<td class="font-medium">3 · ALP Dashboard</td>
-<td class="text-sm">AOP funnel in 5 cards (RE view vs BT view differs). Leads table with filter, search, ageing column.</td>
-<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
-</tr>
-<tr>
-<td class="font-medium">4 · Lead Creation</td>
-<td class="text-sm">Detailed lead form. Auto-generated Lead ID. Document upload + comments (replaces email exchange).</td>
-<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
-</tr>
-<tr>
-<td class="font-medium">5 · Lead Journey workflow</td>
-<td class="text-sm">7-tab Lead Details page · Progress Timeline (7 stages) · Activity Log · multi-function approval mechanism · manual updates from Board / Sirion / R-Dash / SAP / FR Portal pending Phase 2.</td>
-<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
-</tr>
-<tr>
-<td class="font-medium">6 · Prototype for feedback</td>
-<td class="text-sm">Frontend-only prototype shipped to limited RE / BT / NSO users for early UAT.</td>
-<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
-</tr>
-<tr>
-<td class="font-medium">7 · AI Business Feasibility scoring</td>
-<td class="text-sm">Ingest location intelligence from Retail Vista; AI scoring + recommendation per site. Blocked on Vista data + sub-team availability.</td>
-<td><span class="pill pill-phase2">Phase 2</span></td>
-</tr>
-<tr>
-<td class="font-medium">8 · Email alerts &amp; escalations</td>
-<td class="text-sm">5–10 email triggers across the workflow · recipients + SLAs + escalation hierarchy gathered from formats.</td>
-<td><span class="pill pill-live"><span class="status-dot dot-green"></span> Done</span></td>
-</tr>
-<tr>
-<td class="font-medium">9 · Feedback &amp; Testing</td>
-<td class="text-sm">Feedback incorporation from PMs, formats, NSO. Testing across roles.</td>
-<td><span class="pill pill-build"><span class="status-dot dot-amber"></span> In Progress</span></td>
-</tr>
-</tbody>
-</table>
+<p class="mt-6 mono text-xs" style="color: var(--ink-muted);">Risk register · Retail Vista dependency · cross-format data-gathering for RBAC/SLA config · prototype-feedback turnaround.</p>
 </div>
-<p class="mt-4 mono text-xs" style="color: var(--ink-muted);">Risk register (per plan) · Retail Vista dependency · cross-format data-gathering for RBAC/SLA config · prototype-feedback turnaround.</p>
-</div></section>
-<!-- §03 · Lead lifecycle + screens -->
-<div class="od-index-bar"><span class="od-bar-title">LEAD LIFECYCLE · HOW THE PLATFORM WORKS <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">002 / 004</span></div>
-<section class="py-16 border-b" id="lifecycle" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">03 · Lead lifecycle · how the platform works</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">11 statuses · 7 tabs · 7 timeline stages · live screens<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Every lead in ALP carries an ID, sits in one of 11 statuses, and progresses through a 7-tab Details page. The Progress Timeline widget at the top of every Lead Details collapses the journey into 7 stages from Site Details through Rent Declaration.</p>
-<div class="grid md:grid-cols-3 gap-6 mb-10">
-<div class="card p-6">
-<div class="cap-num mb-3">11 statuses · home dashboard</div>
-<ol class="text-sm space-y-1.5 mono" style="color: var(--ink); list-style: decimal inside; padding-left: 0;">
-<li>Draft</li>
-<li>New</li>
-<li>Under BT validation</li>
-<li>Under Negotiations</li>
-<li>Under BT approvals</li>
-<li>Under Apex approval</li>
-<li>Confirmed Properties</li>
-<li>RFC offered</li>
-<li>RFC under fit-outs</li>
-<li>Operational</li>
-<li>Rejected</li>
+</section>
+
+<!-- Lead lifecycle — info strip + bento screenshots -->
+<section class="py-16 border-b" id="lifecycle" style="border-color: var(--border); background: var(--bone);">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Lead lifecycle</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">11 statuses · 7 tabs · 7 stages<span class="dot" style="color:var(--coral);">.</span></h2>
+
+<div class="alp-lifecycle-strip">
+<div class="alp-lc-card">
+<h4>11 statuses</h4>
+<ol>
+<li>Draft</li><li>New</li><li>Under BT validation</li><li>Under Negotiations</li><li>Under BT approvals</li><li>Under Apex approval</li><li>Confirmed Properties</li><li>RFC offered</li><li>RFC under fit-outs</li><li>Operational</li><li>Rejected</li>
 </ol>
 </div>
-<div class="card p-6">
-<div class="cap-num mb-3">7 tabs · Lead Details page</div>
-<ul class="text-sm space-y-1.5" style="color: var(--ink);">
-<li><span class="mono text-xs" style="color: var(--ink-muted);">01</span>   Overview · basic + property details</li>
-<li><span class="mono text-xs" style="color: var(--ink-muted);">02</span>   Site Visit Assessment · BT-led</li>
-<li><span class="mono text-xs" style="color: var(--ink-muted);">03</span>   Validations · feasibility + approval</li>
-<li><span class="mono text-xs" style="color: var(--ink-muted);">04</span>   Approvals · 11-card ladder ending at Apex</li>
-<li><span class="mono text-xs" style="color: var(--ink-muted);">05</span>   Legal · LDD → LOI → Agreement</li>
-<li><span class="mono text-xs" style="color: var(--ink-muted);">06</span>   Fit-Out · SDR → RFC offered</li>
-<li><span class="mono text-xs" style="color: var(--ink-muted);">07</span>   Payments · post-approval only</li>
+<div class="alp-lc-card">
+<h4>7 tabs · Lead Details</h4>
+<ul>
+<li>01 Overview · basic + property details</li>
+<li>02 Site Visit Assessment · BT-led</li>
+<li>03 Validations · feasibility + approval</li>
+<li>04 Approvals · 11-card ladder → Apex</li>
+<li>05 Legal · LDD → LOI → Agreement</li>
+<li>06 Fit-Out · SDR → RFC offered</li>
+<li>07 Payments · post-approval only</li>
 </ul>
 </div>
-<div class="card p-6">
-<div class="cap-num mb-3">7 stages · Progress Timeline</div>
-<ul class="text-sm space-y-1.5" style="color: var(--ink);">
-<li><span class="status-dot dot-green"></span> Site Details · Lead created + Submitted</li>
-<li><span class="status-dot dot-green"></span> Validations · BT validations + Negotiation</li>
-<li><span class="status-dot dot-green"></span> Approvals · Site → BT → Apex</li>
+<div class="alp-lc-card">
+<h4>7 stages · Progress Timeline</h4>
+<ul>
+<li><span class="status-dot dot-green"></span> Site Details</li>
+<li><span class="status-dot dot-green"></span> Validations</li>
+<li><span class="status-dot dot-green"></span> Approvals</li>
 <li><span class="status-dot dot-grey"></span> Legal · ATL signed</li>
-<li><span class="status-dot dot-grey"></span> Fit-Out · layout + SOW + handover</li>
-<li><span class="status-dot dot-grey"></span> Operational · store live</li>
-<li><span class="status-dot dot-grey"></span> Rent Declaration · final settlement</li>
+<li><span class="status-dot dot-grey"></span> Fit-Out · layout + SOW</li>
+<li><span class="status-dot dot-grey"></span> Operational</li>
+<li><span class="status-dot dot-grey"></span> Rent Declaration</li>
 </ul>
 </div>
 </div>
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">03 overview tab</span></div><div class="screenshot-body"><a class="js-lightbox" href="/assets/alp/03-overview-tab.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
-<img alt="ALP Lead Details · Overview tab with 7-stage Progress Timeline and 7 tabs" class="od-img" src="/assets/alp/03-overview-tab.jpg"/>
-</a></div></div>
-<p class="mt-3 mono text-xs" style="color: var(--ink-muted);">Lead Details · Overview tab · TEST lead · GJ cluster · Progress Timeline at top.</p>
-<div class="cap-num mt-12 mb-3" style="color: var(--accent);">Live screens · click any image to enlarge</div>
-<div class="grid md:grid-cols-2 gap-6">
-<div>
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">01 dashboard</span></div><div class="screenshot-body"><a class="js-lightbox" href="/assets/alp/01-dashboard.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
-<img alt="ALP Lead Management Dashboard · RE team view" class="od-img" src="/assets/alp/01-dashboard.jpg"/>
-</a></div></div>
-<p class="cap-num mt-2"><strong style="color: var(--ink);">Lead Management Dashboard</strong> · RE team view · GJ cluster · 5 leads. Five AOP funnel cards above; filterable leads table below with State / Format / Format Category / Status / Catchment / City filters.</p>
+
+<!-- Bento screenshot grid -->
+<div class="alp-bento">
+<div class="alp-bento-card">
+<a class="js-lightbox" href="/assets/alp/01-dashboard.jpg"><img alt="ALP Dashboard" class="od-img" src="/assets/alp/01-dashboard.jpg"/></a>
+<div class="alp-bento-caption">Lead Management Dashboard<span>RE team view · GJ cluster · 5 AOP funnel cards + filterable leads table</span></div>
 </div>
-<div>
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">02 leads tracker</span></div><div class="screenshot-body"><a class="js-lightbox" href="/assets/alp/02-leads-tracker.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
-<img alt="ALP Leads Tracker · all-format pivot view" class="od-img" src="/assets/alp/02-leads-tracker.jpg"/>
-</a></div></div>
-<p class="cap-num mt-2"><strong style="color: var(--ink);">Leads Tracker · all formats</strong>. Pivot view by Format Category × Format · AOP / Operational / RFC Under Fit-outs / RFC Offered / Confirmed Properties / Total / Balance to Acquire. The leadership view across categories.</p>
+<div class="alp-bento-card">
+<a class="js-lightbox" href="/assets/alp/02-leads-tracker.jpg"><img alt="Leads Tracker" class="od-img" src="/assets/alp/02-leads-tracker.jpg"/></a>
+<div class="alp-bento-caption">Leads Tracker · all formats<span>Pivot by Format Category × Format · AOP / Operational / Balance to Acquire</span></div>
 </div>
-<div>
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">05 site assessment</span></div><div class="screenshot-body"><a class="js-lightbox" href="/assets/alp/05-site-assessment.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
-<img alt="ALP Site Visit Assessment tab · BT view, RE locked" class="od-img" src="/assets/alp/05-site-assessment.jpg"/>
-</a></div></div>
-<p class="cap-num mt-2"><strong style="color: var(--ink);">Site Visit Assessment tab</strong>. BT-only edit access · RE has read-only view. Free-text fields for Business Potential / Competing Stores / Catchment / Sales Projection. Soft Approve / Reject / On Hold / Raise Query to RE at the bottom.</p>
+<div class="alp-bento-card">
+<a class="js-lightbox" href="/assets/alp/03-overview-tab.jpg"><img alt="Overview Tab" class="od-img" src="/assets/alp/03-overview-tab.jpg"/></a>
+<div class="alp-bento-caption">Lead Details · Overview tab<span>7-stage Progress Timeline at top · TEST lead · GJ cluster</span></div>
 </div>
-<div>
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">04 approvals tab</span></div><div class="screenshot-body"><a class="js-lightbox" href="/assets/alp/04-approvals-tab.jpg" rel="noopener" target="_blank" title="Open full-size screenshot">
-<img alt="ALP Approvals tab · Site Approvals cards" class="od-img" src="/assets/alp/04-approvals-tab.jpg"/>
-</a></div></div>
-<p class="cap-num mt-2"><strong style="color: var(--ink);">Approvals tab</strong>. 4 Site Approval cards (Site selection · EPC Contractor · Quality &amp; Quantity BO certification · Quality &amp; Quantity third-party). 11 Business Approval cards above end at <strong>Apex</strong> (after RRVL CFO Office · RRVL CLT). Each card: completion date + status dropdown (Approved / Not applicable / Rejected) + supporting document upload.</p>
+<div class="alp-bento-card">
+<a class="js-lightbox" href="/assets/alp/04-approvals-tab.jpg"><img alt="Approvals Tab" class="od-img" src="/assets/alp/04-approvals-tab.jpg"/></a>
+<div class="alp-bento-caption">Approvals tab<span>4 Site Approval + 11 Business Approval cards ending at Apex</span></div>
 </div>
 </div>
-</div></section>
-<!-- §04 · Access model · who sees what -->
-<div class="od-index-bar"><span class="od-bar-title">ACCESS MODEL · WHO SEES WHAT <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">003 / 004</span></div>
-<section class="py-16 border-b" id="access" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">04 · Access model · who sees what</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Role-Based Access Control · scoped on login<span class="dot" style="color:var(--coral);">.</span></h2>
+
+<p class="mt-6 mono text-xs" style="color: var(--ink-muted);">Click any screenshot to enlarge · TEST leads from GJ-cluster UAT.</p>
+</div>
+</section>
+
+<!-- Pull-quote -->
+<section class="alp-quote-section">
+<div class="max-w-7xl mx-auto px-6">
+<p class="alp-quote">"From email + spreadsheets to one record per site. Every stakeholder — RE, BT, Legal, EPC — sees exactly what they need, scoped on login."</p>
+<p class="alp-quote-attr">ALP · Asset Lifecycle Platform · Fynd × Reliance Retail</p>
+</div>
+</section>
+
+<!-- Access model — compact table -->
+<section class="py-16 border-b" id="access" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3">Access model</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">Role-Based Access Control<span class="dot" style="color:var(--coral);">.</span></h2>
 <div class="card overflow-hidden">
-<table class="grid-table">
+<table class="alp-rbac-table">
 <thead><tr><th>Role</th><th>Sees</th><th>Creates</th><th>Edits</th></tr></thead>
 <tbody>
-<tr>
-<td class="font-medium">RE State team</td>
-<td class="text-sm">Leads in their state only · across all format categories</td>
-<td class="text-sm">Leads in their state · state filter pre-applied</td>
-<td class="text-sm">Lead creator only · Overview tab editable until BT submission</td>
-</tr>
-<tr>
-<td class="font-medium">RE NHQ / Leadership</td>
-<td class="text-sm">All states · all format categories · same dashboard, no auto-filter</td>
-<td class="text-sm">Same as state RE</td>
-<td class="text-sm">No special edit privilege beyond ownership</td>
-</tr>
-<tr>
-<td class="font-medium">Business team (BT / NSO) · Format-category</td>
-<td class="text-sm">Leads in their format category · across all states</td>
-<td class="text-sm">Leads in their format category <em>and</em> their region only</td>
-<td class="text-sm">Site Visit Assessment + Validation tabs · approval cards per RBAC</td>
-</tr>
-<tr>
-<td class="font-medium">BT Format-category Leadership</td>
-<td class="text-sm">All format categories · cross-region</td>
-<td class="text-sm">Any format category · any region</td>
-<td class="text-sm">Approval cards in their function</td>
-</tr>
-<tr>
-<td class="font-medium">Legal team (part of RE)</td>
-<td class="text-sm">Leads handed to legal · LDD onwards</td>
-<td class="text-sm">n/a</td>
-<td class="text-sm">Legal tab cards (LDD / LOI / Agreement Registered)</td>
-</tr>
-<tr>
-<td class="font-medium">EPC team</td>
-<td class="text-sm">Leads at fit-out stage</td>
-<td class="text-sm">n/a</td>
-<td class="text-sm">Construction tab cards · split with RE per card</td>
-</tr>
+<tr><td>RE State team</td><td>Leads in their state · all format categories</td><td>Leads in their state</td><td>Lead creator only · Overview editable until BT submission</td></tr>
+<tr><td>RE NHQ / Leadership</td><td>All states · all categories · no auto-filter</td><td>Same as state RE</td><td>No special privilege beyond ownership</td></tr>
+<tr><td>BT / NSO · Format-category</td><td>Leads in their format category · all states</td><td>Their format category + region only</td><td>Site Visit + Validation tabs · approval cards per RBAC</td></tr>
+<tr><td>BT Leadership</td><td>All format categories · cross-region</td><td>Any category · any region</td><td>Approval cards in their function</td></tr>
+<tr><td>Legal team</td><td>Leads handed to legal · LDD onwards</td><td>n/a</td><td>Legal tab cards (LDD / LOI / Agreement)</td></tr>
+<tr><td>EPC team</td><td>Leads at fit-out stage</td><td>n/a</td><td>Construction tab cards · split with RE</td></tr>
 </tbody>
 </table>
 </div>
-</div></section>
-<!-- §05 · Phase 2 · roadmap -->
-<div class="od-index-bar"><span class="od-bar-title">PHASE 2 · ROADMAP <span class="od-bar-dot">·</span> Ajio Logistics</span><span class="od-bar-counter">004 / 004</span></div>
-<section class="py-16 border-b" id="roadmap" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">05 · Phase 2 · roadmap</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Two horizons<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Group A is the explicit Phase 2 plan from the project file · scoped, sequenced, not yet started (per plan Sheet 2). Group B captures longer-horizon platform intent that does not yet have a PRD or build owner.</p>
-<h3 class="font-semibold text-lg mb-4" style="color: var(--ink);">A · Phase 2 plan</h3>
-<div class="card overflow-hidden mb-10">
-<table class="grid-table">
-<thead><tr><th style="width: 28%;">Item</th><th>What it does</th><th style="width: 14%;">Status</th></tr></thead>
-<tbody>
-<tr>
-<td class="font-medium">AI Business Feasibility scoring</td>
-<td class="text-sm">Standardise the go / no-go decision per site · ingest Retail Vista location intelligence · weight against past-store performance · iterate prompts and agent architecture.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">Retail Vista integration</td>
-<td class="text-sm">Auto-fetch Catchment ID per lead · feed feasibility model. Catalogued as mandatory in the project plan.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">Board · Approvals integration</td>
-<td class="text-sm">Replace manual Approvals-tab updates · two-way data exchange + redirection without re-login.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">Sirion · Legal integration</td>
-<td class="text-sm">Replace manual Legal-tab updates · LDD / LOI / Agreement milestones flow back into ALP.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">R-Dash · Construction integration</td>
-<td class="text-sm">Replace manual Construction/Fit-Out updates · SDR / RFC milestones reflect inside ALP.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">FR Portal / SAP · Payments integration</td>
-<td class="text-sm">Payments-tab cards updated post-approval via FR Portal &amp; SAP integration.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">Mobile lead creation</td>
-<td class="text-sm">Limited-fields create-lead on mobile · including offline mode (subject to Reliance info-sec sign-off).</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">Advanced forms</td>
-<td class="text-sm">Term Sheet · LDD · Site Evaluation Report · Rent Intelligence Dashboard · License Tracking · Maintenance. (Today only the SOW form ships; the rest are tagged Coming Soon.)</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">Advanced SLA &amp; escalation matrix</td>
-<td class="text-sm">Beyond the 5–10 live triggers · per-format and per-state SLA tiers, escalation hierarchy.</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-<tr>
-<td class="font-medium">AI summary on lead details</td>
-<td class="text-sm">Auto-generated summary of stage, last update, key blockers (today shown as "Coming soon" placeholder in screenshots).</td>
-<td><span class="pill pill-phase2">Planned</span></td>
-</tr>
-</tbody>
-</table>
 </div>
-<h3 class="font-semibold text-lg mb-4" style="color: var(--ink);">B · Longer-horizon platform intent</h3>
-<p class="text-sm max-w-3xl mb-6" style="color: var(--ink-muted);">Capabilities under consideration for the platform beyond Phase 2.</p>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Site selection AI</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Geospatial site scoring on Vista signals (catchment, parcel-gravity, drive-time) per format.</p>
+</section>
+
+<!-- Roadmap — dark "Growth, delivered" style -->
+<section class="alp-roadmap" id="roadmap">
+<div class="max-w-7xl mx-auto px-6">
+<div class="section-label mb-3" style="color: var(--coral);">Phase 2 · Roadmap</div>
+<h2 class="display-2 text-3xl md:text-4xl mb-4">Two horizons<span class="dot" style="color:var(--coral);">.</span></h2>
+<p class="text-base max-w-3xl mb-2">Group A is the explicit Phase 2 plan — scoped, sequenced, not yet started. Group B captures longer-horizon platform intent without a PRD or build owner.</p>
+
+<div class="alp-road-grid">
+<div class="alp-road-card">
+<h4>AI Intelligence</h4>
+<p>Location scoring + feasibility automation powered by Retail Vista signals.</p>
+<ul>
+<li>AI Business Feasibility scoring</li>
+<li>Retail Vista integration</li>
+<li>AI summary on lead details</li>
+</ul>
 </div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Lease intelligence</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Lease &amp; Contracts module · LOI to keys · renewal calendar · auto-link to ERP and legal repo.</p>
+<div class="alp-road-card">
+<h4>System Integrations</h4>
+<p>Replace all manual-update tabs with two-way data exchange.</p>
+<ul>
+<li>Board · Approvals integration</li>
+<li>Sirion · Legal integration</li>
+<li>R-Dash · Construction integration</li>
+<li>FR Portal / SAP · Payments</li>
+</ul>
 </div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Rent benchmarking</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Per-hex, per-format rent comparables · flag overpay risk during LOI.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Footfall prediction</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Pre-open forecast · feeds the Feasibility Engine.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Productivity scorecard</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Per-store sales-per-sqft, footfall-conversion, attach-rate score · loop back into Feasibility v2.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Closure / relocation</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Decision framework for underperforming stores · revenue-displacement modelling per format.</p>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Cross-format visibility</div><span class="pill pill-phase2">Roadmap</span></div>
-<p class="text-sm" style="color: var(--ink-muted);">Single pane · every site, every format, on one map for Apex review.</p>
+<div class="alp-road-card">
+<h4>Mobile + Advanced Forms</h4>
+<p>Field-first creation and richer data capture across the lifecycle.</p>
+<ul>
+<li>Mobile lead creation (offline mode)</li>
+<li>Term Sheet · LDD · Site Eval Report</li>
+<li>Rent Intelligence Dashboard</li>
+<li>Advanced SLA &amp; escalation matrix</li>
+</ul>
 </div>
 </div>
-</div></section>
-<div class="container" style="padding-bottom: 32px;">
+
+<!-- Longer-horizon scroll strip -->
+<h3 style="font-size: 15px; font-weight: 600; color: #fff; margin-top: 48px; margin-bottom: 16px;">Longer-horizon platform intent</h3>
+<div class="alp-horizon-strip">
+<div class="alp-horizon-chip"><h5>Site Selection AI</h5><p>Geospatial scoring on catchment, parcel-gravity, drive-time per format.</p></div>
+<div class="alp-horizon-chip"><h5>Lease Intelligence</h5><p>LOI to keys · renewal calendar · auto-link to ERP and legal repo.</p></div>
+<div class="alp-horizon-chip"><h5>Rent Benchmarking</h5><p>Per-hex, per-format comparables · flag overpay risk during LOI.</p></div>
+<div class="alp-horizon-chip"><h5>Footfall Prediction</h5><p>Pre-open forecast feeding the Feasibility Engine.</p></div>
+<div class="alp-horizon-chip"><h5>Productivity Scorecard</h5><p>Sales-per-sqft, footfall-conversion, attach-rate per store.</p></div>
+<div class="alp-horizon-chip"><h5>Closure / Relocation</h5><p>Decision framework for underperforming stores · revenue-displacement modelling.</p></div>
+<div class="alp-horizon-chip"><h5>Cross-format Visibility</h5><p>Single pane — every site, every format, on one map for Apex review.</p></div>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<div class="container" style="padding-bottom: 32px; padding-top: 32px;">
 <hr class="od-dashed-sep"/>
 <div class="od-practice-bar">
 <span>Fynd × Reliance Retail · ALP</span>
@@ -505,7 +446,8 @@
 <footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
 <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>
-<!-- Lightbox overlay (vanilla JS, no deps) -->
+
+<!-- Lightbox overlay -->
 <div aria-label="Screenshot preview" aria-modal="true" id="lightbox" role="dialog" style="display:none; position:fixed; inset:0; z-index:1000; background:rgba(10,10,10,0.92); align-items:center; justify-content:center; padding:32px; cursor:zoom-out;">
 <button aria-label="Close preview" id="lightbox-close" style="position:absolute; top:20px; right:24px; background:transparent; border:0; color:#fff; font-size:32px; line-height:1; cursor:pointer; padding:8px 12px;" type="button">×</button>
 <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Screenshot</span></div><div class="screenshot-body"><img alt="" class="od-img" id="lightbox-img" src="" style="cursor:auto"/></div></div>
@@ -528,34 +470,6 @@
   box.addEventListener('click', function(e){ if(e.target === box || e.target === img) close(); });
   closeBtn.addEventListener('click', close);
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && box.style.display === 'flex') close(); });
-})();
-</script>
-<script>
-(function() {
-  var toc = document.getElementById('story-toc');
-  if (!toc) return;
-  var links = Array.from(toc.querySelectorAll('a'));
-  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
-
-  function setActive(id) {
-    links.forEach(function(a) {
-      var hashId = a.getAttribute('href').slice(1);
-      a.classList.toggle('is-active', hashId === id);
-    });
-    var active = toc.querySelector('a.is-active');
-    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-  }
-
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) setActive(e.target.id);
-    });
-  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
-
-  ids.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) io.observe(el);
-  });
 })();
 </script>
 <script>
