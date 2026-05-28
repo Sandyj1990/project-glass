@@ -12,17 +12,7 @@
 <link href="/present.css" rel="stylesheet"/>
 <script defer="" src="/present.js"></script>
 <style>
-.video-thumb {
-  position: relative; aspect-ratio: 16/9; background: var(--bone);
-  border-radius: 8px 8px 0 0; overflow: hidden; border-bottom: 1px solid var(--border);
-  cursor: pointer;
-}
-.video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.video-thumb .play-overlay {
-  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
-  color: white; font-size: 40px; opacity: 0.85;
-}
+/* ── Lightbox ── */
 .lightbox {
   position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 100;
   display: none; align-items: center; justify-content: center; padding: 4vh 4vw;
@@ -47,8 +37,285 @@
 .image-lightbox-frame img { display: block; max-width: 100%; max-height: 92vh; width: auto; height: auto; }
 img.zoomable { cursor: zoom-in; transition: opacity 0.15s; }
 img.zoomable:hover { opacity: 0.92; }
+.video-thumb {
+  position: relative; aspect-ratio: 16/9; background: var(--bone);
+  border-radius: 8px 8px 0 0; overflow: hidden; border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.video-thumb .play-overlay {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.4));
+  color: white; font-size: 40px; opacity: 0.85;
+}
 
+/* ── Shopify Orders-style: dark full-bleed section ── */
+.ucp-dark-section {
+  background: var(--ink);
+  color: white;
+  padding: 80px 0;
+}
+.ucp-dark-section .section-label { color: rgba(255,255,255,0.45); }
+.ucp-dark-section h2 { color: white; }
+.ucp-dark-section p { color: rgba(255,255,255,0.7); }
 
+/* ── Feature tabs (Shopify-style 3 tabs) ── */
+.ucp-feature-tabs {
+  display: flex; gap: 0; border-bottom: 2px solid var(--border);
+  margin-bottom: 40px; overflow-x: auto;
+}
+.ucp-feature-tab {
+  padding: 14px 24px; font-size: 14px; font-weight: 600;
+  color: var(--ink-muted); cursor: pointer; border: none; background: none;
+  border-bottom: 3px solid transparent; margin-bottom: -2px;
+  white-space: nowrap; transition: color 0.15s, border-color 0.15s;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.03em;
+}
+.ucp-feature-tab:hover { color: var(--ink); }
+.ucp-feature-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.ucp-tab-panel { display: none; }
+.ucp-tab-panel.active { display: block; }
+
+/* ── Alternating feature deep-dive (Shopify Orders style) ── */
+.ucp-feature-section {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--border);
+}
+.ucp-feature-section:nth-child(even) { background: var(--bone); }
+.ucp-feature-split {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+}
+.ucp-feature-split.reverse { direction: rtl; }
+.ucp-feature-split.reverse > * { direction: ltr; }
+.ucp-feature-eyebrow {
+  font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--accent); margin-bottom: 12px;
+}
+.ucp-feature-heading {
+  font-family: 'Inter Tight', sans-serif; font-size: clamp(28px, 3vw, 40px);
+  font-weight: 800; color: var(--ink); line-height: 1.15; margin-bottom: 16px;
+}
+.ucp-feature-desc {
+  font-size: 16px; color: var(--ink-muted); line-height: 1.65; margin-bottom: 28px;
+}
+.ucp-feature-mini-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px;
+}
+.ucp-mini-item-title {
+  font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 4px;
+}
+.ucp-mini-item-desc {
+  font-size: 13px; color: var(--ink-muted); line-height: 1.5;
+}
+.ucp-ghost-btn {
+  display: inline-block; padding: 12px 24px; border: 1.5px solid var(--ink);
+  border-radius: 6px; font-size: 14px; font-weight: 600; color: var(--ink);
+  text-decoration: none; transition: background 0.15s, color 0.15s;
+}
+.ucp-ghost-btn:hover { background: var(--ink); color: white; }
+.ucp-feature-image {
+  border-radius: 12px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,0.1);
+}
+.ucp-feature-image img { width: 100%; display: block; }
+@media (max-width: 768px) {
+  .ucp-feature-split { grid-template-columns: 1fr; gap: 32px; }
+  .ucp-feature-split.reverse { direction: ltr; }
+  .ucp-feature-mini-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Shopify-style: "How businesses..." dark section with big screenshot + tabs ── */
+.ucp-proof-section {
+  background: var(--ink); padding: 80px 0 0;
+}
+.ucp-proof-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+}
+.ucp-proof-heading {
+  font-family: 'Inter Tight', sans-serif; font-size: clamp(32px, 4vw, 56px);
+  font-weight: 800; color: white; line-height: 1.1; margin-bottom: 16px; max-width: 640px;
+}
+.ucp-proof-sub { font-size: 16px; color: rgba(255,255,255,0.6); max-width: 480px; margin-bottom: 48px; }
+.ucp-proof-screenshot {
+  border-radius: 12px 12px 0 0; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1); border-bottom: none;
+}
+.ucp-proof-screenshot img { width: 100%; display: block; }
+.ucp-proof-tabs {
+  display: flex; background: rgba(255,255,255,0.06);
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.ucp-proof-tab {
+  flex: 1; padding: 20px 24px; cursor: pointer; border: none; background: none;
+  text-align: left; border-right: 1px solid rgba(255,255,255,0.08);
+  transition: background 0.15s;
+}
+.ucp-proof-tab:last-child { border-right: none; }
+.ucp-proof-tab:hover { background: rgba(255,255,255,0.04); }
+.ucp-proof-tab.active { background: rgba(224,122,95,0.15); }
+.ucp-proof-tab-title {
+  font-size: 15px; font-weight: 700; color: white; margin-bottom: 6px;
+}
+.ucp-proof-tab.active .ucp-proof-tab-title { color: var(--accent); }
+.ucp-proof-tab-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+@media (max-width: 768px) {
+  .ucp-proof-tabs { flex-direction: column; }
+  .ucp-proof-tab { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+}
+
+/* ── Shopify-style: Merchant testimonial / case study carousel ── */
+.ucp-case-section {
+  background: var(--ink); padding: 80px 0;
+}
+.ucp-case-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+}
+.ucp-case-heading {
+  font-family: 'Inter Tight', sans-serif; font-size: clamp(28px, 3.5vw, 48px);
+  font-weight: 800; color: white; margin-bottom: 40px;
+}
+.ucp-case-layout {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+}
+.ucp-case-brand-tabs {
+  display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap;
+}
+.ucp-case-brand-tab {
+  padding: 6px 14px; border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px; font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.5);
+  cursor: pointer; background: none; transition: all 0.15s;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
+}
+.ucp-case-brand-tab.active {
+  background: var(--accent); border-color: var(--accent); color: white;
+}
+.ucp-case-tools { margin-bottom: 24px; }
+.ucp-case-tools-label { font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 10px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; }
+.ucp-case-tool-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.ucp-case-tool-pill {
+  padding: 4px 12px; background: rgba(255,255,255,0.08); border-radius: 4px;
+  font-size: 12px; color: rgba(255,255,255,0.7); font-family: 'JetBrains Mono', monospace;
+}
+.ucp-case-quote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(18px, 2vw, 24px); color: white; line-height: 1.5;
+  margin-bottom: 16px;
+}
+.ucp-case-attribution { font-size: 13px; color: rgba(255,255,255,0.45); font-family: 'JetBrains Mono', monospace; }
+.ucp-case-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px; padding: 28px; height: fit-content;
+}
+.ucp-case-card-label { font-size: 11px; color: var(--accent); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.ucp-case-card-title { font-size: 20px; font-weight: 700; color: white; margin-bottom: 8px; }
+.ucp-case-card-desc { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; margin-bottom: 20px; }
+.ucp-case-metrics {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;
+}
+.ucp-case-metric { background: rgba(255,255,255,0.05); border-radius: 8px; padding: 12px; }
+.ucp-case-metric-val { font-size: 22px; font-weight: 800; color: white; }
+.ucp-case-metric-val.accent { color: var(--accent); }
+.ucp-case-metric-lbl { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+@media (max-width: 768px) {
+  .ucp-case-layout { grid-template-columns: 1fr; }
+}
+
+/* ── Shopify-style: All features sticky left nav ── */
+.ucp-arch-section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+.ucp-arch-inner { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.ucp-arch-layout { display: grid; grid-template-columns: 220px 1fr; gap: 48px; }
+.ucp-arch-nav { position: sticky; top: 80px; height: fit-content; }
+.ucp-arch-nav-link {
+  display: block; padding: 10px 16px; font-size: 14px; font-weight: 500;
+  color: var(--ink-muted); text-decoration: none; border-left: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s; border-radius: 0 4px 4px 0;
+}
+.ucp-arch-nav-link:hover { color: var(--ink); }
+.ucp-arch-nav-link.active { color: var(--accent); border-left-color: var(--accent); font-weight: 700; }
+.ucp-arch-content { }
+.ucp-arch-layer { margin-bottom: 56px; scroll-margin-top: 100px; }
+.ucp-arch-layer-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.ucp-arch-layer-title { font-size: 28px; font-weight: 800; color: var(--ink); margin-bottom: 12px; }
+.ucp-arch-layer-desc { font-size: 15px; color: var(--ink-muted); line-height: 1.65; margin-bottom: 24px; max-width: 640px; }
+.ucp-arch-feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.ucp-arch-feature-item { }
+.ucp-arch-feature-title { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ucp-arch-feature-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+@media (max-width: 768px) {
+  .ucp-arch-layout { grid-template-columns: 1fr; }
+  .ucp-arch-nav { position: static; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
+  .ucp-arch-nav-link { border-left: none; border-bottom: 2px solid transparent; padding: 6px 12px; }
+  .ucp-arch-nav-link.active { border-bottom-color: var(--accent); }
+  .ucp-arch-feature-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Cross-sell strip ── */
+.ucp-crosssell {
+  display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border);
+}
+.ucp-crosssell-item {
+  padding: 40px 48px; display: flex; align-items: center; justify-content: space-between;
+  text-decoration: none; transition: background 0.15s;
+}
+.ucp-crosssell-item:first-child { border-right: 1px solid var(--border); }
+.ucp-crosssell-item:hover { background: var(--bone); }
+.ucp-crosssell-label { font-size: 11px; color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+.ucp-crosssell-title { font-size: 18px; font-weight: 700; color: var(--ink); }
+.ucp-crosssell-arrow { font-size: 24px; color: var(--accent); }
+@media (max-width: 640px) {
+  .ucp-crosssell { grid-template-columns: 1fr; }
+  .ucp-crosssell-item:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+  .ucp-crosssell-item { padding: 28px 24px; }
+}
+
+/* ── Roadmap accordion ── */
+.bp-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 16px 20px; cursor: pointer; list-style: none; background: var(--bg-soft, #FAFAF9); border-radius: 8px 8px 0 0; }
+.bp-summary::-webkit-details-marker { display: none; }
+.bp-summary::before { content: '▸'; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-muted); transition: transform 0.15s; margin-right: 4px; }
+details[open] > .bp-summary::before { transform: rotate(90deg); }
+.bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: var(--bone); }
+.bp-card-title { font-weight: 700; font-size: 16px; color: var(--ink); flex: 1 1 auto; }
+.bp-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+.bp-body { padding: 18px 20px 22px; border-top: 1px solid var(--border); overflow-x: auto; }
+table.bp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; border: 1px solid var(--border); }
+table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); border-right: 1px solid var(--border); background: var(--bone); }
+table.bp-table th:last-child { border-right: none; }
+table.bp-table td { padding: 14px 12px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; color: var(--ink); line-height: 1.5; }
+table.bp-table td:last-child { border-right: none; }
+table.bp-table tbody tr:last-child td { border-bottom: none; }
+table.bp-table tbody tr:hover { background: rgba(0,0,0,0.02); }
+table.bp-table td.bp-step { font-weight: 600; white-space: nowrap; width: 14em; }
+table.bp-table td.bp-when { font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: nowrap; }
+table.bp-table td.bp-pill { white-space: nowrap; width: 7em; }
+
+/* ── Stat band ── */
+.ucp-stat-band {
+  background: var(--ink); padding: 32px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.ucp-stat-band-inner {
+  max-width: 1280px; margin: 0 auto; padding: 0 32px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+}
+.ucp-stat-item {
+  padding: 0 24px; border-right: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+}
+.ucp-stat-item:first-child { padding-left: 0; }
+.ucp-stat-item:last-child { border-right: none; }
+.ucp-stat-val {
+  font-family: 'Inter Tight', sans-serif; font-size: 32px; font-weight: 800;
+  color: white; display: block; line-height: 1;
+}
+.ucp-stat-val.coral { color: var(--accent); }
+.ucp-stat-lbl {
+  font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;
+}
+@media (max-width: 640px) {
+  .ucp-stat-band-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .ucp-stat-item { border-right: none; }
+}
 </style>
 </head>
 <body>
@@ -120,7 +387,8 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 </div>
 </nav>
-<!-- §0 · Hero -->
+
+<!-- §0 · Hero (preserved) -->
 <section class="pt-16 pb-12 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-8">
 <div class="od-hero-split">
   <div class="od-hero-text">
@@ -142,7 +410,7 @@ img.zoomable:hover { opacity: 0.92; }
     </div>
     <div>
       <span class="od-hero-stat-val">100%</span>
-      <span class="od-hero-stat-lbl">Privacy-compliant</span>
+      <span class="od-hero-stat-lbl">DPDP-compliant</span>
     </div>
   </div>
     <div class="od-hero-meta">
@@ -172,430 +440,600 @@ img.zoomable:hover { opacity: 0.92; }
 </div>
 </div>
 </div>
+</div></section>
 
-</div></section>
-<!-- §01 · Status -->
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">01 · Status (30 - Apr - 2026)</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-10" style="color: var(--ink);">What's running. What's being built. What's next<span class="dot" style="color:var(--coral);">.</span></h2>
-<div class="grid md:grid-cols-3 gap-4">
-<div class="card p-6">
-<div class="flex items-center justify-between mb-4"><div class="cap-num">Running today</div><span class="pill pill-live">Live · L3</span></div>
-<ul class="space-y-3 text-sm" style="color: var(--ink);">
-<li><strong>UCP foundation</strong> · 100% of Reliance Retail formats · 380M+ identities · 200+ profile attributes</li>
-<li><strong>Reliance Retail Account v2</strong> · DPDP-compliant consent · API-first integration · Unified Address Book · Retail SSO</li>
-<li><strong>Audience + Activation</strong> · in-house Audience Builder feeding SMS · RCS · Meta · Google · Conversion tracking with ROAS</li>
-<li><strong>Campaign Manager</strong> · 200+ formats with governance (cooldowns, volume caps) · embedded coupon codes</li>
-<li><strong>RPOS streaming</strong> · 1.5M daily orders from 75+ formats / 15K+ stores · within minutes of checkout</li>
-<li><strong>NPS at scale</strong> · 79 formats · ~7K stores · ~500K daily surveys · ~7K daily responses</li>
-<li><strong>Sub-second performance</strong> · ~19 ms p50 API latency · ~300 ms event processing · 500 events/sec sustained</li>
-</ul>
+<!-- Stat band (Shopify-style dark metrics strip) -->
+<div class="ucp-stat-band">
+  <div class="ucp-stat-band-inner">
+    <div class="ucp-stat-item">
+      <span class="ucp-stat-val coral">380M+</span>
+      <div class="ucp-stat-lbl">Identities unified</div>
+    </div>
+    <div class="ucp-stat-item">
+      <span class="ucp-stat-val">1.5M</span>
+      <div class="ucp-stat-lbl">RPOS orders / day</div>
+    </div>
+    <div class="ucp-stat-item">
+      <span class="ucp-stat-val">75+</span>
+      <div class="ucp-stat-lbl">Retail formats live</div>
+    </div>
+    <div class="ucp-stat-item">
+      <span class="ucp-stat-val coral">500K</span>
+      <div class="ucp-stat-lbl">NPS surveys / day</div>
+    </div>
+  </div>
 </div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-4"><div class="cap-num">Building this quarter</div><span class="pill pill-build">Building · L3 → L4</span></div>
-<ul class="space-y-3 text-sm" style="color: var(--ink);">
-<li><strong>Marketing Intelligence cockpit</strong> · plan-aware KPIs · grounded AI diagnostics · Talk-to-Data layer · same shape across Ajio, JioMart, Tira, RD, F&amp;L</li>
-<li><strong>Brand Health cockpit</strong> · 5-stage funnel · 20-attribute imagery · zonal · ad testing · competitor swap (Blinkit / Zepto / Swiggy Instamart / Flipkart Minutes / Amazon Fresh / Bigbasket Now)</li>
-<li><strong>JCP Coupons + Central Promotion Engine</strong> integration · real-time coupon fetch (replaces pre-uploaded files)</li>
-<li><strong>Self-serve scale-up</strong> · Bring-Your-Own-Audience · real-time delivery tracking · live engagement updates</li>
-<li><strong>RPOS line-item + payment-mode signals</strong> · richer segmentation</li>
-</ul>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-4"><div class="cap-num">Next horizon</div><span class="pill pill-phase2">Roadmap · L4</span></div>
-<ul class="space-y-3 text-sm" style="color: var(--ink);">
-<li><strong>AI-Native UCP</strong> · complete CDP in one chat interface · speak-to-data → cohort gen → campaign config → creative gen → execution → retrospective · all conversational</li>
-<li><strong>Competitor intelligence</strong> · data scraping + competitive analysis surfaced inside the chat alongside campaign signals</li>
-<li><strong>Next-best-action recommendations</strong> · AI proposes the next move based on campaign performance, customer behaviour, market signals</li>
-<li><strong>Auto-creative generation</strong> · channel-specific creatives produced per audience inside the same flow</li>
-<li><strong>Demo · <a href="https://youtu.be/9KCFnV6kXEU" rel="noopener" style="color: var(--accent); text-decoration: underline;" target="_blank">youtu.be/9KCFnV6kXEU</a></strong></li>
-</ul>
-</div>
-</div>
-<p class="text-xs mt-6" style="color: var(--ink-muted);">L-rungs reference the <a href="/autonomous" style="color: var(--accent); text-decoration: underline;">L0–L5 autonomy framework</a>. UCP foundation sits at L3; Marketing OS cockpits target L4.</p>
-</div></section>
-<!-- §02 · Architecture · 4 layers -->
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">02 · Architecture</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Identity → Data → Activation → Agentic<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Each layer earns the next. Identity made unified data possible. Unified data made segmentation and activation possible. Activation at scale is what makes the agentic layer worth building.</p>
-<!-- Reference diagram + walkthrough video -->
-<div class="grid lg:grid-cols-3 gap-6 mb-12">
-<div class="lg:col-span-2 card overflow-hidden">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">UCP architecture · Sources → Ingest → Transform &amp; Process → ...</span></div><div class="screenshot-body"><img alt="UCP architecture · Sources → Ingest → Transform &amp; Process → Serve &amp; Analyze → Applications → Orchestration → Activation" class="zoomable od-img-diagram od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/architecture-diagram.jpg"/></div></div>
-<div class="p-4 flex items-center justify-between">
-<div>
-<div class="cap-num mb-1">UCP architecture · end-to-end</div>
-<div class="text-sm" style="color: var(--ink-muted);">Sources (Retail · Telecom · Media · External) → Ingest → Transform &amp; Process → Serve &amp; Analyze → Applications → Orchestration → Activation, with Feedback &amp; Measurement closing the loop.</div>
-</div>
-</div>
-</div>
-<article class="card overflow-hidden video-card" data-embed="https://www.youtube.com/embed/TJxbo_eDUcI?autoplay=1&amp;rel=0&amp;vq=hd1080&amp;modestbranding=1&amp;iv_load_policy=3&amp;playsinline=1">
-<div class="video-thumb" onclick="playVideo(this)"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">UCP architecture walkthrough</span></div><div class="screenshot-body"><img alt="UCP architecture walkthrough" class="od-img" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/TJxbo_eDUcI/hqdefault.jpg'" src="https://i.ytimg.com/vi/TJxbo_eDUcI/maxresdefault.jpg"/></div></div><div class="play-overlay">▶</div></div>
-<div class="p-4">
-<div class="flex items-center gap-2 mb-2">
-<span class="pill">Video</span>
-<a class="text-xs accent ml-auto" href="https://youtu.be/TJxbo_eDUcI" rel="noopener" target="_blank" title="Open on YouTube">↗</a>
-</div>
-<h3 class="font-medium text-sm mb-1" style="color: var(--ink);">UCP architecture walkthrough.</h3>
-<div class="cap-num">Video · how the layers fit together</div>
-</div>
-</article>
-</div>
-<div class="grid md:grid-cols-2 gap-4">
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 01 · Identity</div><span class="pill pill-live">Live · L3</span></div>
-<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Reliance Retail Account.</h3>
-<p class="text-sm mb-3" style="color: var(--ink-muted);">DPDP-compliant identity with consent capture, unified address book, retail SSO, and API-first integration for any platform regardless of design system.</p>
-<ul class="space-y-1 text-sm" style="color: var(--ink);">
-<li>· In-house OTP · JioMart + AJIO</li>
-<li>· Retail SSO · one tap, all platforms</li>
-<li>· Unified Address Book · cross-platform reuse</li>
-<li>· Sanctions Screening v2.0 · Dow Jones global list</li>
-</ul>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 02 · Data &amp; Intelligence</div><span class="pill pill-live">Live · L3</span></div>
-<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Single Customer View.</h3>
-<p class="text-sm mb-3" style="color: var(--ink-muted);">Web engagement, offline store visits, retail KPIs in one 360° view per customer at RRL, Format, and Business level.</p>
-<ul class="space-y-1 text-sm" style="color: var(--ink);">
-<li>· Audience Builder v2 · 170 retail formats via RRA</li>
-<li>· RPOS real-time streaming · 1.5M orders/day</li>
-<li>· NPS at scale · 79 formats · ~500K daily SMS</li>
-<li>· Profile attributes · 200+ across identity, affinity, activity</li>
-</ul>
-</div>
-<div class="card p-6">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 03 · Activation</div><span class="pill pill-live">Live · L3</span></div>
-<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Campaign Manager.</h3>
-<p class="text-sm mb-3" style="color: var(--ink-muted);">From audience to landed message to attributed conversion · closed loop, governed by cooldowns and volume caps across 200+ formats.</p>
-<ul class="space-y-1 text-sm" style="color: var(--ink);">
-<li>· SMS · RCS · Meta · Google channel coverage</li>
-<li>· Embedded coupon codes (shared + personalised)</li>
-<li>· Conversion tracking with ROAS</li>
-<li>· Campaign governance · cooldowns + volume caps</li>
-</ul>
-</div>
-<div class="card p-6" style="border-left: 3px solid var(--accent);">
-<div class="flex items-center justify-between mb-3"><div class="cap-num">Layer 04 · Agentic</div><span class="pill pill-build">Building · L3 → L4</span></div>
-<h3 class="font-semibold text-lg mb-2" style="color: var(--ink);">Marketing OS.</h3>
-<p class="text-sm mb-3" style="color: var(--ink-muted);">Three cockpits answering the three questions every vertical leader asks: is the team on plan, is marketing pulling its weight, do consumers know the brand and prefer it.</p>
-<ul class="space-y-1 text-sm" style="color: var(--ink);">
-<li>· <strong>Marketing Intelligence cockpit</strong> · plan-aware</li>
-<li>· <strong>Brand Health cockpit</strong> · gap-first</li>
-<li>· <strong>AI-Native UCP</strong> · chat-first</li>
-</ul>
-</div>
-</div>
-</div></section>
-<!-- §03 · Marketing OS · 3 cockpits -->
-<section class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">03 · Marketing OS · 3 cockpits</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">The agentic marketing layer<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">Marketing OS sits on top of UCP. Three cockpits today. Each answers a different question every vertical leader asks. Each carries an L-rung pill for current state and target. Reference: <a href="/autonomous" style="color: var(--accent); text-decoration: underline;">L0–L5 autonomy framework</a>.</p>
-<!-- Card A · Marketing Intelligence -->
-<div class="card p-8 mb-6">
-<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-<div>
-<div class="cap-num mb-1">Cockpit A · for vertical leaders</div>
-<h3 class="display-2 text-2xl md:text-3xl" style="color: var(--ink);">Marketing Intelligence cockpit.</h3>
-</div>
-<span class="pill pill-live">Live · L3 today → L4 target</span>
-</div>
-<p class="text-base mb-6" style="color: var(--ink-muted);">The cockpit for vertical leaders: AOP-vs-actuals, marketing efficiency, customer mix, and platform health in one view. Replaces the WBR-decks-plus-finance-trackers-plus-MarTech-dashboards stitch leaders did each month. Answers three questions in sequence: is the team on plan, is marketing spend pulling its weight, what is the data flagging as missing.</p>
-<div class="grid md:grid-cols-3 gap-4 mb-6">
-<div class="card p-5" style="background: var(--bg);">
-<div class="cap-num mb-2">Surface 1</div>
-<div class="font-semibold text-sm mb-2" style="color: var(--ink);">Executive Cockpit</div>
-<p class="text-xs" style="color: var(--ink-muted);">Single scrollable canvas grouped into three bands: Business Outcomes (Net Revenue · Orders · Customers · ABV with AOP achievement), Marketing (Total Spend · A2S% · PM · Blended CAC · LTV/CAC), Platform &amp; Brand Health (MAU · DAU · Sessions · NPS). Every KPI carries an AOP-anchored comparison, not just a YoY delta.</p>
-</div>
-<div class="card p-5" style="background: var(--bg);">
-<div class="cap-num mb-2">Surface 2</div>
-<div class="font-semibold text-sm mb-2" style="color: var(--ink);">Business Deep Dive</div>
-<p class="text-xs" style="color: var(--ink-muted);">Vertical narrative · outcome → cause → diagnosis. Revenue Story (actuals vs annual plan, 13-month trends, source splits New/Repeat/Winback, retention). Marketing Effectiveness (A2S, ROAS, Blended + PM CAC, LTV/CAC, approved-vs-actual budget, channel breakdown ATL/BTL/PM). AI Diagnostic with colour-coded insight cards · Red material misses · Amber watchpoints · Green positive · Blue neutral.</p>
-</div>
-<div class="card p-5" style="background: var(--bg);">
-<div class="cap-num mb-2">Surface 3</div>
-<div class="font-semibold text-sm mb-2" style="color: var(--ink);">Talk to Data</div>
-<p class="text-xs" style="color: var(--ink-muted);">Conversational layer over the same dataset. <em>"Why did ABV drop in Feb?"</em> / <em>"Show me Tira CAC trend vs Ajio."</em> Charted, sourced answers without writing SQL or pulling reports.</p>
-</div>
-</div>
-<div class="card overflow-hidden mb-4" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Marketing Intelligence · Executive Cockpit · Business Outcom...</span></div><div class="screenshot-body"><img alt="Marketing Intelligence · Executive Cockpit · Business Outcomes / Marketing / Platform &amp; Brand Health bands · Grocery vertical · Feb 2026" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/01-executive-cockpit.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 1 · Executive Cockpit · Grocery vertical · Feb 2026 · AOP-anchored KPIs across three bands</div>
-</div>
-<div class="grid md:grid-cols-3 gap-6 mb-6">
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Marketing Intelligence · Business Deep Dive · Revenue Story</span></div><div class="screenshot-body"><img alt="Marketing Intelligence · Business Deep Dive · Revenue Story" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/02-revenue-story.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Revenue Story · 13-month AOP trend · source splits</div>
-</div>
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Marketing Intelligence · Business Deep Dive · Marketing Effe...</span></div><div class="screenshot-body"><img alt="Marketing Intelligence · Business Deep Dive · Marketing Effectiveness" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/03-marketing-effectiveness.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Marketing Effectiveness · A2S · ROAS · CAC · LTV/CAC · channel split</div>
-</div>
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Marketing Intelligence · AI Diagnostic with insight cards</span></div><div class="screenshot-body"><img alt="Marketing Intelligence · AI Diagnostic with insight cards" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/04-ai-diagnostic.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · AI Diagnostic · grounded narrative + Red/Amber/Green/Blue insight cards</div>
-</div>
-</div>
-<p class="text-sm" style="color: var(--ink);"><strong>What makes it agentic.</strong> Plan-aware by default · grounded AI diagnostics that reference visible numbers · same shape across every vertical (Ajio · JioMart · Tira · Reliance Digital · F&amp;L). Switch the vertical, get the same cockpit.</p>
-</div>
-<!-- Card B · Brand Health -->
-<div class="card p-8 mb-6">
-<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-<div>
-<div class="cap-num mb-1">Cockpit B · for brand leaders</div>
-<h3 class="display-2 text-2xl md:text-3xl" style="color: var(--ink);">Brand Health cockpit.</h3>
-</div>
-<span class="pill pill-live">Live · L3 today → L4 target</span>
-</div>
-<p class="text-base mb-6" style="color: var(--ink-muted);">Where Marketing Intelligence answers <em>"is the brand hitting plan?"</em>, Brand Health answers <em>"do consumers know the brand, prefer it, use it, trust it; how does it compare to the competition?"</em> One brand with every angle (funnel · imagery · usage · zonal · purchase behaviour · creative recall) in a single experience.</p>
-<div class="grid md:grid-cols-3 gap-4 mb-6">
-<div class="card p-5" style="background: var(--bg);">
-<div class="cap-num mb-2">Surface 1</div>
-<div class="font-semibold text-sm mb-2" style="color: var(--ink);">Executive Cockpit</div>
-<p class="text-xs" style="color: var(--ink-muted);">Side-by-side funnel · anchor brand (left) vs chosen competitor (right). Five stages: Total Awareness → Consideration (T2B) → L1Y Usage → L3M Usage → MOUB. Each stage shows absolute score, ±pp delta vs prior wave, relative % change, conversion ratios. Competitor selector swaps the comparison brand without leaving the view (Blinkit · Zepto · Swiggy Instamart · Flipkart Minutes · Amazon Fresh · Bigbasket Now).</p>
-</div>
-<div class="card p-5" style="background: var(--bg);">
-<div class="cap-num mb-2">Surface 2</div>
-<div class="font-semibold text-sm mb-2" style="color: var(--ink);">Business Deep Dive</div>
-<p class="text-xs" style="color: var(--ink-muted);">Vertical narrative · Brand Imagery (20 attributes across functional / commercial / emotional, gaps table sorted by magnitude, top-5 movers QoQ). Usage Funnel (trial → habitual, vs best-in-class named explicitly). Purchase Behaviour (Kirana · Quick-commerce · Modern Trade). Zonal Performance (North · South · East · West). Ad Testing Results (creative-level masked brand-recall). AI Analysis · 4 pillars · Perception / CX / Growth / Marketing.</p>
-</div>
-<div class="card p-5" style="background: var(--bg);">
-<div class="cap-num mb-2">Surface 3</div>
-<div class="font-semibold text-sm mb-2" style="color: var(--ink);">Talk to Data</div>
-<p class="text-xs" style="color: var(--ink-muted);"><em>"How has JioMart's MOUB tracked vs Blinkit over the last 4 waves?"</em> <em>"Which imagery attributes improved the most in South zone?"</em> Charted, sourced answers from the brand-tracker dataset.</p>
-</div>
-</div>
-<div class="card overflow-hidden mb-4" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Awareness Funnel · JioMart vs competitor (Bli...</span></div><div class="screenshot-body"><img alt="Brand Health · Awareness Funnel · JioMart vs competitor (Blinkit / Zepto / Swiggy Instamart / Flipkart Minutes / Amazon Fresh / Bigbasket Now)" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/01-awareness-funnel.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 1 · Awareness Funnel · JioMart anchor vs Blinkit comparator · 5 stages with ±pp deltas and conversion ratios</div>
-</div>
-<div class="grid md:grid-cols-3 gap-6 mb-3">
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Brand Imagery Gaps table · 20 attributes</span></div><div class="screenshot-body"><img alt="Brand Health · Brand Imagery Gaps table · 20 attributes" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/02-imagery-gaps.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Imagery Gaps · 20 attributes · sorted by gap magnitude vs category leader</div>
-</div>
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Imagery Movers · Top Gainers QoQ</span></div><div class="screenshot-body"><img alt="Brand Health · Imagery Movers · Top Gainers QoQ" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/03-imagery-movers.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Imagery Movers · Top 5 gainers / decliners QoQ</div>
-</div>
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Usage Funnel · MOUB vs best-in-class</span></div><div class="screenshot-body"><img alt="Brand Health · Usage Funnel · MOUB vs best-in-class" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/04-usage-funnel.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Usage Funnel · trial → habitual · best-in-class named (Blinkit)</div>
-</div>
-</div>
-<div class="grid md:grid-cols-2 gap-6 mb-6">
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Ad Testing Results · creative-level masked br...</span></div><div class="screenshot-body"><img alt="Brand Health · Ad Testing Results · creative-level masked brand recall" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/05-ad-testing.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Ad Testing · creative-level masked brand-recall · closes loop from spend to equity</div>
-</div>
-<div class="card overflow-hidden" style="background: var(--bg);">
-<div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Zonal Performance + AI Analysis insight cards</span></div><div class="screenshot-body"><img alt="Brand Health · Zonal Performance + AI Analysis insight cards" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/06-zonal-ai-analysis.jpg"/></div></div>
-<div class="p-3 cap-num" style="color: var(--ink-muted);">Surface 2 · Zonal Performance + AI Analysis · 4-pillar synthesis (Perception / CX / Growth / Marketing)</div>
-</div>
-</div>
-<p class="text-sm" style="color: var(--ink);"><strong>What makes it agentic.</strong> Gap-first rather than score-first design (the delta matters more than the absolute in mature categories) · side-by-side competitor comparison built into every metric · creative recall closing the loop from campaign spend to brand equity.</p>
-</div>
-<!-- Card C · AI-Native UCP -->
-<div class="card p-8" style="border-left: 3px solid var(--accent);">
-<div class="flex flex-wrap items-center justify-between gap-3 mb-4">
-<div>
-<div class="cap-num mb-1">Cockpit C · the L4 target</div>
-<h3 class="display-2 text-2xl md:text-3xl" style="color: var(--ink);">AI-Native UCP.</h3>
-</div>
-<span class="pill pill-build">Building · L2 demo → L4 target</span>
-</div>
-<p class="text-base mb-6" style="color: var(--ink-muted);">A complete CDP in a single chat interface. The target for Marketing OS: every step of the marketing workflow (data → cohort → campaign → creative → execution → retrospective) happens conversationally, with AI models powering each step. Demo · <a href="https://youtu.be/9KCFnV6kXEU" rel="noopener" style="color: var(--accent); text-decoration: underline;" target="_blank">youtu.be/9KCFnV6kXEU</a>.</p>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Speak to data</div><div class="text-xs" style="color: var(--ink-muted);">Query customer bases via natural language. No dashboards.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">AI-built cohorts</div><div class="text-xs" style="color: var(--ink-muted);">AI suggests and builds segments from goals.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Configure campaigns</div><div class="text-xs" style="color: var(--ink-muted);">Multi-channel · AI-recommended targeting, timing, channel mix.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Generate creatives</div><div class="text-xs" style="color: var(--ink-muted);">AI produces channel-specific creatives per audience.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Execute campaigns</div><div class="text-xs" style="color: var(--ink-muted);">Launch from chat with governance guardrails built in.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Retrospective analysis</div><div class="text-xs" style="color: var(--ink-muted);">What worked, what didn't, why · delivered conversationally.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Competitor intelligence</div><div class="text-xs" style="color: var(--ink-muted);">Data scraping + competitive analysis surfaced inline.</div></div>
-<div class="card p-4" style="background: var(--bg);"><div class="font-semibold text-sm mb-1" style="color: var(--ink);">Next-best-action</div><div class="text-xs" style="color: var(--ink-muted);">AI recommends what to do next from performance + signals.</div></div>
-</div>
-<p class="text-sm" style="color: var(--ink);"><strong>What makes it L4.</strong> No dashboards. No tool-switching. Governance guardrails built in. The reviewer can ask the question and get a charted, sourced answer that ends in a launched campaign.</p>
-</div>
-</div></section>
-<!-- =====================================================================
-     §04 · Path to L4 · derived from data/agents-x-platforms.yaml
-     Render contents via: python tools/inject_path_to_l4.py --only ucp
-     ===================================================================== -->
-<!-- PATH-TO-L4-START · auto-generated by tools/inject_path_to_l4.py · do not edit -->
-<section class="py-16 border-b" id="path-to-l4" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="od-index-bar"><span class="od-bar-title">PATH TO L4 <span class="od-bar-dot">·</span> Marketing OS</span><span class="od-bar-counter">001 / 001</span></div>
-<div class="section-label mb-3">04 · PATH TO L4</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">How UCP becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
-<p class="text-base max-w-3xl mb-8" style="color: var(--ink);">Currently at <strong>L3</strong>. 1 named agent from the <a href="/agents/" style="color: var(--accent); text-decoration: underline;">/agents/</a> directory closes the gap to L4.</p>
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl">
-<a class="platform-card" href="/agents/agentic-marketing/">
-<div class="platform-card-head">
-<div class="platform-card-name">Marketing Agent</div>
-<span class="pill pill-build">BUILDING</span>
-</div>
-<div class="platform-card-desc">Goal in plain English → audience, creative, channel mix, send time, measurement · autonomously, with humans only on guardrails.</div>
-<div class="platform-card-foot"><span class="platform-card-tag">Target L4</span></div>
-</a>
-</div>
-</div>
+
+<!-- §01 · "How Reliance manages..." — Shopify-style dark section with big screenshot + 3 tabs -->
+<section class="ucp-proof-section" id="status">
+  <div class="ucp-proof-inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:48px;">
+      <div>
+        <div class="section-label" style="color:rgba(255,255,255,0.4);margin-bottom:12px;">01 · Status · 30 - Apr - 2026</div>
+        <h2 class="ucp-proof-heading">How Reliance Retail manages, activates, and understands 380M customers.</h2>
+      </div>
+      <div>
+        <p class="ucp-proof-sub" style="margin-top:32px;">No separate CRM, CDP, and analytics stacks. One identity layer powers every format — from JioMart to Tira to Reliance Digital — with a single Marketing OS on top.</p>
+      </div>
+    </div>
+    <div class="ucp-proof-screenshot">
+      <img alt="UCP architecture · Sources → Ingest → Transform & Process → Serve & Analyze → Applications → Orchestration → Activation" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/architecture-diagram.jpg" style="width:100%;display:block;"/>
+    </div>
+    <div class="ucp-proof-tabs">
+      <button class="ucp-proof-tab active" onclick="switchProofTab(this, 'running')">
+        <div class="ucp-proof-tab-title">Running today</div>
+        <div class="ucp-proof-tab-desc">UCP foundation · 100% formats · L3 live</div>
+      </button>
+      <button class="ucp-proof-tab" onclick="switchProofTab(this, 'building')">
+        <div class="ucp-proof-tab-title">Building now</div>
+        <div class="ucp-proof-tab-desc">Marketing OS cockpits · L3 → L4</div>
+      </button>
+      <button class="ucp-proof-tab" onclick="switchProofTab(this, 'roadmap')">
+        <div class="ucp-proof-tab-title">Next horizon</div>
+        <div class="ucp-proof-tab-desc">AI-Native UCP · full agentic · L4</div>
+      </button>
+    </div>
+  </div>
+  <!-- Tab content panels -->
+  <div style="background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.08);">
+    <div class="ucp-proof-inner" style="padding-top:32px;padding-bottom:40px;">
+      <div id="proof-running" class="ucp-tab-panel active" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">UCP Foundation</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">100% of Reliance Retail formats · 380M+ identities · 200+ profile attributes · DPDP-compliant consent</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">Audience + Activation</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">In-house Audience Builder feeding SMS · RCS · Meta · Google · Conversion tracking with ROAS</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">RPOS Streaming</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">1.5M daily orders from 75+ formats / 15K+ stores · within minutes of checkout · replaces day-old batch data</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">NPS at Scale</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">79 formats · ~7K stores · ~500K daily surveys · ~7K daily responses · triggered 1–2 hrs post-purchase</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">Campaign Manager</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">200+ formats with governance (cooldowns, volume caps) · embedded coupon codes · shared + personalised</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:white;margin-bottom:8px;">Retail SSO</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">One tap across all platforms · Unified Address Book · cross-platform reuse · Sanctions Screening v2.0</div>
+        </div>
+      </div>
+      <div id="proof-building" class="ucp-tab-panel" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+        <div style="background:rgba(224,122,95,0.12);border:1px solid rgba(224,122,95,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">Marketing Intelligence Cockpit</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Plan-aware KPIs · grounded AI diagnostics · Talk-to-Data layer · same shape across Ajio, JioMart, Tira, RD, F&amp;L</div>
+        </div>
+        <div style="background:rgba(224,122,95,0.12);border:1px solid rgba(224,122,95,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">Brand Health Cockpit</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">5-stage funnel · 20-attribute imagery · zonal · ad testing · competitor swap (Blinkit / Zepto / Swiggy / Flipkart / Amazon)</div>
+        </div>
+        <div style="background:rgba(224,122,95,0.12);border:1px solid rgba(224,122,95,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">JCP Coupons Integration</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Central Promotion Engine integration · real-time coupon fetch · replaces pre-uploaded files</div>
+        </div>
+        <div style="background:rgba(224,122,95,0.12);border:1px solid rgba(224,122,95,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:var(--accent);margin-bottom:8px;">Self-Serve Scale-Up</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Bring-Your-Own-Audience · real-time delivery tracking · live engagement updates · RPOS line-item signals</div>
+        </div>
+      </div>
+      <div id="proof-roadmap" class="ucp-tab-panel" style="display:none;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+        <div style="background:rgba(200,169,126,0.12);border:1px solid rgba(200,169,126,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:#c8a97e;margin-bottom:8px;">AI-Native UCP</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Complete CDP in one chat interface · speak-to-data → cohort gen → campaign config → creative gen → execution → retrospective</div>
+        </div>
+        <div style="background:rgba(200,169,126,0.12);border:1px solid rgba(200,169,126,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:#c8a97e;margin-bottom:8px;">Next-Best-Action</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">AI proposes the next move based on campaign performance, customer behaviour, market signals</div>
+        </div>
+        <div style="background:rgba(200,169,126,0.12);border:1px solid rgba(200,169,126,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:#c8a97e;margin-bottom:8px;">Auto-Creative Generation</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Channel-specific creatives produced per audience inside the same conversational flow</div>
+        </div>
+        <div style="background:rgba(200,169,126,0.12);border:1px solid rgba(200,169,126,0.2);border-radius:10px;padding:20px;">
+          <div style="font-size:13px;font-weight:700;color:#c8a97e;margin-bottom:8px;">Competitor Intelligence</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;">Data scraping + competitive analysis surfaced inside the chat alongside campaign signals</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<!-- PATH-TO-L4-END -->
-<!-- =====================================================================
-     §05 · Platform Roadmap
-     bp-card / bp-table pattern mirrors /impetus §04 build plan
-     Day-0 = 04-May-2026; release window 15-May → 09-Jun-2026 (36 days)
-     ===================================================================== -->
-<style>
-  .bp-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 16px 20px; cursor: pointer; list-style: none; background: var(--bg-soft, #FAFAF9); border-radius: 8px 8px 0 0; }
-  .bp-summary::-webkit-details-marker { display: none; }
-  .bp-summary::before { content: '▸'; display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--ink-muted); transition: transform 0.15s; margin-right: 4px; }
-  details[open] > .bp-summary::before { transform: rotate(90deg); }
-  .bp-card { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; background: var(--bone); }
-  .bp-card-title { font-weight: 700; font-size: 16px; color: var(--ink); flex: 1 1 auto; }
-  .bp-card-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
-  .bp-body { padding: 18px 20px 22px; border-top: 1px solid var(--border); overflow-x: auto; }
-  table.bp-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 6px; border: 1px solid var(--border); }
-  table.bp-table th { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid var(--border); border-right: 1px solid var(--border); background: var(--bone); }
-  table.bp-table th:last-child { border-right: none; }
-  table.bp-table td { padding: 14px 12px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); vertical-align: top; color: var(--ink); line-height: 1.5; }
-  table.bp-table td:last-child { border-right: none; }
-  table.bp-table tbody tr:last-child td { border-bottom: none; }
-  table.bp-table tbody tr:hover { background: rgba(0,0,0,0.02); }
-  table.bp-table td.bp-step { font-weight: 600; white-space: nowrap; width: 14em; }
-  table.bp-table td.bp-when { font-family: 'JetBrains Mono', monospace; font-size: 12px; white-space: nowrap; }
-  table.bp-table td.bp-pill { white-space: nowrap; width: 7em; }
-</style>
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">05 · Platform Roadmap</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">What ships next<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-8" style="color: var(--ink-muted);">Two roadmap threads in flight from Day-0 <strong>04 - May - 2026</strong>. Platform deliverables ship the new operator surfaces; AI deliverables close the loop toward the autonomous Marketing Agent above. Release window <strong>15 - May → 09 - Jun - 2026</strong>.</p>
-<!-- ============== Card 1 · Platform Roadmap ============== -->
-<details class="bp-card" open="">
-<summary class="bp-summary">
-<span class="bp-card-title">Platform Roadmap</span>
-<span class="pill pill-build">Building</span>
-<span class="bp-card-meta">4 deliverables</span>
-<span class="bp-card-meta">15 → 25 - May - 2026</span>
-</summary>
-<div class="bp-body">
-<table class="bp-table">
-<thead><tr><th>Workstream</th><th>Deliverable</th><th>Release</th><th>Status</th></tr></thead>
-<tbody>
-<tr><td class="bp-step">Brand Health Dashboard</td><td>Cockpit that shows how a Reliance Retail brand is perceived in the market: awareness, consideration, usage, imagery gaps versus competitors, and the creatives driving recall</td><td class="bp-when">15 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-<tr><td class="bp-step">Marketing Intelligence Dashboard</td><td>Cockpit for business and marketing leaders to read AOP-vs-actuals, marketing efficiency, and platform health for any vertical at a glance</td><td class="bp-when">15 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-<tr><td class="bp-step">Brand Kit &amp; Content Studio</td><td>Brand-kit-driven content generation for ad creatives, banners, text, and other marketing accoutrements</td><td class="bp-when">15 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-<tr><td class="bp-step">AI Assist UCP</td><td>Audience &amp; campaign creation · AI-native interface generating executable campaigns from a single prompt</td><td class="bp-when">25 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-</tbody>
-</table>
-</div>
-</details>
-<!-- ============== Card 2 · AI Roadmap ============== -->
-<details class="bp-card" open="">
-<summary class="bp-summary">
-<span class="bp-card-title">AI Roadmap</span>
-<span class="pill pill-build">Building</span>
-<span class="bp-card-meta">4 deliverables</span>
-<span class="bp-card-meta">20 - May → 09 - Jun - 2026</span>
-</summary>
-<div class="bp-body">
-<table class="bp-table">
-<thead><tr><th>Workstream</th><th>Deliverable</th><th>Release</th><th>Status</th></tr></thead>
-<tbody>
-<tr><td class="bp-step">AI Insights on UCP Console</td><td>Post-performance analysis and AI inputs within Audiences &amp; Campaigns: continuous autonomous learning loop for next campaigns (performance and efficiency)</td><td class="bp-when">20 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-<tr><td class="bp-step">Suggested &amp; Lookalike Audiences</td><td>AI-driven segments auto-generated by platforms using signals · same-format and cross-format lookalikes from seed audiences</td><td class="bp-when">30 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-<tr><td class="bp-step">Best Time / Channel / Content</td><td>Best time, content, and channel per user: determined using user, format, geography, and outcome context to deliver the right message on the right channel at the right moment</td><td class="bp-when">04 - Jun - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-<tr><td class="bp-step">Goal-Based Campaign Planner</td><td>Decides best customers, best time, and best content from a single goal · switches marketing strategy from reactive to proactive</td><td class="bp-when">09 - Jun - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
-</tbody>
-</table>
-</div>
-</details>
-</div></section>
-<!-- §06 · Case study · RD DDD -->
-<section class="py-16 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">06 · Case study · UCP-powered campaign</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Reliance Digital · Digital Discount Days<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-base max-w-3xl mb-10" style="color: var(--ink-muted);">10 RCS campaigns · 11 - Apr - 2026 → 19 - Apr - 2026 · UCP's first large-scale conversion-tracked campaign for RD. End-to-end · audience segmentation through RCS delivery to offline POS conversion tracking, all powered by UCP.</p>
-<div class="p-8 rounded-2xl" style="background: var(--ink); color: white;">
-<div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6">
-<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Recipients</div><div class="display-2 text-2xl" style="color: white;">1.25M</div></div>
-<div class="p-4 rounded-xl" style="background: rgba(107,91,214,0.20);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.65);">Product revenue</div><div class="display-2 text-2xl accent">₹20.39 Cr</div></div>
-<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Transacting buyers</div><div class="display-2 text-2xl" style="color: white;">5,693</div></div>
-<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Open rate</div><div class="display-2 text-2xl" style="color: white;">30.68%</div></div>
-<div class="p-4 rounded-xl" style="background: rgba(255,255,255,0.06);"><div class="text-xs mb-1" style="color: rgba(255,255,255,0.55);">Avg ticket</div><div class="display-2 text-2xl" style="color: white;">₹34,145</div></div>
-</div>
-<div class="grid md:grid-cols-2 gap-4 mb-6">
-<div class="p-5 rounded-xl" style="background: rgba(255,255,255,0.05);">
-<div class="text-xs mb-2" style="color: rgba(255,255,255,0.6);">Transactor segment lift</div>
-<ul class="text-sm space-y-1" style="color: rgba(255,255,255,0.85);">
-<li>· Open rate <strong style="color: white;">+25%</strong> · 30.68% → 38.23%</li>
-<li>· Click rate <strong style="color: white;">+314%</strong> · 0.56% → 2.32%</li>
-<li>· CTOR <strong style="color: white;">+234%</strong> · 1.82% → 6.07%</li>
-</ul>
-</div>
-<div class="p-5 rounded-xl" style="background: rgba(255,255,255,0.05);">
-<div class="text-xs mb-2" style="color: rgba(255,255,255,0.6);">Category mix · ₹20.39 Cr revenue</div>
-<ul class="text-sm space-y-1" style="color: rgba(255,255,255,0.85);">
-<li>· Large appliances · ₹8.11 Cr (39.8%)</li>
-<li>· Telecom · ₹6.90 Cr (33.8%)</li>
-<li>· Entertainment · ₹1.91 Cr (9.3%)</li>
-<li>· IT · ₹1.81 Cr (8.9%) · Small appliances · ₹1.37 Cr (6.7%)</li>
-</ul>
-</div>
-</div>
-<p class="text-sm" style="color: rgba(255,255,255,0.75);">Top brands · Samsung ₹3.98 Cr · Apple ₹3.19 Cr · LG ₹2.59 Cr. Top SKUs · Voltas + LG split ACs (seasonal) · iPhone 17 Pro Max. Geography · South 44.5% (₹9.07 Cr), West 20.3%, East 19.4%, North 15.9%. <strong style="color: white;">Saturday 19 - Apr alone generated ₹4.08 Cr</strong> · 20% of total revenue in one day. Replicable playbook for electronics-retail RCS campaigns now established.</p>
-</div>
-</div></section>
+
+<!-- §02 · Architecture — Shopify "All features" sticky left nav -->
+<section class="ucp-arch-section" id="architecture">
+  <div class="ucp-arch-inner">
+    <div style="margin-bottom:48px;">
+      <div class="section-label" style="margin-bottom:12px;">02 · Architecture</div>
+      <h2 class="display-2" style="font-size:clamp(28px,3.5vw,44px);color:var(--ink);margin-bottom:12px;">Identity → Data → Activation → Agentic<span class="dot" style="color:var(--coral);">.</span></h2>
+      <p style="font-size:16px;color:var(--ink-muted);max-width:640px;line-height:1.65;">Each layer earns the next. Identity made unified data possible. Unified data made segmentation and activation possible. Activation at scale is what makes the agentic layer worth building.</p>
+    </div>
+    <div class="ucp-arch-layout">
+      <!-- Sticky left nav -->
+      <nav class="ucp-arch-nav" aria-label="Architecture layers">
+        <a class="ucp-arch-nav-link active" href="#layer-identity">Layer 01 · Identity</a>
+        <a class="ucp-arch-nav-link" href="#layer-data">Layer 02 · Data</a>
+        <a class="ucp-arch-nav-link" href="#layer-activation">Layer 03 · Activation</a>
+        <a class="ucp-arch-nav-link" href="#layer-agentic">Layer 04 · Agentic</a>
+        <div style="margin-top:24px;padding:0 16px;">
+          <div style="font-size:11px;color:var(--ink-muted);font-family:'JetBrains Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;">Architecture video</div>
+          <a href="https://youtu.be/TJxbo_eDUcI" rel="noopener" target="_blank" style="font-size:13px;color:var(--accent);text-decoration:underline;">Watch walkthrough ↗</a>
+        </div>
+      </nav>
+      <!-- Right content -->
+      <div class="ucp-arch-content">
+        <!-- Layer 01 · Identity -->
+        <div class="ucp-arch-layer" id="layer-identity">
+          <div class="ucp-arch-layer-label">Layer 01 · Identity <span class="pill pill-live" style="font-size:10px;padding:2px 8px;">Live · L3</span></div>
+          <div class="ucp-arch-layer-title">Reliance Retail Account.</div>
+          <div class="ucp-arch-layer-desc">DPDP-compliant identity with consent capture, unified address book, retail SSO, and API-first integration for any platform regardless of design system.</div>
+          <div style="margin-bottom:24px;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+            <img alt="Identity unification — 380M+ customers across 75+ formats" src="assets/illus-identity.png" style="width:100%;display:block;max-height:280px;object-fit:cover;"/>
+          </div>
+          <div class="ucp-arch-feature-grid">
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">In-house OTP</div>
+              <div class="ucp-arch-feature-desc">JioMart + AJIO native login without SDKs or redirections.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Retail SSO</div>
+              <div class="ucp-arch-feature-desc">One tap across all platforms — frictionless sign-in everywhere.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Unified Address Book</div>
+              <div class="ucp-arch-feature-desc">Cross-platform address reuse for frictionless checkout.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Sanctions Screening v2.0</div>
+              <div class="ucp-arch-feature-desc">Dow Jones global list · compliance built into identity.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 02 · Data -->
+        <div class="ucp-arch-layer" id="layer-data">
+          <div class="ucp-arch-layer-label">Layer 02 · Data &amp; Intelligence <span class="pill pill-live" style="font-size:10px;padding:2px 8px;">Live · L3</span></div>
+          <div class="ucp-arch-layer-title">Single Customer View.</div>
+          <div class="ucp-arch-layer-desc">Web engagement, offline store visits, retail KPIs in one 360° view per customer at RRL, Format, and Business level. 200+ profile attributes across identity, affinity, and activity.</div>
+          <div class="ucp-arch-feature-grid">
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Audience Builder v2</div>
+              <div class="ucp-arch-feature-desc">170 retail formats via RRA · segment on any combination of attributes.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">RPOS Real-Time Streaming</div>
+              <div class="ucp-arch-feature-desc">1.5M orders/day · 75+ formats · 15K+ stores · within minutes of checkout.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">NPS at Scale</div>
+              <div class="ucp-arch-feature-desc">79 formats · ~500K daily SMS · ~7K daily responses · triggered post-purchase.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">200+ Profile Attributes</div>
+              <div class="ucp-arch-feature-desc">Identity, affinity, activity, purchase history — all in one profile.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 03 · Activation -->
+        <div class="ucp-arch-layer" id="layer-activation">
+          <div class="ucp-arch-layer-label">Layer 03 · Activation <span class="pill pill-live" style="font-size:10px;padding:2px 8px;">Live · L3</span></div>
+          <div class="ucp-arch-layer-title">Campaign Manager.</div>
+          <div class="ucp-arch-layer-desc">From audience to landed message to attributed conversion — closed loop, governed by cooldowns and volume caps across 200+ formats.</div>
+          <div style="margin-bottom:24px;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+            <img alt="Campaign activation — SMS, RCS, Meta, Google channels" src="assets/illus-activation.png" style="width:100%;display:block;max-height:280px;object-fit:cover;"/>
+          </div>
+          <div class="ucp-arch-feature-grid">
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Channel Coverage</div>
+              <div class="ucp-arch-feature-desc">SMS · RCS · Meta · Google — all from one Campaign Manager.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Embedded Coupon Codes</div>
+              <div class="ucp-arch-feature-desc">Shared (one code for all) and personalised (unique per customer).</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Conversion Tracking + ROAS</div>
+              <div class="ucp-arch-feature-desc">Offline POS conversion tracked back to campaign — full attribution.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Campaign Governance</div>
+              <div class="ucp-arch-feature-desc">Cooldowns + volume caps · prevents fatigue across 200+ formats.</div>
+            </div>
+          </div>
+        </div>
+        <!-- Layer 04 · Agentic -->
+        <div class="ucp-arch-layer" id="layer-agentic" style="border-left:3px solid var(--accent);padding-left:20px;">
+          <div class="ucp-arch-layer-label">Layer 04 · Agentic <span class="pill pill-build" style="font-size:10px;padding:2px 8px;">Building · L3 → L4</span></div>
+          <div class="ucp-arch-layer-title">Marketing OS.</div>
+          <div class="ucp-arch-layer-desc">Three cockpits answering the three questions every vertical leader asks: is the team on plan, is marketing pulling its weight, do consumers know the brand and prefer it.</div>
+          <div style="margin-bottom:24px;border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+            <img alt="Marketing OS cockpit — Executive, Deep Dive, Talk to Data" src="assets/illus-cockpit.png" style="width:100%;display:block;max-height:280px;object-fit:cover;"/>
+          </div>
+          <div class="ucp-arch-feature-grid">
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Marketing Intelligence</div>
+              <div class="ucp-arch-feature-desc">Plan-aware · AOP-vs-actuals · AI diagnostics · Talk-to-Data.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Brand Health</div>
+              <div class="ucp-arch-feature-desc">5-stage funnel · 20-attribute imagery · competitor comparison.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">AI-Native UCP</div>
+              <div class="ucp-arch-feature-desc">Chat-first · full marketing workflow conversationally. Target L4.</div>
+            </div>
+            <div class="ucp-arch-feature-item">
+              <div class="ucp-arch-feature-title">Marketing Agent</div>
+              <div class="ucp-arch-feature-desc">Goal in plain English → audience, creative, channel mix, send time, measurement. <a href="/agents/agentic-marketing/" style="color:var(--accent);">View agent →</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §03 · Marketing OS cockpits — Shopify-style alternating feature deep-dive with tab switcher -->
+<section style="padding:80px 0;border-bottom:1px solid var(--border);background:var(--bone);" id="marketing-os">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
+    <div class="section-label" style="margin-bottom:12px;">03 · Marketing OS · 3 cockpits</div>
+    <h2 class="display-2" style="font-size:clamp(28px,3.5vw,44px);color:var(--ink);margin-bottom:12px;">The agentic marketing layer<span class="dot" style="color:var(--coral);">.</span></h2>
+    <p style="font-size:16px;color:var(--ink-muted);max-width:640px;line-height:1.65;margin-bottom:40px;">Marketing OS sits on top of UCP. Three cockpits today. Each answers a different question every vertical leader asks. Reference: <a href="/autonomous" style="color:var(--accent);text-decoration:underline;">L0–L5 autonomy framework</a>.</p>
+    <!-- Tab switcher -->
+    <div class="ucp-feature-tabs" style="margin-bottom:0;">
+      <button class="ucp-feature-tab active" onclick="switchCockpit(this,'cockpit-a')">A · Marketing Intelligence</button>
+      <button class="ucp-feature-tab" onclick="switchCockpit(this,'cockpit-b')">B · Brand Health</button>
+      <button class="ucp-feature-tab" onclick="switchCockpit(this,'cockpit-c')">C · AI-Native UCP</button>
+    </div>
+  </div>
+
+  <!-- Cockpit A -->
+  <div id="cockpit-a" class="ucp-tab-panel active" style="padding-top:64px;">
+    <!-- Feature split: text left, screenshot right -->
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:48px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">COCKPIT A · For vertical leaders</div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-size:clamp(24px,2.5vw,36px);font-weight:800;color:var(--ink);margin-bottom:16px;">Marketing Intelligence cockpit.</h3>
+        <p style="font-size:16px;color:var(--ink-muted);line-height:1.65;margin-bottom:28px;">Replaces WBR-decks + finance-trackers + MarTech-dashboard stitching. AOP-vs-actuals, marketing efficiency, customer mix, and platform health in one view. Answers: is the team on plan, is spend pulling its weight, what is the data flagging as missing.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Executive Cockpit</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">Net Revenue · Orders · Customers · ABV with AOP achievement · all KPIs AOP-anchored.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Business Deep Dive</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">Revenue Story · Marketing Effectiveness · AI Diagnostic with Red/Amber/Green/Blue insight cards.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Talk to Data</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">"Why did ABV drop in Feb?" — charted, sourced answers without writing SQL.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Same shape, every vertical</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">Switch the vertical (Ajio · JioMart · Tira · RD · F&amp;L), get the same cockpit.</div></div>
+        </div>
+        <span class="pill pill-live">Live · L3 today → L4 target</span>
+      </div>
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.1);">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Marketing Intelligence · Executive Cockpit · AOP vs Actuals</span></div><div class="screenshot-body"><img alt="Marketing Intelligence · Executive Cockpit" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/01-executive-cockpit.jpg"/></div></div>
+      </div>
+    </div>
+    <!-- 3-screenshot row -->
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="card overflow-hidden">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Revenue Story · 13-month AOP trend</span></div><div class="screenshot-body"><img alt="Revenue Story" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/02-revenue-story.jpg"/></div></div>
+        <div class="p-3 cap-num" style="color:var(--ink-muted);">Surface 2 · Revenue Story · 13-month AOP trend · source splits</div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Marketing Effectiveness · A2S · ROAS · CAC</span></div><div class="screenshot-body"><img alt="Marketing Effectiveness" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/03-marketing-effectiveness.jpg"/></div></div>
+        <div class="p-3 cap-num" style="color:var(--ink-muted);">Surface 2 · Marketing Effectiveness · A2S · ROAS · CAC · LTV/CAC</div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">AI Diagnostic · insight cards</span></div><div class="screenshot-body"><img alt="AI Diagnostic" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/marketing-intelligence/04-ai-diagnostic.jpg"/></div></div>
+        <div class="p-3 cap-num" style="color:var(--ink-muted);">Surface 2 · AI Diagnostic · Red/Amber/Green/Blue insight cards</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cockpit B -->
+  <div id="cockpit-b" class="ucp-tab-panel" style="display:none;padding-top:64px;">
+    <!-- Feature split: screenshot left, text right -->
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:48px;">
+      <div style="border-radius:12px;overflow:hidden;box-shadow:0 4px 32px rgba(0,0,0,0.1);">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Health · Awareness Funnel · JioMart vs Blinkit</span></div><div class="screenshot-body"><img alt="Brand Health · Awareness Funnel" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/01-awareness-funnel.jpg"/></div></div>
+      </div>
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">COCKPIT B · For brand leaders</div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-size:clamp(24px,2.5vw,36px);font-weight:800;color:var(--ink);margin-bottom:16px;">Brand Health cockpit.</h3>
+        <p style="font-size:16px;color:var(--ink-muted);line-height:1.65;margin-bottom:28px;">Where Marketing Intelligence answers "is the brand hitting plan?", Brand Health answers "do consumers know the brand, prefer it, use it, trust it; how does it compare to the competition?" One brand with every angle in a single experience.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:28px;">
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Awareness Funnel</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">5 stages: Total Awareness → Consideration → L1Y Usage → L3M Usage → MOUB with ±pp deltas.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Competitor Comparison</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">Blinkit · Zepto · Swiggy Instamart · Flipkart Minutes · Amazon Fresh · Bigbasket Now.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">20-Attribute Imagery</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">Gaps table sorted by magnitude · top-5 movers QoQ · functional / commercial / emotional.</div></div>
+          <div><div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:4px;">Ad Testing</div><div style="font-size:13px;color:var(--ink-muted);line-height:1.5;">Creative-level masked brand-recall · closes loop from campaign spend to brand equity.</div></div>
+        </div>
+        <span class="pill pill-live">Live · L3 today → L4 target</span>
+      </div>
+    </div>
+    <!-- 3-screenshot row -->
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+      <div class="card overflow-hidden">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Brand Imagery Gaps · 20 attributes</span></div><div class="screenshot-body"><img alt="Brand Imagery Gaps" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/02-imagery-gaps.jpg"/></div></div>
+        <div class="p-3 cap-num" style="color:var(--ink-muted);">Surface 2 · Imagery Gaps · 20 attributes · sorted by gap magnitude</div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Imagery Movers · Top Gainers QoQ</span></div><div class="screenshot-body"><img alt="Imagery Movers" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/03-imagery-movers.jpg"/></div></div>
+        <div class="p-3 cap-num" style="color:var(--ink-muted);">Surface 2 · Imagery Movers · Top 5 gainers / decliners QoQ</div>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Zonal Performance + AI Analysis</span></div><div class="screenshot-body"><img alt="Zonal Performance" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/brand-health/06-zonal-ai-analysis.jpg"/></div></div>
+        <div class="p-3 cap-num" style="color:var(--ink-muted);">Surface 2 · Zonal + AI Analysis · 4-pillar synthesis</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cockpit C -->
+  <div id="cockpit-c" class="ucp-tab-panel" style="display:none;padding-top:64px;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 32px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;margin-bottom:48px;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;">COCKPIT C · The L4 target</div>
+        <h3 style="font-family:'Inter Tight',sans-serif;font-size:clamp(24px,2.5vw,36px);font-weight:800;color:var(--ink);margin-bottom:16px;">AI-Native UCP.</h3>
+        <p style="font-size:16px;color:var(--ink-muted);line-height:1.65;margin-bottom:28px;">A complete CDP in a single chat interface. Every step of the marketing workflow — data → cohort → campaign → creative → execution → retrospective — happens conversationally, with AI models powering each step.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;">
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;">Speak to data</div><div style="font-size:12px;color:var(--ink-muted);">Query customer bases via natural language. No dashboards.</div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;">AI-built cohorts</div><div style="font-size:12px;color:var(--ink-muted);">AI suggests and builds segments from goals.</div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;">Configure campaigns</div><div style="font-size:12px;color:var(--ink-muted);">AI-recommended targeting, timing, channel mix.</div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;">Generate creatives</div><div style="font-size:12px;color:var(--ink-muted);">Channel-specific creatives per audience, in-flow.</div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;">Execute + govern</div><div style="font-size:12px;color:var(--ink-muted);">Launch from chat with guardrails built in.</div></div>
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:14px;"><div style="font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px;">Retrospective</div><div style="font-size:12px;color:var(--ink-muted);">What worked, what didn't, why — conversationally.</div></div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <span class="pill pill-build">Building · L2 demo → L4 target</span>
+          <a href="https://youtu.be/9KCFnV6kXEU" rel="noopener" target="_blank" style="font-size:13px;color:var(--accent);text-decoration:underline;align-self:center;">Watch demo ↗</a>
+        </div>
+      </div>
+      <div>
+        <article class="card overflow-hidden video-card" data-embed="https://www.youtube.com/embed/9KCFnV6kXEU?autoplay=1&rel=0&vq=hd1080&modestbranding=1&iv_load_policy=3&playsinline=1">
+          <div class="video-thumb" onclick="playVideo(this)"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">AI-Native UCP · demo</span></div><div class="screenshot-body"><img alt="AI-Native UCP demo" class="od-img" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/9KCFnV6kXEU/hqdefault.jpg'" src="https://i.ytimg.com/vi/9KCFnV6kXEU/maxresdefault.jpg"/></div></div><div class="play-overlay">▶</div></div>
+          <div class="p-4">
+            <div class="flex items-center gap-2 mb-2"><span class="pill">Demo</span><a class="text-xs accent ml-auto" href="https://youtu.be/9KCFnV6kXEU" rel="noopener" target="_blank">↗</a></div>
+            <h3 class="font-medium text-sm mb-1" style="color:var(--ink);">AI-Native UCP · chat-first marketing workflow.</h3>
+            <div class="cap-num">Goal in plain English → full campaign · L2 demo · L4 target</div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §04 · Case study — Shopify-style merchant testimonial / case study section -->
+<section class="ucp-case-section" id="case-study">
+  <div class="ucp-case-inner">
+    <div class="section-label" style="color:rgba(255,255,255,0.4);margin-bottom:12px;">04 · Case study · UCP-powered campaign</div>
+    <h2 class="ucp-case-heading">See UCP in action.</h2>
+    <div class="ucp-case-layout">
+      <!-- Left: brand tabs + quote -->
+      <div>
+        <div class="ucp-case-brand-tabs">
+          <button class="ucp-case-brand-tab active">RELIANCE DIGITAL</button>
+        </div>
+        <div class="ucp-case-tools">
+          <div class="ucp-case-tools-label">Tools used</div>
+          <div class="ucp-case-tool-pills">
+            <span class="ucp-case-tool-pill">Audience Builder</span>
+            <span class="ucp-case-tool-pill">RCS Campaigns</span>
+            <span class="ucp-case-tool-pill">Conversion Tracking</span>
+            <span class="ucp-case-tool-pill">RPOS Attribution</span>
+          </div>
+        </div>
+        <div class="ucp-case-quote">"10 RCS campaigns. ₹20.39 Cr in product revenue. 1.25M recipients. Offline POS conversion tracked end-to-end — the replicable playbook for electronics-retail RCS campaigns is now established."</div>
+        <div class="ucp-case-attribution">RELIANCE DIGITAL · Digital Discount Days · 11–19 Apr 2026</div>
+      </div>
+      <!-- Right: case study card -->
+      <div class="ucp-case-card">
+        <div class="ucp-case-card-label">Case Study</div>
+        <div class="ucp-case-card-title">Reliance Digital · Digital Discount Days</div>
+        <div class="ucp-case-card-desc">UCP's first large-scale conversion-tracked campaign for RD. End-to-end: audience segmentation through RCS delivery to offline POS conversion tracking, all powered by UCP.</div>
+        <div class="ucp-case-metrics">
+          <div class="ucp-case-metric"><div class="ucp-case-metric-val coral">₹20.39 Cr</div><div class="ucp-case-metric-lbl">Product revenue</div></div>
+          <div class="ucp-case-metric"><div class="ucp-case-metric-val">1.25M</div><div class="ucp-case-metric-lbl">Recipients</div></div>
+          <div class="ucp-case-metric"><div class="ucp-case-metric-val">30.68%</div><div class="ucp-case-metric-lbl">Open rate</div></div>
+          <div class="ucp-case-metric"><div class="ucp-case-metric-val coral">+314%</div><div class="ucp-case-metric-lbl">Click rate lift (transactors)</div></div>
+          <div class="ucp-case-metric"><div class="ucp-case-metric-val">5,693</div><div class="ucp-case-metric-lbl">Transacting buyers</div></div>
+          <div class="ucp-case-metric"><div class="ucp-case-metric-val">₹34,145</div><div class="ucp-case-metric-lbl">Avg ticket size</div></div>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.6;">Top brands: Samsung ₹3.98 Cr · Apple ₹3.19 Cr · LG ₹2.59 Cr. Saturday 19 Apr alone: ₹4.08 Cr (20% of total revenue in one day).</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- §05 · Path to L4 -->
+<section class="py-16 border-b" id="path-to-l4" style="border-color:var(--border);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="od-index-bar"><span class="od-bar-title">PATH TO L4 <span class="od-bar-dot">·</span> Marketing OS</span><span class="od-bar-counter">001 / 001</span></div>
+    <div class="section-label mb-3">05 · PATH TO L4</div>
+    <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color:var(--ink);">How UCP becomes <span style="color:var(--accent);">L4 agentic.</span></h2>
+    <p class="text-base max-w-3xl mb-8" style="color:var(--ink);">Currently at <strong>L3</strong>. 1 named agent from the <a href="/agents/" style="color:var(--accent);text-decoration:underline;">/agents/</a> directory closes the gap to L4.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 max-w-5xl">
+      <a class="platform-card" href="/agents/agentic-marketing/">
+        <div class="platform-card-head">
+          <div class="platform-card-name">Marketing Agent</div>
+          <span class="pill pill-build">BUILDING</span>
+        </div>
+        <div class="platform-card-desc">Goal in plain English → audience, creative, channel mix, send time, measurement · autonomously, with humans only on guardrails.</div>
+        <div class="platform-card-foot"><span class="platform-card-tag">Target L4</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- §06 · Platform Roadmap -->
+<section class="py-16 border-b" style="border-color:var(--border);">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-label mb-3">06 · Platform Roadmap</div>
+    <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color:var(--ink);">What ships next<span class="dot" style="color:var(--coral);">.</span></h2>
+    <p class="text-base max-w-3xl mb-8" style="color:var(--ink-muted);">Two roadmap threads in flight from Day-0 <strong>04 - May - 2026</strong>. Release window <strong>15 - May → 09 - Jun - 2026</strong>.</p>
+    <details class="bp-card" open="">
+      <summary class="bp-summary">
+        <span class="bp-card-title">Platform Roadmap</span>
+        <span class="pill pill-build">Building</span>
+        <span class="bp-card-meta">4 deliverables</span>
+        <span class="bp-card-meta">15 → 25 - May - 2026</span>
+      </summary>
+      <div class="bp-body">
+        <table class="bp-table">
+          <thead><tr><th>Workstream</th><th>Deliverable</th><th>Release</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="bp-step">Brand Health Dashboard</td><td>Cockpit showing how a Reliance Retail brand is perceived: awareness, consideration, usage, imagery gaps versus competitors, and creatives driving recall</td><td class="bp-when">15 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+            <tr><td class="bp-step">Marketing Intelligence Dashboard</td><td>Cockpit for business and marketing leaders to read AOP-vs-actuals, marketing efficiency, and platform health for any vertical at a glance</td><td class="bp-when">15 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+            <tr><td class="bp-step">Brand Kit &amp; Content Studio</td><td>Brand-kit-driven content generation for ad creatives, banners, text, and other marketing accoutrements</td><td class="bp-when">15 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+            <tr><td class="bp-step">AI Assist UCP</td><td>Audience &amp; campaign creation · AI-native interface generating executable campaigns from a single prompt</td><td class="bp-when">25 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+    <details class="bp-card" open="">
+      <summary class="bp-summary">
+        <span class="bp-card-title">AI Roadmap</span>
+        <span class="pill pill-build">Building</span>
+        <span class="bp-card-meta">4 deliverables</span>
+        <span class="bp-card-meta">20 - May → 09 - Jun - 2026</span>
+      </summary>
+      <div class="bp-body">
+        <table class="bp-table">
+          <thead><tr><th>Workstream</th><th>Deliverable</th><th>Release</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="bp-step">AI Insights on UCP Console</td><td>Post-performance analysis and AI inputs within Audiences &amp; Campaigns: continuous autonomous learning loop for next campaigns</td><td class="bp-when">20 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+            <tr><td class="bp-step">Suggested &amp; Lookalike Audiences</td><td>AI-driven segments auto-generated using signals · same-format and cross-format lookalikes from seed audiences</td><td class="bp-when">30 - May - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+            <tr><td class="bp-step">Best Time / Channel / Content</td><td>Best time, content, and channel per user: determined using user, format, geography, and outcome context</td><td class="bp-when">04 - Jun - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+            <tr><td class="bp-step">Goal-Based Campaign Planner</td><td>Decides best customers, best time, and best content from a single goal · switches marketing strategy from reactive to proactive</td><td class="bp-when">09 - Jun - 2026</td><td class="bp-pill"><span class="pill pill-phase2">Planned</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </div>
+</section>
+
 <!-- §07 · Release timeline -->
-<section class="py-16 border-b" style="border-color: var(--border); background: var(--bone);"><div class="max-w-7xl mx-auto px-6">
-<div class="section-label mb-3">07 · Release timeline · 9 major milestones · Jan-2026 → Apr-2026</div>
-<h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How UCP got here<span class="dot" style="color:var(--coral);">.</span></h2>
-<p class="text-sm mb-10" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace;">Releases shown from 01 - Jan - 2026 onwards.</p>
-<div class="space-y-1">
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Brand Health cockpit live.</div><div class="text-sm" style="color: var(--ink-muted);">5-stage funnel (Awareness → Consideration → L1Y Usage → L3M Usage → MOUB) with side-by-side competitor comparison · 20-attribute brand imagery analysis with QoQ movers · zonal performance · ad-testing module · AI Analysis across Perception / CX / Growth / Marketing · Talk-to-Data conversational layer.</div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Marketing Intelligence cockpit live.</div><div class="text-sm" style="color: var(--ink-muted);">Executive Cockpit + Business Deep Dive + Talk-to-Data. Plan-aware KPIs (AOP-anchored, not YoY) · spend efficiency in full context (A2S, ROAS, CAC, LTV/CAC) · grounded AI diagnostics. Same shape across Ajio · JioMart · Tira · Reliance Digital · F&amp;L.</div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">Apr - 2026 · ongoing</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Self-Serve and Adoption scale-up.</div><div class="text-sm" style="color: var(--ink-muted);">Custom Audiences (Bring Your Own) · Campaign Governance with cooldowns and volume caps across 200+ formats · Real-time delivery tracking · End-to-end conversion tracking and ROAS · Documentation portal with RCS preview utilities and catalogue references.</div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">21 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">Campaign Coupon Codes.</div><div class="text-sm" style="color: var(--ink-muted);">Shared (one code for all) and personalised (unique per customer) coupons inside Campaign Manager. CSV/ZIP customer-to-coupon mapping · matching and injection at delivery time. Next · JCP Coupons + Central Promotion Engine integration for real-time fetch.</div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">03 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color: var(--ink);">RPOS Real-Time · 15,000+ stores.</div><div class="text-sm" style="color: var(--ink-muted);">Every in-store transaction streams into UCP within minutes of checkout · 1.5M orders/day · 75+ formats · 15K+ stores under RRL and RBL. Powers near-real-time NPS, audience segments, post-purchase campaigns. Replaces day-old batch data.</div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">02 - Apr - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color: var(--ink);">Fayda Meter on JioMart.</div><div class="text-sm" style="color: var(--ink-muted);">Lifetime savings + neighbourhood savings (pincode aggregation on Databricks). Customer sees their savings vs their pincode in near-real-time. Featured in JioMart's IPL season ads · reaches millions. Demo · <a href="https://youtu.be/z1r24TH2VBM" rel="noopener" style="color: var(--accent); text-decoration: underline;" target="_blank">youtu.be/z1r24TH2VBM</a>.</div><div class="flex gap-2 mt-3"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Fayda Meter · JioMart customer savings screen</span></div><div class="screenshot-body"><img alt="Fayda Meter · JioMart customer savings screen" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/fayda-meter-1.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Fayda Meter · neighbourhood savings comparison</span></div><div class="screenshot-body"><img alt="Fayda Meter · neighbourhood savings comparison" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/fayda-meter-2.jpg"/></div></div></div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">01 - Apr - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color: var(--ink);">NPS at scale · 79 formats · ~7,000 stores.</div><div class="text-sm" style="color: var(--ink-muted);">SMS triggered 1-2 hours after every in-store POS purchase · unique one-time link · 0-10 rating + feedback. 7.2M orders processed · ~500K daily surveys sent · ~7K daily responses.</div><div class="flex gap-2 mt-3"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS SMS trigger · sample message</span></div><div class="screenshot-body"><img alt="NPS SMS trigger · sample message" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-sms.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS form · 0-10 rating screen</span></div><div class="screenshot-body"><img alt="NPS form · 0-10 rating screen" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-form-1.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS form · feedback question</span></div><div class="screenshot-body"><img alt="NPS form · feedback question" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-form-2.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS form · thank you</span></div><div class="screenshot-body"><img alt="NPS form · thank you" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-form-3.jpg"/></div></div></div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">24 - Mar - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color: var(--ink);">API-First Retail Account + Unified Address Book.</div><div class="text-sm" style="color: var(--ink-muted);">Any platform can integrate regardless of design system · native login/signup UI without SDKs or redirections. Platform-level consent with granular control. Cross-platform address reuse for frictionless checkout.</div><div class="mt-3"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Reliance Retail Account UI · sign-in + connected accounts</span></div><div class="screenshot-body"><img alt="Reliance Retail Account UI · sign-in + connected accounts" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/retail-account.jpg"/></div></div></div></div></div>
-<div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color: var(--accent); min-width: 130px;">30 - Jan - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color: var(--ink);">Multi-feature rollout · RPOS, RCS, Analytics.</div><div class="text-sm" style="color: var(--ink-muted);">RPOS bringing ~2 lakh daily transaction events from 16+ formats · NPS expansion across Trends, Gap, Yousta, Avantra, Performax · native RCS campaigns (Android + iOS) · device fingerprinting for Retail Account · audiences pushed natively to Meta and Google Ads. 46 campaigns run · 7 format adoptions.</div><div class="grid md:grid-cols-2 gap-2 mt-3 max-w-3xl"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">UCP Console · Jan 2026</span></div><div class="screenshot-body"><img alt="UCP Console · Jan 2026" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/jan26-console.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">UCP Console · campaign analytics · Jan 2026</span></div><div class="screenshot-body"><img alt="UCP Console · campaign analytics · Jan 2026" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/jan26-analytics.jpg"/></div></div></div></div></div>
+<section class="py-16 border-b" style="border-color:var(--border);background:var(--bone);" id="timeline">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="section-label mb-3">07 · Release timeline · 9 major milestones · Jan-2026 → Apr-2026</div>
+    <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color:var(--ink);">How UCP got here<span class="dot" style="color:var(--coral);">.</span></h2>
+    <p class="text-sm mb-10" style="color:var(--ink-muted);font-family:'JetBrains Mono',monospace;">Releases shown from 01 - Jan - 2026 onwards.</p>
+    <div class="space-y-1">
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">Apr - 2026</span><div><div class="font-semibold mb-1" style="color:var(--ink);">Brand Health cockpit live.</div><div class="text-sm" style="color:var(--ink-muted);">5-stage funnel (Awareness → Consideration → L1Y Usage → L3M Usage → MOUB) with side-by-side competitor comparison · 20-attribute brand imagery analysis with QoQ movers · zonal performance · ad-testing module · AI Analysis across Perception / CX / Growth / Marketing · Talk-to-Data conversational layer.</div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">Apr - 2026</span><div><div class="font-semibold mb-1" style="color:var(--ink);">Marketing Intelligence cockpit live.</div><div class="text-sm" style="color:var(--ink-muted);">AOP-vs-actuals, marketing efficiency, customer mix, and platform health for any vertical. Executive Cockpit + Business Deep Dive + AI Diagnostic + Talk-to-Data. Same shape across Ajio · JioMart · Tira · RD · F&amp;L.</div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">Apr - 2026 · ongoing</span><div><div class="font-semibold mb-1" style="color:var(--ink);">Self-Serve and Adoption scale-up.</div><div class="text-sm" style="color:var(--ink-muted);">Custom Audiences (Bring Your Own) · Campaign Governance with cooldowns and volume caps across 200+ formats · Real-time delivery tracking · End-to-end conversion tracking and ROAS.</div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">21 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color:var(--ink);">Campaign Coupon Codes.</div><div class="text-sm" style="color:var(--ink-muted);">Shared (one code for all) and personalised (unique per customer) coupons inside Campaign Manager. CSV/ZIP customer-to-coupon mapping · matching and injection at delivery time.</div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">03 - Apr - 2026</span><div><div class="font-semibold mb-1" style="color:var(--ink);">RPOS Real-Time · 15,000+ stores.</div><div class="text-sm" style="color:var(--ink-muted);">Every in-store transaction streams into UCP within minutes of checkout · 1.5M orders/day · 75+ formats · 15K+ stores under RRL and RBL. Powers near-real-time NPS, audience segments, post-purchase campaigns.</div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">02 - Apr - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color:var(--ink);">Fayda Meter on JioMart.</div><div class="text-sm" style="color:var(--ink-muted);">Lifetime savings + neighbourhood savings (pincode aggregation on Databricks). Featured in JioMart's IPL season ads · reaches millions. Demo · <a href="https://youtu.be/z1r24TH2VBM" rel="noopener" style="color:var(--accent);text-decoration:underline;" target="_blank">youtu.be/z1r24TH2VBM</a>.</div><div class="flex gap-2 mt-3"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Fayda Meter · JioMart</span></div><div class="screenshot-body"><img alt="Fayda Meter" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/fayda-meter-1.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Fayda Meter · neighbourhood savings</span></div><div class="screenshot-body"><img alt="Fayda Meter neighbourhood" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/fayda-meter-2.jpg"/></div></div></div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">01 - Apr - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color:var(--ink);">NPS at scale · 79 formats · ~7,000 stores.</div><div class="text-sm" style="color:var(--ink-muted);">SMS triggered 1-2 hours after every in-store POS purchase · unique one-time link · 0-10 rating + feedback. 7.2M orders processed · ~500K daily surveys sent · ~7K daily responses.</div><div class="flex gap-2 mt-3"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS SMS trigger</span></div><div class="screenshot-body"><img alt="NPS SMS" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-sms.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS form · rating</span></div><div class="screenshot-body"><img alt="NPS form" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-form-1.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">NPS form · feedback</span></div><div class="screenshot-body"><img alt="NPS feedback" class="zoomable od-img-sm od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/nps-form-2.jpg"/></div></div></div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">24 - Mar - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color:var(--ink);">API-First Retail Account + Unified Address Book.</div><div class="text-sm" style="color:var(--ink-muted);">Any platform can integrate regardless of design system · native login/signup UI without SDKs or redirections. Cross-platform address reuse for frictionless checkout.</div><div class="mt-3"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">Reliance Retail Account UI</span></div><div class="screenshot-body"><img alt="Retail Account UI" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/retail-account.jpg"/></div></div></div></div></div>
+      <div class="card p-5 flex items-baseline gap-6"><span class="mono text-sm" style="color:var(--accent);min-width:130px;">30 - Jan - 2026</span><div class="flex-1"><div class="font-semibold mb-1" style="color:var(--ink);">Multi-feature rollout · RPOS, RCS, Analytics.</div><div class="text-sm" style="color:var(--ink-muted);">RPOS bringing ~2 lakh daily transaction events from 16+ formats · NPS expansion · native RCS campaigns (Android + iOS) · audiences pushed natively to Meta and Google Ads. 46 campaigns run · 7 format adoptions.</div><div class="grid md:grid-cols-2 gap-2 mt-3 max-w-3xl"><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">UCP Console · Jan 2026</span></div><div class="screenshot-body"><img alt="UCP Console Jan 2026" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/jan26-console.jpg"/></div></div><div class="screenshot-frame"><div class="screenshot-bar"><div class="screenshot-dots"><span></span><span></span><span></span></div><span class="screenshot-url">UCP analytics · Jan 2026</span></div><div class="screenshot-body"><img alt="UCP analytics Jan 2026" class="zoomable od-img" src="https://socialassets.impetusz0.de/rrl-portfolio/assets/ucp/timeline/jan26-analytics.jpg"/></div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cross-sell strip (Shopify-style) -->
+<div class="ucp-crosssell">
+  <a class="ucp-crosssell-item" href="/autonomous">
+    <div>
+      <div class="ucp-crosssell-label">Explore</div>
+      <div class="ucp-crosssell-title">Autonomy framework · L0–L5</div>
+    </div>
+    <div class="ucp-crosssell-arrow">→</div>
+  </a>
+  <a class="ucp-crosssell-item" href="/agents/agentic-marketing/">
+    <div>
+      <div class="ucp-crosssell-label">Explore</div>
+      <div class="ucp-crosssell-title">Marketing Agent · agentic L4</div>
+    </div>
+    <div class="ucp-crosssell-arrow">→</div>
+  </a>
 </div>
+
+<!-- Built by + practice bar -->
+<section class="py-10 border-b" style="border-color:var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color:var(--ink-muted);">
+Team · see <a href="/organisation/" style="color:var(--accent);">/organisation/</a>
 </div></section>
-<!-- §06 · Built by -->
-<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
-Team · see <a href="/organisation/" style="color: var(--accent);">/organisation/</a>
-</div></section>
-<div class="container" style="padding-bottom: 32px;">
-<hr class="od-dashed-sep"/>
-<div class="od-practice-bar">
-<span>Fynd × Reliance Retail · UCP</span>
-<span>Project Glass · 2025</span>
+<div class="container" style="padding-bottom:32px;">
+  <hr class="od-dashed-sep"/>
+  <div class="od-practice-bar">
+    <span>Fynd × Reliance Retail · UCP &amp; Marketing OS</span>
+    <span>Project Glass · 2025</span>
+  </div>
 </div>
-</div>
-<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+<footer class="py-10" style="background:var(--ink);color:white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity:0.7;">
 <div>© 2026 RRVL · Jio Platforms Limited · Fynd · Strict internal circulation only</div>
 </div></footer>
+
+<!-- Lightboxes -->
 <div class="lightbox" id="video-lightbox" onclick="if(event.target===this)closeVideoLightbox()">
-<span class="close" onclick="closeVideoLightbox()">×</span>
-<div class="video-lightbox-frame" id="video-lightbox-frame"></div>
+  <span class="close" onclick="closeVideoLightbox()">×</span>
+  <div class="video-lightbox-frame" id="video-lightbox-frame"></div>
 </div>
 <div class="lightbox" id="image-lightbox" onclick="if(event.target===this)closeImageLightbox()">
-<span class="close" onclick="closeImageLightbox()">×</span>
-<div class="image-lightbox-frame" id="image-lightbox-frame"></div>
+  <span class="close" onclick="closeImageLightbox()">×</span>
+  <div class="image-lightbox-frame" id="image-lightbox-frame"></div>
 </div>
+
 <script>
+/* ── Tab switchers ── */
+function switchProofTab(btn, panelId) {
+  document.querySelectorAll('.ucp-proof-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#proof-running, #proof-building, #proof-roadmap').forEach(p => {
+    p.style.display = 'none';
+    p.classList.remove('active');
+  });
+  const panel = document.getElementById('proof-' + panelId);
+  if (panel) { panel.style.display = 'grid'; panel.classList.add('active'); }
+}
+function switchCockpit(btn, panelId) {
+  document.querySelectorAll('.ucp-feature-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#cockpit-a, #cockpit-b, #cockpit-c').forEach(p => {
+    p.style.display = 'none'; p.classList.remove('active');
+  });
+  const panel = document.getElementById(panelId);
+  if (panel) { panel.style.display = 'block'; panel.classList.add('active'); }
+}
+
+/* ── Architecture sticky nav highlight ── */
+(function() {
+  const layers = ['layer-identity','layer-data','layer-activation','layer-agentic'];
+  const navLinks = document.querySelectorAll('.ucp-arch-nav-link');
+  function onScroll() {
+    let current = layers[0];
+    layers.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top < 120) current = id;
+    });
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ── Video lightbox ── */
 function playVideo(thumbEl) {
   const card = thumbEl.closest('.video-card');
   const embed = card.dataset.embed;
   const frame = document.getElementById('video-lightbox-frame');
-  frame.innerHTML = `<iframe src="${embed}"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen></iframe>`;
+  frame.innerHTML = `<iframe src="${embed}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
   document.getElementById('video-lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -623,9 +1061,7 @@ document.addEventListener('DOMContentLoaded', () => {
     img.addEventListener('click', () => openImageLightbox(img));
   });
 });
-
-// YouTube serves a 120x90 placeholder when maxresdefault.jpg doesn't exist;
-// detect that and fall back to hqdefault.
+/* YouTube fallback */
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.video-card').forEach(card => {
     const m = (card.dataset.embed || '').match(/\/embed\/([^?]+)/);
@@ -633,11 +1069,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const fallback = 'https://i.ytimg.com/vi/' + m[1] + '/hqdefault.jpg';
     const img = card.querySelector('img');
     if (!img) return;
-    function check() {
-      if (img.naturalWidth > 0 && img.naturalWidth < 200 && img.src !== fallback) {
-        img.src = fallback;
-      }
-    }
+    function check() { if (img.naturalWidth > 0 && img.naturalWidth < 200 && img.src !== fallback) img.src = fallback; }
     if (img.complete) check(); else img.addEventListener('load', check, { once: true });
   });
 });
