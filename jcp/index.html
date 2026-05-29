@@ -136,6 +136,9 @@
   .ch-logo-card:hover { border-color: var(--ink); transform: translateY(-2px); }
   .ch-logo-thumb { aspect-ratio: 9/16; display: flex; align-items: center; justify-content: center; padding: 16px; background: white; border-bottom: 1px solid var(--border); }
   .ch-logo-thumb img { max-width: 80%; max-height: 60%; object-fit: contain; }
+
+  .ch-brand-text { font-size: 22px; font-weight: 700; color: var(--ink); text-align: center; line-height: 1.3; letter-spacing: -0.02em; }
+  .ch-logo-thumb .ch-brand-text { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
   .ch-chip { display: inline-flex; align-items: center; gap: 8px; background: var(--bone); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px 6px 6px; transition: all .15s; }
   .ch-chip:hover { border-color: var(--ink); }
   .ch-chip h4 { font-size: 13px; font-weight: 600; color: var(--ink); margin: 0; line-height: 1.2; }
@@ -253,7 +256,73 @@
   </div>
   <div class="od-hero-graphic">
 <div class="od-graphic-frame">
-<img src="hero-graphic.png?v=1780033693" alt="JCP architecture — one platform, 78 channels" style="width:100%;max-width:480px;">
+<svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;font-family:'Inter Tight',sans-serif;">
+  <!-- Background -->
+  <rect width="480" height="360" rx="16" fill="#f5ede3"/>
+  <!-- Grid dots -->
+  <defs>
+    <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#c4b8a8" opacity="0.4"/>
+    </pattern>
+  </defs>
+  <rect width="480" height="360" fill="url(#dots)"/>
+  <!-- Central JCP hub -->
+  <rect x="175" y="135" width="130" height="90" rx="12" fill="#1a1a1a"/>
+  <text x="240" y="172" text-anchor="middle" fill="#f5f0e8" font-size="16" font-weight="700">JCP</text>
+  <text x="240" y="195" text-anchor="middle" fill="#888" font-size="9" font-weight="500" letter-spacing="0.1em">SUBSTRATE</text>
+  <!-- B2C channels row -->
+  <rect x="30" y="40" width="72" height="28" rx="14" fill="#dcf5e7" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="66" y="58" text-anchor="middle" fill="#047857" font-size="10" font-weight="600">JioMart</text>
+  <rect x="112" y="40" width="52" height="28" rx="14" fill="#dcf5e7" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="138" y="58" text-anchor="middle" fill="#047857" font-size="10" font-weight="600">AJIO</text>
+  <rect x="174" y="40" width="46" height="28" rx="14" fill="#dcf5e7" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="197" y="58" text-anchor="middle" fill="#047857" font-size="10" font-weight="600">Tira</text>
+  <rect x="230" y="40" width="66" height="28" rx="14" fill="#dcf5e7" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="263" y="58" text-anchor="middle" fill="#047857" font-size="10" font-weight="600">Netmeds</text>
+  <rect x="306" y="40" width="60" height="28" rx="14" fill="#dcf5e7" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="336" y="58" text-anchor="middle" fill="#047857" font-size="10" font-weight="600">Digital</text>
+  <rect x="376" y="40" width="40" height="28" rx="14" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1"/>
+  <text x="396" y="58" text-anchor="middle" fill="#047857" font-size="9" font-weight="500">+73</text>
+  <!-- Row 2 -->
+  <rect x="30" y="78" width="60" height="26" rx="13" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="60" y="95" text-anchor="middle" fill="#92400e" font-size="9" font-weight="600">Trends</text>
+  <rect x="100" y="78" width="70" height="26" rx="13" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="135" y="95" text-anchor="middle" fill="#92400e" font-size="9" font-weight="600">7-Eleven</text>
+  <rect x="180" y="78" width="56" height="26" rx="13" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="208" y="95" text-anchor="middle" fill="#92400e" font-size="9" font-weight="600">Coach</text>
+  <!-- Connection lines -->
+  <line x1="66" y1="68" x2="200" y2="135" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="138" y1="68" x2="210" y2="135" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="197" y1="68" x2="230" y2="135" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="263" y1="68" x2="250" y2="135" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="336" y1="68" x2="270" y2="135" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="60" y1="104" x2="195" y2="145" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="135" y1="104" x2="210" y2="145" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <!-- B2B row -->
+  <rect x="30" y="270" width="76" height="26" rx="13" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="68" y="287" text-anchor="middle" fill="#6d28d9" font-size="9" font-weight="600">Metro B2B</text>
+  <rect x="116" y="270" width="52" height="26" rx="13" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="142" y="287" text-anchor="middle" fill="#6d28d9" font-size="9" font-weight="600">RCPL</text>
+  <rect x="178" y="270" width="66" height="26" rx="13" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="211" y="287" text-anchor="middle" fill="#6d28d9" font-size="9" font-weight="600">FreshPik</text>
+  <rect x="254" y="270" width="66" height="26" rx="13" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+  <text x="287" y="287" text-anchor="middle" fill="#6d28d9" font-size="9" font-weight="600">Hamleys</text>
+  <rect x="330" y="270" width="36" height="26" rx="13" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1"/>
+  <text x="348" y="287" text-anchor="middle" fill="#6b7280" font-size="9" font-weight="500">+7</text>
+  <!-- B2B lines -->
+  <line x1="68" y1="270" x2="210" y2="225" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="142" y1="270" x2="225" y2="225" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="211" y1="270" x2="240" y2="225" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <line x1="287" y1="270" x2="260" y2="225" stroke="#c4b8a8" stroke-width="0.7" opacity="0.5"/>
+  <!-- Labels -->
+  <text x="30" y="260" fill="#888" font-size="9">B2B channels</text>
+  <text x="30" y="30" fill="#888" font-size="9">B2C channels</text>
+  <!-- Stats at bottom -->
+  <text x="30" y="330" fill="#1a1a1a" font-size="11" font-weight="700">700K/day</text>
+  <text x="140" y="330" fill="#1a1a1a" font-size="11" font-weight="700">200M+ customers</text>
+  <text x="310" y="330" fill="#1a1a1a" font-size="11" font-weight="700">78 verticals</text>
+  <text x="30" y="350" fill="#888" font-size="8" letter-spacing="0.1em">ENTERPRISE COMMERCE</text>
+</svg>
 </div>
 </div>
 </div>
@@ -422,10 +491,10 @@
 <a class="ch-card"><div class="ch-thumb"><img alt="Urban Ladder" src="assets/channels/urban-ladder-shot-2.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Urban Ladder</h4><div class="vert">Furniture · Vertex</div></div></a>
 <a class="ch-card"><div class="ch-thumb"><img alt="Sephora App" src="assets/channels/sephora-app-shot-1.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Sephora · App</h4><div class="vert">Beauty</div></div></a>
 <a class="ch-card"><div class="ch-thumb"><img alt="Hamleys App" src="assets/channels/hamleys-app-shot-1.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Hamleys · App</h4><div class="vert">Toys &amp; Kids</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Pottery Barn" src="assets/channels/pottery-barn.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Pottery Barn</h4><div class="vert">Home</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="West Elm" src="assets/channels/westelm.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>West Elm</h4><div class="vert">Home</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Muji" src="assets/channels/muji.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Muji</h4><div class="vert">Lifestyle</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Mothercare" src="assets/channels/mothercare.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Mothercare</h4><div class="vert">Mother &amp; Child</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Pottery Barn</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Pottery Barn</h4><div class="vert">Home</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">West Elm</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>West Elm</h4><div class="vert">Home</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Muji</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Muji</h4><div class="vert">Lifestyle</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Mothercare</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Mothercare</h4><div class="vert">Mother &amp; Child</div></div></a>
 </div><button class="ch-slider-btn next" aria-label="Next">&rarr;</button></div>
 </div>
 
@@ -433,13 +502,13 @@
 <div class="ch-group" data-category="fashion">
 <div class="ch-group-head"><div class="ch-group-title">Fashion &amp; Lifestyle storefronts · FP-50 · 28</div><div class="ch-group-count">Single-brand commerce on Fynd Platform</div></div>
 <div class="ch-slider-wrap"><button class="ch-slider-btn prev" aria-label="Previous">&larr;</button><div class="ch-slider">
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="SuperDry" src="assets/channels/superdry.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>SuperDry</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Hamleys" src="assets/channels/hamleys.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Hamleys</h4><div class="vert">Toys</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Sunglass Hut" src="assets/channels/sunglasshut.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Sunglass Hut</h4><div class="vert">Eyewear</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Armani Exchange" src="assets/channels/armani-exchange.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Armani Exchange</h4><div class="vert">Premium</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Ed Hardy" src="assets/ed-hardy.png?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Ed Hardy</h4><div class="vert">F&amp;L</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Steve Madden" src="assets/channels/steve-madden.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Steve Madden</h4><div class="vert">Footwear</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Brooks Brothers" src="assets/channels/brooks-brothers.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Brooks Brothers</h4><div class="vert">Premium</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">SuperDry</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>SuperDry</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Hamleys</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Hamleys</h4><div class="vert">Toys</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Sunglass Hut</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Sunglass Hut</h4><div class="vert">Eyewear</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Armani Exchange</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Armani Exchange</h4><div class="vert">Premium</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Ed Hardy</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Ed Hardy</h4><div class="vert">F&amp;L</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Steve Madden</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Steve Madden</h4><div class="vert">Footwear</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Brooks Brothers</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Brooks Brothers</h4><div class="vert">Premium</div></div></a>
 </div><button class="ch-slider-btn next" aria-label="Next">&rarr;</button></div>
 </div>
 
@@ -447,8 +516,8 @@
 <div class="ch-group" data-category="cms">
 <div class="ch-group-head"><div class="ch-group-title">CMS-only · 12</div><div class="ch-group-count">Content-managed storefronts on JCP CMS</div></div>
 <div class="ch-slider-wrap"><button class="ch-slider-btn prev" aria-label="Previous">&larr;</button><div class="ch-slider">
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Swadesh" src="assets/channels/swadesh-shot-1.jpg?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Swadesh</h4><div class="vert">Artisanal</div></div></a>
-<a class="ch-shot"><div class="ch-shot-thumb"><img alt="Reliance Foundation" src="assets/reliance-foundation.png?v=1780033693"/></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Reliance Foundation</h4><div class="vert">CSR</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Swadesh</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Swadesh</h4><div class="vert">Artisanal</div></div></a>
+<a class="ch-logo-card"><div class="ch-logo-thumb"><span class="ch-brand-text">Reliance Foundation</span></div><div class="ch-meta"><span class="ch-status live">Live</span><h4>Reliance Foundation</h4><div class="vert">CSR</div></div></a>
 </div><button class="ch-slider-btn next" aria-label="Next">&rarr;</button></div>
 </div>
 
@@ -459,7 +528,52 @@
 <div class="section-label mb-3">03 · Architecture</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">All features. One substrate<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-6" style="color: var(--ink-muted);">8 sub-systems. Modular APIs (REST + GraphQL). 100+ pre-built extensions. Multi-brand, multi-market.</p>
-<div class="mb-10" style="text-align:center;"><img src="assets/illus-architecture.png?v=1780033693" alt="JCP 8 sub-system architecture" style="max-width:680px;width:100%;border-radius:12px;"></div>
+<div class="mb-10" style="text-align:center;"><svg viewBox="0 0 780 400" xmlns="http://www.w3.org/2000/svg" style="max-width:780px;width:100%;font-family:'Inter Tight',sans-serif;">
+  <rect width="780" height="400" rx="12" fill="#f5ede3"/>
+  <!-- Central hub -->
+  <circle cx="390" cy="200" r="52" fill="#1a1a1a"/>
+  <text x="390" y="195" text-anchor="middle" fill="#f5f0e8" font-size="14" font-weight="700">JCP</text>
+  <text x="390" y="212" text-anchor="middle" fill="#888" font-size="9" letter-spacing="0.08em">SUBSTRATE</text>
+  <!-- 8 sub-system nodes positioned in a circle -->
+  <!-- Cart & Checkout (top) -->
+  <rect x="345" y="40" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="390" y="66" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Cart &amp;</text>
+  <text x="390" y="78" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Checkout</text>
+  <line x1="390" y1="84" x2="390" y2="148" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- OMS (top-right) -->
+  <rect x="530" y="70" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="575" y="96" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">OMS</text>
+  <line x1="530" y1="92" x2="438" y2="178" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Payments (right) -->
+  <rect x="570" y="178" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="615" y="204" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Payments</text>
+  <line x1="570" y1="200" x2="442" y2="200" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Catalogue (bottom-right) -->
+  <rect x="530" y="290" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="575" y="316" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Catalogue</text>
+  <line x1="530" y1="312" x2="438" y2="222" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Logistics (bottom) -->
+  <rect x="345" y="320" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="390" y="346" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Logistics</text>
+  <line x1="390" y1="320" x2="390" y2="252" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Promotions (bottom-left) -->
+  <rect x="160" y="290" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="205" y="316" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Promotions</text>
+  <line x1="250" y1="312" x2="342" y2="222" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Search & Discovery (left) -->
+  <rect x="120" y="178" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="165" y="196" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Search &amp;</text>
+  <text x="165" y="210" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Discovery</text>
+  <line x1="210" y1="200" x2="338" y2="200" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Analytics (top-left) -->
+  <rect x="160" y="70" width="90" height="44" rx="22" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="205" y="96" text-anchor="middle" fill="#1a1a1a" font-size="10" font-weight="600">Analytics</text>
+  <line x1="250" y1="92" x2="342" y2="178" stroke="#c4b8a8" stroke-width="1.2"/>
+  <!-- Decorative accent dots -->
+  <circle cx="390" cy="200" r="58" fill="none" stroke="#e8604c" stroke-width="0.5" stroke-dasharray="3 6" opacity="0.4"/>
+  <!-- Label -->
+  <text x="20" y="390" fill="#888" font-size="8" letter-spacing="0.1em">JCP · 8 SUB-SYSTEMS · MODULAR APIs (REST + GraphQL)</text>
+</svg></div>
 <div class="jcp-prop-grid">
 <div class="jcp-prop-card"><div class="prop-icon">🛒</div><h4>Cart &amp; Checkout</h4><p>Single-cart progress, fraud engine, Atlas gRPC address flows.</p></div>
 <div class="jcp-prop-card"><div class="prop-icon">📦</div><h4>OMS &amp; Order Lifecycle</h4><p>Cancellation fees, exchange flows, real-time order ringer across all channels.</p></div>
@@ -477,7 +591,45 @@
 <div class="section-label mb-3">04 · AI shipped</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color: var(--ink);">Search, cataloging, recommendations · live<span class="dot" style="color:var(--coral);">.</span></h2>
 <p class="text-base max-w-3xl mb-6" style="color: var(--ink-muted);">Three AI capabilities shipped this year, measured against live A/B traffic — not synthetic benchmarks.</p>
-<div class="mb-12" style="text-align:center;"><img src="assets/illus-vertex-search.png?v=1780033693" alt="Vertex AI Search A/B results" style="max-width:780px;width:100%;border-radius:12px;"></div>
+<div class="mb-12" style="text-align:center;"><svg viewBox="0 0 780 380" xmlns="http://www.w3.org/2000/svg" style="max-width:780px;width:100%;font-family:'Inter Tight',sans-serif;">
+  <rect width="780" height="380" rx="12" fill="#f5ede3"/>
+  <!-- Before panel -->
+  <rect x="30" y="30" width="340" height="300" rx="10" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+  <text x="50" y="60" fill="#888" font-size="10" font-weight="600" letter-spacing="0.08em">BEFORE · ALGOLIA</text>
+  <!-- Before bars -->
+  <text x="50" y="100" fill="#555" font-size="11" font-weight="500">Revenue/search</text>
+  <rect x="50" y="110" width="200" height="24" rx="4" fill="#9ca3af"/>
+  <text x="260" y="126" fill="#888" font-size="10">baseline</text>
+  <text x="50" y="165" fill="#555" font-size="11" font-weight="500">Zero-result rate</text>
+  <rect x="50" y="175" width="240" height="24" rx="4" fill="#dc2626"/>
+  <text x="300" y="191" fill="#888" font-size="10">high</text>
+  <text x="50" y="230" fill="#555" font-size="11" font-weight="500">CTR</text>
+  <rect x="50" y="240" width="180" height="24" rx="4" fill="#9ca3af"/>
+  <text x="240" y="256" fill="#888" font-size="10">baseline</text>
+  <text x="50" y="295" fill="#555" font-size="11" font-weight="500">Add-to-cart</text>
+  <rect x="50" y="305" width="160" height="24" rx="4" fill="#9ca3af"/>
+  <text x="220" y="321" fill="#888" font-size="10">baseline</text>
+  <!-- Arrow -->
+  <polygon points="385,180 395,175 395,178 410,178 410,182 395,182 395,185" fill="#e8604c"/>
+  <!-- After panel -->
+  <rect x="410" y="30" width="340" height="300" rx="10" fill="white" stroke="#047857" stroke-width="2"/>
+  <text x="430" y="60" fill="#047857" font-size="10" font-weight="600" letter-spacing="0.08em">AFTER · VERTEX AI SEARCH</text>
+  <!-- After bars -->
+  <text x="430" y="100" fill="#555" font-size="11" font-weight="500">Revenue/search</text>
+  <rect x="430" y="110" width="240" height="24" rx="4" fill="#047857"/>
+  <text x="680" y="126" fill="#047857" font-size="10" font-weight="700">+10.7%</text>
+  <text x="430" y="165" fill="#555" font-size="11" font-weight="500">Zero-result ↓</text>
+  <rect x="430" y="175" width="80" height="24" rx="4" fill="#047857"/>
+  <text x="520" y="191" fill="#047857" font-size="10" font-weight="700">−75%</text>
+  <text x="430" y="230" fill="#555" font-size="11" font-weight="500">CTR</text>
+  <rect x="430" y="240" width="260" height="24" rx="4" fill="#047857"/>
+  <text x="700" y="256" fill="#047857" font-size="10" font-weight="700">+23.1%</text>
+  <text x="430" y="295" fill="#555" font-size="11" font-weight="500">Add-to-cart</text>
+  <rect x="430" y="305" width="250" height="24" rx="4" fill="#047857"/>
+  <text x="690" y="321" fill="#047857" font-size="10" font-weight="700">+17.0%</text>
+  <!-- Footer -->
+  <text x="30" y="365" fill="#888" font-size="8" letter-spacing="0.1em">VERTEX AI SEARCH · 5 CHANNELS · 90M+ SEARCHES · A/B TESTED</text>
+</svg></div>
 
 <!-- Search deep-dive -->
 <div class="jcp-deep">
@@ -525,7 +677,44 @@
 <div class="section-label mb-3">05 · Path to L4</div>
 <h2 class="display-2 text-3xl md:text-4xl mb-4">How JCP becomes <span style="color: var(--accent);">L4 agentic.</span></h2>
 <p class="text-base max-w-3xl mb-6">Currently at L3. 2 named agents close the gap to L4.</p>
-<div class="mb-10" style="text-align:center;"><img src="assets/illus-agent-path.png?v=1780033693" alt="JCP path from L3 to L4" style="max-width:780px;width:100%;border-radius:12px;"></div>
+<div class="mb-10" style="text-align:center;"><svg viewBox="0 0 780 280" xmlns="http://www.w3.org/2000/svg" style="max-width:780px;width:100%;font-family:'Inter Tight',sans-serif;">
+  <rect width="780" height="280" rx="12" fill="#1a1a1a"/>
+  <!-- L3 node -->
+  <circle cx="100" cy="140" r="40" fill="none" stroke="#555" stroke-width="2"/>
+  <text x="100" y="135" text-anchor="middle" fill="#f5f0e8" font-size="16" font-weight="700">L3</text>
+  <text x="100" y="155" text-anchor="middle" fill="#888" font-size="9">CURRENT</text>
+  <!-- Arrow line -->
+  <line x1="140" y1="140" x2="620" y2="140" stroke="#e8604c" stroke-width="2.5"/>
+  <polygon points="620,134 634,140 620,146" fill="#e8604c"/>
+  <!-- L4 node -->
+  <circle cx="680" cy="140" r="40" fill="none" stroke="#e8604c" stroke-width="2.5"/>
+  <circle cx="680" cy="140" r="34" fill="none" stroke="#e8604c" stroke-width="1" opacity="0.5"/>
+  <circle cx="680" cy="140" r="28" fill="#2d1a1a"/>
+  <text x="680" y="135" text-anchor="middle" fill="#f5f0e8" font-size="16" font-weight="700">L4</text>
+  <text x="680" y="155" text-anchor="middle" fill="#e8604c" font-size="9">TARGET</text>
+  <!-- Agent 01 card -->
+  <rect x="250" y="30" width="260" height="90" rx="8" fill="#222" stroke="#047857" stroke-width="1.5"/>
+  <text x="270" y="52" fill="#047857" font-size="9" font-weight="600" letter-spacing="0.06em">AGENT /01</text>
+  <text x="270" y="72" fill="#f5f0e8" font-size="13" font-weight="700">ZIP · AJIO Commerce Agent</text>
+  <text x="270" y="90" fill="#888" font-size="10">Conversational AI shopping</text>
+  <text x="270" y="108" fill="#888" font-size="10">88% positive · 2.6M SKUs</text>
+  <rect x="430" y="96" width="36" height="16" rx="3" fill="#047857"/>
+  <text x="448" y="108" text-anchor="middle" fill="white" font-size="8" font-weight="600">LIVE</text>
+  <!-- Dashed line from agent 01 to arrow -->
+  <line x1="380" y1="120" x2="380" y2="140" stroke="#047857" stroke-width="1" stroke-dasharray="4 3"/>
+  <!-- Agent 02 card -->
+  <rect x="290" y="160" width="260" height="90" rx="8" fill="#222" stroke="#047857" stroke-width="1.5"/>
+  <text x="310" y="182" fill="#047857" font-size="9" font-weight="600" letter-spacing="0.06em">AGENT /02</text>
+  <text x="310" y="202" fill="#f5f0e8" font-size="13" font-weight="700">JIIA · JioMart Shopping</text>
+  <text x="310" y="220" fill="#888" font-size="10">Intent to bundle · Gemini</text>
+  <text x="310" y="238" fill="#888" font-size="10">40M+ images · Cloud Next 26</text>
+  <rect x="470" y="226" width="36" height="16" rx="3" fill="#047857"/>
+  <text x="488" y="238" text-anchor="middle" fill="white" font-size="8" font-weight="600">LIVE</text>
+  <!-- Dashed line from agent 02 to arrow -->
+  <line x1="420" y1="160" x2="420" y2="140" stroke="#047857" stroke-width="1" stroke-dasharray="4 3"/>
+  <!-- Footer -->
+  <text x="30" y="270" fill="#555" font-size="8" letter-spacing="0.1em">JCP · PATH TO L4 AGENTIC · 2 NAMED AGENTS</text>
+</svg></div>
 <div class="jcp-agent-grid">
 <a class="jcp-agent-card" href="/kaily/">
 <div class="agent-num">Agent /01</div>
