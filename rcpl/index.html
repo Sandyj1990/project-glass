@@ -242,55 +242,133 @@
     </div>
     <div class="r-hero-visual">
       <div class="r-hero-card">
-        <svg viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <!-- Background -->
-          <rect width="480" height="310" rx="0" fill="var(--r-off-white,#f7f1de)"/>
+        <!-- Isometric FMCG distribution illustration: factory → warehouse → trucks → kirana stores -->
+        <svg viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+          <defs>
+            <!-- Subtle grid pattern for ground -->
+            <pattern id="iso-grid" width="24" height="14" patternUnits="userSpaceOnUse" patternTransform="translate(0,180)">
+              <path d="M0,7 L12,0 L24,7 L12,14 Z" fill="none" stroke="#d4cfc7" stroke-width="0.4" opacity="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="480" height="310" fill="#f7f1de"/>
 
-          <!-- Dashed spoke lines from center (240,155) to each node center -->
-          <!-- CAMPA top-left: node center ~75,62 -->
-          <line x1="216" y1="140" x2="105" y2="75" stroke="#ccc8be" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- INDEPENDENCE top-center: node center ~240,47 -->
-          <line x1="240" y1="132" x2="240" y2="65" stroke="#ccc8be" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- SOSYO top-right: node center ~405,62 -->
-          <line x1="264" y1="140" x2="375" y2="75" stroke="#ccc8be" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- DMS bottom-left: node center ~70,237 -->
-          <line x1="216" y1="170" x2="105" y2="235" stroke="#ccc8be" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- SFA bottom-center: node center ~240,249 -->
-          <line x1="240" y1="178" x2="240" y2="232" stroke="#ccc8be" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <!-- CTS bottom-right: node center ~410,237 -->
-          <line x1="264" y1="170" x2="375" y2="235" stroke="#ccc8be" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Ground plane grid -->
+          <rect x="0" y="180" width="480" height="130" fill="url(#iso-grid)" opacity="0.6"/>
+          <!-- Ground shadow line -->
+          <line x1="0" y1="185" x2="480" y2="185" stroke="#d4cfc7" stroke-width="1"/>
 
-          <!-- Center hub circle -->
-          <circle cx="240" cy="155" r="42" fill="#15140f"/>
-          <text x="240" y="150" text-anchor="middle" fill="#f7f1de" font-size="16" font-weight="800" letter-spacing="-0.5">RCPL</text>
-          <text x="240" y="165" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" letter-spacing="1">₹20K CR · FY26</text>
+          <!-- ═══ FACTORY (left) ═══ -->
+          <!-- Factory body - isometric box -->
+          <polygon points="52,100 110,68 168,100 168,158 110,190 52,158" fill="#e8dfc8" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Factory top face -->
+          <polygon points="52,100 110,68 168,100 110,132" fill="#ede5ce" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Factory left face -->
+          <polygon points="52,100 110,132 110,190 52,158" fill="#d8d0b8" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Factory right face -->
+          <polygon points="168,100 110,132 110,190 168,158" fill="#e0d8c0" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Chimney 1 -->
+          <rect x="88" y="58" width="10" height="28" fill="#c8c0aa"/>
+          <rect x="86" y="54" width="14" height="6" rx="2" fill="#b8b0a0"/>
+          <!-- Chimney 2 -->
+          <rect x="108" y="52" width="10" height="34" fill="#c8c0aa"/>
+          <rect x="106" y="48" width="14" height="6" rx="2" fill="#b8b0a0"/>
+          <!-- Smoke puffs -->
+          <circle cx="93" cy="48" r="5" fill="#e8e0d0" opacity="0.7"/>
+          <circle cx="98" cy="42" r="4" fill="#e8e0d0" opacity="0.5"/>
+          <circle cx="113" cy="40" r="6" fill="#e8e0d0" opacity="0.7"/>
+          <circle cx="119" cy="33" r="4" fill="#e8e0d0" opacity="0.5"/>
+          <!-- Factory door -->
+          <rect x="98" y="152" width="24" height="30" rx="2" fill="#15140f" opacity="0.25"/>
+          <!-- Factory windows -->
+          <rect x="72" y="120" width="14" height="10" rx="2" fill="#15140f" opacity="0.18"/>
+          <rect x="92" y="112" width="14" height="10" rx="2" fill="#15140f" opacity="0.18"/>
+          <rect x="130" y="112" width="14" height="10" rx="2" fill="#15140f" opacity="0.18"/>
+          <rect x="148" y="120" width="14" height="10" rx="2" fill="#15140f" opacity="0.18"/>
 
-          <!-- CAMPA (top-left) -->
-          <rect x="22" y="44" width="106" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
-          <text x="75" y="65" text-anchor="middle" fill="#15140f" font-size="11" font-weight="700">CAMPA</text>
+          <!-- ═══ WAREHOUSE (center) ═══ -->
+          <!-- Warehouse isometric box -->
+          <polygon points="200,120 252,94 304,120 304,172 252,198 200,172" fill="#e4dbc8" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Warehouse top -->
+          <polygon points="200,120 252,94 304,120 252,146" fill="#ede5ce" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Warehouse left -->
+          <polygon points="200,120 252,146 252,198 200,172" fill="#d4ccb8" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Warehouse right -->
+          <polygon points="304,120 252,146 252,198 304,172" fill="#dcd4bc" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Warehouse roof ridge -->
+          <line x1="200" y1="120" x2="252" y2="94" stroke="#b8b0a0" stroke-width="1.5"/>
+          <line x1="252" y1="94" x2="304" y2="120" stroke="#b8b0a0" stroke-width="1.5"/>
+          <!-- Warehouse door (loading bay) -->
+          <rect x="236" y="162" width="32" height="28" rx="2" fill="#15140f" opacity="0.3"/>
+          <line x1="252" y1="162" x2="252" y2="190" stroke="#f7f1de" stroke-width="0.8" opacity="0.4"/>
+          <!-- Warehouse windows -->
+          <rect x="212" y="138" width="12" height="8" rx="1" fill="#15140f" opacity="0.15"/>
+          <rect x="228" y="132" width="12" height="8" rx="1" fill="#15140f" opacity="0.15"/>
+          <!-- Pallet stacks on right face -->
+          <rect x="272" y="150" width="16" height="6" rx="1" fill="#c8a870" opacity="0.5"/>
+          <rect x="272" y="144" width="16" height="6" rx="1" fill="#c8a870" opacity="0.4"/>
+          <rect x="272" y="138" width="16" height="6" rx="1" fill="#c8a870" opacity="0.3"/>
 
-          <!-- INDEPENDENCE (top-center) -->
-          <rect x="162" y="30" width="156" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
-          <text x="240" y="51" text-anchor="middle" fill="#15140f" font-size="10" font-weight="700">INDEPENDENCE</text>
+          <!-- ═══ DELIVERY TRUCK (center-bottom, heading right) ═══ -->
+          <!-- Truck body -->
+          <polygon points="220,210 260,188 300,210 300,240 260,262 220,240" fill="#ed6f5c" stroke="#c85040" stroke-width="1"/>
+          <!-- Truck top -->
+          <polygon points="220,210 260,188 300,210 260,232" fill="#f08070" stroke="#c85040" stroke-width="1"/>
+          <!-- Truck left face -->
+          <polygon points="220,210 260,232 260,262 220,240" fill="#c85040" stroke="#c85040" stroke-width="1"/>
+          <!-- Cab section on right -->
+          <polygon points="280,200 300,210 300,240 280,230" fill="#d06050" stroke="#c85040" stroke-width="1"/>
+          <!-- Windshield -->
+          <polygon points="282,202 298,210 298,224 282,216" fill="#15140f" opacity="0.25"/>
+          <!-- Wheels -->
+          <ellipse cx="238" cy="258" rx="9" ry="5" fill="#2a2620"/>
+          <ellipse cx="238" cy="256" rx="7" ry="4" fill="#3a3630"/>
+          <ellipse cx="282" cy="248" rx="9" ry="5" fill="#2a2620"/>
+          <ellipse cx="282" cy="246" rx="7" ry="4" fill="#3a3630"/>
 
-          <!-- SOSYO (top-right) -->
-          <rect x="352" y="44" width="106" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
-          <text x="405" y="65" text-anchor="middle" fill="#15140f" font-size="11" font-weight="700">SOSYO</text>
+          <!-- ═══ KIRANA STORE 1 (right, front) ═══ -->
+          <polygon points="340,150 380,128 420,150 420,196 380,218 340,196" fill="#e8dfc8" stroke="#c8c0aa" stroke-width="1"/>
+          <polygon points="340,150 380,128 420,150 380,172" fill="#ede5ce" stroke="#c8c0aa" stroke-width="1"/>
+          <polygon points="340,150 380,172 380,218 340,196" fill="#d8d0b8" stroke="#c8c0aa" stroke-width="1"/>
+          <polygon points="420,150 380,172 380,218 420,196" fill="#e0d8c0" stroke="#c8c0aa" stroke-width="1"/>
+          <!-- Awning -->
+          <polygon points="340,160 380,138 420,160 420,168 380,146 340,168" fill="#3d7a4a" opacity="0.75"/>
+          <!-- Store door -->
+          <rect x="368" y="192" width="24" height="20" rx="2" fill="#15140f" opacity="0.25"/>
+          <!-- Store window -->
+          <rect x="348" y="168" width="16" height="12" rx="2" fill="#15140f" opacity="0.15"/>
+          <!-- Shelf goods dots (colourful) -->
+          <circle cx="356" cy="175" r="3" fill="#ed6f5c" opacity="0.7"/>
+          <circle cx="362" cy="175" r="3" fill="#e9b94a" opacity="0.7"/>
+          <circle cx="368" cy="175" r="3" fill="#3d7a4a" opacity="0.7"/>
 
-          <!-- DMS (bottom-left) -->
-          <rect x="22" y="220" width="106" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
-          <text x="75" y="241" text-anchor="middle" fill="#15140f" font-size="11" font-weight="700">DMS</text>
+          <!-- ═══ KIRANA STORE 2 (far right, smaller/receding) ═══ -->
+          <polygon points="390,110 418,96 446,110 446,142 418,156 390,142" fill="#ede5d8" stroke="#d4cfc7" stroke-width="0.8"/>
+          <polygon points="390,110 418,96 446,110 418,124" fill="#f2ece0" stroke="#d4cfc7" stroke-width="0.8"/>
+          <polygon points="390,110 418,124 418,156 390,142" fill="#e0d8c8" stroke="#d4cfc7" stroke-width="0.8"/>
+          <polygon points="446,110 418,124 418,156 446,142" fill="#e8e0d0" stroke="#d4cfc7" stroke-width="0.8"/>
+          <!-- Awning small -->
+          <polygon points="390,118 418,104 446,118 446,124 418,110 390,124" fill="#3d7a4a" opacity="0.5"/>
 
-          <!-- SFA (bottom-center) -->
-          <rect x="182" y="232" width="116" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
-          <text x="240" y="253" text-anchor="middle" fill="#15140f" font-size="11" font-weight="700">SFA</text>
+          <!-- ═══ ROUTE LINES (dashed, connecting factory→warehouse→truck→stores) ═══ -->
+          <!-- Factory to warehouse -->
+          <line x1="168" y1="158" x2="200" y2="158" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Warehouse to truck -->
+          <line x1="252" y1="198" x2="252" y2="210" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Truck to kirana 1 -->
+          <line x1="300" y1="225" x2="340" y2="196" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <!-- Kirana 1 to kirana 2 -->
+          <line x1="420" y1="173" x2="418" y2="156" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="4,3"/>
 
-          <!-- CTS (bottom-right) -->
-          <rect x="352" y="220" width="106" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
-          <text x="405" y="241" text-anchor="middle" fill="#15140f" font-size="11" font-weight="700">CTS</text>
-
-          <!-- Caption -->
-          <text x="240" y="298" text-anchor="middle" fill="#a09880" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">FMCG B2B DISTRIBUTION · RCPL</text>
+          <!-- ═══ FLOATING METRIC BADGES ═══ -->
+          <!-- ₹20K Cr badge near factory -->
+          <rect x="42" y="20" width="80" height="28" rx="14" fill="#15140f"/>
+          <text x="82" y="38" text-anchor="middle" fill="#f7f1de" font-size="11" font-weight="800" font-family="'Inter Tight',sans-serif">₹20K Cr</text>
+          <!-- 1M+ stores badge near kirana -->
+          <rect x="358" y="62" width="80" height="28" rx="14" fill="#3d7a4a"/>
+          <text x="398" y="80" text-anchor="middle" fill="#f7f1de" font-size="11" font-weight="800" font-family="'Inter Tight',sans-serif">1M+ stores</text>
+          <!-- Truck speed badge -->
+          <rect x="196" y="262" width="72" height="24" rx="12" fill="#ed6f5c"/>
+          <text x="232" y="278" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="'Inter Tight',sans-serif">5 PODs live</text>
         </svg>
       </div>
     </div>
