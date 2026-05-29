@@ -7,7 +7,7 @@ const MIME = {'.html':'text/html; charset=utf-8','.css':'text/css','.js':'applic
 function serve(res, fp) {
   const ext = path.extname(fp).toLowerCase();
   const mime = MIME[ext] || 'application/octet-stream';
-  try { const d = fs.readFileSync(fp); res.writeHead(200,{'Content-Type':mime}); res.end(d); }
+  try { const d = fs.readFileSync(fp); res.writeHead(200,{'Content-Type':mime,'Cache-Control':'no-cache, no-store, must-revalidate','Pragma':'no-cache','Expires':'0','Access-Control-Allow-Origin':'*'}); res.end(d); }
   catch(e) { res.writeHead(404,{'Content-Type':'text/plain'}); res.end('404'); }
 }
 http.createServer((req,res) => {
