@@ -13,25 +13,29 @@
 /* ── Shopify-inspired RCPL page styles ── */
 *, *::before, *::after { box-sizing: border-box; }
 
-/* Color tokens */
+/* Color tokens — original RCPL warm palette */
 :root {
-  --r-off-white: #f6f4ef;
-  --r-dark: #111110;
-  --r-dark-2: #1c1b18;
-  --r-mid: #2d2c29;
-  --r-green: #1a6b3c;
-  --r-green-pale: #e6f4ec;
-  --r-coral: #ed6f5c;
-  --r-border: rgba(21,20,15,0.12);
-  --r-border-dark: rgba(255,255,255,0.1);
-  --r-ink: #15140f;
-  --r-ink-muted: #5a5448;
+  --r-paper:    #efe7d2;
+  --r-off-white:#f7f1de;
+  --r-bone:     #f7f1de;
+  --r-dark:     #15140f;
+  --r-dark-2:   #1e1c16;
+  --r-mid:      #2a2620;
+  --r-green:    #3d7a4a;
+  --r-green-pale:#eaf3ec;
+  --r-coral:    #ed6f5c;
+  --r-mustard:  #e9b94a;
+  --r-olive:    #6e7448;
+  --r-border:   rgba(21,20,15,0.14);
+  --r-border-dark: rgba(21,20,15,0.07);
+  --r-ink:      #15140f;
+  --r-ink-muted:#5a5448;
   --r-mono: 'JetBrains Mono', monospace;
   --r-sans: 'Inter Tight', 'Inter', sans-serif;
 }
 
 /* ── Scoped nav ── */
-.r-nav { position: sticky; top: 0; z-index: 200; background: rgba(246,244,239,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--r-border); }
+.r-nav { position: sticky; top: 0; z-index: 200; background: rgba(247,241,222,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--r-border); }
 .r-nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .r-nav-logo { font-family: var(--r-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--r-ink); text-decoration: none; white-space: nowrap; }
 .r-nav-links { display: flex; gap: 2px; overflow-x: auto; }
@@ -43,41 +47,41 @@
 /* ── Section label ── */
 .r-label { font-family: var(--r-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--r-ink-muted); margin-bottom: 16px; display: block; }
 .r-label.light { color: rgba(255,255,255,0.45); }
-.r-label.green { color: rgba(110,231,183,0.7); }
+.r-label.green { color: rgba(237,111,92,0.7); }
 
 /* ── Hero ── */
-.r-hero { background: var(--r-off-white); padding: 80px 24px 0; overflow: hidden; }
+.r-hero { background: var(--r-paper); padding: 80px 24px 0; overflow: hidden; }
 .r-hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; }
 .r-hero-text { padding-bottom: 80px; }
-.r-hero-eyebrow { font-family: var(--r-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--r-green); margin-bottom: 20px; }
-.r-hero-h1 { font-family: var(--r-sans); font-size: clamp(38px, 5vw, 62px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--r-dark); margin-bottom: 20px; }
+.r-hero-eyebrow { font-family: var(--r-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--r-coral); margin-bottom: 20px; }
+.r-hero-h1 { font-family: var(--r-sans); font-size: clamp(38px, 5vw, 62px); font-weight: 800; line-height: 1.05; letter-spacing: -0.03em; color: var(--r-ink); margin-bottom: 20px; }
 .r-hero-sub { font-family: var(--r-sans); font-size: 17px; line-height: 1.65; color: #555; max-width: 440px; margin-bottom: 32px; }
 .r-hero-stats { display: flex; gap: 36px; margin-bottom: 32px; flex-wrap: wrap; }
 .r-hero-stat { }
-.r-hero-stat-val { font-family: var(--r-sans); font-size: 30px; font-weight: 800; color: var(--r-dark); line-height: 1; }
+.r-hero-stat-val { font-family: var(--r-sans); font-size: 30px; font-weight: 800; color: var(--r-ink); line-height: 1; }
 .r-hero-stat-label { font-family: var(--r-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--r-ink-muted); margin-top: 4px; }
 .r-hero-pills { display: flex; gap: 8px; flex-wrap: wrap; }
 .r-pill { font-family: var(--r-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; border: 1px solid; display: inline-flex; align-items: center; gap: 5px; }
-.r-pill.live { background: #ecfdf5; color: #047857; border-color: #a7f3d0; }
-.r-pill.live::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: #047857; }
+.r-pill.live { background: rgba(61,122,74,0.1); color: var(--r-green); border-color: rgba(61,122,74,0.3); }
+.r-pill.live::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--r-green); }
 .r-pill.neutral { background: rgba(21,20,15,0.05); color: var(--r-ink-muted); border-color: var(--r-border); }
 .r-hero-visual { }
-.r-hero-card { background: white; border-radius: 16px 16px 0 0; border: 1px solid var(--r-border); border-bottom: none; padding: 28px; box-shadow: 0 -8px 48px rgba(0,0,0,0.07); }
+.r-hero-card { background: var(--r-off-white); border-radius: 16px 16px 0 0; border: 1px solid var(--r-border); border-bottom: none; padding: 28px; box-shadow: 0 -8px 48px rgba(21,20,15,0.09); }
 
 /* ── Tab strip ── */
-.r-tabs { background: var(--r-off-white); border-bottom: 1px solid var(--r-border); overflow-x: auto; }
+.r-tabs { background: var(--r-paper); border-bottom: 1px solid var(--r-border); overflow-x: auto; }
 .r-tabs-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; }
 .r-tabs a { font-family: var(--r-sans); font-size: 14px; font-weight: 500; color: var(--r-ink-muted); padding: 14px 20px; border-bottom: 2px solid transparent; text-decoration: none; transition: all .15s; white-space: nowrap; }
 .r-tabs a:hover { color: var(--r-dark); }
-.r-tabs a.active { color: var(--r-dark); border-bottom-color: var(--r-dark); font-weight: 600; }
+.r-tabs a.active { color: var(--r-ink); border-bottom-color: var(--r-coral); font-weight: 600; }
 
 /* ── Section wrappers ── */
 .r-sec { padding: 96px 24px; }
-.r-sec.light { background: var(--r-off-white); }
+.r-sec.light { background: var(--r-paper); }
 .r-sec.white { background: #fff; }
-.r-sec.dark { background: var(--r-dark); }
+.r-sec.dark { background: var(--r-ink); }
 .r-sec.dark2 { background: var(--r-dark-2); }
-.r-sec.forest { background: #0c3a20; }
+.r-sec.forest { background: var(--r-ink); }
 .r-wrap { max-width: 1200px; margin: 0 auto; }
 
 /* ── Two-col ── */
@@ -86,7 +90,7 @@
 .r-2col.flip .r-col-vis { order: 1; }
 
 /* ── Headlines ── */
-.r-h2 { font-family: var(--r-sans); font-size: clamp(30px, 4vw, 50px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--r-dark); margin-bottom: 18px; }
+.r-h2 { font-family: var(--r-sans); font-size: clamp(30px, 4vw, 50px); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; color: var(--r-ink); margin-bottom: 18px; }
 .r-h2.light { color: #fff; }
 .r-h2.center { text-align: center; }
 .r-sub { font-size: 16px; line-height: 1.65; color: #555; margin-bottom: 28px; max-width: 480px; }
@@ -97,28 +101,28 @@
 /* ── Feature list ── */
 .r-flist { list-style: none; padding: 0; margin: 0 0 28px; display: flex; flex-direction: column; gap: 18px; }
 .r-flist li { display: flex; gap: 12px; align-items: flex-start; }
-.r-flist li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--r-green); margin-top: 7px; flex-shrink: 0; }
-.r-flist.light li::before { background: rgba(74,222,128,0.6); }
-.r-fi-title { font-family: var(--r-sans); font-size: 15px; font-weight: 700; color: var(--r-dark); }
+.r-flist li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--r-coral); margin-top: 7px; flex-shrink: 0; }
+.r-flist.light li::before { background: rgba(237,111,92,0.75); }
+.r-fi-title { font-family: var(--r-sans); font-size: 15px; font-weight: 700; color: var(--r-ink); }
 .r-fi-title.light { color: #fff; }
 .r-fi-desc { font-size: 13px; color: #666; line-height: 1.5; margin-top: 2px; }
 .r-fi-desc.light { color: rgba(255,255,255,0.5); }
 
 /* ── Status cards ── */
 .r-status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.r-status-card { background: white; border: 1px solid var(--r-border); border-radius: 14px; padding: 28px; }
+.r-status-card { background: var(--r-off-white); border: 1px solid var(--r-border); border-radius: 14px; padding: 28px; }
 .r-status-card-tag { font-family: var(--r-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; display: inline-block; margin-bottom: 14px; }
-.r-status-card-tag.delivered { background: #ecfdf5; color: #047857; border: 1px solid #a7f3d0; }
-.r-status-card-tag.flight { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
-.r-status-card-tag.plan { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
-.r-status-card-h { font-family: var(--r-sans); font-size: 21px; font-weight: 800; color: var(--r-dark); margin-bottom: 16px; line-height: 1.2; }
+.r-status-card-tag.delivered { background: rgba(61,122,74,0.1); color: var(--r-green); border: 1px solid rgba(61,122,74,0.28); }
+.r-status-card-tag.flight { background: rgba(237,111,92,0.1); color: var(--r-coral); border: 1px solid rgba(237,111,92,0.3); }
+.r-status-card-tag.plan { background: rgba(233,185,74,0.12); color: #8a6010; border: 1px solid rgba(233,185,74,0.38); }
+.r-status-card-h { font-family: var(--r-sans); font-size: 21px; font-weight: 800; color: var(--r-ink); margin-bottom: 16px; line-height: 1.2; }
 .r-status-card-border { border-top-width: 3px; border-top-style: solid; }
 
 /* ── Metric band ── */
-.r-metric-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--r-border); border-radius: 12px; overflow: hidden; margin-bottom: 56px; }
-.r-metric-cell { background: white; padding: 28px 24px; }
-.r-metric-val { font-family: var(--r-sans); font-size: 38px; font-weight: 800; color: var(--r-dark); line-height: 1; }
-.r-metric-val.green { color: var(--r-green); }
+.r-metric-band { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(21,20,15,0.1); border-radius: 12px; overflow: hidden; margin-bottom: 56px; }
+.r-metric-cell { background: var(--r-off-white); padding: 28px 24px; }
+.r-metric-val { font-family: var(--r-sans); font-size: 38px; font-weight: 800; color: var(--r-ink); line-height: 1; }
+.r-metric-val.green { color: var(--r-coral); }
 .r-metric-label { font-family: var(--r-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--r-ink-muted); margin-top: 6px; }
 .r-metric-desc { font-size: 13px; color: #888; margin-top: 4px; }
 
@@ -129,16 +133,16 @@
 .r-pod-table td:first-child { font-family: var(--r-mono); font-size: 11px; color: rgba(255,255,255,0.35); }
 .r-pod-table td:nth-child(2) { font-weight: 600; color: #fff; }
 .r-badge { font-family: var(--r-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.04em; padding: 3px 8px; border-radius: 999px; display: inline-block; }
-.r-badge.bev { background: rgba(59,130,246,0.18); color: #93c5fd; }
-.r-badge.all { background: rgba(74,222,128,0.13); color: #4ade80; }
+.r-badge.bev { background: rgba(237,111,92,0.16); color: var(--r-coral); }
+.r-badge.all { background: rgba(61,122,74,0.16); color: #5aaa6a; }
 
 /* ── Release timeline ── */
 .r-release-list { display: flex; flex-direction: column; }
 .r-release-item { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 36px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
 .r-release-item:last-child { border-bottom: none; }
 .r-release-tag { font-family: var(--r-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; display: inline-block; margin-bottom: 8px; }
-.r-release-tag.prod { background: rgba(74,222,128,0.14); color: #4ade80; }
-.r-release-tag.flight { background: rgba(96,165,250,0.14); color: #93c5fd; }
+.r-release-tag.prod { background: rgba(61,122,74,0.2); color: #7ec98a; }
+.r-release-tag.flight { background: rgba(237,111,92,0.18); color: #f08e7c; }
 .r-release-date { font-family: var(--r-mono); font-size: 11px; color: rgba(255,255,255,0.3); }
 .r-release-title { font-family: var(--r-sans); font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 10px; }
 .r-release-body { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); }
@@ -152,7 +156,7 @@
 .r-vision-title { font-family: var(--r-sans); font-size: 21px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.25; }
 .r-vision-sub { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.48); margin-bottom: 20px; }
 .r-vision-metrics { display: flex; gap: 28px; flex-wrap: wrap; }
-.r-vm-val { font-family: var(--r-sans); font-size: 24px; font-weight: 800; color: #4ade80; }
+.r-vm-val { font-family: var(--r-sans); font-size: 24px; font-weight: 800; color: var(--r-coral); }
 .r-vm-label { font-family: var(--r-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.07em; color: rgba(255,255,255,0.3); margin-top: 2px; }
 
 /* ── Roadmap asks ── */
@@ -164,18 +168,18 @@
 .r-ask-body { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.48); }
 
 /* ── CTA ── */
-.r-cta { background: var(--r-dark); padding: 80px 24px; text-align: center; }
+.r-cta { background: var(--r-ink); padding: 80px 24px; text-align: center; }
 .r-cta h2 { font-family: var(--r-sans); font-size: clamp(26px, 4vw, 46px); font-weight: 800; color: #fff; letter-spacing: -0.03em; margin-bottom: 12px; }
 .r-cta p { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 32px; }
 .r-cta-links { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .r-cta-link { font-family: var(--r-sans); font-size: 14px; font-weight: 600; padding: 11px 22px; border-radius: 8px; text-decoration: none; transition: all .15s; }
-.r-cta-link.primary { background: white; color: var(--r-dark); }
-.r-cta-link.primary:hover { background: #f0ede8; }
+.r-cta-link.primary { background: var(--r-paper); color: var(--r-ink); }
+.r-cta-link.primary:hover { background: var(--r-off-white); }
 .r-cta-link.outline { background: transparent; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.18); }
 .r-cta-link.outline:hover { border-color: rgba(255,255,255,0.45); color: #fff; }
 
 /* ── Footer ── */
-.r-footer { background: var(--r-dark); border-top: 1px solid rgba(255,255,255,0.07); padding: 20px 24px; text-align: center; }
+.r-footer { background: var(--r-ink); border-top: 1px solid rgba(239,231,210,0.08); padding: 20px 24px; text-align: center; }
 .r-footer p { font-family: var(--r-mono); font-size: 10px; color: rgba(255,255,255,0.22); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.8; }
 
 /* ── Responsive ── */
@@ -247,36 +251,36 @@
         <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
           <rect width="480" height="300" fill="#fafaf8"/>
           <!-- Center hub -->
-          <rect x="175" y="112" width="130" height="76" rx="12" fill="#111110"/>
+            <rect x="1" y="1" width="438" height="378" rx="13" fill="#f7f1de"/>>
           <text x="240" y="144" text-anchor="middle" fill="white" font-size="17" font-weight="800" letter-spacing="-0.5">RCPL</text>
-          <text x="240" y="161" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="9" letter-spacing="1">₹20K CR · FY26</text>
+          <text x="240" y="161" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="9" letter-spacing="1">₹20K CR · FY26</text>
           <text x="240" y="177" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8" letter-spacing="0.5">FMCG B2B</text>
           <!-- CAMPA (top-left) -->
           <line x1="185" y1="112" x2="100" y2="68" stroke="#e0dbd2" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <rect x="30" y="44" width="90" height="34" rx="8" fill="white" stroke="#e0dbd2" stroke-width="1.5"/>
+          <rect x="30" y="44" width="90" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="75" y="65" text-anchor="middle" fill="#111" font-size="11" font-weight="700">CAMPA</text>
           <!-- INDEPENDENCE (top-center) -->
           <line x1="240" y1="112" x2="240" y2="56" stroke="#ed6f5c" stroke-width="2"/>
-          <rect x="170" y="30" width="140" height="34" rx="8" fill="#ed6f5c"/>
+          <rect x="170" y="30" width="140" height="34" rx="8" fill="#ed6f5c" opacity="0.88"/>
           <text x="240" y="51" text-anchor="middle" fill="white" font-size="10" font-weight="700">INDEPENDENCE</text>
           <!-- SOSYO (top-right) -->
           <line x1="295" y1="112" x2="370" y2="68" stroke="#e0dbd2" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <rect x="350" y="44" width="90" height="34" rx="8" fill="white" stroke="#e0dbd2" stroke-width="1.5"/>
+          <rect x="350" y="44" width="90" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="395" y="65" text-anchor="middle" fill="#111" font-size="11" font-weight="700">SOSYO</text>
           <!-- DMS (bottom-left) -->
           <line x1="190" y1="188" x2="110" y2="232" stroke="#e0dbd2" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <rect x="30" y="220" width="80" height="34" rx="8" fill="white" stroke="#e0dbd2" stroke-width="1.5"/>
+          <rect x="30" y="220" width="80" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="70" y="241" text-anchor="middle" fill="#111" font-size="11" font-weight="700">DMS</text>
           <!-- SFA (bottom-center) -->
           <line x1="240" y1="188" x2="240" y2="232" stroke="#e0dbd2" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <rect x="200" y="232" width="80" height="34" rx="8" fill="white" stroke="#e0dbd2" stroke-width="1.5"/>
+          <rect x="200" y="232" width="80" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="240" y="253" text-anchor="middle" fill="#111" font-size="11" font-weight="700">SFA</text>
           <!-- CTS (bottom-right) -->
           <line x1="290" y1="188" x2="360" y2="232" stroke="#e0dbd2" stroke-width="1.5" stroke-dasharray="4,3"/>
-          <rect x="350" y="220" width="80" height="34" rx="8" fill="white" stroke="#e0dbd2" stroke-width="1.5"/>
+          <rect x="350" y="220" width="80" height="34" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="390" y="241" text-anchor="middle" fill="#111" font-size="11" font-weight="700">CTS</text>
           <!-- Caption -->
-          <text x="240" y="290" text-anchor="middle" fill="#bbb" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">FMCG B2B DISTRIBUTION · RCPL</text>
+          <text x="240" y="290" text-anchor="middle" fill="#a09880" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">FMCG B2B DISTRIBUTION · RCPL</text>
         </svg>
       </div>
     </div>
@@ -298,7 +302,7 @@
 <!-- ══════════════════════════════════════════
      01 · STATUS
 ══════════════════════════════════════════ -->
-<section class="r-sec light" id="status">
+<section class="r-sec" style="background:var(--r-paper);" id="status">
   <div class="r-wrap">
     <div class="r-center-head">
       <span class="r-label">01 · Status · 24-Apr-2026 cycle</span>
@@ -407,48 +411,48 @@
 <!-- ══════════════════════════════════════════
      03 · ARCHITECTURE  (white)
 ══════════════════════════════════════════ -->
-<section class="r-sec white" id="architecture">
+<section class="r-sec" style="background:var(--r-off-white);" id="architecture">
   <div class="r-wrap">
     <div class="r-2col">
       <div class="r-col-vis">
         <svg viewBox="0 0 440 380" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <rect width="440" height="380" rx="14" fill="#f6f4ef"/>
+          <rect width="440" height="380" rx="14" fill="#efe7d2"/>
           <!-- Central backbone -->
-          <rect x="155" y="156" width="130" height="68" rx="10" fill="#111110"/>
-          <text x="220" y="185" text-anchor="middle" fill="white" font-size="13" font-weight="800">DATA</text>
-          <text x="220" y="202" text-anchor="middle" fill="rgba(255,255,255,0.45)" font-size="9" letter-spacing="1">BACKBONE</text>
+          <rect x="155" y="156" width="130" height="68" rx="10" fill="#15140f"/>
+          <text x="220" y="185" text-anchor="middle" fill="#f7f1de" font-size="13" font-weight="800">DATA</text>
+          <text x="220" y="202" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="9" letter-spacing="1">BACKBONE</text>
           <!-- Admin Portal (top-left) -->
           <line x1="165" y1="156" x2="96" y2="100" stroke="#d4cfc7" stroke-width="1.5"/>
-          <rect x="20" y="72" width="110" height="40" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+          <rect x="20" y="72" width="110" height="40" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="75" y="89" text-anchor="middle" fill="#999" font-size="8" font-weight="600" letter-spacing="0.5">01</text>
           <text x="75" y="103" text-anchor="middle" fill="#111" font-size="11" font-weight="700">Admin Portal</text>
           <!-- Distributor (top-right) -->
           <line x1="275" y1="156" x2="344" y2="100" stroke="#d4cfc7" stroke-width="1.5"/>
-          <rect x="310" y="72" width="110" height="40" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+          <rect x="310" y="72" width="110" height="40" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="365" y="89" text-anchor="middle" fill="#999" font-size="8" font-weight="600" letter-spacing="0.5">02</text>
           <text x="365" y="103" text-anchor="middle" fill="#111" font-size="10" font-weight="700">Distributor Platform</text>
           <!-- CSO App (left) — highlighted -->
           <line x1="155" y1="190" x2="88" y2="190" stroke="#ed6f5c" stroke-width="2"/>
-          <rect x="8" y="170" width="80" height="40" rx="8" fill="#ed6f5c"/>
+          <rect x="8" y="170" width="80" height="40" rx="8" fill="#ed6f5c" opacity="0.9"/>
           <text x="48" y="187" text-anchor="middle" fill="white" font-size="8" font-weight="600" letter-spacing="0.5">03</text>
           <text x="48" y="201" text-anchor="middle" fill="white" font-size="11" font-weight="700">CSO App</text>
           <!-- Saarthi (right) -->
           <line x1="285" y1="190" x2="352" y2="190" stroke="#d4cfc7" stroke-width="1.5"/>
-          <rect x="352" y="170" width="80" height="40" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+          <rect x="352" y="170" width="80" height="40" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="392" y="187" text-anchor="middle" fill="#999" font-size="8" font-weight="600" letter-spacing="0.5">04</text>
           <text x="392" y="201" text-anchor="middle" fill="#111" font-size="11" font-weight="700">Saarthi</text>
           <!-- CMS (bottom-left) -->
           <line x1="175" y1="224" x2="106" y2="280" stroke="#d4cfc7" stroke-width="1.5"/>
-          <rect x="20" y="268" width="110" height="40" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+          <rect x="20" y="268" width="110" height="40" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="75" y="285" text-anchor="middle" fill="#999" font-size="8" font-weight="600" letter-spacing="0.5">05</text>
           <text x="75" y="299" text-anchor="middle" fill="#111" font-size="11" font-weight="700">CMS Platform</text>
           <!-- CTS (bottom-right) -->
           <line x1="265" y1="224" x2="334" y2="280" stroke="#d4cfc7" stroke-width="1.5"/>
-          <rect x="310" y="268" width="110" height="40" rx="8" fill="white" stroke="#e5e0d8" stroke-width="1.5"/>
+          <rect x="310" y="268" width="110" height="40" rx="8" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1.5"/>
           <text x="365" y="285" text-anchor="middle" fill="#999" font-size="8" font-weight="600" letter-spacing="0.5">06</text>
           <text x="365" y="299" text-anchor="middle" fill="#111" font-size="11" font-weight="700">CTS · Coolers</text>
           <!-- Caption -->
-          <text x="220" y="360" text-anchor="middle" fill="#c0bbb2" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">ONE DMS · SIX ENTRY POINTS</text>
+          <text x="220" y="360" text-anchor="middle" fill="#a09880" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">ONE DMS · SIX ENTRY POINTS</text>
         </svg>
       </div>
       <div class="r-col-text">
@@ -567,11 +571,11 @@
 <!-- ══════════════════════════════════════════
      05 · VISION  (forest green)
 ══════════════════════════════════════════ -->
-<section class="r-sec forest" id="vision">
+<section class="r-sec dark" id="vision">
   <div class="r-wrap">
     <div class="r-2col" style="margin-bottom:64px;">
       <div class="r-col-text">
-        <span class="r-label green">05 · Vision · AI-native FMCG OS</span>
+        <span class="r-label light">05 · Vision · AI-native FMCG OS</span>
         <h2 class="r-h2 light">Six-month plan.<br>Four integrated layers.</h2>
         <p class="r-sub light">Proposed to the Reliance APEX Board on 01-May-2026. RCPL's platform should not be a configured commercial DMS — it should be an AI-first, RCPL-owned operating system. Three principles: AI at the core; hyper-personalised down to the call; plug-in anything.</p>
       </div>
@@ -657,7 +661,7 @@
       </div>
       <div class="r-col-vis">
         <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <rect width="420" height="260" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+          <rect width="420" height="260" rx="12" fill="rgba(239,231,210,0.04)" stroke="rgba(239,231,210,0.09)" stroke-width="1"/>
           <!-- Track 1 -->
           <rect x="16" y="20" width="388" height="60" rx="9" fill="rgba(59,130,246,0.11)" stroke="rgba(59,130,246,0.23)" stroke-width="1"/>
           <text x="32" y="42" fill="rgba(147,197,253,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">CLOSE · BEVERAGE</text>
