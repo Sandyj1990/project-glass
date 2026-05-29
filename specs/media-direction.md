@@ -25,7 +25,7 @@
 - **§05 Granary:** Command Centre screenshot from `/assets/granary/`.
 - **§06 Special Projects:** ALP / RetailVista / Jarvis screenshots.
 - **§07 AI-Native:** Boltic console + PixelBin + Kaily chat interface.
-- **§08 Recent Innovations:** Fynd Horizon body-scan + AutRi shelf + Dark Factory.
+- **§08 Recent Innovations:** Fynd Horizon body-scan + AutRi shelf + Neo Tailor.
 - **§09 Organisation:** Team photo or abstract org chart.
 
 ## Product Visual Direction

@@ -5,7 +5,7 @@
 **Owner (Fynd-side DRI):** Saaket Chawali · Product
 **Route:** `/autri/`
 **Source content:** `docs/accenture-2026-04-16-compilation/Autri_Agentic_Planogram_Compliance_for_Grocery.pdf` (13 pp · authored by Saaket Chawali, 21-Apr-2026)
-**Narrative anchor:** the 30-Apr-2026 Farooq → MM Sir letter names "Autri" under **Recent Innovations** alongside Fynd Horizon and Dark Factory. This page makes that name navigable for Apex.
+**Narrative anchor:** the 30-Apr-2026 Farooq → MM Sir letter names "Autri" under **Recent Innovations** alongside Fynd Horizon and Neo Tailor. This page makes that name navigable for Apex.
 
 ---
 

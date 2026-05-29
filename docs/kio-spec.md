@@ -146,7 +146,7 @@ Six sites to touch:
 2. **Home `index.html`:712** — Fashion Factory card "Companion + 168 Fynd Kio units" — wrap "Fynd Kio" link
 3. **Home `index.html`:774** — Physical AI bucket card mentions "Kio (production)" — link
 4. **Catalog `catalog/index.html`:182** — wrap "Fynd Kio (Self-Checkout Kiosk)" with link
-5. **Top-nav mega-menu** — add `<a href="/kio">Kio <span class="mono-suffix">Physical AI</span></a>` under **Recent Innovations** column (sits next to Autri, Fynd Horizon, Dark Factory). Lazy strategy: home + new section only for v0.1; full ~25-file mega-menu sweep deferred.
+5. **Top-nav mega-menu** — add `<a href="/kio">Kio <span class="mono-suffix">Physical AI</span></a>` under **Recent Innovations** column (sits next to Autri, Fynd Horizon, Neo Tailor). Lazy strategy: home + new section only for v0.1; full ~25-file mega-menu sweep deferred.
 6. **Footer "Other tracks" lists** — defer (lazy strategy)
 
 ---

@@ -39,6 +39,6 @@
 - [ ] **05. Granary:** Asset focuses on the forecasting data grid UI.
 - [ ] **06. Special Projects:** Asset cleanly represents the 6 diverse projects.
 - [ ] **07. AI-Native:** Asset accurately reflects a Boltic/node-based workflow.
-- [ ] **08. Recent Innovations:** Asset uses high-quality photography of AutRi or Dark Factory hardware.
+- [ ] **08. Recent Innovations:** Asset uses high-quality photography of AutRi or Neo Tailor hardware.
 - [ ] **09. Organisation:** Asset is a high-quality, authentic photo of the engineering team.
 - [ ] **10. Every Platform:** Background pattern (if used) is extremely subtle and non-distracting.

@@ -274,7 +274,7 @@ Add `inject_path_to_l4 --check` to `website-page-reviewer` Phase 7 (Cross-Page C
 
 These pages get **zero copy changes** in this PR:
 
-ALP · Retail Jarvis · Forge · Samarth Plus · HireFirst · SwapEasy · TMS · Fynd Konnect · Boltic · PixelBin · Ratl · Kaily · Fynd Kio · AutRi · Dark Factory · Fynd Horizon · Fynd Academy.
+ALP · Retail Jarvis · Forge · Samarth Plus · HireFirst · SwapEasy · TMS · Fynd Konnect · Boltic · PixelBin · Ratl · Kaily · Fynd Kio · AutRi · Neo Tailor · Fynd Horizon · Fynd Academy.
 
 **Why no Path to L4 section there.**
 - The honest answer for each is *"no named agent from `/agents/` yet"*. Adding a Path to L4 section that says that loudly is worse than not adding it — it reads as filler.

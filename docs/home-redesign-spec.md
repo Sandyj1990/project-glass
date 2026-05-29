@@ -59,7 +59,7 @@ The redesign keeps the existing platform grid (it's still the best random-access
 07 §05 GRANARY · Grocery AI
 08 §06 SPECIAL PROJECTS · ALP, RetailVista, Retail Jarvis, Samarth, HireFirst, SwapEasy (Forge dropped per MDA letter; RCPL deferred Round 4)
 09 §07 AI-NATIVE PLATFORMS · Agentic Automation (Boltic · PixelBin · Ratl) + Agentic Commerce (Kaily)
-10 §08 RECENT INNOVATIONS · Fynd Horizon · AutRi · Dark Factory
+10 §08 RECENT INNOVATIONS · Fynd Horizon · AutRi · Neo Tailor
 11 §09 ORGANISATION · highlights · drill-down to /organisation, /culture, /ai-native, /fynd-academy (added Round 5)
 12 §10 EVERY PLATFORM · existing 27-card filterable directory (former §01)
 13 FOOTER (canonical · dark · unchanged)
@@ -195,8 +195,8 @@ Per-section content:
 
 - **Hero number (Move B):** `7 days` · *Order → doorstep · Fynd Horizon MTO.*
 - **Headline:** *The next horizon · already shipping.*
-- **Lead:** *Fynd Horizon — Ultra Fast Retail · made-to-measure in 24 hours · live at RCP and Mumbai cluster. AutRi — agentic planogram compliance · Phase 1 live at FreshPik Powai with Fynd Nucleus. Dark Factory — lights-out micro-factory + Mobile Tailor app inside AJIO · awaiting capex + alpha sign-off.*
-- **Tiles** (3): Fynd Horizon · AutRi · Dark Factory.
+- **Lead:** *Fynd Horizon — Ultra Fast Retail · made-to-measure in 24 hours · live at RCP and Mumbai cluster. AutRi — agentic planogram compliance · Phase 1 live at FreshPik Powai with Fynd Nucleus. Neo Tailor — lights-out micro-factory + Mobile Tailor app inside AJIO · awaiting capex + alpha sign-off.*
+- **Tiles** (3): Fynd Horizon · AutRi · Neo Tailor.
 - **Section CTA:** `Open every Recent Innovation →` jumps to §10 grid (no filter — they're scattered across status pills).
 - **Source backing:** Farooq letter; existing pages.
 

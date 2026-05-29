@@ -43,7 +43,7 @@
       "dimension": "visual_completeness",
       "section": "§04 Live Kitchen, §05 Operating model, §07 Capex",
       "issue": "Source concept note carries 6 embedded images (image1: headline-numbers viz; image2: 8-step journey + entry-points diagram; image3: live-kitchen 5-stage strip; image4: demand loop; image5: supply loop; image6: factory layout). Page renders zero images. Sibling /fynd-horizon and /autri carry 1+ hero image and 4-9 in-section images; the bar for visual evidence on a Recent Innovations page is set by them.",
-      "fix": "Extract base64 images from docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md (or convert the .pptx decks via soffice → pdf → pdfimages -j). Place under assets/dark-factory/ as 01-headline-numbers.jpg through 06-factory-layout.jpg. Wire into §0 hero (image1), §03 journey (image2), §04 live kitchen (image3), §05 demand+supply loops (image4 + image5 side-by-side), §07 capex factory layout (image6). Once images land, the lightbox infrastructure stops being dead code (see L2 below).",
+      "fix": "Extract base64 images from docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md (or convert the .pptx decks via soffice → pdf → pdfimages -j). Place under assets/neo-tailor/ as 01-headline-numbers.jpg through 06-factory-layout.jpg. Wire into §0 hero (image1), §03 journey (image2), §04 live kitchen (image3), §05 demand+supply loops (image4 + image5 side-by-side), §07 capex factory layout (image6). Once images land, the lightbox infrastructure stops being dead code (see L2 below).",
       "files": ["dark-factory/index.html:255-270", "dark-factory/index.html:283-303", "dark-factory/index.html:354-393"],
       "auto_fixable": false
     },
@@ -73,7 +73,7 @@
       "dimension": "cross_page_consistency",
       "section": "Catalog page (does not exist)",
       "issue": "No /catalog/ sibling page exists in the repo. When/if catalog is restored, dark-factory needs an entry, and the metric/desc on the entry must match the home-page card and the page hero.",
-      "fix": "When /catalog/ ships, add row: {name: 'Dark Factory · MTM', status: 'Build', layer: 'make', summary: 'Lights-out micro-factory + Mobile Tailor app inside AJIO. ₹8.27 Cr capex, 7-day MTM. Concept note 30-Apr-2026 (Farooq Adam · Vipin Tyagi); awaiting alpha sign-off.', source: 'docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md'}. Match the home-page card metric exactly.",
+      "fix": "When /catalog/ ships, add row: {name: 'Neo Tailor · MTM', status: 'Build', layer: 'make', summary: 'Lights-out micro-factory + Mobile Tailor app inside AJIO. ₹8.27 Cr capex, 7-day MTM. Concept note 30-Apr-2026 (Farooq Adam · Vipin Tyagi); awaiting alpha sign-off.', source: 'docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md'}. Match the home-page card metric exactly.",
       "files": ["catalog/index.html (does not exist)"],
       "auto_fixable": false
     },
@@ -179,7 +179,7 @@
     },
     "cross_page": {
       "home_card_consistency": "PASS · index.html:188 metric '₹8.27 Cr capex · 7-day MTM · alpha pending' matches page hero pills",
-      "mega_menu_consistency": "PASS · all sibling pages use identical 'Dark Factory · made-to-measure' string · zero drift",
+      "mega_menu_consistency": "PASS · all sibling pages use identical 'Neo Tailor · made-to-measure' string · zero drift",
       "stale_placeholder_copy": "PASS · grep 'Page in progress · owner TBD' / 'Hub page coming soon' / 'named in the 30 - Apr - 2026' returns ZERO hits across all sibling .html files",
       "catalog_entry": "N/A · /catalog/ does not exist (M3)"
     }

@@ -41,7 +41,7 @@
 
 ## Section 08: Recent Innovations
 - Headline: Recent Innovations
-- Subhead: Fynd Horizon, Autri, Dark Factory.
+- Subhead: Fynd Horizon, Autri, Neo Tailor.
 
 ## Section 09: Organisation
 - Headline: 1,056 people · building the autonomous frontier.

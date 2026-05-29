@@ -91,7 +91,7 @@ B6 · Recent Innovations
 /innovations/                   NEW · landing
 /innovations/fynd-horizon/      Fynd Horizon
 /innovations/autri/             NEW · Autri
-/innovations/dark-factory/      NEW · Dark Factory · Made to Measure
+/innovations/neo-tailor/      NEW · Neo Tailor · Made to Measure
 ```
 
 ### Meta surface · Real-time transparency system (the site itself)
@@ -134,7 +134,7 @@ Tracks
 │   ├── Agentic Automation · Boltic · PixelBin · Ratl
 │   └── Agentic Commerce · Kaily
 └── Recent Innovations
-    └── Fynd Horizon · Autri · Dark Factory
+    └── Fynd Horizon · Autri · Neo Tailor
 ```
 
 (More items than today's nav, but the letter's shape demands them. Mega-panel widens to 4 columns.)
@@ -273,7 +273,7 @@ The order matches the letter exactly: Impetus first, then the six Retail Project
 
 ### Phase 1 · IA scaffold (1-2 days)
 - Update top-nav mega-menu in every existing page (the integration team's flow).
-- Add empty stub pages for the missing IPs (`/boltic/`, `/pixelbin/`, `/ratl/`, `/kaily/`, `/innovations/fynd-horizon/`, `/innovations/autri/`, `/innovations/dark-factory/`, `/ucp/`, `/marketing-os/`, `/transparency/`, `/jcp/rrl-rbl-rrvl/`). Stub = breadcrumb + "Coming soon · sourcing now" — so links don't 404.
+- Add empty stub pages for the missing IPs (`/boltic/`, `/pixelbin/`, `/ratl/`, `/kaily/`, `/innovations/fynd-horizon/`, `/innovations/autri/`, `/innovations/neo-tailor/`, `/ucp/`, `/marketing-os/`, `/transparency/`, `/jcp/rrl-rbl-rrvl/`). Stub = breadcrumb + "Coming soon · sourcing now" — so links don't 404.
 
 ### Phase 2 · template generator (2-3 days)
 - Extend `tools/build_data/build.py` to emit pages from the §3 template using `data/ips/<id>/`.
@@ -291,7 +291,7 @@ The order matches the letter exactly: Impetus first, then the six Retail Project
 - Write `/transparency/` page · explain the JIRA/Git ingestion, refresh cadence, the L3 autonomy claim, owners, and the audit log.
 
 ### Phase 5 · content fill (open-ended)
-- Source copy for `/marketing-os/`, `/kaily/`, `/innovations/dark-factory/`.
+- Source copy for `/marketing-os/`, `/kaily/`, `/innovations/neo-tailor/`.
 - Add screenshots / short clips to the product pages.
 
 ---
@@ -321,7 +321,7 @@ A check that every word in the cover letter has a place to live.
 | Agentic Commerce · Kaily (JioMart, AJIO) | `/kaily/` |
 | Fynd Horizon | `/innovations/fynd-horizon/` |
 | Autri | `/innovations/autri/` |
-| Dark Factory · Made to Measure | `/innovations/dark-factory/` |
+| Neo Tailor · Made to Measure | `/innovations/neo-tailor/` |
 | Real-time transparency system | `/transparency/` + framed on `/` |
 | Roadmap · progress programs · AI adoption · L3/L4 path | §06 Progress on every page |
 | Sourced from JIRA / Git / SoR | `/transparency/` explains; data refresh cadence on every page footer |

@@ -104,7 +104,7 @@
       "dimension": "tone_of_voice",
       "section": "§0 Hero",
       "issue": "Hero now has both a deck line (14 words: 'A tailor inside the AJIO app. Designed in 2 minutes. Delivered in 7 days.') and a longer body paragraph (49 words: 'The customer-facing surface is Mobile Neo Tailor — ...'). Spec D12 says 'Hero subhead at 29 words'. The deck line passes; the body paragraph is intro prose. Document the two-line treatment in the spec so future reviewers know which is the subhead.",
-      "fix": "Add a D15 to docs/dark-factory-spec.md noting: 'Hero deck line is the canonical subhead (≤30 words); body paragraph below H1 is unconstrained intro prose used to introduce the Mobile Neo Tailor / Dark Factory naming pair.'",
+      "fix": "Add a D15 to docs/dark-factory-spec.md noting: 'Hero deck line is the canonical subhead (≤30 words); body paragraph below H1 is unconstrained intro prose used to introduce the Mobile Neo Tailor / Neo Tailor naming pair.'",
       "files": ["dark-factory/index.html:96", "dark-factory/index.html:98", "docs/dark-factory-spec.md"],
       "auto_fixable": false
     },

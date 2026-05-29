@@ -23,7 +23,7 @@
       "dimension": "visual_completeness",
       "section": "§04 · Live Kitchen, §05 · Operating model, §07 · Capex",
       "issue": "Concept note carries 6 source images (image1: headline numbers viz; image2: 8-step journey diagram; image3: live-kitchen stage strip; image4: demand loop; image5: supply loop; image6: factory layout). Page renders zero images. The §04 'real photo at every stage' claim is text-only; the §05 'two loops' is text-only; the §07 factory layout is text-only. Reduces visual evidence below the sibling-page bar (fynd-horizon and autri both carry 1+ hero image and 4-9 in-section images).",
-      "fix": "Extract base64 images from docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md (or convert the .pptx decks via soffice → pdf → pdfimages). Place under assets/dark-factory/ as 01-headline-numbers.jpg through 06-factory-layout.jpg. Wire into §0 hero (image1), §03 journey (image2), §04 live kitchen (image3), §05 demand+supply loops (image4 + image5 side-by-side), §07 capex factory layout (image6). Include lightbox wrap pattern from sibling pages.",
+      "fix": "Extract base64 images from docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md (or convert the .pptx decks via soffice → pdf → pdfimages). Place under assets/neo-tailor/ as 01-headline-numbers.jpg through 06-factory-layout.jpg. Wire into §0 hero (image1), §03 journey (image2), §04 live kitchen (image3), §05 demand+supply loops (image4 + image5 side-by-side), §07 capex factory layout (image6). Include lightbox wrap pattern from sibling pages.",
       "files": ["dark-factory/index.html:255-270", "dark-factory/index.html:283-303", "dark-factory/index.html:354-393"],
       "auto_fixable": false
     },
@@ -53,7 +53,7 @@
       "dimension": "cross_page_consistency",
       "section": "Catalog page",
       "issue": "No /catalog/ sibling page exists in the repo. If/when the catalog is restored, dark-factory needs an entry. Documenting the absence so it isn't missed.",
-      "fix": "When /catalog/ ships, add a row: {name: 'Dark Factory · MTM', status: 'Build', layer: 'make', summary: 'Lights-out micro-factory + Mobile Tailor app. ₹8.27 Cr capex. Concept note 30-Apr-2026, awaiting alpha sign-off.', source: 'docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md'}.",
+      "fix": "When /catalog/ ships, add a row: {name: 'Neo Tailor · MTM', status: 'Build', layer: 'make', summary: 'Lights-out micro-factory + Mobile Tailor app. ₹8.27 Cr capex. Concept note 30-Apr-2026, awaiting alpha sign-off.', source: 'docs/mtm-notes-compilation/Mobile_Tailor_Concept_Note_Formatted.md'}.",
       "files": ["catalog/index.html (does not exist)"],
       "auto_fixable": false
     },

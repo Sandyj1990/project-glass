@@ -145,7 +145,7 @@ One AI-native commerce stack. Five layers, two side guards, one culture base.
    └────────────┘       │ BUY / MAKE                            │   │ Vista      │
                         │ Auto Tech-Pack · Photoshoot ·         │   └────────────┘
                         │ Auto Purchase Request · Cataloging ·  │
-                        │ Forge MES · Dark Factory              │
+                        │ Forge MES · Neo Tailor              │
                         ├───────────────────────────────────────┤
                         │ PLAN / DESIGN                         │
                         │ Fashion Design · Cortex · Assortment  │

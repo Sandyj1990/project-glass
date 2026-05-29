@@ -107,7 +107,7 @@ Source = website nav (Tracks mega-menu + More). **Mappings live in `organisation
 | Storefronts / Core Platform / Commerce | (unchanged) | /jcp |
 | Forge MES | Forge MES | /forge |
 
-**Platform pages with no representation in the xlsx** (people are billed under broader Projects/Tracks): Retail Vista, Retail Jarvis, Forge, SwapEasy, Autri, Dark Factory, Fynd Academy. These pages exist on the site but no xlsx row carries a matching Project or Track. Their teams are folded into JCP / Impetus / External Monitization rows.
+**Platform pages with no representation in the xlsx** (people are billed under broader Projects/Tracks): Retail Vista, Retail Jarvis, Forge, SwapEasy, Autri, Neo Tailor, Fynd Academy. These pages exist on the site but no xlsx row carries a matching Project or Track. Their teams are folded into JCP / Impetus / External Monitization rows.
 
 ### 2.2 Table 1 · Employee directory (filterable)
 

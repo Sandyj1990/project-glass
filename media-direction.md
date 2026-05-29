@@ -112,9 +112,9 @@
 **Negative prompt:** No literal robots, no glowing brains, no generic AI sparkles.
 
 ## 08. Recent Innovations
-**Visual Purpose:** Highlight physical/hardware innovations (Horizon, AutRi, Dark Factory).
+**Visual Purpose:** Highlight physical/hardware innovations (Horizon, AutRi, Neo Tailor).
 **Primary Image Idea:** A clean, well-lit photo of the AutRi robot scanning a shelf (using the existing `/assets/autri/` image), cropped to focus on the sensor array.
-**Backup Image Idea:** A high-quality photo of the Dark Factory sewing automat line.
+**Backup Image Idea:** A high-quality photo of the Neo Tailor sewing automat line.
 **Video Loop Idea:** A 5-second loop of the AutRi robot smoothly moving down a store aisle, capturing shelf data.
 **Composition:** Hardware-focused, industrial but clean.
 **Camera/framing direction:** Eye-level with the hardware, shallow depth of field.

@@ -83,7 +83,7 @@ The structure must accommodate these placeholders today so they can be linked th
 > "Impetus: details of all sub-platforms deployed, adoption across the value chain of F&L."
 >
 > "Fynd – Retail Projects: details of all platforms, adoption with dedicated people involved. Platforms involved:
-> Jio Commerce Platform · UCP & Marketing OS · Granary · Special Projects (ALP, RetailVista, others) · AI-Native Platforms (Boltic, PixelBin, Ratl; Kaily) · Recent Innovations (Fynd Horizon, Autri, Dark Factory)."
+> Jio Commerce Platform · UCP & Marketing OS · Granary · Special Projects (ALP, RetailVista, others) · AI-Native Platforms (Boltic, PixelBin, Ratl; Kaily) · Recent Innovations (Fynd Horizon, Autri, Neo Tailor)."
 
 This collapses into **6 buckets**:
 
@@ -95,7 +95,7 @@ This collapses into **6 buckets**:
 | D | **Granary** | `/granary` | 2 pages | — |
 | E | **Special Projects** | (no hub — chips only) | ALP, RetailVista, Retail Jarvis, Samarth, Forge, HireFirst | — |
 | F | **AI-Native Platforms** | (no hub — chips only) | — | Boltic, PixelBin, Ratl, Kaily |
-| G | **Recent Innovations** | (no hub — chips only) | — | Fynd Horizon, Autri, Dark Factory |
+| G | **Recent Innovations** | (no hub — chips only) | — | Fynd Horizon, Autri, Neo Tailor |
 
 Plus utility pages (Numbers, Org, Culture, Catalog, Autonomy framework, Fynd Academy, Docs).
 
@@ -124,7 +124,7 @@ TRACKS ▾
 │                                                  RECENT INNOVATIONS         │
 │                                                  Fynd Horizon               │
 │                                                  Autri                      │
-│                                                  Dark Factory · made-to-… │
+│                                                  Neo Tailor · made-to-… │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -241,7 +241,7 @@ Topnav HTML is inline (no separate request) so no cache busting needed. Re-deplo
 | 7 | Add equivalent subnav to `/impetus/index.html` + each `/impetus/*/index.html` (or do it in `build_impetus.py`) | Claude | pending |
 | 8 | Add subnav to `/granary` + `/granary/research/*` | Claude | pending |
 | 9 | Sanity sweep — load each top-level page in browser, click every nav link, confirm no 404s | Claude + Kushan | pending |
-| 10 | Stub-page sweep — for the 8 unbuilt sections (UCP, Boltic, PixelBin, Ratl, Kaily, Fynd Horizon, Autri, Dark Factory), decide whether to ship a "coming soon" placeholder so links don't 404 | Kushan | pending |
+| 10 | Stub-page sweep — for the 8 unbuilt sections (UCP, Boltic, PixelBin, Ratl, Kaily, Fynd Horizon, Autri, Neo Tailor), decide whether to ship a "coming soon" placeholder so links don't 404 | Kushan | pending |
 
 ---
 

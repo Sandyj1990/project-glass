@@ -19,7 +19,7 @@ As requested, sharing the detailed update on:
 - **Granary**
 - **Special Projects** — ALP, RetailVista, others
 - **AI-Native Platforms** — Agentic Automation: Boltic, PixelBin, Ratl; and Agentic Commerce: Kaily (live in JioMart and AJIO)
-- **Recent Innovations** — Fynd Horizon and Autri; Dark Factory (Made to Measure)
+- **Recent Innovations** — Fynd Horizon and Autri; Neo Tailor (Made to Measure)
 
 Additionally, we have created a real-time system for complete transparency for each — with details of current roadmap, progress programs, AI adoption by individuals, and the path for each to reach L3/L4 autonomy this quarter.
 
