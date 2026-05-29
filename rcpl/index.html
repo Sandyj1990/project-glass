@@ -68,12 +68,6 @@
 .r-hero-visual { }
 .r-hero-card { background: var(--r-off-white); border-radius: 16px 16px 0 0; border: 1px solid var(--r-border); border-bottom: none; padding: 28px; box-shadow: 0 -8px 48px rgba(21,20,15,0.09); }
 
-/* ── Tab strip ── */
-.r-tabs { background: var(--r-paper); border-bottom: 1px solid var(--r-border); overflow-x: auto; }
-.r-tabs-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; }
-.r-tabs a { font-family: var(--r-sans); font-size: 14px; font-weight: 500; color: var(--r-ink-muted); padding: 14px 20px; border-bottom: 2px solid transparent; text-decoration: none; transition: all .15s; white-space: nowrap; }
-.r-tabs a:hover { color: var(--r-dark); }
-.r-tabs a.active { color: var(--r-ink); border-bottom-color: var(--r-coral); font-weight: 600; }
 
 /* ── Section wrappers ── */
 .r-sec { padding: 96px 24px; }
@@ -287,17 +281,6 @@
   </div>
 </section>
 
-<!-- Tab strip -->
-<nav class="r-tabs">
-  <div class="r-tabs-inner">
-    <a href="#status" class="active">Status</a>
-    <a href="#pods">5 PODs</a>
-    <a href="#architecture">Architecture</a>
-    <a href="#releases">Releases</a>
-    <a href="#vision">Vision</a>
-    <a href="#roadmap">Roadmap</a>
-  </div>
-</nav>
 
 <!-- ══════════════════════════════════════════
      01 · STATUS
@@ -739,7 +722,7 @@
 
 <script>
 // Tab active state on scroll
-const tabLinks = document.querySelectorAll('.r-tabs a, .r-nav-links a');
+const tabLinks = document.querySelectorAll('.r-nav-links a');
 const secs = document.querySelectorAll('section[id]');
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
