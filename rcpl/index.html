@@ -303,10 +303,58 @@
 ══════════════════════════════════════════ -->
 <section class="r-sec" style="background:var(--r-paper);" id="status">
   <div class="r-wrap">
-    <div class="r-center-head">
-      <span class="r-label">01 · Status · 24-Apr-2026 cycle</span>
-      <h2 class="r-h2 center">Stabilise and scale,<br>in parallel.</h2>
-      <p class="r-sub center">Track 1: own the existing stack, ship every cycle, harden data quality. Track 2: architect an AI-native FMCG OS as the long-term home.</p>
+    <!-- Status illustration: deployment pipeline -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:72px;">
+      <div>
+        <span class="r-label">01 · Status · 24-Apr-2026 cycle</span>
+        <h2 class="r-h2">Stabilise and scale,<br>in parallel.</h2>
+        <p class="r-sub">Track 1: own the existing stack, ship every cycle, harden data quality. Track 2: architect an AI-native FMCG OS as the long-term home.</p>
+      </div>
+      <div>
+        <!-- Deployment pipeline illustration -->
+        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
+          <!-- Card background -->
+          <rect width="420" height="300" rx="16" fill="#efe7d2" stroke="#d4cfc7" stroke-width="1"/>
+
+          <!-- Header bar -->
+          <rect x="0" y="0" width="420" height="40" rx="16" fill="#15140f"/>
+          <rect x="0" y="24" width="420" height="16" fill="#15140f"/>
+          <text x="20" y="26" fill="rgba(247,241,222,0.5)" font-size="9" font-weight="600" letter-spacing="1.2" font-family="'JetBrains Mono',monospace">DEPLOYMENT PIPELINE · APR 2026</text>
+          <circle cx="380" cy="20" r="5" fill="#ed6f5c" opacity="0.8"/>
+          <circle cx="364" cy="20" r="5" fill="#e9b94a" opacity="0.8"/>
+          <circle cx="348" cy="20" r="5" fill="#3d7a4a" opacity="0.8"/>
+
+          <!-- Track 1: Delivered -->
+          <text x="20" y="68" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">DELIVERED · MAR–APR</text>
+          <!-- Progress bar full -->
+          <rect x="20" y="76" width="380" height="8" rx="4" fill="rgba(21,20,15,0.08)"/>
+          <rect x="20" y="76" width="380" height="8" rx="4" fill="#3d7a4a"/>
+          <text x="20" y="100" fill="#15140f" font-size="12" font-weight="700">40+ items · 5 workflow areas</text>
+          <text x="20" y="115" fill="#5a5448" font-size="11">Asset Mgmt · CTS · Primary DMS · Pre-Sales · Config</text>
+
+          <!-- Divider -->
+          <line x1="20" y1="132" x2="400" y2="132" stroke="#d4cfc7" stroke-width="1"/>
+
+          <!-- Track 2: In Flight -->
+          <text x="20" y="152" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">IN FLIGHT · 28-APR CYCLE</text>
+          <!-- Progress bar partial -->
+          <rect x="20" y="160" width="380" height="8" rx="4" fill="rgba(21,20,15,0.08)"/>
+          <rect x="20" y="160" width="228" height="8" rx="4" fill="#ed6f5c"/>
+          <text x="20" y="184" fill="#15140f" font-size="12" font-weight="700">15 items · 5 modules active</text>
+          <text x="20" y="199" fill="#5a5448" font-size="11">SFA · CTS · Pre-Sales · DMS · Asset Mgmt</text>
+
+          <!-- Divider -->
+          <line x1="20" y1="216" x2="400" y2="216" stroke="#d4cfc7" stroke-width="1"/>
+
+          <!-- Track 3: Queued -->
+          <text x="20" y="236" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">PHASE 2 · QUEUED</text>
+          <!-- Progress bar empty -->
+          <rect x="20" y="244" width="380" height="8" rx="4" fill="rgba(21,20,15,0.08)"/>
+          <rect x="20" y="244" width="76" height="8" rx="4" fill="#e9b94a" opacity="0.7"/>
+          <text x="20" y="268" fill="#15140f" font-size="12" font-weight="700">4 domains · decisions needed</text>
+          <text x="20" y="283" fill="#5a5448" font-size="11">Van Sales · Non-Bev SFA · Anchor Fulfilment · UAT</text>
+        </svg>
+      </div>
     </div>
     <div class="r-status-grid">
       <div class="r-status-card r-status-card-border" style="border-top-color:#047857;">
@@ -352,41 +400,82 @@
         <p class="r-sub light">Each POD owns a slice: Pre-Sales and Van Sales for Beverage; Multi-Segment Mapping, CSO empowerment, and Beat Management for Non-Beverage; CTS for cooler assets; Primary DMS for distributor ordering; Pricing & Promotions for the full margin stack.</p>
       </div>
       <div class="r-col-vis">
-        <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <rect width="420" height="280" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-          <!-- POD 1 -->
-          <rect x="16" y="16" width="186" height="56" rx="8" fill="rgba(59,130,246,0.14)" stroke="rgba(59,130,246,0.28)" stroke-width="1"/>
-          <text x="30" y="37" fill="rgba(147,197,253,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">POD 1 · BEVERAGE</text>
-          <text x="30" y="55" fill="white" font-size="12" font-weight="700">Pre-Sales + Van Sales</text>
-          <!-- POD 2 -->
-          <rect x="218" y="16" width="186" height="56" rx="8" fill="rgba(16,185,129,0.11)" stroke="rgba(16,185,129,0.23)" stroke-width="1"/>
-          <text x="232" y="37" fill="rgba(110,231,183,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">POD 2 · BEVERAGE</text>
-          <text x="232" y="55" fill="white" font-size="12" font-weight="700">CTS · Cooler Tracking</text>
-          <!-- POD 3 -->
-          <rect x="16" y="88" width="186" height="56" rx="8" fill="rgba(139,92,246,0.11)" stroke="rgba(139,92,246,0.23)" stroke-width="1"/>
-          <text x="30" y="109" fill="rgba(196,181,253,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">POD 3 · ALL SEGMENTS</text>
-          <text x="30" y="127" fill="white" font-size="12" font-weight="700">Multi-Seg SFA + Beat Mgmt</text>
-          <!-- POD 4 -->
-          <rect x="218" y="88" width="186" height="56" rx="8" fill="rgba(245,158,11,0.11)" stroke="rgba(245,158,11,0.23)" stroke-width="1"/>
-          <text x="232" y="109" fill="rgba(253,211,77,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">POD 4 · ALL SEGMENTS</text>
-          <text x="232" y="127" fill="white" font-size="12" font-weight="700">Primary DMS + Auto DO</text>
-          <!-- POD 5 -->
-          <rect x="16" y="160" width="388" height="56" rx="8" fill="rgba(239,68,68,0.09)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
-          <text x="30" y="181" fill="rgba(252,165,165,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">POD 5 · ALL SEGMENTS</text>
-          <text x="30" y="199" fill="white" font-size="12" font-weight="700">Pricing & Promotions · ₹1,200 Cr/month primary scale</text>
-          <!-- Metric row -->
-          <rect x="16" y="232" width="90" height="36" rx="6" fill="rgba(255,255,255,0.04)"/>
-          <text x="61" y="249" text-anchor="middle" fill="white" font-size="14" font-weight="800">80%</text>
-          <text x="61" y="263" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8">Bev DBs</text>
-          <rect x="116" y="232" width="90" height="36" rx="6" fill="rgba(255,255,255,0.04)"/>
-          <text x="161" y="249" text-anchor="middle" fill="white" font-size="14" font-weight="800">₹4K Cr</text>
-          <text x="161" y="263" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8">Order volume</text>
-          <rect x="216" y="232" width="90" height="36" rx="6" fill="rgba(255,255,255,0.04)"/>
-          <text x="261" y="249" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="800">~₹50Cr</text>
-          <text x="261" y="263" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8">Asset-loss saved</text>
-          <rect x="316" y="232" width="88" height="36" rx="6" fill="rgba(255,255,255,0.04)"/>
-          <text x="360" y="249" text-anchor="middle" fill="white" font-size="14" font-weight="800">1,000+</text>
-          <text x="360" y="263" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="8">Distributors</text>
+        <!-- Route-to-market flow illustration -->
+        <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
+          <!-- Background -->
+          <rect width="420" height="320" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(239,231,210,0.12)" stroke-width="1"/>
+
+          <!-- Flow: RCPL → Distributor → CSO → Retailer -->
+          <!-- RCPL Factory node -->
+          <rect x="20" y="120" width="80" height="80" rx="12" fill="#15140f" stroke="rgba(239,231,210,0.15)" stroke-width="1"/>
+          <text x="60" y="152" text-anchor="middle" fill="#f7f1de" font-size="11" font-weight="800">RCPL</text>
+          <text x="60" y="168" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" letter-spacing="0.5">FACTORY</text>
+          <!-- Campa / Sosyo mini labels -->
+          <rect x="28" y="178" width="28" height="14" rx="3" fill="#ed6f5c" opacity="0.8"/>
+          <text x="42" y="188" text-anchor="middle" fill="white" font-size="7" font-weight="700">CAMPA</text>
+          <rect x="62" y="178" width="28" height="14" rx="3" fill="rgba(247,241,222,0.15)"/>
+          <text x="76" y="188" text-anchor="middle" fill="rgba(247,241,222,0.6)" font-size="7">SOSYO</text>
+
+          <!-- Arrow 1 -->
+          <line x1="100" y1="160" x2="130" y2="160" stroke="rgba(239,231,210,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="130,156 138,160 130,164" fill="rgba(239,231,210,0.4)"/>
+
+          <!-- Primary DMS node -->
+          <rect x="140" y="130" width="80" height="60" rx="10" fill="rgba(237,111,92,0.15)" stroke="rgba(237,111,92,0.35)" stroke-width="1.5"/>
+          <text x="180" y="155" text-anchor="middle" fill="#f08e7c" font-size="9" font-weight="700" letter-spacing="0.5">PRIMARY</text>
+          <text x="180" y="170" text-anchor="middle" fill="white" font-size="11" font-weight="800">DMS</text>
+          <text x="180" y="183" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">₹4K Cr/mo</text>
+
+          <!-- Arrow 2 -->
+          <line x1="220" y1="160" x2="250" y2="160" stroke="rgba(239,231,210,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="250,156 258,160 250,164" fill="rgba(239,231,210,0.4)"/>
+
+          <!-- Distributor node -->
+          <rect x="260" y="130" width="80" height="60" rx="10" fill="rgba(233,185,74,0.12)" stroke="rgba(233,185,74,0.3)" stroke-width="1.5"/>
+          <text x="300" y="152" text-anchor="middle" fill="rgba(233,185,74,0.8)" font-size="9" font-weight="700" letter-spacing="0.5">DIST.</text>
+          <text x="300" y="167" text-anchor="middle" fill="white" font-size="11" font-weight="800">1,000+</text>
+          <text x="300" y="181" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">DBs</text>
+
+          <!-- Arrow 3 down -->
+          <line x1="300" y1="190" x2="300" y2="218" stroke="rgba(239,231,210,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="296,218 300,226 304,218" fill="rgba(239,231,210,0.4)"/>
+
+          <!-- SFA / CSO node -->
+          <rect x="260" y="228" width="80" height="56" rx="10" fill="rgba(61,122,74,0.15)" stroke="rgba(61,122,74,0.35)" stroke-width="1.5"/>
+          <text x="300" y="249" text-anchor="middle" fill="rgba(110,200,130,0.8)" font-size="9" font-weight="700" letter-spacing="0.5">CSO · SFA</text>
+          <text x="300" y="264" text-anchor="middle" fill="white" font-size="11" font-weight="800">Samruddhi</text>
+          <text x="300" y="277" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">Beat · Orders</text>
+
+          <!-- Arrow 4 left from CSO -->
+          <line x1="260" y1="256" x2="218" y2="256" stroke="rgba(239,231,210,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <polygon points="218,252 210,256 218,260" fill="rgba(239,231,210,0.4)"/>
+
+          <!-- Retailer node -->
+          <rect x="120" y="228" width="88" height="56" rx="10" fill="rgba(255,255,255,0.06)" stroke="rgba(239,231,210,0.18)" stroke-width="1"/>
+          <text x="164" y="249" text-anchor="middle" fill="rgba(247,241,222,0.55)" font-size="9" font-weight="700" letter-spacing="0.5">RETAILER</text>
+          <text x="164" y="264" text-anchor="middle" fill="white" font-size="11" font-weight="800">1M+ Kirana</text>
+          <text x="164" y="277" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">Secondary orders</text>
+
+          <!-- CTS cooler badge -->
+          <rect x="20" y="228" width="88" height="56" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(239,231,210,0.12)" stroke-width="1"/>
+          <text x="64" y="249" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="9" font-weight="700" letter-spacing="0.5">CTS</text>
+          <text x="64" y="264" text-anchor="middle" fill="white" font-size="11" font-weight="800">1.86L</text>
+          <text x="64" y="277" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="8">Coolers tracked</text>
+
+          <!-- Top label -->
+          <text x="210" y="30" text-anchor="middle" fill="rgba(247,241,222,0.35)" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">ROUTE-TO-MARKET · RCPL</text>
+
+          <!-- Metric pills top-right -->
+          <rect x="260" y="50" width="140" height="60" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(239,231,210,0.1)" stroke-width="1"/>
+          <text x="280" y="72" fill="white" font-size="18" font-weight="800">80%</text>
+          <text x="280" y="87" fill="rgba(255,255,255,0.35)" font-size="9">Bev DBs on Pre-Sales</text>
+          <text x="280" y="102" fill="rgba(237,111,92,0.8)" font-size="11" font-weight="700">₹4,000 Cr order vol.</text>
+
+          <!-- Metric pills top-left -->
+          <rect x="20" y="50" width="110" height="60" rx="10" fill="rgba(255,255,255,0.04)" stroke="rgba(239,231,210,0.1)" stroke-width="1"/>
+          <text x="40" y="72" fill="white" font-size="18" font-weight="800">₹50Cr</text>
+          <text x="40" y="87" fill="rgba(255,255,255,0.35)" font-size="9">Asset-loss saved</text>
+          <text x="40" y="102" fill="rgba(61,122,74,0.8)" font-size="11" font-weight="700">CTS · Coolers</text>
         </svg>
       </div>
     </div>
@@ -453,6 +542,50 @@
           <!-- Caption -->
           <text x="220" y="360" text-anchor="middle" fill="#a09880" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">ONE DMS · SIX ENTRY POINTS</text>
         </svg>
+        <!-- Phone mockup showing CSO App -->
+        <svg viewBox="0 0 420 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;margin-top:16px;font-family:'Inter Tight',sans-serif;">
+          <rect width="420" height="200" rx="12" fill="#f7f1de" stroke="#d4cfc7" stroke-width="1"/>
+          <!-- Phone body -->
+          <rect x="155" y="16" width="110" height="168" rx="16" fill="#15140f"/>
+          <rect x="161" y="28" width="98" height="144" rx="8" fill="#1e1d18"/>
+          <!-- Status bar -->
+          <rect x="161" y="28" width="98" height="18" rx="8" fill="#ed6f5c" opacity="0.9"/>
+          <rect x="161" y="36" width="98" height="10" fill="#ed6f5c" opacity="0.9"/>
+          <text x="210" y="41" text-anchor="middle" fill="white" font-size="7" font-weight="700">SAMRUDDHI</text>
+          <!-- App screen rows -->
+          <rect x="167" y="52" width="86" height="22" rx="4" fill="rgba(255,255,255,0.06)"/>
+          <text x="175" y="66" fill="rgba(247,241,222,0.5)" font-size="7">Beat Plan</text>
+          <text x="245" y="66" text-anchor="end" fill="#ed6f5c" font-size="7" font-weight="700">12 outlets</text>
+          <rect x="167" y="78" width="86" height="22" rx="4" fill="rgba(255,255,255,0.06)"/>
+          <text x="175" y="92" fill="rgba(247,241,222,0.5)" font-size="7">Orders Today</text>
+          <text x="245" y="92" text-anchor="end" fill="#4ade80" font-size="7" font-weight="700">8 placed</text>
+          <rect x="167" y="104" width="86" height="22" rx="4" fill="rgba(237,111,92,0.18)" stroke="rgba(237,111,92,0.3)" stroke-width="1"/>
+          <text x="175" y="118" fill="white" font-size="7" font-weight="700">New Retailer OTP</text>
+          <text x="245" y="118" text-anchor="end" fill="rgba(247,241,222,0.4)" font-size="7">→</text>
+          <rect x="167" y="130" width="86" height="22" rx="4" fill="rgba(255,255,255,0.06)"/>
+          <text x="175" y="144" fill="rgba(247,241,222,0.5)" font-size="7">CTS Asset Scan</text>
+          <text x="245" y="144" text-anchor="end" fill="rgba(247,241,222,0.3)" font-size="7">QR</text>
+          <!-- Home bar -->
+          <rect x="192" y="158" width="36" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+          <!-- Labels beside phone -->
+          <text x="20" y="60" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">CSO APP</text>
+          <text x="20" y="76" fill="#15140f" font-size="13" font-weight="700">Samruddhi</text>
+          <text x="20" y="94" fill="#5a5448" font-size="11">Beat plan, secondary</text>
+          <text x="20" y="109" fill="#5a5448" font-size="11">orders, OTP onboarding</text>
+          <text x="20" y="130" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">SAARTHI</text>
+          <text x="20" y="146" fill="#15140f" font-size="13" font-weight="700">Assisted Ordering</text>
+          <text x="20" y="164" fill="#5a5448" font-size="11">ASM/ASE places orders</text>
+          <text x="20" y="179" fill="#5a5448" font-size="11">on behalf of DBs</text>
+          <!-- Right side labels -->
+          <text x="280" y="60" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">DISTRIBUTOR</text>
+          <text x="280" y="76" fill="#15140f" font-size="13" font-weight="700">5-step ordering</text>
+          <text x="280" y="94" fill="#5a5448" font-size="11">FTL guidance, credit</text>
+          <text x="280" y="109" fill="#5a5448" font-size="11">check, invoice DL</text>
+          <text x="280" y="130" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">ADMIN</text>
+          <text x="280" y="146" fill="#15140f" font-size="13" font-weight="700">Bulk onboarding</text>
+          <text x="280" y="164" fill="#5a5448" font-size="11">Pricing, scheme rules,</text>
+          <text x="280" y="179" fill="#5a5448" font-size="11">article-market mapping</text>
+        </svg>
       </div>
       <div class="r-col-text">
         <span class="r-label">03 · Architecture · six platform surfaces</span>
@@ -479,6 +612,48 @@
       <span class="r-label light">04 · Release notes · Mar–Apr 2026</span>
       <h2 class="r-h2 light center">Three releases shipped.<br>One cycle in flight.</h2>
       <p class="r-sub light center">40+ items deployed across Asset Management, CTS, Primary DMS, Pre-Sales, and BPO flows — including the elimination of ~35,000 physical CSO field visits.</p>
+    </div>
+    <!-- Releases timeline illustration -->
+    <div style="margin-bottom:56px;">
+      <svg viewBox="0 0 900 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
+        <!-- Background -->
+        <rect width="900" height="120" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(239,231,210,0.09)" stroke-width="1"/>
+        <!-- Timeline spine -->
+        <line x1="60" y1="60" x2="840" y2="60" stroke="rgba(239,231,210,0.18)" stroke-width="2"/>
+
+        <!-- Release 1 · Mar 2026 -->
+        <circle cx="160" cy="60" r="10" fill="#3d7a4a"/>
+        <text x="160" y="64" text-anchor="middle" fill="white" font-size="8" font-weight="800">R1</text>
+        <text x="160" y="88" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">MAR 2026</text>
+        <text x="160" y="100" text-anchor="middle" fill="rgba(247,241,222,0.7)" font-size="9" font-weight="600">CTU Verification</text>
+        <text x="160" y="36" text-anchor="middle" fill="rgba(247,241,222,0.35)" font-size="8">Samruddhi App</text>
+
+        <!-- Release 2 · Apr 2026 -->
+        <circle cx="380" cy="60" r="10" fill="#3d7a4a"/>
+        <text x="380" y="64" text-anchor="middle" fill="white" font-size="8" font-weight="800">R2</text>
+        <text x="380" y="88" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">APR 2026</text>
+        <text x="380" y="100" text-anchor="middle" fill="rgba(247,241,222,0.7)" font-size="9" font-weight="600">BPO Flows + Data Quality</text>
+        <text x="380" y="36" text-anchor="middle" fill="rgba(247,241,222,0.35)" font-size="8">7 fixes · 2 enhancements</text>
+
+        <!-- Release 3 · Apr 2026 (latest) -->
+        <circle cx="600" cy="60" r="12" fill="#ed6f5c"/>
+        <text x="600" y="64" text-anchor="middle" fill="white" font-size="8" font-weight="800">R3</text>
+        <text x="600" y="90" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">APR 2026 · LATEST</text>
+        <text x="600" y="102" text-anchor="middle" fill="white" font-size="9" font-weight="700">CTS · Asset Mgmt · BPO</text>
+        <text x="600" y="34" text-anchor="middle" fill="rgba(237,111,92,0.8)" font-size="8" font-weight="600">~35K CSO visits eliminated</text>
+
+        <!-- In Flight · 28-Apr -->
+        <circle cx="800" cy="60" r="10" fill="rgba(233,185,74,0.25)" stroke="#e9b94a" stroke-width="2" stroke-dasharray="3,2"/>
+        <text x="800" y="64" text-anchor="middle" fill="#e9b94a" font-size="8" font-weight="800">R4</text>
+        <text x="800" y="88" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">28-APR · IN FLIGHT</text>
+        <text x="800" y="100" text-anchor="middle" fill="rgba(247,241,222,0.7)" font-size="9" font-weight="600">15 items · 5 modules</text>
+        <text x="800" y="36" text-anchor="middle" fill="rgba(247,241,222,0.35)" font-size="8">SFA · DMS · CTS · Pre-Sales</text>
+
+        <!-- Start label -->
+        <text x="60" y="64" text-anchor="middle" fill="rgba(247,241,222,0.2)" font-size="9" font-weight="600">START</text>
+        <!-- End arrow -->
+        <polygon points="840,56 852,60 840,64" fill="rgba(239,231,210,0.2)"/>
+      </svg>
     </div>
     <div class="r-metric-band">
       <div class="r-metric-cell">
@@ -579,30 +754,54 @@
         <p class="r-sub light">Proposed to the Reliance APEX Board on 01-May-2026. RCPL's platform should not be a configured commercial DMS — it should be an AI-first, RCPL-owned operating system. Three principles: AI at the core; hyper-personalised down to the call; plug-in anything.</p>
       </div>
       <div class="r-col-vis">
-        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <rect width="420" height="300" rx="12" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.09)" stroke-width="1"/>
-          <!-- Layer 1 -->
-          <rect x="16" y="20" width="388" height="56" rx="9" fill="rgba(74,222,128,0.14)" stroke="rgba(74,222,128,0.28)" stroke-width="1.5"/>
-          <text x="32" y="43" fill="rgba(74,222,128,0.75)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">LAYER 1 · AI SALES AGENT</text>
-          <text x="32" y="61" fill="white" font-size="13" font-weight="700">Hyper-personalised task + incentive engine</text>
-          <text x="360" y="47" fill="#4ade80" font-size="13" font-weight="800" text-anchor="middle">3–8%</text>
-          <text x="360" y="62" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle">sales uplift</text>
-          <!-- Layer 2 -->
-          <rect x="16" y="92" width="388" height="56" rx="9" fill="rgba(96,165,250,0.11)" stroke="rgba(96,165,250,0.23)" stroke-width="1"/>
-          <text x="32" y="115" fill="rgba(147,197,253,0.75)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">LAYER 2 · NEXTGEN SFA</text>
-          <text x="32" y="133" fill="white" font-size="13" font-weight="700">Transaction app → decision app</text>
-          <text x="360" y="119" fill="#93c5fd" font-size="13" font-weight="800" text-anchor="middle">30%+</text>
-          <text x="360" y="134" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle">adoption uplift</text>
-          <!-- Layer 3 -->
-          <rect x="16" y="164" width="388" height="56" rx="9" fill="rgba(251,191,36,0.1)" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
-          <text x="32" y="187" fill="rgba(253,211,77,0.75)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">LAYER 3 · NEXTGEN DMS</text>
-          <text x="32" y="205" fill="white" font-size="13" font-weight="700">AI-augmented distributor automation</text>
-          <text x="360" y="191" fill="#fcd34d" font-size="13" font-weight="800" text-anchor="middle">AOV↑</text>
-          <text x="360" y="206" fill="rgba(255,255,255,0.35)" font-size="8" text-anchor="middle">8–12%</text>
-          <!-- Layer 4 -->
-          <rect x="16" y="236" width="388" height="48" rx="9" fill="rgba(244,114,182,0.09)" stroke="rgba(244,114,182,0.18)" stroke-width="1"/>
-          <text x="32" y="257" fill="rgba(249,168,212,0.75)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">LAYER 4 · EB2B APP FOR RETAILERS</text>
-          <text x="32" y="274" fill="white" font-size="13" font-weight="700">WhatsApp + PWA · retailer-direct ordering</text>
+        <!-- AI OS architecture illustration -->
+        <svg viewBox="0 0 420 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
+          <rect width="420" height="340" rx="16" fill="rgba(255,255,255,0.03)" stroke="rgba(239,231,210,0.1)" stroke-width="1"/>
+
+          <!-- Central AI brain node -->
+          <circle cx="210" cy="170" r="44" fill="rgba(237,111,92,0.12)" stroke="rgba(237,111,92,0.3)" stroke-width="2"/>
+          <circle cx="210" cy="170" r="30" fill="rgba(237,111,92,0.18)" stroke="rgba(237,111,92,0.4)" stroke-width="1.5"/>
+          <text x="210" y="165" text-anchor="middle" fill="#f08e7c" font-size="9" font-weight="700" letter-spacing="1">AI CORE</text>
+          <text x="210" y="180" text-anchor="middle" fill="white" font-size="11" font-weight="800">RCPL OS</text>
+
+          <!-- Spoke: AI Sales Agent (top) -->
+          <line x1="210" y1="126" x2="210" y2="88" stroke="rgba(74,222,128,0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <rect x="148" y="56" width="124" height="36" rx="8" fill="rgba(74,222,128,0.12)" stroke="rgba(74,222,128,0.28)" stroke-width="1"/>
+          <text x="210" y="72" text-anchor="middle" fill="rgba(74,222,128,0.8)" font-size="8" font-weight="700" letter-spacing="0.5">AI SALES AGENT</text>
+          <text x="210" y="85" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">3–8% uplift per store</text>
+
+          <!-- Spoke: NextGen SFA (right) -->
+          <line x1="254" y1="155" x2="296" y2="130" stroke="rgba(96,165,250,0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <rect x="296" y="108" width="108" height="40" rx="8" fill="rgba(96,165,250,0.1)" stroke="rgba(96,165,250,0.25)" stroke-width="1"/>
+          <text x="350" y="124" text-anchor="middle" fill="rgba(147,197,253,0.8)" font-size="8" font-weight="700" letter-spacing="0.5">NEXTGEN SFA</text>
+          <text x="350" y="140" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">30%+ adoption</text>
+
+          <!-- Spoke: NextGen DMS (right-bottom) -->
+          <line x1="252" y1="186" x2="294" y2="210" stroke="rgba(251,191,36,0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <rect x="296" y="196" width="108" height="40" rx="8" fill="rgba(251,191,36,0.09)" stroke="rgba(251,191,36,0.22)" stroke-width="1"/>
+          <text x="350" y="212" text-anchor="middle" fill="rgba(253,211,77,0.8)" font-size="8" font-weight="700" letter-spacing="0.5">NEXTGEN DMS</text>
+          <text x="350" y="228" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">AOV ↑ 8–12%</text>
+
+          <!-- Spoke: eB2B (bottom) -->
+          <line x1="210" y1="214" x2="210" y2="252" stroke="rgba(244,114,182,0.3)" stroke-width="1.5" stroke-dasharray="3,3"/>
+          <rect x="148" y="252" width="124" height="36" rx="8" fill="rgba(244,114,182,0.09)" stroke="rgba(244,114,182,0.2)" stroke-width="1"/>
+          <text x="210" y="268" text-anchor="middle" fill="rgba(249,168,212,0.8)" font-size="8" font-weight="700" letter-spacing="0.5">EB2B APP</text>
+          <text x="210" y="281" text-anchor="middle" fill="rgba(255,255,255,0.6)" font-size="9">WhatsApp + PWA</text>
+
+          <!-- Spoke: SAP plug-in (left-top) -->
+          <line x1="166" y1="155" x2="120" y2="130" stroke="rgba(239,231,210,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+          <rect x="16" y="108" width="104" height="40" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(239,231,210,0.12)" stroke-width="1"/>
+          <text x="68" y="124" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-weight="700" letter-spacing="0.5">SAP · ERP</text>
+          <text x="68" y="140" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9">Plug-in fabric</text>
+
+          <!-- Spoke: Loyalty/Wallet (left-bottom) -->
+          <line x1="168" y1="186" x2="120" y2="210" stroke="rgba(239,231,210,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+          <rect x="16" y="196" width="104" height="40" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(239,231,210,0.12)" stroke-width="1"/>
+          <text x="68" y="212" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-weight="700" letter-spacing="0.5">LOYALTY · WALLET</text>
+          <text x="68" y="228" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9">Instant rewards</text>
+
+          <!-- Caption -->
+          <text x="210" y="318" text-anchor="middle" fill="rgba(247,241,222,0.25)" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">AI-NATIVE FMCG OS · RCPL VISION</text>
         </svg>
       </div>
     </div>
@@ -659,23 +858,68 @@
         <p class="r-sub light">RCPL scaled to ₹20,000 Cr run-rate in under three years. Pre-Sales now runs 80% of Beverage distributors routing ~₹4,000 Cr. The next cycle finishes Beverage and opens the Non-Beverage flank.</p>
       </div>
       <div class="r-col-vis">
-        <svg viewBox="0 0 420 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <rect width="420" height="260" rx="12" fill="rgba(239,231,210,0.04)" stroke="rgba(239,231,210,0.09)" stroke-width="1"/>
-          <!-- Track 1 -->
-          <rect x="16" y="20" width="388" height="60" rx="9" fill="rgba(59,130,246,0.11)" stroke="rgba(59,130,246,0.23)" stroke-width="1"/>
-          <text x="32" y="42" fill="rgba(147,197,253,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">CLOSE · BEVERAGE</text>
-          <text x="32" y="58" fill="white" font-size="13" font-weight="700">Van Sales + Multi-Role UAM</text>
-          <text x="32" y="72" fill="rgba(255,255,255,0.38)" font-size="11">~₹1,000 Cr volume · completes Beverage spine</text>
-          <!-- Track 2 -->
-          <rect x="16" y="96" width="388" height="60" rx="9" fill="rgba(16,185,129,0.09)" stroke="rgba(16,185,129,0.2)" stroke-width="1"/>
-          <text x="32" y="118" fill="rgba(110,231,183,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">PROTECT · FIELD ASSETS</text>
-          <text x="32" y="134" fill="white" font-size="13" font-weight="700">CTS Phase 2 · 1.86L coolers tracked</text>
-          <text x="32" y="148" fill="rgba(255,255,255,0.38)" font-size="11">~₹50 Cr asset-loss avoidance</text>
-          <!-- Track 3 -->
-          <rect x="16" y="172" width="388" height="60" rx="9" fill="rgba(139,92,246,0.09)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
-          <text x="32" y="194" fill="rgba(196,181,253,0.7)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">OPEN · NON-BEVERAGE</text>
-          <text x="32" y="210" fill="white" font-size="13" font-weight="700">Multi-Segment SFA + Primary DMS</text>
-          <text x="32" y="224" fill="rgba(255,255,255,0.38)" font-size="11">60–70% L1 tickets resolved · ₹1,000 Cr/month</text>
+        <!-- Gantt-style roadmap illustration -->
+        <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
+          <rect width="420" height="300" rx="16" fill="rgba(239,231,210,0.04)" stroke="rgba(239,231,210,0.09)" stroke-width="1"/>
+
+          <!-- Month headers -->
+          <text x="110" y="24" text-anchor="middle" fill="rgba(247,241,222,0.3)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">MAY</text>
+          <text x="210" y="24" text-anchor="middle" fill="rgba(247,241,222,0.3)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">JUN</text>
+          <text x="310" y="24" text-anchor="middle" fill="rgba(247,241,222,0.3)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">JUL</text>
+          <text x="390" y="24" text-anchor="middle" fill="rgba(247,241,222,0.2)" font-size="8" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">AUG</text>
+
+          <!-- Grid lines -->
+          <line x1="60" y1="30" x2="60" y2="280" stroke="rgba(239,231,210,0.06)" stroke-width="1"/>
+          <line x1="160" y1="30" x2="160" y2="280" stroke="rgba(239,231,210,0.06)" stroke-width="1"/>
+          <line x1="260" y1="30" x2="260" y2="280" stroke="rgba(239,231,210,0.06)" stroke-width="1"/>
+          <line x1="360" y1="30" x2="360" y2="280" stroke="rgba(239,231,210,0.06)" stroke-width="1"/>
+
+          <!-- Track label column -->
+          <text x="8" y="68" fill="rgba(247,241,222,0.35)" font-size="8" font-weight="600" letter-spacing="0.5" font-family="'JetBrains Mono',monospace">BEV</text>
+          <text x="8" y="138" fill="rgba(247,241,222,0.35)" font-size="8" font-weight="600" letter-spacing="0.5" font-family="'JetBrains Mono',monospace">CTS</text>
+          <text x="8" y="208" fill="rgba(247,241,222,0.35)" font-size="8" font-weight="600" letter-spacing="0.5" font-family="'JetBrains Mono',monospace">NON</text>
+          <text x="8" y="218" fill="rgba(247,241,222,0.35)" font-size="8" font-weight="600" letter-spacing="0.5" font-family="'JetBrains Mono',monospace">BEV</text>
+
+          <!-- TRACK 1: Close Beverage -->
+          <text x="60" y="46" fill="rgba(147,197,253,0.6)" font-size="8" font-weight="600" letter-spacing="0.8" font-family="'JetBrains Mono',monospace">CLOSE · BEVERAGE</text>
+          <!-- Van Sales bar -->
+          <rect x="60" y="52" width="160" height="20" rx="4" fill="rgba(59,130,246,0.25)" stroke="rgba(59,130,246,0.4)" stroke-width="1"/>
+          <text x="70" y="66" fill="white" font-size="9" font-weight="600">Van Sales + UAM</text>
+          <text x="228" y="66" fill="rgba(147,197,253,0.6)" font-size="8">₹1,000 Cr</text>
+          <!-- Pre-Sales completion bar -->
+          <rect x="60" y="78" width="80" height="20" rx="4" fill="rgba(59,130,246,0.15)" stroke="rgba(59,130,246,0.25)" stroke-width="1"/>
+          <text x="70" y="92" fill="rgba(255,255,255,0.6)" font-size="9">Pre-Sales ✓ 80%</text>
+
+          <!-- Divider -->
+          <line x1="60" y1="108" x2="400" y2="108" stroke="rgba(239,231,210,0.08)" stroke-width="1"/>
+
+          <!-- TRACK 2: Protect Assets -->
+          <text x="60" y="122" fill="rgba(110,231,183,0.6)" font-size="8" font-weight="600" letter-spacing="0.8" font-family="'JetBrains Mono',monospace">PROTECT · FIELD ASSETS</text>
+          <!-- CTS Phase 2 bar -->
+          <rect x="60" y="128" width="220" height="20" rx="4" fill="rgba(16,185,129,0.18)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
+          <text x="70" y="142" fill="white" font-size="9" font-weight="600">CTS Phase 2 · 1.86L coolers</text>
+          <text x="288" y="142" fill="rgba(110,231,183,0.6)" font-size="8">₹50 Cr saved</text>
+
+          <!-- Divider -->
+          <line x1="60" y1="158" x2="400" y2="158" stroke="rgba(239,231,210,0.08)" stroke-width="1"/>
+
+          <!-- TRACK 3: Open Non-Beverage -->
+          <text x="60" y="172" fill="rgba(196,181,253,0.6)" font-size="8" font-weight="600" letter-spacing="0.8" font-family="'JetBrains Mono',monospace">OPEN · NON-BEVERAGE</text>
+          <!-- Multi-Seg SFA bar -->
+          <rect x="60" y="178" width="200" height="20" rx="4" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.3)" stroke-width="1"/>
+          <text x="70" y="192" fill="white" font-size="9" font-weight="600">Multi-Segment SFA</text>
+          <text x="268" y="192" fill="rgba(196,181,253,0.6)" font-size="8">60–70% L1 ↓</text>
+          <!-- Primary DMS bar -->
+          <rect x="160" y="204" width="180" height="20" rx="4" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.2)" stroke-width="1"/>
+          <text x="170" y="218" fill="rgba(255,255,255,0.6)" font-size="9">Primary DMS · Auto DO</text>
+
+          <!-- Today marker -->
+          <line x1="80" y1="30" x2="80" y2="280" stroke="rgba(237,111,92,0.5)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <rect x="62" y="268" width="36" height="14" rx="3" fill="#ed6f5c"/>
+          <text x="80" y="279" text-anchor="middle" fill="white" font-size="7" font-weight="700">TODAY</text>
+
+          <!-- Caption -->
+          <text x="210" y="296" text-anchor="middle" fill="rgba(247,241,222,0.2)" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">60-DAY ROADMAP · RCPL</text>
         </svg>
       </div>
     </div>
