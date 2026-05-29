@@ -342,86 +342,86 @@
     <div class="r-hero-visual">
       <div class="r-hero-card">
         <!-- Flat 2D FMCG distribution network illustration -->
-        <svg viewBox="0 0 480 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+        <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
           <defs>
             <radialGradient id="hub-glow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ed6f5c" stop-opacity="0.18"/>
+              <stop offset="0%" stop-color="#ed6f5c" stop-opacity="0.15"/>
               <stop offset="100%" stop-color="#ed6f5c" stop-opacity="0"/>
             </radialGradient>
+            <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+              <circle cx="12" cy="12" r="1" fill="#d4cfc7" opacity="0.5"/>
+            </pattern>
           </defs>
           <!-- Background -->
-          <rect width="480" height="310" fill="#f7f1de"/>
-          <!-- Subtle dot grid -->
-          <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-            <circle cx="12" cy="12" r="1" fill="#d4cfc7" opacity="0.6"/>
-          </pattern>
-          <rect width="480" height="310" fill="url(#dots)"/>
+          <rect width="560" height="320" fill="#f7f1de"/>
+          <rect width="560" height="320" fill="url(#dots)"/>
+          <!-- Hub ambient glow -->
+          <circle cx="280" cy="160" r="90" fill="url(#hub-glow)"/>
 
-          <!-- ── HUB GLOW ── -->
-          <circle cx="240" cy="155" r="80" fill="url(#hub-glow)"/>
+          <!-- ── SPOKE LINES ── -->
+          <!-- Left: hub edge (240,138) to node centres -->
+          <line x1="242" y1="138" x2="162" y2="88" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="238" y1="160" x2="162" y2="160" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="242" y1="182" x2="162" y2="232" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <!-- Right: hub edge (318,138) to node centres -->
+          <line x1="318" y1="138" x2="398" y2="88" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="322" y1="160" x2="398" y2="160" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <line x1="318" y1="182" x2="398" y2="232" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
 
-          <!-- ── SPOKE LINES (left = brands, right = distribution) ── -->
-          <!-- Left spokes: hub to brand nodes -->
-          <line x1="205" y1="130" x2="120" y2="80" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
-          <line x1="200" y1="155" x2="100" y2="155" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
-          <line x1="205" y1="180" x2="120" y2="228" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
-          <!-- Right spokes: hub to distribution nodes -->
-          <line x1="275" y1="130" x2="360" y2="80" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
-          <line x1="280" y1="155" x2="380" y2="155" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
-          <line x1="275" y1="180" x2="360" y2="228" stroke="#c8c0aa" stroke-width="1.5" stroke-dasharray="5,4"/>
+          <!-- ── LEFT BRAND NODES ── -->
+          <!-- CAMPA: centred at (120, 88) -->
+          <rect x="54" y="66" width="108" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
+          <circle cx="76" cy="88" r="9" fill="#ed6f5c"/>
+          <text x="91" y="84" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">CAMPA</text>
+          <text x="91" y="98" fill="#888070" font-size="8.5" font-family="'JetBrains Mono',monospace">Cola · Energy</text>
 
-          <!-- ── BRAND NODES (left) ── -->
-          <!-- Campa -->
-          <rect x="64" y="58" width="112" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
-          <circle cx="88" cy="80" r="10" fill="#ed6f5c" opacity="0.9"/>
-          <text x="104" y="76" fill="#15140f" font-size="12" font-weight="700" font-family="'Inter Tight',sans-serif">CAMPA</text>
-          <text x="104" y="91" fill="#888070" font-size="9" font-family="'JetBrains Mono',monospace">Cola · Energy</text>
-          <!-- Independence -->
-          <rect x="44" y="133" width="112" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
-          <circle cx="68" cy="155" r="10" fill="#e9b94a" opacity="0.9"/>
-          <text x="84" y="151" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">INDEP.</text>
-          <text x="84" y="166" fill="#888070" font-size="9" font-family="'JetBrains Mono',monospace">Juice · Water</text>
-          <!-- Sosyo -->
-          <rect x="64" y="206" width="112" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
-          <circle cx="88" cy="228" r="10" fill="#3d7a4a" opacity="0.9"/>
-          <text x="104" y="224" fill="#15140f" font-size="12" font-weight="700" font-family="'Inter Tight',sans-serif">SOSYO</text>
-          <text x="104" y="239" fill="#888070" font-size="9" font-family="'JetBrains Mono',monospace">Sharbat · Lime</text>
+          <!-- INDEP: centred at (120, 160) -->
+          <rect x="54" y="138" width="108" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
+          <circle cx="76" cy="160" r="9" fill="#e9b94a"/>
+          <text x="91" y="156" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">INDEP.</text>
+          <text x="91" y="170" fill="#888070" font-size="8.5" font-family="'JetBrains Mono',monospace">Juice · Water</text>
 
-          <!-- ── RCPL HUB (center) ── -->
-          <circle cx="240" cy="155" r="46" fill="#15140f"/>
-          <circle cx="240" cy="155" r="40" fill="none" stroke="rgba(247,241,222,0.12)" stroke-width="1"/>
-          <text x="240" y="149" text-anchor="middle" fill="#f7f1de" font-size="15" font-weight="800" font-family="'Inter Tight',sans-serif">RCPL</text>
-          <text x="240" y="165" text-anchor="middle" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">₹20K CR · FY26</text>
-          <!-- ── DISTRIBUTION NODES (right) ── -->
-          <!-- Primary DMS -->
-          <rect x="304" y="58" width="112" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
-          <circle cx="328" cy="80" r="10" fill="#15140f" opacity="0.85"/>
-          <text x="344" y="76" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">PRIMARY DMS</text>
-          <text x="344" y="91" fill="#888070" font-size="9" font-family="'JetBrains Mono',monospace">₹4K Cr/mo</text>
-          <!-- CSO · SFA -->
-          <rect x="324" y="133" width="112" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
-          <circle cx="348" cy="155" r="10" fill="#3d7a4a" opacity="0.9"/>
-          <text x="364" y="151" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">CSO · SFA</text>
-          <text x="364" y="166" fill="#888070" font-size="9" font-family="'JetBrains Mono',monospace">Samruddhi</text>
-          <!-- 1M+ Kirana -->
-          <rect x="304" y="206" width="112" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
-          <circle cx="328" cy="228" r="10" fill="#e9b94a" opacity="0.9"/>
-          <text x="344" y="224" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">1M+ KIRANA</text>
-          <text x="344" y="239" fill="#888070" font-size="9" font-family="'JetBrains Mono',monospace">Secondary orders</text>
+          <!-- SOSYO: centred at (120, 232) -->
+          <rect x="54" y="210" width="108" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
+          <circle cx="76" cy="232" r="9" fill="#3d7a4a"/>
+          <text x="91" y="228" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">SOSYO</text>
+          <text x="91" y="242" fill="#888070" font-size="8.5" font-family="'JetBrains Mono',monospace">Sharbat · Lime</text>
 
-          <!-- ── FLOATING METRIC BADGES ── -->
-          <!-- ₹20K Cr top-left -->
-          <rect x="24" y="16" width="86" height="26" rx="13" fill="#15140f"/>
-          <text x="67" y="33" text-anchor="middle" fill="#f7f1de" font-size="10" font-weight="800" font-family="'Inter Tight',sans-serif">₹20K Cr</text>
-          <!-- 5 PODs bottom-center -->
-          <rect x="204" y="272" width="72" height="24" rx="12" fill="#ed6f5c"/>
-          <text x="240" y="288" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="'Inter Tight',sans-serif">5 PODs live</text>
-          <!-- 1M+ stores top-right -->
-          <rect x="370" y="16" width="86" height="26" rx="13" fill="#3d7a4a"/>
-          <text x="413" y="33" text-anchor="middle" fill="#f7f1de" font-size="10" font-weight="800" font-family="'Inter Tight',sans-serif">1M+ stores</text>
+          <!-- ── RCPL HUB ── -->
+          <circle cx="280" cy="160" r="48" fill="#15140f"/>
+          <circle cx="280" cy="160" r="42" fill="none" stroke="rgba(247,241,222,0.1)" stroke-width="1"/>
+          <text x="280" y="154" text-anchor="middle" fill="#f7f1de" font-size="16" font-weight="800" font-family="'Inter Tight',sans-serif">RCPL</text>
+          <text x="280" y="170" text-anchor="middle" fill="rgba(247,241,222,0.4)" font-size="8" font-family="'JetBrains Mono',monospace">₹20K CR · FY26</text>
 
-          <!-- Footer label -->
-          <text x="240" y="298" text-anchor="middle" fill="#b8b0a0" font-size="8" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">FMCG B2B DISTRIBUTION · RCPL</text>
+          <!-- ── RIGHT DISTRIBUTION NODES ── -->
+          <!-- DMS: centred at (440, 88) -->
+          <rect x="398" y="66" width="108" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
+          <circle cx="420" cy="88" r="9" fill="#15140f" opacity="0.8"/>
+          <text x="435" y="84" fill="#15140f" font-size="10" font-weight="700" font-family="'Inter Tight',sans-serif">PRIM. DMS</text>
+          <text x="435" y="98" fill="#888070" font-size="8.5" font-family="'JetBrains Mono',monospace">₹4K Cr/mo</text>
+
+          <!-- CSO·SFA: centred at (440, 160) -->
+          <rect x="398" y="138" width="108" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
+          <circle cx="420" cy="160" r="9" fill="#3d7a4a"/>
+          <text x="435" y="156" fill="#15140f" font-size="11" font-weight="700" font-family="'Inter Tight',sans-serif">CSO · SFA</text>
+          <text x="435" y="170" fill="#888070" font-size="8.5" font-family="'JetBrains Mono',monospace">Samruddhi</text>
+
+          <!-- KIRANA: centred at (440, 232) -->
+          <rect x="398" y="210" width="108" height="44" rx="10" fill="#efe7d2" stroke="#c8c0aa" stroke-width="1.5"/>
+          <circle cx="420" cy="232" r="9" fill="#e9b94a"/>
+          <text x="435" y="228" fill="#15140f" font-size="10" font-weight="700" font-family="'Inter Tight',sans-serif">1M+ KIRANA</text>
+          <text x="435" y="242" fill="#888070" font-size="8.5" font-family="'JetBrains Mono',monospace">Sec. orders</text>
+
+          <!-- ── METRIC BADGES ── -->
+          <rect x="20" y="14" width="84" height="26" rx="13" fill="#15140f"/>
+          <text x="62" y="31" text-anchor="middle" fill="#f7f1de" font-size="10" font-weight="800" font-family="'Inter Tight',sans-serif">₹20K Cr</text>
+          <rect x="456" y="14" width="84" height="26" rx="13" fill="#3d7a4a"/>
+          <text x="498" y="31" text-anchor="middle" fill="#f7f1de" font-size="10" font-weight="800" font-family="'Inter Tight',sans-serif">1M+ stores</text>
+          <rect x="244" y="278" width="72" height="24" rx="12" fill="#ed6f5c"/>
+          <text x="280" y="294" text-anchor="middle" fill="#fff" font-size="10" font-weight="700" font-family="'Inter Tight',sans-serif">5 PODs live</text>
+
+          <!-- Footer -->
+          <text x="280" y="312" text-anchor="middle" fill="#b8b0a0" font-size="7.5" letter-spacing="1.5" font-family="'JetBrains Mono',monospace">FMCG B2B DISTRIBUTION · RCPL</text>
         </svg>
       </div>
     </div>
