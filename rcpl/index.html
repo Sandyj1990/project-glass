@@ -311,48 +311,61 @@
         <p class="r-sub">Track 1: own the existing stack, ship every cycle, harden data quality. Track 2: architect an AI-native FMCG OS as the long-term home.</p>
       </div>
       <div>
-        <!-- Deployment pipeline illustration -->
+        <!-- Release velocity chart: unique data not in status cards -->
         <svg viewBox="0 0 420 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;font-family:'Inter Tight',sans-serif;">
-          <!-- Card background -->
           <rect width="420" height="300" rx="16" fill="#efe7d2" stroke="#d4cfc7" stroke-width="1"/>
-
-          <!-- Header bar -->
+          <!-- Dark header -->
           <rect x="0" y="0" width="420" height="40" rx="16" fill="#15140f"/>
           <rect x="0" y="24" width="420" height="16" fill="#15140f"/>
-          <text x="20" y="26" fill="rgba(247,241,222,0.5)" font-size="9" font-weight="600" letter-spacing="1.2" font-family="'JetBrains Mono',monospace">DEPLOYMENT PIPELINE · APR 2026</text>
-          <circle cx="380" cy="20" r="5" fill="#ed6f5c" opacity="0.8"/>
-          <circle cx="364" cy="20" r="5" fill="#e9b94a" opacity="0.8"/>
-          <circle cx="348" cy="20" r="5" fill="#3d7a4a" opacity="0.8"/>
-
-          <!-- Track 1: Delivered -->
-          <text x="20" y="68" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">DELIVERED · MAR–APR</text>
-          <!-- Progress bar full -->
-          <rect x="20" y="76" width="380" height="8" rx="4" fill="rgba(21,20,15,0.08)"/>
-          <rect x="20" y="76" width="380" height="8" rx="4" fill="#3d7a4a"/>
-          <text x="20" y="100" fill="#15140f" font-size="12" font-weight="700">40+ items · 5 workflow areas</text>
-          <text x="20" y="115" fill="#5a5448" font-size="11">Asset Mgmt · CTS · Primary DMS · Pre-Sales · Config</text>
-
+          <text x="20" y="26" fill="rgba(247,241,222,0.45)" font-size="9" font-weight="600" letter-spacing="1.2" font-family="'JetBrains Mono',monospace">RELEASE VELOCITY · FY26 Q1</text>
+          <circle cx="354" cy="20" r="4" fill="#3d7a4a"/>
+          <text x="362" y="24" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">SHIPPED</text>
+          <circle cx="395" cy="20" r="4" fill="none" stroke="#ed6f5c" stroke-width="1.5" stroke-dasharray="2,1.5"/>
+          <text x="403" y="24" fill="rgba(247,241,222,0.45)" font-size="8" font-family="'JetBrains Mono',monospace">IN FLIGHT</text>
+          <!-- Y gridlines -->
+          <line x1="52" y1="58" x2="400" y2="58" stroke="#d4cfc7" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="52" y1="96" x2="400" y2="96" stroke="#d4cfc7" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="52" y1="134" x2="400" y2="134" stroke="#d4cfc7" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <line x1="52" y1="172" x2="400" y2="172" stroke="#d4cfc7" stroke-width="0.5" stroke-dasharray="3,3"/>
+          <!-- Y labels -->
+          <text x="44" y="62" fill="#8a8070" font-size="9" text-anchor="end" font-family="'JetBrains Mono',monospace">50</text>
+          <text x="44" y="100" fill="#8a8070" font-size="9" text-anchor="end" font-family="'JetBrains Mono',monospace">40</text>
+          <text x="44" y="138" fill="#8a8070" font-size="9" text-anchor="end" font-family="'JetBrains Mono',monospace">30</text>
+          <text x="44" y="176" fill="#8a8070" font-size="9" text-anchor="end" font-family="'JetBrains Mono',monospace">20</text>
+          <!-- Bars: Jan=8, Feb=12, Mar=18, Apr=22 -->
+          <rect x="64" y="148" width="44" height="24" rx="4" fill="#3d7a4a" opacity="0.3"/>
+          <text x="86" y="144" fill="#5a5448" font-size="10" font-weight="700" text-anchor="middle">8</text>
+          <text x="86" y="196" fill="#5a5448" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">JAN</text>
+          <rect x="128" y="130" width="44" height="42" rx="4" fill="#3d7a4a" opacity="0.45"/>
+          <text x="150" y="126" fill="#5a5448" font-size="10" font-weight="700" text-anchor="middle">12</text>
+          <text x="150" y="196" fill="#5a5448" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">FEB</text>
+          <rect x="192" y="104" width="44" height="68" rx="4" fill="#3d7a4a" opacity="0.65"/>
+          <text x="214" y="100" fill="#5a5448" font-size="10" font-weight="700" text-anchor="middle">18</text>
+          <text x="214" y="196" fill="#5a5448" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">MAR</text>
+          <rect x="256" y="88" width="44" height="84" rx="4" fill="#3d7a4a"/>
+          <text x="278" y="84" fill="#15140f" font-size="10" font-weight="700" text-anchor="middle">22</text>
+          <text x="278" y="196" fill="#5a5448" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">APR</text>
+          <!-- May in-flight bar (dashed outline) -->
+          <rect x="320" y="115" width="44" height="57" rx="4" fill="#ed6f5c" opacity="0.1"/>
+          <rect x="320" y="115" width="44" height="57" rx="4" fill="none" stroke="#ed6f5c" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="342" y="111" fill="#ed6f5c" font-size="10" font-weight="700" text-anchor="middle">15↑</text>
+          <text x="342" y="196" fill="#ed6f5c" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">MAY</text>
+          <!-- Trend line over shipped bars -->
+          <polyline points="86,148 150,130 214,104 278,88" fill="none" stroke="#15140f" stroke-width="1.5" stroke-dasharray="4,2" opacity="0.35"/>
+          <circle cx="278" cy="88" r="3" fill="#15140f" opacity="0.4"/>
           <!-- Divider -->
-          <line x1="20" y1="132" x2="400" y2="132" stroke="#d4cfc7" stroke-width="1"/>
-
-          <!-- Track 2: In Flight -->
-          <text x="20" y="152" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">IN FLIGHT · 28-APR CYCLE</text>
-          <!-- Progress bar partial -->
-          <rect x="20" y="160" width="380" height="8" rx="4" fill="rgba(21,20,15,0.08)"/>
-          <rect x="20" y="160" width="228" height="8" rx="4" fill="#ed6f5c"/>
-          <text x="20" y="184" fill="#15140f" font-size="12" font-weight="700">15 items · 5 modules active</text>
-          <text x="20" y="199" fill="#5a5448" font-size="11">SFA · CTS · Pre-Sales · DMS · Asset Mgmt</text>
-
-          <!-- Divider -->
-          <line x1="20" y1="216" x2="400" y2="216" stroke="#d4cfc7" stroke-width="1"/>
-
-          <!-- Track 3: Queued -->
-          <text x="20" y="236" fill="#5a5448" font-size="9" font-weight="600" letter-spacing="1" font-family="'JetBrains Mono',monospace">PHASE 2 · QUEUED</text>
-          <!-- Progress bar empty -->
-          <rect x="20" y="244" width="380" height="8" rx="4" fill="rgba(21,20,15,0.08)"/>
-          <rect x="20" y="244" width="76" height="8" rx="4" fill="#e9b94a" opacity="0.7"/>
-          <text x="20" y="268" fill="#15140f" font-size="12" font-weight="700">4 domains · decisions needed</text>
-          <text x="20" y="283" fill="#5a5448" font-size="11">Van Sales · Non-Bev SFA · Anchor Fulfilment · UAT</text>
+          <line x1="20" y1="208" x2="400" y2="208" stroke="#d4cfc7" stroke-width="1"/>
+          <!-- Bottom stat row -->
+          <text x="30" y="228" fill="#8a8070" font-size="9" font-weight="600" letter-spacing="0.8" font-family="'JetBrains Mono',monospace">CYCLE AVG</text>
+          <text x="30" y="248" fill="#15140f" font-size="18" font-weight="800">15 items</text>
+          <line x1="145" y1="212" x2="145" y2="258" stroke="#d4cfc7" stroke-width="1"/>
+          <text x="160" y="228" fill="#8a8070" font-size="9" font-weight="600" letter-spacing="0.8" font-family="'JetBrains Mono',monospace">TOTAL SHIPPED</text>
+          <text x="160" y="248" fill="#15140f" font-size="18" font-weight="800">60+ items</text>
+          <line x1="285" y1="212" x2="285" y2="258" stroke="#d4cfc7" stroke-width="1"/>
+          <text x="300" y="228" fill="#8a8070" font-size="9" font-weight="600" letter-spacing="0.8" font-family="'JetBrains Mono',monospace">VELOCITY</text>
+          <text x="300" y="248" fill="#3d7a4a" font-size="18" font-weight="800">↑ 2.75×</text>
+          <!-- Caption -->
+          <text x="210" y="278" fill="#8a8070" font-size="8" text-anchor="middle" letter-spacing="1" font-family="'JetBrains Mono',monospace">ITEMS SHIPPED PER CYCLE · JAN–APR 2026</text>
         </svg>
       </div>
     </div>
