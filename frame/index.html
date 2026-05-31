@@ -254,284 +254,421 @@
 </div>
 </div></nav>
 
-<!-- HERO -->
-<section class="hero-frame">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="hero-grid">
-    <div>
-      <span class="frame-tag"><span class="dot"></span>Coming June 2026</span>
-      <div class="hero-meta" style="margin-top:24px;">A magazine from Fynd Press · Volume One · Spring 2026</div>
-      <h1 class="hero-title">FRAME</h1>
-      <div class="hero-volume">Demand, Made. · The Gen Media &amp; Marketing Edition</div>
-      <p class="hero-deck">For the CMO who plans to ship more, sell more, and mean more — in Mumbai, Manhattan, and everywhere demand is made.</p>
-      <div class="hero-cta-row">
-        <a href="#preview" class="frame-btn">Preview the volume ↓</a>
-        <a href="#notify" class="frame-btn ghost">Get the launch email →</a>
+<!-- ═══════════════════════════════════════════════════════════════════
+  FRAME Magazine · Redesign · Shopify B2B-inspired layout
+  Sections: Hero → 3-col benefits → Dark argument → Feature tabs →
+            Spreads grid → Quotes strip → Chapter table → Audience → Notify → Footer
+═══════════════════════════════════════════════════════════════════ -->
+
+<style>
+/* ── FRAME REDESIGN STYLES ── */
+.fr-hero { background: #0A0A0A; color: white; padding: 96px 0 80px; }
+.fr-hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+@media (max-width: 900px) { .fr-hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+.fr-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.55; margin-bottom: 16px; }
+.fr-title { font-family: 'Fraunces', serif; font-weight: 700; font-size: clamp(64px, 10vw, 128px); line-height: 0.88; letter-spacing: -0.04em; margin-bottom: 12px; }
+.fr-subtitle { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.5; margin-bottom: 24px; }
+.fr-deck { font-family: 'Fraunces', serif; font-size: clamp(18px, 2vw, 22px); line-height: 1.5; opacity: 0.82; max-width: 36rem; margin-bottom: 32px; }
+.fr-cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+.fr-btn-dark { background: white; color: #0A0A0A; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: opacity .2s; }
+.fr-btn-dark:hover { opacity: 0.85; }
+.fr-btn-ghost { border: 1px solid rgba(255,255,255,0.35); color: white; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 13px 28px; border-radius: 4px; text-decoration: none; transition: border-color .2s; }
+.fr-btn-ghost:hover { border-color: rgba(255,255,255,0.7); }
+.fr-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.12); }
+@media (max-width: 600px) { .fr-stats { grid-template-columns: repeat(2, 1fr); } }
+.fr-stat-num { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 600; margin-bottom: 4px; }
+.fr-stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.5; }
+.fr-cover-img { width: 100%; border-radius: 6px; box-shadow: 0 32px 80px rgba(0,0,0,0.7); display: block; }
+
+/* ── BRAND STRIP ── */
+.fr-brand-strip { background: #f5f5f5; padding: 28px 0; border-bottom: 1px solid #e8e8e8; }
+.fr-brand-row { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.fr-brand-pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #888; font-weight: 500; }
+
+/* ── SECTION BASE ── */
+.fr-section { padding: 96px 0; }
+.fr-section.grey { background: #f8f8f8; }
+.fr-section.dark { background: #0f1a12; color: white; }
+.fr-section.cream { background: #faf6ef; }
+.fr-section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+.fr-section.dark .fr-section-eyebrow { color: rgba(255,255,255,0.45); }
+.fr-section-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+.fr-section-lede { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 1.65; color: #555; max-width: 52rem; margin-bottom: 48px; }
+.fr-section.dark .fr-section-lede { color: rgba(255,255,255,0.65); }
+
+/* ── 3-COL BENEFIT CARDS ── */
+.fr-benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+@media (max-width: 768px) { .fr-benefit-grid { grid-template-columns: 1fr; } }
+.fr-benefit-card { background: white; border: 1px solid #e8e8e8; border-radius: 12px; overflow: hidden; }
+.fr-benefit-card-img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.fr-benefit-card-body { padding: 24px; }
+.fr-benefit-card-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #e85d3a; margin-bottom: 10px; }
+.fr-benefit-card-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; line-height: 1.25; margin-bottom: 10px; color: #111; }
+.fr-benefit-card-body p { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #666; margin: 0; }
+
+/* ── DARK ARGUMENT SECTION ── */
+.fr-argument-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+@media (max-width: 900px) { .fr-argument-grid { grid-template-columns: 1fr; } }
+.fr-argument-img { width: 100%; border-radius: 12px; display: block; }
+.fr-argument-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.12); }
+.fr-arg-stat-num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600; color: #e85d3a; margin-bottom: 4px; }
+.fr-arg-stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+
+/* ── FEATURE TABS ── */
+.fr-tabs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+@media (max-width: 900px) { .fr-tabs-grid { grid-template-columns: 1fr; } }
+.fr-tab-list { display: flex; flex-direction: column; gap: 4px; }
+.fr-tab-btn { text-align: left; background: none; border: none; cursor: pointer; padding: 20px 24px; border-radius: 10px; transition: background .2s; }
+.fr-tab-btn.active { background: white; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.fr-tab-btn-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #e85d3a; margin-bottom: 6px; }
+.fr-tab-btn-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: #111; margin-bottom: 6px; }
+.fr-tab-btn p { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #666; margin: 0; display: none; }
+.fr-tab-btn.active p { display: block; }
+.fr-tab-image-wrap { position: sticky; top: 100px; }
+.fr-tab-image-wrap img { width: 100%; border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.12); display: block; }
+
+/* ── SPREADS GRID ── */
+.fr-spreads-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px; }
+@media (max-width: 768px) { .fr-spreads-grid { grid-template-columns: 1fr; } }
+.fr-spread-card { border-radius: 12px; overflow: hidden; background: white; border: 1px solid #e8e8e8; }
+.fr-spread-card img { width: 100%; height: 240px; object-fit: cover; display: block; }
+.fr-spread-card-body { padding: 24px; }
+.fr-spread-ch { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #e85d3a; margin-bottom: 8px; }
+.fr-spread-card-body h3 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600; color: #111; margin-bottom: 10px; }
+.fr-spread-card-body p { font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; color: #666; margin: 0; }
+.fr-spread-pull { font-family: 'Fraunces', serif; font-size: 14px; font-style: italic; color: #e85d3a; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0ebe3; }
+
+/* ── QUOTES STRIP ── */
+.fr-quotes-strip { background: #0A0A0A; color: white; padding: 72px 0; }
+.fr-quotes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+@media (max-width: 768px) { .fr-quotes-grid { grid-template-columns: 1fr; } }
+.fr-quote-card { border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 28px; }
+.fr-quote-card q { font-family: 'Fraunces', serif; font-size: 18px; line-height: 1.5; font-style: italic; color: rgba(255,255,255,0.9); display: block; margin-bottom: 16px; }
+.fr-quote-card q::before, .fr-quote-card q::after { content: ''; }
+.fr-quote-source { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+
+/* ── CHAPTER TABLE ── */
+.fr-chapter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+@media (max-width: 900px) { .fr-chapter-grid { grid-template-columns: 1fr; } }
+.fr-chapter-list { display: flex; flex-direction: column; gap: 0; }
+.fr-chapter-row { display: flex; align-items: baseline; gap: 16px; padding: 12px 0; border-bottom: 1px solid #e8e8e8; }
+.fr-ch-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: #e85d3a; min-width: 44px; }
+.fr-ch-title { font-family: 'Inter', sans-serif; font-size: 14px; color: #333; flex: 1; }
+.fr-ch-pg { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #bbb; }
+
+/* ── AUDIENCE SECTION ── */
+.fr-audience-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+@media (max-width: 900px) { .fr-audience-grid { grid-template-columns: 1fr; } }
+.fr-audience-img { width: 100%; border-radius: 12px; display: block; }
+
+/* ── NOTIFY SECTION ── */
+.fr-notify { background: #0f1a12; color: white; padding: 96px 0; }
+.fr-notify-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.fr-notify-title { font-family: 'Fraunces', serif; font-size: clamp(32px, 4vw, 48px); font-weight: 600; line-height: 1.1; margin-bottom: 16px; }
+.fr-notify-sub { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.6); margin-bottom: 36px; }
+.fr-notify-form { display: flex; gap: 12px; max-width: 440px; margin: 0 auto 16px; }
+.fr-notify-form input { flex: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; padding: 13px 18px; color: white; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; }
+.fr-notify-form input::placeholder { color: rgba(255,255,255,0.35); }
+.fr-notify-form button { background: white; color: #0A0A0A; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 13px 24px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; white-space: nowrap; }
+.fr-notify-fine { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: rgba(255,255,255,0.25); text-align: center; }
+
+/* ── CREDITS ── */
+.fr-credits { background: #0A0A0A; color: white; padding: 48px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+.fr-credits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+@media (max-width: 768px) { .fr-credits-grid { grid-template-columns: repeat(2, 1fr); } }
+.fr-credits-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 8px; }
+.fr-credits-value { font-family: 'Inter', sans-serif; font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.5; }
+</style>
+
+<!-- ── HERO ── -->
+<section class="fr-hero">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-hero-grid">
+      <div>
+        <div class="fr-eyebrow">Fynd Press · Volume One · Spring 2026</div>
+        <div class="fr-title">FRAME</div>
+        <div class="fr-subtitle">Demand, Made. · The Gen Media &amp; Marketing Edition</div>
+        <p class="fr-deck">For the CMO who plans to ship more, sell more, and mean more — in Mumbai, Manhattan, and everywhere demand is made.</p>
+        <div class="fr-cta-row">
+          <a href="#notify" class="fr-btn-dark">Get the digital edition →</a>
+          <a href="#preview" class="fr-btn-ghost">Preview inside ↓</a>
+        </div>
+        <div class="fr-stats">
+          <div><div class="fr-stat-num">50</div><div class="fr-stat-lbl">Pages</div></div>
+          <div><div class="fr-stat-num">17</div><div class="fr-stat-lbl">Chapters</div></div>
+          <div><div class="fr-stat-num">Jun '26</div><div class="fr-stat-lbl">Ships</div></div>
+          <div><div class="fr-stat-num">2×</div><div class="fr-stat-lbl">Per year</div></div>
+        </div>
       </div>
-      <div class="hero-stats">
-        <div><div class="hs-num">50</div><div class="hs-label">Pages</div></div>
-        <div><div class="hs-num">17</div><div class="hs-label">Chapters</div></div>
-        <div><div class="hs-num">5</div><div class="hs-label">Acts</div></div>
-        <div><div class="hs-num">2×/yr</div><div class="hs-label">Cadence</div></div>
+      <div>
+        <img src="/assets/frame-redesign/hero-cover.jpg" alt="FRAME Magazine cover illustration" class="fr-cover-img" />
       </div>
     </div>
-    <div class="hero-cover-wrap">
-      <img src="../assets/frame/cover.jpg" alt="FRAME Volume One cover — Demand, Made." />
-      <div class="hero-cover-label">FRAME · VOL 01 · SPRING 2026</div>
-    </div>
   </div>
-</div>
 </section>
 
-<!-- MASTHEAD STRIP -->
-<div class="mast-break">
-<div class="max-w-7xl mx-auto px-6">
-  <div><span class="mb-strong">Fynd Press</span> · The editorial wing of Fynd Studio</div>
-  <div>Volume One · 50 pages · A4 · Bound to lie flat</div>
-  <div><span class="mb-strong">fyndpress.com</span> · editors@fyndpress.com</div>
-</div>
+<!-- ── BRAND STRIP ── -->
+<div class="fr-brand-strip">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-brand-row">
+      <span class="fr-brand-pill">Reliance Industries</span>
+      <span class="fr-brand-pill">NMACC</span>
+      <span class="fr-brand-pill">Ajio</span>
+      <span class="fr-brand-pill">JioMart</span>
+      <span class="fr-brand-pill">Metro Wholesale</span>
+      <span class="fr-brand-pill">Superdry</span>
+    </div>
+  </div>
 </div>
 
-<!-- WHAT IT IS -->
-<section class="editorial-section" id="preview">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow">01 · What it is</div>
-  <h2 class="section-title">A long, careful argument for one idea.</h2>
-  <p class="section-lede">The deepest shift in marketing this decade is not that demand can be captured faster. It is that demand can be <em>made</em> — not as in forced, but as in crafted. Brought carefully into the world by the hands of someone who minded enough to make it well. FRAME Volume One is fifty pages on what that idea looks like in practice, in Mumbai, in Manhattan, and in everywhere demand is made.</p>
-</div>
+<!-- ── 3-COL BENEFITS ── -->
+<section class="fr-section grey" id="preview">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-section-eyebrow">01 · What it is</div>
+    <h2 class="fr-section-title">A long, careful argument<br>for one idea.</h2>
+    <p class="fr-section-lede">Intelligence is becoming free. Speed is the new empathy. The brand that ships fastest wins. FRAME is the 50-page case for why — and the playbook for how.</p>
+    <div class="fr-benefit-grid">
+      <div class="fr-benefit-card">
+        <img src="/assets/frame-redesign/argument-visual.jpg" alt="Speed vs agency" class="fr-benefit-card-img" />
+        <div class="fr-benefit-card-body">
+          <div class="fr-benefit-card-label">The argument</div>
+          <div class="fr-benefit-card-title">Speed is the new empathy.</div>
+          <p>Traditional creative is priced by the hour, slowed by hand-offs. AI-native production collapses that to 48 hours. The math no longer works for agencies.</p>
+        </div>
+      </div>
+      <div class="fr-benefit-card">
+        <img src="/assets/frame-redesign/spreads-visual.jpg" alt="Magazine spreads" class="fr-benefit-card-img" />
+        <div class="fr-benefit-card-body">
+          <div class="fr-benefit-card-label">The craft</div>
+          <div class="fr-benefit-card-title">Eighteen formats every CMO should plan for.</div>
+          <p>Video is no longer a category — it contains 18 distinct formats, each with different unit economics. The atlas is in Chapter 07.</p>
+        </div>
+      </div>
+      <div class="fr-benefit-card">
+        <img src="/assets/frame-redesign/audience-visual.jpg" alt="Global audience" class="fr-benefit-card-img" />
+        <div class="fr-benefit-card-body">
+          <div class="fr-benefit-card-label">The audience</div>
+          <div class="fr-benefit-card-title">Written for the people who are still trying.</div>
+          <p>CMOs, brand directors, growth leaders, and founders — in Mumbai, Manhattan, Lagos, Singapore, São Paulo, and Bengaluru.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- THE 5 ACTS -->
-<section class="editorial-section dark">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow">02 · The five acts</div>
-  <h2 class="section-title">Five chapters of the same argument.</h2>
-  <p class="section-lede">Read non-linear. Whichever act you pick up first will leave you with something you can use by Monday morning — a question for your team, a number for the deck, a workflow to rewire.</p>
-  <div class="act-grid">
-    <div class="act-card">
-      <div class="act-num">ACT I</div>
-      <div class="act-title">The New Physics</div>
-      <div class="act-blurb">When intelligence becomes free, what becomes scarce. Speed as the new empathy. The anti-slop discipline.</div>
-      <div class="act-pages">CH 01–03 · pp. 5–12</div>
+<!-- ── DARK ARGUMENT SECTION ── -->
+<section class="fr-section dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-argument-grid">
+      <div>
+        <div class="fr-section-eyebrow">02 · The core argument</div>
+        <h2 class="fr-section-title" style="color:white;">When intelligence<br>becomes free.</h2>
+        <p class="fr-section-lede">By the time you finish this paragraph, a language model will have tried a hundred ideas that would have been campaign-ready in 2022 — for the cost of a server rental. The advantage that follows is older and simpler: knowing what you want, and being willing to defend it.</p>
+        <div class="fr-argument-stats">
+          <div><div class="fr-arg-stat-num">48h</div><div class="fr-arg-stat-lbl">Brief → broadcast</div></div>
+          <div><div class="fr-arg-stat-num">−85%</div><div class="fr-arg-stat-lbl">Production cost</div></div>
+          <div><div class="fr-arg-stat-num">9.3M+</div><div class="fr-arg-stat-lbl">Views · single campaign</div></div>
+        </div>
+      </div>
+      <div>
+        <img src="/assets/frame-redesign/argument-visual.jpg" alt="Speed vs traditional creative" class="fr-argument-img" />
+      </div>
     </div>
-    <div class="act-card">
-      <div class="act-num">ACT II</div>
-      <div class="act-title">The New Craft</div>
-      <div class="act-blurb">The death of the brief. N=1 personalisation. The cinematic internet. The atlas of 18 gen-media formats.</div>
-      <div class="act-pages">CH 04–07 · pp. 13–23</div>
+  </div>
+</section>
+
+<!-- ── FEATURE TABS (SPREADS) ── -->
+<section class="fr-section grey" id="spreads">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-section-eyebrow">03 · Inside the volume</div>
+    <h2 class="fr-section-title">Four chapters, lifted out of context.</h2>
+    <p class="fr-section-lede">Each chapter pairs a photograph from Tokyo, Mumbai, or Brooklyn with the working argument. Pick a number. Begin anywhere.</p>
+    <div class="fr-tabs-grid">
+      <!-- Tab list -->
+      <div class="fr-tab-list" id="fr-tab-list">
+        <button class="fr-tab-btn active" onclick="frTab(this,'fr-img-1')">
+          <div class="fr-tab-btn-label">CH 01 · p. 5</div>
+          <div class="fr-tab-btn-title">When intelligence becomes free.</div>
+          <p>The next decade belongs to whoever knows what they want. By the time you finish this paragraph, a language model will have tried a hundred ideas that would have been campaign-ready in 2022.</p>
+        </button>
+        <button class="fr-tab-btn" onclick="frTab(this,'fr-img-2')">
+          <div class="fr-tab-btn-label">CH 07 · p. 22</div>
+          <div class="fr-tab-btn-title">The atlas of gen media.</div>
+          <p>Video today contains eighteen distinct formats — each with a different use, a different cohort, a different unit economic. The CMO who plans against "video" is planning against the wrong noun.</p>
+        </button>
+        <button class="fr-tab-btn" onclick="frTab(this,'fr-img-3')">
+          <div class="fr-tab-btn-label">CH 08 · p. 27</div>
+          <div class="fr-tab-btn-title">The agent at the shelf.</div>
+          <p>For a hundred years, the shelf was a physical place. In 2026, it is moving to a context window. The brand whose context the agent does not have is the brand the customer did not consider.</p>
+        </button>
+        <button class="fr-tab-btn" onclick="frTab(this,'fr-img-4')">
+          <div class="fr-tab-btn-label">CH 15 · p. 43</div>
+          <div class="fr-tab-btn-title">Before there was commerce, there was entertainment.</div>
+          <p>Before there was commerce, there was a fire. Around it, somebody told a story. Five thousand years later, this fact has not changed. Agents will negotiate prices. They will not manufacture desire.</p>
+        </button>
+      </div>
+      <!-- Tab image -->
+      <div class="fr-tab-image-wrap">
+        <img id="fr-img-1" src="/assets/frame-redesign/spreads-visual.jpg" alt="Spread preview" style="display:block;" />
+        <img id="fr-img-2" src="/assets/frame-redesign/chapters-visual.jpg" alt="Spread preview" style="display:none;" />
+        <img id="fr-img-3" src="/assets/frame-redesign/argument-visual.jpg" alt="Spread preview" style="display:none;" />
+        <img id="fr-img-4" src="/assets/frame-redesign/audience-visual.jpg" alt="Spread preview" style="display:none;" />
+      </div>
     </div>
-    <div class="act-card">
-      <div class="act-num">ACT III</div>
-      <div class="act-title">The New Market</div>
-      <div class="act-blurb">The agent at the shelf. Commerce media's quiet coup. Why brand pays for performance.</div>
-      <div class="act-pages">CH 08–10 · pp. 25–32</div>
+  </div>
+</section>
+<script>
+function frTab(btn, imgId) {
+  document.querySelectorAll('.fr-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ['fr-img-1','fr-img-2','fr-img-3','fr-img-4'].forEach(id => {
+    document.getElementById(id).style.display = id === imgId ? 'block' : 'none';
+  });
+}
+</script>
+
+<!-- ── QUOTES STRIP ── -->
+<div class="fr-quotes-strip">
+  <div class="max-w-7xl mx-auto px-6">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div class="fr-eyebrow" style="color:rgba(255,255,255,0.4); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase;">Ten lines from the volume</div>
     </div>
-    <div class="act-card">
-      <div class="act-num">ACT IV</div>
-      <div class="act-title">The New Org</div>
-      <div class="act-blurb">The singularity of job roles. The one-person business unit. The eight seats. Why the holdcos lost the decade.</div>
-      <div class="act-pages">CH 11–14 · pp. 34–41</div>
-    </div>
-    <div class="act-card">
-      <div class="act-num">ACT V</div>
-      <div class="act-title">The New Horizon</div>
-      <div class="act-blurb">Brands as studios. The death of the campaign. A letter to the 2030 CMO.</div>
-      <div class="act-pages">CH 15–17 · pp. 43–48</div>
+    <div class="fr-quotes-grid">
+      <div class="fr-quote-card">
+        <q>The next decade belongs to whoever knows what they want.</q>
+        <div class="fr-quote-source">CH 01 · p. 7</div>
+      </div>
+      <div class="fr-quote-card">
+        <q>Speed is the new empathy. Slow is the new rude.</q>
+        <div class="fr-quote-source">CH 02 · p. 10</div>
+      </div>
+      <div class="fr-quote-card">
+        <q>Agents will negotiate prices. They will not manufacture desire.</q>
+        <div class="fr-quote-source">CH 15 · p. 44</div>
+      </div>
+      <div class="fr-quote-card">
+        <q>Brand pays for performance. Strip the brand and performance has nothing to land on.</q>
+        <div class="fr-quote-source">CH 10 · p. 31</div>
+      </div>
+      <div class="fr-quote-card">
+        <q>Direct or be directed. There is no middle.</q>
+        <div class="fr-quote-source">CH 11 · p. 35</div>
+      </div>
+      <div class="fr-quote-card">
+        <q>What will you ship this week that you could not have shipped last year?</q>
+        <div class="fr-quote-source">CH 12 · p. 37</div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- ── CHAPTER TABLE ── -->
+<section class="fr-section cream" id="chapters">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-section-eyebrow">04 · Table of contents</div>
+    <h2 class="fr-section-title">Seventeen chapters.<br>Three interludes. One letter.</h2>
+    <p class="fr-section-lede">Pick a number. Begin anywhere. Every chapter stands alone.</p>
+    <div class="fr-chapter-grid">
+      <div>
+        <img src="/assets/frame-redesign/chapters-visual.jpg" alt="Chapter themes" style="width:100%; border-radius:12px; margin-bottom:24px;" />
+      </div>
+      <div class="fr-chapter-list">
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 01</span><span class="fr-ch-title">When intelligence becomes free</span><span class="fr-ch-pg">p. 5</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 02</span><span class="fr-ch-title">Speed is the new empathy</span><span class="fr-ch-pg">p. 9</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 03</span><span class="fr-ch-title">The brief is the product</span><span class="fr-ch-pg">p. 12</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 04</span><span class="fr-ch-title">Direct or be directed</span><span class="fr-ch-pg">p. 15</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">INT I</span><span class="fr-ch-title">The Oracle · five lines</span><span class="fr-ch-pg">p. 18</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 05</span><span class="fr-ch-title">The new physics of attention</span><span class="fr-ch-pg">p. 19</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 06</span><span class="fr-ch-title">The platform is the audience</span><span class="fr-ch-pg">p. 21</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 07</span><span class="fr-ch-title">The atlas of gen media</span><span class="fr-ch-pg">p. 22</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 08</span><span class="fr-ch-title">The agent at the shelf</span><span class="fr-ch-pg">p. 27</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 09</span><span class="fr-ch-title">Gen media's quiet coup</span><span class="fr-ch-pg">p. 28</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 10</span><span class="fr-ch-title">Brand pays for performance</span><span class="fr-ch-pg">p. 30</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">INT II</span><span class="fr-ch-title">30 acts for tomorrow morning</span><span class="fr-ch-pg">p. 33</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 11</span><span class="fr-ch-title">The singularity of job roles</span><span class="fr-ch-pg">p. 34</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 12</span><span class="fr-ch-title">The one-person business unit</span><span class="fr-ch-pg">p. 36</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 13</span><span class="fr-ch-title">The eight seats</span><span class="fr-ch-pg">p. 38</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 14</span><span class="fr-ch-title">Why the holdcos lost the decade</span><span class="fr-ch-pg">p. 41</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">INT III</span><span class="fr-ch-title">The Oracle · ten lines</span><span class="fr-ch-pg">p. 42</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 15</span><span class="fr-ch-title">Before there was commerce, there was entertainment</span><span class="fr-ch-pg">p. 43</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 16</span><span class="fr-ch-title">The death of the campaign as a unit of work</span><span class="fr-ch-pg">p. 45</span></div>
+        <div class="fr-chapter-row"><span class="fr-ch-num">CH 17</span><span class="fr-ch-title">A letter to the 2030 CMO</span><span class="fr-ch-pg">p. 47</span></div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PULL QUOTES -->
-<section class="editorial-section cream">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow">03 · The Oracle</div>
-  <h2 class="section-title">Ten lines from the volume.</h2>
-  <p class="section-lede">These are the sentences our test readers underlined first. Read them as a sample of the voice.</p>
-  <div class="quote-wall">
-    <div class="quote-tile"><q>Intelligence was the advantage of the twentieth century. Will is the advantage of the twenty-first.</q><div class="qc">CH 01 · p. 5</div></div>
-    <div class="quote-tile"><q>If groceries arrive in ten minutes, why should an ad take two weeks?</q><div class="qc">CH 02 · p. 9</div></div>
-    <div class="quote-tile"><q>Slop is the new mediocrity. Care is the new luxury.</q><div class="qc">CH 03 · p. 12</div></div>
-    <div class="quote-tile"><q>The brief is not commissioned. The brief is triggered.</q><div class="qc">CH 04 · p. 14</div></div>
-    <div class="quote-tile"><q>Personalisation is respect.</q><div class="qc">CH 05 · p. 15</div></div>
-    <div class="quote-tile"><q>The new shelf is not a place. It is a context window.</q><div class="qc">CH 08 · p. 27</div></div>
-    <div class="quote-tile"><q>Agents will negotiate prices. They will not manufacture desire.</q><div class="qc">CH 15 · p. 44</div></div>
-    <div class="quote-tile"><q>Brand pays for performance. Strip the brand and performance has nothing to land on.</q><div class="qc">CH 10 · p. 31</div></div>
-    <div class="quote-tile"><q>Direct or be directed. There is no middle.</q><div class="qc">CH 11 · p. 35</div></div>
-    <div class="quote-tile"><q>What will you ship this week that you could not have shipped last year?</q><div class="qc">CH 12 · p. 37</div></div>
+<!-- ── AUDIENCE ── -->
+<section class="fr-section dark">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-audience-grid">
+      <div>
+        <div class="fr-section-eyebrow">05 · Audience</div>
+        <h2 class="fr-section-title" style="color:white;">Who this is<br>written for.</h2>
+        <p class="fr-section-lede">Enterprise CMOs, brand directors, growth leaders, founders, and operators — in India, the US, the UK, the GCC, and Southeast Asia.</p>
+        <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.6; color:rgba(255,255,255,0.65); margin-bottom:0;">Written for the producer in Lagos, the strategist in Singapore, the editor in São Paulo, the founder in Bengaluru. Written for the people who are still trying.</p>
+        <div style="margin-top:32px; padding:24px; border:1px solid rgba(255,255,255,0.12); border-radius:10px;">
+          <div class="fr-eyebrow" style="color:rgba(255,255,255,0.4); font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:10px;">Reading instruction</div>
+          <p style="font-family:'Fraunces',serif; font-size:17px; line-height:1.6; color:white; margin:0;">Non-linear. Pick a page. Begin anywhere. Designed for the hand and the screenshot, in that order. Bound to lie flat.</p>
+        </div>
+      </div>
+      <div>
+        <img src="/assets/frame-redesign/audience-visual.jpg" alt="Global audience illustration" class="fr-audience-img" />
+      </div>
+    </div>
   </div>
-</div>
 </section>
 
-<!-- SPREAD PREVIEWS -->
-<section class="editorial-section">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow">04 · Inside the volume</div>
-  <h2 class="section-title">A few spreads from the issue.</h2>
-  <p class="section-lede">Each chapter pairs a photograph from Tokyo, Mumbai, or Brooklyn with the working argument. Below: four spreads, lifted out of context but representative.</p>
-
-  <div class="spread">
-    <div class="spread-img">
-      <img src="../assets/frame/tokyo-direct.jpg" alt="Tokyo street at dusk — Direct or be directed" />
-      <div class="sp-cap">Tokyo, 7.42 pm · CH 01</div>
-    </div>
-    <div class="spread-text">
-      <div class="sp-ch">Chapter 01 · The New Physics</div>
-      <h3>When intelligence becomes free.</h3>
-      <p class="sp-deck">By the time you finish reading this paragraph, a language model on a server somewhere will have tried a hundred ideas that would have been considered campaign-ready in 2022. It will have done so for the cost of a server rental. The advantage that follows is older and simpler than tools: knowing what you want, and being willing to defend the recognition against the noise.</p>
-      <div class="sp-pull">The next decade belongs to whoever knows what they want.</div>
+<!-- ── NOTIFY ── -->
+<section class="fr-notify" id="notify">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-notify-inner">
+      <div class="fr-eyebrow" style="color:rgba(255,255,255,0.4); font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:16px; text-align:center;">06 · Get the launch</div>
+      <div class="fr-notify-title">FRAME Volume One<br>ships in June 2026.</div>
+      <p class="fr-notify-sub">Drop your email. We'll send you the digital edition the day it goes live, and the print edition's shipping notice when bound copies leave Mumbai. Volume Two follows in autumn 2026.</p>
+      <form class="fr-notify-form" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks · Added';">
+        <input type="email" placeholder="you@company.com" required />
+        <button type="submit">Notify me</button>
+      </form>
+      <div class="fr-notify-fine">Internal demo · email capture is local-only · no list is built</div>
     </div>
   </div>
-
-  <div class="spread reverse">
-    <div class="spread-img">
-      <img src="../assets/frame/harajuku-formats.jpg" alt="Harajuku alley — Eighteen formats" />
-      <div class="sp-cap">Harajuku alley · CH 07</div>
-    </div>
-    <div class="spread-text">
-      <div class="sp-ch">Chapter 07 · The New Craft</div>
-      <h3>The atlas of gen media.</h3>
-      <p class="sp-deck">Until very recently, video was a category. So was image. So was audio. That taxonomy is no longer useful. Video, today, contains eighteen distinct formats — each with a different use, a different cohort, a different unit economic. The CMO who plans against video in 2026 is planning against the wrong noun.</p>
-      <div class="sp-pull">Eighteen formats every CMO should plan for. The atlas is in CH 07.</div>
-    </div>
-  </div>
-
-  <div class="spread">
-    <div class="spread-img">
-      <img src="../assets/frame/ginza-agent.jpg" alt="Ginza street scene — The hailing of an agent" />
-      <div class="sp-cap">Ginza, 6.04 pm · CH 08</div>
-    </div>
-    <div class="spread-text">
-      <div class="sp-ch">Chapter 08 · The New Market</div>
-      <h3>The agent at the shelf.</h3>
-      <p class="sp-deck">For a hundred years, the shelf was a physical place. For thirty years, it moved to a screen. In 2026, it is moving again — this time to a context window. The brand whose context the agent does not have access to is the brand the customer did not consider.</p>
-      <div class="sp-pull">Quotation is the new placement.</div>
-    </div>
-  </div>
-
-  <div class="spread reverse">
-    <div class="spread-img">
-      <img src="../assets/frame/the-fire.jpg" alt="The fire — entertainment before commerce" />
-      <div class="sp-cap">CH 15 · The New Horizon</div>
-    </div>
-    <div class="spread-text">
-      <div class="sp-ch">Chapter 15 · The New Horizon</div>
-      <h3>Before there was commerce, there was entertainment.</h3>
-      <p class="sp-deck">Before there was commerce, there was a fire. Around it, somebody told a story. The people who came back the next night came back for the story. The bowl of stew was incidental — a kindness, an excuse — but the reason for the gathering was the story. Five thousand years later, this fact has not changed.</p>
-      <div class="sp-pull">Agents will negotiate prices. They will not manufacture desire.</div>
-    </div>
-  </div>
-</div>
 </section>
 
-<!-- CHAPTER LIST -->
-<section class="editorial-section cream">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow">05 · The complete table of contents</div>
-  <h2 class="section-title">Seventeen chapters. Three interludes. One letter.</h2>
-  <p class="section-lede">Pick a number. Begin anywhere.</p>
-  <div class="chapter-list">
-    <div class="chapter-row"><span class="ch-num">CH 01</span><span class="ch-title">When intelligence becomes free</span><span class="ch-pg">p. 5</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 02</span><span class="ch-title">Speed is the new empathy</span><span class="ch-pg">p. 9</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 03</span><span class="ch-title">Anti-slop: the new premium</span><span class="ch-pg">p. 11</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 04</span><span class="ch-title">The death of the brief</span><span class="ch-pg">p. 13</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 05</span><span class="ch-title">N=1: when everyone gets their own ad</span><span class="ch-pg">p. 15</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 06</span><span class="ch-title">The cinematic internet</span><span class="ch-pg">p. 18</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 07</span><span class="ch-title">The atlas of gen media · 18 formats</span><span class="ch-pg">p. 21</span></div>
-    <div class="chapter-row"><span class="ch-num">INT I</span><span class="ch-title">The 2026 CMO atlas · five panels</span><span class="ch-pg">p. 24</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 08</span><span class="ch-title">The agent at the shelf</span><span class="ch-pg">p. 25</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 09</span><span class="ch-title">Commerce media's quiet coup</span><span class="ch-pg">p. 28</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 10</span><span class="ch-title">Brand pays for performance</span><span class="ch-pg">p. 30</span></div>
-    <div class="chapter-row"><span class="ch-num">INT II</span><span class="ch-title">30 acts for tomorrow morning</span><span class="ch-pg">p. 33</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 11</span><span class="ch-title">The singularity of job roles</span><span class="ch-pg">p. 34</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 12</span><span class="ch-title">The one-person business unit</span><span class="ch-pg">p. 36</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 13</span><span class="ch-title">The eight seats</span><span class="ch-pg">p. 38</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 14</span><span class="ch-title">Why the holdcos lost the decade</span><span class="ch-pg">p. 41</span></div>
-    <div class="chapter-row"><span class="ch-num">INT III</span><span class="ch-title">The Oracle · ten lines</span><span class="ch-pg">p. 42</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 15</span><span class="ch-title">Before there was commerce, there was entertainment</span><span class="ch-pg">p. 43</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 16</span><span class="ch-title">The death of the campaign as a unit of work</span><span class="ch-pg">p. 45</span></div>
-    <div class="chapter-row"><span class="ch-num">CH 17</span><span class="ch-title">A letter to the 2030 CMO</span><span class="ch-pg">p. 47</span></div>
-  </div>
-</div>
-</section>
-
-<!-- WHO IT'S FOR -->
-<section class="editorial-section dark">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow">06 · Audience</div>
-  <h2 class="section-title">Who this is written for.</h2>
-  <div class="grid md:grid-cols-2 gap-12 mt-12">
-    <div>
-      <p style="font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.85);">
-        Enterprise CMOs, brand directors, growth leaders, founders, and operators — in India, the United States, the United Kingdom, the GCC, Southeast Asia, and everywhere else demand is made.
-      </p>
-      <p style="font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.7); margin-top: 18px;">
-        Written for the producer in Lagos, the strategist in Singapore, the editor in São Paulo, the founder in Bengaluru. Written for the people who are still trying.
-      </p>
-    </div>
-    <div>
-      <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px;">Reading instruction</p>
-      <p style="font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.6; color: white;">
-        Non-linear. Pick a page. Begin anywhere. Every chapter stands alone. Designed for the hand and the screenshot, in that order. Bound to lie flat.
-      </p>
+<!-- ── CREDITS ── -->
+<section class="fr-credits">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="fr-credits-grid">
+      <div>
+        <div class="fr-credits-label">Publisher</div>
+        <div class="fr-credits-value">Fynd Press · the editorial wing of Fynd Studio</div>
+      </div>
+      <div>
+        <div class="fr-credits-label">Cadence</div>
+        <div class="fr-credits-value">Biannual · Vol 02 follows in autumn 2026</div>
+      </div>
+      <div>
+        <div class="fr-credits-label">Set in</div>
+        <div class="fr-credits-value">Fraunces · Inter · JetBrains Mono</div>
+      </div>
+      <div>
+        <div class="fr-credits-label">Format</div>
+        <div class="fr-credits-value">50 pages · digital + print · A4 · lies flat</div>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
-<!-- NOTIFY -->
-<section class="editorial-section" id="notify">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="section-eyebrow" style="text-align:center;">07 · Get the launch</div>
-  <h2 class="section-title" style="text-align:center;">FRAME Volume One ships in June 2026.</h2>
-  <p class="section-lede" style="text-align:center; margin: 0 auto;">Drop your email. We'll send you the digital edition the day it goes live, and the print edition's shipping notice when bound copies leave Mumbai.</p>
-  <div class="notify-card">
-    <h3>Be the first to read it.</h3>
-    <p>Volume One · 50 pages · digital + print. Volume Two follows in autumn 2026.</p>
-    <form class="notify-row" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks ·  Added';">
-      <input type="email" placeholder="you@company.com" required />
-      <button type="submit">Notify me</button>
-    </form>
-    <div class="nc-fine">Internal demo · email capture is local-only · no list is built</div>
-  </div>
-</div>
-</section>
-
-<!-- CREDITS -->
-<section class="credits">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="credits-grid">
-    <div class="credits-block">
-      <div class="cb-label">Publisher</div>
-      <div class="cb-value">Fynd Press · the editorial wing of Fynd Studio</div>
-    </div>
-    <div class="credits-block">
-      <div class="cb-label">Editors</div>
-      <div class="cb-value">The Editors, Fynd Press</div>
-    </div>
-    <div class="credits-block">
-      <div class="cb-label">Cadence</div>
-      <div class="cb-value">Biannual · Vol 02 follows in autumn 2026</div>
-    </div>
-    <div class="credits-block">
-      <div class="cb-label">Set in</div>
-      <div class="cb-value">Fraunces (display) &amp; Inter (body) · JetBrains Mono (metadata)</div>
-    </div>
-    <div class="credits-block">
-      <div class="cb-label">Address</div>
-      <div class="cb-value">editors@fyndpress.com · fyndpress.com</div>
-    </div>
-    <div class="credits-block">
-      <div class="cb-label">Voice</div>
-      <div class="cb-value">Care is a discipline, not a vibe. Speed is empathy, not efficiency.</div>
+<!-- FOOTER -->
+<footer style="background:#0A0A0A; color:rgba(255,255,255,0.4); padding:28px 0; border-top:1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-between items-center gap-4">
+    <span style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.14em; text-transform:uppercase;">FRAME · Fynd Press · © 2026</span>
+    <div style="display:flex; gap:24px;">
+      <a href="/fynd-studio/" style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); text-decoration:none;">Fynd Studio</a>
+      <a href="/" style="font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.4); text-decoration:none;">Fynd Glass</a>
     </div>
   </div>
-</div>
-</section>
-
-<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
-  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
-</div></footer>
+</footer>
 
 </body>
 </html>
