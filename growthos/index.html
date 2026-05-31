@@ -183,259 +183,390 @@
 </div>
 </div>
 
-<!-- HERO -->
-<section class="hero-grad pt-24 pb-24 border-b" style="border-color: var(--border); background-image: url('/assets/hero-growthos.jpg'); background-size: cover; background-position: center right; position: relative;">
-<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(239,231,210,0.97) 0%,rgba(239,231,210,0.92) 45%,rgba(239,231,210,0.55) 70%,rgba(239,231,210,0.10) 100%);pointer-events:none;"></div>
-<div class="max-w-7xl mx-auto px-6" style="position:relative;z-index:1;">
-  <div class="flex items-center gap-3 mb-6">
-    <span class="pill-live">Live · Ajio Luxe</span>
-    <span class="pill-pilot">Marketing OS</span>
+<!-- ═══════════════════════════════════════════════════════
+     GROWTHOS · REDESIGNED · Shopify-inspired layout
+     ═══════════════════════════════════════════════════════ -->
+
+<style>
+/* ── Page-level tokens ── */
+:root {
+  --gos-bg: #F5F0E8;
+  --gos-ink: #15140F;
+  --gos-muted: #5A5650;
+  --gos-accent: #ED6F5C;
+  --gos-border: rgba(21,20,15,0.10);
+  --gos-card: rgba(255,255,255,0.72);
+}
+
+/* ── Base ── */
+.gos-page { background: var(--gos-bg); color: var(--gos-ink); font-family: 'Inter', sans-serif; }
+.gos-wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* ── Eyebrow ── */
+.gos-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gos-muted); margin-bottom: 16px; display: block; }
+
+/* ── Hero ── */
+.gos-hero { padding: 80px 0 0; text-align: center; overflow: hidden; }
+.gos-hero-pills { display: flex; justify-content: center; gap: 8px; margin-bottom: 28px; }
+.pill-live { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 4px; background: #ECFDF5; color: #047857; border: 1px solid #BBF7D0; }
+.pill-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 4px; background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.gos-hero-h1 { font-size: clamp(42px, 6.5vw, 80px); font-weight: 800; line-height: 1.0; letter-spacing: -0.03em; color: var(--gos-ink); max-width: 820px; margin: 0 auto 20px; }
+.gos-hero-h1 span { color: var(--gos-accent); }
+.gos-hero-sub { font-size: 18px; color: var(--gos-muted); line-height: 1.55; max-width: 560px; margin: 0 auto 36px; }
+.gos-hero-ctas { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
+.gos-btn { display: inline-flex; align-items: center; gap: 6px; padding: 13px 24px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; transition: opacity .15s; }
+.gos-btn-primary { background: var(--gos-ink); color: #fff; }
+.gos-btn-secondary { background: transparent; color: var(--gos-ink); border: 1.5px solid var(--gos-ink); }
+.gos-btn:hover { opacity: 0.82; }
+.gos-hero-metrics { display: flex; justify-content: center; gap: 0; border-top: 1px solid var(--gos-border); border-bottom: 1px solid var(--gos-border); margin-bottom: 0; }
+.gos-metric { flex: 1; max-width: 200px; padding: 24px 20px; text-align: center; border-right: 1px solid var(--gos-border); }
+.gos-metric:last-child { border-right: none; }
+.gos-metric-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--gos-accent); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+.gos-metric-label { font-size: 12px; color: var(--gos-muted); text-transform: uppercase; letter-spacing: 0.06em; font-family: 'JetBrains Mono', monospace; }
+.gos-hero-img { width: 100%; max-width: 1000px; margin: 0 auto; display: block; border-radius: 16px 16px 0 0; box-shadow: 0 -4px 40px rgba(21,20,15,0.08); }
+
+/* ── Section spacing ── */
+.gos-section { padding: 80px 0; border-bottom: 1px solid var(--gos-border); }
+.gos-section-dark { background: var(--gos-ink); color: #EFE7D2; }
+.gos-section-dark .gos-eyebrow { color: rgba(239,231,210,0.55); }
+.gos-section-dark .gos-section-h2 { color: #EFE7D2; }
+.gos-section-dark .gos-section-sub { color: rgba(239,231,210,0.70); }
+
+/* ── Section headers ── */
+.gos-section-h2 { font-size: clamp(30px, 4vw, 48px); font-weight: 800; letter-spacing: -0.025em; line-height: 1.1; color: var(--gos-ink); margin-bottom: 16px; }
+.gos-section-sub { font-size: 16px; color: var(--gos-muted); line-height: 1.6; max-width: 560px; }
+
+/* ── 3-col feature grid ── */
+.gos-3col { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 48px; border-top: 1px solid var(--gos-border); }
+.gos-feat { padding: 32px 28px 32px 0; border-right: 1px solid var(--gos-border); }
+.gos-feat:last-child { border-right: none; padding-right: 0; padding-left: 28px; }
+.gos-feat:nth-child(2) { padding-left: 28px; }
+.gos-feat-title { font-size: 18px; font-weight: 700; color: var(--gos-ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.gos-feat-desc { font-size: 14px; color: var(--gos-muted); line-height: 1.6; }
+
+/* ── Pull quote ── */
+.gos-quote { padding: 72px 0; border-bottom: 1px solid var(--gos-border); text-align: center; }
+.gos-quote-text { font-size: clamp(22px, 3.5vw, 38px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; color: var(--gos-ink); max-width: 820px; margin: 0 auto 24px; }
+.gos-quote-attr { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--gos-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ── Feature tab section ── */
+.gos-tabs-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-top: 48px; }
+.gos-tab-img { width: 100%; border-radius: 12px; box-shadow: 0 8px 40px rgba(21,20,15,0.10); }
+.gos-tab-list { display: flex; flex-direction: column; gap: 0; }
+.gos-tab-item { padding: 20px 0; border-bottom: 1px solid var(--gos-border); cursor: pointer; }
+.gos-tab-item:first-child { border-top: 1px solid var(--gos-border); }
+.gos-tab-item.active .gos-tab-title { color: var(--gos-accent); }
+.gos-tab-title { font-size: 17px; font-weight: 700; color: var(--gos-ink); margin-bottom: 4px; transition: color .15s; }
+.gos-tab-desc { font-size: 14px; color: var(--gos-muted); line-height: 1.55; }
+
+/* ── Split layout (image + text) ── */
+.gos-split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 48px; }
+.gos-split-img { width: 100%; border-radius: 12px; box-shadow: 0 8px 40px rgba(21,20,15,0.10); }
+.gos-split-feats { display: flex; flex-direction: column; gap: 28px; }
+.gos-split-feat-title { font-size: 16px; font-weight: 700; color: var(--gos-ink); margin-bottom: 4px; }
+.gos-split-feat-desc { font-size: 14px; color: var(--gos-muted); line-height: 1.55; }
+
+/* ── Full-width image ── */
+.gos-full-img { width: 100%; border-radius: 12px; margin-top: 48px; box-shadow: 0 8px 40px rgba(21,20,15,0.10); }
+
+/* ── Pricing ── */
+.gos-pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.gos-price-card { border: 1.5px solid var(--gos-border); border-radius: 16px; padding: 32px; background: var(--gos-card); backdrop-filter: blur(8px); position: relative; }
+.gos-price-card.featured { border-color: var(--gos-accent); background: rgba(237,111,92,0.05); }
+.gos-price-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--gos-accent); color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+.gos-price-tier { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gos-muted); margin-bottom: 8px; }
+.gos-price-amount { font-size: 28px; font-weight: 800; color: var(--gos-ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px; }
+.gos-price-period { font-size: 12px; color: var(--gos-muted); margin-bottom: 20px; }
+.gos-price-divider { border: none; border-top: 1px solid var(--gos-border); margin: 20px 0; }
+.gos-price-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.gos-price-features li { font-size: 13px; color: var(--gos-muted); line-height: 1.5; padding-left: 16px; position: relative; }
+.gos-price-features li::before { content: '·'; position: absolute; left: 0; color: var(--gos-accent); font-weight: 700; }
+
+/* ── Support strip ── */
+.gos-support { padding: 64px 0; border-bottom: 1px solid var(--gos-border); }
+.gos-support-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 40px; text-align: center; }
+.gos-support-title { font-size: 16px; font-weight: 700; color: var(--gos-ink); margin-bottom: 6px; }
+.gos-support-desc { font-size: 14px; color: var(--gos-muted); line-height: 1.55; }
+
+/* ── Final CTA ── */
+.gos-cta-final { padding: 80px 0; text-align: center; }
+.gos-cta-final-h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.025em; color: var(--gos-ink); margin-bottom: 16px; }
+.gos-cta-final-sub { font-size: 16px; color: var(--gos-muted); margin-bottom: 36px; }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gos-3col, .gos-tabs-layout, .gos-split, .gos-pricing-grid, .gos-support-grid { grid-template-columns: 1fr; }
+  .gos-feat { border-right: none; border-bottom: 1px solid var(--gos-border); padding: 24px 0; }
+  .gos-feat:last-child { border-bottom: none; }
+  .gos-hero-metrics { flex-wrap: wrap; }
+  .gos-metric { min-width: 45%; }
+}
+</style>
+
+<div class="gos-page">
+
+<!-- ── HERO ── -->
+<section class="gos-hero">
+  <div class="gos-wrap">
+    <div class="gos-hero-pills">
+      <span class="pill-live">Live · Ajio Luxe</span>
+      <span class="pill-tag">Marketing OS</span>
+    </div>
+    <h1 class="gos-hero-h1">Move at the speed of culture.<br/><span>Without losing the brand.</span></h1>
+    <p class="gos-hero-sub">The AI marketing system for D2C brands. Brief, generate, execute, and measure in hours — not weeks.</p>
+    <div class="gos-hero-ctas">
+      <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="gos-btn gos-btn-primary">Open GrowthOS →</a>
+      <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="gos-btn gos-btn-secondary">Ajio Luxe demo (SIT) →</a>
+    </div>
+    <div class="gos-hero-metrics">
+      <div class="gos-metric"><div class="gos-metric-num">150+</div><div class="gos-metric-label">Live signals scored</div></div>
+      <div class="gos-metric"><div class="gos-metric-num">48 hrs</div><div class="gos-metric-label">Brief → live campaign</div></div>
+      <div class="gos-metric"><div class="gos-metric-num">10×</div><div class="gos-metric-label">Team leverage</div></div>
+      <div class="gos-metric"><div class="gos-metric-num">₹144 Cr+</div><div class="gos-metric-label">GMV managed</div></div>
+    </div>
   </div>
-  <h1 class="display mb-6" style="font-size: clamp(44px, 7vw, 84px); line-height: 0.98; color: var(--ink);">
-    GrowthOS.<br/><span style="color: var(--accent);">Move at the speed of culture.<br/>Without losing the brand.</span>
-  </h1>
-  <p class="text-lg md:text-xl max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.5;">
-    The AI marketing system for D2C brands that refuse to wait six weeks for a campaign. Brief, generate, execute, and measure in hours. Validated in production on Ajio Luxe — ₹144 Cr+ GMV managed through the signal engine.
-  </p>
-  <div class="flex flex-wrap gap-3 mb-12">
-    <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="cta-link">Open GrowthOS landing →</a>
-    <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="cta-link secondary">Open Ajio Luxe OS demo (SIT) →</a>
-    <a href="#demo" class="cta-link secondary">Jump to live demo ↓</a>
-  </div>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <div class="metric-tile"><div class="mt-num">150+</div><div class="mt-label">Live signals scored</div></div>
-    <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">Brief → live campaign</div></div>
-    <div class="metric-tile"><div class="mt-num">10×</div><div class="mt-label">Team leverage gained</div></div>
-    <div class="metric-tile"><div class="mt-num">₹144 Cr+</div><div class="mt-label">Proven GMV managed</div></div>
-  </div>
-</div>
+  <img src="/assets/growthos/hero-dashboard.jpg" alt="GrowthOS signal-to-campaign pipeline" class="gos-hero-img" style="margin-top:48px;" />
 </section>
 
-<!-- 01 · WHAT IT IS -->
-<section id="what" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">01 · WHAT IT IS</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Your campaign calendar is already out of date.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-12" style="color: var(--ink-muted); line-height: 1.6;">
-    By the time a brief becomes a live campaign, the moment has moved. Trends turn over in 72 hours. Competitors ship daily. Your team is excellent — the system around them is stuck in 2015. GrowthOS collapses the brief-to-live gap from six weeks to six days, then to six hours.
-  </p>
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="pillar-card">
-      <div class="pc-eyebrow">The brief-to-live gap</div>
-      <h3>Six weeks for what should take six days.</h3>
-      <p>Endless cycles of approvals, edits, and asset production outlive the moment they were meant to capture.</p>
-    </div>
-    <div class="pillar-card">
-      <div class="pc-eyebrow">The signal blindness</div>
-      <h3>Reacting to last quarter's data.</h3>
-      <p>Dashboards tell you what already happened — not where to place your next bet. Culture moves in real time.</p>
-    </div>
-    <div class="pillar-card">
-      <div class="pc-eyebrow">Creative bottleneck</div>
-      <h3>The best ideas die in approval cycles.</h3>
-      <p>Talented teams ship a fraction of their thinking. Most of the work never reaches the customer.</p>
+<!-- ── WHAT IT IS · 3-col ── -->
+<section class="gos-section">
+  <div class="gos-wrap">
+    <span class="gos-eyebrow">What it is</span>
+    <h2 class="gos-section-h2">Your campaign calendar is already out of date.</h2>
+    <p class="gos-section-sub">Trends turn over in 72 hours. Competitors ship daily. GrowthOS collapses the brief-to-live gap from six weeks to six hours.</p>
+    <div class="gos-3col">
+      <div class="gos-feat">
+        <div class="gos-feat-title">The brief-to-live gap</div>
+        <div class="gos-feat-desc">Endless approval cycles outlive the moment they were meant to capture. Six weeks for what should take six days.</div>
+      </div>
+      <div class="gos-feat">
+        <div class="gos-feat-title">Signal blindness</div>
+        <div class="gos-feat-desc">Dashboards tell you what already happened. Culture moves in real time — GrowthOS scores 150+ live signals continuously.</div>
+      </div>
+      <div class="gos-feat">
+        <div class="gos-feat-title">Creative bottleneck</div>
+        <div class="gos-feat-desc">Talented teams ship a fraction of their thinking. Most ideas die in approval cycles before reaching the customer.</div>
+      </div>
     </div>
   </div>
-</div>
 </section>
 
-<!-- 02 · HOW IT WORKS -->
-<section id="how" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">02 · HOW IT WORKS</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How the system thinks, in four moves.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    One system that gets sharper every campaign. GrowthOS continuously loops from signal discovery to asset creation, instant delivery, and performance measurement.
-  </p>
-  <div class="max-w-4xl">
-    <div class="step-row">
-      <div class="sr-num">1</div>
+<!-- ── PULL QUOTE ── -->
+<div class="gos-quote">
+  <div class="gos-wrap">
+    <p class="gos-quote-text">"The system that manages ₹144 Cr+ in GMV on Ajio Luxe — where brand integrity is non-negotiable."</p>
+    <div class="gos-quote-attr">Validated in production · Ajio Luxe · Reliance Retail</div>
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS · Feature tabs ── -->
+<section class="gos-section">
+  <div class="gos-wrap">
+    <span class="gos-eyebrow">How it works</span>
+    <h2 class="gos-section-h2">One system. Four moves. Gets sharper every campaign.</h2>
+    <p class="gos-section-sub">GrowthOS loops continuously from signal discovery to asset creation, execution, and measurement.</p>
+    <div class="gos-tabs-layout">
+      <img src="/assets/growthos/how-it-works.jpg" alt="GrowthOS 4-step pipeline" class="gos-tab-img" />
+      <div class="gos-tab-list">
+        <div class="gos-tab-item active">
+          <div class="gos-tab-title">01 · Plan — Signals become opportunities</div>
+          <div class="gos-tab-desc">150+ live data sources scored continuously. The system identifies high-probability moments based on audience, channel, and format fit.</div>
+        </div>
+        <div class="gos-tab-item">
+          <div class="gos-tab-title">02 · Make — Briefs become assets</div>
+          <div class="gos-tab-desc">AI generates briefs, copy, photos, video, and 3D assets — perfectly aligned to your brand guidelines. Hours, not weeks.</div>
+        </div>
+        <div class="gos-tab-item">
+          <div class="gos-tab-title">03 · Execute — Assets become campaigns</div>
+          <div class="gos-tab-desc">One-click push to Meta and Google Ads. Automated localization, format resizing, and deployment in minutes.</div>
+        </div>
+        <div class="gos-tab-item">
+          <div class="gos-tab-title">04 · Measure — Outcomes become intelligence</div>
+          <div class="gos-tab-desc">Predicted vs. actual results are logged. The engine learns what works for your brand, making every next recommendation sharper.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SIGNAL COVERAGE · Split (dark) ── -->
+<section class="gos-section gos-section-dark">
+  <div class="gos-wrap">
+    <span class="gos-eyebrow">Signal coverage</span>
+    <h2 class="gos-section-h2">See the moment before your competitor does.</h2>
+    <p class="gos-section-sub" style="color:rgba(239,231,210,0.70);">Most tools react to historical data. GrowthOS monitors the world across five signal families — surfacing the three that matter to your brand today.</p>
+    <div class="gos-split" style="margin-top:48px;">
+      <img src="/assets/growthos/signal-coverage.jpg" alt="GrowthOS 5-family signal radar" class="gos-split-img" />
       <div>
-        <h4>Plan · Signals become opportunities.</h4>
-        <p>150+ live data sources scored continuously. The system identifies high-probability moments based on audience, channel, and format fit.</p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="sr-num">2</div>
-      <div>
-        <h4>Make · Briefs become assets.</h4>
-        <p>AI generates briefs, copy, photos, video, and 3D assets that adhere perfectly to your pre-loaded brand guidelines. Hours, not weeks.</p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="sr-num">3</div>
-      <div>
-        <h4>Execute · Assets become campaigns.</h4>
-        <p>One-click push to Meta and Google Ads. Automated localization, format resizing, and campaign deployment in minutes.</p>
-      </div>
-    </div>
-    <div class="step-row">
-      <div class="sr-num">4</div>
-      <div>
-        <h4>Measure · Outcomes become intelligence.</h4>
-        <p>Predicted vs. actual results are logged. The engine learns what works for your brand, making the next daily recommendation sharper.</p>
+        <div style="display:flex;gap:16px;margin-bottom:16px;flex-wrap:wrap;">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(239,231,210,0.55);text-transform:uppercase;letter-spacing:0.08em;">150+ signals tracked</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(239,231,210,0.55);text-transform:uppercase;letter-spacing:0.08em;">3/day surfaced</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(239,231,210,0.55);text-transform:uppercase;letter-spacing:0.08em;">&lt;15 min latency</span>
+        </div>
+        <div class="gos-split-feats">
+          <div>
+            <div class="gos-split-feat-title" style="color:#EFE7D2;">Cultural</div>
+            <div class="gos-split-feat-desc" style="color:rgba(239,231,210,0.65);">Search trends, social velocity, trending hashtags, creator activity.</div>
+          </div>
+          <div>
+            <div class="gos-split-feat-title" style="color:#EFE7D2;">Commercial</div>
+            <div class="gos-split-feat-desc" style="color:rgba(239,231,210,0.65);">Competitor inventory, pricing moves, promo activity.</div>
+          </div>
+          <div>
+            <div class="gos-split-feat-title" style="color:#EFE7D2;">Demand</div>
+            <div class="gos-split-feat-desc" style="color:rgba(239,231,210,0.65);">Category-level intent, regional spikes, cohort velocity.</div>
+          </div>
+          <div>
+            <div class="gos-split-feat-title" style="color:#EFE7D2;">Performance + Macro</div>
+            <div class="gos-split-feat-desc" style="color:rgba(239,231,210,0.65);">Live campaign telemetry, weather, festivals, and news cycles that shift buying behaviour.</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </section>
 
-<!-- 03 · SIGNAL COVERAGE -->
-<section id="signals" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">03 · SIGNAL COVERAGE</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">See the moment before your competitor does.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    Most marketing tools react only to historical dashboard data. GrowthOS monitors the world continuously across five signal families, surfacing the three that matter to your brand today.
-  </p>
-  <div class="grid md:grid-cols-3 gap-4 mb-10">
-    <div class="metric-tile"><div class="mt-num">150+</div><div class="mt-label">Live signals tracked</div></div>
-    <div class="metric-tile"><div class="mt-num">3 / day</div><div class="mt-label">Surfaced opportunities</div></div>
-    <div class="metric-tile"><div class="mt-num">&lt; 15 min</div><div class="mt-label">Signal latency</div></div>
+<!-- ── PROOF · Ajio Luxe ── -->
+<section class="gos-section">
+  <div class="gos-wrap">
+    <span class="gos-eyebrow">Proof</span>
+    <h2 class="gos-section-h2">Proven where the stakes are highest.</h2>
+    <p class="gos-section-sub">Validated in production managing luxury fashion e-commerce — complex catalogs, demanding brand guidelines, high-net-worth audiences.</p>
+    <img src="/assets/growthos/proof-ajio.jpg" alt="Ajio Luxe proof — ₹144 Cr+ GMV" class="gos-full-img" />
   </div>
-  <div class="grid md:grid-cols-5 gap-3 mb-8">
-    <div class="pillar-card"><div class="pc-eyebrow">Family 1</div><h3>Cultural</h3><p>Search trends, social velocity, trending hashtags, creator activity.</p></div>
-    <div class="pillar-card"><div class="pc-eyebrow">Family 2</div><h3>Commercial</h3><p>Competitor inventory, pricing moves, promo activity.</p></div>
-    <div class="pillar-card"><div class="pc-eyebrow">Family 3</div><h3>Demand</h3><p>Category-level intent, regional spikes, cohort velocity.</p></div>
-    <div class="pillar-card"><div class="pc-eyebrow">Family 4</div><h3>Performance</h3><p>Live campaign telemetry feeding the reinforcement loop.</p></div>
-    <div class="pillar-card"><div class="pc-eyebrow">Family 5</div><h3>Macro</h3><p>Weather, festivals, news cycles that change buying behaviour.</p></div>
-  </div>
-</div>
 </section>
 
-<!-- 04 · AJIO LUXE PROOF -->
-<section id="proof" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">04 · PROOF</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Proven where the stakes are highest.<br/>Validated with Ajio Luxe.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    GrowthOS isn't a prototype. The system has been validated in production managing luxury fashion e-commerce — complex catalogs, demanding brand guidelines, and high-net-worth audiences.
-  </p>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="metric-tile"><div class="mt-num">₹144 Cr+</div><div class="mt-label">GMV managed through signal engine</div></div>
-    <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">SLA from trend spot to live campaign</div></div>
+<!-- ── LIVE DEMO ── -->
+<section class="gos-section" id="demo" style="background: var(--bg-soft, #F0E9D8);">
+  <div class="gos-wrap">
+    <span class="gos-eyebrow">Live demo</span>
+    <h2 class="gos-section-h2">Try it — the same system running Ajio Luxe.</h2>
+    <p class="gos-section-sub">Live SIT environment. Open in a new tab for full functionality.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px;">
+      <div style="border:1.5px solid var(--gos-border);border-radius:14px;overflow:hidden;background:var(--gos-card);">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--gos-border);display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-weight:700;font-size:14px;color:var(--gos-ink);">Ajio Luxe Marketing OS</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gos-muted);">marketing.sit.ccpz0.de</div>
+          </div>
+          <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="gos-btn gos-btn-primary" style="font-size:13px;padding:8px 16px;">Open SIT →</a>
+        </div>
+        <div style="padding:24px 20px;font-size:13px;color:var(--gos-muted);">The live production system managing ₹144 Cr+ GMV. Full signal engine, campaign builder, and performance loop.</div>
+      </div>
+      <div style="border:1.5px solid var(--gos-border);border-radius:14px;overflow:hidden;background:var(--gos-card);">
+        <div style="padding:16px 20px;border-bottom:1px solid var(--gos-border);display:flex;justify-content:space-between;align-items:center;">
+          <div>
+            <div style="font-weight:700;font-size:14px;color:var(--gos-ink);">GrowthOS Landing</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gos-muted);">growthoslp-ngvifjlp.manus.space</div>
+          </div>
+          <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="gos-btn gos-btn-secondary" style="font-size:13px;padding:8px 16px;">Open →</a>
+        </div>
+        <div style="padding:24px 20px;font-size:13px;color:var(--gos-muted);">The public-facing GrowthOS product landing page — overview, positioning, and onboarding flow.</div>
+      </div>
+    </div>
   </div>
-  <blockquote class="mt-10 max-w-3xl text-lg italic" style="color: var(--ink); border-left: 3px solid var(--accent); padding-left: 20px;">
-    The platform handles enterprise complexity and luxury brand guidelines with zero compromises. It proves the signal model works where brand integrity is non-negotiable.
-  </blockquote>
-</div>
 </section>
 
-<!-- 05 · LIVE DEMO -->
-<section id="demo" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">05 · LIVE DEMO</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Try it · Ajio Luxe Marketing OS (SIT).</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.6;">
-    Live SIT environment — the same system that runs ₹144 Cr+ in GMV on Ajio Luxe. Open it in a new tab for full functionality, or preview below.
-  </p>
-  <div class="demo-card mb-8">
-    <div class="demo-card-head">
+<!-- ── PRICING ── -->
+<section class="gos-section" id="commercials">
+  <div class="gos-wrap">
+    <span class="gos-eyebrow">Commercials</span>
+    <h2 class="gos-section-h2">Start without a procurement war.</h2>
+    <p class="gos-section-sub">Transparent pricing. No setup fees, no per-asset charges. Annual billing saves 20%.</p>
+    <img src="/assets/growthos/pricing-tiers.jpg" alt="GrowthOS pricing tiers" class="gos-full-img" style="max-width:800px;margin-left:auto;margin-right:auto;display:block;" />
+    <div class="gos-pricing-grid">
+      <div class="gos-price-card">
+        <div class="gos-price-tier">Starter</div>
+        <div class="gos-price-amount">₹15K–25K</div>
+        <div class="gos-price-period">per month</div>
+        <hr class="gos-price-divider" />
+        <ul class="gos-price-features">
+          <li>8 active campaigns / month</li>
+          <li>Top 5 signals surfaced</li>
+          <li>Manual product curation</li>
+          <li>Photos &amp; video creative assets</li>
+        </ul>
+      </div>
+      <div class="gos-price-card featured">
+        <div class="gos-price-badge">Most chosen</div>
+        <div class="gos-price-tier">Growth</div>
+        <div class="gos-price-amount">₹50K–75K</div>
+        <div class="gos-price-period">per month</div>
+        <hr class="gos-price-divider" />
+        <ul class="gos-price-features">
+          <li>20 active campaigns / month</li>
+          <li>Top 10 signals + instant alerts</li>
+          <li>Smart automated curation</li>
+          <li>Service-mode creative</li>
+          <li>Priority 48-hr SLA</li>
+        </ul>
+      </div>
+      <div class="gos-price-card">
+        <div class="gos-price-tier">Enterprise POC</div>
+        <div class="gos-price-amount">₹4L</div>
+        <div class="gos-price-period">30-day pilot</div>
+        <hr class="gos-price-divider" />
+        <ul class="gos-price-features">
+          <li>Unlimited campaigns</li>
+          <li>Full real-time signal stack</li>
+          <li>Custom signal modeling</li>
+          <li>Dedicated strategy + training</li>
+          <li>Custom integrations</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUPPORT ── -->
+<section class="gos-support">
+  <div class="gos-wrap">
+    <h2 class="gos-section-h2" style="text-align:center;">You've got the brief. We've got the engine.</h2>
+    <div class="gos-support-grid">
       <div>
-        <div class="font-semibold" style="color: var(--ink);">Ajio Luxe Marketing OS</div>
-        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">marketing.sit.ccpz0.de</div>
+        <div class="gos-support-title">Dedicated onboarding</div>
+        <div class="gos-support-desc">Strategy session, brand guidelines upload, and signal calibration in the first week.</div>
       </div>
-      <div class="flex gap-2">
-        <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="cta-link">Open SIT demo →</a>
-      </div>
-    </div>
-    <div class="demo-card-body">
-      <iframe src="https://marketing.sit.ccpz0.de/" style="width:100%; height: 640px; border: 1px solid var(--border-soft); border-radius: 8px;" title="Ajio Luxe Marketing OS · SIT"></iframe>
-      <p class="text-xs mt-3" style="color: var(--ink-muted);">Note: If the embed is blocked by frame restrictions, use the "Open SIT demo" button above.</p>
-    </div>
-  </div>
-  <div class="demo-card">
-    <div class="demo-card-head">
       <div>
-        <div class="font-semibold" style="color: var(--ink);">GrowthOS landing</div>
-        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">growthoslp-ngvifjlp.manus.space</div>
+        <div class="gos-support-title">48-hr SLA on Growth+</div>
+        <div class="gos-support-desc">From trend spot to live campaign in under 48 hours — guaranteed on Growth and Enterprise plans.</div>
       </div>
-      <div class="flex gap-2">
-        <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="cta-link">Open landing →</a>
+      <div>
+        <div class="gos-support-title">Continuous improvement</div>
+        <div class="gos-support-desc">Every campaign makes the model smarter. Performance data feeds back into the signal engine automatically.</div>
       </div>
-    </div>
-    <div class="demo-card-body">
-      <iframe src="https://growthoslp-ngvifjlp.manus.space" style="width:100%; height: 640px; border: 1px solid var(--border-soft); border-radius: 8px;" title="GrowthOS landing"></iframe>
     </div>
   </div>
-</div>
 </section>
 
-<!-- 06 · COMMERCIALS -->
-<section id="commercials" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">06 · COMMERCIALS</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Start without a procurement war.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    Three ways to start. Transparent pricing, no setup fees, no per-asset charges, no scope theater. Annual billing saves 20%.
-  </p>
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="pillar-card">
-      <div class="pc-eyebrow">Starter</div>
-      <h3>₹15K–25K / month</h3>
-      <p>8 active campaigns / month · top 5 signals surfaced · manual product curation · photos & video creative assets.</p>
-    </div>
-    <div class="pillar-card" style="border-color: var(--accent); border-width: 2px;">
-      <div class="pc-eyebrow">Growth · most chosen</div>
-      <h3>₹50K–75K / month</h3>
-      <p>20 active campaigns / month · top 10 signals + instant alerts · smart automated curation · service-mode creative · priority 48-hr SLA.</p>
-    </div>
-    <div class="pillar-card">
-      <div class="pc-eyebrow">Enterprise POC</div>
-      <h3>₹4L / 30-day pilot</h3>
-      <p>Unlimited campaigns · full real-time signal stack · custom signal modeling · dedicated strategy + hands-on training · custom integrations.</p>
+<!-- ── FINAL CTA ── -->
+<section class="gos-cta-final">
+  <div class="gos-wrap">
+    <h2 class="gos-cta-final-h2">Ready to ship at the speed of culture?</h2>
+    <p class="gos-cta-final-sub">Start with a 30-day Enterprise POC — no procurement, no setup fees.</p>
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+      <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="gos-btn gos-btn-primary">Open GrowthOS →</a>
+      <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="gos-btn gos-btn-secondary">Try Ajio Luxe demo →</a>
     </div>
   </div>
-</div>
 </section>
 
-<!-- META -->
-<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
-  <div class="grid md:grid-cols-3 gap-6">
-    <div>
-      <div class="font-semibold mb-1" style="color: var(--ink);">Status</div>
-      <div>Live · Ajio Luxe production</div>
-    </div>
-    <div>
-      <div class="font-semibold mb-1" style="color: var(--ink);">Owners</div>
-      <div>Marketing OS team · Fynd × Reliance Retail</div>
-    </div>
-    <div>
-      <div class="font-semibold mb-1" style="color: var(--ink);">Links</div>
-      <div><a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Landing</a> · <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">SIT demo</a></div>
-    </div>
-  </div>
-</div></section>
+</div><!-- /.gos-page -->
 
-<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
-  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
-</div></footer>
+<!-- ── FOOTER ── -->
+<footer style="background: var(--ink, #15140F); color: rgba(239,231,210,0.5); padding: 24px 32px; font-family: 'JetBrains Mono', monospace; font-size: 11px; text-align: center; letter-spacing: 0.04em;">
+  © 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only
+</footer>
 
 <script>
+// Sticky tab highlighting
 (function() {
-  var toc = document.getElementById('story-toc');
-  if (!toc) return;
-  var links = Array.from(toc.querySelectorAll('a'));
-  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
-  function setActive(id) {
-    links.forEach(function(a) {
-      var hashId = a.getAttribute('href').slice(1);
-      a.classList.toggle('is-active', hashId === id);
+  var tabs = document.querySelectorAll('.gos-tab-item');
+  tabs.forEach(function(tab, i) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      tab.classList.add('active');
     });
-    var active = toc.querySelector('a.is-active');
-    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
-  }
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) setActive(e.target.id);
-    });
-  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
-  ids.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) io.observe(el);
   });
 })();
 </script>
-
-</body>
-</html>
