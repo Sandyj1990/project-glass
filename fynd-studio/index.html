@@ -182,284 +182,365 @@
 </div>
 </div>
 
-<!-- HERO -->
-<section class="hero-grad pt-24 pb-24 border-b" style="border-color: var(--border); background-image: url('/assets/hero-fynd-studio.jpg'); background-size: cover; background-position: center right; position: relative;">
-<div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(239,231,210,0.97) 0%,rgba(239,231,210,0.92) 45%,rgba(239,231,210,0.55) 70%,rgba(239,231,210,0.10) 100%);pointer-events:none;"></div>
-<div class="max-w-7xl mx-auto px-6" style="position:relative;z-index:1;">
-  <div class="flex items-center gap-3 mb-6">
-    <span class="pill-live">Live · in production</span>
-    <span class="pill-proposal">AI Media Pipeline</span>
-  </div>
-  <h1 class="display mb-6" style="font-size: clamp(44px, 7vw, 84px); line-height: 0.98; color: var(--ink);">
-    Fynd Studio.<br/><span style="color: var(--accent);">Speed of culture.<br/>Scale of one.</span>
-  </h1>
-  <p class="text-lg md:text-xl max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.5;">
-    From brief to broadcast in 48 hours. The creative bottleneck replaced with an AI-native system that compounds — every campaign makes the next one better. Trusted by Reliance Industries, NMACC, Superdry, Reliance Jewels, Yousta, Azorte, Satya Paul, Trends.
-  </p>
-  <div class="flex flex-wrap gap-3 mb-12">
-    <a href="https://fyndai-cvvnfgtn.manus.space" target="_blank" rel="noopener" class="cta-link">Open Fynd Studio →</a>
-    <a href="/tribe-v2" class="cta-link accent">Tribe v2 · virality predictor R&D →</a>
-    <a href="#demo" class="cta-link secondary">Jump to live demo ↓</a>
-  </div>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    <div class="metric-tile"><div class="mt-num">9.3M+</div><div class="mt-label">Views · single campaign</div></div>
-    <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">Brief → first cut</div></div>
-    <div class="metric-tile"><div class="mt-num">85 %</div><div class="mt-label">Cost savings vs traditional</div></div>
-    <div class="metric-tile"><div class="mt-num">15+</div><div class="mt-label">Brands served · global</div></div>
+<!-- ═══════════════════════════════════════════════════════════════
+     FYND STUDIO · Redesigned with Shopify Channels layout language
+     ═══════════════════════════════════════════════════════════════ -->
+
+<!-- HERO ─ split: left headline + metrics, right pipeline illustration -->
+<section class="hero-grad pt-24 pb-16 border-b" style="border-color:var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <!-- Left: headline + metrics -->
+    <div>
+      <div class="flex items-center gap-3 mb-5">
+        <span class="pill-live">Live · in production</span>
+        <span class="pill-proposal">AI Media Pipeline</span>
+      </div>
+      <h1 class="display mb-5" style="font-size:clamp(40px,6vw,76px);line-height:1.0;color:var(--ink);">
+        Brief to broadcast.<br/><span style="color:var(--accent);">In 48 hours.</span>
+      </h1>
+      <p class="text-lg mb-8" style="color:var(--ink-muted);line-height:1.6;max-width:480px;">
+        The AI-native creative system replacing the agency bottleneck. Every campaign makes the next one better. Trusted by Reliance Industries, NMACC, Superdry, Reliance Jewels, Yousta, Azorte, Satya Paul, Trends.
+      </p>
+      <div class="flex flex-wrap gap-3 mb-10">
+        <a href="https://fyndai-cvvnfgtn.manus.space" target="_blank" rel="noopener" class="cta-link">Open Fynd Studio →</a>
+        <a href="#demo" class="cta-link secondary">See live demo ↓</a>
+      </div>
+      <!-- 4-metric strip -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="metric-tile"><div class="mt-num">9.3M+</div><div class="mt-label">Views · single campaign</div></div>
+        <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">Brief → first cut</div></div>
+        <div class="metric-tile"><div class="mt-num">−85%</div><div class="mt-label">Cost vs traditional</div></div>
+        <div class="metric-tile"><div class="mt-num">15+</div><div class="mt-label">Brands served</div></div>
+      </div>
+    </div>
+    <!-- Right: pipeline illustration -->
+    <div class="hidden md:block">
+      <img src="/assets/fynd-studio/hero-pipeline.jpg" alt="Fynd Studio AI pipeline" class="w-full rounded-2xl" style="box-shadow:0 8px 40px rgba(0,0,0,0.10);" loading="eager"/>
+    </div>
   </div>
 </div>
 </section>
 
-<!-- 01 · WHAT IT IS -->
-<section id="what" class="py-16 border-b" style="border-color: var(--border);">
+<!-- CHANNEL TABS ─ anchor nav (Shopify-style) -->
+<nav class="sticky top-14 z-30 border-b" style="background:var(--bg);border-color:var(--border);">
 <div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">01 · WHAT IT IS</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">The next-generation AI media pipeline.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    Fynd Studio is the production system behind the campaigns shipped on Ajio, Metro Wholesale, Reliance Digital, JioMart, Reliance Jewels, Swadesh, Nasher Miles. Image generation, cinematic video, hyper-localization, AI character IP — all priced per format, not per hour.
-  </p>
+  <div class="flex gap-6 overflow-x-auto" style="scrollbar-width:none;">
+    <a href="#what" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">What it is</a>
+    <a href="#shift" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">The shift</a>
+    <a href="#formats" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">Formats</a>
+    <a href="#portfolio" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">Portfolio</a>
+    <a href="#tribe" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">R&D</a>
+    <a href="#demo" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">Live demo</a>
+    <a href="#retainers" class="py-4 text-sm font-medium whitespace-nowrap border-b-2 border-transparent hover:border-current" style="color:var(--ink-muted);">Retainers</a>
+  </div>
+</div>
+</nav>
+
+<!-- 01 · WHAT IT IS ─ eyebrow + headline left, body right + 3-col cards below -->
+<section id="what" class="py-20 border-b" style="border-color:var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="grid md:grid-cols-2 gap-12 items-start mb-14">
+    <div>
+      <div class="cap-num mb-3">01 · What it is</div>
+      <h2 class="display-2 text-3xl md:text-4xl" style="color:var(--ink);">The next-generation AI media pipeline.</h2>
+    </div>
+    <div class="md:pt-10">
+      <p class="text-base md:text-lg" style="color:var(--ink-muted);line-height:1.7;">
+        Production system behind campaigns shipped on Ajio, Metro Wholesale, Reliance Digital, JioMart, Reliance Jewels, Swadesh, Nasher Miles. Image generation, cinematic video, hyper-localization, AI character IP — priced per format, not per hour.
+      </p>
+    </div>
+  </div>
+  <!-- 3-col capability cards -->
+  <div class="grid md:grid-cols-3 gap-5 mb-14">
+    <div class="card p-6">
+      <div class="cap-num mb-2" style="color:var(--accent);">Image gen v2</div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Product → lifestyle pipeline</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">High-fidelity product-to-lifestyle generation. Live since March 2026.</p>
+      <div class="mt-3 text-xs font-medium" style="color:var(--accent);">Live</div>
+    </div>
+    <div class="card p-6">
+      <div class="cap-num mb-2" style="color:var(--accent);">Cinematic video engine</div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Stable diffusion + custom Lora</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">Cinematic environments, brand-locked lighting and palette. Live in the Mumbai cluster.</p>
+      <div class="mt-3 text-xs font-medium" style="color:var(--accent);">Live</div>
+    </div>
+    <div class="card p-6">
+      <div class="cap-num mb-2" style="color:var(--accent);">Tirupur partner factory</div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Cut + sew with real-time QC</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">Automated cut + sew integration with AI quality control checks at every step.</p>
+      <div class="mt-3 text-xs font-medium" style="color:var(--accent);">Live</div>
+    </div>
+  </div>
+  <!-- Full-width illustration -->
+  <img src="/assets/fynd-studio/what-it-is.jpg" alt="Fynd Studio capabilities" class="w-full rounded-2xl" style="box-shadow:0 4px 24px rgba(0,0,0,0.08);" loading="lazy"/>
+</div>
+</section>
+
+<!-- 02 · THE SHIFT ─ dark section (Shopify social media section style) -->
+<section id="shift" class="py-20 border-b" style="border-color:var(--border);background:var(--ink);color:white;">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="grid md:grid-cols-2 gap-12 items-center mb-14">
+    <div>
+      <div class="cap-num mb-3" style="color:rgba(255,255,255,0.5);">02 · The shift</div>
+      <h2 class="display-2 text-3xl md:text-4xl" style="color:white;">From agency weeks to AI hours.</h2>
+    </div>
+    <div class="md:pt-10">
+      <p class="text-base md:text-lg" style="color:rgba(255,255,255,0.7);line-height:1.7;">
+        Traditional creative is priced by the hour, scaled by hiring, slowed by hand-offs. Trends have a 7–14 day lifespan. Your agency delivers in 6 weeks. The math no longer works.
+      </p>
+    </div>
+  </div>
+  <!-- 3 stat cards on dark -->
+  <div class="grid md:grid-cols-3 gap-5 mb-14">
+    <div class="card p-6 card-dark">
+      <div class="mt-num" style="color:var(--accent);">Same day → 48h</div>
+      <div class="mt-label" style="color:rgba(255,255,255,0.6);">Delivery SLA</div>
+    </div>
+    <div class="card p-6 card-dark">
+      <div class="mt-num" style="color:var(--accent);">−85%</div>
+      <div class="mt-label" style="color:rgba(255,255,255,0.6);">Production cost</div>
+    </div>
+    <div class="card p-6 card-dark">
+      <div class="mt-num" style="color:var(--accent);">Hundreds</div>
+      <div class="mt-label" style="color:rgba(255,255,255,0.6);">Tailored variants per campaign</div>
+    </div>
+  </div>
+  <!-- Comparison illustration -->
+  <img src="/assets/fynd-studio/shift-comparison.jpg" alt="Traditional vs AI-native production" class="w-full rounded-2xl" style="box-shadow:0 4px 24px rgba(0,0,0,0.3);" loading="lazy"/>
+</div>
+</section>
+
+<!-- 03 · FORMATS ─ eyebrow + headline + 6-card grid (Shopify channel cards style) -->
+<section id="formats" class="py-20 border-b" style="border-color:var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="grid md:grid-cols-2 gap-12 items-start mb-14">
+    <div>
+      <div class="cap-num mb-3">03 · Formats</div>
+      <h2 class="display-2 text-3xl md:text-4xl" style="color:var(--ink);">Every format your brand needs.</h2>
+    </div>
+    <div class="md:pt-10">
+      <p class="text-base md:text-lg" style="color:var(--ink-muted);line-height:1.7;">
+        Six production formats, each priced per output — not per hour. From same-day static carousels to 14-day AI character IP builds.
+      </p>
+    </div>
+  </div>
   <div class="grid md:grid-cols-3 gap-5">
-    <div class="format-card">
-      <div class="fc-eyebrow">Image gen v2</div>
-      <h3>Product → lifestyle pipeline</h3>
-      <p>High-fidelity product-to-lifestyle generation running since March 2026.</p>
-      <div class="fc-foot">Live</div>
+    <div class="card p-6">
+      <div class="flex justify-between items-center mb-3">
+        <span class="cap-num" style="color:var(--accent);">Static</span>
+        <span class="text-xs font-mono" style="color:var(--ink-muted);">24 hrs SLA</span>
+      </div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Lifestyle & catalogue imagery</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">AI-generated lifestyle scenes, product carousels, and catalogue statics. Hundreds of variants per SKU.</p>
+      <div class="mt-4 text-xs" style="color:var(--ink-muted);">Top-of-funnel awareness · CAC reduction</div>
     </div>
-    <div class="format-card">
-      <div class="fc-eyebrow">Cinematic video engine</div>
-      <h3>Stable diffusion + custom Lora</h3>
-      <p>Cinematic environments, brand-locked lighting and palette. Live in the Mumbai cluster.</p>
-      <div class="fc-foot">Live</div>
+    <div class="card p-6">
+      <div class="flex justify-between items-center mb-3">
+        <span class="cap-num" style="color:var(--accent);">Video</span>
+        <span class="text-xs font-mono" style="color:var(--ink-muted);">48 hrs SLA</span>
+      </div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Short-form hooks & social spots</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">6–15s scroll-stoppers designed to capture attention in crowded social feeds.</p>
+      <div class="mt-4 text-xs" style="color:var(--ink-muted);">Top-of-funnel awareness</div>
     </div>
-    <div class="format-card">
-      <div class="fc-eyebrow">Tirupur partner factory</div>
-      <h3>Cut + sew with real-time QC</h3>
-      <p>Automated cut + sew integration with AI quality control checks at every step.</p>
-      <div class="fc-foot">Live</div>
+    <div class="card p-6">
+      <div class="flex justify-between items-center mb-3">
+        <span class="cap-num" style="color:var(--accent);">Video</span>
+        <span class="text-xs font-mono" style="color:var(--ink-muted);">48 hrs SLA</span>
+      </div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Short-form hooks & social spots</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">6–15s scroll-stoppers designed to capture attention in crowded social feeds.</p>
+      <div class="mt-4 text-xs" style="color:var(--ink-muted);">Top-of-funnel awareness</div>
     </div>
-  </div>
-</div>
-</section>
-
-<!-- 02 · THE SHIFT -->
-<section id="shift" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">02 · THE SHIFT</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">From inventory-heavy retail to AI-native ultra fast retail.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    Traditional creative production is priced by the hour, scaled by hiring, slowed by hand-offs. Trends have a 7–14 day lifespan. Your agency delivers in 6 weeks. The math no longer works.
-  </p>
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="metric-tile"><div class="mt-num">Same day → 48h</div><div class="mt-label">Delivery SLA</div></div>
-    <div class="metric-tile"><div class="mt-num">−85%</div><div class="mt-label">Production cost</div></div>
-    <div class="metric-tile"><div class="mt-num">Hundreds</div><div class="mt-label">Tailored variants per campaign</div></div>
-  </div>
-</div>
-</section>
-
-<!-- 03 · FORMATS -->
-<section id="formats" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">03 · GEN MEDIA</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Every format your brand needs. At AI speed.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    Media outcomes as a service — priced per format, not per hour. Each format ships under a guaranteed SLA.
-  </p>
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="format-card">
-      <div class="fc-eyebrow"><span>Static</span><span>24 hrs SLA</span></div>
-      <h3>Marketing images & carousels</h3>
-      <p>High-fidelity product displays, custom lifestyle backgrounds, social media carousels for retargeting.</p>
-      <div class="fc-foot">Direct response · retargeting</div>
+    <div class="card p-6">
+      <div class="flex justify-between items-center mb-3">
+        <span class="cap-num" style="color:var(--accent);">Cinematic</span>
+        <span class="text-xs font-mono" style="color:var(--ink-muted);">48–72 hrs SLA</span>
+      </div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Product feature films</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">20s+ premium video showcasing product durability, details, and features.</p>
+      <div class="mt-4 text-xs" style="color:var(--ink-muted);">Performance marketing</div>
     </div>
-    <div class="format-card">
-      <div class="fc-eyebrow"><span>Video</span><span>48 hrs SLA</span></div>
-      <h3>UGC · creator-style cuts</h3>
-      <p>15s+ social-first testimonial cuts. Reduce CAC and build social proof across TikTok and Instagram.</p>
-      <div class="fc-foot">Social proof · CAC reduction</div>
+    <div class="card p-6">
+      <div class="flex justify-between items-center mb-3">
+        <span class="cap-num" style="color:var(--accent);">Story</span>
+        <span class="text-xs font-mono" style="color:var(--ink-muted);">3–5 days SLA</span>
+      </div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">Story-based narrative ads</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">20s+ narrative commercials focusing on emotional connection and brand depth.</p>
+      <div class="mt-4 text-xs" style="color:var(--ink-muted);">Mid-funnel consideration</div>
     </div>
-    <div class="format-card">
-      <div class="fc-eyebrow"><span>Video</span><span>48 hrs SLA</span></div>
-      <h3>Short-form hooks & social spots</h3>
-      <p>6–15s top-of-funnel scroll stoppers designed to capture attention in crowded social feeds.</p>
-      <div class="fc-foot">Top-of-funnel awareness</div>
-    </div>
-    <div class="format-card">
-      <div class="fc-eyebrow"><span>Cinematic</span><span>48–72 hrs SLA</span></div>
-      <h3>Product feature films</h3>
-      <p>20s+ premium performance video showcasing product durability, details, and features.</p>
-      <div class="fc-foot">Performance marketing</div>
-    </div>
-    <div class="format-card">
-      <div class="fc-eyebrow"><span>Story</span><span>3–5 days SLA</span></div>
-      <h3>Story-based narrative ads</h3>
-      <p>20s+ narrative-driven commercials focusing on emotional connection, customer journeys, brand depth.</p>
-      <div class="fc-foot">Mid-funnel consideration</div>
-    </div>
-    <div class="format-card">
-      <div class="fc-eyebrow"><span>IP build</span><span>14 days SLA</span></div>
-      <h3>AI character IP build</h3>
-      <p>One-time creation of an exclusive digital brand ambassador or character model owned entirely by your brand.</p>
-      <div class="fc-foot">Owned brand asset</div>
+    <div class="card p-6">
+      <div class="flex justify-between items-center mb-3">
+        <span class="cap-num" style="color:var(--accent);">IP build</span>
+        <span class="text-xs font-mono" style="color:var(--ink-muted);">14 days SLA</span>
+      </div>
+      <h3 class="text-lg font-bold mb-2" style="color:var(--ink);">AI character IP build</h3>
+      <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">One-time creation of an exclusive digital brand ambassador owned entirely by your brand.</p>
+      <div class="mt-4 text-xs" style="color:var(--ink-muted);">Owned brand asset</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- 04 · PORTFOLIO -->
-<section id="portfolio" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<!-- 04 · PORTFOLIO ─ feature spotlight (image left + case study right) -->
+<section id="portfolio" class="py-20 border-b" style="border-color:var(--border);background:var(--bg-soft);">
 <div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">04 · PORTFOLIO</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">See what 48 hours looks like.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.6;">
-    Real work. Real brands. Real results. Sample campaigns delivered entirely through the Fynd Studio AI system.
+  <div class="cap-num mb-3">04 · Portfolio</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color:var(--ink);">See what 48 hours looks like.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color:var(--ink-muted);line-height:1.6;">
+    Real work. Real brands. Real results.
   </p>
-  <div class="mb-8">
+  <!-- Brand pills -->
+  <div class="flex flex-wrap gap-2 mb-12">
     <span class="brand-pill">Metro Wholesale · 9.3M views</span>
     <span class="brand-pill">Reliance Digital · Happy Diwali</span>
     <span class="brand-pill">Swadesh · Kolhapuri AI short film</span>
     <span class="brand-pill">Nasher Miles · Perth Cabin</span>
-    <span class="brand-pill">Nasher Miles · Gangnam Bag</span>
-    <span class="brand-pill">Metro Wholesale · Chaitra Sale</span>
     <span class="brand-pill">JioMart · Future of Shopping</span>
     <span class="brand-pill">Reliance Jewels · Wow Diamonds</span>
     <span class="brand-pill">Fynd Studio · Showreel 2025</span>
   </div>
-  <div class="border rounded-xl p-6" style="border-color: var(--border); background: var(--bg);">
-    <div class="cap-num mb-3" style="color: var(--accent);">CASE STUDY · METRO WHOLESALE</div>
-    <h3 class="text-2xl font-bold mb-3" style="color: var(--ink);">9.3M+ view campaign · 85 % cost savings · 6 days end-to-end.</h3>
-    <p class="text-base mb-6" style="color: var(--ink-muted); line-height: 1.6;">
-      Metro Wholesale needed a high-impact emotional campaign for wedding season — targeting caterers and event planners. Traditional production would have taken 3-4 weeks and cost 6× more. Fynd Studio delivered in 6 days.
-    </p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-      <div class="metric-tile"><div class="mt-num">5M+</div><div class="mt-label">YouTube views</div></div>
-      <div class="metric-tile"><div class="mt-num">4.3M+</div><div class="mt-label">IG + FB views</div></div>
-      <div class="metric-tile"><div class="mt-num">−85 %</div><div class="mt-label">Cost reduction</div></div>
-      <div class="metric-tile"><div class="mt-num">6 days</div><div class="mt-label">Total delivery</div></div>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- 05 · TRIBE V2 R&D -->
-<section id="tribe" class="py-16 border-b" style="border-color: var(--border);">
-<div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">05 · R&D · VIRALITY PREDICTION</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Predict the hit, before you ship the cut.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    The next moat for AI-native creative isn't more output — it's knowing which output will work. We're tracking Meta's <strong>Tribe v2</strong> foundation model, which predicts neural responses to vision, audition and language. First-class candidate to power a virality score inside Fynd Studio.
-  </p>
-  <div class="tribe-banner">
-    <div class="tb-eyebrow">Internal R&D · Fynd Studio</div>
-    <h3>Tribe v2 demo · live materials, codebase, paper, model weights</h3>
-    <p>A full briefing on Meta's Tribe v2 — what it is, why it matters for ad creative, side-by-side with Higgsfield's virality predictor (which appears to be doing the same thing without saying so).</p>
+  <!-- Feature spotlight: image left + case study right -->
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <img src="/assets/fynd-studio/portfolio-results.jpg" alt="Metro Wholesale campaign results" class="w-full rounded-2xl" style="box-shadow:0 4px 24px rgba(0,0,0,0.08);" loading="lazy"/>
     <div>
-      <a href="/tribe-v2" class="cta-link accent">Open Tribe v2 demo page →</a>
+      <div class="cap-num mb-3" style="color:var(--accent);">Case study · Metro Wholesale</div>
+      <h3 class="text-2xl font-bold mb-4" style="color:var(--ink);">9.3M+ view campaign. 85% cost savings. 6 days end-to-end.</h3>
+      <p class="text-base mb-8" style="color:var(--ink-muted);line-height:1.7;">
+        Metro Wholesale needed a high-impact emotional campaign for wedding season — targeting caterers and event planners. Traditional production: 3–4 weeks, 6× the cost. Fynd Studio delivered in 6 days.
+      </p>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="metric-tile"><div class="mt-num">5M+</div><div class="mt-label">YouTube views</div></div>
+        <div class="metric-tile"><div class="mt-num">4.3M+</div><div class="mt-label">IG + FB views</div></div>
+        <div class="metric-tile"><div class="mt-num">−85%</div><div class="mt-label">Cost reduction</div></div>
+        <div class="metric-tile"><div class="mt-num">6 days</div><div class="mt-label">Total delivery</div></div>
+      </div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- 06 · LIVE DEMO -->
-<section id="demo" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<!-- 05 · R&D · TRIBE V2 ─ feature spotlight (text left + R&D banner right) -->
+<section id="tribe" class="py-20 border-b" style="border-color:var(--border);">
 <div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">06 · LIVE DEMO</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The Fynd Studio landing · live preview.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.6;">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <div class="cap-num mb-3">05 · R&D · Virality prediction</div>
+      <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color:var(--ink);">Predict the hit before you ship the cut.</h2>
+      <p class="text-base md:text-lg mb-8" style="color:var(--ink-muted);line-height:1.7;">
+        The next moat for AI-native creative isn't more output — it's knowing which output will work. We're tracking Meta's <strong>Tribe v2</strong> foundation model, which predicts neural responses to vision, audition, and language. First-class candidate to power a virality score inside Fynd Studio.
+      </p>
+      <a href="/tribe-v2" class="cta-link accent">Open Tribe v2 demo →</a>
+    </div>
+    <div class="card p-8" style="background:var(--bg-soft);">
+      <div class="cap-num mb-3" style="color:var(--accent);">Internal R&D · Fynd Studio</div>
+      <h3 class="text-xl font-bold mb-3" style="color:var(--ink);">Tribe v2 · live materials, codebase, paper, model weights</h3>
+      <p class="text-sm mb-4" style="color:var(--ink-muted);line-height:1.6;">A full briefing on Meta's Tribe v2 — what it is, why it matters for ad creative, side-by-side with Higgsfield's virality predictor.</p>
+      <a href="/tribe-v2" class="cta-link">Open Tribe v2 demo page →</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 · LIVE DEMO ─ full-width embed card -->
+<section id="demo" class="py-20 border-b" style="border-color:var(--border);background:var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · Live demo</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color:var(--ink);">The Fynd Studio landing · live preview.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-8" style="color:var(--ink-muted);line-height:1.6;">
     Embedded below. Use "Open Fynd Studio" for the full interactive experience.
   </p>
   <div class="demo-card">
     <div class="demo-card-head">
       <div>
-        <div class="font-semibold" style="color: var(--ink);">Fynd Studio</div>
-        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">fyndai-cvvnfgtn.manus.space</div>
+        <div class="font-semibold" style="color:var(--ink);">Fynd Studio</div>
+        <div class="text-xs" style="color:var(--ink-muted);font-family:'JetBrains Mono',monospace;margin-top:2px;">fyndai-cvvnfgtn.manus.space</div>
       </div>
       <div class="flex gap-2">
         <a href="https://fyndai-cvvnfgtn.manus.space" target="_blank" rel="noopener" class="cta-link">Open Fynd Studio →</a>
       </div>
     </div>
     <div class="demo-card-body">
-      <iframe src="https://fyndai-cvvnfgtn.manus.space" style="width:100%; height: 720px; border: 1px solid var(--border-soft); border-radius: 8px;" title="Fynd Studio"></iframe>
+      <iframe src="https://fyndai-cvvnfgtn.manus.space" style="width:100%;height:720px;border:1px solid var(--border-soft);border-radius:8px;" title="Fynd Studio"></iframe>
     </div>
   </div>
 </div>
 </section>
 
-<!-- 07 · RETAINERS -->
-<section id="retainers" class="py-16 border-b" style="border-color: var(--border);">
+<!-- 07 · RETAINERS ─ illustration left + 3 tier cards right -->
+<section id="retainers" class="py-20 border-b" style="border-color:var(--border);">
 <div class="max-w-7xl mx-auto px-6">
-  <div class="cap-num mb-3">07 · RETAINERS</div>
-  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Choose your pace. Scale as you grow.</h2>
-  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
-    Flexible retainer tiers designed for outcome, not overhead. All plans include a dedicated creative lead and 48-hour SLA.
-  </p>
-  <div class="grid md:grid-cols-3 gap-5">
-    <div class="format-card">
-      <div class="fc-eyebrow">Starter · brand growth</div>
-      <h3>~30 short-form video / mo</h3>
-      <p>2 long-form cinematic · 2 custom static lifestyle carousels · localized in up to 4 regional languages.</p>
+  <div class="grid md:grid-cols-2 gap-12 items-start mb-14">
+    <div>
+      <div class="cap-num mb-3">07 · Retainers</div>
+      <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color:var(--ink);">Choose your pace. Scale as you grow.</h2>
+      <p class="text-base md:text-lg mb-8" style="color:var(--ink-muted);line-height:1.7;">
+        Flexible retainer tiers designed for outcome, not overhead. All plans include a dedicated creative lead and 48-hour SLA.
+      </p>
+      <img src="/assets/fynd-studio/retainers-tiers.jpg" alt="Retainer tiers illustration" class="w-full rounded-2xl" style="box-shadow:0 4px 24px rgba(0,0,0,0.08);" loading="lazy"/>
     </div>
-    <div class="format-card" style="border-color: var(--accent); border-width: 2px;">
-      <div class="fc-eyebrow">Professional · most popular</div>
-      <h3>~80 short-form video / mo</h3>
-      <p>5 long-form cinematic · 1 master cinematic brand film · unlimited static · 8 regional languages.</p>
+    <div class="flex flex-col gap-5 md:pt-14">
+      <div class="card p-6">
+        <div class="cap-num mb-2" style="color:var(--accent);">Starter · brand growth</div>
+        <h3 class="text-xl font-bold mb-2" style="color:var(--ink);">~30 short-form video / mo</h3>
+        <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">2 long-form cinematic · 2 custom static lifestyle carousels · localized in up to 4 regional languages.</p>
+      </div>
+      <div class="card p-6" style="border-color:var(--accent);border-width:2px;">
+        <div class="cap-num mb-2" style="color:var(--accent);">Professional · most popular</div>
+        <h3 class="text-xl font-bold mb-2" style="color:var(--ink);">~80 short-form video / mo</h3>
+        <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">5 long-form cinematic · 1 master cinematic brand film · unlimited static · 8 regional languages.</p>
+      </div>
+      <div class="card p-6">
+        <div class="cap-num mb-2" style="color:var(--accent);">Enterprise · market leader</div>
+        <h3 class="text-xl font-bold mb-2" style="color:var(--ink);">Unlimited short-form</h3>
+        <p class="text-sm" style="color:var(--ink-muted);line-height:1.6;">12 long-form cinematic · 3 master brand films · dedicated Creative Director & Art Director · 12 regional languages.</p>
+      </div>
     </div>
-    <div class="format-card">
-      <div class="fc-eyebrow">Enterprise · market leader</div>
-      <h3>Unlimited short-form</h3>
-      <p>12 long-form cinematic · 3 master brand films · dedicated Creative Director & Art Director · 12 regional languages.</p>
-    </div>
+  </div>
+</div>
+</section>
+
+<!-- FINAL CTA ─ dark centered (Shopify-style) -->
+<section class="py-24" style="background:var(--ink);">
+<div class="max-w-3xl mx-auto px-6 text-center">
+  <h2 class="display-2 text-3xl md:text-4xl mb-4" style="color:white;">Start creating at the speed of culture.</h2>
+  <p class="text-base mb-8" style="color:rgba(255,255,255,0.65);line-height:1.7;">Brief to broadcast in 48 hours. Join Reliance Industries, NMACC, Superdry, and 15+ brands already on Fynd Studio.</p>
+  <div class="flex flex-wrap gap-4 justify-center">
+    <a href="https://fyndai-cvvnfgtn.manus.space" target="_blank" rel="noopener" style="display:inline-block;padding:14px 28px;background:var(--accent);color:white;border-radius:8px;font-weight:600;text-decoration:none;">Open Fynd Studio →</a>
+    <a href="#demo" style="display:inline-block;padding:14px 28px;background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.35);border-radius:8px;font-weight:600;text-decoration:none;">See live demo ↓</a>
   </div>
 </div>
 </section>
 
 <!-- META -->
-<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+<section class="py-10 border-b" style="border-color:var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color:var(--ink-muted);">
   <div class="grid md:grid-cols-3 gap-6">
-    <div>
-      <div class="font-semibold mb-1" style="color: var(--ink);">Status</div>
-      <div>Live · in production across 15+ brands</div>
-    </div>
-    <div>
-      <div class="font-semibold mb-1" style="color: var(--ink);">Owners</div>
-      <div>Fynd Studio team · Fynd × Reliance Retail</div>
-    </div>
-    <div>
-      <div class="font-semibold mb-1" style="color: var(--ink);">Links</div>
-      <div><a href="https://fyndai-cvvnfgtn.manus.space" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Landing</a> · <a href="/tribe-v2" style="color: var(--accent); text-decoration: underline;">Tribe v2 R&D</a></div>
-    </div>
+    <div><div class="font-semibold mb-1" style="color:var(--ink);">Status</div><div>Live · in production across 15+ brands</div></div>
+    <div><div class="font-semibold mb-1" style="color:var(--ink);">Owners</div><div>Fynd Studio team · Fynd × Reliance Retail</div></div>
+    <div><div class="font-semibold mb-1" style="color:var(--ink);">Links</div><div><a href="https://fyndai-cvvnfgtn.manus.space" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:underline;">Landing</a> · <a href="/tribe-v2" style="color:var(--accent);text-decoration:underline;">Tribe v2 R&D</a></div></div>
   </div>
 </div></section>
-
-<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+<footer class="py-10" style="background:var(--ink);color:white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity:0.7;">
   <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
 </div></footer>
-
 <script>
 (function() {
-  var toc = document.getElementById('story-toc');
-  if (!toc) return;
-  var links = Array.from(toc.querySelectorAll('a'));
-  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  var tabs = document.querySelectorAll('nav a[href^="#"]');
+  var ids = Array.from(tabs).map(function(a) { return a.getAttribute('href').slice(1); });
   function setActive(id) {
-    links.forEach(function(a) {
+    tabs.forEach(function(a) {
       var hashId = a.getAttribute('href').slice(1);
-      a.classList.toggle('is-active', hashId === id);
+      a.style.borderBottomColor = hashId === id ? 'var(--accent)' : 'transparent';
+      a.style.color = hashId === id ? 'var(--ink)' : 'var(--ink-muted)';
     });
-    var active = toc.querySelector('a.is-active');
-    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
   }
   var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) {
-      if (e.isIntersecting) setActive(e.target.id);
-    });
+    entries.forEach(function(e) { if (e.isIntersecting) setActive(e.target.id); });
   }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
-  ids.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) io.observe(el);
-  });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (el) io.observe(el); });
 })();
 </script>
-
 </body>
 </html>
