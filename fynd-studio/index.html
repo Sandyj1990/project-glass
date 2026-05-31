@@ -45,129 +45,98 @@
 </head>
 <body>
 
-<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
-<a href="/" class="flex items-center gap-3 shrink-0">
-  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
-  <div class="hidden sm:flex items-center gap-2">
-    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
-    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+<div class="topbar">
+  <div class="topbar-inner container">
+    <span><span class="pulse"></span><b>Project Glass</b> &middot; Confidential</span>
+    <span class="mid">
+      <span>22 platforms live</span>
+      <span>700 K+ orders / day</span>
+      <span>1,056 people building</span>
+    </span>
+    <span class="right">
+      <span>v0.8.4</span>
+    </span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="topnav">
+<div class="topnav-inner">
+<a href="/" class="brand">
+  <div class="brand-mark">
+    <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd logo" />
+  </div>
+  <div class="brand-meta">
+    <b>Fynd</b>
+    RRVL &middot; JPL
   </div>
 </a>
-<div class="hidden md:flex items-center gap-1">
-  <a href="/" class="nav-link">Home</a>
-  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
-    <div class="nav-mega-panel platforms-mega">
-      <div class="platforms-grid">
-        <a href="/jcp" class="pcard p-jcp">
-          <div class="pc-bg"></div>
-          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
-          <div class="pc-content">
-            <div class="pc-name">Jio Commerce Platform</div>
-            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
-          </div>
-        </a>
-        <a href="/impetus" class="pcard p-impetus">
-          <div class="pc-bg"></div>
-          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
-          <div class="pc-content">
-            <div class="pc-name">Impetus</div>
-            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
-          </div>
-        </a>
-        <a href="/granary" class="pcard p-granary">
-          <div class="pc-bg"></div>
-          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
-          <div class="pc-content">
-            <div class="pc-name">Granary</div>
-            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
-          </div>
-        </a>
-        <a href="/ucp" class="pcard p-ucp">
-          <div class="pc-bg"></div>
-          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
-          <div class="pc-content">
-            <div class="pc-name">UCP &amp; Marketing OS</div>
-            <div class="pc-desc">380M+ unified profiles</div>
-          </div>
-        </a>
-        <a href="/rcpl" class="pcard p-rcpl">
-          <div class="pc-bg"></div>
-          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
-          <div class="pc-content">
-            <div class="pc-name">RCPL</div>
-            <div class="pc-desc">FMCG B2B</div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
-    <div class="nav-mega-panel" style="min-width: 1000px;">
-      <div class="grid grid-cols-5 gap-6">
+<div class="nav-links hidden md:flex items-center">
+  <a href="/" class="nav-link active">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 720px;">
+      <div class="grid grid-cols-3 gap-6">
         <div>
-          <div class="mega-col-label">Customers</div>
-          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
-          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
-          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label">Platforms</div>
+          <a href="/impetus" class="mega-link">Impetus <span class="mono-suffix">F&amp;L AI</span></a>
+          <a href="/jcp" class="mega-link">JCP <span class="mono-suffix">Enterprise Commerce</span></a>
+          <a href="/rcpl" class="mega-link">RCPL <span class="mono-suffix">FMCG B2B</span></a>
+          <a href="/granary" class="mega-link">Granary <span class="mono-suffix">Grocery AI</span></a>
+          <a href="/ucp" class="mega-link">UCP &amp; Marketing OS</a>
+        </div>
+        <div>
+          <div class="mega-col-label">Special Projects</div>
+          <a href="/alp" class="mega-link">ALP</a>
+          <a href="/retail-vista" class="mega-link">Retail Vista</a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis</a>
+          <a href="/samarth" class="mega-link">Samarth</a>
+          <a href="/forge" class="mega-link">Forge MES</a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="mono-suffix">HR Tech</span></a>
           <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
-          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
         </div>
         <div>
-          <div class="mega-col-label">Growth</div>
-          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
-          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
-          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
-          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
-        </div>
-        <div>
-          <div class="mega-col-label">Operations</div>
+          <div class="mega-col-label">AI-Native</div>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
           <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
           <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
-          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
-          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
-          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
-        </div>
-        <div>
-          <div class="mega-col-label">InStore</div>
-          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
-          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
-          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
-          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
-          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
-        </div>
-        <div>
-          <div class="mega-col-label">People</div>
-          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
-          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integration backbone</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce OS</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <div class="mega-col-label" style="margin-top:18px;">Recent Innovations</div>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon</a>
+          <a href="/autri" class="mega-link">Autri</a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="mono-suffix">Mobile Neo Tailor</span></a>
+<a class="mega-link" href="/growthos">GrowthOS <span class="mono-suffix">marketing OS</span></a>
+<a class="mega-link" href="/fynd-studio">Fynd Studio <span class="mono-suffix">AI media</span></a>
+<a class="mega-link" href="/frame">FRAME <span class="mono-suffix">magazine</span></a>
+<a class="mega-link" href="/jcp-edition-2026">JCP Edition 2026</a>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="nav-mega"><span class="nav-link" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
-    <div class="nav-mega-panel" style="min-width: 320px;">
-      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
-      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
-      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
-      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
     </div>
   </div>
   <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
     <div class="nav-mega-panel" style="min-width: 280px;">
-      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
-      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
-      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0-L5</span></a>
       <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
       <a href="/frameworks" class="mega-link">Frameworks</a>
       <a href="/organisation" class="mega-link">Organisation</a>
       <a href="/culture" class="mega-link">Culture</a>
       <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+<div class="mega-col-label" style="margin-top:18px;">Teams</div>
+<a class="mega-link" href="/customers">Customers <span class="mono-suffix">CX team</span></a>
+<a class="mega-link" href="/growth">Growth <span class="mono-suffix">marketing team</span></a>
+<a class="mega-link" href="/instore">InStore <span class="mono-suffix">ops team</span></a>
+<a class="mega-link" href="/operations">Operations <span class="mono-suffix">eng team</span></a>
     </div>
   </div>
 </div>
 <div class="hidden lg:flex items-center shrink-0">
   <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
 </div>
-</div></nav>
+</div>
+</nav>
 
 <!-- Sticky in-page TOC -->
 <div class="story-toc">
