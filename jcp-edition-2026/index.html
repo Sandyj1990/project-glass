@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>JCP Edition 2026 · Store OS Launch · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.ed-hero { background: linear-gradient(135deg, #4F46E5 0%, #06B6D4 60%, #F59E0B 100%); color: white; padding: 120px 0 100px; position: relative; overflow: hidden; }
+.ed-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 75% 30%, rgba(255,255,255,0.2) 0%, transparent 50%); pointer-events: none; }
+.ed-hero .max-w-7xl { position: relative; z-index: 1; }
+.ed-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,0.16); color: white; backdrop-filter: blur(8px); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; }
+.ed-eyebrow .dot { width: 8px; height: 8px; border-radius: 50%; background: white; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.ed-hero h1 { font-family: 'Inter', sans-serif; font-size: clamp(48px, 8vw, 96px); font-weight: 800; line-height: 0.98; letter-spacing: -0.03em; margin-bottom: 20px; }
+.ed-hero .ed-deck { font-size: clamp(18px, 2vw, 22px); line-height: 1.55; max-width: 36rem; opacity: 0.95; margin-bottom: 32px; }
+.ed-hero .ed-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.ed-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; background: white; color: #0A0A0A; border-radius: 999px; font-weight: 500; font-size: 14px; text-decoration: none; transition: opacity .15s; }
+.ed-btn:hover { opacity: 0.9; }
+.ed-btn.ghost { background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.25); backdrop-filter: blur(4px); }
+.ed-btn.ghost:hover { background: rgba(255,255,255,0.18); }
+
+.ed-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 48px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.18); }
+@media (max-width: 700px) { .ed-stats { grid-template-columns: repeat(2, 1fr); } }
+.ed-stats .es-num { font-family: 'Inter', sans-serif; font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.ed-stats .es-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+
+/* Six capability sections */
+.cap-section { padding: 96px 0; border-bottom: 1px solid var(--border); }
+.cap-section.alt { background: var(--bg-soft); }
+.cap-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.cap-title { font-family: 'Inter', sans-serif; font-weight: 800; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 16px; color: var(--ink); }
+.cap-lede { font-size: 17px; line-height: 1.65; color: var(--ink-muted); max-width: 48rem; margin-bottom: 40px; }
+
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.feat { padding: 24px; background: var(--bg); border: 1px solid var(--border); border-radius: 14px; display: flex; flex-direction: column; gap: 12px; height: 100%; transition: border-color .15s, transform .15s; }
+.cap-section.alt .feat { background: white; }
+.feat:hover { border-color: var(--ink); transform: translateY(-2px); }
+.feat .ft-num { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--accent); letter-spacing: 0.06em; }
+.feat h3 { font-weight: 700; font-size: 17px; color: var(--ink); letter-spacing: -0.01em; margin: 0; line-height: 1.25; }
+.feat p { font-size: 13px; color: var(--ink-muted); line-height: 1.6; margin: 0; }
+
+/* Sticky pillar nav */
+.pillar-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.pillar-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 12px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.pillar-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 8px 14px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.pillar-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.pillar-toc a.is-active { color: white; background: var(--ink); }
+
+/* Pillar color accent strip per section */
+.pillar-strip { height: 4px; }
+.s-storefront .pillar-strip { background: linear-gradient(90deg, #06B6D4, #4F46E5); }
+.s-payments .pillar-strip { background: linear-gradient(90deg, #10B981, #06B6D4); }
+.s-intelligence .pillar-strip { background: linear-gradient(90deg, #8B5CF6, #EC4899); }
+.s-security .pillar-strip { background: linear-gradient(90deg, #F59E0B, #DC2626); }
+.s-build .pillar-strip { background: linear-gradient(90deg, #6366F1, #A855F7); }
+.s-engagement .pillar-strip { background: linear-gradient(90deg, #EC4899, #F59E0B); }
+
+/* Visit live CTA */
+.visit-card { background: #0A0A0A; color: white; padding: 56px; border-radius: 18px; margin: 56px 0; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+@media (max-width: 700px) { .visit-card { grid-template-columns: 1fr; padding: 36px; } }
+.visit-card h3 { font-family: 'Inter', sans-serif; font-size: 28px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+.visit-card p { font-size: 15px; opacity: 0.7; line-height: 1.6; max-width: 32rem; }
+.visit-card .vc-btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; background: white; color: #0A0A0A; border-radius: 999px; font-weight: 500; font-size: 14px; text-decoration: none; transition: opacity .15s; }
+.visit-card .vc-btn:hover { opacity: 0.9; }
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content"><div class="pc-name">Jio Commerce Platform</div><div class="pc-desc">Enterprise Commerce · 78 channels</div></div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content"><div class="pc-name">Impetus</div><div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div></div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content"><div class="pc-name">Granary</div><div class="pc-desc">Grocery AI · 48M-row daily forecast</div></div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content"><div class="pc-name">UCP &amp; Marketing OS</div><div class="pc-desc">380M+ unified profiles</div></div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content"><div class="pc-name">RCPL</div><div class="pc-desc">FMCG B2B</div></div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/" class="mega-link" style="color: var(--accent); font-weight: 600;">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="ed-hero">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="ed-eyebrow"><span class="dot"></span>JCP · Edition 2026 · Releasing</div>
+  <h1>Store OS.<br/>The 2026 release.</h1>
+  <p class="ed-deck">JCP's biggest annual release. Six capability pillars — Storefront, Payments, Intelligence, Security, Build, Engagement — shipped together as one platform upgrade for the enterprises running on JioCommerce.</p>
+  <div class="ed-cta-row">
+    <a href="https://jiocommerce.io/editions/2026" target="_blank" rel="noopener" class="ed-btn">Explore the live edition →</a>
+    <a href="#storefront" class="ed-btn ghost">Browse the pillars ↓</a>
+  </div>
+  <div class="ed-stats">
+    <div><div class="es-num">6</div><div class="es-label">Capability pillars</div></div>
+    <div><div class="es-num">40+</div><div class="es-label">New features</div></div>
+    <div><div class="es-num">5</div><div class="es-label">Geographies live</div></div>
+    <div><div class="es-num">100+</div><div class="es-label">Brands on JCP</div></div>
+  </div>
+</div>
+</section>
+
+<!-- PILLAR NAV -->
+<div class="pillar-toc">
+<div class="pillar-toc-inner" id="pillar-toc">
+<a href="#storefront">01 · Storefront</a>
+<a href="#payments">02 · Payments</a>
+<a href="#intelligence">03 · Intelligence</a>
+<a href="#security">04 · Security</a>
+<a href="#build">05 · Build</a>
+<a href="#engagement">06 · Engagement</a>
+</div>
+</div>
+
+<!-- 01 STOREFRONT -->
+<section class="cap-section s-storefront" id="storefront">
+<div class="pillar-strip"></div>
+<div class="max-w-7xl mx-auto px-6" style="margin-top: 60px;">
+  <div class="cap-eyebrow">01 · Storefront</div>
+  <h2 class="cap-title">Building Blocks. API-First. No-Code.</h2>
+  <p class="cap-lede">Pre-built modules that mix and match into shopping journeys tailored to your brand. Every core capability exposed as an API for developers; a no-code configuration layer for business users.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft-num">01.01</div><h3>Building Blocks</h3><p>Pre-built modules merchants can compose into journeys tailored to brand and business logic.</p></div>
+    <div class="feat"><div class="ft-num">01.02</div><h3>API-First Tool</h3><p>Every core commerce capability as an API. Build custom storefronts, apps, and tools without integration drift on upgrades.</p></div>
+    <div class="feat"><div class="ft-num">01.03</div><h3>No-Code Tool</h3><p>Business users change layouts, branding, experiences via simple configuration screens. Faster experiments, less tech-team dependency.</p></div>
+    <div class="feat"><div class="ft-num">01.04</div><h3>Extensions &amp; Themes</h3><p>Reorganized screens grouping items by type and location. Merchants fine-tune storefront look and behavior in fewer clicks.</p></div>
+    <div class="feat"><div class="ft-num">01.05</div><h3>Collection Management</h3><p>Product collections that auto-update based on rules or editorial picks. Storefront stays fresh without manual tagging.</p></div>
+    <div class="feat"><div class="ft-num">01.06</div><h3>UI Error Handling</h3><p>Catches misconfigurations early inside the UI. Reduces broken flows and edge-case failures.</p></div>
+    <div class="feat"><div class="ft-num">01.07</div><h3>Launch Essentials</h3><p>Newsletter capture, catalog sync, analytics hooks — the basics needed to get a trackable store live quickly.</p></div>
+    <div class="feat"><div class="ft-num">01.08</div><h3>First Sale Toolkit</h3><p>Visibility, operations, and reporting extensions to secure the first orders and understand performance gaps.</p></div>
+    <div class="feat"><div class="ft-num">01.09</div><h3>Customer Support</h3><p>WhatsApp notifications, communication helpers — customers stay informed about orders and support.</p></div>
+    <div class="feat"><div class="ft-num">01.10</div><h3>Public Newsroom</h3><p>Brand-side site for press releases and updates. Centralizes communication for media, partners, stakeholders.</p></div>
+    <div class="feat"><div class="ft-num">01.11</div><h3>Launch Site Builder</h3><p>Templates for quickly creating sites for new launches. Time-to-live drops from weeks to days.</p></div>
+    <div class="feat"><div class="ft-num">01.12</div><h3>360° Customer Profile</h3><p>Purchases, preferences, interactions in one place. Staff personalize service and offers in context.</p></div>
+    <div class="feat"><div class="ft-num">01.13</div><h3>Integrated Wishlist</h3><p>Customers save products to revisit. Powers retargeting, reminders, repeat visits.</p></div>
+    <div class="feat"><div class="ft-num">01.14</div><h3>Purchase Tracking</h3><p>Clear record of past orders and behavior. Powers analytics, service resolution, tailored campaigns.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 02 PAYMENTS -->
+<section class="cap-section alt s-payments" id="payments">
+<div class="pillar-strip"></div>
+<div class="max-w-7xl mx-auto px-6" style="margin-top: 60px;">
+  <div class="cap-eyebrow">02 · Payments</div>
+  <h2 class="cap-title">Smart routing, every method, five markets.</h2>
+  <p class="cap-lede">Respect the customer's preferred method, fall back gracefully, route to the best gateway, and reconcile across Jio Cinema and JioMart with one wallet. Live for India, UAE, US, Canada, UK out of the box.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft-num">02.01</div><h3>Payment Management</h3><p>Respect customer's preferred method, gracefully switch to backups on failure. Higher checkout success, lower drop-offs.</p></div>
+    <div class="feat"><div class="ft-num">02.02</div><h3>Cross-Platform Wallet</h3><p>Shared wallet and consolidated billing across Jio Cinema and JioMart for simpler reconciliation.</p></div>
+    <div class="feat"><div class="ft-num">02.03</div><h3>Enterprise Workflows</h3><p>Business credit lines, limits, approvals in real time. APIs link JCP with SAP/ERPs for POs, vendor onboarding, O2C flows.</p></div>
+    <div class="feat"><div class="ft-num">02.04</div><h3>Indian Tax Dashboard</h3><p>Track and report tax compliance in one place. Simplifies audits and regulatory filings.</p></div>
+    <div class="feat"><div class="ft-num">02.05</div><h3>Invoice Generation</h3><p>Automatic GST calculation and compliant live invoices. Errors drop, speed rises.</p></div>
+    <div class="feat"><div class="ft-num">02.06</div><h3>Map Settings</h3><p>Visually define delivery areas on a map. Manage where you deliver and how you price it.</p></div>
+    <div class="feat"><div class="ft-num">02.07</div><h3>Flexible Fulfillment</h3><p>Orders auto-routed to the best store or warehouse by rules. Optimizes cost, speed, stock usage.</p></div>
+    <div class="feat"><div class="ft-num">02.08</div><h3>Real-Time Delivery</h3><p>Live tracking of shipments and delivery status. Transparent for customers and support teams.</p></div>
+    <div class="feat"><div class="ft-num">02.09</div><h3>Payment Routing</h3><p>Traffic dynamically sent to the best-performing gateway. Optimizes for success-rate and cost.</p></div>
+    <div class="feat"><div class="ft-num">02.10</div><h3>Smart Retry</h3><p>Separates temporary network blips from permanent failures. Retries only when they can succeed.</p></div>
+    <div class="feat"><div class="ft-num">02.11</div><h3>Transaction Status</h3><p>Clear real-time views of payment outcomes in ops tools and customer pages. Less support overhead.</p></div>
+    <div class="feat"><div class="ft-num">02.12</div><h3>Refunds</h3><p>Better flows for COD and split-payment refunds with clearer tracking. Faster resolution, more trust.</p></div>
+    <div class="feat"><div class="ft-num">02.13</div><h3>India · UAE · US · Canada · UK</h3><p>Built-in currency, payment methods, tax rules for five geographies. Go live without building local rails.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 03 INTELLIGENCE -->
+<section class="cap-section s-intelligence" id="intelligence">
+<div class="pillar-strip"></div>
+<div class="max-w-7xl mx-auto px-6" style="margin-top: 60px;">
+  <div class="cap-eyebrow">03 · Intelligence</div>
+  <h2 class="cap-title">Real-time storytelling. AI inside every workflow.</h2>
+  <p class="cap-lede">Dashboards that auto-convert raw data into clear written insights for non-analysts. AI customer support, AI alignment, and AI-on-green-energy data centres — all powered by shared group-level intelligence.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft-num">03.01</div><h3>Real-Time Storytelling</h3><p>Live-updating dashboards that automatically convert raw data into clear written insights. Non-analysts understand performance.</p></div>
+    <div class="feat"><div class="ft-num">03.02</div><h3>KPI Tracking</h3><p>Dashboards measuring checkout flow performance. Identifies bottlenecks, improves conversion.</p></div>
+    <div class="feat"><div class="ft-num">03.03</div><h3>JioFrames &amp; JioStar</h3><p>AI tools blending commerce and media — smart recommendations in content. Higher engagement and conversion via context.</p></div>
+    <div class="feat"><div class="ft-num">03.04</div><h3>Open Telecom Platform</h3><p>Partner-backed AI infrastructure: AMD, Cisco, Nokia. High-speed inference and robust ops at scale.</p></div>
+    <div class="feat"><div class="ft-num">03.05</div><h3>AI Customer Support</h3><p>Virtual agents and tools that assist human agents with summaries, intent detection, next-best actions.</p></div>
+    <div class="feat"><div class="ft-num">03.06</div><h3>AI Alignment</h3><p>Integrated with the central AI platform. Features powered by shared group-level intelligence, not bespoke models.</p></div>
+    <div class="feat"><div class="ft-num">03.07</div><h3>AI + Green-Energy DCs</h3><p>Workloads served from green-energy data centres. Performance with footprint accounted for.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 04 SECURITY -->
+<section class="cap-section alt s-security" id="security">
+<div class="pillar-strip"></div>
+<div class="max-w-7xl mx-auto px-6" style="margin-top: 60px;">
+  <div class="cap-eyebrow">04 · Security</div>
+  <h2 class="cap-title">Production-grade safety, end-to-end.</h2>
+  <p class="cap-lede">Data protection, threat prevention, disaster recovery, and governance — all standardized to enterprise expectations, audited continuously.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft-num">04.01</div><h3>Data Protection</h3><p>Encryption at rest and in transit. Strict role-based access controls. Secure authentication mechanisms. Sensitive information isolated end-to-end.</p></div>
+    <div class="feat"><div class="ft-num">04.02</div><h3>Threat Prevention</h3><p>Continuous security monitoring, intrusion detection, vulnerability assessments. Risks identified and mitigated in real time.</p></div>
+    <div class="feat"><div class="ft-num">04.03</div><h3>Disaster Recovery</h3><p>Cloud-native architecture with load balancing, redundancy, automated backups. Designed to minimize downtime and protect data integrity.</p></div>
+    <div class="feat"><div class="ft-num">04.04</div><h3>Governance Framework</h3><p>Aligned to industry-standard security and data governance. SDLC processes, periodic compliance reviews, controls strengthened continuously.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 05 BUILD -->
+<section class="cap-section s-build" id="build">
+<div class="pillar-strip"></div>
+<div class="max-w-7xl mx-auto px-6" style="margin-top: 60px;">
+  <div class="cap-eyebrow">05 · Build</div>
+  <h2 class="cap-title">Visual canvas. Open SDKs. Self-serve partners.</h2>
+  <p class="cap-lede">A drag-and-drop canvas for non-developers, GraphQL for system connections, local-runner deployment for security and control. Boltic, GLAM AR, and a partner marketplace round out the build stack.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft-num">05.01</div><h3>Tracking &amp; Timeline</h3><p>Central view of what's launching when, with dependencies and maintenance windows for risk and rollback. Teams stay aligned.</p></div>
+    <div class="feat"><div class="ft-num">05.02</div><h3>Hub &amp; Version Control</h3><p>Automatic updates to relevant teams and tight linkage to code versions. Cleaner cutovers.</p></div>
+    <div class="feat"><div class="ft-num">05.03</div><h3>Visual Canvas Interface</h3><p>Drag-and-drop workflow design for non-developers. GraphQL for system connections. Local runner deployment for control.</p></div>
+    <div class="feat"><div class="ft-num">05.04</div><h3>Summarised Run History</h3><p>Detailed logs of each workflow execution. Powers debugging, auditing, optimization.</p></div>
+    <div class="feat"><div class="ft-num">05.05</div><h3>Boltic</h3><p>NPM Package CLI tool. Code open for review, forking, contribution. Guidelines for external contributors grow the ecosystem.</p></div>
+    <div class="feat"><div class="ft-num">05.06</div><h3>GLAM AR</h3><p>Easy-to-use SDKs to add AR features across Web, React Native, Flutter, Android, iOS.</p></div>
+    <div class="feat"><div class="ft-num">05.07</div><h3>Self-Serve Integration</h3><p>Marketplace where partners list apps and merchants install them. Grows integrations without custom work.</p></div>
+    <div class="feat"><div class="ft-num">05.08</div><h3>Partner Onboarding</h3><p>Streamlined onboarding flows with verification. Faster partner go-lives, less manual ops.</p></div>
+    <div class="feat"><div class="ft-num">05.09</div><h3>Revenue Sharing</h3><p>Built-in logic for calculating and distributing partner commissions. Transparent and scalable.</p></div>
+    <div class="feat"><div class="ft-num">05.10</div><h3>Cloud Deployment</h3><p>Each service packaged and deployed in a standard way, auto-scales with demand. Better performance, less manual infra work.</p></div>
+    <div class="feat"><div class="ft-num">05.11</div><h3>Catalog Performance</h3><p>Optimized queries, pagination, caching for stores with very large catalogs. Browsing stays fast at million-SKU scale.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 06 ENGAGEMENT -->
+<section class="cap-section alt s-engagement" id="engagement">
+<div class="pillar-strip"></div>
+<div class="max-w-7xl mx-auto px-6" style="margin-top: 60px;">
+  <div class="cap-eyebrow">06 · Engagement</div>
+  <h2 class="cap-title">Try-on. Skin analysis. AI media. Reels in the page.</h2>
+  <p class="cap-lede">Virtual try-on, AI skin analysis, image and video generation from text — plus floating shoppable Reels embedded right in the page. Engagement designed for the categories where the world sells the product.</p>
+  <div class="feat-grid">
+    <div class="feat"><div class="ft-num">06.01</div><h3>Real-Time Virtual Try-On</h3><p>Shoppers see products on themselves using live camera feeds. Less uncertainty, fewer returns — especially in fashion and beauty.</p></div>
+    <div class="feat"><div class="ft-num">06.02</div><h3>AI Skin Analysis</h3><p>AI scans skin via camera to assess tone or condition. Powers personalised product recommendations and routines.</p></div>
+    <div class="feat"><div class="ft-num">06.03</div><h3>AI Image Generator</h3><p>Create images from natural-language prompts. Generate variations, styles, camera angles, palettes, templates.</p></div>
+    <div class="feat"><div class="ft-num">06.04</div><h3>Motion &amp; Video Generation</h3><p>Studio-quality videos and motion visuals from text or images. Intelligent control over camera, animation, transitions.</p></div>
+    <div class="feat"><div class="ft-num">06.05</div><h3>Press &amp; Studio</h3><p>AI tools to generate and edit video content. Faster campaign and content creation.</p></div>
+    <div class="feat"><div class="ft-num">06.06</div><h3>SaleAssist · Reels</h3><p>Floating Reels-style video widgets embedded directly on the site. Boost engagement and conversion with rich, interactive content.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- VISIT LIVE -->
+<section style="padding: 0 0 96px;">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="visit-card">
+    <div>
+      <h3>See it for yourself.</h3>
+      <p>The JCP Edition 2026 microsite is live with an interactive 3D scene that walks through every pillar. Built on JCP itself — the platform demos itself.</p>
+    </div>
+    <a href="https://jiocommerce.io/editions/2026" target="_blank" rel="noopener" class="vc-btn">jiocommerce.io/editions/2026 →</a>
+  </div>
+</div>
+</section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('pillar-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href').slice(1) === id); });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+
+</body>
+</html>

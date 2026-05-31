@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Operations · Teams · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.team-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+.team-eyebrow .team-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.metric-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.metric-tile { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.metric-tile .mt-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.metric-tile .mt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.metric-tile .mt-source { font-size: 10px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
+.shortlist-card { padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 10px; height: 100%; transition: border-color .15s, transform .15s; text-decoration: none; }
+.shortlist-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.shortlist-card .sc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+.shortlist-card h3 { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.01em; margin: 0; }
+.shortlist-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; margin: 0; }
+.shortlist-card .sc-meta { font-size: 12px; color: var(--ink); padding-top: 12px; border-top: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 6px; }
+.shortlist-card .sc-meta strong { font-weight: 600; }
+.shortlist-card .sc-meta .sc-row { display: flex; gap: 8px; align-items: flex-start; }
+.shortlist-card .sc-meta .sc-row span:first-child { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); min-width: 70px; flex-shrink: 0; }
+.plan-row { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border-soft); }
+.plan-row .pr-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); min-width: 0; }
+.plan-row .pr-num strong { display: block; font-size: 20px; color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; margin-top: 6px; font-weight: 700; word-break: break-word; }
+.plan-row .pr-content { min-width: 0; }
+.plan-row h4 { font-weight: 700; font-size: 19px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.plan-row p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 12px; }
+.plan-row ul { list-style: none; padding: 0; margin: 8px 0 0; font-size: 13px; color: var(--ink); line-height: 1.7; }
+.plan-row ul li { padding-left: 18px; position: relative; }
+.plan-row ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+@media (max-width: 640px) {
+  .metric-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan-row { grid-template-columns: 1fr; gap: 6px; }
+  .plan-row .pr-num strong { font-size: 18px; display: inline-block; margin: 4px 0 12px; padding: 4px 10px; background: var(--bg-soft); border-radius: 6px; }
+}
+.life-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.life-card { padding: 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); }
+.life-card.before { background: #FAFAFA; }
+.life-card.after { border-color: var(--accent); background: #F5F3FF; }
+.life-card .lc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+.life-card.before .lc-eyebrow { background: #E5E7EB; color: #6B7280; }
+.life-card.after .lc-eyebrow { background: var(--accent); color: white; }
+.life-card h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.3; }
+.life-step { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border-soft); }
+.life-step:first-of-type { border-top: 0; }
+.life-step .ls-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+.life-step .ls-event { font-size: 13px; color: var(--ink); line-height: 1.55; }
+@media (max-width: 720px) { .life-grid { grid-template-columns: 1fr; } }
+.synergy-canvas { padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); overflow-x: auto; }
+.synergy-canvas svg { width: 100%; height: auto; min-width: 560px; }
+.synergy-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 12px; color: var(--ink-muted); }
+.synergy-legend .leg-item { display: flex; gap: 8px; align-items: center; }
+.synergy-legend .leg-swatch { width: 12px; height: 12px; border-radius: 3px; }
+.pitfall { padding: 22px 24px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); margin-bottom: 12px; }
+.pitfall .p-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #B45309; padding: 3px 8px; background: #FEF3C7; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.pitfall h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.pitfall p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+.pitfall .p-fix { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-soft); font-size: 14px; color: var(--ink); line-height: 1.6; }
+.pitfall .p-fix strong { color: var(--accent); }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--border-soft); }
+.faq-item:last-child { border-bottom: 0; }
+.faq-item h4 { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.faq-item p { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.audience-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 11px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--border-soft); margin: 4px 4px 0 0; }
+.section-lede { font-size: 15px; color: var(--ink-muted); line-height: 1.7; max-width: 56rem; margin-bottom: 28px; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/" class="mega-link" style="color: var(--accent); font-weight: 600;">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#thesis">01 · Thesis</a>
+<a href="#life">02 · A day in the life</a>
+<a href="#metrics">03 · What good looks like</a>
+<a href="#shortlist">04 · Your shortlist</a>
+<a href="#synergy">05 · How it fits together</a>
+<a href="#plan">06 · 30/60/90 plan</a>
+<a href="#pitfalls">07 · Where teams get stuck</a>
+<a href="#faq">08 · FAQ</a>
+<a href="#resources">09 · Resources</a>
+</div>
+</div>
+
+<section class="hero-grad pt-24 pb-20 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="team-eyebrow"><span class="team-dot"></span>For the Operations team</div>
+  <h1 class="display mb-6" style="font-size: clamp(40px, 6.5vw, 80px); line-height: 0.98; color: var(--ink);">
+    Operations.<br/><span style="color: var(--accent);">Automate the work.<br/>Not just the workflows.</span>
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl mb-6" style="color: var(--ink-muted); line-height: 1.55;">The Reliance Retail operations org runs 19,979 stores, 700 K orders/day, 30 K+ active SKUs, ~800 brands on JioMart, 25+ marketplaces. The job is not to add staff — it is to give every engineer, ops analyst, and integrator the leverage of ten. Boltic, Ratl, Konnect, TMS, and Autri are the production-grade automation OS that does it.</p>
+  <div class="mt-4">
+    <span class="audience-tag">Engineering</span>
+    <span class="audience-tag">QA &amp; SRE</span>
+    <span class="audience-tag">Supply chain</span>
+    <span class="audience-tag">Integration</span>
+    <span class="audience-tag">Warehousing</span>
+    <span class="audience-tag">Last-mile</span>
+  </div>
+</div>
+</section>
+
+<section id="thesis" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">01 · THE 100X THESIS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Operations becomes 100× when the loop closes itself — agents trigger workflows, workflows write tests, tests catch their own regressions, integrations heal.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">Today: every new marketplace integration is a 6-week project. Every release runs a manual regression sweep. Every transport partner is a custom-coded webhook. Tomorrow: Konnect ships a new marketplace in days. Ratl owns the full test surface across 33+ services and 85+ storefronts. Boltic runs the workflow + agent + MCP fabric that links the rest together.</p>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">The result: release cycles compress by 70-80 %. New marketplace launches measure in days. TMS keeps JioMart's 10-30 minute promise at 100 % uptime across 1,000+ locations.</p>
+  <p class="text-base md:text-lg max-w-3xl" style="color: var(--ink-muted); line-height: 1.7;">The ops org doesn't shrink — it gets out of the firefighting business. SRE writes policy instead of incident reports. QA designs the testing strategy instead of running the suite. Integration engineers design extensible patterns instead of plumbing each new partner.</p>
+</div>
+</section>
+
+<section id="life" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">02 · A DAY IN THE LIFE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The engineering manager who runs commerce-platform integrations.</h2>
+  <p class="section-lede">A composite of the rollout patterns we see when an ops team adopts Boltic + Ratl + Konnect together. The work shifts from execution to design.</p>
+  <div class="life-grid">
+    <div class="life-card before">
+      <div class="lc-eyebrow">Before</div>
+      <h4>Today: firefighting and plumbing</h4>
+      <div class="life-step"><div class="ls-time">09:00</div><div class="ls-event">Standup. Two integration tickets carried over from last sprint. One marketplace launch slipping.</div></div>
+      <div class="life-step"><div class="ls-time">10:00</div><div class="ls-event">Sev-2 incident: AJIO checkout flow regression after a Stripe SDK bump. Spend 4 hours bisecting.</div></div>
+      <div class="life-step"><div class="ls-time">14:30</div><div class="ls-event">Marketplace partner needs a webhook tweak. 2-day turnaround.</div></div>
+      <div class="life-step"><div class="ls-time">16:00</div><div class="ls-event">Quarterly review of regression test coverage. Down to 47 % effective after the recent reorg.</div></div>
+      <div class="life-step"><div class="ls-time">17:30</div><div class="ls-event">Two tickets remain. New marketplace launch now expected mid-next-quarter.</div></div>
+    </div>
+    <div class="life-card after">
+      <div class="lc-eyebrow">After · with Fynd Glass</div>
+      <h4>With Boltic + Ratl + Konnect: designing the system</h4>
+      <div class="life-step"><div class="ls-time">09:00</div><div class="ls-event">Standup. Ratl caught the Stripe SDK regression overnight, opened the issue with bisect attached. No prod impact.</div></div>
+      <div class="life-step"><div class="ls-time">10:00</div><div class="ls-event">Pair with a junior engineer on a new Boltic workflow that automates the marketplace-onboarding intake. 50 % of last sprint's manual work disappears.</div></div>
+      <div class="life-step"><div class="ls-time">11:30</div><div class="ls-event">Konnect catalog: new D2C brand requests inclusion. Two clicks plus a config map. Live by end of day.</div></div>
+      <div class="life-step"><div class="ls-time">14:00</div><div class="ls-event">Architecture review with the platform team. Topic: how to factor the AJIO + JCP test surface into reusable Ratl agents.</div></div>
+      <div class="life-step"><div class="ls-time">16:00</div><div class="ls-event">Quarterly review of regression test coverage: 100 % automation across 33+ services. SRE writes a policy doc instead of incident reports.</div></div>
+      <div class="life-step"><div class="ls-time">17:30</div><div class="ls-event">Zero rolled tickets. New marketplace launch in 5 days. Team capacity opened up for the architecture project everyone wanted to do.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="metrics" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">03 · WHAT GOOD LOOKS LIKE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Outcome targets for FY 26-27.</h2>
+  <p class="section-lede">Benchmarks anchored to Ratl on AJIO × JCP, Boltic in production, Konnect across ~800 brands, TMS in JioMart quick-commerce.</p>
+  <div class="metric-row">
+    <div class="metric-tile"><div class="mt-num">−70 %</div><div class="mt-label">Release cycle time</div><div class="mt-source">Ratl on 33+ services</div></div>
+    <div class="metric-tile"><div class="mt-num">500+</div><div class="mt-label">Out-of-box integrations</div><div class="mt-source">Boltic catalog</div></div>
+    <div class="metric-tile"><div class="mt-num">100 %</div><div class="mt-label">JioMart TMS uptime</div><div class="mt-source">1,000+ locations</div></div>
+    <div class="metric-tile"><div class="mt-num">95 %+</div><div class="mt-label">Autri shelf compliance</div><div class="mt-source">FreshPik Powai phase 1</div></div>
+  </div>
+</div>
+</section>
+
+<section id="shortlist" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">04 · YOUR SHORTLIST</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Seven platforms. In adoption order.</h2>
+  <p class="section-lede">Listed top-to-bottom by leverage-per-integration-cost. Start with Ratl for the test surface win, then Boltic for cross-team workflows, then Konnect for the integration spine.</p>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <a href="/ratl" class="shortlist-card">
+      <div class="sc-eyebrow">01 · Start here</div>
+      <h3>Ratl · Agentic QA</h3>
+      <p>AI agents test APIs, web, mobile, performance end-to-end. 70-80 % faster release cycles · 0 → 100 % automation across 33+ services, 85+ storefronts. 1,300 test cases on AJIO × JCP.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Stop writing regression tests by hand · the agent maintains the test surface as your app evolves.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>50 %+ cycle compression in week 4 · 100% coverage in month 3</span></div>
+        <div class="sc-row"><span>Owner</span><span>Ratl team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/boltic" class="shortlist-card">
+      <div class="sc-eyebrow">02 · Automation OS</div>
+      <h3>Boltic · Agentic Automation</h3>
+      <p>8 modules: Workflows · AI Agents · MCP · Serverless · Gateway · Storage · Tables · Monitoring. SOC 2 + GDPR.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Replace manual ops workflows with agentic ones · build internal tools without owning infra · 500+ integrations on one fabric.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>First cross-team workflow saving 20+ team-hours/week in month 1</span></div>
+        <div class="sc-row"><span>Owner</span><span>Boltic team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/fynd-konnect" class="shortlist-card">
+      <div class="sc-eyebrow">03 · Integration spine</div>
+      <h3>Fynd Konnect · Integrations</h3>
+      <p>3-4 lakh shipments/month · 13 RBL SAP/TIBCO deliveries in 12 months · 50+ pre-built integrations · ~800 brands on JioMart, 25+ marketplaces.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Onboard a new marketplace, brand, or backend in days, not weeks · skip the bespoke webhook plumbing.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>Sub-1-week new-channel launch · 30-50 % maintenance reduction on existing channels</span></div>
+        <div class="sc-row"><span>Owner</span><span>Fynd Konnect team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/tms" class="shortlist-card">
+      <div class="sc-eyebrow">04 · Last-mile</div>
+      <h3>Fynd TMS · Transport Spine</h3>
+      <p>1,000+ JioMart locations · 100 % uptime. Also runs RBL furniture (West Elm + Pottery Barn · 4 cities) and Netmeds in-house fleet.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Production-grade quick-commerce dispatch + transport routing · the spine behind the 10-30 minute promise.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>10-30 min promise SLA · routing rebalanced in real time</span></div>
+        <div class="sc-row"><span>Owner</span><span>TMS team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/autri" class="shortlist-card">
+      <div class="sc-eyebrow">05 · In-store ops</div>
+      <h3>Autri · Planogram Robotics</h3>
+      <p>95 %+ shelf compliance · 98 % SKU recognition. AutRi captures shelves · GMetri reads · Command Centre routes fix to PulsePoint.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Replace clipboard planogram audits with continuous robotic + vision checks · Phase 1 live at FreshPik Powai.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>95 %+ compliance · sub-24-hour fix dispatch</span></div>
+        <div class="sc-row"><span>Owner</span><span>Autri team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/impetus" class="shortlist-card">
+      <div class="sc-eyebrow">06 · F&amp;L spine</div>
+      <h3>Impetus · F&amp;L AI Platform</h3>
+      <p>15 sub-platforms · 11.06 L POs FY 26 · 460 K+ POs automated · 720 K articles packed/day · 15.08 Cr pieces delivered FY 26.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>The full F&amp;L Plan → Buy → Make → Sell fabric · Vendor Management Platform cut PO-to-Shipping from 55 → 30 days.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>~45 % PO cycle compression on the VMP path · 720K articles/day pack throughput</span></div>
+        <div class="sc-row"><span>Owner</span><span>Impetus team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/jcp" class="shortlist-card">
+      <div class="sc-eyebrow">07 · Commerce backbone</div>
+      <h3>JCP · Jio Commerce Platform</h3>
+      <p>78 channels · 68 live · 700 K+ orders/day · 50 K+ orders/minute peak · 200 M+ customers · 30 K+ stores · 105 brands · 10 verticals.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>The commerce spine everything else attaches to · understand it deeply if you build on top.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>50 K+ orders/min peak proven · 100 % availability on JioMart TMS routing</span></div>
+        <div class="sc-row"><span>Owner</span><span>JCP platform team · Fynd</span></div>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section id="synergy" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">05 · HOW IT FITS TOGETHER</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How the platforms work together for the Operations team.</h2>
+  <p class="section-lede">Boltic is the fabric. Ratl tests everything that ships on top of it. Konnect connects every external system in and out. TMS handles last-mile dispatch. Autri is the in-store automation layer. Impetus and JCP are the application platforms underneath. The Ops team designs the system; the system runs itself.</p>
+  <div class="synergy-canvas">
+    <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;" role="img" aria-label="Workflow diagram">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6B5BD6" /></marker></defs>
+<rect x="30.0" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="76.66666666666666" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Event</text>
+<text x="76.66666666666666" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">order · webhook · trigger</text>
+<line x1="125.33333333333333" y1="90.0" x2="141.33333333333331" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="143.33333333333331" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="189.99999999999997" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Boltic</text>
+<text x="189.99999999999997" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">workflow + agent</text>
+<line x1="238.66666666666663" y1="90.0" x2="254.66666666666663" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="256.66666666666663" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="303.3333333333333" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Ratl</text>
+<text x="303.3333333333333" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">tests + guards</text>
+<line x1="351.99999999999994" y1="90.0" x2="367.99999999999994" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="370.0" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="416.6666666666667" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Konnect</text>
+<text x="416.6666666666667" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">external system</text>
+<line x1="465.3333333333333" y1="90.0" x2="481.3333333333333" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="483.3333333333333" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="530.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">TMS</text>
+<text x="530.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">dispatch</text>
+<line x1="578.6666666666666" y1="90.0" x2="594.6666666666666" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="596.6666666666666" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="643.3333333333333" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Heal</text>
+<text x="643.3333333333333" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">self-correcting loop</text>
+</svg>
+  </div>
+  <div class="synergy-legend">
+    <div class="leg-item"><div class="leg-swatch" style="background:#6B5BD6"></div>Automation lifecycle</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:white; border:1px solid #6B5BD6"></div>Platform component</div>
+  <div class="leg-item">Every release closes the loop · regressions are caught before they ship</div>
+  </div>
+</div>
+</section>
+
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · 30 · 60 · 90 PLAN</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A first quarter that compounds.</h2>
+  <p class="section-lede">A realistic adoption sequence designed for measurable wins inside the first 90 days. Each phase unlocks the next.</p>
+  <div class="max-w-4xl">
+    <div class="plan-row">
+      <div class="pr-num">Day 0 - 30<strong>Test</strong></div>
+      <div class="pr-content">
+        <h4>Replace one regression suite with Ratl.</h4>
+        <p>Pick a service with high test debt or frequent regressions. Hand the full test surface to Ratl. Measure release-cycle compression.</p>
+        <ul><li>Baseline: cycle time, defect escape, manual hours/release</li><li>Goal: 50 %+ cycle compression, no quality regression</li><li>Exit: Ratl coverage report + playbook for service #2</li><li>Owner: service tech lead × Fynd Ratl SE</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 30 - 60<strong>Automate</strong></div>
+      <div class="pr-content">
+        <h4>Build one cross-team workflow on Boltic.</h4>
+        <p>Find a workflow that touches 3+ teams + 3+ systems and is currently manual. Rebuild it on Boltic with agents + MCP. Measure people-hours saved.</p>
+        <ul><li>Candidate: vendor onboarding · catalog enrichment · returns reconciliation</li><li>Goal: 70 %+ manual time eliminated, same outcome</li><li>Exit: Boltic workflow library + reusable agent templates</li><li>Owner: ops manager × Fynd Boltic platform</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 60 - 90<strong>Integrate</strong></div>
+      <div class="pr-content">
+        <h4>Onboard one marketplace via Konnect end-to-end.</h4>
+        <p>Pick a marketplace or brand that is currently a custom integration. Move it onto Konnect. Measure time-to-launch + ongoing maintenance burden.</p>
+        <ul><li>Baseline: time to launch a new channel today</li><li>Goal: &lt; 1 week launch on Konnect</li><li>Exit: deprecate custom code path, route through Konnect</li><li>Owner: integration tech lead × Fynd Konnect team</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="pitfalls" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">07 · WHERE TEAMS GET STUCK</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The four objections you'll hear in the first week.</h2>
+  <p class="section-lede">Every team that has adopted these platforms has run into the same four worries. Here is how it actually plays out.</p>
+  <div class="max-w-4xl">
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #1</div>
+      <h4>"Our test cases are too custom. Ratl won't cover them."</h4>
+      <p>Most QA teams have ~80 % of their test surface in well-defined patterns (CRUD flows, regression suites, API contracts) and ~20 % in genuinely custom logic. Ratl handles the 80 % at 70-80 % faster cycles. The 20 % remains where it belongs — human-authored, agent-enhanced.</p>
+      <div class="p-fix"><strong>The move:</strong> Audit the test surface. Map what's pattern-driven vs custom. Ship Ratl against the patterns first. Reinvest the saved cycles into deeper custom test design.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #2</div>
+      <h4>"Boltic looks like Zapier. We need real infrastructure."</h4>
+      <p>Boltic is not Zapier. It's the production fabric AJIO and JCP run on — 8 modules including Serverless, Gateway, Storage, Tables, MCP. SOC 2 + GDPR. The Zapier-like surface is the no-code on-ramp; the platform underneath is full SDK + IAM + observability.</p>
+      <div class="p-fix"><strong>The move:</strong> Spin up a developer environment. Push real load. Look at the gateway and monitoring surfaces, not the workflow builder. The team gets the verdict in 30 minutes.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #3</div>
+      <h4>"Konnect adds another layer of abstraction. We'll lose direct API control."</h4>
+      <p>The fear is real for a team that has spent years optimizing one custom integration. The trade-off: Konnect adds 1 indirection but eliminates 10+ custom code paths. Across ~800 brands and 25+ marketplaces, the math is decisive.</p>
+      <div class="p-fix"><strong>The move:</strong> Migrate one channel as a comparison. Measure: time-to-change a request payload, time-to-add a partner, defect rate. The platform wins on every axis after one full cycle.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #4</div>
+      <h4>"Agentic QA means humans don't understand what's being tested."</h4>
+      <p>Ratl outputs explainable test reports — what was tested, what passed, what was skipped, what was flagged. The audit trail is stronger, not weaker. Manual tests have the same explainability gap as agentic ones, plus they're more brittle.</p>
+      <div class="p-fix"><strong>The move:</strong> Adopt explainability as a contract: every Ratl run produces a report digestible by a human PM. Review for the first 4 weeks. The team's trust calibrates fast.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="faq" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">08 · FAQ</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The questions you'll get from your team.</h2>
+  <div class="max-w-3xl mt-6">
+    <div class="faq-item"><h4>Where does Boltic run? Are we locked into Fynd infra?</h4><p>Boltic runs on Reliance-controlled cloud. Multi-region failover, data residency in India by default. Your code, your data, our platform. Standard exit-clause patterns apply.</p></div>
+    <div class="faq-item"><h4>How does Ratl handle non-deterministic UI tests?</h4><p>Multi-modal verification — visual diff, DOM snapshot, behavioral trace. Ratl is calibrated for retail-storefront flake patterns specifically (cart, checkout, search, PDP). The framework ships with confidence-scored assertions.</p></div>
+    <div class="faq-item"><h4>Can we use Konnect with non-Reliance brands / 3P sellers?</h4><p>Yes — Konnect powers ~800 brands on JioMart, many of them external D2C. The platform is brand-agnostic; the integration layer abstracts the partner-specific contracts.</p></div>
+    <div class="faq-item"><h4>What about Impetus — is it only for F&amp;L?</h4><p>Today, yes — Impetus is the F&amp;L vertical spine. The architecture patterns (Vendor Management, Cortex Planning, Companion App) are reusable; talk to the Impetus team if you have a non-F&amp;L vertical that needs similar.</p></div>
+    <div class="faq-item"><h4>How does this play with our existing observability stack (Datadog, NewRelic)?</h4><p>Boltic Monitoring is a first-class module but interoperates with Datadog / NewRelic / OpenTelemetry-compatible stacks. Trace propagation, log shipping, metrics export — standard interfaces.</p></div>
+    <div class="faq-item"><h4>What's the security model for AI agents in Boltic?</h4><p>Per-agent IAM scopes, audit logging, MCP server enforcement, secrets in a vault. Agents act under defined identities; every action is logged. The SOC 2 surface area is reviewed quarterly.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="resources" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">09 · RESOURCES</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Where to start, who to talk to.</h2>
+  <div class="grid md:grid-cols-2 gap-5">
+    <a href="/boltic" class="shortlist-card"><div class="sc-eyebrow">Onboard</div><h3>Boltic onboarding workshop</h3><p>8 modules in a single day. Hands-on workflow, agent, and MCP setup for your team.</p></a>
+    <a href="/ratl" class="shortlist-card"><div class="sc-eyebrow">Playbook</div><h3>Ratl test-coverage playbook</h3><p>How AJIO and JCP got to 100 % automation across 33+ services in under a year.</p></a>
+    <a href="/fynd-konnect" class="shortlist-card"><div class="sc-eyebrow">Catalog</div><h3>Konnect integration catalog</h3><p>50+ pre-built integrations across SAP, TIBCO, marketplaces, payments, logistics, WMS.</p></a>
+    <a href="/ai-native" class="shortlist-card"><div class="sc-eyebrow">Guide</div><h3>AI-Native Engineering · how Fynd builds</h3><p>How Fynd engineering went from autocomplete to agent-led SDLC. The repo is the operating system.</p></a>
+  </div>
+</div>
+</section>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Team</div><div>Engineering, QA, SRE, supply chain, integration · across all Reliance Retail</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Sponsor</div><div>Fynd AI-Native Engineering team</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">See also</div><div><a href="/customers" style="color: var(--accent); text-decoration: underline;">Customers →</a> · <a href="/growth" style="color: var(--accent); text-decoration: underline;">Growth →</a> · <a href="/instore" style="color: var(--accent); text-decoration: underline;">InStore →</a></div></div>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href').slice(1) === id); });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+</body>
+</html>

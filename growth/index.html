@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Growth · Teams · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.team-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+.team-eyebrow .team-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.metric-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.metric-tile { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.metric-tile .mt-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.metric-tile .mt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.metric-tile .mt-source { font-size: 10px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
+.shortlist-card { padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 10px; height: 100%; transition: border-color .15s, transform .15s; text-decoration: none; }
+.shortlist-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.shortlist-card .sc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+.shortlist-card h3 { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.01em; margin: 0; }
+.shortlist-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; margin: 0; }
+.shortlist-card .sc-meta { font-size: 12px; color: var(--ink); padding-top: 12px; border-top: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 6px; }
+.shortlist-card .sc-meta strong { font-weight: 600; }
+.shortlist-card .sc-meta .sc-row { display: flex; gap: 8px; align-items: flex-start; }
+.shortlist-card .sc-meta .sc-row span:first-child { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); min-width: 70px; flex-shrink: 0; }
+.plan-row { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border-soft); }
+.plan-row .pr-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); min-width: 0; }
+.plan-row .pr-num strong { display: block; font-size: 20px; color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; margin-top: 6px; font-weight: 700; word-break: break-word; }
+.plan-row .pr-content { min-width: 0; }
+.plan-row h4 { font-weight: 700; font-size: 19px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.plan-row p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 12px; }
+.plan-row ul { list-style: none; padding: 0; margin: 8px 0 0; font-size: 13px; color: var(--ink); line-height: 1.7; }
+.plan-row ul li { padding-left: 18px; position: relative; }
+.plan-row ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+@media (max-width: 640px) {
+  .metric-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan-row { grid-template-columns: 1fr; gap: 6px; }
+  .plan-row .pr-num strong { font-size: 18px; display: inline-block; margin: 4px 0 12px; padding: 4px 10px; background: var(--bg-soft); border-radius: 6px; }
+}
+.life-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.life-card { padding: 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); }
+.life-card.before { background: #FAFAFA; }
+.life-card.after { border-color: var(--accent); background: #F5F3FF; }
+.life-card .lc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+.life-card.before .lc-eyebrow { background: #E5E7EB; color: #6B7280; }
+.life-card.after .lc-eyebrow { background: var(--accent); color: white; }
+.life-card h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.3; }
+.life-step { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border-soft); }
+.life-step:first-of-type { border-top: 0; }
+.life-step .ls-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+.life-step .ls-event { font-size: 13px; color: var(--ink); line-height: 1.55; }
+@media (max-width: 720px) { .life-grid { grid-template-columns: 1fr; } }
+.synergy-canvas { padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); overflow-x: auto; }
+.synergy-canvas svg { width: 100%; height: auto; min-width: 560px; }
+.synergy-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 12px; color: var(--ink-muted); }
+.synergy-legend .leg-item { display: flex; gap: 8px; align-items: center; }
+.synergy-legend .leg-swatch { width: 12px; height: 12px; border-radius: 3px; }
+.pitfall { padding: 22px 24px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); margin-bottom: 12px; }
+.pitfall .p-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #B45309; padding: 3px 8px; background: #FEF3C7; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.pitfall h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.pitfall p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+.pitfall .p-fix { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-soft); font-size: 14px; color: var(--ink); line-height: 1.6; }
+.pitfall .p-fix strong { color: var(--accent); }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--border-soft); }
+.faq-item:last-child { border-bottom: 0; }
+.faq-item h4 { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.faq-item p { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.audience-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 11px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--border-soft); margin: 4px 4px 0 0; }
+.section-lede { font-size: 15px; color: var(--ink-muted); line-height: 1.7; max-width: 56rem; margin-bottom: 28px; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/" class="mega-link" style="color: var(--accent); font-weight: 600;">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#thesis">01 · Thesis</a>
+<a href="#life">02 · A day in the life</a>
+<a href="#metrics">03 · What good looks like</a>
+<a href="#shortlist">04 · Your shortlist</a>
+<a href="#synergy">05 · How it fits together</a>
+<a href="#plan">06 · 30/60/90 plan</a>
+<a href="#pitfalls">07 · Where teams get stuck</a>
+<a href="#faq">08 · FAQ</a>
+<a href="#resources">09 · Resources</a>
+</div>
+</div>
+
+<section class="hero-grad pt-24 pb-20 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="team-eyebrow"><span class="team-dot"></span>For the Growth team</div>
+  <h1 class="display mb-6" style="font-size: clamp(40px, 6.5vw, 80px); line-height: 0.98; color: var(--ink);">
+    Growth.<br/><span style="color: var(--accent);">Move at the speed of culture.<br/>Ship in 48 hours, not 6 weeks.</span>
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl mb-6" style="color: var(--ink-muted); line-height: 1.55;">Reliance brand teams plan in quarters and ship in weeks. Cultural moments live for 7 days. The math no longer works. GrowthOS, Fynd Studio, and PixelBin collapse the brief-to-broadcast loop to 48 hours — without losing the brand.</p>
+  <div class="mt-4">
+    <span class="audience-tag">Brand managers</span>
+    <span class="audience-tag">Performance marketing</span>
+    <span class="audience-tag">Creative teams</span>
+    <span class="audience-tag">CRM &amp; lifecycle</span>
+    <span class="audience-tag">Media planning</span>
+  </div>
+</div>
+</section>
+
+<section id="thesis" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">01 · THE 100X THESIS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">The Growth org becomes 100× when every cultural moment becomes a shipped campaign in the same week — not the same quarter.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">Today: a campaign brief sits in approval cycles for 4-6 weeks. The trend it was meant to capture has already moved. Tomorrow: the brief is generated from a live signal, AI-produced assets ship inside guardrails in 48 hours, the campaign goes live before the moment fades, and the engine learns from the result.</p>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">GrowthOS proves it on AJIO LUXE — ₹144 Cr+ GMV managed, 48-hour SLA from trend-spot to live campaign. Fynd Studio proves it on Metro Wholesale — 9.3 M views, 85 % cost reduction, 6-day end-to-end on a campaign that would have taken 3-4 weeks traditionally.</p>
+  <p class="text-base md:text-lg max-w-3xl" style="color: var(--ink-muted); line-height: 1.7;">The Growth org doesn't shrink — it gets 10× more leverage. Senior people do senior work. Creative directors stop reviewing the 47th rotation of the same banner and start shaping brand strategy. Performance marketers run dozens of cohort-led experiments instead of three campaigns a quarter.</p>
+</div>
+</section>
+
+<section id="life" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">02 · A DAY IN THE LIFE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The brand manager who runs Trends.</h2>
+  <p class="section-lede">A composite of the rollout patterns we see when a brand team adopts GrowthOS + Fynd Studio together. The work doesn't get easier — it gets bigger.</p>
+  <div class="life-grid">
+    <div class="life-card before">
+      <div class="lc-eyebrow">Before</div>
+      <h4>Today: managing the agency, not the brand</h4>
+      <div class="life-step"><div class="ls-time">09:30</div><div class="ls-event">Weekly creative review. The agency is two days late on Diwali assets. Push to next Tuesday.</div></div>
+      <div class="life-step"><div class="ls-time">11:00</div><div class="ls-event">Brief the agency on the Republic Day campaign. Already 6 weeks out.</div></div>
+      <div class="life-step"><div class="ls-time">13:00</div><div class="ls-event">Approval rounds on last week's YouTube ad. Two more rounds expected.</div></div>
+      <div class="life-step"><div class="ls-time">15:00</div><div class="ls-event">Performance dashboards. ROAS down 8 % this fortnight. Possible reasons listed in a slide for the QBR.</div></div>
+      <div class="life-step"><div class="ls-time">17:30</div><div class="ls-event">No new experiments shipped this week. Three pieces of creative still in queue.</div></div>
+    </div>
+    <div class="life-card after">
+      <div class="lc-eyebrow">After · with Fynd Glass</div>
+      <h4>With GrowthOS + Fynd Studio: shipping at the speed of culture</h4>
+      <div class="life-step"><div class="ls-time">09:30</div><div class="ls-event">Open GrowthOS dashboard. 3 ranked opportunities today: monsoon-wear trending in Bangalore, Onam sari demand spiking in Kerala, a creator post about pastel office wear going viral.</div></div>
+      <div class="life-step"><div class="ls-time">10:00</div><div class="ls-event">Approve the monsoon-wear brief. Fynd Studio generates 4 variants in 90 minutes — Mumbai, Bangalore, Hyderabad, Pune. Localized copy. Locked-brand palette.</div></div>
+      <div class="life-step"><div class="ls-time">11:30</div><div class="ls-event">Push to Meta + Google. Live in 35 minutes. Predicted ROAS 3.4× ± 0.6 surfaced from the model.</div></div>
+      <div class="life-step"><div class="ls-time">14:00</div><div class="ls-event">Lunch with the agency. New scope: they own the hero brand film for IPL. Routine performance creative is in-house.</div></div>
+      <div class="life-step"><div class="ls-time">15:30</div><div class="ls-event">Look at last week's 47 cohort experiments. The Bangalore-pastel cohort over-indexed. Push that learning back into GrowthOS as a permanent signal.</div></div>
+      <div class="life-step"><div class="ls-time">17:30</div><div class="ls-event">7 campaigns shipped this week. Two with measurable ROAS uplift. Real time spent on brand strategy: 4× last quarter.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="metrics" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">03 · WHAT GOOD LOOKS LIKE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Outcome targets for FY 26-27.</h2>
+  <p class="section-lede">Benchmarks calibrated against AJIO LUXE (GrowthOS) and Metro Wholesale (Fynd Studio). Real numbers from production rollouts, not aspirational ceilings.</p>
+  <div class="metric-row">
+    <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">Brief → live campaign</div><div class="mt-source">AJIO LUXE SLA</div></div>
+    <div class="metric-tile"><div class="mt-num">−85 %</div><div class="mt-label">Cost per asset</div><div class="mt-source">Metro Wholesale benchmark</div></div>
+    <div class="metric-tile"><div class="mt-num">10×</div><div class="mt-label">Active campaigns / quarter</div><div class="mt-source">GrowthOS retainer client</div></div>
+    <div class="metric-tile"><div class="mt-num">+30 %</div><div class="mt-label">ROAS uplift target</div><div class="mt-source">First-quarter target</div></div>
+  </div>
+</div>
+</section>
+
+<section id="shortlist" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">04 · YOUR SHORTLIST</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Six platforms. In adoption order.</h2>
+  <p class="section-lede">Listed top-to-bottom by leverage-per-integration-cost. Start with GrowthOS for the loop, layer Fynd Studio for creative throughput, then PixelBin and UCP for compounding.</p>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <a href="/growthos" class="shortlist-card">
+      <div class="sc-eyebrow">01 · Start here</div>
+      <h3>GrowthOS · Marketing OS</h3>
+      <p>150+ live signals scored continuously. Brief, generate, execute, measure in hours. Validated on AJIO LUXE.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Collapse brief-to-live cycle to 48 hours · get a daily prioritised list of opportunities.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>3 ranked opportunities/day from week 1 · first sub-48hr campaign in week 2</span></div>
+        <div class="sc-row"><span>Owner</span><span>GrowthOS team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/fynd-studio" class="shortlist-card">
+      <div class="sc-eyebrow">02 · Creative pipeline</div>
+      <h3>Fynd Studio · AI Media</h3>
+      <p>Image, video, cinematic, IP build. Each format priced per outcome with a guaranteed SLA. 15+ brands shipping today.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Replace the creative agency bottleneck · festive multi-lingual packs · hyper-localized variants · AI character IPs.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>6 days end-to-end on a Metro-shape campaign · 85 % cost reduction</span></div>
+        <div class="sc-row"><span>Owner</span><span>Fynd Studio team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/pixelbin" class="shortlist-card">
+      <div class="sc-eyebrow">03 · Visual transforms</div>
+      <h3>PixelBin · Visual AI</h3>
+      <p>PixelBin transforms · Fynd Studios AI ads · GlamAR AR/VR commerce. Live across Sephora, West Elm, Reliance Jewels.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Catalog enrichment at scale · AR/VR try-on for jewellery, eyewear, beauty.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>100 K+ images processed · 50+ AI ads · 200+ AR/VR experiences live</span></div>
+        <div class="sc-row"><span>Owner</span><span>PixelBin team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/ucp" class="shortlist-card">
+      <div class="sc-eyebrow">04 · Identity layer</div>
+      <h3>UCP &amp; Marketing OS</h3>
+      <p>380 M+ customer identities. 200+ profile attributes. Real-time activation across every Reliance Retail format.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Personalise at moment of intent · drive cohort-led campaigns · connect identity to GrowthOS signal output.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>1.5× repeat-rate on identified-customer cohorts</span></div>
+        <div class="sc-row"><span>Owner</span><span>UCP platform team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/kaily" class="shortlist-card">
+      <div class="sc-eyebrow">05 · Discovery in chat</div>
+      <h3>Kaily · Agentic Commerce</h3>
+      <p>AJIO ZIP: 88 % positive engagement · 86 % chat-driven discovery on 2 M+ products.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Pair-program with CX team: chat is the new top-of-funnel · run product launches inside Kaily before the homepage update lands.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>Chat-driven conversion measurably higher than browse-driven for fashion verticals</span></div>
+        <div class="sc-row"><span>Owner</span><span>Kaily team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/boltic" class="shortlist-card">
+      <div class="sc-eyebrow">06 · Backstage automation</div>
+      <h3>Boltic · Automation OS</h3>
+      <p>Workflows, agents, MCP, gateway. 500+ integrations. SOC 2 + GDPR.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Automate the boring growth-ops loop: campaign reporting, channel rebalancing, A/B variant rotation.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>First Boltic-automated workflow saving 10+ team-hours/week in month 1</span></div>
+        <div class="sc-row"><span>Owner</span><span>Boltic team · Fynd</span></div>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section id="synergy" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">05 · HOW IT FITS TOGETHER</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How the platforms work together for the Growth team.</h2>
+  <p class="section-lede">GrowthOS is the brain. It watches signals, ranks opportunities, briefs the system. Fynd Studio is the hands — it produces every format the brief needs. PixelBin handles catalog-side visual work. UCP supplies the targeting layer. Kaily is the in-chat surface where launches go live first. Boltic stitches the boring parts.</p>
+  <div class="synergy-canvas">
+    <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;" role="img" aria-label="Workflow diagram">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6B5BD6" /></marker></defs>
+<rect x="30.0" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="76.66666666666666" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Signal</text>
+<text x="76.66666666666666" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">cultural · commercial · demand</text>
+<line x1="125.33333333333333" y1="90.0" x2="141.33333333333331" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="143.33333333333331" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="189.99999999999997" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">GrowthOS</text>
+<text x="189.99999999999997" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">rank + brief</text>
+<line x1="238.66666666666663" y1="90.0" x2="254.66666666666663" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="256.66666666666663" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="303.3333333333333" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Fynd Studio</text>
+<text x="303.3333333333333" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">produce assets</text>
+<line x1="351.99999999999994" y1="90.0" x2="367.99999999999994" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="370.0" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="416.6666666666667" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">UCP</text>
+<text x="416.6666666666667" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">cohort target</text>
+<line x1="465.3333333333333" y1="90.0" x2="481.3333333333333" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="483.3333333333333" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="530.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Live</text>
+<text x="530.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">Meta · Google · own</text>
+<line x1="578.6666666666666" y1="90.0" x2="594.6666666666666" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="596.6666666666666" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="643.3333333333333" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Learn</text>
+<text x="643.3333333333333" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">predicted vs actual</text>
+</svg>
+  </div>
+  <div class="synergy-legend">
+    <div class="leg-item"><div class="leg-swatch" style="background:#6B5BD6"></div>Campaign lifecycle</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:white; border:1px solid #6B5BD6"></div>Platform component</div>
+  <div class="leg-item">Each campaign teaches the next · the loop tightens over time</div>
+  </div>
+</div>
+</section>
+
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · 30 · 60 · 90 PLAN</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A first quarter that compounds.</h2>
+  <p class="section-lede">A realistic adoption sequence designed for measurable wins inside the first 90 days. Each phase unlocks the next.</p>
+  <div class="max-w-4xl">
+    <div class="plan-row">
+      <div class="pr-num">Day 0 - 30<strong>Pilot</strong></div>
+      <div class="pr-content">
+        <h4>Pick a festive moment. Run a 14-day GrowthOS pilot.</h4>
+        <p>Choose one upcoming launch with clear performance targets — IPL, EOSS, Diwali, EOFY. Brief, ship, measure end-to-end in 14 days.</p>
+        <ul><li>Baseline: brief-to-live latency, CAC, ROAS, asset count</li><li>Goal: 48-hour brief-to-live + ROAS ≥ control</li><li>Exit: written case study, playbook for brand #2</li><li>Owner: brand-side performance lead × Fynd GrowthOS SE</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 30 - 60<strong>Creative</strong></div>
+      <div class="pr-content">
+        <h4>Move one brand fully onto Fynd Studio for creative.</h4>
+        <p>Shift the entire monthly creative SLA for one brand into Fynd Studio. Keep the agency for hero brand films; everything else is AI-native pipeline.</p>
+        <ul><li>Pick a brand with high asset volume: Trends, Yousta, Tira</li><li>Compare side-by-side: cost per asset, time, performance</li><li>Hyper-localize: ship 4+ language variants per campaign</li><li>Owner: brand creative director × Fynd Studio team</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 60 - 90<strong>Identity</strong></div>
+      <div class="pr-content">
+        <h4>Connect UCP cohorts to GrowthOS.</h4>
+        <p>Layer UCP identity onto GrowthOS targeting. Now the signal layer recommends campaigns, the system targets them at the right cohort, performance tracks per cohort.</p>
+        <ul><li>UCP cohort segmentation live in GrowthOS</li><li>A/B test cohort-led vs broadcast creative</li><li>Quarterly review: full per-rupee economics of agentic growth</li><li>Owner: brand head × UCP PM × GrowthOS PM</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="pitfalls" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">07 · WHERE TEAMS GET STUCK</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The four objections you'll hear in the first week.</h2>
+  <p class="section-lede">Every team that has adopted these platforms has run into the same four worries. Here is how it actually plays out.</p>
+  <div class="max-w-4xl">
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #1</div>
+      <h4>"The brand will get diluted by AI creative."</h4>
+      <p>This is the legitimate worry. The AJIO LUXE rollout addressed it head-on: brand guidelines, palette, voice, and forbidden-territory all encoded as guardrails. Output stays inside the box. Brand integrity has not regressed.</p>
+      <div class="p-fix"><strong>The move:</strong> Author the brand guidelines as a system prompt + visual lock. Review weekly for the first 4 weeks. After that, brand drift is the same problem it always was — a creative-direction problem, not a tech problem.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #2</div>
+      <h4>"Our agency relationship is too valuable to disrupt."</h4>
+      <p>Agencies aren't going away. The relationship shifts: they own the hero work — the brand films, the cinematic anchors, the IP development. The high-volume rest moves to Fynd Studio. Most agencies welcome this; the busywork is what was making the relationship transactional.</p>
+      <div class="p-fix"><strong>The move:</strong> Renegotiate the retainer around brand strategy + hero anchors. Move performance-creative volume to Fynd Studio. The agency does better, more interesting work; you ship 10× more variants.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #3</div>
+      <h4>"We don't have the data to feed signal-based campaigns."</h4>
+      <p>Most brand teams under-estimate what GrowthOS already reads from public signals (search trends, social velocity, competitor activity) and what UCP already knows about the customer (200+ attributes, 380M+ identities). The data gap is smaller than it feels.</p>
+      <div class="p-fix"><strong>The move:</strong> Start with the public signal layer + your own analytics. Layer UCP in month 2. The recommendations get sharper as the loop runs — they don't require a 6-month data project to begin.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #4</div>
+      <h4>"Performance teams need to own attribution. The system will hide it."</h4>
+      <p>GrowthOS doesn't replace attribution — it adds a layer of predicted vs actual scoring on top. Performance teams see more, not less. The forecast becomes the new benchmark to beat.</p>
+      <div class="p-fix"><strong>The move:</strong> Expose the predicted-vs-actual log to the performance team from day 1. Use it as the reference point for media-mix decisions. The team is sharper because the system shows its work.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="faq" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">08 · FAQ</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The questions you'll get from your team.</h2>
+  <div class="max-w-3xl mt-6">
+    <div class="faq-item"><h4>Does GrowthOS support our existing martech stack (Meta Ads Manager, Google Ads, GA, Adobe)?</h4><p>Yes. GrowthOS is built to plug in on top — one-click push to Meta + Google for campaign deployment, attribution roll-up into your existing analytics. No rip-and-replace.</p></div>
+    <div class="faq-item"><h4>How does Fynd Studio pricing compare to our current creative agency retainer?</h4><p>Priced per format with a guaranteed SLA. Starter, Growth (most chosen), Enterprise tiers. A working comparison is ~85 % cost reduction vs traditional agency-billed creative production at the same volume.</p></div>
+    <div class="faq-item"><h4>Can our in-house designers work in Fynd Studio?</h4><p>Yes. Fynd Studio outputs are editable. The pipeline assumes a creative human in the loop — for direction, for review, for the final 5 % of polish. The system makes the volume manageable.</p></div>
+    <div class="faq-item"><h4>What languages does Fynd Studio localize into?</h4><p>All 12 Indian languages production-tested. Hindi, Tamil, Telugu, Marathi, Kannada, Bengali, Gujarati, Punjabi, Malayalam, Odia, Assamese, English. Plus global (English, Japanese, Spanish, French) where the use case applies.</p></div>
+    <div class="faq-item"><h4>How does Tribe v2 (the virality predictor R&amp;D) connect to this?</h4><p>Tribe v2 is internal R&amp;D — a neural-response model that may eventually score every Fynd Studio cut for predicted virality before media spend. Today it's exploration; in production it would become a scoring layer between Fynd Studio and Live.</p></div>
+    <div class="faq-item"><h4>What about creative IP and rights?</h4><p>All Fynd Studio output is owned by the commissioning brand. The AI Character IP product is an explicit one-time build — yours, exclusively. PixelBin transforms are derivative of your source assets; rights flow through.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="resources" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">09 · RESOURCES</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Where to start, who to talk to.</h2>
+  <div class="grid md:grid-cols-2 gap-5">
+    <a href="/growthos" class="shortlist-card"><div class="sc-eyebrow">Pilot</div><h3>Request a 14-day GrowthOS pilot</h3><p>Pick your most important upcoming campaign. We build and ship in 14 days — compare against your current baseline.</p></a>
+    <a href="/fynd-studio" class="shortlist-card"><div class="sc-eyebrow">Browse</div><h3>Open the Fynd Studio portfolio</h3><p>Real work for Metro, NMACC, Reliance Jewels, Superdry, Trends. See what 48 hours actually looks like.</p></a>
+    <a href="/pixelbin" class="shortlist-card"><div class="sc-eyebrow">Catalog</div><h3>PixelBin showcase</h3><p>Catalog transforms, AI ads, AR/VR commerce. Live customers across India and globally.</p></a>
+    <a href="/fynd-academy" class="shortlist-card"><div class="sc-eyebrow">Train</div><h3>Fynd Academy · Growth track</h3><p>Hands-on for brand and marketing leads. 600+ Reliance staff already trained across 5 entities.</p></a>
+  </div>
+</div>
+</section>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Team</div><div>Brand, marketing, performance, creative · across all Reliance brands</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Sponsor</div><div>Fynd Growth Solutions team</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">See also</div><div><a href="/customers" style="color: var(--accent); text-decoration: underline;">Customers →</a> · <a href="/operations" style="color: var(--accent); text-decoration: underline;">Operations →</a> · <a href="/instore" style="color: var(--accent); text-decoration: underline;">InStore →</a></div></div>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href').slice(1) === id); });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+</body>
+</html>

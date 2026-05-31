@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FRAME Magazine · Coming June 2026 · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Fraunces:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+/* FRAME-magazine editorial chrome */
+.frame-press { font-family: 'Fraunces', 'Times New Roman', serif; }
+.frame-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 999px;
+  background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A;
+}
+.frame-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: #92400E; animation: pulse 2s ease-in-out infinite; }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+.hero-frame { background: #0A0A0A; color: white; padding: 80px 0 80px; }
+.hero-frame .max-w-7xl { color: white; }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+.hero-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; margin-bottom: 18px; }
+.hero-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(56px, 9vw, 120px); line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 20px; }
+.hero-volume { font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.16em; opacity: 0.55; margin-bottom: 28px; text-transform: uppercase; }
+.hero-deck { font-family: 'Fraunces', serif; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.45; font-weight: 400; opacity: 0.85; max-width: 38rem; margin-bottom: 36px; }
+.hero-cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 28px; }
+.frame-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; background: white; color: #0A0A0A; border-radius: 999px; font-weight: 500; font-size: 14px; text-decoration: none; transition: opacity .15s; }
+.frame-btn:hover { opacity: 0.85; }
+.frame-btn.ghost { background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); }
+.frame-btn.ghost:hover { background: rgba(255,255,255,0.1); }
+.hero-cover-wrap { position: relative; }
+.hero-cover-wrap img { width: 100%; height: auto; display: block; border-radius: 4px; box-shadow: 0 24px 80px rgba(0,0,0,0.6); }
+.hero-cover-label { position: absolute; bottom: -28px; right: -8px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.5; }
+
+.hero-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 40px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.12); }
+.hero-stats .hs-num { font-family: 'Fraunces', serif; font-size: 30px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 4px; }
+.hero-stats .hs-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.55; }
+@media (max-width: 600px) { .hero-stats { grid-template-columns: repeat(2, 1fr); } }
+
+/* Magazine masthead break */
+.mast-break { padding: 24px 0; background: var(--bg-soft); border-bottom: 1px solid var(--border); border-top: 1px solid var(--border); }
+.mast-break .max-w-7xl { display: flex; gap: 32px; flex-wrap: wrap; align-items: center; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+.mast-break .mb-strong { color: var(--ink); font-weight: 500; }
+
+/* Editorial sections */
+.editorial-section { padding: 96px 0; }
+.editorial-section.dark { background: #0A0A0A; color: white; }
+.editorial-section.cream { background: #FAFAFA; }
+
+.section-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+.editorial-section.dark .section-eyebrow { color: #FDE68A; }
+.section-title { font-family: 'Fraunces', serif; font-weight: 500; font-size: clamp(36px, 5vw, 64px); line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 24px; }
+.editorial-section.dark .section-title { color: white; }
+.section-lede { font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.65; max-width: 48rem; color: var(--ink-muted); }
+.editorial-section.dark .section-lede { color: rgba(255,255,255,0.7); }
+
+/* Act cards (the 5 acts of the magazine) */
+.act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 56px; }
+.act-card { padding: 28px 24px; background: white; border: 1px solid var(--border); border-radius: 14px; display: flex; flex-direction: column; gap: 12px; height: 100%; transition: border-color .15s, transform .15s; }
+.editorial-section.dark .act-card { background: #141414; border-color: rgba(255,255,255,0.1); }
+.act-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.editorial-section.dark .act-card:hover { border-color: rgba(255,255,255,0.3); }
+.act-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--accent); letter-spacing: 0.1em; }
+.editorial-section.dark .act-num { color: #FDE68A; }
+.act-title { font-family: 'Fraunces', serif; font-weight: 600; font-size: 22px; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); }
+.editorial-section.dark .act-title { color: white; }
+.act-blurb { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+.editorial-section.dark .act-blurb { color: rgba(255,255,255,0.6); }
+.act-pages { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-soft); letter-spacing: 0.08em; margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border-soft); }
+.editorial-section.dark .act-pages { color: rgba(255,255,255,0.4); border-color: rgba(255,255,255,0.1); }
+
+/* Pull quote pages */
+.quote-wall { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 48px; }
+.quote-tile { padding: 32px 28px; background: white; border: 1px solid var(--border); border-radius: 14px; display: flex; flex-direction: column; gap: 14px; min-height: 200px; }
+.quote-tile q { font-family: 'Fraunces', serif; font-size: 21px; line-height: 1.4; color: var(--ink); font-weight: 500; quotes: '\\201C' '\\201D'; letter-spacing: -0.01em; }
+.quote-tile q::before { content: '\\201C'; }
+.quote-tile q::after { content: '\\201D'; }
+.quote-tile .qc { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-top: auto; }
+
+/* Spread previews — large image + caption */
+.spread { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; margin: 80px 0; }
+.spread.reverse { grid-template-columns: 1fr 1.2fr; }
+.spread.reverse .spread-img { order: 2; }
+.spread.reverse .spread-text { order: 1; }
+@media (max-width: 800px) { .spread, .spread.reverse { grid-template-columns: 1fr; gap: 28px; } .spread.reverse .spread-img, .spread.reverse .spread-text { order: 0; } }
+.spread-img { position: relative; }
+.spread-img img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.spread-img .sp-cap { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-top: 14px; }
+.spread-text .sp-ch { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
+.spread-text h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 42px); line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 18px; }
+.spread-text .sp-deck { font-family: 'Fraunces', serif; font-size: 17px; line-height: 1.6; color: var(--ink-muted); margin-bottom: 16px; }
+.spread-text .sp-pull { font-family: 'Fraunces', serif; font-style: italic; font-size: 15px; color: var(--ink); border-left: 3px solid var(--accent); padding-left: 16px; }
+
+/* Chapter list */
+.chapter-list { columns: 2; column-gap: 48px; margin-top: 48px; }
+@media (max-width: 700px) { .chapter-list { columns: 1; } }
+.chapter-row { break-inside: avoid; padding: 16px 0; border-bottom: 1px solid var(--border-soft); display: flex; gap: 16px; align-items: baseline; }
+.chapter-row .ch-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); letter-spacing: 0.08em; min-width: 36px; }
+.chapter-row .ch-title { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; color: var(--ink); flex: 1; line-height: 1.3; }
+.chapter-row .ch-pg { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-soft); }
+
+/* Notify card */
+.notify-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 48px; max-width: 36rem; margin: 56px auto 0; text-align: center; }
+.notify-card h3 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 32px; line-height: 1.1; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.02em; }
+.notify-card p { font-size: 15px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 24px; }
+.notify-row { display: flex; gap: 8px; max-width: 24rem; margin: 0 auto; }
+.notify-row input { flex: 1; padding: 12px 16px; border: 1px solid var(--border); border-radius: 999px; font-family: 'Inter', sans-serif; font-size: 14px; outline: none; transition: border-color .15s; }
+.notify-row input:focus { border-color: var(--ink); }
+.notify-row button { padding: 12px 22px; background: var(--ink); color: white; border: none; border-radius: 999px; font-weight: 500; font-size: 14px; cursor: pointer; transition: opacity .15s; }
+.notify-row button:hover { opacity: 0.85; }
+.notify-card .nc-fine { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-top: 18px; }
+
+/* Footer credits */
+.credits { padding: 56px 0; background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.credits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; }
+.credits-block .cb-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px; }
+.credits-block .cb-value { font-family: 'Fraunces', serif; font-size: 16px; color: var(--ink); line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/" class="mega-link" style="color: var(--accent); font-weight: 600;">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero-frame">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="hero-grid">
+    <div>
+      <span class="frame-tag"><span class="dot"></span>Coming June 2026</span>
+      <div class="hero-meta" style="margin-top:24px;">A magazine from Fynd Press · Volume One · Spring 2026</div>
+      <h1 class="hero-title">FRAME</h1>
+      <div class="hero-volume">Demand, Made. · The Gen Media &amp; Marketing Edition</div>
+      <p class="hero-deck">For the CMO who plans to ship more, sell more, and mean more — in Mumbai, Manhattan, and everywhere demand is made.</p>
+      <div class="hero-cta-row">
+        <a href="#preview" class="frame-btn">Preview the volume ↓</a>
+        <a href="#notify" class="frame-btn ghost">Get the launch email →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hs-num">50</div><div class="hs-label">Pages</div></div>
+        <div><div class="hs-num">17</div><div class="hs-label">Chapters</div></div>
+        <div><div class="hs-num">5</div><div class="hs-label">Acts</div></div>
+        <div><div class="hs-num">2×/yr</div><div class="hs-label">Cadence</div></div>
+      </div>
+    </div>
+    <div class="hero-cover-wrap">
+      <img src="../assets/frame/cover.jpg" alt="FRAME Volume One cover — Demand, Made." />
+      <div class="hero-cover-label">FRAME · VOL 01 · SPRING 2026</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- MASTHEAD STRIP -->
+<div class="mast-break">
+<div class="max-w-7xl mx-auto px-6">
+  <div><span class="mb-strong">Fynd Press</span> · The editorial wing of Fynd Studio</div>
+  <div>Volume One · 50 pages · A4 · Bound to lie flat</div>
+  <div><span class="mb-strong">fyndpress.com</span> · editors@fyndpress.com</div>
+</div>
+</div>
+
+<!-- WHAT IT IS -->
+<section class="editorial-section" id="preview">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow">01 · What it is</div>
+  <h2 class="section-title">A long, careful argument for one idea.</h2>
+  <p class="section-lede">The deepest shift in marketing this decade is not that demand can be captured faster. It is that demand can be <em>made</em> — not as in forced, but as in crafted. Brought carefully into the world by the hands of someone who minded enough to make it well. FRAME Volume One is fifty pages on what that idea looks like in practice, in Mumbai, in Manhattan, and in everywhere demand is made.</p>
+</div>
+</section>
+
+<!-- THE 5 ACTS -->
+<section class="editorial-section dark">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow">02 · The five acts</div>
+  <h2 class="section-title">Five chapters of the same argument.</h2>
+  <p class="section-lede">Read non-linear. Whichever act you pick up first will leave you with something you can use by Monday morning — a question for your team, a number for the deck, a workflow to rewire.</p>
+  <div class="act-grid">
+    <div class="act-card">
+      <div class="act-num">ACT I</div>
+      <div class="act-title">The New Physics</div>
+      <div class="act-blurb">When intelligence becomes free, what becomes scarce. Speed as the new empathy. The anti-slop discipline.</div>
+      <div class="act-pages">CH 01–03 · pp. 5–12</div>
+    </div>
+    <div class="act-card">
+      <div class="act-num">ACT II</div>
+      <div class="act-title">The New Craft</div>
+      <div class="act-blurb">The death of the brief. N=1 personalisation. The cinematic internet. The atlas of 18 gen-media formats.</div>
+      <div class="act-pages">CH 04–07 · pp. 13–23</div>
+    </div>
+    <div class="act-card">
+      <div class="act-num">ACT III</div>
+      <div class="act-title">The New Market</div>
+      <div class="act-blurb">The agent at the shelf. Commerce media's quiet coup. Why brand pays for performance.</div>
+      <div class="act-pages">CH 08–10 · pp. 25–32</div>
+    </div>
+    <div class="act-card">
+      <div class="act-num">ACT IV</div>
+      <div class="act-title">The New Org</div>
+      <div class="act-blurb">The singularity of job roles. The one-person business unit. The eight seats. Why the holdcos lost the decade.</div>
+      <div class="act-pages">CH 11–14 · pp. 34–41</div>
+    </div>
+    <div class="act-card">
+      <div class="act-num">ACT V</div>
+      <div class="act-title">The New Horizon</div>
+      <div class="act-blurb">Brands as studios. The death of the campaign. A letter to the 2030 CMO.</div>
+      <div class="act-pages">CH 15–17 · pp. 43–48</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PULL QUOTES -->
+<section class="editorial-section cream">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow">03 · The Oracle</div>
+  <h2 class="section-title">Ten lines from the volume.</h2>
+  <p class="section-lede">These are the sentences our test readers underlined first. Read them as a sample of the voice.</p>
+  <div class="quote-wall">
+    <div class="quote-tile"><q>Intelligence was the advantage of the twentieth century. Will is the advantage of the twenty-first.</q><div class="qc">CH 01 · p. 5</div></div>
+    <div class="quote-tile"><q>If groceries arrive in ten minutes, why should an ad take two weeks?</q><div class="qc">CH 02 · p. 9</div></div>
+    <div class="quote-tile"><q>Slop is the new mediocrity. Care is the new luxury.</q><div class="qc">CH 03 · p. 12</div></div>
+    <div class="quote-tile"><q>The brief is not commissioned. The brief is triggered.</q><div class="qc">CH 04 · p. 14</div></div>
+    <div class="quote-tile"><q>Personalisation is respect.</q><div class="qc">CH 05 · p. 15</div></div>
+    <div class="quote-tile"><q>The new shelf is not a place. It is a context window.</q><div class="qc">CH 08 · p. 27</div></div>
+    <div class="quote-tile"><q>Agents will negotiate prices. They will not manufacture desire.</q><div class="qc">CH 15 · p. 44</div></div>
+    <div class="quote-tile"><q>Brand pays for performance. Strip the brand and performance has nothing to land on.</q><div class="qc">CH 10 · p. 31</div></div>
+    <div class="quote-tile"><q>Direct or be directed. There is no middle.</q><div class="qc">CH 11 · p. 35</div></div>
+    <div class="quote-tile"><q>What will you ship this week that you could not have shipped last year?</q><div class="qc">CH 12 · p. 37</div></div>
+  </div>
+</div>
+</section>
+
+<!-- SPREAD PREVIEWS -->
+<section class="editorial-section">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow">04 · Inside the volume</div>
+  <h2 class="section-title">A few spreads from the issue.</h2>
+  <p class="section-lede">Each chapter pairs a photograph from Tokyo, Mumbai, or Brooklyn with the working argument. Below: four spreads, lifted out of context but representative.</p>
+
+  <div class="spread">
+    <div class="spread-img">
+      <img src="../assets/frame/tokyo-direct.jpg" alt="Tokyo street at dusk — Direct or be directed" />
+      <div class="sp-cap">Tokyo, 7.42 pm · CH 01</div>
+    </div>
+    <div class="spread-text">
+      <div class="sp-ch">Chapter 01 · The New Physics</div>
+      <h3>When intelligence becomes free.</h3>
+      <p class="sp-deck">By the time you finish reading this paragraph, a language model on a server somewhere will have tried a hundred ideas that would have been considered campaign-ready in 2022. It will have done so for the cost of a server rental. The advantage that follows is older and simpler than tools: knowing what you want, and being willing to defend the recognition against the noise.</p>
+      <div class="sp-pull">The next decade belongs to whoever knows what they want.</div>
+    </div>
+  </div>
+
+  <div class="spread reverse">
+    <div class="spread-img">
+      <img src="../assets/frame/harajuku-formats.jpg" alt="Harajuku alley — Eighteen formats" />
+      <div class="sp-cap">Harajuku alley · CH 07</div>
+    </div>
+    <div class="spread-text">
+      <div class="sp-ch">Chapter 07 · The New Craft</div>
+      <h3>The atlas of gen media.</h3>
+      <p class="sp-deck">Until very recently, video was a category. So was image. So was audio. That taxonomy is no longer useful. Video, today, contains eighteen distinct formats — each with a different use, a different cohort, a different unit economic. The CMO who plans against video in 2026 is planning against the wrong noun.</p>
+      <div class="sp-pull">Eighteen formats every CMO should plan for. The atlas is in CH 07.</div>
+    </div>
+  </div>
+
+  <div class="spread">
+    <div class="spread-img">
+      <img src="../assets/frame/ginza-agent.jpg" alt="Ginza street scene — The hailing of an agent" />
+      <div class="sp-cap">Ginza, 6.04 pm · CH 08</div>
+    </div>
+    <div class="spread-text">
+      <div class="sp-ch">Chapter 08 · The New Market</div>
+      <h3>The agent at the shelf.</h3>
+      <p class="sp-deck">For a hundred years, the shelf was a physical place. For thirty years, it moved to a screen. In 2026, it is moving again — this time to a context window. The brand whose context the agent does not have access to is the brand the customer did not consider.</p>
+      <div class="sp-pull">Quotation is the new placement.</div>
+    </div>
+  </div>
+
+  <div class="spread reverse">
+    <div class="spread-img">
+      <img src="../assets/frame/the-fire.jpg" alt="The fire — entertainment before commerce" />
+      <div class="sp-cap">CH 15 · The New Horizon</div>
+    </div>
+    <div class="spread-text">
+      <div class="sp-ch">Chapter 15 · The New Horizon</div>
+      <h3>Before there was commerce, there was entertainment.</h3>
+      <p class="sp-deck">Before there was commerce, there was a fire. Around it, somebody told a story. The people who came back the next night came back for the story. The bowl of stew was incidental — a kindness, an excuse — but the reason for the gathering was the story. Five thousand years later, this fact has not changed.</p>
+      <div class="sp-pull">Agents will negotiate prices. They will not manufacture desire.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CHAPTER LIST -->
+<section class="editorial-section cream">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow">05 · The complete table of contents</div>
+  <h2 class="section-title">Seventeen chapters. Three interludes. One letter.</h2>
+  <p class="section-lede">Pick a number. Begin anywhere.</p>
+  <div class="chapter-list">
+    <div class="chapter-row"><span class="ch-num">CH 01</span><span class="ch-title">When intelligence becomes free</span><span class="ch-pg">p. 5</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 02</span><span class="ch-title">Speed is the new empathy</span><span class="ch-pg">p. 9</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 03</span><span class="ch-title">Anti-slop: the new premium</span><span class="ch-pg">p. 11</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 04</span><span class="ch-title">The death of the brief</span><span class="ch-pg">p. 13</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 05</span><span class="ch-title">N=1: when everyone gets their own ad</span><span class="ch-pg">p. 15</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 06</span><span class="ch-title">The cinematic internet</span><span class="ch-pg">p. 18</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 07</span><span class="ch-title">The atlas of gen media · 18 formats</span><span class="ch-pg">p. 21</span></div>
+    <div class="chapter-row"><span class="ch-num">INT I</span><span class="ch-title">The 2026 CMO atlas · five panels</span><span class="ch-pg">p. 24</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 08</span><span class="ch-title">The agent at the shelf</span><span class="ch-pg">p. 25</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 09</span><span class="ch-title">Commerce media's quiet coup</span><span class="ch-pg">p. 28</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 10</span><span class="ch-title">Brand pays for performance</span><span class="ch-pg">p. 30</span></div>
+    <div class="chapter-row"><span class="ch-num">INT II</span><span class="ch-title">30 acts for tomorrow morning</span><span class="ch-pg">p. 33</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 11</span><span class="ch-title">The singularity of job roles</span><span class="ch-pg">p. 34</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 12</span><span class="ch-title">The one-person business unit</span><span class="ch-pg">p. 36</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 13</span><span class="ch-title">The eight seats</span><span class="ch-pg">p. 38</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 14</span><span class="ch-title">Why the holdcos lost the decade</span><span class="ch-pg">p. 41</span></div>
+    <div class="chapter-row"><span class="ch-num">INT III</span><span class="ch-title">The Oracle · ten lines</span><span class="ch-pg">p. 42</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 15</span><span class="ch-title">Before there was commerce, there was entertainment</span><span class="ch-pg">p. 43</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 16</span><span class="ch-title">The death of the campaign as a unit of work</span><span class="ch-pg">p. 45</span></div>
+    <div class="chapter-row"><span class="ch-num">CH 17</span><span class="ch-title">A letter to the 2030 CMO</span><span class="ch-pg">p. 47</span></div>
+  </div>
+</div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="editorial-section dark">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow">06 · Audience</div>
+  <h2 class="section-title">Who this is written for.</h2>
+  <div class="grid md:grid-cols-2 gap-12 mt-12">
+    <div>
+      <p style="font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.85);">
+        Enterprise CMOs, brand directors, growth leaders, founders, and operators — in India, the United States, the United Kingdom, the GCC, Southeast Asia, and everywhere else demand is made.
+      </p>
+      <p style="font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.6; color: rgba(255,255,255,0.7); margin-top: 18px;">
+        Written for the producer in Lagos, the strategist in Singapore, the editor in São Paulo, the founder in Bengaluru. Written for the people who are still trying.
+      </p>
+    </div>
+    <div>
+      <p style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px;">Reading instruction</p>
+      <p style="font-family: 'Fraunces', serif; font-size: 19px; line-height: 1.6; color: white;">
+        Non-linear. Pick a page. Begin anywhere. Every chapter stands alone. Designed for the hand and the screenshot, in that order. Bound to lie flat.
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- NOTIFY -->
+<section class="editorial-section" id="notify">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="section-eyebrow" style="text-align:center;">07 · Get the launch</div>
+  <h2 class="section-title" style="text-align:center;">FRAME Volume One ships in June 2026.</h2>
+  <p class="section-lede" style="text-align:center; margin: 0 auto;">Drop your email. We'll send you the digital edition the day it goes live, and the print edition's shipping notice when bound copies leave Mumbai.</p>
+  <div class="notify-card">
+    <h3>Be the first to read it.</h3>
+    <p>Volume One · 50 pages · digital + print. Volume Two follows in autumn 2026.</p>
+    <form class="notify-row" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thanks ·  Added';">
+      <input type="email" placeholder="you@company.com" required />
+      <button type="submit">Notify me</button>
+    </form>
+    <div class="nc-fine">Internal demo · email capture is local-only · no list is built</div>
+  </div>
+</div>
+</section>
+
+<!-- CREDITS -->
+<section class="credits">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="credits-grid">
+    <div class="credits-block">
+      <div class="cb-label">Publisher</div>
+      <div class="cb-value">Fynd Press · the editorial wing of Fynd Studio</div>
+    </div>
+    <div class="credits-block">
+      <div class="cb-label">Editors</div>
+      <div class="cb-value">The Editors, Fynd Press</div>
+    </div>
+    <div class="credits-block">
+      <div class="cb-label">Cadence</div>
+      <div class="cb-value">Biannual · Vol 02 follows in autumn 2026</div>
+    </div>
+    <div class="credits-block">
+      <div class="cb-label">Set in</div>
+      <div class="cb-value">Fraunces (display) &amp; Inter (body) · JetBrains Mono (metadata)</div>
+    </div>
+    <div class="credits-block">
+      <div class="cb-label">Address</div>
+      <div class="cb-value">editors@fyndpress.com · fyndpress.com</div>
+    </div>
+    <div class="credits-block">
+      <div class="cb-label">Voice</div>
+      <div class="cb-value">Care is a discipline, not a vibe. Speed is empathy, not efficiency.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Customers · Teams · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.team-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+.team-eyebrow .team-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.metric-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.metric-tile { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.metric-tile .mt-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.metric-tile .mt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.metric-tile .mt-source { font-size: 10px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
+.shortlist-card { padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 10px; height: 100%; transition: border-color .15s, transform .15s; text-decoration: none; }
+.shortlist-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.shortlist-card .sc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+.shortlist-card h3 { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.01em; margin: 0; }
+.shortlist-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; margin: 0; }
+.shortlist-card .sc-meta { font-size: 12px; color: var(--ink); padding-top: 12px; border-top: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 6px; }
+.shortlist-card .sc-meta strong { font-weight: 600; }
+.shortlist-card .sc-meta .sc-row { display: flex; gap: 8px; align-items: flex-start; }
+.shortlist-card .sc-meta .sc-row span:first-child { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); min-width: 70px; flex-shrink: 0; }
+.plan-row { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border-soft); }
+.plan-row .pr-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); min-width: 0; }
+.plan-row .pr-num strong { display: block; font-size: 20px; color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; margin-top: 6px; font-weight: 700; word-break: break-word; }
+.plan-row .pr-content { min-width: 0; }
+.plan-row h4 { font-weight: 700; font-size: 19px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.plan-row p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 12px; }
+.plan-row ul { list-style: none; padding: 0; margin: 8px 0 0; font-size: 13px; color: var(--ink); line-height: 1.7; }
+.plan-row ul li { padding-left: 18px; position: relative; }
+.plan-row ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+@media (max-width: 640px) {
+  .metric-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan-row { grid-template-columns: 1fr; gap: 6px; }
+  .plan-row .pr-num strong { font-size: 18px; display: inline-block; margin: 4px 0 12px; padding: 4px 10px; background: var(--bg-soft); border-radius: 6px; }
+}
+.life-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.life-card { padding: 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); }
+.life-card.before { background: #FAFAFA; }
+.life-card.after { border-color: var(--accent); background: #F5F3FF; }
+.life-card .lc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+.life-card.before .lc-eyebrow { background: #E5E7EB; color: #6B7280; }
+.life-card.after .lc-eyebrow { background: var(--accent); color: white; }
+.life-card h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.3; }
+.life-step { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border-soft); }
+.life-step:first-of-type { border-top: 0; }
+.life-step .ls-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+.life-step .ls-event { font-size: 13px; color: var(--ink); line-height: 1.55; }
+@media (max-width: 720px) { .life-grid { grid-template-columns: 1fr; } }
+.synergy-canvas { padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); overflow-x: auto; }
+.synergy-canvas svg { width: 100%; height: auto; min-width: 560px; }
+.synergy-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 12px; color: var(--ink-muted); }
+.synergy-legend .leg-item { display: flex; gap: 8px; align-items: center; }
+.synergy-legend .leg-swatch { width: 12px; height: 12px; border-radius: 3px; }
+.pitfall { padding: 22px 24px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); margin-bottom: 12px; }
+.pitfall .p-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #B45309; padding: 3px 8px; background: #FEF3C7; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.pitfall h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.pitfall p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+.pitfall .p-fix { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-soft); font-size: 14px; color: var(--ink); line-height: 1.6; }
+.pitfall .p-fix strong { color: var(--accent); }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--border-soft); }
+.faq-item:last-child { border-bottom: 0; }
+.faq-item h4 { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.faq-item p { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.audience-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 11px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--border-soft); margin: 4px 4px 0 0; }
+.section-lede { font-size: 15px; color: var(--ink-muted); line-height: 1.7; max-width: 56rem; margin-bottom: 28px; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/" class="mega-link" style="color: var(--accent); font-weight: 600;">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#thesis">01 · Thesis</a>
+<a href="#life">02 · A day in the life</a>
+<a href="#metrics">03 · What good looks like</a>
+<a href="#shortlist">04 · Your shortlist</a>
+<a href="#synergy">05 · How it fits together</a>
+<a href="#plan">06 · 30/60/90 plan</a>
+<a href="#pitfalls">07 · Where teams get stuck</a>
+<a href="#faq">08 · FAQ</a>
+<a href="#resources">09 · Resources</a>
+</div>
+</div>
+
+<section class="hero-grad pt-24 pb-20 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="team-eyebrow"><span class="team-dot"></span>For the Customer team</div>
+  <h1 class="display mb-6" style="font-size: clamp(40px, 6.5vw, 80px); line-height: 0.98; color: var(--ink);">
+    Customers.<br/><span style="color: var(--accent);">Every interaction, Reliance-grade.<br/>At 378 million scale.</span>
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl mb-6" style="color: var(--ink-muted); line-height: 1.55;">Reliance Retail has 378 M+ customer identities, 78 channels, and 700 K+ orders per day. The CX teams across AJIO, JioMart, Reliance Digital, Tira, Trends, Netmeds, Smart Bazaar are doing extraordinary work — Fynd's job is to give every one of them the leverage of a 10× team. Move from <em>'how do we serve more tickets'</em> to <em>'why is the customer asking at all'.</em></p>
+  <div class="mt-4">
+    <span class="audience-tag">CX heads</span>
+    <span class="audience-tag">Customer service ops</span>
+    <span class="audience-tag">Digital product · storefront</span>
+    <span class="audience-tag">Loyalty &amp; retention</span>
+    <span class="audience-tag">Membership programs</span>
+  </div>
+</div>
+</section>
+
+<section id="thesis" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">01 · THE 100X THESIS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">The customer org becomes 100× when the agent answers first, and the human only handles the genuinely hard 2 %.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">AJIO ZIP is already there — 88 % positive engagement, 86 % chat-driven discovery on 2 M+ products. Netmeds Assistant: 96 % favourable on 850 K messages. The play for the Customer org is to replicate that pattern across every brand and every touchpoint — pre-purchase, in-purchase, post-purchase, in-store.</p>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">The agent isn't a chatbot. It is the new front door — it talks, it thinks, it acts. It cancels an order, refunds a payment, swaps a size, books a try-on slot, files a warranty claim, finds an alternative when something is out of stock. The human team is freed to do the irreplaceable parts of the job — empathy, exceptions, escalation.</p>
+  <p class="text-base md:text-lg max-w-3xl" style="color: var(--ink-muted); line-height: 1.7;">This is not "deflect more tickets". This is the customer's first interaction becoming a satisfying purchase decision, a calmer return, a discovered new product — without ever queueing for a human.</p>
+</div>
+</section>
+
+<section id="life" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">02 · A DAY IN THE LIFE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The CX manager who runs JioMart Beauty.</h2>
+  <p class="section-lede">A composite story drawn from the actual rollouts at AJIO ZIP and Netmeds Assistant. The shape of the day changes — but the workload doesn't go down; the leverage goes up.</p>
+  <div class="life-grid">
+    <div class="life-card before">
+      <div class="lc-eyebrow">Before</div>
+      <h4>Today: triaging Slack and tickets</h4>
+      <div class="life-step"><div class="ls-time">09:00</div><div class="ls-event">Open Zendesk queue. 2,400 tickets overnight. Sort by SLA.</div></div>
+      <div class="life-step"><div class="ls-time">09:30</div><div class="ls-event">Weekly review with the agency: response times slipped on Tuesdays. Why? Nobody is sure.</div></div>
+      <div class="life-step"><div class="ls-time">11:00</div><div class="ls-event">Customer escalation from Twitter — wrong product delivered. Track down logistics, refund cycle, partner SLA.</div></div>
+      <div class="life-step"><div class="ls-time">13:00</div><div class="ls-event">Quick lunch. Inbox cleared but nothing's moved forward.</div></div>
+      <div class="life-step"><div class="ls-time">14:30</div><div class="ls-event">Plan next month's NPS survey. Budget for 8 more L1 agents.</div></div>
+      <div class="life-step"><div class="ls-time">17:00</div><div class="ls-event">Status to the head of CX. Same words as last week.</div></div>
+    </div>
+    <div class="life-card after">
+      <div class="lc-eyebrow">After · with Fynd Glass</div>
+      <h4>With Kaily + UCP + AI Agents: building the system, not running it</h4>
+      <div class="life-step"><div class="ls-time">09:00</div><div class="ls-event">Open Kaily Insights. Agent resolved 92 % of overnight queries. The 8 % flagged for review are queued by type — refund disputes, size complaints, vendor escalations.</div></div>
+      <div class="life-step"><div class="ls-time">10:00</div><div class="ls-event">Approve a new policy: 'For Beauty SKUs returned within 7 days, auto-refund without inspection if order value < ₹1,500.' Live in 5 minutes.</div></div>
+      <div class="life-step"><div class="ls-time">11:00</div><div class="ls-event">Look at customer journey patterns. UCP shows customers who chat with Kaily before buying convert 1.6× higher. Push that learning to the Growth team.</div></div>
+      <div class="life-step"><div class="ls-time">13:00</div><div class="ls-event">Lunch. Spend it talking to a senior agent about a new agent skill: try-on slot booking inside chat.</div></div>
+      <div class="life-step"><div class="ls-time">14:30</div><div class="ls-event">Review the Friction score on Retail Jarvis for the Powai flagship. Two SKUs are slowing checkout — surface to the merchandising team.</div></div>
+      <div class="life-step"><div class="ls-time">17:00</div><div class="ls-event">Status to the head of CX. New words this week: agent-resolved % up to 92, NPS up 4 points, ticket volume down 38 %.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="metrics" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">03 · WHAT GOOD LOOKS LIKE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Outcome targets for FY 26-27.</h2>
+  <p class="section-lede">Targets calibrated against what already happens where Kaily is live. The job is to roll out the pattern across more brands, not to invent it.</p>
+  <div class="metric-row">
+    <div class="metric-tile"><div class="mt-num">90 %+</div><div class="mt-label">Agent-resolved sessions</div><div class="mt-source">AJIO ZIP baseline: 88 %</div></div>
+    <div class="metric-tile"><div class="mt-num">< 60 sec</div><div class="mt-label">Median time to resolution</div><div class="mt-source">Netmeds Assistant data</div></div>
+    <div class="metric-tile"><div class="mt-num">+20 %</div><div class="mt-label">Repeat-purchase uplift</div><div class="mt-source">UCP-identified users</div></div>
+    <div class="metric-tile"><div class="mt-num">−40 %</div><div class="mt-label">Cost per support contact</div><div class="mt-source">Vs L1 human handling</div></div>
+  </div>
+</div>
+</section>
+
+<section id="shortlist" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">04 · YOUR SHORTLIST</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Six platforms. In adoption order.</h2>
+  <p class="section-lede">Listed top-to-bottom by leverage-per-integration-cost. Start at the top — every later platform compounds on the one above.</p>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <a href="/kaily" class="shortlist-card">
+      <div class="sc-eyebrow">01 · Start here</div>
+      <h3>Kaily · Agentic Commerce</h3>
+      <p>The agent layer that runs AJIO ZIP, JioMart JIIA, Netmeds Assistant. Talks · thinks · acts inside the customer journey.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Replace tier-1 support · drive discovery in chat · close the gap between intent and order.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>70 %+ deflection in week 2 of a Netmeds-shape rollout</span></div>
+        <div class="sc-row"><span>Owner</span><span>Kaily team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/ucp" class="shortlist-card">
+      <div class="sc-eyebrow">02 · Identity foundation</div>
+      <h3>UCP &amp; Marketing OS</h3>
+      <p>One customer profile across 100 % of Reliance Retail formats. 380 M+ identities · 200+ attributes · real-time activation.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Know it's the same customer in JioMart and Smart Bazaar · personalise at moment of intent.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>Repeat-rate gap of ~1.5× between identified vs anonymous</span></div>
+        <div class="sc-row"><span>Owner</span><span>UCP platform team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/agents" class="shortlist-card">
+      <div class="sc-eyebrow">03 · Agent catalog</div>
+      <h3>AI Agents · Directory</h3>
+      <p>Every named AI agent across the Fynd estate — Cortex Planning, Category Intelligence, Marketing, Retail Vista, Trend-to-Design.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Find an existing agent before commissioning one · cross-pollinate from other domains.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>5+ reusable agents inside the first month</span></div>
+        <div class="sc-row"><span>Owner</span><span>AI Agents team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/fynd-horizon" class="shortlist-card">
+      <div class="sc-eyebrow">04 · New surfaces</div>
+      <h3>Fynd Horizon · Ultra-Fast Retail</h3>
+      <p>Made-to-measure in 24 hours. Live at RCP and Mumbai cluster. 98.3 % body-scan accuracy. The new expectation bar.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Open MTM as a category for AJIO Luxe, Tira, regional fashion · serve the customer who will not wait two weeks.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>50 K+ SKUs/store, 7-day stitched-and-shipped pipeline</span></div>
+        <div class="sc-row"><span>Owner</span><span>Fynd Horizon team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/kio" class="shortlist-card">
+      <div class="sc-eyebrow">05 · In-store friction</div>
+      <h3>Kio · Self-Checkout</h3>
+      <p>Production hardware live at Malad. 3× faster than POS. Built on Fynd Swift Module for OTA fleet management.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Kill queue abandonment in busy formats: Smart Bazaar, Trends, Reliance Digital.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>~3× checkout speed · measurable drop in walk-aways</span></div>
+        <div class="sc-row"><span>Owner</span><span>Kio hardware team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/swapeasy" class="shortlist-card">
+      <div class="sc-eyebrow">06 · Returns &amp; trade-in</div>
+      <h3>SwapEasy · Re-commerce</h3>
+      <p>In-store re-commerce. SAP-traceable · 41 liquidation partners · Apple 16+ pilot delivered 10.5 % attach.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Turn returns into upgrades · capture trade-in value Reliance was leaving on the table.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>8-12 % attach on category-relevant rollouts</span></div>
+        <div class="sc-row"><span>Owner</span><span>SwapEasy team · Fynd</span></div>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section id="synergy" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">05 · HOW IT FITS TOGETHER</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How the platforms work together for the Customer team.</h2>
+  <p class="section-lede">Kaily is the surface the customer touches. UCP is the memory underneath. AI Agents handle specialised flows like try-on or returns. SwapEasy and Kio catch the in-store moments. Fynd Horizon opens MTM as a new doorway. Each is useful alone; together they're a continuous fabric.</p>
+  <div class="synergy-canvas">
+    <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;" role="img" aria-label="Workflow diagram">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6B5BD6" /></marker></defs>
+<rect x="30.0" y="50.0" width="116.0" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="88.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Customer</text>
+<text x="88.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">arrives in any channel</text>
+<line x1="148.0" y1="90.0" x2="164.0" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="166.0" y="50.0" width="116.0" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="224.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Kaily</text>
+<text x="224.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">agentic front door</text>
+<line x1="284.0" y1="90.0" x2="300.0" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="302.0" y="50.0" width="116.0" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="360.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">UCP</text>
+<text x="360.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">profile + history</text>
+<line x1="420.0" y1="90.0" x2="436.0" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="438.0" y="50.0" width="116.0" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="496.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">AI Agents</text>
+<text x="496.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">specialised flows</text>
+<line x1="556.0" y1="90.0" x2="572.0" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="574.0" y="50.0" width="116.0" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="632.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Action</text>
+<text x="632.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">order / refund / book / discover</text>
+</svg>
+  </div>
+  <div class="synergy-legend">
+    <div class="leg-item"><div class="leg-swatch" style="background:#6B5BD6"></div>Customer-journey fabric</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:white; border:1px solid #6B5BD6"></div>Platform component</div>
+  <div class="leg-item">Each step closes a sub-loop · returns make the next interaction smarter</div>
+  </div>
+</div>
+</section>
+
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · 30 · 60 · 90 PLAN</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A first quarter that compounds.</h2>
+  <p class="section-lede">A realistic adoption sequence designed for measurable wins inside the first 90 days. Each phase unlocks the next.</p>
+  <div class="max-w-4xl">
+    <div class="plan-row">
+      <div class="pr-num">Day 0 - 30<strong>Pilot</strong></div>
+      <div class="pr-content">
+        <h4>Pick one storefront. Plug Kaily into its support funnel.</h4>
+        <p>Choose a brand with a self-contained CX team — Netmeds, Reliance Digital, or one AJIO sub-vertical. Replace the tier-1 chat queue with Kaily for one quarter.</p>
+        <ul><li>Baseline: contact volume, resolution time, deflection rate, CSAT</li><li>Goal: 60 % agent-resolved sessions, no CSAT regression</li><li>Exit: case study + repeatable runbook for brand #2</li><li>Owner: brand-side CX lead × Fynd Kaily SE</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 30 - 60<strong>Identity</strong></div>
+      <div class="pr-content">
+        <h4>Wire UCP into the agent. Let it remember.</h4>
+        <p>Once Kaily is shipping, give it the UCP profile. Now the agent knows past orders, returns, channel preference, festive activity. The same identity layer drives marketing-OS retargeting downstream.</p>
+        <ul><li>Expand to 3 storefronts</li><li>Add Fynd Horizon as a discoverable category inside Kaily</li><li>Measure repeat-purchase uplift on identified vs anonymous users</li><li>Owner: UCP product manager × brand CX lead</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 60 - 90<strong>InStore</strong></div>
+      <div class="pr-content">
+        <h4>Take the same agent into the physical store.</h4>
+        <p>Roll Kio self-checkout into one Smart Bazaar flagship. Wire SwapEasy into Reliance Digital's Apple-trade-in flow. The agentic CX is now omnichannel.</p>
+        <ul><li>Kio live in 5 stores</li><li>SwapEasy expanded to one more category</li><li>Quarterly review: full unit-economics of agent-led CX</li><li>Owner: store ops + CX lead joint sponsorship</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="pitfalls" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">07 · WHERE TEAMS GET STUCK</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The four objections you'll hear in the first week.</h2>
+  <p class="section-lede">Every team that has adopted these platforms has run into the same four worries. Here is how it actually plays out.</p>
+  <div class="max-w-4xl">
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #1</div>
+      <h4>"The agent will break for our edge cases."</h4>
+      <p>Every CX team has stories of the 3 % weird scenarios their agents fail. The worry is real but the wrong frame — the question isn't whether the agent handles 100 % of the long tail, it's whether it handles 90 % of the head better than the human did.</p>
+      <div class="p-fix"><strong>The move:</strong> Pilot with a hard fallback to human escalation. Measure the escalation path. Tune the boundary monthly. AJIO ZIP's 88 % deflection is the new baseline — the 12 % escalations are routed to specialists who do more interesting work.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #2</div>
+      <h4>"Customers will hate talking to a bot."</h4>
+      <p>This was true in 2020. The 96 % favourable on Netmeds Assistant (850 K messages) is from real Indian customers in real Indian languages on real Indian payment edge cases.</p>
+      <div class="p-fix"><strong>The move:</strong> The bar is not "is it perfect" — it is "is it better than waiting 6 hours for tier-1". Be honest about what the agent is. Hand off cleanly when it isn't the right tool. Measure CSAT per channel, not per technology.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #3</div>
+      <h4>"We don't have clean data for the agent."</h4>
+      <p>Customer teams expect to spend 6 months "cleaning data" before agents work. They're wrong about the order. Kaily on AJIO ZIP went live before the UCP rollout was complete — and got smarter as UCP filled in.</p>
+      <div class="p-fix"><strong>The move:</strong> Ship Kaily on whatever identity is available today (anonymous session, email, phone). Layer UCP in week 4. The agent's value compounds with identity, but it doesn't need to wait.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #4</div>
+      <h4>"Our org is set up around tickets. The agent breaks our metrics."</h4>
+      <p>Tickets-per-day is the wrong scoreboard for an agent-first CX team. Ops teams compensated on ticket volume will resist the rollout — correctly, by their incentive system.</p>
+      <div class="p-fix"><strong>The move:</strong> Move the scoreboard to: resolution-rate, customer-effort, repeat-rate, NPS. Re-design team structure around exception handling, agent training, and policy authorship — not queue burn-down. The CX leaders we work with do this in week 2, not week 12.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="faq" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">08 · FAQ</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The questions you'll get from your team.</h2>
+  <div class="max-w-3xl mt-6">
+    <div class="faq-item"><h4>Do we keep our existing CRM / Zendesk / Freshdesk?</h4><p>Yes. Kaily plugs in on top of existing CX infrastructure as the front door. Escalations route to your existing helpdesk. Over time you may shrink the CRM footprint — but never in week 1.</p></div>
+    <div class="faq-item"><h4>What languages does Kaily speak?</h4><p>Production-tested in English, Hindi, Tamil, Telugu, Marathi, Kannada, Bengali, Gujarati, Punjabi. Additional regional languages are a config change — talk to the Kaily team for the current catalog.</p></div>
+    <div class="faq-item"><h4>How do we measure quality, not just volume?</h4><p>Default scorecard: deflection rate, CSAT, first-contact resolution, escalation reason taxonomy. The Insights surface in Kaily ships with all four. Connect to your existing NPS source for the loop.</p></div>
+    <div class="faq-item"><h4>Who owns the agent's voice / brand?</h4><p>You do. Kaily uses your brand guidelines as a system prompt + style guide. The Growth team usually authors the persona; CX owns the conversational policies; product owns the action surface.</p></div>
+    <div class="faq-item"><h4>What about compliance and data residency?</h4><p>Indian customer data stays in India. Kaily is built on the same SOC 2 + GDPR foundation as Boltic. PCI scope is contained — payment surfaces hand off to the existing PG.</p></div>
+    <div class="faq-item"><h4>Can we run this in a single store first?</h4><p>Yes for Kio. Yes for SwapEasy. Kaily is digital-first — start with one storefront's chat window, then take it physical via Kio.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="resources" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">09 · RESOURCES</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Where to start, who to talk to.</h2>
+  <div class="grid md:grid-cols-2 gap-5">
+    <a href="/kaily" class="shortlist-card"><div class="sc-eyebrow">Pilot</div><h3>Request a Kaily pilot</h3><p>Brief the Kaily team on the storefront you want to start with. Pilot scoped + scheduled within 14 days.</p></a>
+    <a href="/agents" class="shortlist-card"><div class="sc-eyebrow">Browse</div><h3>Open the AI Agents directory</h3><p>Five named agents already shipping across the Fynd estate. See what is reusable before commissioning new.</p></a>
+    <a href="/ucp" class="shortlist-card"><div class="sc-eyebrow">Onboard</div><h3>Plug into UCP</h3><p>One customer profile across every Reliance Retail format. 380 M+ identities ready to activate.</p></a>
+    <a href="/fynd-academy" class="shortlist-card"><div class="sc-eyebrow">Train</div><h3>Fynd Academy · CX track</h3><p>Bring your CX leads through a hands-on workshop. 600+ Reliance staff already trained.</p></a>
+  </div>
+</div>
+</section>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Team</div><div>Customer experience · across all Reliance Retail formats</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Sponsor</div><div>Fynd Customer Solutions team</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">See also</div><div><a href="/growth" style="color: var(--accent); text-decoration: underline;">Growth →</a> · <a href="/operations" style="color: var(--accent); text-decoration: underline;">Operations →</a> · <a href="/instore" style="color: var(--accent); text-decoration: underline;">InStore →</a></div></div>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href').slice(1) === id); });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+</body>
+</html>

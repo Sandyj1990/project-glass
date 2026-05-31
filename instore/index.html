@@ -1,0 +1,550 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>InStore · Teams · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.team-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 6px 12px; border-radius: 999px; background: var(--bg-soft); color: var(--ink); border: 1px solid var(--border); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 18px; }
+.team-eyebrow .team-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.metric-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.metric-tile { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.metric-tile .mt-num { font-family: 'JetBrains Mono', monospace; font-size: 26px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.metric-tile .mt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.metric-tile .mt-source { font-size: 10px; color: var(--ink-soft); margin-top: 6px; font-style: italic; }
+.shortlist-card { padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 10px; height: 100%; transition: border-color .15s, transform .15s; text-decoration: none; }
+.shortlist-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.shortlist-card .sc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+.shortlist-card h3 { font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.01em; margin: 0; }
+.shortlist-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; margin: 0; }
+.shortlist-card .sc-meta { font-size: 12px; color: var(--ink); padding-top: 12px; border-top: 1px solid var(--border-soft); display: flex; flex-direction: column; gap: 6px; }
+.shortlist-card .sc-meta strong { font-weight: 600; }
+.shortlist-card .sc-meta .sc-row { display: flex; gap: 8px; align-items: flex-start; }
+.shortlist-card .sc-meta .sc-row span:first-child { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); min-width: 70px; flex-shrink: 0; }
+.plan-row { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr); gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border-soft); }
+.plan-row .pr-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); min-width: 0; }
+.plan-row .pr-num strong { display: block; font-size: 20px; color: var(--ink); letter-spacing: -0.01em; line-height: 1.1; margin-top: 6px; font-weight: 700; word-break: break-word; }
+.plan-row .pr-content { min-width: 0; }
+.plan-row h4 { font-weight: 700; font-size: 19px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.plan-row p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; margin-bottom: 12px; }
+.plan-row ul { list-style: none; padding: 0; margin: 8px 0 0; font-size: 13px; color: var(--ink); line-height: 1.7; }
+.plan-row ul li { padding-left: 18px; position: relative; }
+.plan-row ul li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+@media (max-width: 640px) {
+  .metric-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plan-row { grid-template-columns: 1fr; gap: 6px; }
+  .plan-row .pr-num strong { font-size: 18px; display: inline-block; margin: 4px 0 12px; padding: 4px 10px; background: var(--bg-soft); border-radius: 6px; }
+}
+.life-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.life-card { padding: 24px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); }
+.life-card.before { background: #FAFAFA; }
+.life-card.after { border-color: var(--accent); background: #F5F3FF; }
+.life-card .lc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 14px; padding: 4px 10px; border-radius: 4px; display: inline-block; }
+.life-card.before .lc-eyebrow { background: #E5E7EB; color: #6B7280; }
+.life-card.after .lc-eyebrow { background: var(--accent); color: white; }
+.life-card h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; line-height: 1.3; }
+.life-step { display: grid; grid-template-columns: 80px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--border-soft); }
+.life-step:first-of-type { border-top: 0; }
+.life-step .ls-time { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); }
+.life-step .ls-event { font-size: 13px; color: var(--ink); line-height: 1.55; }
+@media (max-width: 720px) { .life-grid { grid-template-columns: 1fr; } }
+.synergy-canvas { padding: 28px; border: 1px solid var(--border); border-radius: 14px; background: var(--bg); overflow-x: auto; }
+.synergy-canvas svg { width: 100%; height: auto; min-width: 560px; }
+.synergy-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 18px; font-size: 12px; color: var(--ink-muted); }
+.synergy-legend .leg-item { display: flex; gap: 8px; align-items: center; }
+.synergy-legend .leg-swatch { width: 12px; height: 12px; border-radius: 3px; }
+.pitfall { padding: 22px 24px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); margin-bottom: 12px; }
+.pitfall .p-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #B45309; padding: 3px 8px; background: #FEF3C7; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+.pitfall h4 { font-weight: 700; font-size: 17px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; }
+.pitfall p { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+.pitfall .p-fix { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border-soft); font-size: 14px; color: var(--ink); line-height: 1.6; }
+.pitfall .p-fix strong { color: var(--accent); }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--border-soft); }
+.faq-item:last-child { border-bottom: 0; }
+.faq-item h4 { font-weight: 700; font-size: 16px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.faq-item p { font-size: 14px; color: var(--ink-muted); line-height: 1.65; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.audience-tag { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 11px; padding: 5px 11px; border-radius: 999px; background: var(--bg-soft); color: var(--ink-muted); border: 1px solid var(--border-soft); margin: 4px 4px 0 0; }
+.section-lede { font-size: 15px; color: var(--ink-muted); line-height: 1.7; max-width: 56rem; margin-bottom: 28px; }
+</style>
+</head>
+<body>
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/" class="mega-link" style="color: var(--accent); font-weight: 600;">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#thesis">01 · Thesis</a>
+<a href="#life">02 · A day in the life</a>
+<a href="#metrics">03 · What good looks like</a>
+<a href="#shortlist">04 · Your shortlist</a>
+<a href="#synergy">05 · How it fits together</a>
+<a href="#plan">06 · 30/60/90 plan</a>
+<a href="#pitfalls">07 · Where teams get stuck</a>
+<a href="#faq">08 · FAQ</a>
+<a href="#resources">09 · Resources</a>
+</div>
+</div>
+
+<section class="hero-grad pt-24 pb-20 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="team-eyebrow"><span class="team-dot"></span>For the InStore team</div>
+  <h1 class="display mb-6" style="font-size: clamp(40px, 6.5vw, 80px); line-height: 0.98; color: var(--ink);">
+    InStore.<br/><span style="color: var(--accent);">Every store. Every shelf.<br/>Every shift.</span>
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl mb-6" style="color: var(--ink-muted); line-height: 1.55;">Reliance Retail's 19,979 stores serve hundreds of millions of footfalls every quarter. The InStore org runs new-store openings, planogram compliance, frontline hiring &amp; training, and store-level CX. Fynd's portfolio for this team turns the 20 K-store estate into one signal — and gives every store manager the same agentic leverage as HQ.</p>
+  <div class="mt-4">
+    <span class="audience-tag">Store ops</span>
+    <span class="audience-tag">NSO &amp; expansion</span>
+    <span class="audience-tag">Visual merchandising</span>
+    <span class="audience-tag">Frontline excellence</span>
+    <span class="audience-tag">HR &amp; talent</span>
+    <span class="audience-tag">Manufacturing partners</span>
+  </div>
+</div>
+</section>
+
+<section id="thesis" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">01 · THE 100X THESIS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">InStore becomes 100× when site selection, store opening, planogram compliance, frontline hiring, and CX sensing all run on one signal — not 19,979 spreadsheets.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">Today: new-store opening takes a quarter per location. Planogram compliance is a clipboard exercise. Frontline hiring runs in offline batches. Visual merchandising audits live in PowerPoint. Tomorrow: Retail Vista picks the next 50 sites on H3-hex signals. ALP orchestrates lead → handover. Autri robots photograph every shelf, GMetri reads the image, Command Centre routes the fix to PulsePoint.</p>
+  <p class="text-base md:text-lg max-w-3xl mb-5" style="color: var(--ink-muted); line-height: 1.7;">Frontline staff get the same AI leverage as HQ. Samarth Plus runs the career ladder on a SCORM-compliant platform inside People First — 5 career levels, 3 formats. HireFirst is AI-native hiring with calibrated score plus Apollo enrichment. The 20 K stores stop being 20 K problems and start being one optimisable signal.</p>
+  <p class="text-base md:text-lg max-w-3xl" style="color: var(--ink-muted); line-height: 1.7;">The InStore org doesn't shrink — it gets better tools. Store managers get a dashboard, not a clipboard. Visual merchandisers act on actual on-shelf reality, not Monday's photo. HR runs a career platform that frontline staff actually use because it shows them a path.</p>
+</div>
+</section>
+
+<section id="life" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">02 · A DAY IN THE LIFE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The regional store ops lead for 250 stores in the Mumbai cluster.</h2>
+  <p class="section-lede">A composite story drawn from the Retail Jarvis pilot at Mumbai Infinity Malad, the Autri rollout at FreshPik Powai, and the Samarth Plus deployment timeline.</p>
+  <div class="life-grid">
+    <div class="life-card before">
+      <div class="lc-eyebrow">Before</div>
+      <h4>Today: travelling to every store, every quarter</h4>
+      <div class="life-step"><div class="ls-time">09:00</div><div class="ls-event">Site visit to a Smart Bazaar in Thane. 90 minute drive each way.</div></div>
+      <div class="life-step"><div class="ls-time">10:30</div><div class="ls-event">Walk the floor with the store manager. Spot 4 planogram misses. WhatsApp the visual merchandising team.</div></div>
+      <div class="life-step"><div class="ls-time">13:30</div><div class="ls-event">Back at HQ. Open a spreadsheet of last quarter's compliance audits. Manually compute trend lines.</div></div>
+      <div class="life-step"><div class="ls-time">15:00</div><div class="ls-event">NSO lead asks for input on three site candidates in Pune. Pull together a deck from internal data + intuition.</div></div>
+      <div class="life-step"><div class="ls-time">17:00</div><div class="ls-event">Frontline attrition report. 12 % this quarter. Same conversation as last quarter.</div></div>
+    </div>
+    <div class="life-card after">
+      <div class="lc-eyebrow">After · with Fynd Glass</div>
+      <h4>With Retail Vista + ALP + Autri + Jarvis + Samarth: ops at scale</h4>
+      <div class="life-step"><div class="ls-time">09:00</div><div class="ls-event">Open Retail Jarvis. Mumbai cluster: 247 stores green, 3 red. Two of the red stores are Friction-scored — checkout lines blocking second-floor traffic. One is Churn-scored — local market shift.</div></div>
+      <div class="life-step"><div class="ls-time">10:00</div><div class="ls-event">Pull up Autri compliance dashboard. Powai FreshPik: 96 %. Bandra Reliance Digital: 88 %, three SKUs misplaced — automatic ticket to VM, dispatched to PulsePoint.</div></div>
+      <div class="life-step"><div class="ls-time">11:30</div><div class="ls-event">Site selection call with NSO + Retail Vista. The H3-hex score ranks 18 Pune candidates. Top 3 align with the team's preferences; #4 surfaces a candidate they hadn't seen.</div></div>
+      <div class="life-step"><div class="ls-time">14:00</div><div class="ls-event">Lunch. Spend it with a flagship store manager. Talk about the Samarth career ladder she's recommending for two frontline associates.</div></div>
+      <div class="life-step"><div class="ls-time">15:30</div><div class="ls-event">Approve ALP's phase-3 checklist for the Pune openings. Lease + electrical + visual fixtures all in handover queue.</div></div>
+      <div class="life-step"><div class="ls-time">17:00</div><div class="ls-event">Frontline attrition report. 7 % this quarter. Samarth path-visibility is the main driver.</div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="metrics" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">03 · WHAT GOOD LOOKS LIKE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Outcome targets for FY 26-27.</h2>
+  <p class="section-lede">Benchmarks anchored to the live pilots — ALP in Gujarat cluster, Autri at FreshPik Powai, Samarth Plus production cutover April 2026, Retail Jarvis on Store 5943.</p>
+  <div class="metric-row">
+    <div class="metric-tile"><div class="mt-num">6 / 9</div><div class="mt-label">Phase 1 NSO initiatives shipped</div><div class="mt-source">ALP Gujarat pilot</div></div>
+    <div class="metric-tile"><div class="mt-num">95 %+</div><div class="mt-label">Shelf compliance</div><div class="mt-source">Autri FreshPik Powai</div></div>
+    <div class="metric-tile"><div class="mt-num">5</div><div class="mt-label">Career ladders running</div><div class="mt-source">Samarth Plus</div></div>
+    <div class="metric-tile"><div class="mt-num">TA → DM</div><div class="mt-label">Full path · one platform</div><div class="mt-source">Samarth pathway</div></div>
+  </div>
+</div>
+</section>
+
+<section id="shortlist" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">04 · YOUR SHORTLIST</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Eight platforms. In adoption order.</h2>
+  <p class="section-lede">Listed top-to-bottom by leverage-per-integration-cost. The InStore portfolio is broader than other teams because the store estate touches every part of the business — start where the wins are clearest.</p>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <a href="/retail-vista" class="shortlist-card">
+      <div class="sc-eyebrow">01 · Site intelligence</div>
+      <h3>Retail Vista · Geospatial</h3>
+      <p>Internal Track live (Opportunity Explorer · 68 scored leads). Three tracks across UCP, Google Vertex AI, JioGIS. 24 data categories on H3 hex.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Pick the next 50 sites with quantitative scoring · end the era of intuition-led expansion.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>50-100 sites scored end-to-end in first month</span></div>
+        <div class="sc-row"><span>Owner</span><span>Retail Vista team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/alp" class="shortlist-card">
+      <div class="sc-eyebrow">02 · NSO orchestration</div>
+      <h3>ALP · Asset Lifecycle Platform</h3>
+      <p>Lead → site visit → approvals → legal → fit-out → hand-off. 6 of 9 Phase 1 initiatives done. Gujarat-cluster pilot.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Run NSO as one orchestrated workflow, not 14 disconnected ones · cut timeline from a quarter to weeks.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>NSO timeline compression from 90+ days to 30-45 days</span></div>
+        <div class="sc-row"><span>Owner</span><span>ALP team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/retail-jarvis" class="shortlist-card">
+      <div class="sc-eyebrow">03 · CX sensing</div>
+      <h3>Retail Jarvis · CX Sensing</h3>
+      <p>Predictive non-intrusive CX sensing. 4 scores: Readiness · CX · Friction · Churn. Anchor demo on Store 5943 Mumbai Infinity Malad.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Sense customer friction in-store without a single survey · predictive store-readiness scoring.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>4 weekly scores per store in flagship pilot</span></div>
+        <div class="sc-row"><span>Owner</span><span>Retail Jarvis team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/autri" class="shortlist-card">
+      <div class="sc-eyebrow">04 · Planogram robotics</div>
+      <h3>Autri · On-Shelf Compliance</h3>
+      <p>95 %+ shelf compliance · 98 % SKU recognition. AutRi robot · GMetri vision · Command Centre · PulsePoint dispatch.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Continuous planogram audits without sending a person to every store · Phase 1 live at FreshPik Powai.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>95 %+ compliance · &lt; 24 hr fix dispatch from detection</span></div>
+        <div class="sc-row"><span>Owner</span><span>Autri team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/samarth" class="shortlist-card">
+      <div class="sc-eyebrow">05 · Frontline careers</div>
+      <h3>Samarth Plus · Career Platform</h3>
+      <p>5 career levels · 3 formats · SCORM-compliant. Served inside People First. TA → DM ladder. Prod cutover Apr 2026.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Give every frontline associate a visible career ladder · reduce attrition by giving people somewhere to go.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>Attrition reduction measurable within 2 quarters of rollout</span></div>
+        <div class="sc-row"><span>Owner</span><span>Samarth team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/hirefirst" class="shortlist-card">
+      <div class="sc-eyebrow">06 · Hiring</div>
+      <h3>HireFirst (Orion) · AI Hiring OS</h3>
+      <p>Reliance HR Tech · AI-native hiring · AI score calibration · Apollo enrichment · SIT live · prod sign-off 15 Jun 2026.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Hire frontline talent at scale with calibrated AI scoring · eliminate the manual screen bottleneck.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>40-60 % reduction in screen-to-offer cycle time</span></div>
+        <div class="sc-row"><span>Owner</span><span>HireFirst team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/forge" class="shortlist-card">
+      <div class="sc-eyebrow">07 · Make &amp; supply</div>
+      <h3>Forge · Manufacturing OS</h3>
+      <p>AI-native Manufacturing OS. Plan → Buy/Source → Assemble → Move on one fabric. 100 % on-premise · 50+ operators. NeoLync Tirupati ~1,000 units/day.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Run Reliance's own-brand factories on a single fabric · closed loop from demand to supply.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>~1,000 units/day at NeoLync · on-premise operator UX</span></div>
+        <div class="sc-row"><span>Owner</span><span>Forge team · Fynd</span></div>
+      </div>
+    </a>
+    <a href="/neo-tailor" class="shortlist-card">
+      <div class="sc-eyebrow">08 · Micro-factory</div>
+      <h3>Neo Tailor · MTM</h3>
+      <p>Lights-out micro-factory + Mobile Neo Tailor app inside AJIO. 30-sec phone scan, 3D fit preview, stitched in Bangalore, delivered in 7 days.</p>
+      <div class="sc-meta">
+        <div class="sc-row"><span>Use it to</span><span><strong>Open made-to-measure as a category · 200 pieces/day capacity at alpha · use as a store-attached fulfilment lab.</strong></span></div>
+        <div class="sc-row"><span>You'll see</span><span>7-day MTM delivery · 200 pieces/day at alpha</span></div>
+        <div class="sc-row"><span>Owner</span><span>Neo Tailor team · Fynd</span></div>
+      </div>
+    </a>
+  </div>
+</div>
+</section>
+
+<section id="synergy" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">05 · HOW IT FITS TOGETHER</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How the platforms work together for the InStore team.</h2>
+  <p class="section-lede">Retail Vista picks the next site. ALP opens it. Retail Jarvis senses what happens once it's open. Autri keeps the shelves true. Samarth and HireFirst handle the people. Forge and Neo Tailor close the loop back to product. The 20 K-store estate becomes one continuously-tuned system.</p>
+  <div class="synergy-canvas">
+    <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" style="max-width: 100%; height: auto;" role="img" aria-label="Workflow diagram">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#6B5BD6" /></marker></defs>
+<rect x="30.0" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="76.66666666666666" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Site</text>
+<text x="76.66666666666666" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">Retail Vista</text>
+<line x1="125.33333333333333" y1="90.0" x2="141.33333333333331" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="143.33333333333331" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="189.99999999999997" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Open</text>
+<text x="189.99999999999997" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">ALP</text>
+<line x1="238.66666666666663" y1="90.0" x2="254.66666666666663" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="256.66666666666663" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="303.3333333333333" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Run</text>
+<text x="303.3333333333333" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">Jarvis + Autri</text>
+<line x1="351.99999999999994" y1="90.0" x2="367.99999999999994" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="370.0" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="416.6666666666667" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Staff</text>
+<text x="416.6666666666667" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">HireFirst + Samarth</text>
+<line x1="465.3333333333333" y1="90.0" x2="481.3333333333333" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="483.3333333333333" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="530.0" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Stock</text>
+<text x="530.0" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">Forge + Neo Tailor</text>
+<line x1="578.6666666666666" y1="90.0" x2="594.6666666666666" y2="90.0" stroke="#6B5BD6" stroke-width="2" marker-end="url(#arr)" />
+<rect x="596.6666666666666" y="50.0" width="93.33333333333333" height="80" rx="10" fill="white" stroke="#6B5BD6" stroke-width="1.5" />
+<text x="643.3333333333333" y="82.0" text-anchor="middle" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="#0A0A0A">Learn</text>
+<text x="643.3333333333333" y="104.0" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#6B7280">feedback loop</text>
+</svg>
+  </div>
+  <div class="synergy-legend">
+    <div class="leg-item"><div class="leg-swatch" style="background:#6B5BD6"></div>Store lifecycle</div>
+  <div class="leg-item"><div class="leg-swatch" style="background:white; border:1px solid #6B5BD6"></div>Platform component</div>
+  <div class="leg-item">Each store closes the loop · every new store opens smarter</div>
+  </div>
+</div>
+</section>
+
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · 30 · 60 · 90 PLAN</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">A first quarter that compounds.</h2>
+  <p class="section-lede">A realistic adoption sequence designed for measurable wins inside the first 90 days. Each phase unlocks the next.</p>
+  <div class="max-w-4xl">
+    <div class="plan-row">
+      <div class="pr-num">Day 0 - 30<strong>Sense</strong></div>
+      <div class="pr-content">
+        <h4>Pilot Retail Jarvis on one flagship.</h4>
+        <p>Pick a flagship store with clear performance ambiguity. Run Retail Jarvis for 30 days. Get the 4 scores. See what they predict.</p>
+        <ul><li>Baseline: current store performance metrics</li><li>Goal: actionable Readiness, CX, Friction, Churn scores weekly</li><li>Exit: anchor case for rollout to format-leader stores</li><li>Owner: store manager × Fynd Retail Jarvis SE</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 30 - 60<strong>Comply</strong></div>
+      <div class="pr-content">
+        <h4>Bring Autri online in 5 stores.</h4>
+        <p>Choose 5 high-volume stores. Deploy AutRi robots + GMetri + Command Centre + PulsePoint. Measure planogram compliance before/after.</p>
+        <ul><li>Baseline: current planogram audit cadence + compliance %</li><li>Goal: 95 %+ compliance, &lt; 24 hr fix dispatch</li><li>Exit: rollout plan for next 50 stores</li><li>Owner: VM lead × Fynd Autri team</li></ul>
+      </div>
+    </div>
+    <div class="plan-row">
+      <div class="pr-num">Day 60 - 90<strong>Expand</strong></div>
+      <div class="pr-content">
+        <h4>Move next 50-store site selection onto Retail Vista.</h4>
+        <p>Stop selecting sites on intuition. Run the next 50 candidates through Retail Vista. Compare scored ranking with the team's existing preferences.</p>
+        <ul><li>Set 24-category H3-hex score per candidate</li><li>A/B: 25 sites picked by Retail Vista, 25 picked by team</li><li>Quarterly review: 12-month performance comparison</li><li>Owner: NSO lead × Retail Vista PM</li></ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="pitfalls" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">07 · WHERE TEAMS GET STUCK</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The four objections you'll hear in the first week.</h2>
+  <p class="section-lede">Every team that has adopted these platforms has run into the same four worries. Here is how it actually plays out.</p>
+  <div class="max-w-4xl">
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #1</div>
+      <h4>"Our store managers don't want another dashboard."</h4>
+      <p>Most store managers already have 6 dashboards they don't open. Adding a 7th is correctly resisted. Retail Jarvis sidesteps this — the scores go to the regional ops lead, not the store manager. Action goes to the store manager via the channel they already use (WhatsApp, the floor walk).</p>
+      <div class="p-fix"><strong>The move:</strong> Don't roll out a new UI to the store. Roll out actions to the store. The dashboard is for HQ; the store manager just gets clearer asks.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #2</div>
+      <h4>"Site selection is an art. Retail Vista will pick wrong."</h4>
+      <p>Possibly true once. The A/B in the 30/60/90 plan exists for exactly this. After 12 months of 25-vs-25 comparison, the team has data on where intuition out-performs scoring (rare local micro-context) and where scoring out-performs intuition (sector-level demand patterns).</p>
+      <div class="p-fix"><strong>The move:</strong> Don't replace the team's judgement — augment it. Use Retail Vista to surface candidates the team would have missed and to disqualify candidates the team was falsely-positive about. The final pick stays human.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #3</div>
+      <h4>"Robots in the aisle will disturb customers."</h4>
+      <p>AutRi robots run during off-hours (early morning, late evening, overnight) for exactly this reason. Customer-facing hours stay clean. The compliance check happens when the floor is empty.</p>
+      <div class="p-fix"><strong>The move:</strong> Schedule the robot windows around store traffic. Customer-facing operations notice nothing. Compliance happens; customer experience is undisturbed.</div>
+    </div>
+    <div class="pitfall">
+      <div class="p-eyebrow">Pitfall #4</div>
+      <h4>"Frontline staff won't engage with another HR app."</h4>
+      <p>Samarth is integrated into People First — the platform frontline staff already use for shifts, pay slips, leave requests. They don't install another app; they see a new tab. The career-path visualisation is the hook — for the first time, the path is concrete and personal.</p>
+      <div class="p-fix"><strong>The move:</strong> Don't market Samarth as a new platform. Position it as a new feature of People First. Adoption follows.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="faq" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">08 · FAQ</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">The questions you'll get from your team.</h2>
+  <div class="max-w-3xl mt-6">
+    <div class="faq-item"><h4>Can Retail Vista work for stores we already operate, not just new ones?</h4><p>Yes. The geospatial scoring also identifies under-performing existing stores by site quality vs realized performance. Useful for rationalisation decisions and for understanding what to fix at an existing location.</p></div>
+    <div class="faq-item"><h4>What does AutRi cost per store?</h4><p>Per-store cost depends on store size, shelf-count, and run frequency. The Powai pilot is the cleanest reference — talk to the Autri team for current per-store economics.</p></div>
+    <div class="faq-item"><h4>Does Samarth Plus replace our existing LMS?</h4><p>Samarth runs inside People First as an extension, not a replacement. SCORM-compliant content libraries port over. The career-pathway layer is the new piece.</p></div>
+    <div class="faq-item"><h4>Can Forge run for D2C brands Reliance acquires?</h4><p>Yes — Forge is brand-agnostic. The current production deployment is at NeoLync Tirupati for Reliance's own-brand factories. The pattern extends to any acquired brand with its own manufacturing footprint.</p></div>
+    <div class="faq-item"><h4>What about Neo Tailor inside an existing store?</h4><p>The micro-factory model is designed for a store-attached or city-attached deployment. The Mumbai cluster MTM piece runs as a 7-day cycle. Roadmap includes a store-embedded variant for flagship locations.</p></div>
+    <div class="faq-item"><h4>How does Retail Jarvis collect signal without intruding on customers?</h4><p>Predictive non-intrusive sensing — uses existing in-store telemetry (POS, footfall counters, CCTV-derived movement patterns where deployed), not customer surveys. The four scores are derived without a single customer prompt.</p></div>
+  </div>
+</div>
+</section>
+
+<section id="resources" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">09 · RESOURCES</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Where to start, who to talk to.</h2>
+  <div class="grid md:grid-cols-2 gap-5">
+    <a href="/retail-jarvis" class="shortlist-card"><div class="sc-eyebrow">Demo</div><h3>Schedule a Retail Jarvis demo</h3><p>See the Store 5943 anchor demo. Understand the 4 scores. Walk through the playbook engine.</p></a>
+    <a href="/retail-vista" class="shortlist-card"><div class="sc-eyebrow">Assess</div><h3>Request a Retail Vista site assessment</h3><p>24 data categories on H3 hex. Three tracks: UCP, Google Vertex AI, JioGIS. Sample 5 candidate sites.</p></a>
+    <a href="/alp" class="shortlist-card"><div class="sc-eyebrow">Onboard</div><h3>ALP onboarding for the NSO team</h3><p>End-to-end new-store opening orchestration. Currently piloting in Gujarat cluster.</p></a>
+    <a href="/samarth" class="shortlist-card"><div class="sc-eyebrow">Design</div><h3>Samarth career ladder design session</h3><p>5 career levels · 3 formats. Co-design your specific TA → Department Manager pathway.</p></a>
+  </div>
+</div>
+</section>
+
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Team</div><div>Store ops, NSO, visual merchandising, frontline, HR, supply · across all formats</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">Sponsor</div><div>Fynd InStore Solutions team</div></div>
+    <div><div class="font-semibold mb-1" style="color: var(--ink);">See also</div><div><a href="/customers" style="color: var(--accent); text-decoration: underline;">Customers →</a> · <a href="/growth" style="color: var(--accent); text-decoration: underline;">Growth →</a> · <a href="/operations" style="color: var(--accent); text-decoration: underline;">Operations →</a></div></div>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) { a.classList.toggle('is-active', a.getAttribute('href').slice(1) === id); });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) { if (e.isIntersecting) setActive(e.target.id); });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) { var el = document.getElementById(id); if (el) io.observe(el); });
+})();
+</script>
+</body>
+</html>

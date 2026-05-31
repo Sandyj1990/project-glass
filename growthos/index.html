@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GrowthOS · Marketing OS · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/present.css">
+<script src="/present.js" defer></script>
+<style>
+.pill-live { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 4px; background: #ECFDF5; color: #047857; border: 1px solid #BBF7D0; }
+.pill-pilot { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 4px; background: #FEF3C7; color: #92400E; border: 1px solid #FDE68A; }
+.metric-tile { padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.metric-tile .mt-num { font-family: 'JetBrains Mono', monospace; font-size: 32px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.metric-tile .mt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.pillar-card { padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); height: 100%; display: flex; flex-direction: column; }
+.pillar-card .pc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 8px; }
+.pillar-card h3 { font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.01em; }
+.pillar-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; flex: 1; }
+.step-row { display: grid; grid-template-columns: 60px 1fr; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border-soft); }
+.step-row .sr-num { font-family: 'JetBrains Mono', monospace; font-size: 28px; font-weight: 700; color: var(--accent); line-height: 1; }
+.step-row h4 { font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+.step-row p { font-size: 14px; color: var(--ink-muted); line-height: 1.55; }
+.demo-card { border: 1px solid var(--border); border-radius: 14px; background: var(--bg); overflow: hidden; }
+.demo-card-head { padding: 18px 22px; background: var(--bg-soft); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.demo-card-body { padding: 24px; }
+.cta-link { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; background: var(--ink); color: white; border-radius: 8px; font-weight: 500; font-size: 14px; text-decoration: none; transition: opacity .15s; }
+.cta-link:hover { opacity: 0.85; }
+.cta-link.secondary { background: white; color: var(--ink); border: 1px solid var(--border); }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+.compare-tbl { width: 100%; border-collapse: collapse; }
+.compare-tbl th, .compare-tbl td { padding: 14px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+.compare-tbl th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); font-weight: 500; background: var(--bg-soft); }
+.compare-tbl td.muted { color: var(--ink-muted); }
+.compare-tbl td.wins { color: var(--ink); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/" class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/" class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/frameworks" class="mega-link">Frameworks</a>
+      <a href="/organisation" class="mega-link">Organisation</a>
+      <a href="/culture" class="mega-link">Culture</a>
+      <a href="/fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#what">01 · What it is</a>
+<a href="#how">02 · How it works</a>
+<a href="#signals">03 · Signal coverage</a>
+<a href="#proof">04 · Ajio Luxe proof</a>
+<a href="#demo">05 · Live demo</a>
+<a href="#commercials">06 · Commercials</a>
+</div>
+</div>
+
+<!-- HERO -->
+<section class="hero-grad pt-24 pb-24 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="flex items-center gap-3 mb-6">
+    <span class="pill-live">Live · Ajio Luxe</span>
+    <span class="pill-pilot">Marketing OS</span>
+  </div>
+  <h1 class="display mb-6" style="font-size: clamp(44px, 7vw, 84px); line-height: 0.98; color: var(--ink);">
+    GrowthOS.<br/><span style="color: var(--accent);">Move at the speed of culture.<br/>Without losing the brand.</span>
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.5;">
+    The AI marketing system for D2C brands that refuse to wait six weeks for a campaign. Brief, generate, execute, and measure in hours. Validated in production on Ajio Luxe — ₹144 Cr+ GMV managed through the signal engine.
+  </p>
+  <div class="flex flex-wrap gap-3 mb-12">
+    <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="cta-link">Open GrowthOS landing →</a>
+    <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="cta-link secondary">Open Ajio Luxe OS demo (SIT) →</a>
+    <a href="#demo" class="cta-link secondary">Jump to live demo ↓</a>
+  </div>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="metric-tile"><div class="mt-num">150+</div><div class="mt-label">Live signals scored</div></div>
+    <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">Brief → live campaign</div></div>
+    <div class="metric-tile"><div class="mt-num">10×</div><div class="mt-label">Team leverage gained</div></div>
+    <div class="metric-tile"><div class="mt-num">₹144 Cr+</div><div class="mt-label">Proven GMV managed</div></div>
+  </div>
+</div>
+</section>
+
+<!-- 01 · WHAT IT IS -->
+<section id="what" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">01 · WHAT IT IS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-8" style="color: var(--ink);">Your campaign calendar is already out of date.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-12" style="color: var(--ink-muted); line-height: 1.6;">
+    By the time a brief becomes a live campaign, the moment has moved. Trends turn over in 72 hours. Competitors ship daily. Your team is excellent — the system around them is stuck in 2015. GrowthOS collapses the brief-to-live gap from six weeks to six days, then to six hours.
+  </p>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="pillar-card">
+      <div class="pc-eyebrow">The brief-to-live gap</div>
+      <h3>Six weeks for what should take six days.</h3>
+      <p>Endless cycles of approvals, edits, and asset production outlive the moment they were meant to capture.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pc-eyebrow">The signal blindness</div>
+      <h3>Reacting to last quarter's data.</h3>
+      <p>Dashboards tell you what already happened — not where to place your next bet. Culture moves in real time.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pc-eyebrow">Creative bottleneck</div>
+      <h3>The best ideas die in approval cycles.</h3>
+      <p>Talented teams ship a fraction of their thinking. Most of the work never reaches the customer.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 · HOW IT WORKS -->
+<section id="how" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">02 · HOW IT WORKS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">How the system thinks, in four moves.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
+    One system that gets sharper every campaign. GrowthOS continuously loops from signal discovery to asset creation, instant delivery, and performance measurement.
+  </p>
+  <div class="max-w-4xl">
+    <div class="step-row">
+      <div class="sr-num">1</div>
+      <div>
+        <h4>Plan · Signals become opportunities.</h4>
+        <p>150+ live data sources scored continuously. The system identifies high-probability moments based on audience, channel, and format fit.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="sr-num">2</div>
+      <div>
+        <h4>Make · Briefs become assets.</h4>
+        <p>AI generates briefs, copy, photos, video, and 3D assets that adhere perfectly to your pre-loaded brand guidelines. Hours, not weeks.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="sr-num">3</div>
+      <div>
+        <h4>Execute · Assets become campaigns.</h4>
+        <p>One-click push to Meta and Google Ads. Automated localization, format resizing, and campaign deployment in minutes.</p>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="sr-num">4</div>
+      <div>
+        <h4>Measure · Outcomes become intelligence.</h4>
+        <p>Predicted vs. actual results are logged. The engine learns what works for your brand, making the next daily recommendation sharper.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 03 · SIGNAL COVERAGE -->
+<section id="signals" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">03 · SIGNAL COVERAGE</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">See the moment before your competitor does.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
+    Most marketing tools react only to historical dashboard data. GrowthOS monitors the world continuously across five signal families, surfacing the three that matter to your brand today.
+  </p>
+  <div class="grid md:grid-cols-3 gap-4 mb-10">
+    <div class="metric-tile"><div class="mt-num">150+</div><div class="mt-label">Live signals tracked</div></div>
+    <div class="metric-tile"><div class="mt-num">3 / day</div><div class="mt-label">Surfaced opportunities</div></div>
+    <div class="metric-tile"><div class="mt-num">&lt; 15 min</div><div class="mt-label">Signal latency</div></div>
+  </div>
+  <div class="grid md:grid-cols-5 gap-3 mb-8">
+    <div class="pillar-card"><div class="pc-eyebrow">Family 1</div><h3>Cultural</h3><p>Search trends, social velocity, trending hashtags, creator activity.</p></div>
+    <div class="pillar-card"><div class="pc-eyebrow">Family 2</div><h3>Commercial</h3><p>Competitor inventory, pricing moves, promo activity.</p></div>
+    <div class="pillar-card"><div class="pc-eyebrow">Family 3</div><h3>Demand</h3><p>Category-level intent, regional spikes, cohort velocity.</p></div>
+    <div class="pillar-card"><div class="pc-eyebrow">Family 4</div><h3>Performance</h3><p>Live campaign telemetry feeding the reinforcement loop.</p></div>
+    <div class="pillar-card"><div class="pc-eyebrow">Family 5</div><h3>Macro</h3><p>Weather, festivals, news cycles that change buying behaviour.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- 04 · AJIO LUXE PROOF -->
+<section id="proof" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">04 · PROOF</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Proven where the stakes are highest.<br/>Validated with Ajio Luxe.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
+    GrowthOS isn't a prototype. The system has been validated in production managing luxury fashion e-commerce — complex catalogs, demanding brand guidelines, and high-net-worth audiences.
+  </p>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="metric-tile"><div class="mt-num">₹144 Cr+</div><div class="mt-label">GMV managed through signal engine</div></div>
+    <div class="metric-tile"><div class="mt-num">48 hrs</div><div class="mt-label">SLA from trend spot to live campaign</div></div>
+  </div>
+  <blockquote class="mt-10 max-w-3xl text-lg italic" style="color: var(--ink); border-left: 3px solid var(--accent); padding-left: 20px;">
+    The platform handles enterprise complexity and luxury brand guidelines with zero compromises. It proves the signal model works where brand integrity is non-negotiable.
+  </blockquote>
+</div>
+</section>
+
+<!-- 05 · LIVE DEMO -->
+<section id="demo" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">05 · LIVE DEMO</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Try it · Ajio Luxe Marketing OS (SIT).</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.6;">
+    Live SIT environment — the same system that runs ₹144 Cr+ in GMV on Ajio Luxe. Open it in a new tab for full functionality, or preview below.
+  </p>
+  <div class="demo-card mb-8">
+    <div class="demo-card-head">
+      <div>
+        <div class="font-semibold" style="color: var(--ink);">Ajio Luxe Marketing OS</div>
+        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">marketing.sit.ccpz0.de</div>
+      </div>
+      <div class="flex gap-2">
+        <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" class="cta-link">Open SIT demo →</a>
+      </div>
+    </div>
+    <div class="demo-card-body">
+      <iframe src="https://marketing.sit.ccpz0.de/" style="width:100%; height: 640px; border: 1px solid var(--border-soft); border-radius: 8px;" title="Ajio Luxe Marketing OS · SIT"></iframe>
+      <p class="text-xs mt-3" style="color: var(--ink-muted);">Note: If the embed is blocked by frame restrictions, use the "Open SIT demo" button above.</p>
+    </div>
+  </div>
+  <div class="demo-card">
+    <div class="demo-card-head">
+      <div>
+        <div class="font-semibold" style="color: var(--ink);">GrowthOS landing</div>
+        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">growthoslp-ngvifjlp.manus.space</div>
+      </div>
+      <div class="flex gap-2">
+        <a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" class="cta-link">Open landing →</a>
+      </div>
+    </div>
+    <div class="demo-card-body">
+      <iframe src="https://growthoslp-ngvifjlp.manus.space" style="width:100%; height: 640px; border: 1px solid var(--border-soft); border-radius: 8px;" title="GrowthOS landing"></iframe>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 · COMMERCIALS -->
+<section id="commercials" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · COMMERCIALS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Start without a procurement war.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
+    Three ways to start. Transparent pricing, no setup fees, no per-asset charges, no scope theater. Annual billing saves 20%.
+  </p>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="pillar-card">
+      <div class="pc-eyebrow">Starter</div>
+      <h3>₹15K–25K / month</h3>
+      <p>8 active campaigns / month · top 5 signals surfaced · manual product curation · photos & video creative assets.</p>
+    </div>
+    <div class="pillar-card" style="border-color: var(--accent); border-width: 2px;">
+      <div class="pc-eyebrow">Growth · most chosen</div>
+      <h3>₹50K–75K / month</h3>
+      <p>20 active campaigns / month · top 10 signals + instant alerts · smart automated curation · service-mode creative · priority 48-hr SLA.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pc-eyebrow">Enterprise POC</div>
+      <h3>₹4L / 30-day pilot</h3>
+      <p>Unlimited campaigns · full real-time signal stack · custom signal modeling · dedicated strategy + hands-on training · custom integrations.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- META -->
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div>
+      <div class="font-semibold mb-1" style="color: var(--ink);">Status</div>
+      <div>Live · Ajio Luxe production</div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1" style="color: var(--ink);">Owners</div>
+      <div>Marketing OS team · Fynd × Reliance Retail</div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1" style="color: var(--ink);">Links</div>
+      <div><a href="https://growthoslp-ngvifjlp.manus.space" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">Landing</a> · <a href="https://marketing.sit.ccpz0.de/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: underline;">SIT demo</a></div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tribe v2 · Virality Prediction R&D · Fynd Studio · Fynd Glass</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="icon" type="image/png" href="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png">
+<link rel="stylesheet" href="/../style.css">
+<link rel="stylesheet" href="/../present.css">
+<script src="../../present.js" defer></script>
+<style>
+.pill-rd { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 4px; background: #EEF2FF; color: #4338CA; border: 1px solid #C7D2FE; }
+.pill-meta { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; padding: 2px 8px; border-radius: 4px; background: #F1F5F9; color: #475569; border: 1px solid #E2E8F0; }
+.crumb { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ink-muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 18px; }
+.crumb a { color: var(--ink-muted); text-decoration: underline; }
+.crumb a:hover { color: var(--ink); }
+.metric-tile { padding: 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); }
+.metric-tile .mt-num { font-family: 'JetBrains Mono', monospace; font-size: 24px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1; margin-bottom: 6px; }
+.metric-tile .mt-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); }
+.mat-card { padding: 22px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; gap: 10px; height: 100%; transition: border-color .15s, transform .15s; }
+.mat-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.mat-card .mc-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); }
+.mat-card h3 { font-weight: 700; font-size: 17px; color: var(--ink); letter-spacing: -0.01em; }
+.mat-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; flex: 1; }
+.mat-card .mc-cta { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: underline; margin-top: auto; }
+.mat-card .mc-domain { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--ink-soft); margin-top: 2px; word-break: break-all; }
+.cta-link { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; background: var(--ink); color: white; border-radius: 8px; font-weight: 500; font-size: 14px; text-decoration: none; transition: opacity .15s; }
+.cta-link:hover { opacity: 0.85; }
+.cta-link.secondary { background: white; color: var(--ink); border: 1px solid var(--border); }
+.demo-card { border: 1px solid var(--border); border-radius: 14px; background: var(--bg); overflow: hidden; }
+.demo-card-head { padding: 18px 22px; background: var(--bg-soft); border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.demo-card-body { padding: 24px; }
+.compare-tbl { width: 100%; border-collapse: collapse; }
+.compare-tbl th, .compare-tbl td { padding: 14px 16px; text-align: left; font-size: 14px; border-bottom: 1px solid var(--border-soft); vertical-align: top; }
+.compare-tbl th { font-family: 'JetBrains Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-muted); font-weight: 500; background: var(--bg-soft); }
+.callout { padding: 22px; border-radius: 12px; background: #FEF9C3; border: 1px solid #FDE68A; }
+.callout .co-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #92400E; margin-bottom: 6px; }
+.callout p { font-size: 14px; color: #78350F; line-height: 1.55; }
+.story-toc { position: sticky; top: 64px; z-index: 40; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.story-toc-inner { display: flex; gap: 4px; overflow-x: auto; padding: 10px 24px; max-width: 80rem; margin: 0 auto; -webkit-overflow-scrolling: touch; }
+.story-toc a { font-family: 'JetBrains Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-muted); padding: 6px 12px; border-radius: 999px; white-space: nowrap; transition: color .15s, background .15s; }
+.story-toc a:hover { color: var(--ink); background: var(--bg-soft); }
+.story-toc a.is-active { color: var(--ink); background: var(--bg-soft); }
+</style>
+</head>
+<body>
+
+<nav class="topnav"><div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+<a href="/.." class="flex items-center gap-3 shrink-0">
+  <img src="https://socialassets.impetusz0.de/rrl-portfolio/assets/fynd-logo.png" alt="Fynd" class="w-7 h-7 rounded-md" />
+  <div class="hidden sm:flex items-center gap-2">
+    <span class="font-semibold text-sm" style="color: var(--ink);">Fynd Glass</span>
+    <span class="mono text-xs tracking-widest" style="color: var(--ink-muted); font-weight: 500;">RRVL · JPL</span>
+  </div>
+</a>
+<div class="hidden md:flex items-center gap-1">
+  <a href="/.." class="nav-link">Home</a>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Platforms <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel platforms-mega">
+      <div class="platforms-grid">
+        <a href="/../jcp" class="pcard p-jcp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">J</span>JCP</div>
+          <div class="pc-content">
+            <div class="pc-name">Jio Commerce Platform</div>
+            <div class="pc-desc">Enterprise Commerce · 78 channels</div>
+          </div>
+        </a>
+        <a href="/../impetus" class="pcard p-impetus">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">I</span>Impetus</div>
+          <div class="pc-content">
+            <div class="pc-name">Impetus</div>
+            <div class="pc-desc">F&amp;L AI · 15.08 Cr pieces FY26</div>
+          </div>
+        </a>
+        <a href="/../granary" class="pcard p-granary">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">G</span>Granary</div>
+          <div class="pc-content">
+            <div class="pc-name">Granary</div>
+            <div class="pc-desc">Grocery AI · 48M-row daily forecast</div>
+          </div>
+        </a>
+        <a href="/../ucp" class="pcard p-ucp">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">U</span>UCP</div>
+          <div class="pc-content">
+            <div class="pc-name">UCP &amp; Marketing OS</div>
+            <div class="pc-desc">380M+ unified profiles</div>
+          </div>
+        </a>
+        <a href="/../rcpl" class="pcard p-rcpl">
+          <div class="pc-bg"></div>
+          <div class="pc-logo"><span class="pc-mark">R</span>RCPL</div>
+          <div class="pc-content">
+            <div class="pc-name">RCPL</div>
+            <div class="pc-desc">FMCG B2B</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link active" tabindex="0">Tracks <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 1000px;">
+      <div class="grid grid-cols-5 gap-6">
+        <div>
+          <div class="mega-col-label">Customers</div>
+          <a href="/../kaily" class="mega-link">Kaily <span class="mono-suffix">agentic commerce</span></a>
+          <a href="/../agents" class="mega-link">AI Agents <span class="mono-suffix">directory</span></a>
+          <a href="/../kio" class="mega-link">Kio <span class="mono-suffix">self-checkout</span></a>
+          <a href="/../swapeasy" class="mega-link">SwapEasy <span class="mono-suffix">re-commerce</span></a>
+          <a href="/../fynd-horizon" class="mega-link">Fynd Horizon <span class="new-pill">New</span> <span class="mono-suffix">ultra-fast retail</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Growth</div>
+          <a href="/../ucp" class="mega-link">UCP <span class="mono-suffix">customer profiles</span></a>
+          <a href="/../growthos" class="mega-link">GrowthOS <span class="new-pill">New</span> <span class="mono-suffix">marketing OS</span></a>
+          <a href="/../fynd-studio" class="mega-link">Fynd Studio <span class="new-pill">New</span> <span class="mono-suffix">AI media</span></a>
+          <a href="/../pixelbin" class="mega-link">PixelBin <span class="mono-suffix">visual AI</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">Operations</div>
+          <a href="/../boltic" class="mega-link">Boltic <span class="mono-suffix">automation OS</span></a>
+          <a href="/../ratl" class="mega-link">Ratl <span class="mono-suffix">agentic QA</span></a>
+          <a href="/../fynd-konnect" class="mega-link">Fynd Konnect <span class="mono-suffix">integrations</span></a>
+          <a href="/../tms" class="mega-link">TMS <span class="mono-suffix">quick-commerce</span></a>
+          <a href="/../forge" class="mega-link">Forge <span class="mono-suffix">manufacturing OS</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">InStore</div>
+          <a href="/../alp" class="mega-link">ALP <span class="mono-suffix">new-store opening</span></a>
+          <a href="/../retail-vista" class="mega-link">Retail Vista <span class="mono-suffix">geospatial</span></a>
+          <a href="/../retail-jarvis" class="mega-link">Retail Jarvis <span class="mono-suffix">CX sensing</span></a>
+          <a href="/../autri" class="mega-link">Autri <span class="mono-suffix">on-shelf robotics</span></a>
+          <a href="/../neo-tailor" class="mega-link">Neo Tailor <span class="new-pill">New</span> <span class="mono-suffix">MTM</span></a>
+        </div>
+        <div>
+          <div class="mega-col-label">People</div>
+          <a href="/../samarth" class="mega-link">Samarth <span class="mono-suffix">frontline careers</span></a>
+          <a href="/../hirefirst" class="mega-link">HireFirst <span class="new-pill">New</span> <span class="mono-suffix">HR Tech</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">Teams <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 320px;">
+      <a href="/../customers" class="mega-link">Customers <span class="mono-suffix">CX · loyalty</span></a>
+      <a href="/../growth" class="mega-link">Growth <span class="mono-suffix">marketing · creative</span></a>
+      <a href="/../operations" class="mega-link">Operations <span class="mono-suffix">engineering · supply</span></a>
+      <a href="/../instore" class="mega-link">InStore <span class="mono-suffix">retail · frontline</span></a>
+    </div>
+  </div>
+  <div class="nav-mega"><span class="nav-link" tabindex="0">More <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 5 6 8 9 5"/></svg></span>
+    <div class="nav-mega-panel" style="min-width: 280px;">
+      <a href="/../frame" class="mega-link">FRAME magazine <span class="new-pill">New</span> <span class="mono-suffix">coming June 2026</span></a>
+      <a href="/../jcp-edition-2026" class="mega-link">JCP Edition 2026 <span class="new-pill">New</span> <span class="mono-suffix">store OS launch</span></a>
+      <a href="/../autonomous" class="mega-link">Autonomy framework <span class="mono-suffix">L0–L5</span></a>
+      <a href="/../ai-native" class="mega-link">AI-Native Engineering <span class="mono-suffix">how Fynd builds</span></a>
+      <a href="/../frameworks" class="mega-link">Frameworks</a>
+      <a href="/../organisation" class="mega-link">Organisation</a>
+      <a href="/../culture" class="mega-link">Culture</a>
+      <a href="/../fynd-academy" class="mega-link">Fynd Academy <span class="mono-suffix">talent</span></a>
+    </div>
+  </div>
+</div>
+<div class="hidden lg:flex items-center shrink-0">
+  <span class="nav-version"><span class="nav-version-dot"></span>v0.8.4</span>
+</div>
+</div></nav>
+
+<!-- Sticky in-page TOC -->
+<div class="story-toc">
+<div class="story-toc-inner" id="story-toc">
+<a href="#what">01 · What it is</a>
+<a href="#materials">02 · Materials</a>
+<a href="#why">03 · Why it matters</a>
+<a href="#higgsfield">04 · Higgsfield context</a>
+<a href="#demo">05 · Live demo</a>
+<a href="#plan">06 · Pilot plan</a>
+</div>
+</div>
+
+<!-- HERO -->
+<section class="hero-grad pt-24 pb-20 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="crumb"><a href="/..">Home</a> · <a href="/">Fynd Studio</a> · Tribe v2 R&D</div>
+  <div class="flex items-center gap-3 mb-6">
+    <span class="pill-rd">R&D · Internal</span>
+    <span class="pill-meta">Meta · Tribe v2</span>
+  </div>
+  <h1 class="display mb-6" style="font-size: clamp(40px, 6.5vw, 76px); line-height: 0.98; color: var(--ink);">
+    Tribe v2.<br/><span style="color: var(--accent);">Predict the hit, before you ship the cut.</span>
+  </h1>
+  <p class="text-lg md:text-xl max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.5;">
+    Meta's Tribe v2 is a foundation model of vision, audition and language for in-silico neuroscience. It predicts how the brain responds to multimodal content. The bet inside Fynd Studio: use Tribe v2 as a virality-scoring layer over generated ad creative — pick winners before spend.
+  </p>
+  <div class="flex flex-wrap gap-3">
+    <a href="https://aidemos.atmeta.com/tribev2" target="_blank" rel="noopener" class="cta-link">Try Meta's live demo →</a>
+    <a href="#materials" class="cta-link secondary">Jump to all materials ↓</a>
+    <a href="#higgsfield" class="cta-link secondary">Higgsfield context ↓</a>
+  </div>
+</div>
+</section>
+
+<!-- 01 · WHAT IT IS -->
+<section id="what" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">01 · WHAT IT IS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">A foundation model of vision, audition and language for in-silico neuroscience.</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="mat-card">
+      <div class="mc-eyebrow">Inputs</div>
+      <h3>Multimodal</h3>
+      <p>Vision (image / video frames), audition (audio waveform / spectrogram), language (caption / dialogue).</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Outputs</div>
+      <h3>Predicted neural response</h3>
+      <p>Region-by-region brain activity predictions. The "in-silico" part: simulate response without putting a person in an MRI.</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Why Meta built it</div>
+      <h3>Open neuroscience tool</h3>
+      <p>Foundation-model scale unlocks subject-agnostic predictions — researchers can probe stimulus-response without bespoke datasets.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 02 · MATERIALS -->
+<section id="materials" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">02 · MATERIALS</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Everything Meta has published.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
+    The full Tribe v2 release kit — blog, live demo, codebase, model weights, publication, and the paper PDF. All links open in a new tab.
+  </p>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <a href="https://ai.meta.com/blog/tribe-v2-brain-predictive-foundation-model/" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Blog post</div>
+      <h3>Tribe v2 · Brain-Predictive Foundation Model</h3>
+      <p>Meta AI's launch write-up. The narrative version — what the team built and why.</p>
+      <div class="mc-domain">ai.meta.com/blog/tribe-v2-brain-predictive-foundation-model</div>
+      <div class="mc-cta">Read on Meta AI →</div>
+    </a>
+    <a href="https://aidemos.atmeta.com/tribev2" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Live demo</div>
+      <h3>Try Tribe v2 in the browser</h3>
+      <p>Meta's hosted interactive demo. Feed stimuli and inspect predicted neural responses.</p>
+      <div class="mc-domain">aidemos.atmeta.com/tribev2</div>
+      <div class="mc-cta">Open demo →</div>
+    </a>
+    <a href="https://github.com/facebookresearch/tribev2" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Codebase</div>
+      <h3>facebookresearch / tribev2</h3>
+      <p>Reference implementation, training scripts, evaluation harness. MIT-style open release.</p>
+      <div class="mc-domain">github.com/facebookresearch/tribev2</div>
+      <div class="mc-cta">Open repo →</div>
+    </a>
+    <a href="https://huggingface.co/facebook/tribev2" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Model weights</div>
+      <h3>facebook / tribev2 on Hugging Face</h3>
+      <p>Pre-trained model weights for download and integration.</p>
+      <div class="mc-domain">huggingface.co/facebook/tribev2</div>
+      <div class="mc-cta">Open model card →</div>
+    </a>
+    <a href="https://ai.meta.com/research/publications/a-foundation-model-of-vision-audition-and-language-for-in-silico-neuroscience/" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Publication</div>
+      <h3>Foundation model for in-silico neuroscience</h3>
+      <p>Meta AI research publication page. Abstract, authors, citation.</p>
+      <div class="mc-domain">ai.meta.com/research/publications/…</div>
+      <div class="mc-cta">Read publication →</div>
+    </a>
+    <a href="https://scontent.fbom19-6.fna.fbcdn.net/v/t39.2365-6/657045057_4517522795185706_380482627708__/h8oTjYvNZRnYfnm3AaPlDlVms4UwcX6fke2aqg-7g&oe=6A05F2B2" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Paper · PDF</div>
+      <h3>Full paper · CDN-hosted</h3>
+      <p>Direct PDF of the publication. Heads up: signed CDN URL with an expiry — may need refreshing from the publication page.</p>
+      <div class="mc-domain">scontent.fbom19-6.fna.fbcdn.net/…</div>
+      <div class="mc-cta">Open PDF →</div>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- 03 · WHY IT MATTERS -->
+<section id="why" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">03 · WHY IT MATTERS · FYND STUDIO</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">The next moat isn't more output. It's better picking.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-10" style="color: var(--ink-muted); line-height: 1.6;">
+    Fynd Studio already generates hundreds of variants per campaign. The bottleneck moved: which variant do we actually ship? A neural-response model gives us a quantitative virality prior — score every cut before media spend, route the top decile to channels.
+  </p>
+  <table class="compare-tbl">
+    <thead><tr><th>Step</th><th>Today</th><th>With Tribe v2 layer</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Generate</strong></td><td>~200 variants per brief</td><td>Same — generation is solved</td></tr>
+      <tr><td><strong>Pick</strong></td><td>Creative director instinct + A/B in market</td><td>Tribe v2 neural-response score → top 5–10 % shortlisted before spend</td></tr>
+      <tr><td><strong>Spend allocation</strong></td><td>Flat per shortlisted asset</td><td>Weighted by predicted response strength per cohort</td></tr>
+      <tr><td><strong>Learning loop</strong></td><td>Post-campaign performance</td><td>Predicted vs actual neural score → fine-tune Tribe head on our brand data</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- 04 · HIGGSFIELD CONTEXT -->
+<section id="higgsfield" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">04 · COMPETITIVE READ</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">Higgsfield shipped a virality predictor.<br/>They aren't saying it's Tribe v2 — but the shape fits.</h2>
+  <div class="callout mb-8">
+    <div class="co-eyebrow">Note · unverified</div>
+    <p>Higgsfield's Virality Predictor app does the same job — score a video's likelihood of going viral before posting. They haven't disclosed the underlying model. The capability appeared shortly after Meta's Tribe v2 release. Treat the connection as plausible, not confirmed.</p>
+  </div>
+  <div class="grid md:grid-cols-2 gap-5">
+    <a href="https://higgsfield.ai/apps/virality-predictor" target="_blank" rel="noopener" class="mat-card">
+      <div class="mc-eyebrow">Competitive · Higgsfield</div>
+      <h3>Higgsfield Virality Predictor</h3>
+      <p>Productised virality scoring inside Higgsfield's creative suite. Worth a side-by-side comparison once we have a Tribe v2 prototype.</p>
+      <div class="mc-domain">higgsfield.ai/apps/virality-predictor</div>
+      <div class="mc-cta">Open Higgsfield app →</div>
+    </a>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Our read</div>
+      <h3>Two reasons to move fast</h3>
+      <p>1. Open-source Tribe v2 means the moat is implementation + brand-specific fine-tuning, not access. 2. If Higgsfield is using it, the market window for being the "AI Studio with a virality score" is short.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 05 · LIVE DEMO -->
+<section id="demo" class="py-16 border-b" style="border-color: var(--border);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">05 · LIVE DEMO</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-3" style="color: var(--ink);">Meta's hosted Tribe v2 demo.</h2>
+  <p class="text-base md:text-lg max-w-3xl mb-8" style="color: var(--ink-muted); line-height: 1.6;">
+    Embedded below. If the iframe is blocked by Meta's frame policy, use "Open demo" for the full experience.
+  </p>
+  <div class="demo-card mb-8">
+    <div class="demo-card-head">
+      <div>
+        <div class="font-semibold" style="color: var(--ink);">Tribe v2 · Meta AI demo</div>
+        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">aidemos.atmeta.com/tribev2</div>
+      </div>
+      <div class="flex gap-2">
+        <a href="https://aidemos.atmeta.com/tribev2" target="_blank" rel="noopener" class="cta-link">Open demo →</a>
+      </div>
+    </div>
+    <div class="demo-card-body">
+      <iframe src="https://aidemos.atmeta.com/tribev2" style="width:100%; height: 640px; border: 1px solid var(--border-soft); border-radius: 8px;" title="Tribe v2 · Meta AI demo"></iframe>
+    </div>
+  </div>
+  <div class="demo-card">
+    <div class="demo-card-head">
+      <div>
+        <div class="font-semibold" style="color: var(--ink);">Higgsfield Virality Predictor</div>
+        <div class="text-xs" style="color: var(--ink-muted); font-family: 'JetBrains Mono', monospace; margin-top: 2px;">higgsfield.ai/apps/virality-predictor</div>
+      </div>
+      <div class="flex gap-2">
+        <a href="https://higgsfield.ai/apps/virality-predictor" target="_blank" rel="noopener" class="cta-link secondary">Open app →</a>
+      </div>
+    </div>
+    <div class="demo-card-body">
+      <iframe src="https://higgsfield.ai/apps/virality-predictor" style="width:100%; height: 640px; border: 1px solid var(--border-soft); border-radius: 8px;" title="Higgsfield Virality Predictor"></iframe>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 06 · PILOT PLAN -->
+<section id="plan" class="py-16 border-b" style="border-color: var(--border); background: var(--bg-soft);">
+<div class="max-w-7xl mx-auto px-6">
+  <div class="cap-num mb-3">06 · INTERNAL PILOT PLAN</div>
+  <h2 class="display-2 text-3xl md:text-4xl mb-6" style="color: var(--ink);">What to do in the next 30 days.</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <div class="mat-card">
+      <div class="mc-eyebrow">Week 1</div>
+      <h3>Reproduce Meta's results</h3>
+      <p>Clone the repo, pull weights from HF, stand up the demo on a Fynd GPU. Validate against the published benchmarks.</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Week 2</div>
+      <h3>Score our own creative</h3>
+      <p>Run 500 historical Fynd Studio cuts (with known performance) through Tribe v2. Compare predicted score vs actual CTR / view-through.</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Week 3</div>
+      <h3>Side-by-side Higgsfield</h3>
+      <p>Submit the same 500 cuts to Higgsfield's predictor. Compare ranking agreement, identify where the two disagree.</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Week 4</div>
+      <h3>Fine-tune for our brands</h3>
+      <p>Train a thin head on top of Tribe v2 features using our brand × cohort performance data. Target: outperform off-the-shelf on Fynd brands by &gt; 15 % rank correlation.</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Day 30 · gate</div>
+      <h3>Ship or shelf?</h3>
+      <p>If the fine-tuned head beats CD picks on at least 3 of 5 brand benchmarks, ship as a Fynd Studio gate. Otherwise document and revisit next quarter.</p>
+    </div>
+    <div class="mat-card">
+      <div class="mc-eyebrow">Open questions</div>
+      <h3>What we still need to know</h3>
+      <p>Licence terms for commercial use of the weights · inference cost per asset at our scale · whether Meta plans a hosted API.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- META -->
+<section class="py-10 border-b" style="border-color: var(--border);"><div class="max-w-7xl mx-auto px-6 text-sm" style="color: var(--ink-muted);">
+  <div class="grid md:grid-cols-3 gap-6">
+    <div>
+      <div class="font-semibold mb-1" style="color: var(--ink);">Status</div>
+      <div>R&D · evaluation phase</div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1" style="color: var(--ink);">Source</div>
+      <div>Meta AI · facebookresearch · open-source release</div>
+    </div>
+    <div>
+      <div class="font-semibold mb-1" style="color: var(--ink);">Back to</div>
+      <div><a href="/" style="color: var(--accent); text-decoration: underline;">Fynd Studio →</a></div>
+    </div>
+  </div>
+</div></section>
+
+<footer class="py-10" style="background: var(--ink); color: white;"><div class="max-w-7xl mx-auto px-6 text-sm" style="opacity: 0.7;">
+  <div>© 2026 Fynd Glass · RRVL · Jio Platforms Limited · Strict internal circulation only</div>
+</div></footer>
+
+<script>
+(function() {
+  var toc = document.getElementById('story-toc');
+  if (!toc) return;
+  var links = Array.from(toc.querySelectorAll('a'));
+  var ids = links.map(function(a) { return a.getAttribute('href').slice(1); });
+  function setActive(id) {
+    links.forEach(function(a) {
+      var hashId = a.getAttribute('href').slice(1);
+      a.classList.toggle('is-active', hashId === id);
+    });
+    var active = toc.querySelector('a.is-active');
+    if (active) active.scrollIntoView({ block: 'nearest', inline: 'center', behavior: 'smooth' });
+  }
+  var io = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-30% 0px -65% 0px', threshold: 0 });
+  ids.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) io.observe(el);
+  });
+})();
+</script>
+
+</body>
+</html>
