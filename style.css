@@ -1823,6 +1823,15 @@ section.od-dark .od-ghost-btn:hover {
   --glass-blur:     blur(20px) saturate(1.6);
   --glass-blur-heavy: blur(32px) saturate(1.8);
 
+  /* Iridescent glass tokens (Wannathis light-glass inspired) */
+  --iridescent-1: rgba(120, 200, 255, 0.12);
+  --iridescent-2: rgba(160, 120, 255, 0.10);
+  --iridescent-3: rgba(255, 120, 200, 0.08);
+  --iridescent-4: rgba(80, 220, 200, 0.09);
+  --iridescent-border: linear-gradient(135deg, rgba(120,200,255,0.35), rgba(160,120,255,0.30), rgba(255,120,200,0.25), rgba(80,220,200,0.30));
+  --iridescent-glow: 0 4px 20px -4px rgba(120,180,255,0.15), 0 4px 20px -4px rgba(160,120,255,0.10);
+  --glass-refraction: linear-gradient(135deg, rgba(120,200,255,0.06) 0%, rgba(160,120,255,0.04) 25%, rgba(255,120,200,0.03) 50%, rgba(80,220,200,0.05) 75%, transparent 100%);
+
   /* Ultra-soft shadow system */
   --shadow-sm:   0 1px 3px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);
   --shadow-md:   0 4px 16px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.02);
@@ -1843,14 +1852,16 @@ section.od-dark .od-ghost-btn:hover {
   --border-gloss: 1px solid rgba(255,255,255,0.80);
 }
 
-/* ── Body — ultra-light clean background ───────────────────── */
+/* ── Body — ultra-light clean background with iridescent ambient ── */
 body {
   background: var(--paper) !important;
 }
 body::before {
   background-image:
-    radial-gradient(ellipse 60% 50% at 20% 10%, rgba(237,111,92,0.03) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 60% at 80% 80%, rgba(100,120,200,0.025) 0%, transparent 50%) !important;
+    radial-gradient(ellipse 50% 40% at 15% 10%, var(--iridescent-1) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 85% 20%, var(--iridescent-2) 0%, transparent 55%),
+    radial-gradient(ellipse 45% 35% at 70% 80%, var(--iridescent-3) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 45% at 25% 75%, var(--iridescent-4) 0%, transparent 55%) !important;
   opacity: 1 !important;
 }
 
@@ -1883,7 +1894,22 @@ nav.topnav {
 }
 .card:hover, .card-hover:hover {
   transform: translateY(-4px) !important;
-  box-shadow: var(--shadow-lg), var(--inner-shine) !important;
+  box-shadow: var(--shadow-lg), var(--iridescent-glow), var(--inner-shine) !important;
+}
+/* Iridescent glass refraction overlay on cards */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-refraction);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.card:hover::before {
+  opacity: 1;
 }
 /* Dark cards preserve ink background */
 .card.card-dark {
@@ -1906,7 +1932,21 @@ nav.topnav {
 }
 .platform-card:hover {
   transform: translateY(-4px) !important;
-  box-shadow: var(--shadow-lg), var(--inner-shine) !important;
+  box-shadow: var(--shadow-lg), var(--iridescent-glow), var(--inner-shine) !important;
+}
+.platform-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-refraction);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.platform-card:hover::before {
+  opacity: 1;
 }
 
 /* ── Lens / feature cards glass ────────────────────────────── */
@@ -1940,18 +1980,18 @@ nav.topnav {
   border-radius: 20px !important;
 }
 
-/* ── Hero ambient blobs — subtle cool tones ────────────────── */
+/* ── Hero ambient blobs — iridescent glass tones ─────────────── */
 .hero-blob-1 {
-  background: radial-gradient(circle, rgba(237,111,92,0.08) 0%, rgba(237,111,92,0.02) 50%, transparent 70%) !important;
-  width: 600px !important; height: 600px !important;
-  filter: blur(80px) !important;
-  opacity: 0.6 !important;
+  background: radial-gradient(circle, rgba(120,200,255,0.12) 0%, rgba(160,120,255,0.06) 40%, transparent 70%) !important;
+  width: 650px !important; height: 650px !important;
+  filter: blur(90px) !important;
+  opacity: 0.7 !important;
 }
 .hero-blob-2 {
-  background: radial-gradient(circle, rgba(100,120,220,0.07) 0%, rgba(100,120,220,0.02) 50%, transparent 70%) !important;
-  width: 500px !important; height: 500px !important;
-  filter: blur(70px) !important;
-  opacity: 0.5 !important;
+  background: radial-gradient(circle, rgba(255,120,200,0.09) 0%, rgba(80,220,200,0.05) 40%, transparent 70%) !important;
+  width: 550px !important; height: 550px !important;
+  filter: blur(80px) !important;
+  opacity: 0.6 !important;
 }
 
 /* ── Section dark blocks — glass-bordered rounded sections ─── */
@@ -2110,7 +2150,21 @@ table.grid-table th {
 }
 .bento-grid > *:hover {
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg), var(--inner-shine);
+  box-shadow: var(--shadow-lg), var(--iridescent-glow), var(--inner-shine);
+}
+.bento-grid > *::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--glass-refraction);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.bento-grid > *:hover::before {
+  opacity: 1;
 }
 
 /* Bento sizing utilities */
@@ -2141,6 +2195,35 @@ table.grid-table th {
 .bento-grid.bento-dark > *:hover {
   background: rgba(255,255,255,0.07);
   box-shadow: 0 8px 40px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+
+/* ── Iridescent glass reflection line (light catching glass) ─── */
+.card::after,
+.platform-card::after,
+.bento-grid > *::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255,255,255,0.5) 45%,
+    rgba(255,255,255,0.8) 50%,
+    rgba(255,255,255,0.5) 55%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 2;
+  transition: left 0.7s cubic-bezier(0.22,1,0.36,1);
+  border-radius: inherit;
+}
+.card:hover::after,
+.platform-card:hover::after,
+.bento-grid > *:hover::after {
+  left: 100%;
 }
 
 /* ── Smooth page transitions ───────────────────────────────── */
